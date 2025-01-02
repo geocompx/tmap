@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="This book teaches how to make elegant and informative maps with the R package tmap.">
-<title>4&nbsp; Save maps – Elegant and informative maps with **tmap**</title>
+<title>14&nbsp; tmap options – Elegant and informative maps with **tmap**</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -18,40 +18,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -61,8 +27,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./04-tm-shape.html" rel="next">
-<link href="./03-nutshell.html" rel="prev">
+<link href="./XX-good-maps.html" rel="next">
+<link href="./XX-shiny.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -112,7 +78,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-intro.html">Basics</a></li><li class="breadcrumb-item"><a href="./11-save.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Save maps</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./XX-options.html">Advanced topics</a></li><li class="breadcrumb-item"><a href="./XX-options.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">tmap options</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -153,25 +119,25 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-intro.html" class="sidebar-item-text sidebar-link">
+  <a href="./XX-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-geodata.html" class="sidebar-item-text sidebar-link">
+  <a href="./XX-geodata.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Spatial data in R</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-nutshell.html" class="sidebar-item-text sidebar-link">
+  <a href="./XX-nutshell.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in a nutshell</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-save.html" class="sidebar-item-text sidebar-link active">
+  <a href="./XX-save.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Save maps</span></span></a>
   </div>
 </li>
@@ -188,37 +154,37 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-tm-shape.html" class="sidebar-item-text sidebar-link">
+  <a href="./XX-tm-shape.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Specifying spatial data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-layers.html" class="sidebar-item-text sidebar-link">
+  <a href="./XX-layers.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Layers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05b-visual-variables.html" class="sidebar-item-text sidebar-link">
+  <a href="./XX-visual-variables.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visual variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-other-types.html" class="sidebar-item-text sidebar-link">
+  <a href="./XX-other-types.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Other types</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-layout.html" class="sidebar-item-text sidebar-link">
+  <a href="./XX-layout.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Layout</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-interactive.html" class="sidebar-item-text sidebar-link">
+  <a href="./XX-interactive.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Interactive settings</span></span></a>
   </div>
 </li>
@@ -235,19 +201,19 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-small-multiples.html" class="sidebar-item-text sidebar-link">
+  <a href="./XX-small-multiples.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Small multiples</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./12-animations.html" class="sidebar-item-text sidebar-link">
+  <a href="./XX-animations.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Animations</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13-shiny.html" class="sidebar-item-text sidebar-link">
+  <a href="./XX-shiny.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
   </div>
 </li>
@@ -264,7 +230,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-options.html" class="sidebar-item-text sidebar-link">
+  <a href="./XX-options.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">tmap options</span></span></a>
   </div>
 </li>
@@ -272,7 +238,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14-good-maps.html" class="sidebar-item-text sidebar-link">
+  <a href="./XX-good-maps.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">How to make good maps?</span></span></a>
   </div>
 </li>
@@ -286,20 +252,16 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 </div>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
-   
-  <ul>
-<li><a href="#sec-raster-graphic-formats" id="toc-sec-raster-graphic-formats" class="nav-link active" data-scroll-target="#sec-raster-graphic-formats"><span class="header-section-number">4.1</span> Raster graphic formats</a></li>
-  <li><a href="#sec-vector-graphic-formats" id="toc-sec-vector-graphic-formats" class="nav-link" data-scroll-target="#sec-vector-graphic-formats"><span class="header-section-number">4.2</span> Vector graphic formats</a></li>
-  <li><a href="#sec-interactive-format" id="toc-sec-interactive-format" class="nav-link" data-scroll-target="#sec-interactive-format"><span class="header-section-number">4.3</span> Interactive format</a></li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tap/edit/main/11-save.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-intro.html">Basics</a></li><li class="breadcrumb-item"><a href="./11-save.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Save maps</span></a></li></ol></nav><div class="quarto-title">
-<h1 class="title"><span id="sec-save" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Save maps</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./XX-options.html">Advanced topics</a></li><li class="breadcrumb-item"><a href="./XX-options.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">tmap options</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title"><span id="sec-options" class="quarto-section-identifier"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">tmap options</span></span></h1>
 </div>
 
+<!--
+-->
 
 
 <div class="quarto-title-meta">
@@ -311,70 +273,10 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
   
 
 
-</header><p>Maps created programmatically can serve several purposes, from exploratory, through visualizations of the processing steps, to being the final outputs of a given project. Therefore, often we want just to see our map on the screen, but sometimes we also want to save our map results to an external file. <strong>tmap</strong> objects can be directly saved to output files with <code><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save()</a></code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
-<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save()</a></code> function allows to save our map in three groups of file formats, (a) raster graphics (<a href="#sec-raster-graphic-formats" class="quarto-xref"><span>Section 4.1</span></a>), (b) vector graphics (<a href="#sec-vector-graphic-formats" class="quarto-xref"><span>Section 4.2</span></a>), and (c) interactive ones (<a href="#sec-interactive-format" class="quarto-xref"><span>Section 4.3</span></a>). Additionally, <a href="12-animations.html" class="quarto-xref"><span>Chapter 12</span></a> shows how to save map animations with the use of the <code><a href="https://r-tmap.github.io/tmap/reference/tmap_animation.html">tmap_animation()</a></code> function.</p>
-<p>For the examples in this section, we will use a simple map of the Easter Island polygon with the island name superimposed (not shown), stored in the <code>tm</code> object.</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
-<span><span class="va">ei_borders</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/easter_island/ei_border.gpkg"</span><span class="op">)</span></span>
-<span><span class="va">tm</span> <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">ei_borders</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text</a></span><span class="op">(</span><span class="st">"name"</span>, fontface <span class="op">=</span> <span class="st">"italic"</span><span class="op">)</span></span>
-<span><span class="va">tm</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="sec-raster-graphic-formats" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="sec-raster-graphic-formats">
-<span class="header-section-number">4.1</span> Raster graphic formats</h2>
-<p>Raster graphics are non-spatial relatives of spatial rasters. The digital images are composed of many pixels - squares filled with specific colors. Main raster graphic file formats include PNG, JPEG, BMP, and TIFF. <!-- jn: should we describe each in one sentence? --> One of the major parameters of the raster graphic images is DPI (<em>Dots Per Inch</em>, in this context, a more proper name probably should be PPI, <em>Pixels Per Inch</em>) - is a number of pixels per inch of the output image. For example, if the width and height of our image are 10 inches, then DPI of 300 would mean that our final image would have 3000 by 3000 pixels, and DPI of 72 would result in an image of 720 by 720 pixels. Therefore, an image with the same width and height, but larger value of DPI would occupy more space of the hard drive, but also have better quality.</p>
-<p>Saving <strong>tmap</strong> objects to a file can be done with the <code><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save()</a></code>. It usually accepts two arguments<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> - the first one, <code>tm</code>, is our map object, and the second one, <code>filename</code>, is the path to the created file.</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save</a></span><span class="op">(</span><span class="va">tm</span>, <span class="st">"my_map.png"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Map saved to /__w/tmap/tmap/my_map.png</span></span>
-<span><span class="co">#&gt; Resolution: 2492 by 1769 pixels</span></span>
-<span><span class="co">#&gt; Size: 8.31 by 5.9 inches (300 dpi)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>By default, DPI is set to 300, and the image width and height is automatically adjusted based on the map aspect ratio. These parameters can be, however, changed with the <code>dpi</code>, <code>width</code>, and <code>height</code> arguments<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save</a></span><span class="op">(</span><span class="va">tm</span>, <span class="st">"my_map.png"</span>, width <span class="op">=</span> <span class="fl">1000</span>, height <span class="op">=</span> <span class="fl">750</span>, dpi <span class="op">=</span> <span class="fl">300</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Map saved to /__w/tmap/tmap/my_map.png</span></span>
-<span><span class="co">#&gt; Resolution: 1000 by 750 pixels</span></span>
-<span><span class="co">#&gt; Size: 3.33 by 2.5 inches (300 dpi)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The units of <code>width</code> or <code>height</code> depend on the value you set. They are pixels (<code>"px"</code>) when the value is greater than 50, and inches (<code>"in"</code>) otherwise. Units can also be changed with the <code>units</code> argument.</p>
-<p>This function also has several additional arguments, including <code>outer.margins</code>, <code>scale</code> and <code>asp</code>. All of them override the arguments’ values set in <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> (<a href="07-layout.html" class="quarto-xref"><span>Chapter 9</span></a>). Additionally, when set to <code>0</code>, the’ asp’ argument has a side effect: it moves the map frame to the edges of the output image.</p>
-<p>By default, <strong>tmap</strong> uses graphic devices<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> incorporated in R. However, it is also possible to use other, external devices with the <code>device</code> argument.</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save</a></span><span class="op">(</span><span class="va">tm</span>, <span class="st">"my_map.png"</span>, device <span class="op">=</span> <span class="fu">ragg</span><span class="fu">::</span><span class="va"><a href="https://ragg.r-lib.org/reference/agg_png.html">agg_png</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>For example, the <code><a href="https://ragg.r-lib.org/reference/agg_png.html">ragg::agg_png</a></code> device is usually faster and has better support for non-standard fonts than the regular <code><a href="https://rdrr.io/r/grDevices/png.html">grDevices::png</a></code>.</p>
-</section><section id="sec-vector-graphic-formats" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="sec-vector-graphic-formats">
-<span class="header-section-number">4.2</span> Vector graphic formats</h2>
-<p>Vector graphics are quite distant relatives of spatial vectors, with vector graphics consisting of sets of coordinates. Contrary to spatial vectors, however, their coordinates can be connected not only by straight lines (<a href="02-geodata.html#sec-vector-data-model" class="quarto-xref"><span>Section 2.2.1</span></a>), but also using curves. This makes it possible to create polygons, circles, ellipses, and others. They also allow storing of text and other objects. Common vector graphic file formats are SVG, EPS, PDF.</p>
-<p>To save a map to a vector graphic format, we still can use <code><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save()</a></code> but either with a proper extension or by using the <code>device</code> argument, for example <code>device = svglite::svglite</code>.</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save</a></span><span class="op">(</span><span class="va">tm</span>, <span class="st">"my_map.svg"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Map saved to /__w/tmap/tmap/my_map.svg</span></span>
-<span><span class="co">#&gt; Size: 8.31 by 5.9 inches</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>While a level of zoom does not impact vector graphics’ quality, the <code>width</code>, <code>height</code>, and <code>scale</code> arguments still can impact the output file. For example, a vector graphic file saved with a narrower width value will have thicker lines and larger fonts compared to the one with a larger width value. You can check this effect by saving the <code>tm</code> object with <code>width = 1</code> and then with <code>width = 10</code>.</p>
-<p>Compared to raster graphics, vector graphics are not suitable for storing complex images or maps, and they are less supported by web browsers comparing to rasters. They, however, has also many advantages. For example, they can be zoomed in and out without any decrease in quality. Vector graphics can also be easily edited in dedicated software (e.g., Inkscape or Adobe Illustrator), which allows to change the style of map elements and move them using a computer mouse outside of the R environment. This approach can be useful, for example, when you want to quickly adjust the position of map elements (e.g., labels) or collaborate with a graphic designer. Note, however, that this process is not fully reproducible.</p>
-</section><section id="sec-interactive-format" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="sec-interactive-format">
-<span class="header-section-number">4.3</span> Interactive format</h2>
-<p><code>tmap</code> map objects can not only be viewed in the interactive mode (<a href="03-nutshell.html#sec-map-modes" class="quarto-xref"><span>Section 3.4</span></a>) but also saved as HTML files by adding the <code>.html</code> extension to the output file name.</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save</a></span><span class="op">(</span><span class="va">tm</span>, <span class="st">"my_map.html"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Interactive map saved to /__w/tmap/tmap/my_map.html</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save()</a></code> function also has several additional arguments reserved for the interactive format, including <code>selfcontained</code> and <code>in.iframe</code>. The <code>selfcontained</code> argument with <code>TRUE</code> by default saves our map together with additional resources (e.g., JavaScript libraries) into one HTML file. Otherwise, additional resources will be saved in an adjacent directory. The <code>in.iframe</code> argument (<code>FALSE</code> by default) allows saving an interactive map as an iframe - when <code>TRUE</code> it creates two HTML files - a small HTML file with the iframe container and a large one with the actual map. <!-- when `in.iframe = TRUE` is useful?? --> <!-- arguments passed on to device functions or to saveWidget or saveWidgetframe --></p>
+</header>
 
 
-</section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
-<ol>
-<li id="fn1"><p>Standard R approach of saving graphic files by opening a graphic device, e.g., <code><a href="https://rdrr.io/r/grDevices/png.html">png()</a></code>, plotting the data, and then closing the device with <code><a href="https://rdrr.io/r/grDevices/dev.html">dev.off()</a></code> also works.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>In fact, one argument is enough - if you just provide a <strong>tmap</strong> object, then it will be saved to a <code>tmap01</code> file with some default format.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>You can even specify just one of <code>width</code> or <code>height</code>, and the value of the second one will be calculated using the formula <code>asp = width / height</code>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>Short discussion about graphic devices can be found in section <a href="07-layout.html#sec-fonts-tmap" class="quarto-xref"><span>Section 9.1.2</span></a>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -794,13 +696,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./03-nutshell.html" class="pagination-link" aria-label="**tmap** in a nutshell">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in a nutshell</span></span>
+      <a href="./XX-shiny.html" class="pagination-link" aria-label="**tmap** in **shiny**">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./04-tm-shape.html" class="pagination-link" aria-label="Specifying spatial data">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Specifying spatial data</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./XX-good-maps.html" class="pagination-link" aria-label="How to make good maps?">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">How to make good maps?</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -811,7 +713,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
 <p>Elegant and informative maps with <strong>tmap</strong> by Martijn Tennekes and Jakub Nowosad.</p>
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/geocompx/tap/edit/main/11-save.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+<div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tap/edit/main/XX-options.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
