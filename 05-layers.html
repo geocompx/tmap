@@ -97,7 +97,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><script src="site_libs/kePrint-0.0.1/kePrint.js"></script><link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+}</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ER2GMPEJNF"></script><script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
+</script><script src="site_libs/kePrint-0.0.1/kePrint.js"></script><link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <link href="site_libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
 <script src="site_libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="site_libs/pymjs-1.3.2/pym.v1.js"></script><script src="site_libs/widgetframe-binding-0.3.1/widgetframe.js"></script>
 </head>
@@ -120,6 +126,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Elegant and informative maps with <strong>tmap</strong></a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/geocompx/tap/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -245,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#sec-text" id="toc-sec-text" class="nav-link" data-scroll-target="#sec-text"><span class="header-section-number">5.4</span> Text</a></li>
   <li><a href="#sec-raster-layer" id="toc-sec-raster-layer" class="nav-link" data-scroll-target="#sec-raster-layer"><span class="header-section-number">5.5</span> Raster</a></li>
   <li><a href="#sec-tile-layer" id="toc-sec-tile-layer" class="nav-link" data-scroll-target="#sec-tile-layer"><span class="header-section-number">5.6</span> Tile</a></li>
-  </ul></nav>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tap/edit/main/05-layers.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
@@ -625,12 +634,13 @@ Figure&nbsp;5.6: Example of a map created with tm_text().
 <p>Visualization of raster data depends on the raster type (continuous or categorical), its resolution, and the number of layers. <!-- continuous or categorical --> <a href="04-tm-shape.html#fig-rasterdown" class="quarto-xref">Figure&nbsp;<span>4.8</span></a> shows two simple example of continuous and categorical raster visualization created with <code><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster()</a></code>. This function attempts to recognize the type of a given raster - when the input raster is continuous then the pretty style is used. However, the <code>"cont"</code> style often better represent phenomena that progressively vary in space (<a href="04-tm-shape.html#fig-rasterdown" class="quarto-xref">Figure&nbsp;<span>4.8</span></a> A).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">ei_elev</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Elevation (m asl):"</span>, style <span class="op">=</span> <span class="st">"cont"</span>, palette <span class="op">=</span> <span class="st">"viridis"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_continuous.html">tm_scale_continuous</a></span><span class="op">(</span>values <span class="op">=</span> <span class="st">"viridis"</span><span class="op">)</span>,</span>
+<span>            col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Elevation (m asl):"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>On the other hand, when the given raster is categorical, then <code>tm_raster</code> uses <code>style = "cat"</code> (<a href="04-tm-shape.html#fig-rasterdown" class="quarto-xref">Figure&nbsp;<span>4.8</span></a> A). We can also adjust the legend title, used colors, and many more, in a similar fashion as in the previously mentioned layers.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">ei_geomorphons</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Geomorphons:"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Geomorphons:"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -868,7 +878,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/tmap\.geocompx\.org\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -1213,7 +1223,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
 <p>Elegant and informative maps with <strong>tmap</strong> by Martijn Tennekes and Jakub Nowosad.</p>
-</div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/geocompx/tap/edit/main/05-layers.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

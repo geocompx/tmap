@@ -117,7 +117,13 @@ div.csl-indent {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
+}</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ER2GMPEJNF"></script><script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
+</script>
 </head>
 <body class="nav-sidebar floating">
 
@@ -138,6 +144,9 @@ div.csl-indent {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Elegant and informative maps with <strong>tmap</strong></a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/geocompx/tap/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -262,7 +271,7 @@ div.csl-indent {
   <li><a href="#sec-map-projection" id="toc-sec-map-projection" class="nav-link" data-scroll-target="#sec-map-projection"><span class="header-section-number">4.3</span> Map projection</a></li>
   <li><a href="#sec-map-extent" id="toc-sec-map-extent" class="nav-link" data-scroll-target="#sec-map-extent"><span class="header-section-number">4.4</span> Map extent</a></li>
   <li><a href="#sec-data-simplification" id="toc-sec-data-simplification" class="nav-link" data-scroll-target="#sec-data-simplification"><span class="header-section-number">4.5</span> Data simplification</a></li>
-  </ul></nav>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tap/edit/main/04-tm-shape.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
@@ -602,7 +611,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/tmap\.geocompx\.org\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -947,7 +956,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
 <p>Elegant and informative maps with <strong>tmap</strong> by Martijn Tennekes and Jakub Nowosad.</p>
-</div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/geocompx/tap/edit/main/04-tm-shape.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

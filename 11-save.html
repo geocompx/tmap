@@ -97,7 +97,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
+}</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ER2GMPEJNF"></script><script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
+</script>
 </head>
 <body class="nav-sidebar floating">
 
@@ -118,6 +124,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Elegant and informative maps with <strong>tmap</strong></a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/geocompx/tap/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -240,7 +249,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="#sec-raster-graphic-formats" id="toc-sec-raster-graphic-formats" class="nav-link active" data-scroll-target="#sec-raster-graphic-formats"><span class="header-section-number">12.1</span> Raster graphic formats</a></li>
   <li><a href="#sec-vector-graphic-formats" id="toc-sec-vector-graphic-formats" class="nav-link" data-scroll-target="#sec-vector-graphic-formats"><span class="header-section-number">12.2</span> Vector graphic formats</a></li>
   <li><a href="#sec-interactive-format" id="toc-sec-interactive-format" class="nav-link" data-scroll-target="#sec-interactive-format"><span class="header-section-number">12.3</span> Interactive format</a></li>
-  </ul></nav>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tap/edit/main/11-save.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
@@ -413,7 +422,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/tmap\.geocompx\.org\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -758,7 +767,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
 <p>Elegant and informative maps with <strong>tmap</strong> by Martijn Tennekes and Jakub Nowosad.</p>
-</div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/geocompx/tap/edit/main/11-save.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
