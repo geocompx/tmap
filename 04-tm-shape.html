@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="This book teaches how to make elegant and informative maps with the R package tmap.">
-<title>4&nbsp; Specifying spatial data – Elegant and informative maps with **tmap**</title>
+<title>5&nbsp; Specifying spatial data – Elegant and informative maps with **tmap**</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -82,7 +82,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./05-layers.html" rel="next">
-<link href="./03-nutshell.html" rel="prev">
+<link href="./11-save.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -132,7 +132,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-tm-shape.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Specifying spatial data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-tm-shape.html">Building blocks</a></li><li class="breadcrumb-item"><a href="./04-tm-shape.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Specifying spatial data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -162,89 +162,133 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
  <span class="menu-text">Welcome</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Basics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-geodata.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Spatial data in R</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-nutshell.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in a nutshell</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./04-tm-shape.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Specifying spatial data</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./05-layers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Layers</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./05b-visual-variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visual variables</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./06-other-types.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Other types</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./07-layout.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Layout</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./08-interactive.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Interactive settings</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./09-small-multiples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Small multiples</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./10-options.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">tmap options</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./11-save.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Save maps</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Save maps</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Building blocks</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-tm-shape.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Specifying spatial data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-layers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Layers</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05b-visual-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visual variables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-other-types.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Other types</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-layout.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Layout</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-interactive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Interactive settings</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Expanding the toolbox</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-small-multiples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Small multiples</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./12-animations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Animations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Animations</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./13-shiny.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
   </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Advanced topics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-options.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">tmap options</span></span></a>
+  </div>
+</li>
+      </ul>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -266,16 +310,16 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#sec-shapes-and-layers" id="toc-sec-shapes-and-layers" class="nav-link active" data-scroll-target="#sec-shapes-and-layers"><span class="header-section-number">4.1</span> Shapes and layers</a></li>
-  <li><a href="#sec-shapes-hierarchy" id="toc-sec-shapes-hierarchy" class="nav-link" data-scroll-target="#sec-shapes-hierarchy"><span class="header-section-number">4.2</span> Shapes hierarchy</a></li>
-  <li><a href="#sec-map-projection" id="toc-sec-map-projection" class="nav-link" data-scroll-target="#sec-map-projection"><span class="header-section-number">4.3</span> Map projection</a></li>
-  <li><a href="#sec-map-extent" id="toc-sec-map-extent" class="nav-link" data-scroll-target="#sec-map-extent"><span class="header-section-number">4.4</span> Map extent</a></li>
-  <li><a href="#sec-data-simplification" id="toc-sec-data-simplification" class="nav-link" data-scroll-target="#sec-data-simplification"><span class="header-section-number">4.5</span> Data simplification</a></li>
+<li><a href="#sec-shapes-and-layers" id="toc-sec-shapes-and-layers" class="nav-link active" data-scroll-target="#sec-shapes-and-layers"><span class="header-section-number">5.1</span> Shapes and layers</a></li>
+  <li><a href="#sec-shapes-hierarchy" id="toc-sec-shapes-hierarchy" class="nav-link" data-scroll-target="#sec-shapes-hierarchy"><span class="header-section-number">5.2</span> Shapes hierarchy</a></li>
+  <li><a href="#sec-map-projection" id="toc-sec-map-projection" class="nav-link" data-scroll-target="#sec-map-projection"><span class="header-section-number">5.3</span> Map projection</a></li>
+  <li><a href="#sec-map-extent" id="toc-sec-map-extent" class="nav-link" data-scroll-target="#sec-map-extent"><span class="header-section-number">5.4</span> Map extent</a></li>
+  <li><a href="#sec-data-simplification" id="toc-sec-data-simplification" class="nav-link" data-scroll-target="#sec-data-simplification"><span class="header-section-number">5.5</span> Data simplification</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tap/edit/main/04-tm-shape.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title"><span id="sec-tmshape" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Specifying spatial data</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-tm-shape.html">Building blocks</a></li><li class="breadcrumb-item"><a href="./04-tm-shape.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Specifying spatial data</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title"><span id="sec-tmshape" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Specifying spatial data</span></span></h1>
 </div>
 
 
@@ -290,8 +334,8 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 
 
 </header><p>In order to plot spatial data, at least two aspects need to be specified: the spatial data object itself, and the plotting method(s). We will cover the former in this chapter. The latter will be discussed in the next chapters.</p>
-<section id="sec-shapes-and-layers" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="sec-shapes-and-layers">
-<span class="header-section-number">4.1</span> Shapes and layers</h2>
+<section id="sec-shapes-and-layers" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="sec-shapes-and-layers">
+<span class="header-section-number">5.1</span> Shapes and layers</h2>
 <p>As described in <a href="02-geodata.html" class="quarto-xref"><span>Chapter 2</span></a>, shape objects can be vector or raster data. We recommend <code>sf</code> objects for vector data and <code>stars</code> objects for raster data<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
@@ -302,7 +346,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <span><span class="va">worldvector</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/worldvector.gpkg"</span><span class="op">)</span></span>
 <span><span class="va">worldcities</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/worldcities.gpkg"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In <strong>tmap</strong>, a shape object needs to be defined with the function <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code>. When multiple shape objects are used, each has to be defined in a separate <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code> call. This is illustrated in the following example (<a href="#fig-tmshape1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>).</p>
+<p>In <strong>tmap</strong>, a shape object needs to be defined with the function <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code>. When multiple shape objects are used, each has to be defined in a separate <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code> call. This is illustrated in the following example (<a href="#fig-tmshape1" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldelevation</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="st">"worldelevation.tif"</span>, </span>
@@ -318,7 +362,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <img src="figures/fig-tmshape1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmshape1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.1: A map representing three shapes (worldelevation, worldvector, and worldcities) using four layers.
+Figure&nbsp;5.1: A map representing three shapes (worldelevation, worldvector, and worldcities) using four layers.
 </figcaption></figure>
 </div>
 </div>
@@ -326,10 +370,10 @@ Figure&nbsp;4.1: A map representing three shapes (worldelevation, worldvector, a
 <p>In this example, we use three shapes: <code>worldelevation</code> which is a <code>stars</code> object containing an attribute called <code>"worldelevation.tif"</code>, <code>worldvector</code> which is an <code>sf</code> object with country borders, and <code>worldcities</code>, which is an <code>sf</code> object that contains metropolitan areas of at least 20 million inhabitants.</p>
 <p>Each <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code> function call is succeeded by one or more layer functions. In the example these are <code><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text()</a></code>. We will describe layer functions in detail in the next chapter. For this chapter, it is sufficient to know that each layer function call defines how the spatial data specified with <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code> is plotted.</p>
 <p>Shape objects can be used to plot multiple layers. In the example, shape <code>worldcities</code> is used for two layers, <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text()</a></code>. <!-- We recommend to indent the code for the layer functions, in order to see which layers use which shape objects. --> <!--to discuss--></p>
-</section><section id="sec-shapes-hierarchy" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="sec-shapes-hierarchy">
-<span class="header-section-number">4.2</span> Shapes hierarchy</h2>
-<p>The order of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code> functions’ calls is crucial. The first <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code>, known as the main shape, is not only shown below the following <em>shapes</em>, but also sets the projection and extent of the whole map. In <a href="#fig-tmshape1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>, the <code>worldelevation</code> object was used as the first <em>shape</em>, and thus the whole map has the projection and extent of this object.</p>
-<p>However, we can quickly change the main <em>shape</em> with the <code>is.main</code> argument. <!--change to is.main later--> In the following example, we set the <code>worldcities</code> object as the main <em>shape</em>, which limits the output map to the point locations in <code>worldcities</code> (<a href="#fig-tmshape2" class="quarto-xref">Figure&nbsp;<span>4.2</span></a>)<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+</section><section id="sec-shapes-hierarchy" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="sec-shapes-hierarchy">
+<span class="header-section-number">5.2</span> Shapes hierarchy</h2>
+<p>The order of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code> functions’ calls is crucial. The first <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code>, known as the main shape, is not only shown below the following <em>shapes</em>, but also sets the projection and extent of the whole map. In <a href="#fig-tmshape1" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>, the <code>worldelevation</code> object was used as the first <em>shape</em>, and thus the whole map has the projection and extent of this object.</p>
+<p>However, we can quickly change the main <em>shape</em> with the <code>is.main</code> argument. <!--change to is.main later--> In the following example, we set the <code>worldcities</code> object as the main <em>shape</em>, which limits the output map to the point locations in <code>worldcities</code> (<a href="#fig-tmshape2" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>)<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldelevation</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="st">"worldelevation.tif"</span>, </span>
@@ -345,25 +389,25 @@ Figure&nbsp;4.1: A map representing three shapes (worldelevation, worldvector, a
 <img src="figures/fig-tmshape2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmshape2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.2: A map representing three shapes (worldelevation, worldvector, and worldcities) using four layers and zoomed into the locations in the worldcities object.
+Figure&nbsp;5.2: A map representing three shapes (worldelevation, worldvector, and worldcities) using four layers and zoomed into the locations in the worldcities object.
 </figcaption></figure>
 </div>
 </div>
 </div>
 <!-- should we mention inner.margins here or later?? -->
-</section><section id="sec-map-projection" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="sec-map-projection">
-<span class="header-section-number">4.3</span> Map projection</h2>
+</section><section id="sec-map-projection" class="level2" data-number="5.3"><h2 data-number="5.3" class="anchored" data-anchor-id="sec-map-projection">
+<span class="header-section-number">5.3</span> Map projection</h2>
 <p></p>
 <p>As we mentioned in the previous section, created maps use the projection from the main <em>shape</em>. However, we often want to create a map with a different projection, for example to preserve a specific map property (<a href="02-geodata.html#sec-crs" class="quarto-xref"><span>Section 2.4</span></a>). We can do this in two ways. The first way to use a different projection on a map is to reproject the main data before plotting, as shown in <a href="02-geodata.html#sec-crs-in-r" class="quarto-xref"><span>Section 2.4.6</span></a>. The second way is to specify the map projection using the <code>projection</code> argument of <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code>. This argument expects either some <code>crs</code> object or a CRS code. In the next example, we set <code>projection</code> to <code>8857</code>. This number represents EPSG 8857 of a projection called <a href="http://equal-earth.com/index.html">Equal Earth</a> <span class="citation" data-cites="savric_equal_2019">(<a href="references.html#ref-savric_equal_2019" role="doc-biblioref">Šavrič, Patterson, and Jenny 2019</a>)</span>. The Equal Earth projection is an equal-area pseudocylindrical projection for world maps similar to the non-equal-area Robinson projection (<a href="02-geodata.html#fig-crs-robin" class="quarto-xref">Figure&nbsp;<span>2.12</span></a>).</p>
 <p>Reprojections of vector data are usually straightforward because each spatial coordinate is reprojected individually. However, reprojecting of raster data is more complex and requires using one of two approaches. The first approach (<code>raster.warp = TRUE</code>) applies raster warping, which is a name for two separate spatial operations: creation of a new regular raster object and computation of new pixel values through resampling (for more details read Chapter 6 of <span class="citation" data-cites="lovelace2019geocomputation">Lovelace, Nowosad, and Muenchow (<a href="references.html#ref-lovelace2019geocomputation" role="doc-biblioref">2019</a>)</span>). This is the default option in <strong>tmap</strong>, however, it has some limitations.</p>
-<p><a href="#fig-tm-map-proj" class="quarto-xref">Figure&nbsp;<span>4.3</span></a> A shows the world elevation raster reprojected to Equal Earth. Some of you can quickly noticed that certain areas, such as parts of Antarctica, New Zealand, Alaska, and the Kamchatka Peninsula, are presented twice: with one version being largely distorted. Another limitation of <code>raster.warp = TRUE</code> is the use of the nearest neighbor resampling only - while it can be a proper method to use for categorical rasters, it can have some unintended consequences for continuous rasters (such as the <code>"worldelevation.tif"</code> data).</p>
+<p><a href="#fig-tm-map-proj" class="quarto-xref">Figure&nbsp;<span>5.3</span></a> A shows the world elevation raster reprojected to Equal Earth. Some of you can quickly noticed that certain areas, such as parts of Antarctica, New Zealand, Alaska, and the Kamchatka Peninsula, are presented twice: with one version being largely distorted. Another limitation of <code>raster.warp = TRUE</code> is the use of the nearest neighbor resampling only - while it can be a proper method to use for categorical rasters, it can have some unintended consequences for continuous rasters (such as the <code>"worldelevation.tif"</code> data).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldelevation</span>, crs <span class="op">=</span> <span class="st">"EPSG:8857"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="st">"worldelevation.tif"</span>, </span>
 <span>            col.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">terrain.colors</a></span><span class="op">(</span><span class="fl">8</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The second approach (<code>raster.warp = FALSE</code>) computes new coordinates for each raster cell keeping all of the original values and results in a curvilinear grid. This calculation could deform the shapes of original grid cells, and usually curvilinear grids take a longer time to plot<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
-<p><a href="#fig-tm-map-proj" class="quarto-xref">Figure&nbsp;<span>4.3</span></a> B shows an example of the second approach, which gave a better result in this case without any spurious lands. However, creation of the B map takes about ten times longer than the A map.</p>
+<p><a href="#fig-tm-map-proj" class="quarto-xref">Figure&nbsp;<span>5.3</span></a> B shows an example of the second approach, which gave a better result in this case without any spurious lands. However, creation of the B map takes about ten times longer than the A map.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldelevation</span>, crs <span class="op">=</span> <span class="st">"EPSG:8857"</span>, raster.warp <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="st">"worldelevation.tif"</span>, </span>
@@ -376,18 +420,18 @@ Figure&nbsp;4.2: A map representing three shapes (worldelevation, worldvector, a
 <img src="figures/fig-tm-map-proj-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tm-map-proj-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.3: Two elevation maps in the Equal Earth projection: (A) created using raster.warp = TRUE, (B) created using raster.warp = FALSE.
+Figure&nbsp;5.3: Two elevation maps in the Equal Earth projection: (A) created using raster.warp = TRUE, (B) created using raster.warp = FALSE.
 </figcaption></figure>
 </div>
 </div>
 </div>
 <!-- add our recommendations -->
 <!-- about reprojecting first vs later - why and how -->
-</section><section id="sec-map-extent" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="sec-map-extent">
-<span class="header-section-number">4.4</span> Map extent</h2>
+</section><section id="sec-map-extent" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="sec-map-extent">
+<span class="header-section-number">5.4</span> Map extent</h2>
 <p>Another important aspect of mapping, besides projection, is its extent - a portion of the area shown in a map. <!--add info about the bounding box term--> This is not an issue when the extent of our spatial data is the same as we want to show on a map. However, what should we do when the spatial data contains a larger region than we want to present?</p>
 <p>Again, we could take two routes. The first one is to preprocess our data before mapping - this can be done with vector clipping (e.g., <code><a href="https://r-spatial.github.io/sf/reference/geos_binary_ops.html">st_intersection()</a></code>) and raster cropping (e.g., <code><a href="https://r-spatial.github.io/sf/reference/st_crop.html">st_crop()</a></code>). We would recommend this approach if you plan to work on the smaller data in the other parts of the project. The second route is to specify the map extent in <strong>tmap</strong>.</p>
-<p><strong>tmap</strong> allows specifying map extent using three approaches. The first one is to specify minimum and maximum coordinates in the x and y directions that we want to represent. This can be done with a numeric vector of four values in the order of minimum x, minimum y, maximum x, and maximum y, where all of the coordinates need to be specified in the input data units^[This can also be done with the object of class <code>st_bbox</code> or a 2 by 2 matrix. In the following example, we limit our map extent to the rectangular area between x from -15 to 45 and y from 35 to 65 (<a href="#fig-tbbox1" class="quarto-xref">Figure&nbsp;<span>4.4</span></a>). <!-- mention tm_grid? --></p>
+<p><strong>tmap</strong> allows specifying map extent using three approaches. The first one is to specify minimum and maximum coordinates in the x and y directions that we want to represent. This can be done with a numeric vector of four values in the order of minimum x, minimum y, maximum x, and maximum y, where all of the coordinates need to be specified in the input data units^[This can also be done with the object of class <code>st_bbox</code> or a 2 by 2 matrix. In the following example, we limit our map extent to the rectangular area between x from -15 to 45 and y from 35 to 65 (<a href="#fig-tbbox1" class="quarto-xref">Figure&nbsp;<span>5.4</span></a>). <!-- mention tm_grid? --></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldelevation</span>, bbox <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">15</span>, <span class="fl">35</span>, <span class="fl">45</span>, <span class="fl">65</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="st">"worldelevation.tif"</span>, </span>
@@ -398,12 +442,12 @@ Figure&nbsp;4.3: Two elevation maps in the Equal Earth projection: (A) created u
 <img src="figures/fig-tbbox1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tbbox1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.4: Global elevation data limited to the extent of the specified minimum and maximum coordinates.
+Figure&nbsp;5.4: Global elevation data limited to the extent of the specified minimum and maximum coordinates.
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>The second approach allows setting the map extent based on a search query. In the code below, we limit the map extent to the area of <code>"Europe"</code> (<a href="#fig-tbbox2" class="quarto-xref">Figure&nbsp;<span>4.5</span></a>). This approach uses the OpenStreetMap tool called Nominatim to automatically generate minimum and maximum coordinates in the x and y directions based on the provided query.</p>
+<p>The second approach allows setting the map extent based on a search query. In the code below, we limit the map extent to the area of <code>"Europe"</code> (<a href="#fig-tbbox2" class="quarto-xref">Figure&nbsp;<span>5.5</span></a>). This approach uses the OpenStreetMap tool called Nominatim to automatically generate minimum and maximum coordinates in the x and y directions based on the provided query.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldelevation</span>, bbox <span class="op">=</span> <span class="st">"Europe"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="st">"worldelevation.tif"</span>, </span>
@@ -414,12 +458,12 @@ Figure&nbsp;4.4: Global elevation data limited to the extent of the specified mi
 <img src="figures/fig-tbbox2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tbbox2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.5: Global elevation data limited to the extent specified with the ‘Europe’ query.
+Figure&nbsp;5.5: Global elevation data limited to the extent specified with the ‘Europe’ query.
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>In the last approach, the map extent is based on another existing spatial object. <a href="#fig-tbbox3" class="quarto-xref">Figure&nbsp;<span>4.6</span></a> shows the elevation raster data (<code>worldelevation</code>) limited to the edge coordinates from <code>worldcities</code>.</p>
+<p>In the last approach, the map extent is based on another existing spatial object. <a href="#fig-tbbox3" class="quarto-xref">Figure&nbsp;<span>5.6</span></a> shows the elevation raster data (<code>worldelevation</code>) limited to the edge coordinates from <code>worldcities</code>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldelevation</span>, bbox <span class="op">=</span> <span class="va">worldcities</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="st">"worldelevation.tif"</span>, </span>
@@ -430,7 +474,7 @@ Figure&nbsp;4.5: Global elevation data limited to the extent specified with the 
 <img src="figures/fig-tbbox3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tbbox3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.6: Global elevation data limited to the extent of the other spatial object.
+Figure&nbsp;5.6: Global elevation data limited to the extent of the other spatial object.
 </figcaption></figure>
 </div>
 </div>
@@ -438,14 +482,14 @@ Figure&nbsp;4.6: Global elevation data limited to the extent of the other spatia
 <!-- mention that legend related to the complete object -->
 <!-- ?bb -->
 <!-- explain some additional arguments of bb?? -->
-</section><section id="sec-data-simplification" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="sec-data-simplification">
-<span class="header-section-number">4.5</span> Data simplification</h2>
-<p>Geometries in spatial vector data consists of sets of coordinates (<a href="02-geodata.html#sec-vector-data-model" class="quarto-xref"><span>Section 2.2.1</span></a>). Spatial vector objects grow larger with more features to present and more details to show, and this also has an impact on time to render a map. <!-- also to consider - the level of generalization --> <a href="#fig-vectordown" class="quarto-xref">Figure&nbsp;<span>4.7</span></a> A shows a map of countries from the <code>worldvector</code> object.</p>
+</section><section id="sec-data-simplification" class="level2" data-number="5.5"><h2 data-number="5.5" class="anchored" data-anchor-id="sec-data-simplification">
+<span class="header-section-number">5.5</span> Data simplification</h2>
+<p>Geometries in spatial vector data consists of sets of coordinates (<a href="02-geodata.html#sec-vector-data-model" class="quarto-xref"><span>Section 2.2.1</span></a>). Spatial vector objects grow larger with more features to present and more details to show, and this also has an impact on time to render a map. <!-- also to consider - the level of generalization --> <a href="#fig-vectordown" class="quarto-xref">Figure&nbsp;<span>5.7</span></a> A shows a map of countries from the <code>worldvector</code> object.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This level of detail can be good for some maps, but sometimes the number of details can make reading the map harder. To show a simplified (smoother) version of vector data, we can use the <code>simplify</code> argument of <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. It expects a numeric value from 0 to 1 - a proportion of vertices in the data to retain. In the example below, we set <code>simplify</code> to 0.05, which keeps 5% of vertices (<a href="#fig-vectordown" class="quarto-xref">Figure&nbsp;<span>4.7</span></a> B).</p>
+<p>This level of detail can be good for some maps, but sometimes the number of details can make reading the map harder. To show a simplified (smoother) version of vector data, we can use the <code>simplify</code> argument of <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. It expects a numeric value from 0 to 1 - a proportion of vertices in the data to retain. In the example below, we set <code>simplify</code> to 0.05, which keeps 5% of vertices (<a href="#fig-vectordown" class="quarto-xref">Figure&nbsp;<span>5.7</span></a> B).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldvector</span>, simplify <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -455,12 +499,12 @@ Figure&nbsp;4.6: Global elevation data limited to the extent of the other spatia
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldvector</span>, simplify <span class="op">=</span> <span class="fl">0.05</span>, keep.units <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><a href="#fig-vectordown" class="quarto-xref">Figure&nbsp;<span>4.7</span></a> C shows the result of such an operation. Now, our map contains all of the countries from the original data, but in a simplified form. <code>keep.units = TRUE</code>, however, does not keep all of the subfeatures. In the case of one country consisting of many small polygons, only one is sure to be retained. For example, look at New Zealand, which is now only represented by Te Waipounamu (the South Island). To keep all of the spatial geometries (even the smallest of islands), we should also specify <code>keep.subunits</code> to <code>TRUE</code>.</p>
+<p><a href="#fig-vectordown" class="quarto-xref">Figure&nbsp;<span>5.7</span></a> C shows the result of such an operation. Now, our map contains all of the countries from the original data, but in a simplified form. <code>keep.units = TRUE</code>, however, does not keep all of the subfeatures. In the case of one country consisting of many small polygons, only one is sure to be retained. For example, look at New Zealand, which is now only represented by Te Waipounamu (the South Island). To keep all of the spatial geometries (even the smallest of islands), we should also specify <code>keep.subunits</code> to <code>TRUE</code>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldvector</span>, simplify <span class="op">=</span> <span class="fl">0.05</span>, keep.units <span class="op">=</span> <span class="cn">TRUE</span>, keep.subunits <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><a href="#fig-vectordown" class="quarto-xref">Figure&nbsp;<span>4.7</span></a> D contains a simplified map, where each spatial geometry of the original map still exists, but in a less detailed form.</p>
+<p><a href="#fig-vectordown" class="quarto-xref">Figure&nbsp;<span>5.7</span></a> D contains a simplified map, where each spatial geometry of the original map still exists, but in a less detailed form.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-vectordown" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -468,20 +512,20 @@ Figure&nbsp;4.6: Global elevation data limited to the extent of the other spatia
 <img src="figures/fig-vectordown-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vectordown-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.7: A map of world’s countries based on: (A) original data, (B) simplified data with 5% of vertices kept, (C) simplified data with 5% of vertices, and all features kept, (D) simplified data with 5% of vertices, all features, and all polygons kept.
+Figure&nbsp;5.7: A map of world’s countries based on: (A) original data, (B) simplified data with 5% of vertices kept, (C) simplified data with 5% of vertices, and all features kept, (D) simplified data with 5% of vertices, all features, and all polygons kept.
 </figcaption></figure>
 </div>
 </div>
 </div>
 <p>All of the about vector simplification functions use the <code>ms_simplify()</code> from the <strong>rmapshaper</strong> package <!--add two citations: to mapshaper and rmapshaper-->. Therefore, you can customize the data simplification even further using other arguments of <code>ms_simplify()</code> (except for the arguments <code>input</code>, <code>keep</code>, <code>keep_shapes</code>, and <code>explode</code>).</p>
 <!-- 2/resolution -->
-<p>Raster data is represented by a grid of cells (<a href="02-geodata.html#sec-raster-data-model" class="quarto-xref"><span>Section 2.2.2</span></a>), and the number of cells impacts the time to render a map. Rasters with hundreds of cells will be plotted quickly, while rasters with hundreds of millions or billions of cells will take a lot of time (and RAM) to be shown. <!-- ... some info about screen resolution --> Therefore, the <strong>tmap</strong> package downsamples large rasters by default to be below 10,000,000 cells in the plot mode and 1,000,000 cells in the view mode. <!-- c(plot = 1e7, view = 1e6) --> This values can be adjusted with the <code>max.raster</code> argument of <code><a href="https://r-tmap.github.io/tmap/reference/tmap_options.html">tmap_options()</a></code>, which expects a named vector with two elements - <code>plot</code> and <code>view</code>. <!-- btw - downsampling cont vs cat --> <!-- when and why --> (<a href="#fig-rasterdown" class="quarto-xref">Figure&nbsp;<span>4.8</span></a> A).</p>
+<p>Raster data is represented by a grid of cells (<a href="02-geodata.html#sec-raster-data-model" class="quarto-xref"><span>Section 2.2.2</span></a>), and the number of cells impacts the time to render a map. Rasters with hundreds of cells will be plotted quickly, while rasters with hundreds of millions or billions of cells will take a lot of time (and RAM) to be shown. <!-- ... some info about screen resolution --> Therefore, the <strong>tmap</strong> package downsamples large rasters by default to be below 10,000,000 cells in the plot mode and 1,000,000 cells in the view mode. <!-- c(plot = 1e7, view = 1e6) --> This values can be adjusted with the <code>max.raster</code> argument of <code><a href="https://r-tmap.github.io/tmap/reference/tmap_options.html">tmap_options()</a></code>, which expects a named vector with two elements - <code>plot</code> and <code>view</code>. <!-- btw - downsampling cont vs cat --> <!-- when and why --> (<a href="#fig-rasterdown" class="quarto-xref">Figure&nbsp;<span>5.8</span></a> A).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_options.html">tmap_options</a></span><span class="op">(</span>raster.max_cells <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>plot <span class="op">=</span> <span class="fl">5000</span>, view <span class="op">=</span> <span class="fl">2000</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldelevation</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="st">"worldelevation.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Raster downsampling can be also disabled with the <code>raster.downsample</code> argument of <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code> (<a href="#fig-rasterdown" class="quarto-xref">Figure&nbsp;<span>4.8</span></a> B).</p>
+<p>Raster downsampling can be also disabled with the <code>raster.downsample</code> argument of <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code> (<a href="#fig-rasterdown" class="quarto-xref">Figure&nbsp;<span>5.8</span></a> B).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldelevation</span>, raster.downsample <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="st">"worldelevation.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -493,12 +537,12 @@ Figure&nbsp;4.7: A map of world’s countries based on: (A) original data, (B) s
 <img src="figures/fig-rasterdown-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rasterdown-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.8: (A) A raster map with the decreased resolution, (B) a raster map in the original resolution.
+Figure&nbsp;5.8: (A) A raster map with the decreased resolution, (B) a raster map in the original resolution.
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>Any <strong>tmap</strong> options can be reset (set to default) with <code><a href="https://r-tmap.github.io/tmap/reference/tmap_options.html">tmap_options_reset()</a></code> (We explain <code><a href="https://r-tmap.github.io/tmap/reference/tmap_options.html">tmap_options()</a></code> in details in <a href="10-options.html" class="quarto-xref"><span>Chapter 11</span></a>).</p>
+<p>Any <strong>tmap</strong> options can be reset (set to default) with <code><a href="https://r-tmap.github.io/tmap/reference/tmap_options.html">tmap_options_reset()</a></code> (We explain <code><a href="https://r-tmap.github.io/tmap/reference/tmap_options.html">tmap_options()</a></code> in details in <a href="10-options.html" class="quarto-xref"><span>Chapter 14</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_options.html">tmap_options_reset</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -939,13 +983,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./03-nutshell.html" class="pagination-link" aria-label="**tmap** in a nutshell">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in a nutshell</span></span>
+      <a href="./11-save.html" class="pagination-link" aria-label="Save maps">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Save maps</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./05-layers.html" class="pagination-link" aria-label="Layers">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Layers</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Layers</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
