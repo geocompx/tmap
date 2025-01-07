@@ -439,77 +439,64 @@ Table&nbsp;6.1: Map layers.
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
 <span><span class="va">ei_borders</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/easter_island/ei_border.gpkg"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The main function to visualize polygons is <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code>. By default, it plots areas of polygons in light gray (<code>gray85</code>) and polygons borders in slightly dark gray (<code>gray40</code>). <!-- https://github.com/r-tmap/tmap/blob/master/R/tmap_options.R --></p>
+<p>The main function to visualize polygons is <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code>. By default, it plots areas of polygons in light gray (<code>gray85</code>) and polygons borders in slightly dark gray (<code>gray25</code>). <!-- https://github.com/r-tmap/tmap/blob/master/R/tmap_options.R --></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">ei_borders</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Both, colors of areas (polygons’ fillings) and colors of borders can be modified using the <code>col</code> and <code>border.col</code> arguments (<a href="#fig-tmpolygonsder" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> A).</p>
+<p>Both, colors of areas (polygons’ fillings) and colors of borders can be modified using the <code>fill</code> and <code>col</code> arguments (<a href="#fig-tmpolygonsder-1" class="quarto-xref">Figure&nbsp;<span>6.1 (a)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">ei_borders</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"lightblue"</span>, col <span class="op">=</span> <span class="st">"black"</span>, lwd <span class="op">=</span> <span class="fl">0.5</span>, lty <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In fact, <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code> is a combination of two separate functions - <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_fill()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders()</a></code>. The <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_fill()</a></code> function fills polygons with a fixed color or a color palette representing a selected variable (<a href="#fig-tmpolygonsder" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> B).</p>
+<p>In fact, <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code> is a combination of two separate functions: <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_fill()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders()</a></code>. The <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_fill()</a></code> function fills polygons with a fixed color or a color palette representing a selected variable (<a href="#fig-tmpolygonsder-2" class="quarto-xref">Figure&nbsp;<span>6.1 (b)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">ei_borders</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_fill</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders()</a></code> function draws the borders of the polygons only (<a href="#fig-tmpolygonsder" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> C). It allows to change the colors of borders, their widths, or the lines type.</p>
+<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders()</a></code> function draws the borders of the polygons only (<a href="#fig-tmpolygonsder-3" class="quarto-xref">Figure&nbsp;<span>6.1 (c)</span></a>). It allows to change the colors of borders, their widths, or the lines type.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">ei_borders</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders</a></span><span class="op">(</span>col <span class="op">=</span> <span class="st">"black"</span>, lwd <span class="op">=</span> <span class="fl">0.5</span>, lty <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Notice that we have used the <code>col</code> argument in <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders()</a></code>, but <code>border.col</code> in <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code>. This is necessary to distinguish between the setting of the fillings color and the borders’ color.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="fig-tmpolygonsder" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div class="cell" data-layout-nrow="1" data-layout-align="center">
+<div id="fig-tmpolygonsder" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmpolygonsder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-tmpolygonsder-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmpolygonsder" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-tmpolygonsder-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmpolygonsder-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmpolygonsder-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmpolygonsder">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmpolygonsder-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) tm_polygons()
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmpolygonsder" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-tmpolygonsder-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmpolygonsder-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmpolygonsder-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmpolygonsder">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmpolygonsder-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) tm_fill()
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmpolygonsder" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-tmpolygonsder-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmpolygonsder-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmpolygonsder-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmpolygonsder">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmpolygonsder-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) tm_borders()
+</figcaption></figure>
+</div>
+</div>
+</div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmpolygonsder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.1: Example of a map created with: (A) <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code>, (B) <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_fill()</a></code>, (C) <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders()</a></code>.
-</figcaption></figure>
-</div>
-</div>
-</div>
-<div class="cell" data-layout-nrow="1" data-layout-align="center">
-<div id="fig-tmpolygonsder2" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmpolygonsder2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmpolygonsder2" style="flex-basis: 33.3%;justify-content: center;">
-<div id="fig-tmpolygonsder2-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmpolygonsder2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-tmpolygonsder2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmpolygonsder2">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmpolygonsder2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) (A) tm_polygons()
-</figcaption></figure>
-</div>
-</div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmpolygonsder2" style="flex-basis: 33.3%;justify-content: center;">
-<div id="fig-tmpolygonsder2-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmpolygonsder2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-tmpolygonsder2-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmpolygonsder2">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmpolygonsder2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b) (B) tm_fill()
-</figcaption></figure>
-</div>
-</div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmpolygonsder2" style="flex-basis: 33.3%;justify-content: center;">
-<div id="fig-tmpolygonsder2-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmpolygonsder2-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-tmpolygonsder2-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmpolygonsder2">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmpolygonsder2-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(c) (C) tm_borders()
-</figcaption></figure>
-</div>
-</div>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmpolygonsder2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.2: Example of a map created with:
+Figure&nbsp;6.1: Example of a map created using:
 </figcaption></figure>
 </div>
 </div>
@@ -520,8 +507,8 @@ Figure&nbsp;6.2: Example of a map created with:
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ei_points</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/easter_island/ei_points.gpkg"</span><span class="op">)</span></span>
 <span><span class="va">volcanos</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">ei_points</span>, <span class="va">type</span> <span class="op">==</span> <span class="st">"volcano"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Symbols are a very flexible layer type. They are usually used to represent point data, but can be also used for lines and polygons. In the latter cases, they are located in centroid coordinates of each feature. Their flexibility is also related to the ways symbols can be visualized - it is possible to show values of a given variable by colors of symbols, their sizes, or shapes (more about that is explained in <a href="XX-visual-variables.html" class="quarto-xref"><span>Chapter 7</span></a>).</p>
-<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols()</a></code> is the main function in <strong>tmap</strong> allowing to use and modify symbol elements (<a href="#fig-tmsymbols1" class="quarto-xref">Figure&nbsp;<span>6.3</span></a>). By default, this function draws a gray circle symbol with a black border for each element of an input feature.</p>
+<p>Symbols are a very flexible layer type. They are usually used to represent point data, but can be also used for lines and polygons. In the latter cases, they are located in centroid coordinates of each feature. Their flexibility is also related to the ways symbols can be visualized – it is possible to show values of a given variable by colors of symbols, their sizes, or shapes (more about that is explained in <a href="XX-visual-variables.html" class="quarto-xref"><span>Chapter 7</span></a>).</p>
+<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols()</a></code> is the main function in <strong>tmap</strong> allowing to use and modify symbol elements (<a href="#fig-tmsymbols1" class="quarto-xref">Figure&nbsp;<span>6.2</span></a>). By default, this function draws a gray circle symbol with a black border for each element of an input feature.</p>
 <div class="cell" data-layout-align="center" data-asp="0.25">
 <div class="cell-output-display">
 <div id="fig-tmsymbols1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -529,44 +516,87 @@ Figure&nbsp;6.2: Example of a map created with:
 <img src="figures/fig-tmsymbols1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmsymbols1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.3: A map showing the default tmap symbols.
+Figure&nbsp;6.2: A map showing the default tmap symbols.
 </figcaption></figure>
 </div>
 </div>
 </div>
 <p>In the above example, each symbol is related to one feature (row) in the <code>volcanos</code> object. However, in a case when we provide multi-element features (such as MULTIPOINT; <a href="XX-geodata.html#sec-vector-data-model" class="quarto-xref"><span>Section 2.2.1</span></a>), each multi-element object is first split into a number of single-element features and then plotted.</p>
 <p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols()</a></code> is a very flexible function with a large number of arguments. While this allows adjusting its results to almost any need, it also makes this function complicated. Therefore, four additional layers are implemented in <strong>tmap</strong>: <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_squares()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_bubbles()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_markers()</a></code>. All of them use <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols()</a></code>, but with different default values.</p>
-<p><code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_squares()</a></code> uses square symbols (<code>shape = 22</code>) instead of circles (<code>shapes = 21</code>) (<a href="#fig-tmsymbols2" class="quarto-xref">Figure&nbsp;<span>6.4</span></a> A). <!--scale is 4/3 instead of 1--></p>
+<p><code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_squares()</a></code> uses square symbols (<code>shape = 22</code>) instead of circles (<code>shapes = 21</code>) (<a href="#fig-tmsymbols2-1" class="quarto-xref">Figure&nbsp;<span>6.3 (a)</span></a>). <!--scale is 4/3 instead of 1--></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">volcanos</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_squares</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- JN: what is the main difference between symbols and bubbles?? -->
-<p>(<a href="#fig-tmsymbols2" class="quarto-xref">Figure&nbsp;<span>6.4</span></a> B) <!--scale is 4/3 instead of 1--></p>
+<ol class="example" type="1">
+<li><!--scale is 4/3 instead of 1--></li>
+</ol>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">volcanos</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_bubbles</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The main role of <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots()</a></code> is to present many locations at the same time. To do this, this layer has a small size value (<code>0.02</code>) at the default (<a href="#fig-tmsymbols2" class="quarto-xref">Figure&nbsp;<span>6.4</span></a> C).</p>
+<p>The main role of <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots()</a></code> is to present many locations at the same time. To do this, this layer has a small size value (<code>0.02</code>) at the default (<a href="#fig-tmsymbols2-3" class="quarto-xref">Figure&nbsp;<span>6.3 (c)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">volcanos</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The last additional layer is <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_markers()</a></code>, which uses a marker icon by default (<a href="#fig-tmsymbols2" class="quarto-xref">Figure&nbsp;<span>6.4</span></a> D).</p>
+<p>The last additional layer is <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_markers()</a></code>, which uses a marker icon by default (<a href="#fig-tmsymbols2-4" class="quarto-xref">Figure&nbsp;<span>6.3 (d)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">volcanos</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_markers</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="fig-tmsymbols2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div class="cell" data-layout-nrow="2" data-layout-align="center">
+<div id="fig-tmsymbols2" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmsymbols2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-tmsymbols2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmsymbols2" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-tmsymbols2-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmsymbols2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmsymbols2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmsymbols2">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmsymbols2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.4: Maps showing default visualizations using: (A) tm_squares(), (B) tm_bubbles(), (C) tm_dots(), (D) tm_markers().
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmsymbols2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) tm_squares()
 </figcaption></figure>
 </div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmsymbols2" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-tmsymbols2-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmsymbols2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmsymbols2-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmsymbols2">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmsymbols2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) tm_bubbles()
+</figcaption></figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmsymbols2" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-tmsymbols2-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmsymbols2-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmsymbols2-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmsymbols2">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmsymbols2-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) tm_dots()
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmsymbols2" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-tmsymbols2-4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmsymbols2-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmsymbols2-4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmsymbols2">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmsymbols2-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d) tm_markers()
+</figcaption></figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmsymbols2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.3: Maps showing default visualizations using:
+</figcaption></figure>
 </div>
 </div>
 </section><section id="sec-lines" class="level2" data-number="6.3"><h2 data-number="6.3" class="anchored" data-anchor-id="sec-lines">
@@ -574,7 +604,7 @@ Figure&nbsp;6.4: Maps showing default visualizations using: (A) tm_squares(), (B
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ei_roads</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/easter_island/ei_roads.gpkg"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_lines.html">tm_lines()</a></code> function allows to visualize different types of line data (<a href="#fig-tmlines" class="quarto-xref">Figure&nbsp;<span>6.5</span></a>).</p>
+<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_lines.html">tm_lines()</a></code> function allows to visualize different types of line data (<a href="#fig-tmlines" class="quarto-xref">Figure&nbsp;<span>6.4</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">ei_roads</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_lines.html">tm_lines</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -584,7 +614,7 @@ Figure&nbsp;6.4: Maps showing default visualizations using: (A) tm_squares(), (B
 <img src="figures/fig-tmlines-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmlines-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.5: Example of a map created with tm_lines().
+Figure&nbsp;6.4: Example of a map created with tm_lines().
 </figcaption></figure>
 </div>
 </div>
@@ -592,7 +622,8 @@ Figure&nbsp;6.5: Example of a map created with tm_lines().
 <p>Lines can be presented using different colors, widths, or types (<a href="XX-visual-variables.html" class="quarto-xref"><span>Chapter 7</span></a>). This allows to show a hierarchy (for example, increased line widths for higher capacity roads) or distinguish between types of objects (for example, blue rivers comparing to gray roads).</p>
 </section><section id="sec-text" class="level2" data-number="6.4"><h2 data-number="6.4" class="anchored" data-anchor-id="sec-text">
 <span class="header-section-number">6.4</span> Text</h2>
-<p>Text labels are often an integral part of many maps. They can serve several functions, from naming features, indicating relations between them, or representing a given variable’s values. The main function to create text labels is <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text()</a></code>, which adds a label to each spatial feature (<a href="#fig-tmtext" class="quarto-xref">Figure&nbsp;<span>6.6</span></a>).</p>
+<!-- tm_labels? -->
+<p>Text labels are often an integral part of many maps. They can serve several functions, from naming features, indicating relations between them, or representing a given variable’s values. The main function to create text labels is <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text()</a></code>, which adds a label to each spatial feature (<a href="#fig-tmtext" class="quarto-xref">Figure&nbsp;<span>6.5</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">volcanos</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"name"</span>, size <span class="op">=</span> <span class="st">"elevation"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -603,13 +634,22 @@ Figure&nbsp;6.5: Example of a map created with tm_lines().
 <img src="figures/fig-tmtext-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmtext-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.6: Example of a map created with tm_text().
+Figure&nbsp;6.5: Example of a map created with tm_text().
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>We can adjust colors (<code>col</code>) and sizes (<code>size</code>; <a href="XX-visual-variables.html#sec-sizes" class="quarto-xref"><span>Section 7.2</span></a>) of labels either by providing a single value or a name of a data variable. Text labels can be modified with a set of unique arguments, including <code>case</code> (<code>"upper"</code> or <code>"lower"</code>), <code>shadow</code> (<code>TRUE</code> or <code>FALSE</code>), <code>fontface</code> and <code>fontfamily</code>. <!-- ref to the text section?? --></p>
-<p>Text labels can be added to spatial (multi-)points, (multi-)lines, and (multi-)polygons, and each of the cases is quite different. The simplest case is for POINT data, for which each text label will be located precisely in coordinates of the given points (<a href="#fig-tmtext" class="quarto-xref">Figure&nbsp;<span>6.6</span></a>). However, how to add text labels to multipoints, lines, multilines, polygons, or multipolygons? Should each label correspond to one spatial feature, or should every sub-feature have their own label? Where should the labels be placed for lines or polygons - in the center of a line and centroid of a polygon or somewhat different? <!-- https://github.com/r-tmap/tmap-book/issues/16 --> <!-- wait for v4 --></p>
+<p>We can adjust sizes (<code>size</code>; <a href="XX-visual-variables.html#sec-sizes" class="quarto-xref"><span>Section 7.2</span></a>), colors (<code>col</code>), font faces (<code>fontface</code>), and background colors (<code>bgcol</code>) of labels either by providing a single value or a name of a data variable. Text labels can be further modified with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">opt_tm_text()</a></code> function provided to the <code>options</code> argument. It includes a set of arguments that allow to adjust the text labels’ appearance, such as <code>remove_overlap</code>, <code>along_lines</code>, and <code>shadow</code>. <!-- ref to the text section?? --></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-20-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<!-- to update -->
+<p>Text labels can be added to spatial (multi-)points, (multi-)lines, and (multi-)polygons, and each of the cases is quite different. The simplest case is for POINT data, for which each text label will be located precisely in coordinates of the given points (<a href="#fig-tmtext" class="quarto-xref">Figure&nbsp;<span>6.5</span></a>). However, how to add text labels to multipoints, lines, multilines, polygons, or multipolygons? Should each label correspond to one spatial feature, or should every sub-feature have their own label? Where should the labels be placed for lines or polygons - in the center of a line and centroid of a polygon or somewhat different? <!-- https://github.com/r-tmap/tmap-book/issues/16 --> <!-- wait for v4 --></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># x2 = x |&gt; </span></span>
 <span><span class="co">#   dplyr::group_by(region_un) |&gt; </span></span>
@@ -624,7 +664,7 @@ Figure&nbsp;6.6: Example of a map created with tm_text().
 <!-- lines + text -->
 <!-- polys + text -->
 <!-- ask MT -->
-<p>Text labels are also often presented together with lines (<a href="#sec-lines" class="quarto-xref"><span>Section 6.3</span></a>). One example is an isopleth - a line drawn on a map through all points having the same value of a given variable, such as atmospheric pressure or elevation. Isopleths can be created with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_iso.html">tm_iso()</a></code> function.</p>
+<p>Text labels are also often presented together with lines (<a href="#sec-lines" class="quarto-xref"><span>Section 6.3</span></a>). One example is an isopleth – a line drawn on a map through all points having the same value of a given variable, such as atmospheric pressure or elevation. Isopleths can be created with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_iso.html">tm_iso()</a></code> function.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># to improve</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/stars/">stars</a></span><span class="op">)</span></span>
@@ -643,7 +683,7 @@ Figure&nbsp;6.6: Example of a map created with tm_text().
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_iso.html">tm_iso</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/unnamed-chunk-24-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figure class="figure"><p><img src="figures/unnamed-chunk-23-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -665,7 +705,7 @@ Figure&nbsp;6.6: Example of a map created with tm_text().
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text</a></span><span class="op">(</span><span class="st">"level"</span>, col <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/unnamed-chunk-25-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figure class="figure"><p><img src="figures/unnamed-chunk-24-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -684,27 +724,46 @@ Figure&nbsp;6.6: Example of a map created with tm_text().
 <span><span class="va">ei_geomorphons</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="st">"data/easter_island/ei_geomorphons.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- Raster data intro -->
-<p>Visualization of raster data depends on the raster type (continuous or categorical), its resolution, and the number of layers. <!-- continuous or categorical --> <a href="XX-tm-shape.html#fig-rasterdown" class="quarto-xref">Figure&nbsp;<span>5.8</span></a> shows two simple example of continuous and categorical raster visualization created with <code><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster()</a></code>. This function attempts to recognize the type of a given raster - when the input raster is continuous then the pretty style is used. However, the <code>"cont"</code> style often better represent phenomena that progressively vary in space (<a href="XX-tm-shape.html#fig-rasterdown" class="quarto-xref">Figure&nbsp;<span>5.8</span></a> A).</p>
+<p>Visualization of raster data depends on the raster type (continuous or categorical), its resolution, and the number of layers. <a href="XX-options.html#fig-rasterdown" class="quarto-xref">Figure&nbsp;<span>14.2</span></a> shows two simple example of continuous and categorical raster visualization created with <code><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster()</a></code>. This function attempts to recognize the type of a given raster – when the input raster is continuous then the pretty style is used. However, the continuous style (<code>"tm_scale_continuous"</code>) often better represent phenomena that progressively vary in space (<span class="quarto-unresolved-ref">?fig-rasterdown-1</span>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">ei_elev</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_continuous.html">tm_scale_continuous</a></span><span class="op">(</span>values <span class="op">=</span> <span class="st">"viridis"</span><span class="op">)</span>,</span>
 <span>            col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Elevation (m asl):"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>On the other hand, when the given raster is categorical, then <code>tm_raster</code> uses <code>style = "cat"</code> (<a href="XX-tm-shape.html#fig-rasterdown" class="quarto-xref">Figure&nbsp;<span>5.8</span></a> A). We can also adjust the legend title, used colors, and many more, in a similar fashion as in the previously mentioned layers.</p>
+<p>On the other hand, when the given raster is categorical, then <code>tm_raster</code> uses <code>tm_scale_categorical</code> automatically (<span class="quarto-unresolved-ref">?fig-rasterdown-2</span>). We can also adjust the legend title, used colors, and many more, in a similar fashion as in the previously mentioned layers.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">ei_geomorphons</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Geomorphons:"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="fig-rastertype" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div class="cell" data-layout-nrow="1" data-layout-align="center">
+<div id="fig-rastertype" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-rastertype-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-rastertype-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-rastertype" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-rastertype-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-rastertype-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-rastertype-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-rastertype">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rastertype-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.7: Examples of (A) continuous raster maps, and (B) categorical raster maps.
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-rastertype-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Continuous raster map
 </figcaption></figure>
 </div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-rastertype" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-rastertype-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-rastertype-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-rastertype-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-rastertype">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-rastertype-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Categorical raster map
+</figcaption></figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rastertype-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.6: Examples of raster maps
+</figcaption></figure>
 </div>
 </div>
 <p>The above examples used a raster with one layer only. However, rasters can have many layers, either represented by dimensions or attributes. By default, <strong>tmap</strong> shows all of the layers, where each raster has its own legend.</p>
@@ -713,7 +772,7 @@ Figure&nbsp;6.7: Examples of (A) continuous raster maps, and (B) categorical ras
 <span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">raster2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We can modify their arrangement with <code><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets()</a></code> (<a href="#fig-tmrasterml" class="quarto-xref">Figure&nbsp;<span>6.8</span></a>).</p>
+<p>We can modify their arrangement with <code><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets()</a></code> (<a href="#fig-tmrasterml" class="quarto-xref">Figure&nbsp;<span>6.7</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">raster2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -725,40 +784,59 @@ Figure&nbsp;6.7: Examples of (A) continuous raster maps, and (B) categorical ras
 <img src="figures/fig-tmrasterml-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmrasterml-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.8: A map created from a multilayered raster.
+Figure&nbsp;6.7: A map created from a multilayered raster.
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>If you want to learn more - we focus on how to specify and modify facets (also known as small multiples) in <a href="XX-small-multiples.html" class="quarto-xref"><span>Chapter 11</span></a> and how to modify map layout in <a href="XX-layout.html" class="quarto-xref"><span>Chapter 9</span></a>.</p>
+<p>If you want to learn more – we focus on how to specify and modify facets (also known as small multiples) in <a href="XX-small-multiples.html" class="quarto-xref"><span>Chapter 11</span></a> and how to modify map layout in <a href="XX-layout.html" class="quarto-xref"><span>Chapter 9</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#to replace later</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/stars/">stars</a></span><span class="op">)</span></span>
 <span><span class="va">landsat</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"raster/landsat.tif"</span>, package <span class="op">=</span> <span class="st">"spDataLarge"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The <code>landsat</code> object contains four bands (blue, green, red, and near-infrared) of the Landsat 8 image for the area of Zion National Park taken on 18th of August 2015. We can plot all of the bands independently or as a combination of three bands. This combination is known as a color composite image, and we can create such images with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_rgb.html">tm_rgb()</a></code> function (<a href="#fig-tmrgbs" class="quarto-xref">Figure&nbsp;<span>6.9</span></a>).</p>
-<p>Standard composite image (true color composite) uses the visible red, green, and blue bands to represent the data in natural colors. We can specify which band in <code>landsat</code> relates to red (third band), green (second band), and blue (first band) color in <code>tm_rgb</code>. Also, by default, this function expects values from 0 to 255; however, our values are in a different scale, with the maximum value of 31961. Therefore, to create a map, we can set <code>max.value</code> to our dataset’s maximum value. The result is a true color composite, with green colors representing forests and other types of vegetation, and yellow color showing bare areas (<a href="#fig-tmrgbs" class="quarto-xref">Figure&nbsp;<span>6.9</span></a> A).</p>
+<p>The <code>landsat</code> object contains four bands (blue, green, red, and near-infrared) of the Landsat 8 image for the area of Zion National Park taken on 18th of August 2015. We can plot all of the bands independently or as a combination of three bands. This combination is known as a color composite image, and we can create such images with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_rgb.html">tm_rgb()</a></code> function (<a href="#fig-tmrgbs" class="quarto-xref">Figure&nbsp;<span>6.8</span></a>).</p>
+<p>Standard composite image (true color composite) uses the visible red, green, and blue bands to represent the data in natural colors. We can specify which band in <code>landsat</code> relates to red (third band), green (second band), and blue (first band) color in <code><a href="https://r-tmap.github.io/tmap/reference/tm_rgb.html">tm_rgb()</a></code>. <!-- to update --> <!-- Also, by default, this function expects values from 0 to 255; however, our values are in a different scale, with the maximum value of 31961.  --> <!-- Therefore, to create a map, we can set `max.value` to our dataset's maximum value. --> <!-- The result is a true color composite, with green colors representing forests and other types of vegetation, and yellow color showing bare areas (@fig-tmrgbs-1). --></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">landsat</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_rgb.html">tm_rgb</a></span><span class="op">(</span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_vars.html">tm_vars</a></span><span class="op">(</span>dimvalues <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>         col.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_rgb.html">tm_scale_rgb</a></span><span class="op">(</span>stretch <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>True color images are straightforward to interpret and understand, but they make subtle differences in features challenging to recognize. However, nothing stops us from using the above tools to integrate different bands to create so called false color composites. Various band combinations emphasize some spatial characteristics, such as water, agriculture, etc., and allows us to visualize wavelengths that our eyes can not see. <!-- add some reference?? --> <a href="#fig-tmrgbs" class="quarto-xref">Figure&nbsp;<span>6.9</span></a> B shows a composite of near-infrared, red, and green bands, highlighting vegetation with a bright red color.</p>
+<p>True color images are straightforward to interpret and understand, but they make subtle differences in features challenging to recognize. However, nothing stops us from using the above tools to integrate different bands to create so called false color composites. Various band combinations emphasize some spatial characteristics, such as water, agriculture, etc., and allows us to visualize wavelengths that our eyes can not see. <!-- add some reference?? --> <a href="#fig-tmrgbs-2" class="quarto-xref">Figure&nbsp;<span>6.8 (b)</span></a> shows a composite of near-infrared, red, and green bands, highlighting vegetation with a bright red color.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">landsat</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_rgb.html">tm_rgb</a></span><span class="op">(</span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_vars.html">tm_vars</a></span><span class="op">(</span>dimvalues <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>         col.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_rgb.html">tm_scale_rgb</a></span><span class="op">(</span>stretch <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="fig-tmrgbs" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div class="cell" data-layout-nrow="1" data-layout-align="center">
+<div id="fig-tmrgbs" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmrgbs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-tmrgbs-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmrgbs" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-tmrgbs-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmrgbs-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmrgbs-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmrgbs">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmrgbs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.9: Two color composite images: (A) true color composite, (B) false color composite.
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmrgbs-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) True color composite image
 </figcaption></figure>
 </div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmrgbs" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-tmrgbs-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmrgbs-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmrgbs-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmrgbs">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmrgbs-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) False color composite image
+</figcaption></figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmrgbs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.8: Two color composite images
+</figcaption></figure>
 </div>
 </div>
 <!-- raster.warp -->
@@ -767,7 +845,7 @@ Figure&nbsp;6.9: Two color composite images: (A) true color composite, (B) false
 <span class="header-section-number">6.6</span> Tile</h2>
 <!-- A tile layer is .. -->
 <!-- Tile layers (or just tines) are usually stored as prerendered raster tiles or as vector tiles on online servers. -->
-<p>Tile layers can be used for two purposes: either as a basemap or an overlay layer. By default, three basemaps are used in the interactive mode (<code>tmap_mode("view")</code>): <code>"Esri.WorldGrayCanvas"</code>, <code>"OpenStreetMap"</code>, and <code>"Esri.WorldTopoMap"</code>. However, we can change the basemaps with a vector with the names of the tile layers’ providers (<a href="#fig-tmbasemap1" class="quarto-xref">Figure&nbsp;<span>6.10</span></a>).</p>
+<p>Tile layers can be used for two purposes: either as a basemap or an overlay layer. By default, three basemaps are used in the interactive mode (<code>tmap_mode("view")</code>): <code>"Esri.WorldGrayCanvas"</code>, <code>"OpenStreetMap"</code>, and <code>"Esri.WorldTopoMap"</code>. However, we can change the basemaps with a vector with the names of the tile layers’ providers (<a href="#fig-tmbasemap1" class="quarto-xref">Figure&nbsp;<span>6.9</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_mode.html">tmap_mode</a></span><span class="op">(</span><span class="st">"view"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_basemap.html">tm_basemap</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>StreetMap <span class="op">=</span> <span class="st">"OpenStreetMap"</span>, TopoMap <span class="op">=</span> <span class="st">"OpenTopoMap"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -777,16 +855,16 @@ Figure&nbsp;6.9: Two color composite images: (A) true color composite, (B) false
 <div class="cell" data-layout-align="center">
 <div id="fig-tmbasemap1" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmbasemap1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="htmlwidget-3fe8f7b03cdcf01ce73a" style="width:100%;height:355.968px;" class="widgetframe html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3fe8f7b03cdcf01ce73a">{"x":{"url":"widgets/widget_fig-tmbasemap1.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-2efa9703e2c6c4b0882c" style="width:100%;height:355.968px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2efa9703e2c6c4b0882c">{"x":{"url":"widgets/widget_fig-tmbasemap1.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmbasemap1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.10: OpenStreetMap tile layer used as a base map with the red dots representing volcanos on Easter Island.
+Figure&nbsp;6.9: OpenStreetMap tile layer used as a base map with the red dots representing volcanos on Easter Island.
 </figcaption></figure>
 </div>
 </div>
-<p>In the above code, we made two basemaps available - <code>"OpenStreetMap"</code> and <code>"OpenTopoMap"</code>, and for the map legend purpose, we renamed them as <code>StreetMap</code> and <code>TopoMap</code>. A complete list of available basemaps is in the <code><a href="https://rstudio.github.io/leaflet/reference/providers.html">leaflet::providers</a></code> object and on the https://leaflet-extras.github.io/leaflet-providers/preview/ website<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. <!-- explain why some providers do not work --> <!-- ?do we need to register somewhere?: --> <!-- https://github.com/leaflet-extras/leaflet-providers --> <!-- how to add url tiles --> <!-- how to setup your own server or some references? --> The <code>tm_basemap(NULL)</code> function allows to disable basemaps entirely.</p>
-<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_basemap.html">tm_tiles()</a></code> function, on the other hand, draws the tile layer on the top (as overlay layer) of the previous <code>tm_</code> layer. In the next example, we put the vector <code>"CartoDB.PositronOnlyLabels"</code> tiles on top of the previously set basemaps, but below the dots layer (<a href="#fig-tmtiles1" class="quarto-xref">Figure&nbsp;<span>6.11</span></a>).</p>
+<p>In the above code, we made two basemaps available: <code>"OpenStreetMap"</code> and <code>"OpenTopoMap"</code>, and for the map legend purpose, we renamed them as <code>StreetMap</code> and <code>TopoMap</code>. A complete list of available basemaps is in the <code><a href="https://rstudio.github.io/leaflet/reference/providers.html">leaflet::providers</a></code> object and on the https://leaflet-extras.github.io/leaflet-providers/preview/ website<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. <!-- explain why some providers do not work --> <!-- ?do we need to register somewhere?: --> <!-- https://github.com/leaflet-extras/leaflet-providers --> <!-- how to add url tiles --> <!-- how to setup your own server or some references? --> The <code>tm_basemap(NULL)</code> function allows to disable basemaps entirely.</p>
+<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_basemap.html">tm_tiles()</a></code> function, on the other hand, draws the tile layer on the top (as overlay layer) of the previous <code>tm_</code> layer. In the next example, we put the vector <code>"CartoDB.PositronOnlyLabels"</code> tiles on top of the previously set basemaps, but below the dots layer (<a href="#fig-tmtiles1" class="quarto-xref">Figure&nbsp;<span>6.10</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_basemap.html">tm_basemap</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>StreetMap <span class="op">=</span> <span class="st">"OpenStreetMap"</span>, TopoMap <span class="op">=</span> <span class="st">"OpenTopoMap"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_basemap.html">tm_tiles</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>CartoDB <span class="op">=</span> <span class="st">"CartoDB.PositronOnlyLabels"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -796,32 +874,24 @@ Figure&nbsp;6.10: OpenStreetMap tile layer used as a base map with the red dots 
 <div class="cell" data-layout-align="center">
 <div id="fig-tmtiles1" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmtiles1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="htmlwidget-0dd261826c8b2f2eec49" style="width:100%;height:355.968px;" class="widgetframe html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0dd261826c8b2f2eec49">{"x":{"url":"widgets/widget_fig-tmtiles1.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-4592c50bc7236b657fcc" style="width:100%;height:355.968px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4592c50bc7236b657fcc">{"x":{"url":"widgets/widget_fig-tmtiles1.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmtiles1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.11: OpenStreetMap tile layer used as a base map with dashed lines representing island coastline and the red dots representing volcanos on Easter Island.
+Figure&nbsp;6.10: OpenStreetMap tile layer used as a base map with dashed lines representing island coastline and the red dots representing volcanos on Easter Island.
 </figcaption></figure>
 </div>
 </div>
-<p>Tile layers are usually created to be used interactively. We can see it, for example, by their number of details varying depending on the zoom level we set. That being said, many people find them useful also for static maps, and several packages and functions were created to allow downloading tile layers and using them for static maps. It includes packages, such as <strong>ceramic</strong>, <strong>mapmisc</strong>, or <strong>maptiles</strong>. <!-- add refs --> <!-- https://github.com/riatelab/maptiles --> <!-- mention read_osm()? --></p>
-<p>Here, we focus on <strong>maptiles</strong>. This package has one main function called <code><a href="https://rdrr.io/pkg/maptiles/man/get_tiles.html">get_tiles()</a></code> that expects a spatial object with our area of interest and downloads a spatial data representing our tiles. <!-- ... --> The <code><a href="https://rdrr.io/pkg/maptiles/man/get_tiles.html">get_tiles()</a></code> function also allows us to select one of many map tiles providers and decide on the zoom level we want to use from 0 to 20. A complete list of available providers and some <a href="https://wiki.openstreetmap.org/wiki/Zoom_levels">information about zoom levels</a> are in the help file of this function - <code>?get_tiles()</code>. Different map tiles providers offer unique map styles, while zoom levels relate to different levels of detail – the larger level, the more details we will get. In some cases, also the <code>crop</code> argument set to <code>TRUE</code> can be useful - it returns a tile cropped to the area of interest.</p>
+<p>Tile layers are usually created to be used interactively. We can see it, for example, by their number of details varying depending on the zoom level we set. That being said, many people find them useful also for static maps, and <strong>tmap</strong> allows to use them in this way. It uses the <strong>maptiles</strong> package to download the tiles and then plot them as a raster layer.</p>
+<p>A complete list of available providers and some <a href="https://wiki.openstreetmap.org/wiki/Zoom_levels">information about zoom levels</a> are in the help file of the <code>?maptiles::get_tiles()</code> function. Different map tiles providers offer unique map styles, while zoom levels relate to different levels of detail – the larger level, the more details we will get. When using map tiles, we should also consider adding their attribution to the map. Attribution for each provider can be obtained using the <code><a href="https://rdrr.io/pkg/maptiles/man/get_credit.html">maptiles::get_credit()</a></code> function by specifying the provider name, for example <code>get_credit("CartoDB.VoyagerNoLabels")</code>.</p>
+<p>The code below plots the <code>"CartoDB.VoyagerNoLabels"</code> tiles in the background, adds the island outline in light blue color, and puts attribution text in the bottom right corner of the map (<a href="#fig-stiles" class="quarto-xref">Figure&nbsp;<span>6.11</span></a>)).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/maptiles/">maptiles</a></span><span class="op">)</span></span>
-<span><span class="va">ei_tiles</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/maptiles/man/get_tiles.html">get_tiles</a></span><span class="op">(</span><span class="va">ei_borders</span>, provider <span class="op">=</span> <span class="st">"CartoDB.VoyagerNoLabels"</span>,</span>
-<span>                     zoom <span class="op">=</span> <span class="fl">12</span>, crop <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>In the above example, we downloaded the data for the area of <code>ei_borders</code> from the <code>"CartoDB.VoyagerNoLabels"</code> provider using the zoom of level 12, and we cropped the tile to the extent of the island area. The result is a spatial object <!--mention terra?--> with four layers, in which three first layers represent the visible red, green, and blue bands (<a href="#sec-raster-layer" class="quarto-xref"><span>Section 6.5</span></a>). This object’s structure allows us to create a <strong>tmap</strong> map with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_rgb.html">tm_rgb()</a></code> function.</p>
-<p>When using map tiles, we should also consider adding their attribution to the map. Attribution for each provider can be obtained using the <code><a href="https://rdrr.io/pkg/maptiles/man/get_credit.html">get_credit()</a></code> function by specifying the provider name, for example <code>get_credit("CartoDB.VoyagerNoLabels")</code>.</p>
-<p>The code below plots the <code>"CartoDB.VoyagerNoLabels"</code> tiles in the background, adds the island outline in light blue color, and puts attribution text in the bottom right corner of the map (<a href="#fig-stiles" class="quarto-xref">Figure&nbsp;<span>6.12</span></a>)).</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_mode.html">tmap_mode</a></span><span class="op">(</span><span class="st">"plot"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_mode.html">tmap_mode</a></span><span class="op">(</span><span class="st">"plot"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ℹ tmap mode set to "plot".</span></span>
-<span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">ei_tiles</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_rgb.html">tm_rgb</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_basemap.html">tm_basemap</a></span><span class="op">(</span><span class="st">"CartoDB.VoyagerNoLabels"</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">ei_borders</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders</a></span><span class="op">(</span>lwd <span class="op">=</span> <span class="fl">5</span>, col <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/maptiles/man/get_credit.html">get_credit</a></span><span class="op">(</span><span class="st">"CartoDB.VoyagerNoLabels"</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits</a></span><span class="op">(</span><span class="fu">maptiles</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/maptiles/man/get_credit.html">get_credit</a></span><span class="op">(</span><span class="st">"CartoDB.VoyagerNoLabels"</span><span class="op">)</span>,</span>
 <span>             bg.color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-stiles" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -829,7 +899,7 @@ Figure&nbsp;6.11: OpenStreetMap tile layer used as a base map with dashed lines 
 <img src="figures/fig-stiles-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-stiles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.12: Example of a static map using a downloaded <code>"CartoDB.VoyagerNoLabels"</code> tile layer.
+Figure&nbsp;6.11: Example of a static map using a downloaded <code>"CartoDB.VoyagerNoLabels"</code> tile layer.
 </figcaption></figure>
 </div>
 </div>

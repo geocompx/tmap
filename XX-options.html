@@ -18,6 +18,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -252,8 +286,19 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 </div>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 class="anchored">First Edition</h2>
+  <ul>
+<li><a href="https://geocompx.org/" class="nav-link active" data-scroll-target="https\://geocompx.org/">Visit the geocompx website 🌐</a></li>
+    <li><a href="https://github.com/geocompx/tmap/issues" class="nav-link" data-scroll-target="https\://github.com/geocompx/tmap/issues">Open an issue ❔</a></li>
+    <li><a href="https://discord.gg/PMztXYgNxp" class="nav-link" data-scroll-target="https\://discord.gg/PMztXYgNxp">Chat on Discord 📣</a></li>
+  </ul>
+<hr>
+<h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li><a href="#sec-data-simplification" id="toc-sec-data-simplification" class="nav-link" data-scroll-target="#sec-data-simplification"><span class="header-section-number">14.1</span> Data simplification</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/XX-options.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./XX-options.html">Advanced topics</a></li><li class="breadcrumb-item"><a href="./XX-options.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">tmap options</span></a></li></ol></nav><div class="quarto-title">
@@ -273,10 +318,102 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
   
 
 
-</header>
+</header><div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Linking to GEOS 3.10.2, GDAL 3.4.1, PROJ 8.2.1; sf_use_s2() is TRUE</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/stars/">stars</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Loading required package: abind</span></span>
+<span><span class="va">worldelevation</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="st">"data/worldelevation.tif"</span><span class="op">)</span></span>
+<span><span class="va">worldvector</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/worldvector.gpkg"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="sec-data-simplification" class="level2" data-number="14.1"><h2 data-number="14.1" class="anchored" data-anchor-id="sec-data-simplification">
+<span class="header-section-number">14.1</span> Data simplification</h2>
+<!-- this content should be (split?) and moved to other chapters -->
+<p>Geometries in spatial vector data consists of sets of coordinates (<a href="XX-geodata.html#sec-vector-data-model" class="quarto-xref"><span>Section 2.2.1</span></a>). Spatial vector objects grow larger with more features to present and more details to show, and this also has an impact on time to render a map. <!-- also to consider - the level of generalization --> <a href="#fig-vectordown-1" class="quarto-xref">Figure&nbsp;<span>14.1 (a)</span></a> shows a map of countries from the <code>worldvector</code> object.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This level of detail can be good for some maps, but sometimes the number of details can make reading the map harder. To create a simplified (smoother) version of vector data, we can use the <code>ms_simplify</code> function of the <strong>rmapshaper</strong> package. <!--add two citations: to mapshaper and rmapshaper-->. It expects a numeric value from 0 to 1 – a proportion of vertices in the data to retain. In the example below, we set <code>keep</code> to 0.05, which keeps 5% of vertices (<a href="#fig-vectordown-2" class="quarto-xref">Figure&nbsp;<span>14.1 (b)</span></a>).</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ateucher/rmapshaper">rmapshaper</a></span><span class="op">)</span></span>
+<span><span class="va">worldvector_s1</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/rmapshaper/man/ms_simplify.html">ms_simplify</a></span><span class="op">(</span><span class="va">worldvector</span>, keep <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldvector_s1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The process of simplification can also be more controlled. By default, the underlining algorithm (called the Visvalingam method, learn more at https://bost.ocks.org/mike/simplify/), removes small features, such as islands in our case. This could have far-reaching consequences - in the process of simplification, we could remove some countries! To prevent the deletion of small features, we also need to set <code>keep_shapes</code> to <code>TRUE</code>. In the case of one country consisting of many small polygons, only one is sure to be retained. For example, look at New Zealand, which is now only represented by Te Waipounamu (the South Island). To keep all of the spatial geometries (even the smallest of islands), we should also specify <code>explode</code> to <code>TRUE</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">worldvector_s2</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/rmapshaper/man/ms_simplify.html">ms_simplify</a></span><span class="op">(</span><span class="va">worldvector</span>, keep <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>                             keep_shapes <span class="op">=</span> <span class="cn">TRUE</span>, explode <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldvector_s1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><a href="#fig-vectordown-3" class="quarto-xref">Figure&nbsp;<span>14.1 (c)</span></a> contains a simplified map, where each spatial geometry of the original map still exists, but in a less detailed form.</p>
+<div id="fig-vectordown" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-vectordown-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-vectordown" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-vectordown-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-vectordown-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-vectordown-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-vectordown">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-vectordown-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) original data
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-vectordown" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-vectordown-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-vectordown-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-vectordown-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-vectordown">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-vectordown-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) simplified data with 5% of vertices kept
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-vectordown" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-vectordown-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-vectordown-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-vectordown-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-vectordown">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-vectordown-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) simplified data with 5% of vertices, all features, and all polygons kept
+</figcaption></figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vectordown-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.1: A map of world’s countries based on:
+</figcaption></figure>
+</div>
+<!-- 2/resolution -->
+<p>Raster data is represented by a grid of cells (<a href="XX-geodata.html#sec-raster-data-model" class="quarto-xref"><span>Section 2.2.2</span></a>), and the number of cells impacts the time to render a map. Rasters with hundreds of cells will be plotted quickly, while rasters with hundreds of millions or billions of cells will take a lot of time (and RAM) to be shown. <!-- ... some info about screen resolution --> Therefore, the <strong>tmap</strong> package downsamples large rasters by default to be below 10,000,000 cells in the plot mode and 1,000,000 cells in the view mode. <!-- c(plot = 1e7, view = 1e6) --> This values can be adjusted with the <code>raster.max_cells</code> argument of <code><a href="https://r-tmap.github.io/tmap/reference/tmap_options.html">tmap_options()</a></code>, which expects a named vector with two elements - <code>plot</code> and <code>view</code> (<a href="#fig-rasterdown" class="quarto-xref">Figure&nbsp;<span>14.2</span></a>). <!-- btw - downsampling cont vs cat --> <!-- when and why --></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_options.html">tmap_options</a></span><span class="op">(</span>raster.max_cells <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>plot <span class="op">=</span> <span class="fl">5000</span>, view <span class="op">=</span> <span class="fl">2000</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldelevation</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="st">"worldelevation.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-rasterdown" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-rasterdown-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-rasterdown-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rasterdown-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.2: A raster map with the decreased resolution
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>Any <strong>tmap</strong> options can be reset (set to default) with <code><a href="https://r-tmap.github.io/tmap/reference/tmap_options.html">tmap_options_reset()</a></code> (We explain <code><a href="https://r-tmap.github.io/tmap/reference/tmap_options.html">tmap_options()</a></code> in details in <a href="#sec-options" class="quarto-xref"><span>Chapter 14</span></a>).</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_options.html">tmap_options_reset</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- is there anything important about tm_shape arguments that still is missing for the above text?? -->
 
 
-</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -713,7 +850,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
 <p>Elegant and informative maps with <strong>tmap</strong> by Martijn Tennekes and Jakub Nowosad.</p>
-<div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/XX-options.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/XX-options.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
