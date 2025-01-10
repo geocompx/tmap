@@ -321,12 +321,17 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <a href="#sec-colors" id="toc-sec-colors" class="nav-link" data-scroll-target="#sec-colors"><span class="header-section-number">7.1</span> Colors</a>
   <ul>
 <li><a href="#sec-color-palettes" id="toc-sec-color-palettes" class="nav-link" data-scroll-target="#sec-color-palettes"><span class="header-section-number">7.1.1</span> Color palettes</a></li>
-  <li><a href="#sec-color-scale-styles" id="toc-sec-color-scale-styles" class="nav-link" data-scroll-target="#sec-color-scale-styles"><span class="header-section-number">7.1.2</span> Color scale styles</a></li>
   </ul>
 </li>
   <li><a href="#sec-sizes" id="toc-sec-sizes" class="nav-link" data-scroll-target="#sec-sizes"><span class="header-section-number">7.2</span> Sizes</a></li>
   <li><a href="#sec-shapes" id="toc-sec-shapes" class="nav-link" data-scroll-target="#sec-shapes"><span class="header-section-number">7.3</span> Shapes</a></li>
   <li><a href="#sec-mixing-visual-variables" id="toc-sec-mixing-visual-variables" class="nav-link" data-scroll-target="#sec-mixing-visual-variables"><span class="header-section-number">7.4</span> Mixing visual variables</a></li>
+  <li>
+<a href="#sec-scales" id="toc-sec-scales" class="nav-link" data-scroll-target="#sec-scales"><span class="header-section-number">7.5</span> Scales</a>
+  <ul>
+<li><a href="#sec-color-scale-styles" id="toc-sec-color-scale-styles" class="nav-link" data-scroll-target="#sec-color-scale-styles"><span class="header-section-number">7.5.1</span> Color scale styles</a></li>
+  </ul>
+</li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/XX-visual-variables.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -362,11 +367,11 @@ Figure&nbsp;7.1: Basic visual variables and their representations on maps
 </div>
 </div>
 </div>
-<p>The use of visual variables on maps depends on two main things: (a) type of the presented variable, and (b) type of the map layer. <a href="#fig-visual-variables" class="quarto-xref">Figure&nbsp;<span>7.1</span></a> shows examples of different visual variables. Color is the most universal visual variable. It can represent both qualitative (categorical) and quantitative (numerical) variables, and also we can color symbols, lines, or polygon fillings (<a href="#sec-color-palettes" class="quarto-xref"><span>Section 7.1.1</span></a> and <a href="#sec-color-scale-styles" class="quarto-xref"><span>Section 7.1.2</span></a>). Sizes, on the other hand, should focus on quantitative variables. Small symbols could represent low values of a given variable, and the higher the value, the larger the symbol. Quantitative values of line data can be shown with the widths of the lines (<a href="#sec-sizes" class="quarto-xref"><span>Section 7.2</span></a>). The use of shapes usually should be limited to qualitative variables, and different shapes can represent different categories of points (<a href="#sec-shapes" class="quarto-xref"><span>Section 7.3</span></a>). <!--JN: line type is it a shape or should we make a new group--> Similarly, qualitative variables in lines can be presented by different line types. Values of polygons usually cannot be represented by either shapes or sizes, as these two features are connected to the geometries of the objects. <!-- exception - cartograms - ref to other chapter \@ref(other-types) --></p>
+<p>The use of visual variables on maps depends on two main things: (a) type of the presented variable, and (b) type of the map layer. <a href="#fig-visual-variables" class="quarto-xref">Figure&nbsp;<span>7.1</span></a> shows examples of different visual variables. Color is the most universal visual variable. It can represent both qualitative (categorical) and quantitative (numerical) variables, and also we can color symbols, lines, or polygon fillings (<a href="#sec-color-palettes" class="quarto-xref"><span>Section 7.1.1</span></a> and <a href="#sec-color-scale-styles" class="quarto-xref"><span>Section 7.5.1</span></a>). Sizes, on the other hand, should focus on quantitative variables. Small symbols could represent low values of a given variable, and the higher the value, the larger the symbol. Quantitative values of line data can be shown with the widths of the lines (<a href="#sec-sizes" class="quarto-xref"><span>Section 7.2</span></a>). The use of shapes usually should be limited to qualitative variables, and different shapes can represent different categories of points (<a href="#sec-shapes" class="quarto-xref"><span>Section 7.3</span></a>). <!--JN: line type is it a shape or should we make a new group--> Similarly, qualitative variables in lines can be presented by different line types. Values of polygons usually cannot be represented by either shapes or sizes, as these two features are connected to the geometries of the objects. <!-- exception - cartograms - ref to other chapter \@ref(other-types) --></p>
 <!-- also, sometimes it is possible to use several visual variables at the same time (e.g. width lines + colors) -->
 <section id="sec-colors" class="level2" data-number="7.1"><h2 data-number="7.1" class="anchored" data-anchor-id="sec-colors">
 <span class="header-section-number">7.1</span> Colors</h2>
-<p> Colors, along with sizes and shapes, are the most often used to express values of attributes or their properties. Proper use of colors draws the attention of viewers and has a positive impact on the clarity of the presented information. On the other hand, poor decisions about colors can lead to misinterpretation of the map. <a href="#sec-color-palettes" class="quarto-xref"><span>Section 7.1.1</span></a> explains how colors are represented in R, how to decide which colors to use, and how to set different colors on maps. <a href="#sec-color-scale-styles" class="quarto-xref"><span>Section 7.1.2</span></a> focuses on how to specify color breaks and which types of scales styles are appropriate in different cases.</p>
+<p> Colors, along with sizes and shapes, are the most often used to express values of attributes or their properties. Proper use of colors draws the attention of viewers and has a positive impact on the clarity of the presented information. On the other hand, poor decisions about colors can lead to misinterpretation of the map. <a href="#sec-color-palettes" class="quarto-xref"><span>Section 7.1.1</span></a> explains how colors are represented in R, how to decide which colors to use, and how to set different colors on maps. <a href="#sec-color-scale-styles" class="quarto-xref"><span>Section 7.5.1</span></a> focuses on how to specify color breaks and which types of scales styles are appropriate in different cases.</p>
 <section id="sec-color-palettes" class="level3" data-number="7.1.1"><h3 data-number="7.1.1" class="anchored" data-anchor-id="sec-color-palettes">
 <span class="header-section-number">7.1.1</span> Color palettes</h3>
 <p> <!-- reference this bp - https://earthobservatory.nasa.gov/blogs/elegantfigures/2013/08/06/subtleties-of-color-part-2-of-6/ --></p>
@@ -395,7 +400,7 @@ Figure&nbsp;7.1: Basic visual variables and their representations on maps
 <li>
 <strong>Diverging</strong>: used for presenting continuous variables, but where colors diverge from a central neutral value to two extremes. Therefore, in sense, they consist of two sequential palettes that meet in the midpoint value. Examples of diverging palettes include maps where a certain temperature or median value of household income is use as the midpoint. It can also be used on maps to represent difference or change as well.</li>
 </ul>
-<!-- idea: replace one diverging palette with the dark in the middle --><!-- do it, if (when) tmap has hcl.colors build-in --><div class="cell" data-layout-align="center">
+<!-- idea: replace one diverging palette with the dark in the middle --><div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-palette-types" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-palette-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -407,8 +412,6 @@ Figure&nbsp;7.2: Examples of three main types of color palettes: categorical, se
 </div>
 </div>
 </div>
-<!-- idea: add bivariate/trivariate schemes (if/when implemented in tmap) -->
-<!-- add ord, cyc, biv -->
 <p> Gladly, a lot of work has been put on creating color palettes that are grounded in the research of perception and design. Currently, <a href="https://github.com/EmilHvitfeldt/r-color-palettes">several dozens of R packages</a> contain hundreds of color palettes. The most popular among them are <strong>RColorBrewer</strong> <span class="citation" data-cites="R-RColorBrewer">(<a href="references.html#ref-R-RColorBrewer" role="doc-biblioref">Neuwirth 2014</a>)</span> and <strong>viridis</strong> <span class="citation" data-cites="R-viridis">(<a href="references.html#ref-R-viridis" role="doc-biblioref">Garnier 2018</a>)</span>. <strong>RColorBrewer</strong> builds upon a set of perceptually ordered color palettes <span class="citation" data-cites="harrower_colorbrewer_2003">(<a href="references.html#ref-harrower_colorbrewer_2003" role="doc-biblioref">Harrower and Brewer 2003</a>)</span> and the associated website at https://colorbrewer2.org. The website not only presents all of the available color palettes, but also allow to filter them based on their properties, such as being colorblind safe or print-friendly. The <strong>viridis</strong> package has five color palettes are perceptually-uniform and suitable for people with color blindness. Four palettes is this package (“viridis”, “magma”, “plasma”, and “inferno”) are derived from the work on the color palettes for <a href="http://bids.github.io/colormap/">the matplotlib Python library</a>. The last one, “cividis”, is based on the work of <span class="citation" data-cites="nunez_optimizing_2018">Nuñez, Anderton, and Renslow (<a href="references.html#ref-nunez_optimizing_2018" role="doc-biblioref">2018</a>)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">RColorBrewer</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal</a></span><span class="op">(</span><span class="fl">7</span>, <span class="st">"RdBu"</span><span class="op">)</span></span>
@@ -424,14 +427,14 @@ Figure&nbsp;7.2: Examples of three main types of color palettes: categorical, se
 <span><span class="fu">grDevices</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html">palette.colors</a></span><span class="op">(</span><span class="fl">7</span>, <span class="st">"Okabe-Ito"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "#000000" "#E69F00" "#56B4E9" "#009E73" "#F0E442" "#0072B2" "#D55E00"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p> One of the most widely used color palettes is “rainbow” (the <code><a href="https://rdrr.io/r/grDevices/palettes.html">rainbow()</a></code> function in R). It was inspired by colors of rainbows - a set of seven colors going from red to violet. However, this palette has a number of disadvantages, including irregular changes in brightness affecting its interpretation or being unsuitable for people with color vision deficiencies <span class="citation" data-cites="borland_rainbow_2007 stauffer_somewhere_2015 quinan_examining_2019">(<a href="references.html#ref-borland_rainbow_2007" role="doc-biblioref">Borland and Taylor Ii 2007</a>; <a href="references.html#ref-stauffer_somewhere_2015" role="doc-biblioref">Stauffer et al. 2015</a>; <a href="references.html#ref-quinan_examining_2019" role="doc-biblioref">Quinan et al. 2019</a>)</span>. Depending on a given situation, there are many palettes better suited for visualization than “rainbow”, including sequential <code>"viridis"</code> and <code>"ag_Sunset"</code> or diverging <code>"Purple-Green"</code> and <code>"Fall"</code>. All of them can be created with the <code><a href="https://rdrr.io/r/grDevices/palettes.html">grDevices::hcl.colors()</a></code> function. More examples showing alternatives to the “rainbow” palette are in the documentation of the <strong>colorspace</strong> package at https://colorspace.r-forge.r-project.org/articles/endrainbow.html <span class="citation" data-cites="R-colorspace">(<a href="references.html#ref-R-colorspace" role="doc-biblioref">Zeileis et al. 2019</a>)</span>.</p>
-<!-- https://github.com/r-tmap/tmap/blob/d3b8575fa19d704cff69cdac6746fedc5b8db758/R/tmap_options.R -->
-<p>By default, the <strong>tmap</strong> package attempts to identify the type of the used variable. Based on the result, it selects one of the build-in palettes: categorical <code>"Set3"</code>, sequential <code>"YlOrBr"</code>, or diverging <code>"RdYlGn"</code> (<a href="#fig-tmpals" class="quarto-xref">Figure&nbsp;<span>7.3</span></a>). <!-- info about tm_layout or reference to a section about it --></p>
+<p>The <strong>cols4all</strong> package <!--ref--> is a set of tools for selecting color palettes; it also includes all of the groups of color palettes mentioned above and more. Its main function is <code><a href="https://mtennekes.github.io/cols4all/reference/c4a_gui.html">cols4all::c4a_gui()</a></code> that starts an interactive application allowing to see and examine hundreds of color palettes. Each color palette shown <code><a href="https://mtennekes.github.io/cols4all/reference/c4a_gui.html">cols4all::c4a_gui()</a></code> can be used in <strong>tmap</strong>.</p>
+<p> One of the most widely used color palettes is “rainbow” (the <code><a href="https://rdrr.io/r/grDevices/palettes.html">rainbow()</a></code> function in R). It was inspired by colors of a rainbow – a set of seven colors going from red to violet. However, this palette has a number of disadvantages, including irregular changes in brightness affecting its interpretation or being unsuitable for people with color vision deficiencies <span class="citation" data-cites="borland_rainbow_2007 stauffer_somewhere_2015 quinan_examining_2019">(<a href="references.html#ref-borland_rainbow_2007" role="doc-biblioref">Borland and Taylor Ii 2007</a>; <a href="references.html#ref-stauffer_somewhere_2015" role="doc-biblioref">Stauffer et al. 2015</a>; <a href="references.html#ref-quinan_examining_2019" role="doc-biblioref">Quinan et al. 2019</a>)</span>. Depending on a given situation, there are many palettes better suited for visualization than “rainbow”, including sequential <code>"viridis"</code> and <code>"ag_sunset"</code> or diverging <code>"pu_gn"</code> and <code>"geyser"</code>. All of them can be specified in <strong>tmap</strong>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> More examples showing alternatives to the “rainbow” palette are in the documentation of the <strong>colorspace</strong> package at https://colorspace.r-forge.r-project.org/articles/endrainbow.html <span class="citation" data-cites="R-colorspace">(<a href="references.html#ref-R-colorspace" role="doc-biblioref">Zeileis et al. 2019</a>)</span>.</p>
+<p>By default, the <strong>tmap</strong> package attempts to identify the type of the used variable. For example, it uses <code>"area7"</code> for a categorical (unordered) variable, <code>"blues3"</code> for a sequential variable, and “<code>pu_gn</code>” for a diverging one (<a href="#fig-tmpals" class="quarto-xref">Figure&nbsp;<span>7.3</span></a>). <!-- info about tm_layout or reference to a section about it --></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span><span class="st">"life_expectancy"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>It also offers three main ways to specify color palettes using the <code>palette</code> argument: (1) a vector of colors, (2) a palette function, or (3) one of the build-in names (<a href="#fig-tmpals" class="quarto-xref">Figure&nbsp;<span>7.3</span></a>). A vector of colors can be specified using color names or hexadecimal representations (<a href="#fig-tmpals" class="quarto-xref">Figure&nbsp;<span>7.3</span></a>). Importantly, the length of the provided vector does not need to be equal to the number of colors in the map legend. <strong>tmap</strong> automatically interpolates new colors in the case when a smaller number of colors is provided.</p>
+<p>There are three main ways to specify color palettes as an <code>values</code> argument of the <code>tm_scale()</code> family of functions. <!-- add ref to the section --> This argument accepts (1) a vector of colors, (2) a palette function, or (3) one of the build-in palette names (<a href="#fig-tmpals" class="quarto-xref">Figure&nbsp;<span>7.3</span></a>). A vector of colors can be specified using color names or hexadecimal representations (<a href="#fig-tmpals" class="quarto-xref">Figure&nbsp;<span>7.3</span></a>). Importantly, the length of the provided vector does not need to be equal to the number of colors in the map legend. <strong>tmap</strong> automatically interpolates new colors in the case when a smaller number of colors is provided.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span><span class="st">"life_expectancy"</span>,</span>
@@ -443,48 +446,104 @@ Figure&nbsp;7.2: Examples of three main types of color palettes: categorical, se
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span><span class="st">"life_expectancy"</span>, </span>
 <span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rev.html">rev</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fl">7</span>, <span class="st">"ag_GrnYl"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The last approach is to use one of the names of color palettes build-in in <strong>tmap</strong> (<a href="#fig-tmpals" class="quarto-xref">Figure&nbsp;<span>7.3</span></a>). In this example, we used the <code>"YlGn"</code> palette that goes from yellow to green.</p>
+<p>The last approach is to use one of the names of color palettes build-in in <strong>tmap</strong> (<a href="#fig-tmpals" class="quarto-xref">Figure&nbsp;<span>7.3</span></a>). In this example, we used the <code>"brewer.yl_gn"</code> palette that goes from yellow to green.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span><span class="st">"life_expectancy"</span>,</span>
-<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>values <span class="op">=</span> <span class="st">"YlGn"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>values <span class="op">=</span> <span class="st">"brewer.yl_gn"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You can find all of the named color palettes using an interactive app with <code><a href="https://rdrr.io/pkg/tmaptools/man/palette_explorer.html">tmaptools::palette_explorer()</a></code>. It is also possible to reverse the order of any named color palette by using the <code>-</code> prefix. Therefore, <code>"-YlGn"</code> will return a palette going from green to yellow.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="fig-tmpals" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<p>It is also possible to reverse the order of any named color palette by using the <code>-</code> prefix. Therefore, <code>"-yl_gn"</code> will return a palette going from green to yellow.</p>
+<div id="fig-tmpals" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmpals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-tmpals-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmpals" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-tmpals-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmpals-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmpals-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmpals">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmpals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.3: Examples of four ways of specifying color palettes: (A) default sequential color palette, (B) palette created based on provided vector of colors, (C) palette created using the <code><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors()</a></code> function, and (D) one of the build-in palettes.
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmpals-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) default sequential color palette
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmpals" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-tmpals-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmpals-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmpals-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmpals">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmpals-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) palette created based on provided vector of colors
 </figcaption></figure>
 </div>
 </div>
 </div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmpals" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-tmpals-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmpals-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmpals-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmpals">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmpals-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) palette created using the <code><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors()</a></code> function
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmpals" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-tmpals-4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmpals-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmpals-4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmpals">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmpals-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d) one of the build-in palettes
+</figcaption></figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmpals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.3: Examples of four ways of specifying color palettes
+</figcaption></figure>
+</div>
 <!-- state that the above example of setting colors works for most of palettes -->
 <!-- midpoint argument -->
-<p>The default color palette for positive numerical variables is <code>"YlOrBr"</code> as seen in <a href="#fig-tmmidpoint" class="quarto-xref">Figure&nbsp;<span>7.4</span></a> A. On the other hand, when the given variable has both negative and positive values, then <strong>tmap</strong> uses the <code>"RdYlGn"</code> color palette, with red colors below the midpoint value, yellow color around the midpoint value, and green colors above the midpoint value. The use of diverging color palettes can be adjusted using the <code>midpoint</code> argument. It has a value of 0 as the default, however, it is possible to change it to any other value. For example, we want to create a map that shows countries with life expectancy below and above the median life expectancy of about 73 years. To do that, we just need to set the <code>midpoint</code> argument to this value (<a href="#fig-tmmidpoint" class="quarto-xref">Figure&nbsp;<span>7.4</span></a> B). <!-- , style = "cont" --></p>
+<p>The default color palette for positive numerical variables is <code>"blues3"</code> as seen in <a href="#fig-tmmidpoint-1" class="quarto-xref">Figure&nbsp;<span>7.4 (a)</span></a>. On the other hand, when the given variable has both negative and positive values, then <strong>tmap</strong> uses the <code>"pu_gn"</code> color palette, with purple colors below the midpoint value, light gray color around the midpoint value, and green colors above the midpoint value. The use of diverging color palettes can be adjusted using the <code>midpoint</code> argument. It has a value of 0 as the default, however, it is possible to change it to any other value. For example, we want to create a map that shows countries with life expectancy below and above the median life expectancy of about 73 years. To do that, we just need to set the <code>midpoint</code> argument to this value (<a href="#fig-tmmidpoint-2" class="quarto-xref">Figure&nbsp;<span>7.4 (b)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"life_expectancy"</span>, </span>
 <span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>midpoint <span class="op">=</span> <span class="fl">73</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="fig-tmmidpoint" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-tmmidpoint" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmmidpoint-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-tmmidpoint-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmmidpoint" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-tmmidpoint-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmmidpoint-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmmidpoint-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmmidpoint">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmmidpoint-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.4: Examples of (A) a map with the default sequential color palette and (B) a map with the diverging color palette around the midpoint value of 73.
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmmidpoint-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) the default sequential color palette
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmmidpoint" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-tmmidpoint-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmmidpoint-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmmidpoint-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmmidpoint">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmmidpoint-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) the diverging color palette around the midpoint value of 73
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>Now the countries with low life expectancy are presented with red colors, yellow areas represent countries with life expectancy around the median value (the <code>midpoint</code> in our case), and the countries with high life expectancy are represented by green colors.</p>
-<p>The above examples all contain several polygons with missing values of a given variable. Objects with missing values are, by default, represented by gray color and a related legend label <em>Missing</em>. However, it is possible to change this color with the <code>colorNA</code> argument and its label with <code>textNA</code>.</p>
-<p><strong>tmap</strong> has a special way to set colors for categorical maps manually. It works by providing a named vector to the <code>palette</code> argument. In this vector, names of the categories from the categorical variable are the vector names, and specified colors are the vector values. You can see it in the example below, where we plot the <code>"region_un"</code> categorical variable (<a href="#fig-tmcatpals" class="quarto-xref">Figure&nbsp;<span>7.5</span></a>). Each category in this variable (e.g., <code>"Africa"</code>) has a new, connected to it color (e.g., <code>"#11467b"</code>). <!--improve colors--> <!-- also - improve example - maybe use less colors/categories --></p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmmidpoint-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.4: Examples of maps with different midpoints used
+</figcaption></figure>
+</div>
+<p>Now the countries with low life expectancy are presented with purple colors, light gray areas represent countries with life expectancy around the median value (the <code>midpoint</code> in our case), and the countries with high life expectancy are represented by green colors.</p>
+<p>The above examples all contain several polygons with missing values of a given variable. Objects with missing values are, by default, represented by gray color and a related legend label <em>Missing</em>. However, it is possible to change this color with the <code>value.na</code> argument and its label with <code>label.na</code>.</p>
+<p><strong>tmap</strong> has a special way to set colors for categorical maps manually. It works by providing a named vector to the <code>values</code> argument. In this vector, names of the categories from the categorical variable are the vector names, and specified colors are the vector values. You can see it in the example below, where we plot the <code>"wb_region"</code> categorical variable (<a href="#fig-tmcatpals" class="quarto-xref">Figure&nbsp;<span>7.5</span></a>). Each category in this variable (e.g., <code>"South Asia"</code>) has a new, connected to it color (e.g., <code>"#df5454"</code>). <!--improve colors--> <!-- also - improve example - maybe use less colors/categories --></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span><span class="st">"wb_region"</span>, </span>
@@ -508,7 +567,9 @@ Figure&nbsp;7.5: An example of a categorical map with manually selected colors.
 </div>
 </div>
 </div>
-<p> Finally, visualized colors can be additionally modified. It includes setting the <code>alpha</code> argument that represents the transparency of the used colors. By default, the colors are not transparent at all as the value of <code>alpha</code> is 1. However, we can decrease this value to 0 - total transparency. The <code>alpha</code> argument is useful in two ways: one - it allows us to see-through some large objects (e.g., some points below the polygons or a hillshade map behind the colored raster of elevation), second - it makes colors more subtle.</p>
+<p> Finally, visualized colors can be additionally modified. It includes setting the <code>col_alpha</code> and <code>fill_alpha</code> arguments that represents the transparency of the used colors. By default, the colors are not transparent at all as the value of <code>col_alpha</code> and <code>fill_alpha</code> is 1. However, we can decrease this value to 0 – a total transparency. The <code>col_alpha</code>/ <code>fill_alpha</code> argument is useful in two ways: one – it allows us to see-through some large objects (e.g., some points below the polygons or a hillshade map behind the colored raster of elevation), second – it makes colors more subtle.</p>
+<!-- idea: add bivariate/trivariate schemes (if/when implemented in tmap) -->
+<!-- add ord, cyc, biv -->
 <!-- alpha figure? -->
 <!-- color to highlight?? -->
 <!-- resources: -->
@@ -516,163 +577,21 @@ Figure&nbsp;7.5: An example of a categorical map with manually selected colors.
 <!-- https://developer.r-project.org/Blog/public/2019/11/21/a-new-palette-for-r/index.html -->
 <!-- add some references about colors theory, color blindness, etc. -->
 <!-- https://earthobservatory.nasa.gov/blogs/elegantfigures/2013/09/10/subtleties-of-color-part-6-of-6/ -->
-</section><section id="sec-color-scale-styles" class="level3" data-number="7.1.2"><h3 data-number="7.1.2" class="anchored" data-anchor-id="sec-color-scale-styles">
-<span class="header-section-number">7.1.2</span> Color scale styles</h3>
-<!-- intro about setting colors -->
-<!-- info that generalized to points, lines, polygons, and rasters... -->
-<p> <code>tm_polygons()</code> accepts three ways of specifying the fill color with the <code>col</code> argument<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. The first one is to fill all polygons with the same color. This happens when we provide a single color value, either as a color name or its hexadecimal form (<a href="#sec-color-palettes" class="quarto-xref"><span>Section 7.1.1</span></a>) (<a href="#fig-colorscales1" class="quarto-xref">Figure&nbsp;<span>7.6</span></a>).</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="fig-colorscales1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-colorscales1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-colorscales1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-colorscales1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.6: Example of a map with all polygons filled with the same color.
-</figcaption></figure>
-</div>
-</div>
-</div>
-<p> The second way of specifying the fill color is to provide a name of the column (variable) we want to visualize. <strong>tmap</strong> behaves differently depending on the input variable type, but always automatically adds a map legend. In general, a categorical map is created when the provided variable contains characters, factors, or is of the logical type. However, when the provided variable is numerical, then it is possible to create either a discrete or a continuous map.</p>
-<p> An example of a categorical map can be seen in <a href="#fig-colorscales2" class="quarto-xref">Figure&nbsp;<span>7.7</span></a>. We created it by providing a character variable’s name, <code>"wb_region"</code>, in the <code>col</code> argument<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"wb_region"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<!-- categorical -->
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="fig-colorscales2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-colorscales2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-colorscales2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-colorscales2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.7: Example of a map in which polygons are colored based on the values of a categorical variable.
-</figcaption></figure>
-</div>
-</div>
-</div>
-<p>It is possible to change the names of legend labels with the <code>labels</code> argument. However, to change the order of legend labels, we need to provide an ordered factor variable’s name instead of a character one.<!--should we explain how to do it?--> As mentioned in the <a href="#sec-color-palettes" class="quarto-xref"><span>Section 7.1.1</span></a>, we can also change the used color palette with the <code>palette</code> argument.</p>
-<!-- optimal number of classes? 3-7 -->
-<p> Discrete maps, on the other hand, represent continuous numerical variables using discrete class intervals. In other words, values are divided into several groups based on their properties. Several approaches can be used to convert continuous variables to discrete ones, and each of them could result in different groups of values. <strong>tmap</strong> has 14 different methods to create discrete maps<!--list??--> that can be specified with the <code>style</code> argument. Most of them (except <code>"log10_pretty"</code>) use the <strong>classInt</strong> package <span class="citation" data-cites="R-classInt">(<a href="references.html#ref-R-classInt" role="doc-biblioref">Bivand 2020</a>)</span> in the background, therefore some additional information can be found in the <code>?classIntervals</code> function’s documentation.</p>
-<p>By default, the <code>"pretty"</code> style is used (<a href="#fig-discrete-methods" class="quarto-xref">Figure&nbsp;<span>7.8</span></a> A). This style creates breaks that are whole numbers and spaces them evenly <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gdp_per_cap"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>It is also possible to indicate the desired number of classes using the <code>n</code> argument, when the <code>"pretty"</code> style is used. While not every <code>n</code> is possible depending on the input values, <strong>tmap</strong> will try to create a number of classes as close to possible to the preferred one.</p>
-<p>The next approach is to manually select the limits of each break with the <code>breaks</code> function (<a href="#fig-discrete-methods" class="quarto-xref">Figure&nbsp;<span>7.8</span></a> B). This can be useful when we have some pre-defined breaks, or when we want to compare values between several maps. It expects threshold values for each break, therefore, if we want to have three breaks, we need to provide four thresholds. Additionally, we can add a label to each break with the <code>labels</code> argument.</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gdp_per_cap"</span>, </span>
-<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10000</span>, <span class="fl">30000</span>, <span class="fl">111000</span><span class="op">)</span>,</span>
-<span>                                    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<!-- interval.closure    -->
-<p>Another approach is to create breaks automatically using one of many existing classification methods. Three basic methods are <code>"equal"</code>, <code>"sd"</code>, and <code>"quantile"</code> styles. Let’s consider a variable with 100 observations ranging from 0 to 10. The <code>"equal"</code> style divides the range of values into <em>n</em> equal-sized intervals. This style works well when the values change fairly continuously and do not contain any outliers. In <strong>tmap</strong>, we can specify the number of classes with the <code>n</code> argument or the number of classes will be computed automatically <!--?nclass.Sturges-->. For example, when we set <code>n</code> to 4, then our breaks will represent four classes ranging from 0 to 2.5, 2.5 to 5, 5 to 7.5, and 7.5 to 10. The <code>"sd"</code> style represents how much values of a given variable varies from its mean, with each interval having a constant width of the standard deviation. This style is used when it is vital to show how values relate to the mean. The <code>"quantile"</code> style creates several classes with exactly the same number of objects (e.g., spatial features), but having intervals of various lengths. This method has an advantage or not having any empty classes or classes with too few or too many values. However, the resulting intervals from the <code>"quantile"</code> style can often be misleading, with very different values located in the same class.</p>
-<p>To create classes that, on the one hand, contain similar values, and on the other hand, are different from the other classes, we can use some optimization method. The most common optimization method used in cartography is the Jenks optimization method implemented at the <code>"jenks"</code> style (<a href="#fig-discrete-methods" class="quarto-xref">Figure&nbsp;<span>7.8</span></a> C).</p>
-<!-- how about adding ggplot2 histograms?? -->
-<!-- should we add that these methods usually do not allow to compare between datasets? -->
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gdp_per_cap"</span>, </span>
-<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The Fisher method (<code>style = "fisher"</code>) has a similar role, which creates groups with maximized homogeneity <span class="citation" data-cites="fisher_grouping_1958">(<a href="references.html#ref-fisher_grouping_1958" role="doc-biblioref">Fisher 1958</a>)</span>. A different approach is used by the <code>dpih</code> style, which uses kernel density estimations to select the width of the intervals <span class="citation" data-cites="wand_databased_1997">(<a href="references.html#ref-wand_databased_1997" role="doc-biblioref">Wand 1997</a>)</span>. You can visit <code><a href="https://rdrr.io/pkg/KernSmooth/man/dpih.html">?KernSmooth::dpih</a></code> for more details.</p>
-<p>Another group of classification methods uses existing clustering methods. It includes k-means clustering (<code>"kmeans"</code>), bagged clustering (<code>"bclust"</code>), and hierarchical clustering (<code>"hclust"</code>). <!-- ... --></p>
-<p>Finally, there are a few methods created to work well for a variable with a heavy-tailed distribution, including <code>"headtails"</code> and <code>"log10_pretty"</code>. The <code>"headtails"</code> style is an implementation of the head/tail breaks method aimed at heavily right-skewed data. In it, values of the given variable are being divided around the mean into two parts, and the process continues iteratively for the values above the mean (the head) until the head part values are no longer heavy-tailed distributed <span class="citation" data-cites="jiang_head_2013">(<a href="references.html#ref-jiang_head_2013" role="doc-biblioref">Jiang 2013</a>)</span>. The <code>"log10_pretty"</code> style uses a logarithmic base-10 transformation (<a href="#fig-discrete-methods" class="quarto-xref">Figure&nbsp;<span>7.8</span></a> D). In this style, each class starts with a value ten times larger than the beginning of the previous class. In other words, each following class shows us the next order of magnitude. This style allows for a better distinction between low, medium, and high values. However, maps with logarithmically transformed variables are usually less intuitive for the readers and require more attention from them.</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gdp_per_cap"</span>, </span>
-<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>style <span class="op">=</span> <span class="st">"log10_pretty"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>(ref:discrete-methods) Examples of four methods of creating discrete maps: (A) default method (‘pretty’), (B) the ‘fixed’ method with manually set breaks, (C) the ‘jenks’ method, and (D) the ‘log10_pretty’ method.</p>
-<!-- discrete -->
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="fig-discrete-methods" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-discrete-methods-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-discrete-methods-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-discrete-methods-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.8: (ref:discrete-methods)
-</figcaption></figure>
-</div>
-</div>
-</div>
-<!-- The numeric variable can be either regarded as a continuous variable or a count (integer) variable. See as.count. Only applicable if style is "pretty", "fixed", or "log10_pretty". -->
-<p> Continuous maps also represent continuous numerical variables, but without any discrete class intervals (<a href="#fig-cont-methods" class="quarto-xref">Figure&nbsp;<span>7.9</span></a>). Three continuous methods exist in <strong>tmap</strong>: <code>cont</code>, <code>order</code>, and <code>log10</code>. Values change increasingly in all of them, but they differ in the relations between values and colors.</p>
-<p>The <code>cont</code> style creates a smooth, linear gradient. In other words, the change in values is proportionally related to the change in colors. We can see that in <a href="#fig-cont-methods" class="quarto-xref">Figure&nbsp;<span>7.9</span></a> A, where the value change from 20,000 to 40,000 has a similar impact on the color scale as the value change from 40,000 to 60,000. The <code>cont</code> style is similar to the <code>pretty</code> one, where the values also change linearly. The main difference between these styles is that we can see differences between, for example, values of 45,000 and 55,000 in the former, while both values have exactly the same color in the later one. The <code>cont</code> style works well in situations where there is a large number of objects in vectors or a large number of cells in rasters, and where the values change continuously (do not have many outliers).</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gdp_per_cap"</span>,</span>
-<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_continuous</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>However, when the presented variable is skewed or have some outliers, we can use either <code>order</code> or <code>log10</code> style. The <code>order</code> style also uses a smooth gradient with a large number of colors, but the values on the legend do not change linearly (<a href="#fig-cont-methods" class="quarto-xref">Figure&nbsp;<span>7.9</span></a> B). <!--JN: Martijn please check the next sentence --> It is fairly analogous to the <code>quantile</code> style, with the values on a color scale that divides a dataset into several equal-sized groups.</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gdp_per_cap"</span>,</span>
-<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_rank</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Finally, the <code>log10</code> style is the continuous equivalent of the <code>log10_pretty</code> style (<a href="#fig-cont-methods" class="quarto-xref">Figure&nbsp;<span>7.9</span></a> C).</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gdp_per_cap"</span>,</span>
-<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_continuous_log</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="fig-cont-methods" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-cont-methods-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-cont-methods-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cont-methods-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.9: Examples of three methods of creating continuous maps: (A) the ‘cont’ method, (B) the ‘order’ method, and (C) the ‘log10’ method.
-</figcaption></figure>
-</div>
-</div>
-</div>
-<p>The <code>tm_polygons()</code> also offer a third way of specifying the fill color. When the <code>col</code> argument is set to <code>"MAP_COLORS"</code> then polygons will be colored in such a way that adjacent polygons do not get the same color (<a href="#fig-colorscalesmc" class="quarto-xref">Figure&nbsp;<span>7.10</span></a>).</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"MAP_COLORS"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>In this case, it is also possible to change the default colors with the <code>palette</code> argument, but also to activate the internal algorithm to search for a minimal number of colors for visualization by setting <code>minimize = TRUE</code>.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="fig-colorscalesmc" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-colorscalesmc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-colorscalesmc-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-colorscalesmc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.10: Example of a map with adjacent polygons having different colors.
-</figcaption></figure>
-</div>
-</div>
-</div>
-<p>All of the color scale styles mentioned above work not only for <code>tm_polygons()</code> - they can be also applied for <code>tm_symbols()</code> (and its derivatives - <code>tm_dots()</code>, <code>tm_bubbles()</code>, <code>tm_squares()</code>), <code>tm_lines()</code>, <code>tm_fill()</code>, and <code>tm_raster()</code>. The <code>col</code> argument colors symbols’ fillings in <code>tm_symbols()</code>, lines in <code>tm_lines()</code>, and cells in <code>tm_rasters()</code>. <!-- important - mention how to change raster categorical colors (for e.g. data subsets!) --></p>
-<!-- one color only: -->
-<!-- - tm_borders  -->
-<!-- title?? -->
 </section></section><section id="sec-sizes" class="level2" data-number="7.2"><h2 data-number="7.2" class="anchored" data-anchor-id="sec-sizes">
 <span class="header-section-number">7.2</span> Sizes</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ei_points</span> <span class="op">=</span> <span class="fu">read_sf</span><span class="op">(</span><span class="st">"data/easter_island/ei_points.gpkg"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ei_points</span> <span class="op">=</span> <span class="fu">read_sf</span><span class="op">(</span><span class="st">"data/easter_island/ei_points.gpkg"</span><span class="op">)</span></span>
 <span><span class="va">volcanos</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">ei_points</span>, <span class="va">type</span> <span class="op">==</span> <span class="st">"volcano"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Differences in sizes between objects are relatively easy to recognize on maps. Sizes can be used for points, lines (line widths), or text to represent quantitative (numerical) variables, where small values are related to small objects and large values are presented by large objects. Large sizes can be also used to attract viewers’ attention.</p>
-<p>By default, <strong>t</strong>maps present points, lines, or text objects of the same size. For example, <code>tm_symbols()</code> returns a map where each object is a circle with a consistent size<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. We can change the sizes of all objects using the <code>size</code> argument (<a href="#fig-tmsizes" class="quarto-xref">Figure&nbsp;<span>7.11</span></a> A).</p>
+<p>By default, <strong>t</strong>maps present points, lines, or text objects of the same size. For example, <code>tm_symbols()</code> returns a map where each object is a circle with a consistent size<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. We can change the sizes of all objects using the <code>size</code> argument (<a href="#fig-tmsizes-1" class="quarto-xref">Figure&nbsp;<span>7.6 (a)</span></a>).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">volcanos</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">volcanos</span><span class="op">)</span> <span class="op">+</span></span>
 <span> <span class="fu">tm_symbols</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>On the other hand, if we provide the name of the numerical variable in the <code>size</code> argument (e.g., <code>"elevation"</code>), then symbol sizes are scaled proportionally to the provided values. Objects with small values will be represented by smaller circles, while larger values will be represented by larger circles (<a href="#fig-tmsizes" class="quarto-xref">Figure&nbsp;<span>7.11</span></a> B).</p>
+<p>On the other hand, if we provide the name of the numerical variable in the <code>size</code> argument (e.g., <code>"elevation"</code>), then symbol sizes are scaled proportionally to the provided values. Objects with small values will be represented by smaller circles, while larger values will be represented by larger circles (<a href="#fig-tmsizes-2" class="quarto-xref">Figure&nbsp;<span>7.6 (b)</span></a>).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">volcanos</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">volcanos</span><span class="op">)</span> <span class="op">+</span></span>
 <span> <span class="fu">tm_symbols</span><span class="op">(</span>size <span class="op">=</span> <span class="st">"elevation"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- numeric only -->
@@ -680,31 +599,56 @@ Figure&nbsp;7.10: Example of a map with adjacent polygons having different color
 <!-- size.lim    -->
 <!-- sizes.legend    -->
 <!-- sizes.legend.labels     -->
-<!-- potential tmap improvement: use of size.legend instead of sizes.legend -->
-<p>We can adjust size legend breaks with <code>sizes.legend</code> and the corresponding labels with <code>sizes.legend.labels</code> (<a href="#fig-tmsizes" class="quarto-xref">Figure&nbsp;<span>7.11</span></a> C). However, this only modifies the legend, not the related objects.</p>
+<p>We can adjust size legend breaks with <code>ticks</code> and the corresponding labels with <code>labels</code> (<a href="#fig-tmsizes" class="quarto-xref">Figure&nbsp;<span>7.6</span></a> C) as arguments of the <code>tm_scale</code> function provided to the <code>size.scale</code> argument.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">volcanos</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">volcanos</span><span class="op">)</span> <span class="op">+</span></span>
 <span> <span class="fu">tm_symbols</span><span class="op">(</span>size <span class="op">=</span> <span class="st">"elevation"</span>,</span>
 <span>            size.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>ticks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">600</span><span class="op">)</span>,</span>
-<span>                                  labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"high"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>            size.legend <span class="op">=</span> <span class="fu">tm_legend</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Elevation"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>                                  labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"high"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>For example in the above code, we just show examples of how symbols with population of one million and 10 million looks like on the map.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="fig-tmsizes" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<p>For example in the above code, we just show examples of how symbols with elevation of 100 and 600 meters about see level like on the map.</p>
+<div id="fig-tmsizes" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmsizes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-tmsizes-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmsizes" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-tmsizes-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmsizes-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmsizes-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmsizes">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmsizes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.11: Examples of three approaches for changing sizes of symbols: (A) all symbols have a consistent size of 0.5, (B) sizes of symbols depends on the values of the elevation variable, (C) sizes of symbols have a manually created legend.
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmsizes-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) all symbols have a consistent size of 0.5
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmsizes" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-tmsizes-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmsizes-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmsizes-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmsizes">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmsizes-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) sizes of symbols depends on the values of the elevation variabl
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmsizes" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-tmsizes-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmsizes-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmsizes-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmsizes">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmsizes-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) sizes of symbols have a manually created legend
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>Widths of the lines can represent values of numerical variables for line data similar to sizes of the symbols for point data. The <code>lwd</code> argument in <code>tm_lines()</code> creates thin lines for small values and thick lines for large values of the given variable (<a href="#fig-tmlwd" class="quarto-xref">Figure&nbsp;<span>7.12</span></a>).</p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmsizes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.6: Examples of three approaches for changing sizes of symbols
+</figcaption></figure>
+</div>
+<p>Widths of the lines can represent values of numerical variables for line data similar to sizes of the symbols for point data. The <code>lwd</code> argument in <code>tm_lines()</code> creates thin lines for small values and thick lines for large values of the given variable (<a href="#fig-tmlwd" class="quarto-xref">Figure&nbsp;<span>7.7</span></a>).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ei_roads</span> <span class="op">=</span> <span class="fu">read_sf</span><span class="op">(</span><span class="st">"data/easter_island/ei_roads.gpkg"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ei_roads</span> <span class="op">=</span> <span class="fu">read_sf</span><span class="op">(</span><span class="st">"data/easter_island/ei_roads.gpkg"</span><span class="op">)</span></span>
 <span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">ei_roads</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu">tm_lines</span><span class="op">(</span>lwd <span class="op">=</span> <span class="st">"strokelwd"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -713,16 +657,16 @@ Figure&nbsp;7.11: Examples of three approaches for changing sizes of symbols: (A
 <img src="figures/fig-tmlwd-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmlwd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.12: Example of a map where lines’ widths represent values of the corresponding lines.
+Figure&nbsp;7.7: Example of a map where lines’ widths represent values of the corresponding lines.
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>In the above example, values of the <code>"strokelwd"</code> are divided into four groups and represented by four line widths. Lines’ thickness can be change using the <code>scale</code> argument, where the value of 1 is the default, and increasing this values increases lines’ thickness. Also, similarly to the last example of the <code>tm_symbols</code> above, it is possible to modify the lines width legend, by changing its title (<code>title.lwd</code>), categories (<code>lwd.legend</code>), and their names (<code>lwd.legend.labels</code>).</p>
+<p>In the above example, values of the <code>"strokelwd"</code> are divided into four groups and represented by four line widths. Lines’ thickness can be change using the <code>values.scale</code> argument of <code>tm_scale()</code>, where the value of 1 is the default, and increasing this values increases lines’ thickness. <!-- Also, similarly to the last example of the `tm_symbols` above, it is possible to modify the lines width legend, by changing its title (`title.lwd`), categories (`lwd.legend`), and their names (`lwd.legend.labels`). --></p>
 <!-- how about trying some transportation examples here (and expanding them)? -->
-<p>Text labels have a role to name features on a map or just to highlight some of them. Usually, the size of text labels is consistent for the same spatial objects. <!--ref to the text label layer section--> However, text labels can be also used to represent the values of some numerical variables. <a href="#fig-tmtextsize" class="quarto-xref">Figure&nbsp;<span>7.13</span></a> shows an example, in which text labels show names of different volcanos areas, while their sizes are related to their elevations. <!-- This allows us to not only locate different volcanos on the map but also differentiate between less populous areas (e.g., Seattle) and more populous ones (e.g., Tokyo). --></p>
+<p>Text labels have a role to name features on a map or just to highlight some of them. Usually, the size of text labels is consistent for the same spatial objects. <!--ref to the text label layer section--> However, text labels can be also used to represent the values of some numerical variables. <a href="#fig-tmtextsize" class="quarto-xref">Figure&nbsp;<span>7.8</span></a> shows an example, in which text labels show names of different volcanos areas, while their sizes are related to their elevations. <!-- This allows us to not only locate different volcanos on the map but also differentiate between less populous areas (e.g., Seattle) and more populous ones (e.g., Tokyo). --></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">volcanos</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">volcanos</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_text</span><span class="op">(</span>text <span class="op">=</span> <span class="st">"name"</span>, size <span class="op">=</span> <span class="st">"elevation"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_layout</span><span class="op">(</span>legend.outside <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -731,7 +675,7 @@ Figure&nbsp;7.12: Example of a map where lines’ widths represent values of the
 <img src="figures/fig-tmtextsize-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmtextsize-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.13: Example of a map where text sizes represent elevations of the volcanos.
+Figure&nbsp;7.8: Example of a map where text sizes represent elevations of the volcanos.
 </figcaption></figure>
 </div>
 </div>
@@ -747,21 +691,22 @@ Figure&nbsp;7.13: Example of a map where text sizes represent elevations of the 
 <p>Shapes allow representing different categories of point data. They can be very generic, e.g., circle or square, just to be able to differentiate between categories, but often we use symbols that we associate with different types of features. For example, we use the letter <em>P</em> for parking lots, <em>I</em> for information centers, an airplane symbol for airports, or a bus symbol for bus stops.</p>
 <p>To use different shapes, we should use the <code>shape</code> argument in the <code>tm_symbols()</code> function. It expects the name of the categorical variable.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">ei_points</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">ei_points</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_symbols</span><span class="op">(</span>shape <span class="op">=</span> <span class="st">"type"</span>,</span>
 <span>             shape.legend <span class="op">=</span> <span class="fu">tm_legend</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Type:"</span>,</span>
 <span>                                      labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Cave entrance"</span>, <span class="st">"Peak"</span>, <span class="st">"Volcano"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>By default, <strong>tmap</strong> uses symbols of filled circle, square, diamond, point-up triangle, and point-down triangle<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>. However, it is also possible to customize used symbols, their title, and labels. Legend title related to shapes is modified with the <code>title.shape</code> argument, while their labels use the <code>shapes.lables</code> argument.</p>
-<p>Shapes can be specified with the <code>shapes</code> argument, that allows using one of three options. The first one is a numeric value that specifies the plotting character of the symbol<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>. A complete list of available symbols and their corresponding numbers is in the <code><a href="https://rdrr.io/r/graphics/points.html">?pch</a></code> function’s documentation. <!--JN: or should we add a figure with them here??--></p>
+<!-- tmap::tmap_options()$values.var$shape -->
+<p>By default, <strong>tmap</strong> uses symbols of filled circle, square, diamond, point-up triangle, and point-down triangle<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. However, it is also possible to customize used symbols, their title, and labels. Legend title related to shapes their labels is modified with the <code>shape.legend</code> argument.</p>
+<p>Shapes can be specified with the <code>shapes</code> argument, that allows using one of three options. The first one is a numeric value that specifies the plotting character of the symbol. A complete list of available symbols and their corresponding numbers is in the <code><a href="https://rdrr.io/r/graphics/points.html">?pch</a></code> function’s documentation. <!--JN: or should we add a figure with them here??--></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">ei_points</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">ei_points</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_symbols</span><span class="op">(</span>shape <span class="op">=</span> <span class="st">"type"</span>,</span>
 <span>             shape.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Second option is to use a <em>grob</em> object. <!-- add intro what are grobs --> <!-- add reference to some section explaining tmap_grob (chapter 10??) --></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># library(grid)</span></span>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># library(grid)</span></span>
 <span><span class="co"># library(ggplotify)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
@@ -771,7 +716,7 @@ Figure&nbsp;7.13: Example of a map where text sizes represent elevations of the 
 <span><span class="va">p4</span> <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplotGrob.html">ggplotGrob</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, y <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">ei_points</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">ei_points</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_symbols</span><span class="op">(</span>shape <span class="op">=</span> <span class="st">"type"</span>,</span>
 <span>             shape.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">p4</span>, <span class="va">p4</span>, <span class="va">p4</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -779,65 +724,118 @@ Figure&nbsp;7.13: Example of a map where text sizes represent elevations of the 
 <!-- try different codes (including the view mode) -->
 <!-- add new example -->
 <!-- A grob object, which can be a ggplot2 plot object created with ggplotGrob. To specify multiple shapes, a list of grob objects is required. See example of a proportional symbol map with ggplot2 plots. -->
-<p>The last possibility is to use an icon specification created with the <code>tmap_icons()</code> function, that uses any png images. The <code>tmap_icons()</code> function accepts a vector of file paths or urls, and also allows setting the width and height of the icon. In our example, we have three distinct groups, therefore we need to create new icons based on three images - <code>icon1.png</code>, <code>icon2.png</code>, and <code>icon3.png</code> in this case.</p>
+<p>The last possibility is to use an icon specification created with the <code>tmap_icons()</code> function, that uses any png images. The <code>tmap_icons()</code> function accepts a vector of file paths or urls, and also allows setting the width and height of the icon. In our example, we have three distinct groups, therefore we need to create new icons based on three images – <code>icon1.png</code>, <code>icon2.png</code>, and <code>icon3.png</code> in this case.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_icons</span> <span class="op">=</span> <span class="fu">tmap_icons</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"images/icon1.png"</span>, </span>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_icons</span> <span class="op">=</span> <span class="fu">tmap_icons</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"images/icon1.png"</span>, </span>
 <span>                        <span class="st">"images/icon2.png"</span>, </span>
 <span>                        <span class="st">"images/icon3.png"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now, we can use the prepared icons in the <code>shapes</code> argument (<a href="#fig-tmsymshape" class="quarto-xref">Figure&nbsp;<span>7.14</span></a> D). <!-- border.col = NULL --></p>
+<p>Now, we can use the prepared icons in the <code>shapes</code> argument (<a href="#fig-tmsymshape-4" class="quarto-xref">Figure&nbsp;<span>7.9 (d)</span></a>). <!-- border.col = NULL --></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">ei_points</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">ei_points</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_symbols</span><span class="op">(</span>shape <span class="op">=</span> <span class="st">"type"</span>,</span>
 <span>             shape.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>values <span class="op">=</span> <span class="va">my_icons</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="fig-tmsymshape" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div class="cell" data-layout-align="center" data-layout-row="4">
+<div id="fig-tmsymshape" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-row="4" data-layout-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmsymshape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-tmsymshape-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<div class="cell-output-display">
+<div id="fig-tmsymshape-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmsymshape-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmsymshape-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmsymshape">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmsymshape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.14: Examples of two maps with different symbols: (A) default symbols, (B) user-defined symbols, (C) grob objects, and (D) icons.
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmsymshape-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) default symbols
 </figcaption></figure>
 </div>
+</div>
+<div class="cell-output-display">
+<div id="fig-tmsymshape-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmsymshape-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmsymshape-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmsymshape">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmsymshape-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) user-defined symbols
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div id="fig-tmsymshape-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmsymshape-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmsymshape-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmsymshape">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmsymshape-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) grob objects
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div id="fig-tmsymshape-4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmsymshape-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmsymshape-4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmsymshape">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmsymshape-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d) icons
+</figcaption></figure>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmsymshape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.9: Examples of maps with different symbols
+</figcaption></figure>
 </div>
 </div>
 </section><section id="sec-mixing-visual-variables" class="level2" data-number="7.4"><h2 data-number="7.4" class="anchored" data-anchor-id="sec-mixing-visual-variables">
 <span class="header-section-number">7.4</span> Mixing visual variables</h2>
 <p>The values of a given variable can be expressed by different categorical or sequential colors in polygons. Lines can be also colored by one variable, but also widths of the lines can represent values of another quantitative variable. When we use symbols, then we are able to use colors for one qualitative or quantitative variable, sizes for a quantitative variable, and shapes for another qualitative variable. Therefore, it is possible to mix some visual variables for symbols and lines. This section shows only some possible examples of mixing visual variables.</p>
-<p><a href="#fig-mixsymb" class="quarto-xref">Figure&nbsp;<span>7.15</span></a> A shows symbols, which sizes are scales based on the <code>sv</code> variable and they are colored using the values from <code>elevation</code>. This can be set with the <code>size</code> and <code>col</code> arguments.</p>
+<p><a href="#fig-mixsymb-1" class="quarto-xref">Figure&nbsp;<span>7.10 (a)</span></a> shows symbols, which sizes are scales based on the <code>sv</code> variable and they are colored using the values from <code>elevation</code>. This can be set with the <code>size</code> and <code>fill</code> arguments.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">ei_points</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_symbols</span><span class="op">(</span>size <span class="op">=</span> <span class="st">"sv"</span>, fill <span class="op">=</span> <span class="st">"elevation"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">ei_points</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tm_symbols</span><span class="op">(</span>size <span class="op">=</span> <span class="st">"sv"</span>,</span>
+<span>             fill <span class="op">=</span> <span class="st">"elevation"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We can also modify all of the visual variables using the additional arguments explained in the previous sections. For example, we can set the color style (<code>style</code>), color palette (<code>palette</code>), or specify shapes (<code>shapes</code>) (<a href="#fig-mixsymb" class="quarto-xref">Figure&nbsp;<span>7.15</span></a> B).</p>
+<p>We can also modify all of the visual variables using the additional arguments explained in the next sections.<!--update--> For example, we can set the color style, color palette, or specify shapes (<a href="#fig-mixsymb-2" class="quarto-xref">Figure&nbsp;<span>7.10 (b)</span></a>).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">ei_points</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">ei_points</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_symbols</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"elevation"</span>,</span>
 <span>             fill.scale <span class="op">=</span> <span class="fu">tm_scale_continuous</span><span class="op">(</span>values <span class="op">=</span> <span class="st">"Greens"</span><span class="op">)</span>,</span>
 <span>             shape <span class="op">=</span> <span class="st">"type"</span>,</span>
 <span>             shape.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">23</span>, <span class="fl">24</span>, <span class="fl">25</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>When we use plot polygons, there is only one visual variable we can use - color. Therefore, changing of map legend’s title in functions like <code>tm_polygons()</code> or <code>tm_fill()</code> is done with the <code>title</code> argument. However, what to do when we have two or more visual variables in, for example, <code>tm_symbols()</code>? In these cases, we need to specify a corresponding suffix for each <code>title</code> argument. The color title is set with <code>title.col</code>, size title with <code>title.size</code>, and shape title with <code>title.size</code> (<a href="#fig-mixsymb" class="quarto-xref">Figure&nbsp;<span>7.15</span></a> C).</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">ei_points</span><span class="op">)</span> <span class="op">+</span></span>
-<span> <span class="fu">tm_symbols</span><span class="op">(</span>size <span class="op">=</span> <span class="st">"elevation"</span>, size.legend <span class="op">=</span> <span class="fu">tm_legend</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Elevation:"</span><span class="op">)</span>,</span>
-<span>            shape <span class="op">=</span> <span class="st">"type"</span>, shape.legend <span class="op">=</span> <span class="fu">tm_legend</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Type:"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="fig-mixsymb" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div class="cell" data-layout-nrow="2" data-layout-align="center">
+<div id="fig-mixsymb" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-mixsymb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-mixsymb-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-mixsymb" style="flex-basis: 100.0%;justify-content: center;">
+<div id="fig-mixsymb-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-mixsymb-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-mixsymb-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-mixsymb">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mixsymb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.15: Examples of maps using two visual variables at the same time: (A) size and color, (B) color and shape, (C) size and shape.
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-mixsymb-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) size and fill
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>For line data, we can present its qualitative and quantitative variables using colors and quantitative variables using sizes (line widths) (<a href="#fig-mixline" class="quarto-xref">Figure&nbsp;<span>7.16</span></a>).</p>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-mixsymb" style="flex-basis: 100.0%;justify-content: center;">
+<div id="fig-mixsymb-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-mixsymb-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-mixsymb-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-mixsymb">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-mixsymb-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) fill and shape
+</figcaption></figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mixsymb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.10: Examples of maps using two visual variables at the same time
+</figcaption></figure>
+</div>
+</div>
+<p>For line data, we can present its qualitative and quantitative variables using colors and quantitative variables using sizes (line widths) (<a href="#fig-mixline" class="quarto-xref">Figure&nbsp;<span>7.11</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-mixline" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -845,11 +843,155 @@ Figure&nbsp;7.15: Examples of maps using two visual variables at the same time: 
 <img src="figures/fig-mixline-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mixline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.16: A map using two visual variables, color and size (line width), at the same time.
+Figure&nbsp;7.11: A map using two visual variables, color and size (line width), at the same time.
 </figcaption></figure>
 </div>
 </div>
 </div>
+</section><section id="sec-scales" class="level2" data-number="7.5"><h2 data-number="7.5" class="anchored" data-anchor-id="sec-scales">
+<span class="header-section-number">7.5</span> Scales</h2>
+<section id="sec-color-scale-styles" class="level3" data-number="7.5.1"><h3 data-number="7.5.1" class="anchored" data-anchor-id="sec-color-scale-styles">
+<span class="header-section-number">7.5.1</span> Color scale styles</h3>
+<!-- intro about setting colors -->
+<!-- info that generalized to points, lines, polygons, and rasters... -->
+<p> <code>tm_polygons()</code> accepts three ways of specifying the fill color with the <code>col</code> argument<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. The first one is to fill all polygons with the same color. This happens when we provide a single color value, either as a color name or its hexadecimal form (<a href="#sec-color-palettes" class="quarto-xref"><span>Section 7.1.1</span></a>) (<a href="#fig-colorscales1" class="quarto-xref">Figure&nbsp;<span>7.12</span></a>).</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-colorscales1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-colorscales1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-colorscales1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-colorscales1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.12: Example of a map with all polygons filled with the same color.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p> The second way of specifying the fill color is to provide a name of the column (variable) we want to visualize. <strong>tmap</strong> behaves differently depending on the input variable type, but always automatically adds a map legend. In general, a categorical map is created when the provided variable contains characters, factors, or is of the logical type. However, when the provided variable is numerical, then it is possible to create either a discrete or a continuous map.</p>
+<p> An example of a categorical map can be seen in <a href="#fig-colorscales2" class="quarto-xref">Figure&nbsp;<span>7.13</span></a>. We created it by providing a character variable’s name, <code>"wb_region"</code>, in the <code>col</code> argument<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"wb_region"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- categorical -->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-colorscales2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-colorscales2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-colorscales2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-colorscales2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.13: Example of a map in which polygons are colored based on the values of a categorical variable.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>It is possible to change the names of legend labels with the <code>labels</code> argument. However, to change the order of legend labels, we need to provide an ordered factor variable’s name instead of a character one.<!--should we explain how to do it?--> As mentioned in the <a href="#sec-color-palettes" class="quarto-xref"><span>Section 7.1.1</span></a>, we can also change the used color palette with the <code>palette</code> argument.</p>
+<!-- optimal number of classes? 3-7 -->
+<p> Discrete maps, on the other hand, represent continuous numerical variables using discrete class intervals. In other words, values are divided into several groups based on their properties. Several approaches can be used to convert continuous variables to discrete ones, and each of them could result in different groups of values. <strong>tmap</strong> has 14 different methods to create discrete maps<!--list??--> that can be specified with the <code>style</code> argument. Most of them (except <code>"log10_pretty"</code>) use the <strong>classInt</strong> package <span class="citation" data-cites="R-classInt">(<a href="references.html#ref-R-classInt" role="doc-biblioref">Bivand 2020</a>)</span> in the background, therefore some additional information can be found in the <code>?classIntervals</code> function’s documentation.</p>
+<p>By default, the <code>"pretty"</code> style is used (<a href="#fig-discrete-methods" class="quarto-xref">Figure&nbsp;<span>7.14</span></a> A). This style creates breaks that are whole numbers and spaces them evenly <a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gdp_per_cap"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>It is also possible to indicate the desired number of classes using the <code>n</code> argument, when the <code>"pretty"</code> style is used. While not every <code>n</code> is possible depending on the input values, <strong>tmap</strong> will try to create a number of classes as close to possible to the preferred one.</p>
+<p>The next approach is to manually select the limits of each break with the <code>breaks</code> function (<a href="#fig-discrete-methods" class="quarto-xref">Figure&nbsp;<span>7.14</span></a> B). This can be useful when we have some pre-defined breaks, or when we want to compare values between several maps. It expects threshold values for each break, therefore, if we want to have three breaks, we need to provide four thresholds. Additionally, we can add a label to each break with the <code>labels</code> argument.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gdp_per_cap"</span>, </span>
+<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10000</span>, <span class="fl">30000</span>, <span class="fl">111000</span><span class="op">)</span>,</span>
+<span>                                    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- interval.closure    -->
+<p>Another approach is to create breaks automatically using one of many existing classification methods. Three basic methods are <code>"equal"</code>, <code>"sd"</code>, and <code>"quantile"</code> styles. Let’s consider a variable with 100 observations ranging from 0 to 10. The <code>"equal"</code> style divides the range of values into <em>n</em> equal-sized intervals. This style works well when the values change fairly continuously and do not contain any outliers. In <strong>tmap</strong>, we can specify the number of classes with the <code>n</code> argument or the number of classes will be computed automatically <!--?nclass.Sturges-->. For example, when we set <code>n</code> to 4, then our breaks will represent four classes ranging from 0 to 2.5, 2.5 to 5, 5 to 7.5, and 7.5 to 10. The <code>"sd"</code> style represents how much values of a given variable varies from its mean, with each interval having a constant width of the standard deviation. This style is used when it is vital to show how values relate to the mean. The <code>"quantile"</code> style creates several classes with exactly the same number of objects (e.g., spatial features), but having intervals of various lengths. This method has an advantage or not having any empty classes or classes with too few or too many values. However, the resulting intervals from the <code>"quantile"</code> style can often be misleading, with very different values located in the same class.</p>
+<p>To create classes that, on the one hand, contain similar values, and on the other hand, are different from the other classes, we can use some optimization method. The most common optimization method used in cartography is the Jenks optimization method implemented at the <code>"jenks"</code> style (<a href="#fig-discrete-methods" class="quarto-xref">Figure&nbsp;<span>7.14</span></a> C).</p>
+<!-- how about adding ggplot2 histograms?? -->
+<!-- should we add that these methods usually do not allow to compare between datasets? -->
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gdp_per_cap"</span>, </span>
+<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The Fisher method (<code>style = "fisher"</code>) has a similar role, which creates groups with maximized homogeneity <span class="citation" data-cites="fisher_grouping_1958">(<a href="references.html#ref-fisher_grouping_1958" role="doc-biblioref">Fisher 1958</a>)</span>. A different approach is used by the <code>dpih</code> style, which uses kernel density estimations to select the width of the intervals <span class="citation" data-cites="wand_databased_1997">(<a href="references.html#ref-wand_databased_1997" role="doc-biblioref">Wand 1997</a>)</span>. You can visit <code><a href="https://rdrr.io/pkg/KernSmooth/man/dpih.html">?KernSmooth::dpih</a></code> for more details.</p>
+<p>Another group of classification methods uses existing clustering methods. It includes k-means clustering (<code>"kmeans"</code>), bagged clustering (<code>"bclust"</code>), and hierarchical clustering (<code>"hclust"</code>). <!-- ... --></p>
+<p>Finally, there are a few methods created to work well for a variable with a heavy-tailed distribution, including <code>"headtails"</code> and <code>"log10_pretty"</code>. The <code>"headtails"</code> style is an implementation of the head/tail breaks method aimed at heavily right-skewed data. In it, values of the given variable are being divided around the mean into two parts, and the process continues iteratively for the values above the mean (the head) until the head part values are no longer heavy-tailed distributed <span class="citation" data-cites="jiang_head_2013">(<a href="references.html#ref-jiang_head_2013" role="doc-biblioref">Jiang 2013</a>)</span>. The <code>"log10_pretty"</code> style uses a logarithmic base-10 transformation (<a href="#fig-discrete-methods" class="quarto-xref">Figure&nbsp;<span>7.14</span></a> D). In this style, each class starts with a value ten times larger than the beginning of the previous class. In other words, each following class shows us the next order of magnitude. This style allows for a better distinction between low, medium, and high values. However, maps with logarithmically transformed variables are usually less intuitive for the readers and require more attention from them.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gdp_per_cap"</span>, </span>
+<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>style <span class="op">=</span> <span class="st">"log10_pretty"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>(ref:discrete-methods) Examples of four methods of creating discrete maps: (A) default method (‘pretty’), (B) the ‘fixed’ method with manually set breaks, (C) the ‘jenks’ method, and (D) the ‘log10_pretty’ method.</p>
+<!-- discrete -->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-discrete-methods" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-discrete-methods-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-discrete-methods-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-discrete-methods-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.14: (ref:discrete-methods)
+</figcaption></figure>
+</div>
+</div>
+</div>
+<!-- The numeric variable can be either regarded as a continuous variable or a count (integer) variable. See as.count. Only applicable if style is "pretty", "fixed", or "log10_pretty". -->
+<p> Continuous maps also represent continuous numerical variables, but without any discrete class intervals (<a href="#fig-cont-methods" class="quarto-xref">Figure&nbsp;<span>7.15</span></a>). Three continuous methods exist in <strong>tmap</strong>: <code>cont</code>, <code>order</code>, and <code>log10</code>. Values change increasingly in all of them, but they differ in the relations between values and colors.</p>
+<p>The <code>cont</code> style creates a smooth, linear gradient. In other words, the change in values is proportionally related to the change in colors. We can see that in <a href="#fig-cont-methods" class="quarto-xref">Figure&nbsp;<span>7.15</span></a> A, where the value change from 20,000 to 40,000 has a similar impact on the color scale as the value change from 40,000 to 60,000. The <code>cont</code> style is similar to the <code>pretty</code> one, where the values also change linearly. The main difference between these styles is that we can see differences between, for example, values of 45,000 and 55,000 in the former, while both values have exactly the same color in the later one. The <code>cont</code> style works well in situations where there is a large number of objects in vectors or a large number of cells in rasters, and where the values change continuously (do not have many outliers).</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gdp_per_cap"</span>,</span>
+<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_continuous</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>However, when the presented variable is skewed or have some outliers, we can use either <code>order</code> or <code>log10</code> style. The <code>order</code> style also uses a smooth gradient with a large number of colors, but the values on the legend do not change linearly (<a href="#fig-cont-methods" class="quarto-xref">Figure&nbsp;<span>7.15</span></a> B). <!--JN: Martijn please check the next sentence --> It is fairly analogous to the <code>quantile</code> style, with the values on a color scale that divides a dataset into several equal-sized groups.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gdp_per_cap"</span>,</span>
+<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_rank</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Finally, the <code>log10</code> style is the continuous equivalent of the <code>log10_pretty</code> style (<a href="#fig-cont-methods" class="quarto-xref">Figure&nbsp;<span>7.15</span></a> C).</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gdp_per_cap"</span>,</span>
+<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_continuous_log</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-cont-methods" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-cont-methods-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-cont-methods-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cont-methods-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.15: Examples of three methods of creating continuous maps: (A) the ‘cont’ method, (B) the ‘order’ method, and (C) the ‘log10’ method.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>The <code>tm_polygons()</code> also offer a third way of specifying the fill color. When the <code>col</code> argument is set to <code>"MAP_COLORS"</code> then polygons will be colored in such a way that adjacent polygons do not get the same color (<a href="#fig-colorscalesmc" class="quarto-xref">Figure&nbsp;<span>7.16</span></a>).</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"MAP_COLORS"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In this case, it is also possible to change the default colors with the <code>palette</code> argument, but also to activate the internal algorithm to search for a minimal number of colors for visualization by setting <code>minimize = TRUE</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-colorscalesmc" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-colorscalesmc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-colorscalesmc-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-colorscalesmc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.16: Example of a map with adjacent polygons having different colors.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>All of the color scale styles mentioned above work not only for <code>tm_polygons()</code> - they can be also applied for <code>tm_symbols()</code> (and its derivatives - <code>tm_dots()</code>, <code>tm_bubbles()</code>, <code>tm_squares()</code>), <code>tm_lines()</code>, <code>tm_fill()</code>, and <code>tm_raster()</code>. The <code>col</code> argument colors symbols’ fillings in <code>tm_symbols()</code>, lines in <code>tm_lines()</code>, and cells in <code>tm_rasters()</code>. <!-- important - mention how to change raster categorical colors (for e.g. data subsets!) --></p>
+<!-- one color only: -->
+<!-- - tm_borders  -->
+<!-- title?? -->
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -911,16 +1053,16 @@ Wand, M. P. 1997. <span>“Data-<span>Based Choice</span> of <span>Histogram Bin
 Zeileis, Achim, Jason C. Fisher, Kurt Hornik, Ross Ihaka, Claire D. McWhite, Paul Murrell, Reto Stauffer, and Claus O. Wilke. 2019. <span>“<span class="nocase">colorspace</span>: A Toolbox for Manipulating and Assessing Colors and Palettes.”</span> arXiv 1903.06490. arXiv.org E-Print Archive. <a href="http://arxiv.org/abs/1903.06490">http://arxiv.org/abs/1903.06490</a>.
 </div>
 </div>
-</section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+</section></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
 <li id="fn1"><p>Other visual variables include position, orientation, and texture.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Learn more about them at https://developer.r-project.org/Blog/public/2019/04/01/hcl-based-color-palettes-in-grdevices/ and https://developer.r-project.org/Blog/public/2019/11/21/a-new-palette-for-r/index.html.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>To see and compare examples of every color scale style from <strong>tmap</strong> visit https://geocompr.github.io/post/2019/tmap-color-scales/.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>The <code>tm_polygons(col = "region_un", style = "cat")</code> code is run automatically in this case.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>For more information visit the <code>?pretty()</code> function documentation<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>The default value of size is 1, which corresponds to the area of symbols that have the same height as one line of text.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>They are represented in R by numbers from 21 to 25.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>However, this is not supported for the “view” mode.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>You can also derive them using <code><a href="https://mtennekes.github.io/cols4all/reference/c4a.html">cols4all::c4a()</a></code> function.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>The default value of size is 1, which corresponds to the area of symbols that have the same height as one line of text.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>They are represented in R by numbers from 21 to 25.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>To see and compare examples of every color scale style from <strong>tmap</strong> visit https://geocompr.github.io/post/2019/tmap-color-scales/.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>The <code>tm_polygons(col = "region_un", style = "cat")</code> code is run automatically in this case.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>For more information visit the <code>?pretty()</code> function documentation<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
