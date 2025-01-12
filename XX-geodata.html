@@ -123,8 +123,7 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
-</script><script src="site_libs/kePrint-0.0.1/kePrint.js"></script><link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -428,44 +427,155 @@ Figure&nbsp;2.1: Instances of spatial vector data model: POINTS, LINES, and POLY
 </section><section id="sec-raster-data-model" class="level3" data-number="2.2.2"><h3 data-number="2.2.2" class="anchored" data-anchor-id="sec-raster-data-model">
 <span class="header-section-number">2.2.2</span> Raster data model</h3>
 <p> The raster data model represents the world using a continuous grid of cells<!--pixels-->, where each cell has a single associated value (<a href="#fig-raster-intro" class="quarto-xref">Figure&nbsp;<span>2.2</span></a>). Depending on the type of values, we can distinguish continuous and categorical rasters. In continuous rasters, such as elevation or precipitation, values vary progressively. Categorical rasters, on the other hand, uses integer values to represent classes. Their examples include land cover or soil types maps. Raster data can also contain cells for which we do not know the value (<a href="#fig-raster-intro" class="quarto-xref">Figure&nbsp;<span>2.2</span></a>). For example, data for this part of the area was not collected, or these locations are outside of our area of interest.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-raster-intro" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-raster-intro" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-raster-intro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="XX-geodata_files/figure-html/fig-raster-intro-1.png" class="img-fluid figure-img" width="672">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-raster-intro" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-raster-intro-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-raster-intro-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="XX-geodata_files/figure-html/fig-raster-intro-1.png" class="img-fluid figure-img" data-ref-parent="fig-raster-intro" width="672">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-raster-intro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.2: Basic representation of the raster data model: (1) Cell IDs, (2) Cell values, and (3) A raster map
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-raster-intro-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Cell IDs
 </figcaption></figure>
 </div>
 </div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-raster-intro" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-raster-intro-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-raster-intro-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="XX-geodata_files/figure-html/fig-raster-intro-2.png" class="img-fluid figure-img" data-ref-parent="fig-raster-intro" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-raster-intro-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Cell values
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-raster-intro" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-raster-intro-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-raster-intro-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="XX-geodata_files/figure-html/fig-raster-intro-3.png" class="img-fluid figure-img" data-ref-parent="fig-raster-intro" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-raster-intro-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) A raster map
+</figcaption></figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-raster-intro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.2: Basic representations of the raster data model
+</figcaption></figure>
 </div>
 <p> When we think about raster data, most of the time we are referring to regular grids (<a href="#fig-grid-types" class="quarto-xref">Figure&nbsp;<span>2.3</span></a>). In regular grids, each cell has the same, constant size, and coordinates change from top to bottom and from left to right<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. <!-- I know it is a simplification--> Regular rasters can be transformed into rotated and sheared rasters (<a href="#fig-grid-types" class="quarto-xref">Figure&nbsp;<span>2.3</span></a>). Rotated grids are the result of transforming both coordinated, <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> using the same rotation coefficients. Sheared grids are created when the rotation coefficients are not equal. Rectilinear grids, on the other hand, have orthogonal axes, but consist of rectangular cells with different sizes and shapes (<a href="#fig-grid-types" class="quarto-xref">Figure&nbsp;<span>2.3</span></a>). In the last type of raster data grids, curvilinear grids, cells are cuboids of different sizes and shapes (<a href="#fig-grid-types" class="quarto-xref">Figure&nbsp;<span>2.3</span></a>).</p>
 <!-- Q:should the counting in the below figure start from bottom left? -->
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-grid-types" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-grid-types" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-grid-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="XX-geodata_files/figure-html/fig-grid-types-1.png" class="img-fluid figure-img" width="672">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-grid-types" style="flex-basis: 20.0%;justify-content: flex-start;">
+<div id="fig-grid-types-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-grid-types-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="XX-geodata_files/figure-html/fig-grid-types-1.png" class="img-fluid figure-img" data-ref-parent="fig-grid-types" width="672">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grid-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.3: Main types of raster data grids: (1) Regular, (2) Rotated, (3) Sheared, (4) Rectilinear, and (5) Curvilinear
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-grid-types-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Regular
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-grid-types" style="flex-basis: 20.0%;justify-content: flex-start;">
+<div id="fig-grid-types-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-grid-types-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="XX-geodata_files/figure-html/fig-grid-types-2.png" class="img-fluid figure-img" data-ref-parent="fig-grid-types" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-grid-types-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Rotated
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-grid-types" style="flex-basis: 20.0%;justify-content: flex-start;">
+<div id="fig-grid-types-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-grid-types-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="XX-geodata_files/figure-html/fig-grid-types-3.png" class="img-fluid figure-img" data-ref-parent="fig-grid-types" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-grid-types-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) Sheared
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-grid-types" style="flex-basis: 20.0%;justify-content: flex-start;">
+<div id="fig-grid-types-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-grid-types-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="XX-geodata_files/figure-html/fig-grid-types-4.png" class="img-fluid figure-img" data-ref-parent="fig-grid-types" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-grid-types-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d) Rectilinear
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-grid-types" style="flex-basis: 20.0%;justify-content: flex-start;">
+<div id="fig-grid-types-5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-grid-types-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="XX-geodata_files/figure-html/fig-grid-types-5.png" class="img-fluid figure-img" data-ref-parent="fig-grid-types" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-grid-types-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(e) Curvilinear
 </figcaption></figure>
 </div>
 </div>
 </div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grid-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.3: Main types of raster data grids
+</figcaption></figure>
+</div>
 <p>Contrary to spatial vector data, a basic raster data stores just one attribute. It is, however, possible to stack together many single rasters (also known as raster layers). This allows us to store and operate on many rasters having the same dimensions at the same time. Examples of multi-layer rasters include satellite imageries or temporal rasters. Satellite imageries usually consist of many bands (layers) for different wavelengths. The most basic bands, representing the colors red, green, and blue, can be connected together to create one composite image with true colors (<a href="#fig-rgb-raster" class="quarto-xref">Figure&nbsp;<span>2.4</span></a>). Temporal rasters store one attribute, but for many moments in time. <!-- + comparing different attributes for the same area --> Additional information about multi-layer rasters can be also found in <a href="#sec-spatial-data-cubes" class="quarto-xref"><span>Section 2.2.3</span></a>.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-rgb-raster" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-rgb-raster" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-rgb-raster-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="XX-geodata_files/figure-html/fig-rgb-raster-1.png" class="img-fluid figure-img" width="672">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-rgb-raster" style="flex-basis: 25.0%;justify-content: flex-start;">
+<div id="fig-rgb-raster-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-rgb-raster-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="XX-geodata_files/figure-html/fig-rgb-raster-1.png" class="img-fluid figure-img" data-ref-parent="fig-rgb-raster" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-rgb-raster-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Red
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-rgb-raster" style="flex-basis: 25.0%;justify-content: flex-start;">
+<div id="fig-rgb-raster-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-rgb-raster-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="XX-geodata_files/figure-html/fig-rgb-raster-2.png" class="img-fluid figure-img" data-ref-parent="fig-rgb-raster" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-rgb-raster-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Green
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-rgb-raster" style="flex-basis: 25.0%;justify-content: flex-start;">
+<div id="fig-rgb-raster-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-rgb-raster-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="XX-geodata_files/figure-html/fig-rgb-raster-3.png" class="img-fluid figure-img" data-ref-parent="fig-rgb-raster" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-rgb-raster-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) Blue
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-rgb-raster" style="flex-basis: 25.0%;justify-content: flex-start;">
+<div id="fig-rgb-raster-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-rgb-raster-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="XX-geodata_files/figure-html/fig-rgb-raster-4.png" class="img-fluid figure-img" data-ref-parent="fig-rgb-raster" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-rgb-raster-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d) Composite
+</figcaption></figure>
+</div>
+</div>
+</div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rgb-raster-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2.4: Example of three satellite imagery bands: red, green, blue, and the composite image with true colors created using these three bands.
 </figcaption></figure>
-</div>
-</div>
 </div>
 <p> Similarly to vector data, a large number of raster file formats exists. <!-- text files ?--> Currently, the GeoTIFF format (<code>.tif</code> or <code>.tiff</code>) is one of the most popular spatial raster formats. It is an extended image TIF format that stores spatial metadata (e.g., map projection) along the values. Another popular spatial raster formats include Arc ASCII (<code>.asc</code>) and ERDAS Imagine (<code>.img</code>). <!-- ncdf??? --></p>
 </section><section id="sec-spatial-data-cubes" class="level3" data-number="2.2.3"><h3 data-number="2.2.3" class="anchored" data-anchor-id="sec-spatial-data-cubes">
@@ -550,7 +660,7 @@ Projected CRS: WGS 84 / Equal Earth Greenwich
 <p>The <code>worldvector</code> object has MULTIPOLYGON geometry type, where each feature (row) can consist of one or more polygons. Each polygon’s vertices are represented by a pair of values (<code>dimension: XY</code>). Bounding box allows to quickly understand the spatial extension of the input data. <!--...--> Finally, it has projected CRS named WGS 84 / Equal Earth Greenwich. You can learn more about Coordinate Reference Systems in <a href="#sec-crs" class="quarto-xref"><span>Section 2.4</span></a>. <!-- ref to CRS section --></p>
 <p>Spatial vector data of class <code>sf</code> can be also obtained using some of other R data packages. <!-- add REFs--> For example, <strong>rnaturalearth</strong> allows to download world map data, <strong>osmdata</strong> imports OpenStreetMap data as <code>sf</code> objects, and <strong>tigris</strong> loads TIGER/Line data. <!-- add reference to geocompr --> <!-- add reference to https://cran.r-project.org/web/views/Spatial.html (after my updates) --></p>
 <p>The <strong>tmap</strong> package accepts spatial vector data objects from both <strong>sf</strong> and <strong>sp</strong> packages. In case of having vector objects in a different representation, they should be converted into <code>sf</code> objects first, before making maps. The <strong>sf</strong> package has the <code><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html">st_as_sf()</a></code> function that translates objects of many classes, including <code>Spatial</code> (from the <strong>sp</strong> package), <code>ppp</code>, <code>psp</code>, and <code>lpp</code> (from the <strong>spatstat</strong> package), to the objects of class <code>sf</code>. The <code><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html">st_as_sf()</a></code> function also allows to turn data frames into <code>sf</code> objects - the user needs to provide the input data frame, names of columns with coordinates, and additionally definition of the CRS of the data. For example <code>my_sf = st_as_sf(my_df, coords = c("Xcolumn", "Ycolumn"), crs = "EPSG:4326")</code>.</p>
-<p>If you want to learn more about operating on <code>sf</code> objects, we recommend visiting the package website and vignettes at https://r-spatial.github.io/sf/index.html and reading <a href="https://geocompr.github.io/">the Geocomputation with R book</a> <span class="citation" data-cites="lovelace2019geocomputation">(<a href="references.html#ref-lovelace2019geocomputation" role="doc-biblioref">Lovelace, Nowosad, and Muenchow 2019</a>)</span>. <!-- - vector simplification? --></p>
+<p>If you want to learn more about operating on <code>sf</code> objects, we recommend visiting the package website and vignettes at <a href="https://r-spatial.github.io/sf/" class="uri">https://r-spatial.github.io/sf/</a> and reading <a href="https://geocompr.github.io/">the Geocomputation with R book</a> <span class="citation" data-cites="lovelace_geocomputation_2025">(<a href="references.html#ref-lovelace_geocomputation_2025" role="doc-biblioref">Lovelace, Nowosad, and Muenchow 2025</a>)</span>. <!-- - vector simplification? --></p>
 </section><section id="sec-the-stars-package" class="level3" data-number="2.3.2"><h3 data-number="2.3.2" class="anchored" data-anchor-id="sec-the-stars-package">
 <span class="header-section-number">2.3.2</span> The stars package</h3>
 <p> </p>
@@ -703,146 +813,232 @@ Figure&nbsp;2.12: The Robinson projection, which is pseudo-cylindrical.
 </div>
 </div>
 </div>
-<p> An example of a conic map projection is shown in <a href="#fig-crs-conic-planar" class="quarto-xref">Figure&nbsp;<span>2.13</span></a>(a). As a result of unfolding a cone on a flat surface, a gap is created. The size (angle) of this gap depends on the width of the cone. There are also pseudo-conic map projections in which some meridians (longitude lines) are curved. Conic map projections are useful for mid-latitude areas where the surfaces of the earth and the cone are almost parallel to each other.</p>
+<p> An example of a conic map projection is shown in <a href="#fig-crs-conic-planar-1" class="quarto-xref">Figure&nbsp;<span>2.13 (a)</span></a>. As a result of unfolding a cone on a flat surface, a gap is created. The size (angle) of this gap depends on the width of the cone. There are also pseudo-conic map projections in which some meridians (longitude lines) are curved. Conic map projections are useful for mid-latitude areas where the surfaces of the earth and the cone are almost parallel to each other.</p>
 <p> Planar map projections, also known as azimuthal projections, project the Earth on a disk. This can be done in several ways. This can best be explained by the position of an imaginary light source. It can be placed inside the globe, at the surface of the globe opposite to the disk, and at an infinite distance opposite to the disk. The corresponding families of projections are called gnomonic, stereographic, and orthogonal projections.</p>
-<p>Planar map projections are often used for a specific country or continent. An example is the Lambert Azimuthal Equal-Area projection (EPSG3035), shown in <a href="#fig-crs-conic-planar" class="quarto-xref">Figure&nbsp;<span>2.13</span></a>(b), which is optimized for Europe. It can be classified as a stereographic projection, although the light beams are not straight but curved. Another example of a planar map projection is the orange shown in <a href="#fig-orange" class="quarto-xref">Figure&nbsp;<span>2.7</span></a>. This is an orthogonal projection.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-crs-conic-planar" class="quarto-float quarto-figure quarto-figure-center anchored">
+<p>Planar map projections are often used for a specific country or continent. An example is the Lambert Azimuthal Equal-Area projection (EPSG3035), shown in <a href="#fig-crs-conic-planar-2" class="quarto-xref">Figure&nbsp;<span>2.13 (b)</span></a>, which is optimized for Europe. It can be classified as a stereographic projection, although the light beams are not straight but curved. Another example of a planar map projection is the orange shown in <a href="#fig-orange" class="quarto-xref">Figure&nbsp;<span>2.7</span></a>. This is an orthogonal projection.</p>
+<div id="fig-crs-conic-planar" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-crs-conic-planar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="XX-geodata_files/figure-html/fig-crs-conic-planar-1.png" class="img-fluid figure-img" width="672">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-crs-conic-planar" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-crs-conic-planar-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-crs-conic-planar-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="XX-geodata_files/figure-html/fig-crs-conic-planar-1.png" class="img-fluid figure-img" data-ref-parent="fig-crs-conic-planar" width="672">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-crs-conic-planar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.13: Examples of a conic (a) and a planar (b) projection.
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-crs-conic-planar-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) World Equidistant Conic projection
 </figcaption></figure>
 </div>
 </div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-crs-conic-planar" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-crs-conic-planar-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-crs-conic-planar-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="XX-geodata_files/figure-html/fig-crs-conic-planar-2.png" class="img-fluid figure-img" data-ref-parent="fig-crs-conic-planar" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-crs-conic-planar-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Lambert Azimuthal Equal-Area projection
+</figcaption></figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-crs-conic-planar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.13: Examples of a conic and a planar projection.
+</figcaption></figure>
 </div>
 <p> The (interrupted) Goode homolosine projection shown in <a href="#fig-crs-goode" class="quarto-xref">Figure&nbsp;<span>2.8</span></a> is an example of an interrupted projection. A special class of these projections are polyhedral projections, which consists of planar faces. In <a href="#fig-crs-types" class="quarto-xref">Figure&nbsp;<span>2.11</span></a> a polyhedral of six faces is illustrated. There is no limit of the number of faces, as the myriahedral projections (TODO reference Van Wijck paper) illustrate.</p>
 </section><section id="sec-crs-choose" class="level3" data-number="2.4.5"><h3 data-number="2.4.5" class="anchored" data-anchor-id="sec-crs-choose">
 <span class="header-section-number">2.4.5</span> Which projection to choose?</h3>
 <p> Hopefully it is clear that there is no perfect projection, since each projection has its pros and cons. Whether a projection is good for a certain application, depends on two factors. The first factor is the type of application and in particular which map projection properties are useful or even required for that application. For instance, navigation requires other map projection properties than statistical maps. The second factor is the area of interest. Is the whole World visualized or only a part, and in the latter case, which part? In this section, guidelines are provided to choose a proper projection based on those two aspects.</p>
-<p>Before we go deeper into selecting a projection, it is worth noting that for many countries and continents, government agencies already have chosen projections to be the standard for mapping spatial data. For instance, a standard for Europe, which is used by Eurostat (the statistical agency of the European Union), is the Lambert Azimuthal Equal-Area projection shown in <a href="#fig-crs-conic-planar" class="quarto-xref">Figure&nbsp;<span>2.13</span></a> (b). If the area of interest has such a standard, it is recommended to use it, because it can be safely assumed that this standard is a proper projection, and moreover, it makes cooperation and communication with other parties easier. However, be aware of the limitations that this particular projection may have, and that there may be better alternatives out there.</p>
+<p>Before we go deeper into selecting a projection, it is worth noting that for many countries and continents, government agencies already have chosen projections to be the standard for mapping spatial data. For instance, a standard for Europe, which is used by Eurostat (the statistical agency of the European Union), is the Lambert Azimuthal Equal-Area projection shown in <a href="#fig-crs-conic-planar-2" class="quarto-xref">Figure&nbsp;<span>2.13 (b)</span></a>. If the area of interest has such a standard, it is recommended to use it, because it can be safely assumed that this standard is a proper projection, and moreover, it makes cooperation and communication with other parties easier. However, be aware of the limitations that this particular projection may have, and that there may be better alternatives out there.</p>
 <p><strong>Map projection properties</strong></p>
 <p> The type of application is important for the choice of a map projection. However, it would be quite tedious to list all possible applications and provide projection recommendations for each of them. Instead, we focus on four map projection properties. The key step is to find out which of these properties are useful or even required for the target application. The four properties are listed in the following table.</p>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Map projection properties.</caption>
-<thead><tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left; width: 14em; font-weight: bold;">Property</td>
-<td style="text-align: left;">Conformal</td>
-<td style="text-align: left; width: 14em;">Equal area</td>
-<td style="text-align: left;">Equidistant</td>
-<td style="text-align: left; width: 14em;">Azimuthal</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; width: 14em; font-weight: bold;">Preserves</td>
-<td style="text-align: left;">Local angle (shape)</td>
-<td style="text-align: left; width: 14em;">Area</td>
-<td style="text-align: left;">Distance</td>
-<td style="text-align: left; width: 14em;">Direction</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left; width: 14em; font-weight: bold;">Applications</td>
-<td style="text-align: left;">Navigation, climate</td>
-<td style="text-align: left; width: 14em;">Statistics</td>
-<td style="text-align: left;">Geology</td>
-<td style="text-align: left; width: 14em;">Geology</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; width: 14em; font-weight: bold;">Examples (cyclindrical)</td>
-<td style="text-align: left;">Mercator</td>
-<td style="text-align: left; width: 14em;">Gall-Peters, Eckert IV</td>
-<td style="text-align: left;">Equirectangular</td>
-<td style="text-align: left; width: 14em;">none</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left; width: 14em; font-weight: bold;">Examples (conic)</td>
-<td style="text-align: left;">Lambert conformal conic</td>
-<td style="text-align: left; width: 14em;">Albers conic</td>
-<td style="text-align: left;">Equidistant conic</td>
-<td style="text-align: left; width: 14em;">none</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; width: 14em; font-weight: bold;">Examples (planar)</td>
-<td style="text-align: left;">Stereographic</td>
-<td style="text-align: left; width: 14em;">Lambert azimuthal equal-area</td>
-<td style="text-align: left;">Azimuthal equidistant</td>
-<td style="text-align: left; width: 14em;">Stereographic, Lambert azimuthal equal-area</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left; width: 14em; font-weight: bold;">Examples (interrupted)</td>
-<td style="text-align: left;">Myriahedral</td>
-<td style="text-align: left; width: 14em;">Goode homolosine, Myriahedral</td>
-<td style="text-align: left;">none</td>
-<td style="text-align: left; width: 14em;">none</td>
-</tr>
+<!-- preamble start -->
+
+    <script>
+
+      function styleCell_s934qahjlizssgcvjeyt(i, j, css_id) {
+          var table = document.getElementById("tinytable_s934qahjlizssgcvjeyt");
+          var cell = table.rows[i]?.cells[j];  // Safe navigation to avoid errors
+          if (cell) {
+              console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
+              cell.classList.add(css_id);
+          } else {
+              console.warn(`Cell at (${i}, ${j}) not found.`);
+          }
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_s934qahjlizssgcvjeyt');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_s934qahjlizssgcvjeyt(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_s934qahjlizssgcvjeyt");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: 7, j: 0 }, { i: 7, j: 1 }, { i: 7, j: 2 }, { i: 7, j: 3 }, { i: 7, j: 4 },  ], css_id: 'tinytable_css_qehcmn3pch4uacvympdr',}, 
+          { positions: [ { i: 0, j: 0 }, { i: 0, j: 1 }, { i: 0, j: 2 }, { i: 0, j: 3 }, { i: 0, j: 4 },  ], css_id: 'tinytable_css_lm8vtu7l4uc0408hg1dc',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  styleCell_s934qahjlizssgcvjeyt(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script><style>
+      /* tinytable css entries after */
+      .table td.tinytable_css_qehcmn3pch4uacvympdr, .table th.tinytable_css_qehcmn3pch4uacvympdr { border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_lm8vtu7l4uc0408hg1dc, .table th.tinytable_css_lm8vtu7l4uc0408hg1dc { border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+    </style>
+<div class="container">
+      <table class="table table-borderless" id="tinytable_s934qahjlizssgcvjeyt" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+<thead>
+</thead><caption>Map projection properties.</caption>
+              <tbody><tr>
+<th scope="col">rowname</th>
+                <th scope="col">1</th>
+                <th scope="col">2</th>
+                <th scope="col">3</th>
+                <th scope="col">4</th>
+              </tr>
+
+</tbody><tbody>
+<tr>
+<td>Property               </td>
+                  <td>Conformal              </td>
+                  <td>Equal area                   </td>
+                  <td>Equidistant          </td>
+                  <td>Azimuthal                                  </td>
+                </tr>
+<tr>
+<td>Preserves              </td>
+                  <td>Local angle (shape)    </td>
+                  <td>Area                         </td>
+                  <td>Distance             </td>
+                  <td>Direction                                  </td>
+                </tr>
+<tr>
+<td>Applications           </td>
+                  <td>Navigation, climate    </td>
+                  <td>Statistics                   </td>
+                  <td>Geology              </td>
+                  <td>Geology                                    </td>
+                </tr>
+<tr>
+<td>Examples (cyclindrical)</td>
+                  <td>Mercator               </td>
+                  <td>Gall-Peters, Eckert IV       </td>
+                  <td>Equirectangular      </td>
+                  <td>none                                       </td>
+                </tr>
+<tr>
+<td>Examples (conic)       </td>
+                  <td>Lambert conformal conic</td>
+                  <td>Albers conic                 </td>
+                  <td>Equidistant conic    </td>
+                  <td>none                                       </td>
+                </tr>
+<tr>
+<td>Examples (planar)      </td>
+                  <td>Stereographic          </td>
+                  <td>Lambert azimuthal equal-area </td>
+                  <td>Azimuthal equidistant</td>
+                  <td>Stereographic, Lambert azimuthal equal-area</td>
+                </tr>
+<tr>
+<td>Examples (interrupted) </td>
+                  <td>Myriahedral            </td>
+                  <td>Goode homolosine, Myriahedral</td>
+                  <td>none                 </td>
+                  <td>none                                       </td>
+                </tr>
 </tbody>
 </table>
+</div>
+<!-- hack to avoid NA insertion in last line -->
 </div>
 </div>
 <p> A <em>conformal</em> projection means that local angles are preserved. In practice, that means that for instance a map of a crossroad preserves the angles between the roads. Therefore, this property is required for navigational purposes. As a consequence that local angles are preserved, local shapes are also preserved. That means that an small island will be drawn on a map in its true shape, as seen from the sky perpendicular above it. The Web Mercator shown in <a href="#fig-crs-05" class="quarto-xref">Figure&nbsp;<span>2.10</span></a> satisfies this property; the closer an area is to one of the poles, the more it is enlarged, but since this is done in both dimensions (latitude and longitude), local shapes are preserved.</p>
 <p> A map projection is called <em>equal-area</em> if the areas are proportional to the true areas. This is strongly recommended for maps that show statistics in order to prevent perceptual bias. <a href="#fig-crs-bias" class="quarto-xref">Figure&nbsp;<span>2.14</span></a> shows two World maps of population density per country, one in the Web Mercator projection and the other in Eckert IV projection. The perception of World population is different in these maps; in (a) the vast lands on low-populated areas seem to be Canada, Greenland, and Russia, whereas in (b) also North Africa and Australia emerge as vast low-populated areas.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-crs-bias" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-crs-bias" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-crs-bias-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="XX-geodata_files/figure-html/fig-crs-bias-1.png" class="img-fluid figure-img" style="width:100.0%">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-crs-bias" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-crs-bias-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-crs-bias-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="XX-geodata_files/figure-html/fig-crs-bias-1.png" class="img-fluid figure-img" style="width:100.0%" data-ref-parent="fig-crs-bias">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-crs-bias-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.14: The Robinson projection, which is pseudo-cylindrical.
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-crs-bias-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Web Mercator is not equal-area
 </figcaption></figure>
 </div>
 </div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-crs-bias" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-crs-bias-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-crs-bias-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="XX-geodata_files/figure-html/fig-crs-bias-2.png" class="img-fluid figure-img" style="width:100.0%" data-ref-parent="fig-crs-bias">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-crs-bias-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Eckert IV is equal-area
+</figcaption></figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-crs-bias-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.14: Comparison of Web Mercator and Eckert IV projections.
+</figcaption></figure>
 </div>
 <p> The other two map projection properties are related to one central point on the map. A map projection is called <em>equidistant</em> if the distances to any other point in the map are preserved, and <em>azimuthal</em> if the directions to any other point are preserved. These properties are in particular useful in the field of geology. One example is a seismic map around the epicenter of a recent earthquake, where it is important to how far and in which direction the vibrations are spreading.</p>
 <p> A map projection can satisfy at most two of these properties. Many map projection do not satisfy any property but are intended as a compromise. An example is the Robinson projection, shown in <a href="#fig-crs-robin" class="quarto-xref">Figure&nbsp;<span>2.12</span></a>.</p>
 <p><strong>Area of interest</strong></p>
 <p> The next aspect that is important for the choice of a map projection is the area of interest. In general, the larger the area, the more concessions have to be made, since the larger the area, the more difficult it is to make a two-dimensional projection.</p>
 <p>The following table provides recommendations of map projection types based on the area size and on the latitude of the area.</p>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Recommended projections.</caption>
-<thead><tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">View</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Low latitude (equator)</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Mid latitude</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">High latitude (poles)</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left; width: 10em;">World</td>
-<td style="text-align: left;">Pseudo-cylindrical</td>
-<td style="text-align: left;">Pseudo-cylindrical</td>
-<td style="text-align: left;">Pseudo-cylindrical</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; width: 10em;">Hemisphere</td>
-<td style="text-align: left;">Azimuthal</td>
-<td style="text-align: left;">Azimuthal</td>
-<td style="text-align: left;">Azimuthal</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left; width: 10em;">Continent or smaller</td>
-<td style="text-align: left;">Cylindrical or azimuthal</td>
-<td style="text-align: left;">Conic or azimuthal</td>
-<td style="text-align: left;">Azimuthal</td>
-</tr>
-</tbody>
-</table>
+<div id="tbl-crs-recommendations" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-crs-recommendations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.1
+</figcaption><div aria-describedby="tbl-crs-recommendations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+
 </div>
 </div>
-<p>For World maps, pseudo-cylindrical map projections, such as the Robinson projection (<a href="#fig-crs-robin" class="quarto-xref">Figure&nbsp;<span>2.12</span></a>) and the Eckert IV projection (<a href="#fig-crs-bias" class="quarto-xref">Figure&nbsp;<span>2.14</span></a>(b)) are very popular because they have less distortion other map projections. For areas that cover a half of the sphere, i.e.&nbsp;a hemisphere, azimuthal map projections are recommended. There are four hemispheres that are often used: the Northern and Southern Hemisphere, with respectively the North and South Pole as center, the Western Hemisphere consisting of the Americas, and the Eastern Hemisphere, which includes the other continents. However, other hemispheres are often used implicitly, such as a hemisphere centered on Europe used in the Lambert Azimuthal Equal-Area projection shown in <a href="#fig-crs-conic-planar" class="quarto-xref">Figure&nbsp;<span>2.13</span></a>(b).</p>
+</figure>
+</div>
+<p>For World maps, pseudo-cylindrical map projections, such as the Robinson projection (<a href="#fig-crs-robin" class="quarto-xref">Figure&nbsp;<span>2.12</span></a>) and the Eckert IV projection (<a href="#fig-crs-bias-2" class="quarto-xref">Figure&nbsp;<span>2.14 (b)</span></a>) are very popular because they have less distortion other map projections. For areas that cover a half of the sphere, i.e.&nbsp;a hemisphere, azimuthal map projections are recommended. There are four hemispheres that are often used: the Northern and Southern Hemisphere, with respectively the North and South Pole as center, the Western Hemisphere consisting of the Americas, and the Eastern Hemisphere, which includes the other continents. However, other hemispheres are often used implicitly, such as a hemisphere centered on Europe used in the Lambert Azimuthal Equal-Area projection shown in <a href="#fig-crs-conic-planar-2" class="quarto-xref">Figure&nbsp;<span>2.13 (b)</span></a>.</p>
 <p>For areas with the size of a continent or country, the azimuthal map projection type can be used when centered on the area of interest. In particular, the Lambert Azimuthal Equal-Area projection when equal area is required, and the Azimuthal Equidistant projection when preserving distances is important. Alternatively, cylindrical and conic map projection types can be used for areas at low and mid latitudes respectively. Another alternative is to use a UTM projection. However, this is only recommended when the target area spans less than 6 degrees longitude.<!--and do not cross the UTM zone lines--></p>
 </section><section id="sec-crs-in-r" class="level3" data-number="2.4.6"><h3 data-number="2.4.6" class="anchored" data-anchor-id="sec-crs-in-r">
 <span class="header-section-number">2.4.6</span> CRS in R</h3>
@@ -988,23 +1184,44 @@ Projected CRS: WGS 84 / Equal Earth Greenwich
 </div>
 </div>
 <p><a href="#fig-crs-trans-plot" class="quarto-xref">Figure&nbsp;<span>2.15</span></a> shows the data in the WGS84 coordinate system on the top and in the Equal Earth projection on the bottom. You can see here that the decision of the projection used has an impact not only on the coordinates (notice the grid values), but also the continents’ shapes.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-crs-trans-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="cell" data-layout-nrow="2">
+<div id="fig-crs-trans-plot" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-crs-trans-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="XX-geodata_files/figure-html/fig-crs-trans-plot-1.png" class="img-fluid figure-img" width="672">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-crs-trans-plot" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-crs-trans-plot-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-crs-trans-plot-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="XX-geodata_files/figure-html/fig-crs-trans-plot-1.png" class="img-fluid figure-img" data-ref-parent="fig-crs-trans-plot" width="672">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-crs-trans-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.15: Comparison between the same dataset of three waterfalls using: (A) the WGS84 coordinate system, (B) the Equal Earth projection.
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-crs-trans-plot-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) WGS84 coordinate system
 </figcaption></figure>
 </div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-crs-trans-plot" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-crs-trans-plot-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-crs-trans-plot-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="XX-geodata_files/figure-html/fig-crs-trans-plot-2.png" class="img-fluid figure-img" data-ref-parent="fig-crs-trans-plot" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-crs-trans-plot-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Equal Earth projection
+</figcaption></figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-crs-trans-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.15: Comparison between the same dataset of three waterfalls
+</figcaption></figure>
 </div>
 </div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-lovelace2019geocomputation" class="csl-entry" role="listitem">
-Lovelace, R, J Nowosad, and J Muenchow. 2019. <em>Geocomputation with <span>R</span></em>. <span>Chapman and Hall/CRC Press</span>.
+<div id="ref-lovelace_geocomputation_2025" class="csl-entry" role="listitem">
+Lovelace, Robin, Jakub Nowosad, and Jannes Muenchow. 2025. <em>Geocomputation with <span>R</span></em>. Second. <span>CRC Press</span>.
 </div>
 </div>
 </section></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>

@@ -508,7 +508,8 @@ Figure&nbsp;7.3: Examples of four ways of specifying color palettes
 <!-- midpoint argument -->
 <p>The default color palette for positive numerical variables is <code>"blues3"</code> as seen in <a href="#fig-tmmidpoint-1" class="quarto-xref">Figure&nbsp;<span>7.4 (a)</span></a>. On the other hand, when the given variable has both negative and positive values, then <strong>tmap</strong> uses the <code>"pu_gn"</code> color palette, with purple colors below the midpoint value, light gray color around the midpoint value, and green colors above the midpoint value. The use of diverging color palettes can be adjusted using the <code>midpoint</code> argument. It has a value of 0 as the default, however, it is possible to change it to any other value. For example, we want to create a map that shows countries with life expectancy below and above the median life expectancy of about 73 years. To do that, we just need to set the <code>midpoint</code> argument to this value (<a href="#fig-tmmidpoint-2" class="quarto-xref">Figure&nbsp;<span>7.4 (b)</span></a>).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># mean(x$lifeExp, na.rm = TRUE)</span></span>
+<span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"life_expectancy"</span>, </span>
 <span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>midpoint <span class="op">=</span> <span class="fl">73</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -587,12 +588,12 @@ Figure&nbsp;7.5: An example of a categorical map with manually selected colors.
 <p>By default, <strong>t</strong>maps present points, lines, or text objects of the same size. For example, <code>tm_symbols()</code> returns a map where each object is a circle with a consistent size<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. We can change the sizes of all objects using the <code>size</code> argument (<a href="#fig-tmsizes-1" class="quarto-xref">Figure&nbsp;<span>7.6 (a)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">volcanos</span><span class="op">)</span> <span class="op">+</span></span>
-<span> <span class="fu">tm_symbols</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">tm_symbols</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>On the other hand, if we provide the name of the numerical variable in the <code>size</code> argument (e.g., <code>"elevation"</code>), then symbol sizes are scaled proportionally to the provided values. Objects with small values will be represented by smaller circles, while larger values will be represented by larger circles (<a href="#fig-tmsizes-2" class="quarto-xref">Figure&nbsp;<span>7.6 (b)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">volcanos</span><span class="op">)</span> <span class="op">+</span></span>
-<span> <span class="fu">tm_symbols</span><span class="op">(</span>size <span class="op">=</span> <span class="st">"elevation"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">tm_symbols</span><span class="op">(</span>size <span class="op">=</span> <span class="st">"elevation"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- numeric only -->
 <!-- size.max    -->
@@ -602,7 +603,7 @@ Figure&nbsp;7.5: An example of a categorical map with manually selected colors.
 <p>We can adjust size legend breaks with <code>ticks</code> and the corresponding labels with <code>labels</code> (<a href="#fig-tmsizes" class="quarto-xref">Figure&nbsp;<span>7.6</span></a> C) as arguments of the <code>tm_scale</code> function provided to the <code>size.scale</code> argument.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">volcanos</span><span class="op">)</span> <span class="op">+</span></span>
-<span> <span class="fu">tm_symbols</span><span class="op">(</span>size <span class="op">=</span> <span class="st">"elevation"</span>,</span>
+<span>  <span class="fu">tm_symbols</span><span class="op">(</span>size <span class="op">=</span> <span class="st">"elevation"</span>,</span>
 <span>            size.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>ticks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">600</span><span class="op">)</span>,</span>
 <span>                                  labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"high"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -737,7 +738,7 @@ Figure&nbsp;7.8: Example of a map where text sizes represent elevations of the v
 <span>             shape.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>values <span class="op">=</span> <span class="va">my_icons</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center" data-layout-row="4">
-<div id="fig-tmsymshape" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-row="4" data-layout-align="center">
+<div id="fig-tmsymshape" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center" data-layout-row="4">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmsymshape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div id="fig-tmsymshape-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
