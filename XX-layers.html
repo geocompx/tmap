@@ -103,7 +103,7 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
-</script><script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="site_libs/pymjs-1.3.2/pym.v1.js"></script><script src="site_libs/widgetframe-binding-0.3.1/widgetframe.js"></script>
+</script>
 </head>
 <body class="nav-sidebar floating">
 
@@ -932,46 +932,24 @@ Figure&nbsp;6.8: Two color composite images
 <span class="header-section-number">6.6</span> Tile</h2>
 <!-- A tile layer is .. -->
 <!-- Tile layers (or just tines) are usually stored as prerendered raster tiles or as vector tiles on online servers. -->
-<p>Tile layers can be used for two purposes: either as a basemap or an overlay layer. By default, three basemaps are used in the interactive mode (<code>tmap_mode("view")</code>): <code>"Esri.WorldGrayCanvas"</code>, <code>"OpenStreetMap"</code>, and <code>"Esri.WorldTopoMap"</code>. However, we can change the basemaps with a vector with the names of the tile layers’ providers (<a href="#fig-tmbasemap1" class="quarto-xref">Figure&nbsp;<span>6.9</span></a>).</p>
+<p>Tile layers can be used for two purposes: either as a basemap or an overlay layer. By default, three basemaps are used in the interactive mode (<code>tmap_mode("view")</code>): <code>"Esri.WorldGrayCanvas"</code>, <code>"OpenStreetMap"</code>, and <code>"Esri.WorldTopoMap"</code>. However, we can change the basemaps with a vector with the names of the tile layers’ providers (<span class="quarto-unresolved-ref">?fig-tmbasemap1</span>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_mode.html">tmap_mode</a></span><span class="op">(</span><span class="st">"view"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_basemap.html">tm_basemap</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>StreetMap <span class="op">=</span> <span class="st">"OpenStreetMap"</span>, TopoMap <span class="op">=</span> <span class="st">"OpenTopoMap"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">volcanos</span>, is.main <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots</a></span><span class="op">(</span>col <span class="op">=</span> <span class="st">"red"</span>, group <span class="op">=</span> <span class="st">"Volcanos"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center">
-<div id="fig-tmbasemap1" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmbasemap1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="htmlwidget-7ea561b275552a6ec313" style="width:100%;height:355.968px;" class="widgetframe html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7ea561b275552a6ec313">{"x":{"url":"widgets/widget_fig-tmbasemap1.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmbasemap1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.9: OpenStreetMap tile layer used as a base map with the red dots representing volcanos on Easter Island.
-</figcaption></figure>
-</div>
-</div>
 <p>In the above code, we made two basemaps available: <code>"OpenStreetMap"</code> and <code>"OpenTopoMap"</code>, and for the map legend purpose, we renamed them as <code>StreetMap</code> and <code>TopoMap</code>. A complete list of available basemaps is in the <code><a href="https://rstudio.github.io/leaflet/reference/providers.html">leaflet::providers</a></code> object and on the https://leaflet-extras.github.io/leaflet-providers/preview/ website<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. <!-- explain why some providers do not work --> <!-- ?do we need to register somewhere?: --> <!-- https://github.com/leaflet-extras/leaflet-providers --> <!-- how to add url tiles --> <!-- how to setup your own server or some references? --> The <code>tm_basemap(NULL)</code> function allows to disable basemaps entirely.</p>
-<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_basemap.html">tm_tiles()</a></code> function, on the other hand, draws the tile layer on the top (as overlay layer) of the previous <code>tm_</code> layer. In the next example, we put the vector <code>"CartoDB.PositronOnlyLabels"</code> tiles on top of the previously set basemaps, but below the dots layer (<a href="#fig-tmtiles1" class="quarto-xref">Figure&nbsp;<span>6.10</span></a>).</p>
+<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_basemap.html">tm_tiles()</a></code> function, on the other hand, draws the tile layer on the top (as overlay layer) of the previous <code>tm_</code> layer. In the next example, we put the vector <code>"CartoDB.PositronOnlyLabels"</code> tiles on top of the previously set basemaps, but below the dots layer (<span class="quarto-unresolved-ref">?fig-tmtiles1</span>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_basemap.html">tm_basemap</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>StreetMap <span class="op">=</span> <span class="st">"OpenStreetMap"</span>, TopoMap <span class="op">=</span> <span class="st">"OpenTopoMap"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_basemap.html">tm_tiles</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>CartoDB <span class="op">=</span> <span class="st">"CartoDB.PositronOnlyLabels"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">volcanos</span>, is.main <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots</a></span><span class="op">(</span>col <span class="op">=</span> <span class="st">"red"</span>, group <span class="op">=</span> <span class="st">"Volcanos"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center">
-<div id="fig-tmtiles1" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmtiles1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="htmlwidget-d0c3b8accee30bb5153b" style="width:100%;height:355.968px;" class="widgetframe html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d0c3b8accee30bb5153b">{"x":{"url":"widgets/widget_fig-tmtiles1.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmtiles1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.10: OpenStreetMap tile layer used as a base map with dashed lines representing island coastline and the red dots representing volcanos on Easter Island.
-</figcaption></figure>
-</div>
-</div>
 <p>Tile layers are usually created to be used interactively. We can see it, for example, by their number of details varying depending on the zoom level we set. That being said, many people find them useful also for static maps, and <strong>tmap</strong> allows to use them in this way. It uses the <strong>maptiles</strong> package to download the tiles and then plot them as a raster layer.</p>
 <p>A complete list of available providers and some <a href="https://wiki.openstreetmap.org/wiki/Zoom_levels">information about zoom levels</a> are in the help file of the <code>?maptiles::get_tiles()</code> function. Different map tiles providers offer unique map styles, while zoom levels relate to different levels of detail – the larger level, the more details we will get. When using map tiles, we should also consider adding their attribution to the map. Attribution for each provider can be obtained using the <code><a href="https://rdrr.io/pkg/maptiles/man/get_credit.html">maptiles::get_credit()</a></code> function by specifying the provider name, for example <code>get_credit("CartoDB.VoyagerNoLabels")</code>.</p>
-<p>The code below plots the <code>"CartoDB.VoyagerNoLabels"</code> tiles in the background, adds the island outline in light blue color, and puts attribution text in the bottom right corner of the map (<a href="#fig-stiles" class="quarto-xref">Figure&nbsp;<span>6.11</span></a>)).</p>
+<p>The code below plots the <code>"CartoDB.VoyagerNoLabels"</code> tiles in the background, adds the island outline in light blue color, and puts attribution text in the bottom right corner of the map (<a href="#fig-stiles" class="quarto-xref">Figure&nbsp;<span>6.9</span></a>)).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_mode.html">tmap_mode</a></span><span class="op">(</span><span class="st">"plot"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ℹ tmap mode set to "plot".</span></span>
@@ -986,7 +964,7 @@ Figure&nbsp;6.10: OpenStreetMap tile layer used as a base map with dashed lines 
 <img src="figures/fig-stiles-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-stiles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.11: Example of a static map using a downloaded <code>"CartoDB.VoyagerNoLabels"</code> tile layer.
+Figure&nbsp;6.9: Example of a static map using a downloaded <code>"CartoDB.VoyagerNoLabels"</code> tile layer.
 </figcaption></figure>
 </div>
 </div>
