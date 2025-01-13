@@ -257,14 +257,20 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./XX-attr-layers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Attributes layers</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./XX-layout.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Layout</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Layout</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-interactive.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Interactive settings</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Interactive settings</span></span></a>
   </div>
 </li>
       </ul>
@@ -281,25 +287,25 @@ window.Quarto = {
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-small-multiples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Small multiples</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Small multiples</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-animations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Animations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Animations</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-shiny.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-other-types.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Other types</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Other types</span></span></a>
   </div>
 </li>
       </ul>
@@ -316,7 +322,7 @@ window.Quarto = {
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-options.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">tmap options</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">tmap options</span></span></a>
   </div>
 </li>
       </ul>
@@ -324,7 +330,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-good-maps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">How to make good maps?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">How to make good maps?</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -908,8 +914,11 @@ Figure&nbsp;2.13: Examples of a conic and a planar projection.
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: 7, j: 0 }, { i: 7, j: 1 }, { i: 7, j: 2 }, { i: 7, j: 3 }, { i: 7, j: 4 },  ], css_id: 'tinytable_css_qehcmn3pch4uacvympdr',}, 
-          { positions: [ { i: 0, j: 0 }, { i: 0, j: 1 }, { i: 0, j: 2 }, { i: 0, j: 3 }, { i: 0, j: 4 },  ], css_id: 'tinytable_css_lm8vtu7l4uc0408hg1dc',}, 
+          { positions: [ { i: 1, j: 0 }, { i: 2, j: 0 }, { i: 3, j: 0 }, { i: 4, j: 0 }, { i: 5, j: 0 }, { i: 6, j: 0 },  ], css_id: 'tinytable_css_qehcmn3pch4uacvympdr',}, 
+          { positions: [ { i: 0, j: 1 }, { i: 0, j: 2 }, { i: 0, j: 3 }, { i: 0, j: 4 },  ], css_id: 'tinytable_css_ophuumvda8df89tjkjx4',}, 
+          { positions: [ { i: 0, j: 0 },  ], css_id: 'tinytable_css_lm8vtu7l4uc0408hg1dc',}, 
+          { positions: [ { i: 7, j: 1 }, { i: 7, j: 2 }, { i: 7, j: 3 }, { i: 7, j: 4 },  ], css_id: 'tinytable_css_fsqt1gomokxkx3x9gbp1',}, 
+          { positions: [ { i: 7, j: 0 },  ], css_id: 'tinytable_css_fbzd2p2s0ikyqa1f9tb5',}, 
           ];
 
           // Loop over the arrays to style the cells
@@ -921,8 +930,11 @@ Figure&nbsp;2.13: Examples of a conic and a planar projection.
       });
     </script><style>
       /* tinytable css entries after */
-      .table td.tinytable_css_qehcmn3pch4uacvympdr, .table th.tinytable_css_qehcmn3pch4uacvympdr { border-bottom: solid #d3d8dc 0.1em; }
-      .table td.tinytable_css_lm8vtu7l4uc0408hg1dc, .table th.tinytable_css_lm8vtu7l4uc0408hg1dc { border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_qehcmn3pch4uacvympdr, .table th.tinytable_css_qehcmn3pch4uacvympdr { font-weight: bold; }
+      .table td.tinytable_css_ophuumvda8df89tjkjx4, .table th.tinytable_css_ophuumvda8df89tjkjx4 { border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_lm8vtu7l4uc0408hg1dc, .table th.tinytable_css_lm8vtu7l4uc0408hg1dc { font-weight: bold; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_fsqt1gomokxkx3x9gbp1, .table th.tinytable_css_fsqt1gomokxkx3x9gbp1 { border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_fbzd2p2s0ikyqa1f9tb5, .table th.tinytable_css_fbzd2p2s0ikyqa1f9tb5 { font-weight: bold; border-bottom: solid #d3d8dc 0.1em; }
     </style>
 <div class="container">
       <table class="table table-borderless" id="tinytable_s934qahjlizssgcvjeyt" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">

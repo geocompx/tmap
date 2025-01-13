@@ -81,7 +81,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./XX-layout.html" rel="next">
+<link href="./XX-attr-layers.html" rel="next">
 <link href="./XX-visual-variables.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -232,14 +232,20 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./XX-attr-layers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Attributes layers</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./XX-layout.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Layout</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Layout</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-interactive.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Interactive settings</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Interactive settings</span></span></a>
   </div>
 </li>
       </ul>
@@ -256,25 +262,25 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-small-multiples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Small multiples</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Small multiples</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-animations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Animations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Animations</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-shiny.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-other-types.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Other types</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Other types</span></span></a>
   </div>
 </li>
       </ul>
@@ -291,7 +297,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-options.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">tmap options</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">tmap options</span></span></a>
   </div>
 </li>
       </ul>
@@ -299,7 +305,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-good-maps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">How to make good maps?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">How to make good maps?</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -337,8 +343,8 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <p>The <code>tm_scale()</code> function has a set of related functions that can be used to modify the used scale. Table <a href="#tbl-scale-table" class="quarto-xref">Table&nbsp;<span>8.1</span></a> presents all available scale functions in <strong>tmap</strong>. Let’s see how to use them in the following sections – we will mostly focus on using scales for the <code>fill.scale</code> argument, but the same principles apply to the <code>col.scale</code>, <code>size.scale</code>, and <code>shape.scale</code> arguments.</p>
 <!-- table -->
 <!-- tmap_options()$scales.var -->
-<div class="cell">
-<div id="tbl-scale-table" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<div class="cell" data-layout-align="center">
+<div id="tbl-scale-table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-scale-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;8.1
 </figcaption><div aria-describedby="tbl-scale-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -347,8 +353,8 @@ Table&nbsp;8.1
 
     <script>
 
-      function styleCell_do8ud8ba1epz1g3aifmd(i, j, css_id) {
-          var table = document.getElementById("tinytable_do8ud8ba1epz1g3aifmd");
+      function styleCell_obuep9lbzwpy41b8f1oc(i, j, css_id) {
+          var table = document.getElementById("tinytable_obuep9lbzwpy41b8f1oc");
           var cell = table.rows[i]?.cells[j];  // Safe navigation to avoid errors
           if (cell) {
               console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
@@ -358,7 +364,7 @@ Table&nbsp;8.1
           }
       }
       function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_do8ud8ba1epz1g3aifmd');
+        var table = document.getElementById('tinytable_obuep9lbzwpy41b8f1oc');
         var newRow = table.insertRow(i);
         var newCell = newRow.insertCell(0);
         newCell.setAttribute("colspan", colspan);
@@ -366,8 +372,8 @@ Table&nbsp;8.1
         // this may be unsafe, but innerText does not interpret <br>
         newCell.innerHTML = content;
       }
-      function spanCell_do8ud8ba1epz1g3aifmd(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_do8ud8ba1epz1g3aifmd");
+      function spanCell_obuep9lbzwpy41b8f1oc(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_obuep9lbzwpy41b8f1oc");
         const targetRow = table.rows[i];
         const targetCell = targetRow.cells[j];
         for (let r = 0; r < rowspan; r++) {
@@ -397,24 +403,30 @@ Table&nbsp;8.1
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: 10, j: 0 }, { i: 10, j: 1 },  ], css_id: 'tinytable_css_zcj5xdh0sayuij63ibjl',}, 
-          { positions: [ { i: 0, j: 0 }, { i: 0, j: 1 },  ], css_id: 'tinytable_css_7zg2cybnuip6mi8iov3x',}, 
+          { positions: [ { i: 0, j: 0 },  ], css_id: 'tinytable_css_z3enr98upsikl2m15eul',}, 
+          { positions: [ { i: 10, j: 0 },  ], css_id: 'tinytable_css_lj4j71fj8i7a6pgov4iz',}, 
+          { positions: [ { i: 10, j: 1 },  ], css_id: 'tinytable_css_9v1ub74io4fd32jm8lxp',}, 
+          { positions: [ { i: 1, j: 0 }, { i: 2, j: 0 }, { i: 3, j: 0 }, { i: 4, j: 0 }, { i: 5, j: 0 }, { i: 6, j: 0 }, { i: 7, j: 0 }, { i: 8, j: 0 }, { i: 9, j: 0 },  ], css_id: 'tinytable_css_1rzwm6hriimk9js5kju5',}, 
+          { positions: [ { i: 0, j: 1 },  ], css_id: 'tinytable_css_0dghedlvaok9ny0cmnuu',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  styleCell_do8ud8ba1epz1g3aifmd(cell.i, cell.j, group.css_id);
+                  styleCell_obuep9lbzwpy41b8f1oc(cell.i, cell.j, group.css_id);
               });
           });
       });
     </script><style>
       /* tinytable css entries after */
-      .table td.tinytable_css_zcj5xdh0sayuij63ibjl, .table th.tinytable_css_zcj5xdh0sayuij63ibjl { border-bottom: solid #d3d8dc 0.1em; }
-      .table td.tinytable_css_7zg2cybnuip6mi8iov3x, .table th.tinytable_css_7zg2cybnuip6mi8iov3x { border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_z3enr98upsikl2m15eul, .table th.tinytable_css_z3enr98upsikl2m15eul { font-family: monospace; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_lj4j71fj8i7a6pgov4iz, .table th.tinytable_css_lj4j71fj8i7a6pgov4iz { font-family: monospace; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_9v1ub74io4fd32jm8lxp, .table th.tinytable_css_9v1ub74io4fd32jm8lxp { border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_1rzwm6hriimk9js5kju5, .table th.tinytable_css_1rzwm6hriimk9js5kju5 { font-family: monospace; }
+      .table td.tinytable_css_0dghedlvaok9ny0cmnuu, .table th.tinytable_css_0dghedlvaok9ny0cmnuu { border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
     </style>
 <div class="container">
-      <table class="table table-borderless" id="tinytable_do8ud8ba1epz1g3aifmd" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="table table-borderless" id="tinytable_obuep9lbzwpy41b8f1oc" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
 <thead>
 </thead><caption>Map scales</caption>
               <tbody><tr>
@@ -475,15 +487,15 @@ Table&nbsp;8.1
 <!-- intro about setting colors -->
 <!-- info that generalized to points, lines, polygons, and rasters... -->
 <p> <code>tm_polygons()</code> accepts three ways of specifying the fill color with the <code>fill</code> argument. The first one is to fill all polygons with the same color. This happens when we provide a single color value, either as a color name or its hexadecimal form (<a href="XX-visual-variables.html#sec-color-palettes" class="quarto-xref"><span>Section 7.1.1</span></a>) (<a href="#fig-colorscales1" class="quarto-xref">Figure&nbsp;<span>8.1</span></a>). <!-- what is the default tm_scale_ here? --></p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-colorscales1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-colorscales1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-colorscales1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="XX-scales_files/figure-html/fig-colorscales1-1.png" class="img-fluid figure-img" width="672">
+<img src="figures/fig-colorscales1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-colorscales1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8.1: Example of a map with all polygons filled with the same color.
@@ -492,16 +504,16 @@ Figure&nbsp;8.1: Example of a map with all polygons filled with the same color.
 </div>
 </div>
 <p> The second way of specifying the fill color is to provide a name of the column (variable) we want to visualize. <!-- better connection --> An example of a categorical map can be seen in <a href="#fig-colorscales2" class="quarto-xref">Figure&nbsp;<span>8.2</span></a>. We created it by providing a character variable’s name, <code>"wb_region"</code>, in the <code>col</code> argument.</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"wb_region"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- categorical -->
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-colorscales2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-colorscales2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-colorscales2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="XX-scales_files/figure-html/fig-colorscales2-1.png" class="img-fluid figure-img" width="672">
+<img src="figures/fig-colorscales2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-colorscales2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8.2: Example of a map in which polygons are colored based on the values of a categorical variable.
@@ -513,13 +525,13 @@ Figure&nbsp;8.2: Example of a map in which polygons are colored based on the val
 <!-- optimal number of classes? 3-7 -->
 <p> Discrete maps, on the other hand, represent continuous numerical variables using discrete class intervals. In other words, values are divided into several groups based on their properties. Several approaches can be used to convert continuous variables to discrete ones, and each of them could result in different groups of values. <strong>tmap</strong> has several different methods to create discrete maps<!--list??--> that can be specified with by the one of the functions from the <code>tm_scale_</code> family. Most of them use the <strong>classInt</strong> package <span class="citation" data-cites="R-classInt">(<a href="references.html#ref-R-classInt" role="doc-biblioref">Bivand 2020</a>)</span> in the background, therefore some additional information can be found in the <code>?classIntervals</code> function’s documentation.</p>
 <p>By default, the <code>"tm_scale_discrete"</code> function is used in the background (<a href="#fig-discrete-methods-1" class="quarto-xref">Figure&nbsp;<span>8.3 (a)</span></a>). This style creates breaks that are whole numbers and spaces them evenly <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gdp_per_cap"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>It is also possible to indicate the desired number of classes using the <code>n</code> argument of the <code>tm_scale()</code> function provided to the <code>fill.scale</code> argument. While not every <code>n</code> is possible depending on the input values, <strong>tmap</strong> will try to create a number of classes as close to possible to the preferred one.</p>
 <p>The next approach is to manually select the limits of each break with the <code>breaks</code> argument of <code>tm_scale()</code> (<a href="#fig-discrete-methods-2" class="quarto-xref">Figure&nbsp;<span>8.3 (b)</span></a>). This can be useful when we have some pre-defined breaks, or when we want to compare values between several maps. It expects threshold values for each break, therefore, if we want to have three breaks, we need to provide four thresholds. Additionally, we can add a label to each break with the <code>labels</code> argument.</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gdp_per_cap"</span>, </span>
 <span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10000</span>, <span class="fl">30000</span>, <span class="fl">111000</span><span class="op">)</span>,</span>
@@ -529,7 +541,7 @@ Figure&nbsp;8.2: Example of a map in which polygons are colored based on the val
 <p>To create classes that, on the one hand, contain similar values, and on the other hand, are different from the other classes, we can use some optimization method. The most common optimization method used in cartography is the Jenks optimization method implemented at the <code>"jenks"</code> style (<a href="#fig-discrete-methods-3" class="quarto-xref">Figure&nbsp;<span>8.3 (c)</span></a>).</p>
 <!-- how about adding ggplot2 histograms?? -->
 <!-- should we add that these methods usually do not allow to compare between datasets? -->
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gdp_per_cap"</span>, </span>
 <span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -537,7 +549,7 @@ Figure&nbsp;8.2: Example of a map in which polygons are colored based on the val
 <p>The Fisher method (<code>style = "fisher"</code>) has a similar role, which creates groups with maximized homogeneity <span class="citation" data-cites="fisher_grouping_1958">(<a href="references.html#ref-fisher_grouping_1958" role="doc-biblioref">Fisher 1958</a>)</span>. A different approach is used by the <code>dpih</code> style, which uses kernel density estimations to select the width of the intervals <span class="citation" data-cites="wand_databased_1997">(<a href="references.html#ref-wand_databased_1997" role="doc-biblioref">Wand 1997</a>)</span>. You can visit <code><a href="https://rdrr.io/pkg/KernSmooth/man/dpih.html">?KernSmooth::dpih</a></code> for more details.</p>
 <p>Another group of classification methods uses existing clustering methods. It includes k-means clustering (<code>"kmeans"</code>), bagged clustering (<code>"bclust"</code>), and hierarchical clustering (<code>"hclust"</code>). <!-- ... --></p>
 <p>Finally, there are a few methods created to work well for a variable with a heavy-tailed distribution, including <code>"headtails"</code> and <code>"log10_pretty"</code>. The <code>"headtails"</code> style is an implementation of the head/tail breaks method aimed at heavily right-skewed data. In it, values of the given variable are being divided around the mean into two parts, and the process continues iteratively for the values above the mean (the head) until the head part values are no longer heavy-tailed distributed <span class="citation" data-cites="jiang_head_2013">(<a href="references.html#ref-jiang_head_2013" role="doc-biblioref">Jiang 2013</a>)</span>. The <code>"log10_pretty"</code> style uses a logarithmic base-10 transformation (<a href="#fig-discrete-methods-4" class="quarto-xref">Figure&nbsp;<span>8.3 (d)</span></a>). In this style, each class starts with a value ten times larger than the beginning of the previous class. In other words, each following class shows us the next order of magnitude. This style allows for a better distinction between low, medium, and high values. However, maps with logarithmically transformed variables are usually less intuitive for the readers and require more attention from them.</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gdp_per_cap"</span>, </span>
 <span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>style <span class="op">=</span> <span class="st">"log10_pretty"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -546,20 +558,20 @@ Figure&nbsp;8.2: Example of a map in which polygons are colored based on the val
 <div id="fig-discrete-methods" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-discrete-methods-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-discrete-methods" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-discrete-methods-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-discrete-methods" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-discrete-methods-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-discrete-methods-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="XX-scales_files/figure-html/fig-discrete-methods-1.png" class="img-fluid figure-img" data-ref-parent="fig-discrete-methods" width="672">
+<img src="figures/fig-discrete-methods-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-discrete-methods">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-discrete-methods-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) The “pretty” method
 </figcaption></figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-discrete-methods" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-discrete-methods-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-discrete-methods" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-discrete-methods-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-discrete-methods-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="XX-scales_files/figure-html/fig-discrete-methods-2.png" class="img-fluid figure-img" data-ref-parent="fig-discrete-methods" width="672">
+<img src="figures/fig-discrete-methods-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-discrete-methods">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-discrete-methods-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) The “fixed” method
@@ -568,20 +580,20 @@ Figure&nbsp;8.2: Example of a map in which polygons are colored based on the val
 </div>
 </div>
 <div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-discrete-methods" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-discrete-methods-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-discrete-methods" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-discrete-methods-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-discrete-methods-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="XX-scales_files/figure-html/fig-discrete-methods-3.png" class="img-fluid figure-img" data-ref-parent="fig-discrete-methods" width="672">
+<img src="figures/fig-discrete-methods-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-discrete-methods">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-discrete-methods-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (c) The “jenks” method
 </figcaption></figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-discrete-methods" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-discrete-methods-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-discrete-methods" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-discrete-methods-4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-discrete-methods-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="XX-scales_files/figure-html/fig-discrete-methods-4.png" class="img-fluid figure-img" data-ref-parent="fig-discrete-methods" width="672">
+<img src="figures/fig-discrete-methods-4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-discrete-methods">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-discrete-methods-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (d) The “log10_pretty” method
@@ -597,19 +609,19 @@ Figure&nbsp;8.3: Examples of four methods of creating discrete maps
 <!-- The numeric variable can be either regarded as a continuous variable or a count (integer) variable. See as.count. Only applicable if style is "pretty", "fixed", or "log10_pretty". -->
 <p> Continuous maps also represent continuous numerical variables, but without any discrete class intervals (<a href="#fig-cont-methods" class="quarto-xref">Figure&nbsp;<span>8.4</span></a>). A few continuous methods exist in <strong>tmap</strong>, including <code>tm_scale_continuous()</code>, <code>tm_scale_rank()</code>, and <code>tm_scale_continuous_log10()</code>.</p>
 <p>The <code>tm_scale_continuous</code> function creates a smooth, linear gradient. In other words, the change in values is proportionally related to the change in colors. We can see that in <a href="#fig-cont-methods-1" class="quarto-xref">Figure&nbsp;<span>8.4 (a)</span></a>, where the value change from 20,000 to 40,000 has a similar impact on the color scale as the value change from 40,000 to 60,000. The continuous scale is similar to the pretty style, where the values also change linearly. The main difference between them is that we can see differences between, for example, values of 45,000 and 55,000 in the former, while both values have exactly the same color in the later one. The continuous scale works well in situations where there is a large number of objects in vectors or a large number of cells in rasters, and where the values change continuously (do not have many outliers).</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gdp_per_cap"</span>,</span>
 <span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_continuous</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>However, when the presented variable is skewed or have some outliers, we can use either <code>tm_scale_rank()</code> or <code>tm_scale_continuous_log10()</code>. The <code>tm_scale_rank()</code> scale also uses a smooth gradient with a large number of colors, but the values on the legend do not change linearly (<a href="#fig-cont-methods-2" class="quarto-xref">Figure&nbsp;<span>8.4 (b)</span></a>). <!--JN: Martijn please check the next sentence --> It is fairly analogous to the <code>"quantile"</code> style, with the values on a color scale that divides a dataset into several equal-sized groups.</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gdp_per_cap"</span>,</span>
 <span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_rank</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Finally, the <code>tm_scale_continuous_log10</code> scale is the continuous equivalent of the <code>"log10_pretty"</code> style (<a href="#fig-cont-methods-3" class="quarto-xref">Figure&nbsp;<span>8.4 (c)</span></a>).</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gdp_per_cap"</span>,</span>
 <span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_continuous_log10</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -617,30 +629,30 @@ Figure&nbsp;8.3: Examples of four methods of creating discrete maps
 <div id="fig-cont-methods" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-cont-methods-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-cont-methods" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div id="fig-cont-methods-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-cont-methods" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-cont-methods-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-cont-methods-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="XX-scales_files/figure-html/fig-cont-methods-1.png" class="img-fluid figure-img" data-ref-parent="fig-cont-methods" width="672">
+<img src="figures/fig-cont-methods-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-cont-methods">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cont-methods-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) The “continuous” method
 </figcaption></figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-cont-methods" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div id="fig-cont-methods-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-cont-methods" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-cont-methods-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-cont-methods-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="XX-scales_files/figure-html/fig-cont-methods-2.png" class="img-fluid figure-img" data-ref-parent="fig-cont-methods" width="672">
+<img src="figures/fig-cont-methods-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-cont-methods">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cont-methods-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) The “rank” method
 </figcaption></figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-cont-methods" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div id="fig-cont-methods-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-cont-methods" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-cont-methods-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-cont-methods-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="XX-scales_files/figure-html/fig-cont-methods-3.png" class="img-fluid figure-img" data-ref-parent="fig-cont-methods" width="672">
+<img src="figures/fig-cont-methods-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-cont-methods">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cont-methods-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (c) The “log10” method
@@ -654,17 +666,17 @@ Figure&nbsp;8.4: Examples of three methods of creating continuous maps
 </figcaption></figure>
 </div>
 <p>The <code>tm_polygons()</code> also offer a third way of specifying the fill color. When the <code>fill</code> argument is set to <code>"MAP_COLORS"</code> then polygons will be colored in such a way that adjacent polygons do not get the same color (<a href="#fig-colorscalesmc" class="quarto-xref">Figure&nbsp;<span>8.5</span></a>).</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"MAP_COLORS"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- ??? -->
 <!-- In this case, it is also possible to change the default colors with the `palette` argument, but also to activate the internal algorithm to search for a minimal number of colors for visualization by setting `minimize = TRUE`. -->
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-colorscalesmc" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="fig-colorscalesmc" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-colorscalesmc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="XX-scales_files/figure-html/fig-colorscalesmc-1.png" class="img-fluid figure-img" width="672">
+<img src="figures/fig-colorscalesmc-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-colorscalesmc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8.5: Example of a map with adjacent polygons having different colors.
@@ -1119,8 +1131,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./XX-layout.html" class="pagination-link" aria-label="Layout">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Layout</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./XX-attr-layers.html" class="pagination-link" aria-label="Attributes layers">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Attributes layers</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
