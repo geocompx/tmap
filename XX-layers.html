@@ -288,6 +288,10 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">How to make good maps?</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Appendices</span></span>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
@@ -811,7 +815,7 @@ Figure&nbsp;6.5: Example of a map created with tm_text().
 <span><span class="va">ei_geomorphons</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="st">"data/easter_island/ei_geomorphons.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- Raster data intro -->
-<p>Visualization of raster data depends on the raster type (continuous or categorical), its resolution, and the number of layers. <a href="XX-options.html#fig-rasterdown" class="quarto-xref">Figure&nbsp;<span>16.2</span></a> shows two simple example of continuous and categorical raster visualization created with <code><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster()</a></code>. This function attempts to recognize the type of a given raster – when the input raster is continuous then the pretty style is used. However, the continuous style (<code>"tm_scale_continuous"</code>) often better represent phenomena that progressively vary in space (<a href="#fig-rastertype-1" class="quarto-xref">Figure&nbsp;<span>6.6 (a)</span></a>).</p>
+<p>Visualization of raster data depends on the raster type (continuous or categorical), its resolution, and the number of layers. <a href="XX-options.html#fig-rasterdown" class="quarto-xref">Figure&nbsp;<span>16.1</span></a> shows two simple example of continuous and categorical raster visualization created with <code><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster()</a></code>. This function attempts to recognize the type of a given raster – when the input raster is continuous then the pretty style is used. However, the continuous style (<code>"tm_scale_continuous"</code>) often better represent phenomena that progressively vary in space (<a href="#fig-rastertype-1" class="quarto-xref">Figure&nbsp;<span>6.6 (a)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">ei_elev</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_continuous.html">tm_scale_continuous</a></span><span class="op">(</span>values <span class="op">=</span> <span class="st">"viridis"</span><span class="op">)</span>,</span>
