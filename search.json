@@ -621,5 +621,27 @@
     "crumbs": [
       "References"
     ]
+  },
+  {
+    "objectID": "XX-data_processing.html",
+    "href": "XX-data_processing.html",
+    "title": "Appendix A — Data preparation",
+    "section": "",
+    "text": "A.1 Data simplification\nGeometries in spatial vector data consists of sets of coordinates (Section 2.2.1). Spatial vector objects grow larger with more features to present and more details to show, and this also has an impact on time to render a map.  Figure A.1 (a) shows a map of countries from the worldvector object.\ntm_shape(worldvector) +\n  tm_polygons()\nThis level of detail can be good for some maps, but sometimes the number of details can make reading the map harder. To create a simplified (smoother) version of vector data, we can use the ms_simplify function of the rmapshaper package. . It expects a numeric value from 0 to 1 – a proportion of vertices in the data to retain. In the example below, we set keep to 0.05, which keeps 5% of vertices (Figure A.1 (b)).\nlibrary(rmapshaper)\nworldvector_s1 = ms_simplify(worldvector, keep = 0.05)\ntm_shape(worldvector_s1) +\n  tm_polygons()\nThe process of simplification can also be more controlled. By default, the underlining algorithm (called the Visvalingam method, learn more at https://bost.ocks.org/mike/simplify/), removes small features, such as islands in our case. This could have far-reaching consequences - in the process of simplification, we could remove some countries! To prevent the deletion of small features, we also need to set keep_shapes to TRUE. In the case of one country consisting of many small polygons, only one is sure to be retained. For example, look at New Zealand, which is now only represented by Te Waipounamu (the South Island). To keep all of the spatial geometries (even the smallest of islands), we should also specify explode to TRUE.\nworldvector_s2 = ms_simplify(worldvector, keep = 0.05,\n                             keep_shapes = TRUE, explode = TRUE)\ntm_shape(worldvector_s1) +\n  tm_polygons()\nFigure A.1 (c) contains a simplified map, where each spatial geometry of the original map still exists, but in a less detailed form.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Data preparation</span>"
+    ]
+  },
+  {
+    "objectID": "XX-data_processing.html#sec-data-simplification",
+    "href": "XX-data_processing.html#sec-data-simplification",
+    "title": "Appendix A — Data preparation",
+    "section": "",
+    "text": "(a) original data\n\n\n\n\n\n\n\n\n\n(b) simplified data with 5% of vertices kept\n\n\n\n\n\n\n\n\n\n(c) simplified data with 5% of vertices, all features, and all polygons kept\n\n\n\n\n\n\nFigure A.1: A map of world’s countries based on:",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Data preparation</span>"
+    ]
   }
 ]
