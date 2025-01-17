@@ -216,20 +216,26 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./XX-legends.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legends</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./XX-attr-layers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Attributes layers</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Attributes layers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-layout.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Layout</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Map layout</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-interactive.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Interactive settings</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Interactive settings</span></span></a>
   </div>
 </li>
       </ul>
@@ -246,25 +252,25 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-small-multiples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Small multiples</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Small multiples</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-animations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Animations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Animations</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-shiny.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-other-types.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Other types</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Other types</span></span></a>
   </div>
 </li>
       </ul>
@@ -281,7 +287,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-options.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">tmap options</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">tmap options</span></span></a>
   </div>
 </li>
       </ul>
@@ -289,7 +295,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-good-maps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">How to make good maps?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">How to make good maps?</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -613,7 +619,7 @@ Figure&nbsp;6.1: Example of a map created using:
 </figcaption></figure>
 </div>
 </div>
-<p>More information on colors and how they can be applied and modified is explained in detail in <a href="XX-visual-variables.html#sec-colors" class="quarto-xref"><span>Section 7.2</span></a>.</p>
+<p>More information on colors and how they can be applied and modified is explained in detail in <a href="XX-visual-variables.html#sec-colors" class="quarto-xref"><span>Section 7.3</span></a>.</p>
 </section><section id="sec-symbols" class="level2" data-number="6.2"><h2 data-number="6.2" class="anchored" data-anchor-id="sec-symbols">
 <span class="header-section-number">6.2</span> Symbols</h2>
 <div class="cell" data-layout-align="center">
@@ -751,7 +757,7 @@ Figure&nbsp;6.5: Example of a map created with tm_text().
 </div>
 </div>
 </div>
-<p>We can adjust sizes (<code>size</code>; <a href="XX-visual-variables.html#sec-sizes" class="quarto-xref"><span>Section 7.3</span></a>), colors (<code>col</code>), font faces (<code>fontface</code>), and background colors (<code>bgcol</code>) of labels either by providing a single value or a name of a data variable. Text labels can be further modified with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">opt_tm_text()</a></code> function provided to the <code>options</code> argument. It includes a set of arguments that allow to adjustment of the text labels’ appearance, such as <code>remove_overlap,</code> <code>along_lines,</code> and <code>shadow.</code> <!-- ref to the text section?? --></p>
+<p>We can adjust sizes (<code>size</code>; <a href="XX-visual-variables.html#sec-sizes" class="quarto-xref"><span>Section 7.4</span></a>), colors (<code>col</code>), font faces (<code>fontface</code>), and background colors (<code>bgcol</code>) of labels either by providing a single value or a name of a data variable. Text labels can be further modified with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">opt_tm_text()</a></code> function provided to the <code>options</code> argument. It includes a set of arguments that allow to adjustment of the text labels’ appearance, such as <code>remove_overlap,</code> <code>along_lines,</code> and <code>shadow.</code> <!-- ref to the text section?? --></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -831,7 +837,7 @@ Figure&nbsp;6.5: Example of a map created with tm_text().
 <span><span class="va">ei_geomorphons</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="st">"data/easter_island/ei_geomorphons.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- Raster data intro -->
-<p>Visualization of raster data depends on the raster type (continuous or categorical), its resolution, and the number of layers. <a href="XX-options.html#fig-rasterdown" class="quarto-xref">Figure&nbsp;<span>16.1</span></a> shows two simple examples of continuous and categorical raster visualizations created with <code>tm_raster().</code> This function attempts to recognize the type of a given raster – when the input raster is continuous then the pretty style is used (<a href="#fig-rastertype-1" class="quarto-xref">Figure&nbsp;<span>6.6 (a)</span></a>). <!-- However, the continuous scale (`tm_scale_continuous()`) often better represent phenomena that progressively vary in space  --></p>
+<p>Visualization of raster data depends on the raster type (continuous or categorical), its resolution, and the number of layers. <a href="XX-options.html#fig-rasterdown" class="quarto-xref">Figure&nbsp;<span>17.1</span></a> shows two simple examples of continuous and categorical raster visualizations created with <code>tm_raster().</code> This function attempts to recognize the type of a given raster – when the input raster is continuous then the pretty style is used (<a href="#fig-rastertype-1" class="quarto-xref">Figure&nbsp;<span>6.6 (a)</span></a>). <!-- However, the continuous scale (`tm_scale_continuous()`) often better represent phenomena that progressively vary in space  --></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">ei_elev</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -895,7 +901,7 @@ Figure&nbsp;6.7: A map created from a multilayered raster.
 </div>
 </div>
 </div>
-<p>If you want to learn more – we focus on how to specify and modify facets (also known as small multiples) in <a href="XX-small-multiples.html" class="quarto-xref"><span>Chapter 12</span></a> and how to modify map layout in <a href="XX-layout.html" class="quarto-xref"><span>Chapter 10</span></a>.</p>
+<p>If you want to learn more – we focus on how to specify and modify facets (also known as small multiples) in <a href="XX-small-multiples.html" class="quarto-xref"><span>Chapter 13</span></a> and how to modify map layout in <a href="XX-layout.html#sec-layout" class="quarto-xref"><span>Section 11.2</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#to replace later</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/stars/">stars</a></span><span class="op">)</span></span>
