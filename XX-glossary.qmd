@@ -6,6 +6,7 @@ source("code/before_script.R")
 # Glossary {#sec-glossary}
 
 ```{r}
+#| echo: false
 glossary = tibble::tribble(
   ~Term, ~Explanation,
   "Auxiliary map layer", "An auxiliary (or non-data-driven) map layer is a visual representation of geographic information that does not come from a spatial object, but uses the map's coordinates. Examples: `tm_grid()`/`tm_graticules()` and `tm_basemap()`.",
