@@ -18,6 +18,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -313,26 +347,206 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
   
 
 
-</header><p><strong>Auxiliary map layer</strong> An auxiliary (or non-data-driven) map layer is a visual representation of geographic information that does not come from a spatial object, but uses the maps coordinates. Examples: <code>tm_grid()</code>/<code>tm_graticules()</code> and <code>tm_basemap()</code>.</p>
-<p><strong>Data-driven map layer</strong> A data-driven map layer is a visual representation of a spatial object. E.g. <code>tm_polygons()</code>.</p>
-<p><strong>Facets</strong> Multiple maps in one plots. Also called ‘small multiples’.</p>
-<p><strong>Features</strong> Elementary spatial data objects. For instance, a row in an <code>sf</code> data.frame or a raster cell.</p>
-<p><strong>Glyph</strong> Mini charts that are used as <strong>proportional symbols</strong>. See the extension package <code>tmap.glyphs</code>.</p>
-<p><strong>Layout</strong> All aspects that specify the plot apart from the map layers and map components. Examples: margins, background color, aspect ratio, font sizes, etc. These can be set via <code>tm_layout</code>. These layout options form a subset of all tmap options (see <strong>options</strong>).</p>
-<p><strong>Map component</strong> A visual plot object with a position independent of map coordinates. Examples: a legend, a compass, a title.</p>
-<p><strong>Map layer</strong> A map layer is a visual representation of geographical information. We distinguish two types: <em>data-driven</em> and <em>auxiliary</em> map layers. The former requires spatial objects whereas the latter only the geographic informatin (bounding box and crs).</p>
-<p><strong>Options</strong> In the context of tmap, we refer to the options as options which can be set via <code>tm_options</code>. These can be <em>layout</em> options (see <strong>layout</strong>) or otherwise (e.g.&nbsp;<code>"show.messages"</code>).</p>
-<p><strong>Proportional symbols</strong> Proportional symbols are symbols that are drawn at geographic locations and that are sized proportionally with a data variable. The result is known as a “proportional symbol map”. These symbols are usually bubbles (filled circles), but can also be small charts, called <strong>glyphs</strong>.</p>
-<p><strong>Scale function</strong> A scale function determines how to scale a data variable to either a visual variable or a transformation variable. Examples: <code>tm_scale_continuous</code>, <code>tm_scale_categorical</code>.</p>
-<p><strong>tmap element</strong> A <code>tm_</code> object that can be stacked with the <code>+</code> operator. These are: <code>tm_shape()</code>, map layer functions (such as <code>tm_polygons()</code>), facet specification function <code>tm_facets()</code>, map components (such as <code>tm_compass()</code>), and layout/option specification functions, such as <code>tm_layout()</code>.</p>
-<p><strong>shape (object)</strong> ‘shape’ is a nickname for a spatial data object (see <a href="XX-geodata.html#sec-spatial-data-representations-in-r" class="quarto-xref"><span>Section 2.3</span></a>), an abbreviation from ESRIs “shapefile”. It is used in <code>tm_shape()</code>.</p>
-<p><strong>shape (visual variable)</strong> The shape is a visual variable for some map layer functions, most prominently <code>tm_symbols</code>. It determines the shape/design of the symbols.</p>
-<p><strong>style</strong> The overall layout of the map. Similar to ggplot2’s ‘theme’ (see <strong>theme</strong>)</p>
-<p><strong>theme</strong> tmap stands for ‘thematic maps’, where <em>theme</em> refers to the topic of the data plotted on a map. Note that in ggplot2, a ‘theme’ refers to the overall layout, e.g.&nbsp;<code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">ggplot2::theme_minimal()</a></code>. In tmap, we use **style* for this.</p>
-<p><strong>Transformation variable</strong> A variable of a data-driven map layer that determines a <em>transformation</em> of the spatial object. (TO DO: exact definition). For instance, <code>tm_cartogram(size = "var")</code></p>
-<p><strong>Visual variable</strong> A variable of a data-driven map layer that determines a <em>visual</em> aspect. This can data-driven. e.g.&nbsp;<code>tm_polygons(fill = "var")</code>, where <code>var</code> is the name of an <code>sf</code> column, or a constant value, such as <code>tm_polygons(fill = "blue")</code>.</p>
-<p><strong>Chart</strong> A small non-spatial data visualization. In tmap for several purposes: 1) an addition to a legend <code>tm_polygons(fill = "var", fill.chart = tm_chart_histogram())</code>, 2) a glyph (see <strong>glyphs</strong>), 3) a custom chart plotted as inset.</p>
-<p><strong>Inset</strong> A visual object that is plotted on a specific (pre-defined) location. It can be a small map (<strong>minimap</strong>) or a <strong>chart</strong>.</p>
+</header><div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">glossary</span> <span class="op">=</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span><span class="op">(</span></span>
+<span>  <span class="op">~</span><span class="va">Term</span>, <span class="op">~</span><span class="va">Explanation</span>,</span>
+<span>  <span class="st">"Auxiliary map layer"</span>, <span class="st">"An auxiliary (or non-data-driven) map layer is a visual representation of geographic information that does not come from a spatial object, but uses the map's coordinates. Examples: `tm_grid()`/`tm_graticules()` and `tm_basemap()`."</span>,</span>
+<span>  <span class="st">"Data-driven map layer"</span>, <span class="st">"A data-driven map layer is a visual representation of a spatial object. E.g., `tm_polygons()` or `tm_raster()`."</span>,</span>
+<span>  <span class="st">"Facets"</span>, <span class="st">"Multiple maps in one plot. Also called 'small multiples'."</span>,</span>
+<span>  <span class="st">"Features"</span>, <span class="st">"Elementary spatial data objects. For instance, a row in an `sf` data.frame or a single raster cell."</span>,</span>
+<span>  <span class="st">"Glyph"</span>, <span class="st">"Mini charts that are used as proportional symbols. See the extension package `tmap.glyphs`."</span>,</span>
+<span>  <span class="st">"Layout"</span>, <span class="st">"All aspects that specify the plot apart from the map layers and map components. Examples: margins, background color, aspect ratio, font sizes, etc. These can be set via `tm_layout`. These layout options form a subset of all tmap options (see **options**)."</span>,</span>
+<span>  <span class="st">"Map component"</span>, <span class="st">"A visual plot object with a position independent of map coordinates. Examples: a legend, a compass, a title."</span>,</span>
+<span>  <span class="st">"Map layer"</span>, <span class="st">"A map layer is a visual representation of geographical information. We distinguish two types: *data-driven* and *auxiliary* map layers. The former requires spatial objects whereas the latter only the geographic information (bounding box and coordinate reference system)."</span>,</span>
+<span>  <span class="st">"Options"</span>, <span class="st">"In the context of tmap, we refer to the options as settings, which can be configured using `tm_options`. These can be *layout* options (see **layout**) or otherwise (e.g., `'show.messages'`)."</span>,</span>
+<span>  <span class="st">"Proportional symbols"</span>, <span class="st">"Proportional symbols are symbols that are drawn at geographic locations and that are sized proportionally with a data variable. The result is known as a 'proportional symbol map'. These symbols are usually bubbles (filled circles), but can also be small charts, called **glyphs**."</span>,</span>
+<span>  <span class="st">"Scale function"</span>, <span class="st">"A scale function determines how to scale a data variable to either a visual variable or a transformation variable. Examples: `tm_scale_continuous`, `tm_scale_categorical`."</span>,</span>
+<span>  <span class="st">"tmap element"</span>, <span class="st">"A `tm_` object that can be stacked with the `+` operator. These are: `tm_shape()`, map layer functions (such as `tm_polygons()`), facet specification function `tm_facets()`, map components (such as `tm_compass()`), and layout/option specification functions, such as `tm_layout()`."</span>,</span>
+<span>  <span class="st">"Shape (object)"</span>, <span class="st">"'Shape' is a nickname for a spatial data object. It is used in `tm_shape()`."</span>,</span>
+<span>  <span class="st">"Shape (visual variable)"</span>, <span class="st">"The shape is a visual variable for some map layer functions, most prominently `tm_symbols()`. It determines the shape/design of the symbols."</span>,</span>
+<span>  <span class="st">"Style"</span>, <span class="st">"The overall layout of the map. Similar to ggplot2's 'theme' (see **theme**)."</span>,</span>
+<span>  <span class="st">"Theme"</span>, <span class="st">"tmap stands for 'thematic maps', where *theme* refers to the topic of the data plotted on a map. Note that in ggplot2, a 'theme' refers to the overall layout, e.g. `ggplot2::theme_minimal()`. In tmap, we use **style** for this."</span>,</span>
+<span>  <span class="st">"Transformation variable"</span>, <span class="st">'A variable of a data-driven map layer that determines a *transformation* of the spatial object. (TO DO: exact definition). For instance, `tm_cartogram(size = "var")`.'</span>,</span>
+<span>  <span class="st">"Visual variable"</span>, <span class="st">'A variable of a data-driven map layer that determines a *visual* aspect. This can be data-driven, e.g. `tm_polygons(fill = "var")`, where `var` is the name of an `sf` column, or a constant value, such as `tm_polygons(fill = "blue")`.'</span>,</span>
+<span>  <span class="st">"Chart"</span>, <span class="st">'A small non-spatial data visualization. In tmap for several purposes: 1) an addition to a legend `tm_polygons(fill = "var", fill.chart = tm_chart_histogram())`, 2) a glyph (see **glyphs**), 3) a custom chart plotted as an inset.'</span>,</span>
+<span>  <span class="st">"Inset"</span>, <span class="st">"A visual object that is plotted on a specific (pre-defined) location. It can be a small map (**minimap**) or a **chart**."</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div id="tbl-glossary" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-glossary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;B.1
+</figcaption><div aria-describedby="tbl-glossary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<!-- preamble start -->
+
+    <script>
+
+      function styleCell_obuep9lbzwpy41b8f1oc(i, j, css_id) {
+          var table = document.getElementById("tinytable_obuep9lbzwpy41b8f1oc");
+          var cell = table.rows[i]?.cells[j];  // Safe navigation to avoid errors
+          if (cell) {
+              console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
+              cell.classList.add(css_id);
+          } else {
+              console.warn(`Cell at (${i}, ${j}) not found.`);
+          }
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_obuep9lbzwpy41b8f1oc');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_obuep9lbzwpy41b8f1oc(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_obuep9lbzwpy41b8f1oc");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: 0, j: 0 }, { i: 0, j: 1 },  ], css_id: 'tinytable_css_z3enr98upsikl2m15eul',}, 
+          { positions: [ { i: 20, j: 0 }, { i: 20, j: 1 },  ], css_id: 'tinytable_css_1rzwm6hriimk9js5kju5',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  styleCell_obuep9lbzwpy41b8f1oc(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script><style>
+      /* tinytable css entries after */
+      .table td.tinytable_css_z3enr98upsikl2m15eul, .table th.tinytable_css_z3enr98upsikl2m15eul { border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_1rzwm6hriimk9js5kju5, .table th.tinytable_css_1rzwm6hriimk9js5kju5 { border-bottom: solid #d3d8dc 0.1em; }
+    </style>
+<div class="container">
+      <table class="table table-borderless" id="tinytable_obuep9lbzwpy41b8f1oc" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+<thead>
+</thead><caption>..</caption>
+              <tbody><tr>
+<th scope="col">Term</th>
+                <th scope="col">Explanation</th>
+              </tr>
+
+</tbody><tbody>
+<tr>
+<td>Auxiliary map layer</td>
+                  <td>An auxiliary (or non-data-driven) map layer is a visual representation of geographic information that does not come from a spatial object, but uses the map's coordinates. Examples: `tm_grid()`/`tm_graticules()` and `tm_basemap()`.</td>
+                </tr>
+<tr>
+<td>Data-driven map layer</td>
+                  <td>A data-driven map layer is a visual representation of a spatial object. E.g., `tm_polygons()` or `tm_raster()`.</td>
+                </tr>
+<tr>
+<td>Facets</td>
+                  <td>Multiple maps in one plot. Also called 'small multiples'.</td>
+                </tr>
+<tr>
+<td>Features</td>
+                  <td>Elementary spatial data objects. For instance, a row in an `sf` data.frame or a single raster cell.</td>
+                </tr>
+<tr>
+<td>Glyph</td>
+                  <td>Mini charts that are used as proportional symbols. See the extension package `tmap.glyphs`.</td>
+                </tr>
+<tr>
+<td>Layout</td>
+                  <td>All aspects that specify the plot apart from the map layers and map components. Examples: margins, background color, aspect ratio, font sizes, etc. These can be set via `tm_layout`. These layout options form a subset of all tmap options (see **options**).</td>
+                </tr>
+<tr>
+<td>Map component</td>
+                  <td>A visual plot object with a position independent of map coordinates. Examples: a legend, a compass, a title.</td>
+                </tr>
+<tr>
+<td>Map layer</td>
+                  <td>A map layer is a visual representation of geographical information. We distinguish two types: *data-driven* and *auxiliary* map layers. The former requires spatial objects whereas the latter only the geographic information (bounding box and coordinate reference system).</td>
+                </tr>
+<tr>
+<td>Options</td>
+                  <td>In the context of tmap, we refer to the options as settings, which can be configured using `tm_options`. These can be *layout* options (see **layout**) or otherwise (e.g., `'show.messages'`).</td>
+                </tr>
+<tr>
+<td>Proportional symbols</td>
+                  <td>Proportional symbols are symbols that are drawn at geographic locations and that are sized proportionally with a data variable. The result is known as a 'proportional symbol map'. These symbols are usually bubbles (filled circles), but can also be small charts, called **glyphs**.</td>
+                </tr>
+<tr>
+<td>Scale function</td>
+                  <td>A scale function determines how to scale a data variable to either a visual variable or a transformation variable. Examples: `tm_scale_continuous`, `tm_scale_categorical`.</td>
+                </tr>
+<tr>
+<td>tmap element</td>
+                  <td>A `tm_` object that can be stacked with the `+` operator. These are: `tm_shape()`, map layer functions (such as `tm_polygons()`), facet specification function `tm_facets()`, map components (such as `tm_compass()`), and layout/option specification functions, such as `tm_layout()`.</td>
+                </tr>
+<tr>
+<td>Shape (object)</td>
+                  <td>'Shape' is a nickname for a spatial data object. It is used in `tm_shape()`.</td>
+                </tr>
+<tr>
+<td>Shape (visual variable)</td>
+                  <td>The shape is a visual variable for some map layer functions, most prominently `tm_symbols()`. It determines the shape/design of the symbols.</td>
+                </tr>
+<tr>
+<td>Style</td>
+                  <td>The overall layout of the map. Similar to ggplot2's 'theme' (see **theme**).</td>
+                </tr>
+<tr>
+<td>Theme</td>
+                  <td>tmap stands for 'thematic maps', where *theme* refers to the topic of the data plotted on a map. Note that in ggplot2, a 'theme' refers to the overall layout, e.g. `ggplot2::theme_minimal()`. In tmap, we use **style** for this.</td>
+                </tr>
+<tr>
+<td>Transformation variable</td>
+                  <td>A variable of a data-driven map layer that determines a *transformation* of the spatial object. (TO DO: exact definition). For instance, `tm_cartogram(size = "var")`.</td>
+                </tr>
+<tr>
+<td>Visual variable</td>
+                  <td>A variable of a data-driven map layer that determines a *visual* aspect. This can be data-driven, e.g. `tm_polygons(fill = "var")`, where `var` is the name of an `sf` column, or a constant value, such as `tm_polygons(fill = "blue")`.</td>
+                </tr>
+<tr>
+<td>Chart</td>
+                  <td>A small non-spatial data visualization. In tmap for several purposes: 1) an addition to a legend `tm_polygons(fill = "var", fill.chart = tm_chart_histogram())`, 2) a glyph (see **glyphs**), 3) a custom chart plotted as an inset.</td>
+                </tr>
+<tr>
+<td>Inset</td>
+                  <td>A visual object that is plotted on a specific (pre-defined) location. It can be a small map (**minimap**) or a **chart**.</td>
+                </tr>
+</tbody>
+</table>
+</div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
+</div>
+</figure>
+</div>
+</div>
 
 
 
