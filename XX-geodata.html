@@ -360,6 +360,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Data preparation</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./XX-glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Glossary</span></span></a>
+  </div>
+</li>
       </ul>
 </li>
     </ul>
@@ -937,11 +943,11 @@ Figure&nbsp;2.13: Examples of a conic and a planar projection.
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: 1, j: 0 }, { i: 2, j: 0 }, { i: 3, j: 0 }, { i: 4, j: 0 }, { i: 5, j: 0 }, { i: 6, j: 0 },  ], css_id: 'tinytable_css_qehcmn3pch4uacvympdr',}, 
+          { positions: [ { i: 1, j: 0 }, { i: 2, j: 0 }, { i: 3, j: 0 }, { i: 4, j: 0 }, { i: 5, j: 0 },  ], css_id: 'tinytable_css_qehcmn3pch4uacvympdr',}, 
           { positions: [ { i: 0, j: 1 }, { i: 0, j: 2 }, { i: 0, j: 3 }, { i: 0, j: 4 },  ], css_id: 'tinytable_css_ophuumvda8df89tjkjx4',}, 
           { positions: [ { i: 0, j: 0 },  ], css_id: 'tinytable_css_lm8vtu7l4uc0408hg1dc',}, 
-          { positions: [ { i: 7, j: 1 }, { i: 7, j: 2 }, { i: 7, j: 3 }, { i: 7, j: 4 },  ], css_id: 'tinytable_css_fsqt1gomokxkx3x9gbp1',}, 
-          { positions: [ { i: 7, j: 0 },  ], css_id: 'tinytable_css_fbzd2p2s0ikyqa1f9tb5',}, 
+          { positions: [ { i: 6, j: 1 }, { i: 6, j: 2 }, { i: 6, j: 3 }, { i: 6, j: 4 },  ], css_id: 'tinytable_css_fsqt1gomokxkx3x9gbp1',}, 
+          { positions: [ { i: 6, j: 0 },  ], css_id: 'tinytable_css_fbzd2p2s0ikyqa1f9tb5',}, 
           ];
 
           // Loop over the arrays to style the cells
@@ -954,8 +960,8 @@ Figure&nbsp;2.13: Examples of a conic and a planar projection.
     </script><style>
       /* tinytable css entries after */
       .table td.tinytable_css_qehcmn3pch4uacvympdr, .table th.tinytable_css_qehcmn3pch4uacvympdr { font-weight: bold; }
-      .table td.tinytable_css_ophuumvda8df89tjkjx4, .table th.tinytable_css_ophuumvda8df89tjkjx4 { border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
-      .table td.tinytable_css_lm8vtu7l4uc0408hg1dc, .table th.tinytable_css_lm8vtu7l4uc0408hg1dc { font-weight: bold; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_ophuumvda8df89tjkjx4, .table th.tinytable_css_ophuumvda8df89tjkjx4 { border-top: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_lm8vtu7l4uc0408hg1dc, .table th.tinytable_css_lm8vtu7l4uc0408hg1dc { font-weight: bold; border-top: solid #d3d8dc 0.1em; }
       .table td.tinytable_css_fsqt1gomokxkx3x9gbp1, .table th.tinytable_css_fsqt1gomokxkx3x9gbp1 { border-bottom: solid #d3d8dc 0.1em; }
       .table td.tinytable_css_fbzd2p2s0ikyqa1f9tb5, .table th.tinytable_css_fbzd2p2s0ikyqa1f9tb5 { font-weight: bold; border-bottom: solid #d3d8dc 0.1em; }
     </style>
@@ -963,63 +969,56 @@ Figure&nbsp;2.13: Examples of a conic and a planar projection.
       <table class="table table-borderless" id="tinytable_s934qahjlizssgcvjeyt" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
 <thead>
 </thead><caption>Map projection properties.</caption>
-              <tbody><tr>
-<th scope="col">rowname</th>
-                <th scope="col">1</th>
-                <th scope="col">2</th>
-                <th scope="col">3</th>
-                <th scope="col">4</th>
-              </tr>
-
-</tbody><tbody>
+        
+<tbody>
 <tr>
-<td>Property               </td>
-                  <td>Conformal              </td>
-                  <td>Equal area                   </td>
-                  <td>Equidistant          </td>
-                  <td>Azimuthal                                  </td>
+<td>Property</td>
+                  <td>Conformal</td>
+                  <td>Equal area</td>
+                  <td>Equidistant</td>
+                  <td>Azimuthal</td>
                 </tr>
 <tr>
-<td>Preserves              </td>
-                  <td>Local angle (shape)    </td>
-                  <td>Area                         </td>
-                  <td>Distance             </td>
-                  <td>Direction                                  </td>
+<td>Preserves</td>
+                  <td>Local angle (shape)</td>
+                  <td>Area</td>
+                  <td>Distance</td>
+                  <td>Direction</td>
                 </tr>
 <tr>
-<td>Applications           </td>
-                  <td>Navigation, climate    </td>
-                  <td>Statistics                   </td>
-                  <td>Geology              </td>
-                  <td>Geology                                    </td>
+<td>Applications</td>
+                  <td>Navigation, climate</td>
+                  <td>Statistics</td>
+                  <td>Geology</td>
+                  <td>Geology</td>
                 </tr>
 <tr>
 <td>Examples (cyclindrical)</td>
-                  <td>Mercator               </td>
-                  <td>Gall-Peters, Eckert IV       </td>
-                  <td>Equirectangular      </td>
-                  <td>none                                       </td>
+                  <td>Mercator</td>
+                  <td>Gall-Peters, Eckert IV</td>
+                  <td>Equirectangular</td>
+                  <td>none</td>
                 </tr>
 <tr>
-<td>Examples (conic)       </td>
+<td>Examples (conic)</td>
                   <td>Lambert conformal conic</td>
-                  <td>Albers conic                 </td>
-                  <td>Equidistant conic    </td>
-                  <td>none                                       </td>
+                  <td>Albers conic</td>
+                  <td>Equidistant conic</td>
+                  <td>none</td>
                 </tr>
 <tr>
-<td>Examples (planar)      </td>
-                  <td>Stereographic          </td>
-                  <td>Lambert azimuthal equal-area </td>
+<td>Examples (planar)</td>
+                  <td>Stereographic</td>
+                  <td>Lambert azimuthal equal-area</td>
                   <td>Azimuthal equidistant</td>
                   <td>Stereographic, Lambert azimuthal equal-area</td>
                 </tr>
 <tr>
-<td>Examples (interrupted) </td>
-                  <td>Myriahedral            </td>
+<td>Examples (interrupted)</td>
+                  <td>Myriahedral</td>
                   <td>Goode homolosine, Myriahedral</td>
-                  <td>none                 </td>
-                  <td>none                                       </td>
+                  <td>none</td>
+                  <td>none</td>
                 </tr>
 </tbody>
 </table>

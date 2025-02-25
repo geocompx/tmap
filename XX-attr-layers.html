@@ -320,6 +320,12 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Data preparation</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./XX-glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Glossary</span></span></a>
+  </div>
+</li>
       </ul>
 </li>
     </ul>
@@ -458,40 +464,40 @@ Table&nbsp;10.1
 
 </tbody><tbody>
 <tr>
-<td>tm_grid()      </td>
+<td>tm_grid()</td>
                   <td>draws coordinate grid lines of the coordinate system of the main shape object</td>
                 </tr>
 <tr>
 <td>tm_graticules()</td>
-                  <td>draws latitude and longitude graticules                                      </td>
+                  <td>draws latitude and longitude graticules</td>
                 </tr>
 <tr>
-<td>tm_scalebar()  </td>
-                  <td>adds a scale bar                                                             </td>
+<td>tm_scalebar()</td>
+                  <td>adds a scale bar</td>
                 </tr>
 <tr>
-<td>tm_compass()   </td>
-                  <td>adds a compass rose                                                          </td>
+<td>tm_compass()</td>
+                  <td>adds a compass rose</td>
                 </tr>
 <tr>
-<td>tm_credits()   </td>
-                  <td>adds a text annotation                                                       </td>
+<td>tm_credits()</td>
+                  <td>adds a text annotation</td>
                 </tr>
 <tr>
-<td>tm_logo()      </td>
-                  <td>adds a logo                                                                  </td>
+<td>tm_logo()</td>
+                  <td>adds a logo</td>
                 </tr>
 <tr>
-<td>tm_xlab()      </td>
-                  <td>adds an x axis labels                                                        </td>
+<td>tm_xlab()</td>
+                  <td>adds an x axis labels</td>
                 </tr>
 <tr>
-<td>tm_ylab()      </td>
-                  <td>adds an y axis labels                                                        </td>
+<td>tm_ylab()</td>
+                  <td>adds an y axis labels</td>
                 </tr>
 <tr>
-<td>tm_minimap()   </td>
-                  <td>adds minimap in the view mode only                                           </td>
+<td>tm_minimap()</td>
+                  <td>adds minimap in the view mode only</td>
                 </tr>
 </tbody>
 </table>
@@ -517,22 +523,22 @@ Table&nbsp;10.1
 </div>
 <section id="sec-grid-lines" class="level2" data-number="10.1"><h2 data-number="10.1" class="anchored" data-anchor-id="sec-grid-lines">
 <span class="header-section-number">10.1</span> Grid lines</h2>
-<p>The <strong>tmap</strong> package offers two ways to draws coordinate lines - <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_graticules.html">tm_graticules()</a></code>. The role of <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid()</a></code> is to represent the input data’s coordinates. For example, the <code>ei_borders</code> object’s CRS is UTM zone 12S with the units in meters (<a href="#fig-grids-1" class="quarto-xref">Figure&nbsp;<span>10.1 (a)</span></a>), and thus the grid lines are in meters.</p>
+<p>The <strong>tmap</strong> package offers two ways to draws coordinate lines - <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules()</a></code>. The role of <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid()</a></code> is to represent the input data’s coordinates. For example, the <code>ei_borders</code> object’s CRS is UTM zone 12S with the units in meters (<a href="#fig-grids-1" class="quarto-xref">Figure&nbsp;<span>10.1 (a)</span></a>), and thus the grid lines are in meters.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">ei_borders</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code><a href="https://r-tmap.github.io/tmap/reference/tm_graticules.html">tm_graticules()</a></code> shows longitude lines (meridians) and latitude lines (parallels), with degrees as units. This can be seen with the degree signs in the labels (<a href="#fig-grids-2" class="quarto-xref">Figure&nbsp;<span>10.1 (b)</span></a>).</p>
+<p><code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules()</a></code> shows longitude lines (meridians) and latitude lines (parallels), with degrees as units. This can be seen with the degree signs in the labels (<a href="#fig-grids-2" class="quarto-xref">Figure&nbsp;<span>10.1 (b)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">ei_borders</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_graticules.html">tm_graticules</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Both, <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_graticules.html">tm_graticules()</a></code> can be placed above or below the map layers as their position on the map depends on their place in the code. When <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid()</a></code> or <code><a href="https://r-tmap.github.io/tmap/reference/tm_graticules.html">tm_graticules()</a></code> is placed after the map layer (e.g., <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code>), the grid lines are plotted on the top of the map. On the other hand, when <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid()</a></code> or <code><a href="https://r-tmap.github.io/tmap/reference/tm_graticules.html">tm_graticules()</a></code> is placed before the map layer code, the grid lines are plotted behind the spatial data (<a href="#fig-grids-3" class="quarto-xref">Figure&nbsp;<span>10.1 (c)</span></a>).</p>
+<p>Both, <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules()</a></code> can be placed above or below the map layers as their position on the map depends on their place in the code. When <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid()</a></code> or <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules()</a></code> is placed after the map layer (e.g., <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code>), the grid lines are plotted on the top of the map. On the other hand, when <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid()</a></code> or <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules()</a></code> is placed before the map layer code, the grid lines are plotted behind the spatial data (<a href="#fig-grids-3" class="quarto-xref">Figure&nbsp;<span>10.1 (c)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">ei_borders</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_graticules.html">tm_graticules</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Grids and graticules can also be easily customized using several arguments, such as, <code>x</code> and <code>y</code> (x and y coordinates of the lines), <code>n.x</code> and <code>n.y</code> (number of horizontal (x) and vertical (y) lines), <code>labels.inside.frame</code>, <code>ticks</code>, <code>lines</code> It is also possible to customize their appearance, for example, by changing the colors of the lines (<code>col</code>), width (<code>lwd</code>) or labels’ sizes (<code>labels.size</code>).</p>

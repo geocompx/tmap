@@ -335,6 +335,12 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Data preparation</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./XX-glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Glossary</span></span></a>
+  </div>
+</li>
       </ul>
 </li>
     </ul>
@@ -539,7 +545,7 @@ Figure&nbsp;7.4: Examples of three main types of color palettes: categorical, se
 <span><span class="fu">grDevices</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html">palette.colors</a></span><span class="op">(</span><span class="fl">7</span>, <span class="st">"Okabe-Ito"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "#000000" "#E69F00" "#56B4E9" "#009E73" "#F0E442" "#0072B2" "#D55E00"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The <strong>cols4all</strong> package <!--ref--> is a set of tools for selecting color palettes; it also includes all of the groups of color palettes mentioned above and more. Its main function is <code><a href="https://mtennekes.github.io/cols4all/reference/c4a_gui.html">cols4all::c4a_gui()</a></code> that starts an interactive application allowing to see and examine hundreds of color palettes. Each color palette shown <code><a href="https://mtennekes.github.io/cols4all/reference/c4a_gui.html">cols4all::c4a_gui()</a></code> can be used in <strong>tmap</strong>.</p>
+<p>The <strong>cols4all</strong> package <!--ref--> is a set of tools for selecting color palettes; it also includes all of the groups of color palettes mentioned above and more. Its main function is <code><a href="https://rdrr.io/pkg/cols4all/man/c4a_gui.html">cols4all::c4a_gui()</a></code> that starts an interactive application allowing to see and examine hundreds of color palettes. Each color palette shown <code><a href="https://rdrr.io/pkg/cols4all/man/c4a_gui.html">cols4all::c4a_gui()</a></code> can be used in <strong>tmap</strong>.</p>
 <p> One of the most widely used color palettes is “rainbow” (the <code><a href="https://rdrr.io/r/grDevices/palettes.html">rainbow()</a></code> function in R). It was inspired by colors of a rainbow – a set of seven colors going from red to violet. However, this palette has a number of disadvantages, including irregular changes in brightness affecting its interpretation or being unsuitable for people with color vision deficiencies <span class="citation" data-cites="borland_rainbow_2007 stauffer_somewhere_2015 quinan_examining_2019">(<a href="references.html#ref-borland_rainbow_2007" role="doc-biblioref">Borland and Taylor Ii 2007</a>; <a href="references.html#ref-stauffer_somewhere_2015" role="doc-biblioref">Stauffer et al. 2015</a>; <a href="references.html#ref-quinan_examining_2019" role="doc-biblioref">Quinan et al. 2019</a>)</span>. Depending on a given situation, there are many palettes better suited for visualization than “rainbow”, including sequential <code>"viridis"</code> and <code>"ag_sunset"</code> or diverging <code>"pu_gn"</code> and <code>"geyser"</code>. All of them can be specified in <strong>tmap</strong>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> More examples showing alternatives to the “rainbow” palette are in the documentation of the <strong>colorspace</strong> package at https://colorspace.r-forge.r-project.org/articles/endrainbow.html <span class="citation" data-cites="R-colorspace">(<a href="references.html#ref-R-colorspace" role="doc-biblioref">Zeileis et al. 2019</a>)</span>.</p>
 <p>By default, the <strong>tmap</strong> package attempts to identify the type of variable used. For example, it uses <code>"area7"</code> for a categorical (unordered) variable, <code>"blues3"</code> for a sequential variable, and “<code>pu_gn</code>” for a diverging one (<a href="#fig-tmpals" class="quarto-xref">Figure&nbsp;<span>7.5</span></a>). <!-- info about tm_layout or reference to a section about it --></p>
 <div class="cell" data-layout-align="center">
@@ -1012,7 +1018,7 @@ Zeileis, Achim, Jason C. Fisher, Kurt Hornik, Ross Ihaka, Claire D. McWhite, Pau
 <ol>
 <li id="fn1"><p>Other visual variables include position, orientation, and texture.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Learn more about them at <a href="https://developer.r-project.org/Blog/public/2019/04/01/hcl-based-color-palettes-in-grdevices/" class="uri">https://developer.r-project.org/Blog/public/2019/04/01/hcl-based-color-palettes-in-grdevices/</a> and <a href="https://developer.r-project.org/Blog/public/2019/11/21/a-new-palette-for-r/index.html" class="uri">https://developer.r-project.org/Blog/public/2019/11/21/a-new-palette-for-r/index.html</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>You can also derive them using <code><a href="https://mtennekes.github.io/cols4all/reference/c4a.html">cols4all::c4a()</a></code> function.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>You can also derive them using <code><a href="https://rdrr.io/pkg/cols4all/man/c4a.html">cols4all::c4a()</a></code> function.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>The default value of size is 1, which corresponds to the area of symbols that have the same height as one line of text.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>They are represented in R by numbers from 21 to 25.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
