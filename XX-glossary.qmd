@@ -29,16 +29,19 @@ glossary = tibble::tribble(
   "Chart", 'A small non-spatial data visualization. In tmap for several purposes: 1) an addition to a legend `tm_polygons(fill = "var", fill.chart = tm_chart_histogram())`, 2) a glyph (see **glyphs**), 3) a custom chart plotted as an inset.',
   "Inset", "A visual object that is plotted on a specific (pre-defined) location. It can be a small map (**minimap**) or a **chart**."
 )
-
 ```
 
 ```{r}
+#| label: tbl-glossary
 #| echo: false
-options(DT.options = list(
-  bPaginate = FALSE, 
-  dom = "ifrt", 
-  language = list(info = "Showing _TOTAL_ entries")
-))
-library(DT)
-datatable(glossary)
+#| warning: false
+#| message: false
+tinytable::tt(glossary, caption = "..")
+# options(DT.options = list(
+#   bPaginate = FALSE, 
+#   dom = "ifrt", 
+#   language = list(info = "Showing _TOTAL_ entries")
+# ))
+# library(DT)
+# datatable(glossary)
 ```
