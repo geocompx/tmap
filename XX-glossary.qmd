@@ -5,38 +5,45 @@ source("code/before_script.R")
 
 # Glossary {#sec-glossary}
 
-**Auxiliary map layer** A map layer 
+**Auxiliary map layer** An auxiliary (or non-data-driven) map layer is a visual representation of geographic information that does not come from a spatial object, but uses the maps coordinates. Examples: `tm_grid()`/`tm_graticules()` and `tm_basemap()`.
 
-**Constant variable**
+**Data-driven map layer** A data-driven map layer is a visual representation of a spatial object. E.g. `tm_polygons()`.
 
-**Data-driven map layer**
+**Facets** Multiple maps in one plots. Also called 'small multiples'.
 
-**Facets**
+**Features** Elementary spatial data objects. For instance, a row in an `sf` data.frame or a raster cell.
 
-**Features** 
+**Glyph** Mini charts that are used as **proportional symbols**. See the extension package `tmap.glyphs`.
 
-**Layout**
+**Layout** All aspects that specify the plot apart from the map layers and map components. Examples: margins, background color, aspect ratio, font sizes, etc. These can be set via `tm_layout`. These layout options form a subset of all tmap options (see **options**).
 
-**Map component**
+**Map component** A visual plot object with a position independent of map coordinates. Examples: a legend, a compass, a title.
 
-**Map layer** A map layer is a visual representation of geographical information. We distinguish two types: *data-driven* and *auxiliary* map layers. The former uses spatial objects
+**Map layer** A map layer is a visual representation of geographical information. We distinguish two types: *data-driven* and *auxiliary* map layers. The former requires spatial objects whereas the latter only the geographic informatin (bounding box and crs).
 
-**Options**
+**Options** In the context of tmap, we refer to the options as options which can be set via `tm_options`. These can be *layout* options (see **layout**) or otherwise (e.g. `"show.messages"`).
 
-**Scale function**
+**Proportional symbols** Proportional symbols are symbols that are drawn at geographic locations and that are sized proportionally with a data variable. The result is known as a "proportional symbol map". These symbols are usually bubbles (filled circles), but can also be small charts, called **glyphs**. 
+
+**Scale function** A scale function determines how to scale a data variable to either a visual variable or a transformation variable. Examples: `tm_scale_continuous`, `tm_scale_categorical`.
 
 **tmap element** A `tm_` object that can be stacked with the `+` operator. These are: `tm_shape()`, map layer functions (such as `tm_polygons()`), facet specification function `tm_facets()`, map components (such as `tm_compass()`), and layout/option specification functions, such as `tm_layout()`. 
 
-**shape (object)** 'shape' is a nickname for a spatial data object (see @sec-spatial-data-representations-in-r), an abbreviation from ESRIs "shapefile". 
+**shape (object)** 'shape' is a nickname for a spatial data object (see @sec-spatial-data-representations-in-r), an abbreviation from ESRIs "shapefile". It is used in `tm_shape()`. 
 
 **shape (visual variable)** The shape is a visual variable for some map layer functions, most prominently `tm_symbols`. It determines the shape/design of the symbols.
 
+**style** The overall layout of the map. Similar to ggplot2's 'theme' (see **theme**)
+
+**theme** tmap stands for 'thematic maps', where *theme* refers to the topic of the data plotted on a map. Note that in ggplot2, a 'theme' refers to the overall layout, e.g. `ggplot2::theme_minimal()`. In tmap, we use **style* for this.
+
 **Transformation variable** A variable of a data-driven map layer that determines a *transformation* of the spatial object. (TO DO: exact definition). For instance, `tm_cartogram(size = "var")`
 
-**Visual variable** A variable of a data-driven map layer that determines a *visual* aspect. This can a data-driven. e.g. `tm_polygons(fill = "var")`, where `var` is the name of an `sf` column, or a constant value, such as `tm_polygons(fill = "blue")`.
+**Visual variable** A variable of a data-driven map layer that determines a *visual* aspect. This can data-driven. e.g. `tm_polygons(fill = "var")`, where `var` is the name of an `sf` column, or a constant value, such as `tm_polygons(fill = "blue")`.
 
-**Chart**
+**Chart** A small non-spatial data visualization. In tmap for several purposes: 1) an addition to a legend `tm_polygons(fill = "var", fill.chart = tm_chart_histogram())`, 2) a glyph (see **glyphs**), 3) a custom chart plotted as inset.
 
-**Inset**
+**Inset** A visual object that is plotted on a specific (pre-defined) location. It can be a small map (**minimap**) or a **chart**.
+
 
 
