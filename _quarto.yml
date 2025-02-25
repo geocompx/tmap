@@ -53,6 +53,7 @@ book:
     - "references.qmd"
   appendices:
     - "XX-data_processing.qmd"
+    - "XX-glossary.qmd"
 
 format:
   html: 

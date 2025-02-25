@@ -1,0 +1,42 @@
+```{r}
+#| echo: false
+source("code/before_script.R")
+```
+
+# Glossary {#sec-glossary}
+
+**Auxiliary map layer** A map layer 
+
+**Constant variable**
+
+**Data-driven map layer**
+
+**Facets**
+
+**Features** 
+
+**Layout**
+
+**Map component**
+
+**Map layer** A map layer is a visual representation of geographical information. We distinguish two types: *data-driven* and *auxiliary* map layers. The former uses spatial objects
+
+**Options**
+
+**Scale function**
+
+**tmap element** A `tm_` object that can be stacked with the `+` operator. These are: `tm_shape()`, map layer functions (such as `tm_polygons()`), facet specification function `tm_facets()`, map components (such as `tm_compass()`), and layout/option specification functions, such as `tm_layout()`. 
+
+**shape (object)** 'shape' is a nickname for a spatial data object (see @sec-spatial-data-representations-in-r), an abbreviation from ESRIs "shapefile". 
+
+**shape (visual variable)** The shape is a visual variable for some map layer functions, most prominently `tm_symbols`. It determines the shape/design of the symbols.
+
+**Transformation variable** A variable of a data-driven map layer that determines a *transformation* of the spatial object. (TO DO: exact definition). For instance, `tm_cartogram(size = "var")`
+
+**Visual variable** A variable of a data-driven map layer that determines a *visual* aspect. This can a data-driven. e.g. `tm_polygons(fill = "var")`, where `var` is the name of an `sf` column, or a constant value, such as `tm_polygons(fill = "blue")`.
+
+**Chart**
+
+**Inset**
+
+
