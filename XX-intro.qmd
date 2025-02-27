@@ -11,6 +11,8 @@ source("code/before_script.R")
 
 # Introduction {#intro}
 
+<!-- consider using the idea of "learning personas" -- how to read the book based on your background -->
+
 This book teaches how to make elegant and informative maps with the R-package **tmap**.
 A couple of real-world applications are used to illustrate the whole process, from exploring raw spatial data to presenting insightful results.
 

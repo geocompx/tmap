@@ -7,20 +7,17 @@ source("code/before_script.R")
 
 <!-- tm_layout -->
 <!-- which features are the most important to explain? -->
+<!-- add scale explanation -->
 
-## Positions {#sec-positions}
-
-## Layout {#sec-layout}
-
-### Colors {#sec-lcolors}
+## Colors {#sec-lcolors}
 
 <!-- e.g. background colors -->
 
-### Frame {#sec-lframe}
+## Frame {#sec-lframe}
 
-### Margins {#sec-lmargins}
+## Margins {#sec-lmargins}
 
-### Typography {#sec-ltypography}
+## Typography {#sec-ltypography}
 
 <!-- Font faces and font families -->
 The decision about the used fonts is often neglected when creating programmable plots and maps.

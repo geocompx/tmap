@@ -5,6 +5,8 @@ source("code/before_script.R")
 
 # Save maps {#sec-save}
 
+<!-- add description on scale -->
+
 Maps created programmatically can serve several purposes, from exploratory, through visualizations of the processing steps, to being the final outputs of a given project.
 Therefore, often we want just to see our map on the screen, but sometimes we also want to save our map results to an external file.
 **tmap** objects can be directly saved to output files with `tmap_save()`^[Standard R approach of saving graphic files by opening a graphic device, e.g., `png()`, plotting the data, and then closing the device with `dev.off()` also works.].

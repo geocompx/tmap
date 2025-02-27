@@ -38,6 +38,7 @@ book:
       - "XX-scales.qmd"
       - "XX-legends.qmd"
       - "XX-attr-layers.qmd"
+      - "XX-positions.qmd"
       - "XX-layout.qmd" 
       - "XX-interactive.qmd" 
     - part: "Expanding the toolbox"
@@ -48,8 +49,11 @@ book:
         - "XX-other-types.qmd"
     - part: "Advanced topics"
       chapters:
-      - "XX-options.qmd" 
-    - "XX-good-maps.qmd"
+      - "XX-options.qmd"
+      - "XX-extensions.qmd"
+    - part: "Good practices"
+      chapters:
+      - "XX-good-maps.qmd"
     - "references.qmd"
   appendices:
     - "XX-data_processing.qmd"
