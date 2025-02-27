@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="This book teaches how to make elegant and informative maps with the R package tmap.">
-<title>17&nbsp; Other types – Elegant and informative maps with **tmap**</title>
+<title>11&nbsp; Positions – Elegant and informative maps with **tmap**</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -27,8 +27,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./XX-options.html" rel="next">
-<link href="./XX-shiny.html" rel="prev">
+<link href="./XX-layout.html" rel="next">
+<link href="./XX-attr-layers.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -78,7 +78,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./XX-small-multiples.html">Expanding the toolbox</a></li><li class="breadcrumb-item"><a href="./XX-other-types.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Other types</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./XX-tm-shape.html">Building blocks</a></li><li class="breadcrumb-item"><a href="./XX-positions.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Positions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -190,7 +190,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./XX-positions.html" class="sidebar-item-text sidebar-link">
+  <a href="./XX-positions.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Positions</span></span></a>
   </div>
 </li>
@@ -237,7 +237,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./XX-other-types.html" class="sidebar-item-text sidebar-link active">
+  <a href="./XX-other-types.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Other types</span></span></a>
   </div>
 </li>
@@ -320,8 +320,8 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
         
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./XX-small-multiples.html">Expanding the toolbox</a></li><li class="breadcrumb-item"><a href="./XX-other-types.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Other types</span></a></li></ol></nav><div class="quarto-title">
-<h1 class="title"><span id="sec-other-types" class="quarto-section-identifier"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Other types</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./XX-tm-shape.html">Building blocks</a></li><li class="breadcrumb-item"><a href="./XX-positions.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Positions</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title"><span id="sec-positions" class="quarto-section-identifier"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Positions</span></span></h1>
 </div>
 
 <!--
@@ -760,13 +760,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./XX-shiny.html" class="pagination-link" aria-label="**tmap** in **shiny**">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span>
+      <a href="./XX-attr-layers.html" class="pagination-link" aria-label="Attributes layers">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Attributes layers</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./XX-options.html" class="pagination-link" aria-label="tmap options">
-        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">tmap options</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./XX-layout.html" class="pagination-link" aria-label="Map layout">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Map layout</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -777,7 +777,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
 <p>Elegant and informative maps with <strong>tmap</strong> by Martijn Tennekes and Jakub Nowosad.</p>
-<div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/XX-other-types.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+<div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/XX-positions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
