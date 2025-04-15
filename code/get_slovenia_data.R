@@ -60,56 +60,13 @@ slo_cities = slo_cities0$osm_points |>
 write_sf(slo_cities, "data/slovenia/slo_cities.gpkg")
 
 # 4. Slovenia railroads -----------------------------------------------------------
-slo_roads0 = opq(bbox = st_bbox(slo) |> st_transform("EPSG:4326")) |>
-  add_osm_feature(key = "highway", value = c("motorway", "primary", "secondary")) |>
-  osmdata_sf()
+# https://ipi.eprostor.gov.si/jgp/data
+slo_railroads = read_sf("data-raw/DTM_SLO_PROMETNA_OMREZJA_TN_ZELEZNICE_L_20250412/DTM_SLO_PROMETNA_OMREZJA_TN_ZELEZNICE_L_line.shp") |>
+  st_transform(crs(slo))
 
-# plot(slo_roads0$osm_lines)
+# clean
 
-slo_roads2 = slo_roads0$osm_lines |> 
-  st_transform(crs(slo)) |> 
-  filter(highway %in% c("motorway", "primary", "secondary")) |> 
-  select(name, highway, maxspeed) |> 
-  mutate(strokelwd = recode(highway,
-                            motorway = 10,
-                            primary = 7,
-                            secondary = 5
-  )) |> 
-  mutate(maxspeed = as.numeric(maxspeed)) |>
-  group_by(highway, strokelwd) |>
-  st_cast("LINESTRING")
-
-slo_roads = slo_roads0$osm_lines |> 
-  st_transform(crs(slo)) |> 
-  filter(highway %in% c("motorway", "primary", "secondary")) |> 
-  select(name, highway, maxspeed) |> 
-  mutate(strokelwd = recode(highway,
-                            motorway = 10,
-                            primary = 7,
-                            secondary = 5
-  )) |> 
-  mutate(maxspeed = as.numeric(maxspeed)) |>
-  group_by(name, highway, strokelwd) |> 
-  summarise() |> 
-  st_collection_extract("LINESTRING") |> 
-  mutate(name = ifelse(nchar(name) > 20, NA, name)) |> 
-  rename(type = highway) |>
-  st_intersection(slo)
-
-plot(slo_roads)
-
-slo_roads = slo_roads |>
-  st_collection_extract("LINESTRING") |>
-  mutate(length = as.numeric(st_length(geometry))) |>
-  filter(length > 4000)
-
-plot(slo_roads)
-
-library(rnaturalearth)
-slovenia_roads = ne_download(scale = 10, category = "cultural", type = "roads", returnclass = "sf") |>
-  st_transform(crs(slo)) |>
-  st_intersection(slo) |>
-  select(type, length_km, labelrank, min_zoom, min_label)
+write_sf(slo_railroads, "data/slovenia/slo_railroads.gpkg")
 
 # 5. Slovenia elevation -------------------------------------------------------
 slo_elev0 = rast(get_elev_raster(slo, z = 8, clip = "bbox")) 
