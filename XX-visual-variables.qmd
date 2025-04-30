@@ -42,16 +42,8 @@ Values of polygons usually cannot be represented by either shapes or sizes, as t
 #| message: false
 library(tmap)
 library(sf)
-ei_points = read_sf("data/easter_island/ei_points.gpkg")
-volcanos = subset(ei_points, type == "volcano")
-```
-```{r}
-#| echo: false
-#| warning: false
-#| message: false
-library(tmap)
-library(sf)
-worldvector = read_sf("data/worldvector.gpkg")
+slo_regions = read_sf("data/slovenia/slo_regions_2022.gpkg")
+slo_cities = read_sf("data/slovenia/slo_cities.gpkg")
 ```
 
 ## Constant visual values {#sec-const-visual-variables}
@@ -63,8 +55,8 @@ For example, with `tm_polygons()` we can fill all polygons with the same color, 
 #| label: fig-colorscales1
 #| warning: false
 #| fig-cap: Example of a map with all polygons filled with the same color.
-#| fig-height: 2
-tm_shape(worldvector) +
+#| fig-height: 3.5
+tm_shape(slo_regions) +
   tm_polygons(fill = "lightblue", 
               col = "black",
               lwd = 0.5,
@@ -94,17 +86,17 @@ For example, for colors, it can be a vector of colors, a palette function, or a 
 #|    - A numerical variable for shapes
 #| message: false
 #| layout-ncol: 2
-tm_shape(volcanos) +
-  tm_symbols(fill = "elevation",
+tm_shape(slo_cities) +
+  tm_symbols(fill = "population",
              fill.scale = tm_scale(values = "greens"))
-tm_shape(volcanos) +
-  tm_symbols(col = "elevation",
+tm_shape(slo_cities) +
+  tm_symbols(col = "population",
              col.scale = tm_scale(values = c("red", "blue")))
-tm_shape(volcanos) +
-  tm_symbols(size = "elevation",
+tm_shape(slo_cities) +
+  tm_symbols(size = "population",
              size.scale = tm_scale(values = 1:5))
-tm_shape(volcanos) + 
-  tm_symbols(shape = "elevation", 
+tm_shape(slo_cities) + 
+  tm_symbols(shape = "population", 
              shape.scale = tm_scale(values = 1:6))
 ```
 
@@ -282,7 +274,7 @@ https://colorspace.r-forge.r-project.org/articles/endrainbow.html [@R-colorspace
 #| message: false
 library(tmap)
 library(sf)
-worldvector = read_sf("data/worldvector.gpkg")
+slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
 ```
 
 ```{r}
@@ -299,8 +291,8 @@ For example, it uses `"area7"` for a categorical (unordered) variable, `"blues3"
 ```{r}
 #| label: tmpals1
 #| eval: false
-tm_shape(worldvector) + 
-  tm_polygons("life_expectancy")
+tm_shape(slo_regions) + 
+  tm_polygons("pop_dens")
 ```
 
 There are three main ways to specify color palettes as an `values` argument of the `tm_scale()` family of functions.
@@ -313,8 +305,8 @@ Importantly, the length of the provided vector does not need to be equal to the 
 ```{r}
 #| label: tmpals2
 #| eval: false
-tm_shape(worldvector) +
-  tm_polygons("life_expectancy",
+tm_shape(slo_regions) +
+  tm_polygons("pop_dens",
               fill.scale = tm_scale(values = c("yellow", "darkgreen")))
 ```
 
@@ -326,8 +318,8 @@ Thus, we also used the `rev()` function here.
 ```{r}
 #| label: tmpals3
 #| eval: false
-tm_shape(worldvector) +
-  tm_polygons("life_expectancy", 
+tm_shape(slo_regions) +
+  tm_polygons("pop_dens", 
               fill.scale = tm_scale(values = rev(hcl.colors(7, "ag_GrnYl"))))
 ```
 
@@ -337,8 +329,8 @@ In this example, we used the `"brewer.yl_gn"` palette that goes from yellow to g
 ```{r}
 #| label: tmpals4
 #| eval: false
-tm_shape(worldvector) +
-  tm_polygons("life_expectancy",
+tm_shape(slo_regions) +
+  tm_polygons("pop_dens",
               fill.scale = tm_scale(values = "brewer.yl_gn"))
 ```
 
@@ -375,8 +367,8 @@ To do that, we just need to set the `midpoint` argument to this value (@fig-tmmi
 #| label: tmmidpoint2
 #| eval: false
 # mean(x$lifeExp, na.rm = TRUE)
-tm_shape(worldvector) +
-  tm_polygons(fill = "life_expectancy", 
+tm_shape(slo_regions) +
+  tm_polygons(fill = "pop_dens", 
               fill.scale = tm_scale(midpoint = 73))
 ```
 
@@ -412,32 +404,30 @@ Each category in this variable (e.g., `"South Asia"`) has a new, connected to it
 #| warning: false
 #| fig-cap: An example of a categorical map with manually selected colors.
 #| fig-height: 2
-tm_shape(worldvector) + 
-  tm_polygons("wb_region", 
+tm_shape(slo_regions) + 
+  tm_polygons("region_group", 
     fill.scale = tm_scale(values = c(
-      "Latin America & Caribbean" = "#11467b",
-      "Europe & Central Asia" = "#ffd14d", 
-      "Middle East & North Africa" = "#86909a", 
-      "Sub-Saharan Africa" = "#14909a",
-      "East Asia & Pacific" = "#7fbee9",
-      "South Asia" = "#df5454",
-      "North America" = "#7b1072")
+      "Central" = "#7fbee9",
+      "East" = "#ffd14d", 
+      "North" = "#14909a",
+      "South" = "#df5454",
+      "West" = "#7b1072")
     ))
 ```
 
 ```{r}
 #| echo: false
 #| eval: false
-tm_shape(worldvector) +
-  tm_polygons(fill = "life_expectancy")
-tm_shape(worldvector) +
-  tm_polygons(fill = "life_expectancy", fill_alpha = 0.5) 
-tm_shape(worldvector) +
-  tm_polygons(fill = "life_expectancy", 
+tm_shape(slo_regions) +
+  tm_polygons(fill = "pop_dens")
+tm_shape(slo_regions) +
+  tm_polygons(fill = "pop_dens", fill_alpha = 0.5) 
+tm_shape(slo_regions) +
+  tm_polygons(fill = "pop_dens", 
               fill.scale = tm_scale(value.na = "purple",
                                     label.na = "I do not know!")) 
-tm_shape(worldvector) +
-  tm_polygons(fill = "life_expectancy", 
+tm_shape(slo_regions) +
+  tm_polygons(fill = "pop_dens", 
               fill.scale = tm_scale(values.range = c(0.4, 1))) 
 ```
 
@@ -463,8 +453,7 @@ The `col_alpha`/ `fill_alpha` argument is useful in two ways: one -- it allows u
 ## Sizes {#sec-sizes}
 
 ```{r}
-ei_points = read_sf("data/easter_island/ei_points.gpkg")
-volcanos = subset(ei_points, type == "volcano")
+slo_cities = read_sf("data/slovenia/slo_cities.gpkg")
 ```
 
 Differences in sizes between objects are relatively easy to recognize on maps. 
@@ -478,18 +467,18 @@ We can change the sizes of all objects using the `size` argument (@fig-tmsizes-1
 ```{r}
 #| label: tmsizes1
 #| eval: false
-tm_shape(volcanos) +
+tm_shape(slo_cities) +
   tm_symbols(size = 0.5) 
 ```
 
-On the other hand, if we provide the name of the numerical variable in the `size` argument (e.g., `"elevation"`), then symbol sizes are scaled proportionally to the provided values.
+On the other hand, if we provide the name of the numerical variable in the `size` argument (e.g., `"population"`), then symbol sizes are scaled proportionally to the provided values.
 Objects with small values will be represented by smaller circles, while larger values will be represented by larger circles (@fig-tmsizes-2).
 
 ```{r}
 #| label: tmsizes2
 #| eval: false
-tm_shape(volcanos) +
-  tm_symbols(size = "elevation") 
+tm_shape(slo_cities) +
+  tm_symbols(size = "population") 
 ```
 
 <!-- numeric only -->
@@ -503,8 +492,8 @@ We can adjust size legend breaks with `ticks` and the corresponding labels with 
 ```{r}
 #| label: tmsizes3
 #| eval: false
-tm_shape(volcanos) +
-  tm_symbols(size = "elevation",
+tm_shape(slo_cities) +
+  tm_symbols(size = "population",
             size.scale = tm_scale(ticks = c(100, 600),
                                   labels = c("low", "high")))
 ```
@@ -519,7 +508,7 @@ For example in the above code, we just show examples of how symbols with elevati
 #| fig-cap: 'Examples of three approaches for changing sizes of symbols'
 #| fig-subcap:
 #|   - all symbols have a consistent size of 0.5
-#|   - sizes of symbols depend on the values of the elevation variable
+#|   - sizes of symbols depend on the values of the population variable
 #|   - sizes of symbols have a manually created legend
 #| #fig-asp: 0.42
 <<tmsizes1>>
@@ -535,9 +524,9 @@ The `lwd` argument in `tm_lines()` creates thin lines for small values and thick
 #| fig-asp: 0.66
 #| fig-cap: Example of a map where lines' widths represent values of the corresponding
 #|   lines.
-ei_roads = read_sf("data/easter_island/ei_roads.gpkg")
-tm_shape(ei_roads) + 
-  tm_lines(lwd = "strokelwd")
+slo_railroads = read_sf("data/slovenia/slo_railroads.gpkg")
+tm_shape(slo_railroads) + 
+  tm_lines(lwd = "track_width")
 ```
 
 In the above example, values of the `"strokelwd"` are divided into four groups and represented by four line widths.
@@ -549,34 +538,34 @@ Lines' thickness can be change using the `values.scale` argument of `tm_scale()`
 ```{r}
 #| echo: false
 #| eval: false
-tm_shape(World_rivers) + 
-  tm_lines(lwd = "strokelwd")
-tm_shape(World_rivers) + 
-  tm_lines(lwd = "strokelwd", lwd.scale = tm_scale(values.scale = 2))
-tm_shape(World_rivers) + 
-  tm_lines(lwd = "strokelwd", 
-           lwd.scale = tm_scale(values.scale = 2, n = 12))
-tm_shape(World_rivers) + 
-  tm_lines(lwd = "strokelwd",
+tm_shape(slo_railroads) + 
+  tm_lines(lwd = "track_width")
+tm_shape(slo_railroads) + 
+  tm_lines(lwd = "track_width", lwd.scale = tm_scale(values.scale = 2))
+tm_shape(slo_railroads) + 
+  tm_lines(lwd = "track_width", 
+           lwd.scale = tm_scale(values.scale = 2, n = 2))
+tm_shape(slo_railroads) + 
+  tm_lines(lwd = "track_width",
            lwd.scale = tm_scale(values.scale = 2,
-                                ticks = c(1, 2, 3, 5, 10, 15)),
+                                ticks = c(1, 4, 8)),
            lwd.legend = tm_legend(title = "Line legend",
-                                  labels = LETTERS[1:6]))
+                                  labels = LETTERS[1:3]))
 ```
 
 Text labels have a role in naming features on a map or just highlighting some of them.
 Usually, the size of text labels is consistent for the same spatial objects. <!--ref to the text label layer section-->
 However, text labels can also be used to represent the values of some numerical variables.
-@fig-tmtextsize shows an example, in which text labels show names of different volcanos areas, while their sizes are related to their elevations.
-<!-- This allows us to not only locate different volcanos on the map but also differentiate between less populous areas (e.g., Seattle) and more populous ones (e.g., Tokyo). -->
+@fig-tmtextsize shows an example, in which text labels show names of different slo_cities areas, while their sizes are related to their elevations.
+<!-- This allows us to not only locate different slo_cities on the map but also differentiate between less populous areas (e.g., Seattle) and more populous ones (e.g., Tokyo). -->
 
 ```{r}
 #| label: fig-tmtextsize
 #| message: false
 #| fig-asp: 0.25
-#| fig-cap: Example of a map where text sizes represent elevations of the volcanos.
-tm_shape(volcanos) +
-  tm_text(text = "name", size = "elevation") +
+#| fig-cap: Example of a map where text sizes represent elevations of the slo_cities.
+tm_shape(slo_cities) +
+  tm_text(text = "name", size = "population") +
   tm_layout(legend.outside = TRUE)
 ```
 
@@ -601,8 +590,8 @@ It expects the name of the categorical variable.
 ```{r}
 #| label: tmsymshape1
 #| eval: false
-tm_shape(ei_points) +
-  tm_symbols(shape = "type")
+tm_shape(slo_cities) +
+  tm_symbols(shape = "place")
 ```
 
 <!-- tmap::tmap_options()$values.var$shape -->
@@ -618,9 +607,9 @@ A complete list of available symbols and their corresponding numbers is in the `
 ```{r}
 #| label: tmsymshape2
 #| eval: false
-tm_shape(ei_points) +
-  tm_symbols(shape = "type",
-             shape.scale = tm_scale(values = c(0, 2, 5)))
+tm_shape(slo_cities) +
+  tm_symbols(shape = "place",
+             shape.scale = tm_scale(values = c(0, 2)))
 ```
 
 The second option is to use a *grob* object.
@@ -641,8 +630,8 @@ p4 = ggplotGrob(ggplot(data.frame(x = 1:5, y = 1:5), aes(x, y)) + geom_point() +
 ```{r}
 #| label: tmsymshape3
 #| eval: false
-tm_shape(ei_points) +
-  tm_symbols(shape = "type",
+tm_shape(slo_cities) +
+  tm_symbols(shape = "place",
              shape.scale = tm_scale(values = list(p4, p4, p4)))
 ```
 
@@ -658,8 +647,7 @@ In our example, we have three distinct groups, therefore we need to create new i
 
 ```{r}
 my_icons = tmap_icons(c("images/icon1.png", 
-                        "images/icon2.png", 
-                        "images/icon3.png"))
+                        "images/icon2.png"))
 ```
 
 Now, we can use the prepared icons in the `shapes` argument (@fig-tmsymshape-4).
@@ -668,8 +656,8 @@ Now, we can use the prepared icons in the `shapes` argument (@fig-tmsymshape-4).
 ```{r}
 #| label: tmsymshape4
 #| eval: false
-tm_shape(ei_points) +
-  tm_symbols(shape = "type",
+tm_shape(slo_cities) +
+  tm_symbols(shape = "place",
              shape.scale = tm_scale(values = my_icons))
 ```
 
@@ -709,15 +697,15 @@ When we use symbols, then we are able to use colors for one qualitative or quant
 Therefore, it is possible to mix some visual variables for symbols and lines.
 This section shows only some possible examples of mixing visual variables.
 
-@fig-mixsymb-1 shows symbols, which sizes are scales based on the `sv` variable and they are colored using the values from `elevation`.
+@fig-mixsymb-1 shows symbols, which sizes are scales based on the `sv` variable and they are colored using the values from `population`.
 This can be set with the `size` and `fill` arguments.
 
 ```{r}
 #| label: mixsymb1
 #| eval: false
-tm_shape(ei_points) +
-  tm_symbols(size = "sv",
-             fill = "elevation")
+tm_shape(slo_cities) +
+  tm_symbols(size = "population",
+             fill = "place")
 ```
 
 We can also modify all of the visual variables using the additional arguments explained in the next sections.<!--update-->
@@ -726,10 +714,10 @@ For example, we can set the color style, color palette, or specify shapes (@fig-
 ```{r}
 #| label: mixsymb2
 #| eval: false
-tm_shape(ei_points) +
-  tm_symbols(fill = "elevation",
+tm_shape(slo_cities) +
+  tm_symbols(fill = "population",
              fill.scale = tm_scale(values = "Greens"),
-             shape = "type",
+             shape = "place",
              shape.scale = tm_scale(values = c(23, 24, 25)))
 ```
 
@@ -755,17 +743,17 @@ For line data, we can present its qualitative and quantitative variables using c
 #| message: false
 #| fig-asp: 0.66
 #| fig-cap: A map using two visual variables, color, and size (line width), at the same time.
-tm_shape(ei_roads) +
-  tm_lines(col = "type", 
-           lwd = "strokelwd")
+tm_shape(slo_railroads) +
+  tm_lines(col = "rail_status", 
+           lwd = "track_width")
 ```
 
 ```{r}
 #| eval: false
 #| echo: false
-tm_shape(ei_points) +
-  tm_symbols(fill = "elevation",
-             col = "elevation",
+tm_shape(slo_cities) +
+  tm_symbols(fill = "population",
+             col = "population",
              col.scale = tm_scale(values = "reds"),
              col.legend = tm_legend_combine("fill"))
 ```
