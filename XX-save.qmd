@@ -21,10 +21,10 @@ For the examples in this section, we will use a simple map of the Easter Island 
 #| fig-show: hide
 library(tmap)
 library(sf)
-ei_borders = read_sf("data/easter_island/ei_border.gpkg")
-tm = tm_shape(ei_borders) +
-  tm_polygons() +
-  tm_text("name", fontface = "italic")
+slo_borders = read_sf("data/slovenia/slo_border.gpkg")
+tm = tm_shape(slo_borders) +
+    tm_polygons() +
+    tm_text("name", fontface = "italic")
 tm
 ```
 
