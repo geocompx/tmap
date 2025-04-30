@@ -25,23 +25,75 @@ slo_neigh = st_filter(eur, slo_buf)
 # 2. Slovenia regions ----------------------------------------------------------
 slo_regions = gisco_get_nuts(year = "2024", epsg = "3035", resolution = "01",
                              spatialtype = "RG", country = "Slovenia",
-                             nuts_level = "3")
+                             nuts_level = "3") |>
+  select(NUTS_ID, NUTS_NAME, URBN_TYPE) |>
+  st_collection_extract("POLYGON")
 plot(slo_regions)
 
 # Get population density
 slo_popdens = get_eurostat("demo_r_d3dens", time_format = "num",
                            filters = list(geo = slo_regions$NUTS_ID)) |>
-  filter(time >= 2003, time <= 2022)
+  filter(time >= 2003, time <= 2022) |>
+  select(geo, time, pop_dens = values)
 
 # Get total population numbers
 slo_population = get_eurostat("demo_r_pjanaggr3", time_format = "num",
                               filters = list(geo = slo_regions$NUTS_ID, age = "TOTAL", sex = "T")) |>
-  filter(time >= 2003, time <= 2022)
+  filter(time >= 2003, time <= 2022) |>
+  select(geo, time, population = values)
+
+# population aged 65+
+slo_pop65 = get_eurostat("demo_r_pjangrp3", time_format = "num",
+                            filters = list(geo = slo_regions$NUTS_ID, 
+                                           age = c("Y65-69", "Y70-74", "Y75-79",
+                                           "Y80-84", "Y_GE85", "Y_GE90"),
+                                           sex = "T")) |>
+  filter(time >= 2003, time <= 2022) |>
+  group_by(geo, time) |>
+  summarise(values = sum(values)) |>
+  select(geo, time, pop65 = values)
+
+# gdppercap
+slo_gdppercap = get_eurostat("nama_10r_3gdp", time_format = "num",
+                              filters = list(geo = slo_regions$NUTS_ID,
+                                             unit = "EUR_HAB")) |>
+  filter(time >= 2003, time <= 2022) |>
+  select(geo, time, gdppercap = values)
+
+# turism (total turist per km2 in various types of accommodation)
+slo_tourism = get_eurostat("tour_occ_nin3", time_format = "num",
+                         filters = list(geo = slo_regions$NUTS_ID,
+                                        c_resid = "TOTAL",
+                                        unit = "P_KM2",
+                                        nace_r2 = "I551-I553")) |>
+  filter(time >= 2003, time <= 2022) |>
+  select(geo, time, tourism = values)
+
+slovenia_regions = tibble::tibble(
+  region_name = c("Pomurska", "Podravska", "Koroška", "Savinjska", "Zasavska", 
+                  "Posavska", "Jugovzhodna Slovenija", "Primorsko-notranjska", 
+                  "Osrednjeslovenska", "Gorenjska", "Goriška", "Obalno-kraška"),
+  region_group = c("East", "East", "North", "Central", "Central", 
+                   "South", "South", "West", 
+                   "Central", "North", "West", "West")
+)
 
 # Merge all datasets
 slo_regions2 = slo_regions |>
   left_join(slo_popdens, by = c("NUTS_ID" = "geo")) |>
-  left_join(slo_population, by = c("NUTS_ID" = "geo", "time" = "time"))
+  left_join(slo_population, by = c("NUTS_ID" = "geo", "time" = "time")) |>
+  left_join(slo_gdppercap, by = c("NUTS_ID" = "geo", "time" = "time")) |>
+  left_join(slo_tourism, by = c("NUTS_ID" = "geo", "time" = "time")) |>
+  left_join(slo_pop65, by = c("NUTS_ID" = "geo", "time" = "time")) |>
+  mutate(pop65perc = pop65 / population * 100) |>
+  left_join(slovenia_regions, by = c("NUTS_NAME" = "region_name"))
+
+write_sf(slo_regions2, "data/slovenia/slo_regions_ts.gpkg")
+
+slo_regions2022 = slo_regions2 |>
+  filter(time == 2022)
+
+write_sf(slo_regions2022, "data/slovenia/slo_regions.gpkg")
 
 # 3. Slovenia cities ----------------------------------------------------------
 slo_cities0 = opq(st_bbox(slo) |> st_transform("EPSG:4326")) |>
@@ -62,10 +114,16 @@ write_sf(slo_cities, "data/slovenia/slo_cities.gpkg")
 # 4. Slovenia railroads -----------------------------------------------------------
 # https://ipi.eprostor.gov.si/jgp/data
 slo_railroads = read_sf("data-raw/DTM_SLO_PROMETNA_OMREZJA_TN_ZELEZNICE_L_20250412/DTM_SLO_PROMETNA_OMREZJA_TN_ZELEZNICE_L_line.shp") |>
-  st_transform(crs(slo))
+  st_transform(crs(slo)) 
 
-# clean
+slo_railroads = slo_railroads[!st_is_empty(slo_railroads), ]
+slo_railroads = st_zm(slo_railroads)
 
+slo_railroads = read_sf("/vsizip/vsicurl/https://geodata.ucdavis.edu/diva/rrd/SVN_rrd.zip")
+slo_railroads = slo_railroads[, c(1, 3, 4)]
+names(slo_railroads) = c("id", "rail_status", "track_type", "geom")
+slo_railroads$track_width = factor(slo_railroads$track_type, levels = c("Unknown", "Single", "Multiple"))
+slo_railroads$track_width = as.numeric(slo_railroads$track_width)^2
 write_sf(slo_railroads, "data/slovenia/slo_railroads.gpkg")
 
 # 5. Slovenia elevation -------------------------------------------------------
@@ -93,32 +151,40 @@ library(qgisprocess)
 
 qgis_res = qgis_run_algorithm(
   "grass:r.geomorphon",
-  elevation = slo_elev#,
-  # search = 10,
-  # skip = 0,
-  # flat = 2,
-  # `-m` = 0,
-  # `-e` = 1,
-  # GRASS_REGION_CELLSIZE_PARAMETER = 25
+  elevation = slo_elev,
+  search = 24,      # Larger window (50 cells) — looks at broader landscape features
+  dist = 8,        # Distance to recognize patterns (larger = more generalized forms)
+  flat = 4,         # Tolerate small slopes as "flat" (in degrees) — more forgiving
+  `-e` = 1          # Extended form output (keeps classes meaningful)
 )
 
 slo_gm = qgis_as_terra(qgis_res$forms)
 plot(slo_gm)
 names(slo_gm) = "geomorphons"
-writeRaster(slo_gm, "data/slovenia/slo_gm.tif")
+writeRaster(slo_gm, "data/slovenia/slo_gm.tif", overwrite = TRUE)
 
 # # 7. Slovenia satellite imagery ------------------------------------------------
-# library(rsi)
-# slo_sen2 = rsi::get_sentinel2_imagery(
-#   aoi = slo,
-#   start_date = "2021-01-01",
-#   end_date = "2021-12-31",
-#   pixel_x_size = 500,
-#   pixel_y_size = 500,
-#   cloud_cover = 10,
-#   output_filename = "data/slovenia/slo_sen2.tif"
-# )
+park_sat = rsi::get_sentinel2_imagery(
+  aoi = slo,
+  start_date = "2025-02-18",
+  end_date = "2025-04-21",
+  pixel_x_size = 200,
+  pixel_y_size = 200,
+  # cloud_cover = 10,
+  rescale_bands = TRUE,
+  output_filename = "data/slovenia/park_sat2d.tif"
+)
+ps = rast(park_sat)
+ps = ps/10000 # to reflectance
+ps = ifel(ps>1, 1, ps) # clip to 1
+plotRGB(ps, stretch = "lin", r = 3, g = 2, b = 1)
+plotRGB(ps, stretch = "lin", r = 3, g = 2, b = 1)
 
+ps2 = stretch(ps, minq = 0.1, maxq = 0.95)
+plotRGB(mask(ps2, slo), r = 3, g = 2, b = 1)
+
+plotRGB(mask(ps2, slo), r = 4, g = 3, b = 2)
+writeRaster(ps, "data/slovenia/park_sat2c.tif")
 # 7. Slovenia temperature ------------------------------------------------------
 library(geodata)
 slo_tavg0 = geodata::worldclim_country("Slovenia", var = "tavg", path = tempdir())
@@ -127,29 +193,29 @@ slo_tavg = crop(slo_tavg0, slo, mask = TRUE)
 plot(slo_tavg)
 writeRaster(slo_tavg, "data/slovenia/slo_tavg.tif")
 
-# 8. Triglav -------------------------------------------------------------------
-triglav_park = opq("Slovenia") |> 
-  add_osm_feature(key = "boundary", value = "national_park") |> 
-  osmdata_sf()
-
-triglav_borders = triglav_park$osm_multipolygons |>
-  filter(name == "Triglavski narodni park") |>
-  select(name = `name:en`) |>
-  st_transform(crs(slo))
-plot(triglav_borders)
-
-write_sf(triglav_borders, "data/slovenia/triglav.gpkg")
-
-# 9. Triglav sentinel-2 --------------------------------------------------------
-triglav_sat = rsi::get_landsat_imagery(
-  aoi = triglav_borders,
-  start_date = "2020-01-01",
-  end_date = "2024-12-31",
-  pixel_x_size = 50,
-  pixel_y_size = 50,
-  # cloud_cover = 10,
-  rescale_bands = TRUE,
-  output_filename = "data/slovenia/triglav_sat2.tif"
-)
-ts = rast(triglav_sat)
-plot(crop(ts, triglav_borders, mask = TRUE))
+# # 8. Triglav -------------------------------------------------------------------
+# triglav_park = opq("Slovenia") |> 
+#   add_osm_feature(key = "boundary", value = "national_park") |> 
+#   osmdata_sf()
+# 
+# triglav_borders = triglav_park$osm_multipolygons |>
+#   filter(name == "Triglavski narodni park") |>
+#   select(name = `name:en`) |>
+#   st_transform(crs(slo))
+# plot(triglav_borders)
+# 
+# write_sf(triglav_borders, "data/slovenia/triglav.gpkg")
+# 
+# # 9. Triglav sentinel-2 --------------------------------------------------------
+# triglav_sat = rsi::get_landsat_imagery(
+#   aoi = triglav_borders,
+#   start_date = "2020-01-01",
+#   end_date = "2024-12-31",
+#   pixel_x_size = 50,
+#   pixel_y_size = 50,
+#   # cloud_cover = 10,
+#   rescale_bands = TRUE,
+#   output_filename = "data/slovenia/triglav_sat2.tif"
+# )
+# ts = rast(triglav_sat)
+# plot(crop(ts, triglav_borders, mask = TRUE))
