@@ -100,7 +100,7 @@ slo_cities0 = opq(st_bbox(slo) |> st_transform("EPSG:4326")) |>
   add_osm_feature(key = "place", value = c("city", "town")) |>
   osmdata_sf()
 
-slo_cities0$osm_points
+# slo_cities0$osm_points
 
 slo_cities = slo_cities0$osm_points |> 
   st_transform(crs(slo)) |>
@@ -113,15 +113,15 @@ write_sf(slo_cities, "data/slovenia/slo_cities.gpkg")
 
 # 4. Slovenia railroads -----------------------------------------------------------
 # https://ipi.eprostor.gov.si/jgp/data
-slo_railroads = read_sf("data-raw/DTM_SLO_PROMETNA_OMREZJA_TN_ZELEZNICE_L_20250412/DTM_SLO_PROMETNA_OMREZJA_TN_ZELEZNICE_L_line.shp") |>
-  st_transform(crs(slo)) 
-
-slo_railroads = slo_railroads[!st_is_empty(slo_railroads), ]
-slo_railroads = st_zm(slo_railroads)
+# slo_railroads = read_sf("data-raw/DTM_SLO_PROMETNA_OMREZJA_TN_ZELEZNICE_L_20250412/DTM_SLO_PROMETNA_OMREZJA_TN_ZELEZNICE_L_line.shp") |>
+#   st_transform(crs(slo)) 
+# 
+# slo_railroads = slo_railroads[!st_is_empty(slo_railroads), ]
+# slo_railroads = st_zm(slo_railroads)
 
 slo_railroads = read_sf("/vsizip/vsicurl/https://geodata.ucdavis.edu/diva/rrd/SVN_rrd.zip")
 slo_railroads = slo_railroads[, c(1, 3, 4)]
-names(slo_railroads) = c("id", "rail_status", "track_type", "geom")
+names(slo_railroads) = c("id", "rail_status", "track_type", "geometry")
 slo_railroads$track_width = factor(slo_railroads$track_type, levels = c("Unknown", "Single", "Multiple"))
 slo_railroads$track_width = as.numeric(slo_railroads$track_width)^2
 write_sf(slo_railroads, "data/slovenia/slo_railroads.gpkg")
@@ -163,59 +163,15 @@ plot(slo_gm)
 names(slo_gm) = "geomorphons"
 writeRaster(slo_gm, "data/slovenia/slo_gm.tif", overwrite = TRUE)
 
-# # 7. Slovenia satellite imagery ------------------------------------------------
-park_sat = rsi::get_sentinel2_imagery(
-  aoi = slo,
-  start_date = "2025-02-18",
-  end_date = "2025-04-21",
-  pixel_x_size = 200,
-  pixel_y_size = 200,
-  # cloud_cover = 10,
-  rescale_bands = TRUE,
-  output_filename = "data/slovenia/park_sat2d.tif"
-)
-ps = rast(park_sat)
-ps = ps/10000 # to reflectance
-ps = ifel(ps>1, 1, ps) # clip to 1
-plotRGB(ps, stretch = "lin", r = 3, g = 2, b = 1)
-plotRGB(ps, stretch = "lin", r = 3, g = 2, b = 1)
+# 7. Slovenia satellite imagery ------------------------------------------------
+# see `get_slovenia_mosaic_code.R`
 
-ps2 = stretch(ps, minq = 0.1, maxq = 0.95)
-plotRGB(mask(ps2, slo), r = 3, g = 2, b = 1)
-
-plotRGB(mask(ps2, slo), r = 4, g = 3, b = 2)
-writeRaster(ps, "data/slovenia/park_sat2c.tif")
-# 7. Slovenia temperature ------------------------------------------------------
+# 8. Slovenia temperature ------------------------------------------------------
 library(geodata)
 slo_tavg0 = geodata::worldclim_country("Slovenia", var = "tavg", path = tempdir())
 slo_tavg0 = project(slo_tavg0, crs(slo), res = 500)
 slo_tavg = crop(slo_tavg0, slo, mask = TRUE)
+names(slo_tavg) = paste("tavg", 1:12, sep = "_")
 plot(slo_tavg)
-writeRaster(slo_tavg, "data/slovenia/slo_tavg.tif")
 
-# # 8. Triglav -------------------------------------------------------------------
-# triglav_park = opq("Slovenia") |> 
-#   add_osm_feature(key = "boundary", value = "national_park") |> 
-#   osmdata_sf()
-# 
-# triglav_borders = triglav_park$osm_multipolygons |>
-#   filter(name == "Triglavski narodni park") |>
-#   select(name = `name:en`) |>
-#   st_transform(crs(slo))
-# plot(triglav_borders)
-# 
-# write_sf(triglav_borders, "data/slovenia/triglav.gpkg")
-# 
-# # 9. Triglav sentinel-2 --------------------------------------------------------
-# triglav_sat = rsi::get_landsat_imagery(
-#   aoi = triglav_borders,
-#   start_date = "2020-01-01",
-#   end_date = "2024-12-31",
-#   pixel_x_size = 50,
-#   pixel_y_size = 50,
-#   # cloud_cover = 10,
-#   rescale_bands = TRUE,
-#   output_filename = "data/slovenia/triglav_sat2.tif"
-# )
-# ts = rast(triglav_sat)
-# plot(crop(ts, triglav_borders, mask = TRUE))
+writeRaster(slo_tavg, "data/slovenia/slo_tavg.tif", overwrite = TRUE)
