@@ -326,7 +326,7 @@ library(stars)
 library(terra)
 slo_elev = read_stars("data/slovenia/slo_elev.tif")
 slo_elev_raster = rast(slo_elev)
-elev_isopleths = as.contour(slo_elev_raster)
+elev_isopleths = as.contour(slo_elev_raster, nlevels = 4)
 tm_shape(elev_isopleths) +
   tm_iso()
 ```
@@ -430,7 +430,7 @@ If you want to learn more -- we focus on how to specify and modify facets (also 
 
 ```{r}
 library(stars)
-sat = read_stars("data/slovenia/park_sat2c.tif")
+sat = read_stars("data/slovenia/slo_mosaic.tif")
 ```
 
 The `landsat` object contains four bands (blue, green, red, and near-infrared) of the Landsat 8 image for the area of Zion National Park taken on the 18th of August 2015.
@@ -448,7 +448,7 @@ We can specify which band in `landsat` relates to red (third band), green (secon
 #| label: tmrgbs1
 #| eval: false
 tm_shape(sat) +
-  tm_rgb(tm_vars(dimvalues = c("R", "G", "B"), n = 3, multivariate = TRUE),
+  tm_rgb(tm_vars(dimvalues = c("B04", "B03", "B02"), n = 3, multivariate = TRUE),
          col.scale = tm_scale_rgb(stretch = TRUE, probs = c(0.02, 0.98)))
 ```
 
@@ -461,11 +461,8 @@ Various band combinations emphasize some spatial characteristics, such as water,
 ```{r}
 #| label: tmrgbs2
 #| eval: false
-# tm_shape(sat) +
-#   tm_rgb(tm_vars(dimvalues = c(4, 3, 2), multivariate = TRUE),
-#          col.scale = tm_scale_rgb(stretch = TRUE))
 tm_shape(sat) +
-  tm_rgb(tm_vars(dimvalues = c("N", "R", "G"), n = 3, multivariate = TRUE),
+  tm_rgb(tm_vars(dimvalues = c("B08", "B04", "B03"), n = 3, multivariate = TRUE),
          col.scale = tm_scale_rgb(stretch = TRUE, probs = c(0.02, 0.98)))
 ```
 

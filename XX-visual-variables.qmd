@@ -42,7 +42,7 @@ Values of polygons usually cannot be represented by either shapes or sizes, as t
 #| message: false
 library(tmap)
 library(sf)
-slo_regions = read_sf("data/slovenia/slo_regions_2022.gpkg")
+slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
 slo_cities = read_sf("data/slovenia/slo_cities.gpkg")
 ```
 
