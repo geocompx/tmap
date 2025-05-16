@@ -65,7 +65,7 @@ slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
 
 \index{Categorical maps}
 An example of a categorical map can be seen in @fig-colorscales2.
-We created it by providing a character variable's name, `"wb_region"`, in the `col` argument. 
+We created it by providing a character variable's name, `"region_group"`, in the `fill` argument. 
 
 ```{r}
 #| label: fig-colorscales2
@@ -207,11 +207,11 @@ tm_shape(slo_regions) +
 Continuous maps also represent continuous numerical variables, but without any discrete class intervals (@fig-cont-methods).
 A few continuous methods exist in **tmap**, including `tm_scale_continuous()`, `tm_scale_rank()`, and `tm_scale_continuous_log10()`.
 
-The `tm_scale_continuous` function creates a smooth, linear gradient.
+The `tm_scale_continuous()` function creates a smooth, linear gradient.
 In other words, the change in values is proportionally related to the change in colors.
-We can see that in @fig-cont-methods-1, where the value change from 20,000 to 40,000 has a similar impact on the color scale as the value change from 40,000 to 60,000.
+We can see that in @fig-cont-methods-1, where the value change from 50 to 100 has a similar impact on the color scale as the value change from 100 to 150.
 The continuous scale is similar to the pretty style, where the values also change linearly.
-The main difference between them is that we can see differences between, for example, values of 45,000 and 55,000 in the former, while both values have exactly the same color in the later one.
+The main difference between them is that we can see differences between, for example, values of 110 and 140 in the former, while both values have exactly the same color in the later one.
 The continuous scale works well in situations where there is a large number of objects in vectors or a large number of cells in rasters, and where the values change continuously (do not have many outliers). 
 
 ```{r}

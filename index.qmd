@@ -8,9 +8,9 @@ This is the online home of *Elegant and informative maps with **tmap***, a work-
 
 We encourage contributions on any part of the book, including:
 
-- improvements to the text, e.g., clarifying unclear sentences, fixing typos
-- changes to the code
-- suggestions on content (see [the project’s issue tracker](https://github.com/r-tmap/tmap-book/issues))
+- Improvements to the text, e.g., clarifying unclear sentences, fixing typos
+- Changes to the code
+- Suggestions on content (see [the project’s issue tracker](https://github.com/r-tmap/tmap-book/issues))
 
 ## Additional information {-}
 

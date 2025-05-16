@@ -187,7 +187,6 @@ library(tmap)
 library(sf)
 slo_borders = read_sf("data/slovenia/slo_border.gpkg")
 slo_cities = read_sf("data/slovenia/slo_cities.gpkg")
-# volcanos = subset(ei_points, type == "volcano")
 ```
 
 <!-- explain defaults -->
@@ -204,7 +203,7 @@ tm_shape(slo_borders) +
     tm_shape(slo_cities) +
     tm_text(text = "name", size = "elevation") +
     tm_credits("Data source: OSM") +
-    tm_title("slo_cities of Easter Island") +
+    tm_title("Cities in Slovenia") +
     tm_layout(
         text.fontface = "italic",
         text.fontfamily = "serif"
@@ -223,7 +222,7 @@ tm_shape(slo_borders) +
     tm_shape(slo_cities) +
     tm_text(text = "name", size = "elevation", fontfamily = "sans") +
     tm_credits("Data source: OSM", fontface = "bold") +
-    tm_title("slo_cities of Easter Island") +
+    tm_title("Cities in Slovenia") +
     tm_layout(
         title.fontface = "bold.italic",
         legend.title.fontfamily = "monospace"
@@ -245,7 +244,7 @@ tm_shape(slo_borders) +
     tm_shape(slo_cities) +
     tm_text(text = "name", size = "population") +
     tm_credits("Data source: OSM") +
-    tm_title("slo_cities of Easter Island") +
+    tm_title("Cities in Slovenia") +
     tm_layout(
         text.fontface = "italic",
         text.fontfamily = "serif"
@@ -255,7 +254,7 @@ tm_shape(slo_borders) +
     tm_shape(slo_cities) +
     tm_text(text = "name", size = "population", fontfamily = "sans") +
     tm_credits("Data source: OSM", fontface = "bold") +
-    tm_title("slo_cities of Easter Island") +
+    tm_title("Cities in Slovenia") +
     tm_title_in("B") +
     tm_layout(
         title.fontface = "bold.italic",

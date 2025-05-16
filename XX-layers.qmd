@@ -433,12 +433,13 @@ library(stars)
 sat = read_stars("data/slovenia/slo_mosaic.tif")
 ```
 
-The `landsat` object contains four bands (blue, green, red, and near-infrared) of the Landsat 8 image for the area of Zion National Park taken on the 18th of August 2015.
+The `sat` object contains four bands of the Sentinel-2 image for Slovenia.
+The bands (blue, green, red, and near-infrared) are stored in the `band` dimension as `B02`, `B03`, `B04`, and `B08`.
 We can plot all of the bands independently or as a combination of three bands.
 This combination is known as a color composite image, and we can create such images with the `tm_rgb()` function (@fig-tmrgbs).
 
 Standard composite image (true color composite) uses the visible red, green, and blue bands to represent the data in natural colors.
-We can specify which band in `landsat` relates to red (third band), green (second band), and blue (first band) color in `tm_rgb()`.
+We can specify which band in `sat` relates to red (third band), green (second band), and blue (first band) color in `tm_rgb()`.
 <!-- to update -->
 <!-- Also, by default, this function expects values from 0 to 255; however, our values are in a different scale, with the maximum value of 31961.  -->
 <!-- Therefore, to create a map, we can set `max.value` to our dataset's maximum value. -->
@@ -507,7 +508,7 @@ tm_basemap(c(StreetMap = "OpenStreetMap", TopoMap = "OpenTopoMap")) +
 #| echo: false
 #| message: false
 #| fig-cap: OpenStreetMap tile layer used as a base map with the red dots representing
-#|   volcanos on Easter Island.
+#|   cities in Slovenia.
 library(tmap)
 tmap_mode("view")
 tmbasemap1 = tm_basemap(c(StreetMap = "OpenStreetMap", TopoMap = "OpenTopoMap")) +

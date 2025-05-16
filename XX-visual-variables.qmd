@@ -360,16 +360,16 @@ The default color palette for positive numerical variables is `"blues3"` as seen
 On the other hand, when the given variable has both negative and positive values, then **tmap** uses the `"pu_gn"` color palette, with purple colors below the midpoint value, light gray color around the midpoint value, and green colors above the midpoint value.
 The use of diverging color palettes can be adjusted using the `midpoint` argument. 
 It has a value of 0 as the default, however, it is possible to change it to any other value.
-For example, we want to create a map that shows countries with life expectancy below and above the median life expectancy of about 73 years.
+For example, we want to create a map that shows regions with population density (`pop_dens`) below and above the median value of about 101 people per square kilometer.
 To do that, we just need to set the `midpoint` argument to this value (@fig-tmmidpoint-2).
 
 ```{r}
 #| label: tmmidpoint2
 #| eval: false
-# mean(x$lifeExp, na.rm = TRUE)
+# mean(slo_regions$pop_dens, na.rm = TRUE)
 tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens", 
-              fill.scale = tm_scale(midpoint = 73))
+              fill.scale = tm_scale(midpoint = 101))
 ```
 
 ```{r}
@@ -386,7 +386,7 @@ tm_shape(slo_regions) +
 <<tmmidpoint2>>
 ```
 
-Now the countries with low life expectancy are presented with purple colors, light gray areas represent countries with life expectancy around the median value (the `midpoint` in our case), and the countries with high life expectancy are represented by green colors.
+Now the regions with low population density are presented with purple colors, light gray areas represent countries with population density around the median value (the `midpoint` in our case), and the regions with high population density are represented by green colors.
 
 The above examples all contain several polygons with missing values of a given variable.
 Objects with missing values are, by default, represented by gray color and a related legend label *Missing*.
@@ -395,8 +395,8 @@ However, it is possible to change this color with the `value.na` argument and it
 **tmap** has a special way to manually set colors for categorical maps.
 It works by providing a named vector to the `values` argument.
 In this vector, the names of the categories from the categorical variable are the vector names, and specified colors are the vector values.
-You can see it in the example below, where we plot the `"wb_region"` categorical variable (@fig-tmcatpals).
-Each category in this variable (e.g., `"South Asia"`) has a new, connected to it color (e.g., `"#df5454"`).
+You can see it in the example below, where we plot the `"region_group"` categorical variable (@fig-tmcatpals).
+Each category in this variable (e.g., `"Central"`) has a new, connected to it color (e.g., `"#7fbee9"`).
 <!--improve colors-->
 <!-- also - improve example - maybe use less colors/categories -->
 ```{r}
@@ -494,11 +494,11 @@ We can adjust size legend breaks with `ticks` and the corresponding labels with 
 #| eval: false
 tm_shape(slo_cities) +
   tm_symbols(size = "population",
-            size.scale = tm_scale(ticks = c(100, 600),
-                                  labels = c("low", "high")))
+            size.scale = tm_scale(ticks = c(50000, 300000),
+                                  labels = c("small", "large")))
 ```
 
-For example in the above code, we just show examples of how symbols with elevation of 100 and 600 meters about see level like on the map.
+For example in the above code, we just show examples of how symbols with population values of 50,000 and 300,000 are represented on the map.
 
 ```{r}
 #| label: fig-tmsizes
@@ -529,7 +529,7 @@ tm_shape(slo_railroads) +
   tm_lines(lwd = "track_width")
 ```
 
-In the above example, values of the `"strokelwd"` are divided into four groups and represented by four line widths.
+In the above example, values of the `"track_width"` are divided into five groups and represented by five line widths.
 Lines' thickness can be change using the `values.scale` argument of `tm_scale()`, where the value of 1 is the default, and increasing this values increases lines' thickness.
 <!-- Also, similarly to the last example of the `tm_symbols` above, it is possible to modify the lines width legend, by changing its title (`title.lwd`), categories (`lwd.legend`), and their names (`lwd.legend.labels`). -->
 
@@ -697,7 +697,7 @@ When we use symbols, then we are able to use colors for one qualitative or quant
 Therefore, it is possible to mix some visual variables for symbols and lines.
 This section shows only some possible examples of mixing visual variables.
 
-@fig-mixsymb-1 shows symbols, which sizes are scales based on the `sv` variable and they are colored using the values from `population`.
+@fig-mixsymb-1 shows symbols, which sizes are scales based on the `population` variable and they are colored using the values from `place`.
 This can be set with the `size` and `fill` arguments.
 
 ```{r}

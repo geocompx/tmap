@@ -49,10 +49,9 @@ library(tmap)
 library(sf)
 slo_borders = read_sf("data/slovenia/slo_border.gpkg")
 slo_cities = read_sf("data/slovenia/slo_cities.gpkg")
-# volcanos = subset(ei_points, type == "volcano")
 ```
 
-For the examples in this section, we will use a simple map of the Easter Island polygon (not shown).
+For the examples in this section, we will use a simple map of the Slovenia polygon (not shown).
 
 ```{r}
 #| fig-show: hide
@@ -65,7 +64,7 @@ tm
 
 The **tmap** package offers two ways to draws coordinate lines - `tm_grid()` and `tm_graticules()`.
 The role of `tm_grid()` is to represent the input data’s coordinates.
-For example, the `slo_borders` object's CRS is UTM zone 12S with the units in meters (@fig-grids-1), and thus the grid lines are in meters.
+For example, the `slo_borders` object's CRS is ETRS89-extended / LAEA Europe with the units in meters (@fig-grids-1), and thus the grid lines are in meters.
 
 ```{r}
 #| label: grid1
@@ -130,7 +129,7 @@ It is possible, however, to manually update the values of scale bar's breaks wit
 #| label: fig-scalebar
 #| fig-cap: A map with a customized scale bar.
 tm +
-  tm_scalebar(breaks = c(0, 1, 2), text.size = 1)
+  tm_scalebar(breaks = c(0, 15, 30), text.size = 1)
 ```
 
 The `tm_scalebar()` also has several additional arguments, allowing to modify its colors, and position (@sec-north-arrow).
