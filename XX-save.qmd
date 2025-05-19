@@ -14,27 +14,27 @@ Therefore, often we want just to see our map on the screen, but sometimes we als
 The `tmap_save()` function allows to save our map in three groups of file formats, (a) raster graphics (@sec-raster-graphic-formats), (b) vector graphics (@sec-vector-graphic-formats), and (c) interactive ones (@sec-interactive-format).
 Additionally, @sec-animations shows how to save map animations with the use of the `tmap_animation()` function.
 
-For the examples in this section, we will use a simple map of the Easter Island polygon with the island name superimposed (not shown), stored in the `tm` object.
+For the examples in this section, we will use a simple map of the Slovenia polygon with the country name superimposed (not shown), stored in the `tm` object.
 
 ```{r}
 #| message: false
 #| fig-show: hide
 library(tmap)
 library(sf)
-ei_borders = read_sf("data/easter_island/ei_border.gpkg")
-tm = tm_shape(ei_borders) +
-  tm_polygons() +
-  tm_text("name", fontface = "italic")
+slo_borders = read_sf("data/slovenia/slo_border.gpkg")
+tm = tm_shape(slo_borders) +
+    tm_polygons() +
+    tm_text("Name", fontface = "italic")
 tm
 ```
 
 ## Raster graphic formats {#sec-raster-graphic-formats}
 
 Raster graphics are non-spatial relatives of spatial rasters.
-The digital images are composed of many pixels - squares filled with specific colors.
+The digital images are composed of many pixels -- squares filled with specific colors.
 Main raster graphic file formats include PNG, JPEG, BMP, and TIFF.
 <!-- jn: should we describe each in one sentence? -->
-One of the major parameters of the raster graphic images is DPI (*Dots Per Inch*, in this context, a more proper name probably should be PPI, *Pixels Per Inch*) - is a number of pixels per inch of the output image.
+One of the major parameters of the raster graphic images is DPI (*Dots Per Inch*, in this context, a more proper name probably should be PPI, *Pixels Per Inch*) -- is a number of pixels per inch of the output image.
 For example, if the width and height of our image are 10 inches, then DPI of 300 would mean that our final image would have 3000 by 3000 pixels, and DPI of 72 would result in an image of 720 by 720 pixels.
 Therefore, an image with the same width and height but a larger value of DPI would occupy more space on the hard drive but also have better quality.
 

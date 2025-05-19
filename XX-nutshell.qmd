@@ -19,15 +19,14 @@ There are also several spatial object classes in R, for example, `sf` from the *
 Additionally, packages such as **sp**, **raster**, or **terra** offer their own classes, and this abundance of spatial object classes can be generally overwhelming.
 Gladly, **tmap** can work with all of the above objects -- it treats all supported spatial data classes as so-called *shape objects*.
 
-For example, we read the `ei_points.gpkg` file containing several points on Easter Island into a new object, `ei_points`, and select only points with the `type` of `"volcano"`.
-The `volcanoes` object is a *shape object*.
+For example, we read the `slo_cities.gpkg` file containing several point locations representing cities and towns in Slovenia into a new object, `slo_cities`.
+The `slo_cities` object is a *shape object*.
 
 ```{r}
 #| message: false
 library(tmap)
 library(sf)
-ei_points = read_sf("data/easter_island/ei_points.gpkg")
-volcanoes = subset(ei_points, type == "volcano")
+slo_cities = read_sf("data/slovenia/slo_cities.gpkg")
 ```
 
 <!-- ref also to data appendix -->
@@ -41,21 +40,21 @@ On the other hand, **tmap** is suitable when our goal is to visualize spatial ge
 The **tmap** package offers a distinction between quick and regular maps.
 The first approach, using the `qtm()` function, could be handy for data exploration.
 It works even if we just provide any *shape object* -- in that case, only the geometry is plotted.
-@fig-qtm-1 shows a visualization of the geometries from the `volcanoes`.
+@fig-qtm-1 shows a visualization of the geometries from the `slo_cities`.
 
 ```{r}
 #| label: qtm1
 #| eval: false
-qtm(volcanoes)
+qtm(slo_cities)
 ```
 
 The `qtm()` function allows to customize many map elements for the provided *shape object*.
-For example, we can change the shapes of the points in `volcanoes`, make their sizes related to the the `"elevation"` argument, and add a title (@fig-qtm-2).
+For example, we can change the shapes of the points in `slo_cities`, make their sizes related to the the `"population"` argument, and add a title (@fig-qtm-2).
 
 ```{r}
 #| label: qtm2
 #| eval: false
-qtm(volcanoes, shape = 24, size = "elevation", title = "Volcanoes")
+qtm(slo_cities, shape = 24, size = "population", title = "Cities")
 ```
 
 ```{r}
@@ -86,9 +85,9 @@ The last example in @sec-quick-maps can be reproduced with the regular map appro
 
 ```{r}
 #| eval: false
-tm_shape(volcanoes) +
-  tm_symbols(shape = 24, size = "elevation") +
-  tm_title("Volcanoes")
+tm_shape(slo_cities) +
+  tm_symbols(shape = 24, size = "population") +
+  tm_title("Cities")
 ```
 
 Here, we specify the input data (our shape object) with `tm_shape()`, aesthetics (also known as *visual variables*) of map layers with `tm_symbols()`, and the map title with `tm_title()`.
@@ -96,22 +95,22 @@ Here, we specify the input data (our shape object) with `tm_shape()`, aesthetics
 The **tmap** package has a number of possible map layers, but the most prominent ones are `tm_polygons()`, `tm_symbols()`, `tm_lines()`, `tm_raster()`, and `tm_text()` (@sec-layers).
 Overall, most visual variables of map layers can be assigned in two main ways.
 First, they accept a fixed, constant value, for instance, `shape = 24`, which sets the symbols' shapes to triangles.
-Second, it is also possible to provide a variable name, for example `size = "elevation"`.
-This plots each point with a size based on the `elevation` attribute from the `volcanoes` object and automatically adds a related map legend.
+Second, it is also possible to provide a variable name, for example `size = "population"`.
+This plots each point with a size based on the `population` attribute from the `slo_cities` object and automatically adds a related map legend.
 
 The `tm_shape()` function and one or more following map layers create a *group* together.
 In other words, map layers are related only to the preceding `tm_shape()` call.
 One map can have several *groups*.
-Let's see how many *groups* can be used by reading some additional datasets -- the `ei_elev` raster with elevation data for Easter Island, the `ei_borders` polygon with the island outline, and the `ei_roads` lines contains a road network for this island.
+Let's see how many *groups* can be used by reading some additional datasets -- the `slo_elev` raster with elevation data of Slovenia, the `slo_borders` polygon with the country borders, and the `slo_railroads` lines contains a railroad network for this country.
 <!-- ref data appendix -->
 
 ```{r}
 #| message: false
 library(sf)
 library(stars)
-ei_elev = read_stars("data/easter_island/ei_elev.tif")
-ei_borders = read_sf("data/easter_island/ei_border.gpkg")
-ei_roads = read_sf("data/easter_island/ei_roads.gpkg")
+slo_elev = read_stars("data/slovenia/slo_elev.tif")
+slo_borders = read_sf("data/slovenia/slo_border.gpkg")
+slo_railroads = read_sf("data/slovenia/slo_railroads.gpkg")
 ```
 
 Look at the following example and try to guess how many *groups* it has, and how many layers exist for each *group* (@fig-rmap1).
@@ -121,28 +120,28 @@ Look at the following example and try to guess how many *groups* it has, and how
 #| warning: false
 #| fig-height: 9
 #| fig-asp: 0.73
-#| fig-cap: "Example of a map with four groups of map layers: an elevation layer, island borders layer, roads layer, and volcanoes layer."
-tm_shape(ei_elev) +
+#| fig-cap: "Example of a map with four groups of map layers: an elevation layer, country borders layer, railroads layer, and cities layer."
+tm_shape(slo_elev) +
   tm_raster(col.scale = tm_scale(values = "geyser"),
             col.legend = tm_legend(title = "Elevation (m asl)")) +
-  tm_shape(ei_borders) + 
+  tm_shape(slo_borders) + 
   tm_borders() +
-  tm_shape(ei_roads) +
-  tm_lines(lwd = "strokelwd", 
+  tm_shape(slo_railroads) +
+  tm_lines(lwd = "track_width", 
            lwd.legend = tm_legend(show = FALSE)) +
-  tm_shape(volcanoes) +
-  tm_symbols(shape = 24, size = "elevation",
-             size.legend = tm_legend(title = "Volcanoes (m asl)")) +
-  tm_title("Easter Island") +
-  tm_layout(bg.color = "lightblue")
+  tm_shape(slo_cities) +
+  tm_symbols(shape = 24, size = "population",
+             size.legend = tm_legend(title = "Population")) +
+  tm_title("Slovenia") +
+  tm_layout(bg.color = "grey95")
 ```
 
 The correct answer is four groups, all with just one layer.
 Each *group* is put on top of the previous one -- **tmap** uses a layered approach.
 The first *group* represents elevation data with a continuous color scale style, a color palette called `"geyser"`, and a legend title.
-The second *group* shows the borders of Easter Island with the default aesthetics, while the third *group* presents the road network (the `ei_roads` object), with each line's width based on the values from the `"strokelwd"` column, but with a legend hidden.
+The second *group* shows the borders of Slovenia with the default aesthetics, while the third *group* presents the railroad network (the `slo_railroads` object), with each line's width based on the values from the `"track_width"` column, but with a legend hidden.
 The last *group* is similar to our previous example with fixed symbol shapes and sizes related to the `"elevation"` attribute, but also with the legend title instead of the map title.
-Additionally, we use the `tm_title()` function to add a map title and `tm_layout` to modify the general apperance of the map.
+Additionally, we use the `tm_title()` function to add a map title and `tm_layout` to modify the general appearance of the map.
 You can also notice that we can control scales of various visual variables, such as color, size, or width, with the `tm_scale_*()` function and customize legends with the `tm_legend()` function.
 <!-- ref to other parts of the book -->
 
@@ -156,29 +155,29 @@ We can also use `tm_compass()` to create a north arrow, `tm_scalebar()` to add a
 The location of all these three elements on the map is, by default, automatically determined.
 It, however, can be adjusted with the `position` argument -- see an example of its use in the `tm_compass()` function below.
 Moreover, it is possible to add any type of manual legend with `tm_add_legend()`.
-It includes simple legends below, such as the `"Roads"` legend element, that is only represented by a single black line and a related label, but more complex custom legends with several elements are also possible. 
+It includes simple legends below, such as the `"Railroads"` legend element, that is only represented by a single black line and a related label, but more complex custom legends with several elements are also possible. 
 <!-- ref to other parts of the book -->
 
 ```{r}
 #| warning: false
-my_map = tm_shape(ei_elev) +
+my_map = tm_shape(slo_elev) +
   tm_raster(col.scale = tm_scale(values = "geyser"),
             col.legend = tm_legend(title = "Elevation (m asl)")) +
-  tm_shape(ei_borders) + 
+  tm_shape(slo_borders) + 
   tm_borders() +
-  tm_shape(ei_roads) +
-  tm_lines(lwd = "strokelwd", 
+  tm_shape(slo_railroads) +
+  tm_lines(lwd = "track_width", 
            lwd.legend = tm_legend(show = FALSE)) +
-  tm_shape(volcanoes) +
-  tm_symbols(shape = 24, size = "elevation",
-             size.legend = tm_legend(title = "Volcanoes (m asl)")) +
+  tm_shape(slo_cities) +
+  tm_symbols(shape = 24, size = "population",
+             size.legend = tm_legend(title = "Population")) +
   tm_graticules() +
   tm_compass(position = c("right", "top")) +
   tm_scalebar() +
-  tm_credits("Author, 2025") +
-  tm_add_legend(type = "lines", col = "black", labels = "Roads") +
-  tm_title("Easter Island") +
-  tm_layout(bg.color = "lightblue")
+  tm_credits("Author, Year") +
+  tm_add_legend(type = "lines", col = "black", labels = "Railroads") +
+  tm_title("Slovenia") +
+  tm_layout(bg.color = "grey95")
 ```
 
 Maps created with **tmap** can be saved as an R object.

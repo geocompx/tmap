@@ -9,50 +9,84 @@ source("code/before_script.R")
 library(sf)
 library(stars)
 library(tmap)
-ei_elev = read_stars("data/easter_island/ei_elev.tif")
+slo_elev = read_stars("data/slovenia/slo_elev.tif")
+```
+
+Legends are an essential part of most maps.
+They provide meaning to the symbols or colors used in the map, and often add information about the map content.
+They allow to interpret the map correctly, and are therefore crucial for the map readability.
+
+In **tmap**, legends are created automatically when we add a layer with a data-driven visual variable.
+By default, such a legend consists of a title based on the variable name and a color/shape/symbol scale. <!--REF to the color scale section?-->
+It is placed outside of the map frame, either on the right or on the bottom of the map, depending on the automatically determined map aspect ratio.
+
+```{r}
+#| label: legend1
+#| eval: false
+tm_shape(slo_elev) +
+    tm_raster()
+```
+
+Such a legend is helpful for quick exploration of the data, but usually, they are not sufficient for sharing the map with others.
+This chapter covers how to customize the legends in **tmap**.
+<!-- also mention/ref to changing the color palette (        col.scale = tm_scale(values = "geyser"),) -->
+
+```{r}
+#| label: legend2
+#| eval: false
+tm_shape(slo_elev) +
+    tm_raster(
+        col.legend = tm_legend(title = "Elevation (m asl)")
+    )
 ```
 
 ```{r}
-tm_shape(ei_elev) +
-  tm_raster(col.scale = tm_scale(values = "geyser"),
-            col.legend = tm_legend(title = "Elevation (m asl)"))
+#| label: legend3
+#| eval: false
+tm_shape(slo_elev) +
+    tm_raster(
+        col.legend = tm_legend(title = "Elevation (m asl)", reverse = TRUE)
+    )
 ```
 
 ```{r}
-tm_shape(ei_elev) +
-  tm_raster(col.scale = tm_scale(values = "geyser"),
-            col.legend = tm_legend(title = "Elevation (m asl)",
-                                   reverse = TRUE))
+tm_shape(slo_elev) +
+    tm_raster(
+        col.legend = tm_legend(
+            title = "Elevation (m asl)",
+            position = tm_pos_in("right", "bottom")
+        )
+    )
 ```
 
 ```{r}
-tm_shape(ei_elev) +
-  tm_raster(col.scale = tm_scale(values = "geyser"),
-            col.legend = tm_legend(title = "Elevation (m asl)",
-                                   position = tm_pos_in("right", "bottom")))
+tm_shape(slo_elev) +
+    tm_raster(
+        col.legend = tm_legend(
+            title = "Elevation (m asl)",
+            position = tm_pos_in("right", "bottom"),
+            bg.color = "gray",
+            bg.alpha = 0.5
+        )
+    )
 ```
 
 ```{r}
-tm_shape(ei_elev) +
-  tm_raster(col.scale = tm_scale(values = "geyser"),
-            col.legend = tm_legend(title = "Elevation (m asl)",
-                                   position = tm_pos_in("right", "bottom"),
-                                   bg.color = "gray", bg.alpha = 0.5))
+tm_shape(slo_elev) +
+    tm_raster(
+        col.legend = tm_legend(
+            title = "Elevation (m asl)",
+            orientation = "landscape",
+            position = tm_pos_out("center", "top", "center")
+        )
+    )
 ```
 
 ```{r}
-tm_shape(ei_elev) +
-  tm_raster(col.scale = tm_scale_continuous(values = "geyser"),
-            col.legend = tm_legend(title = "Elevation (m asl)",
-                                   orientation = "landscape",
-                                   position = tm_pos_out("center", "top",
-                                                         "center")))
-```
-
-```{r}
-tm_shape(ei_elev) +
-  tm_raster(col.scale = tm_scale(values = "geyser"),
-            col.legend = tm_legend(show = FALSE))
+tm_shape(slo_elev) +
+    tm_raster(
+        col.legend = tm_legend(show = FALSE)
+    )
 ```
 
 <!-- tm_legend_bivariate -->

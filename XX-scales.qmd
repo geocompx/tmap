@@ -58,14 +58,14 @@ tinytable::tt(scales_df, caption = "Map scales") |>
 #| message: false
 library(tmap)
 library(sf)
-worldvector = read_sf("data/worldvector.gpkg")
+slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
 ```
 
 ## Categorical scales {#sec-categorical-scales}
 
 \index{Categorical maps}
 An example of a categorical map can be seen in @fig-colorscales2.
-We created it by providing a character variable's name, `"wb_region"`, in the `col` argument. 
+We created it by providing a character variable's name, `"region_group"`, in the `fill` argument. 
 
 ```{r}
 #| label: fig-colorscales2
@@ -74,8 +74,8 @@ We created it by providing a character variable's name, `"wb_region"`, in the `c
 #| fig-height: 2
 #| fig-cap: Example of a map in which polygons are colored based on the values of a categorical
 #|   variable.
-tm_shape(worldvector) +
-  tm_polygons(fill = "wb_region")
+tm_shape(slo_regions) +
+  tm_polygons(fill = "region_group")
 ```
 
 The `tm_polygons(fill = "region_un", fill.scale = tm_scale_categorical())` code is run automatically in the background in this case.
@@ -85,9 +85,9 @@ As mentioned in the @sec-colors we can also change the used color palette with t
 ```{r}
 #| eval: false
 #| echo: false
-tm_shape(worldvector) +
-  tm_polygons(fill = "wb_region",
-              fill.scale = tm_scale_categorical(labels = as.character(1:7)))
+tm_shape(slo_regions) +
+  tm_polygons(fill = "region_group",
+              fill.scale = tm_scale_categorical(labels = as.character(1:5)))
 ```
 
 <!-- ordinal scales here -->
@@ -108,8 +108,8 @@ It uses a style called "pretty", which creates breaks that are whole numbers and
 ```{r}
 #| label: intervals-methods1
 #| eval: false
-tm_shape(worldvector) +
-  tm_polygons(fill = "gdp_per_cap")
+tm_shape(slo_regions) +
+  tm_polygons(fill = "pop_dens")
 ```
 
 It is also possible to indicate the desired number of classes using the `n` argument of the `tm_scale()` function provided to the `fill.scale` argument.
@@ -123,9 +123,9 @@ Additionally, we can add a label to each break with the `labels` argument.
 ```{r}
 #| label: intervals-methods2
 #| eval: false
-tm_shape(worldvector) +
-  tm_polygons(fill = "gdp_per_cap", 
-              fill.scale = tm_scale_intervals(breaks = c(0, 10000, 30000, 111000),
+tm_shape(slo_regions) +
+  tm_polygons(fill = "pop_dens", 
+              fill.scale = tm_scale_intervals(breaks = c(0, 100, 150, 250),
                                               labels = c("low", "medium", "high")))
 ```
 
@@ -148,8 +148,8 @@ The most common optimization method used in cartography is the Jenks optimizatio
 ```{r}
 #| label: intervals-methods3
 #| eval: false
-tm_shape(worldvector) +
-  tm_polygons(fill = "gdp_per_cap", 
+tm_shape(slo_regions) +
+  tm_polygons(fill = "pop_dens", 
               fill.scale = tm_scale_intervals(style = "jenks"))
 ```
 
@@ -173,8 +173,8 @@ However, maps with logarithmically transformed variables are usually less intuit
 ```{r}
 #| label: intervals-methods4
 #| eval: false
-tm_shape(worldvector) +
-  tm_polygons(fill = "gdp_per_cap", 
+tm_shape(slo_regions) +
+  tm_polygons(fill = "pop_dens", 
               fill.scale = tm_scale_intervals(style = "log10_pretty"))
 ```
 
@@ -207,18 +207,18 @@ tm_shape(worldvector) +
 Continuous maps also represent continuous numerical variables, but without any discrete class intervals (@fig-cont-methods).
 A few continuous methods exist in **tmap**, including `tm_scale_continuous()`, `tm_scale_rank()`, and `tm_scale_continuous_log10()`.
 
-The `tm_scale_continuous` function creates a smooth, linear gradient.
+The `tm_scale_continuous()` function creates a smooth, linear gradient.
 In other words, the change in values is proportionally related to the change in colors.
-We can see that in @fig-cont-methods-1, where the value change from 20,000 to 40,000 has a similar impact on the color scale as the value change from 40,000 to 60,000.
+We can see that in @fig-cont-methods-1, where the value change from 50 to 100 has a similar impact on the color scale as the value change from 100 to 150.
 The continuous scale is similar to the pretty style, where the values also change linearly.
-The main difference between them is that we can see differences between, for example, values of 45,000 and 55,000 in the former, while both values have exactly the same color in the later one.
+The main difference between them is that we can see differences between, for example, values of 110 and 140 in the former, while both values have exactly the same color in the later one.
 The continuous scale works well in situations where there is a large number of objects in vectors or a large number of cells in rasters, and where the values change continuously (do not have many outliers). 
 
 ```{r}
 #| label: cont-methods1
 #| eval: false
-tm_shape(worldvector) +
-  tm_polygons(fill = "gdp_per_cap",
+tm_shape(slo_regions) +
+  tm_polygons(fill = "pop_dens",
               fill.scale = tm_scale_continuous())
 ```
 
@@ -230,8 +230,8 @@ It is fairly analogous to the `"quantile"` style, with the values on a color sca
 ```{r}
 #| label: cont-methods2
 #| eval: false
-tm_shape(worldvector) +
-  tm_polygons(fill = "gdp_per_cap",
+tm_shape(slo_regions) +
+  tm_polygons(fill = "pop_dens",
               fill.scale = tm_scale_rank())
 ```
 
@@ -240,8 +240,8 @@ Finally, the `tm_scale_continuous_log10()` scale is the continuous equivalent of
 ```{r}
 #| label: cont-methods3
 #| eval: false
-tm_shape(worldvector) +
-  tm_polygons(fill = "gdp_per_cap",
+tm_shape(slo_regions) +
+  tm_polygons(fill = "pop_dens",
               fill.scale = tm_scale_continuous_log10())
 ```
 
@@ -276,7 +276,7 @@ tm_shape(worldvector) +
 ```{r}
 #| eval: false
 #| echo: false
-tm_shape(worldvector) +
+tm_shape(slo_regions) +
   tm_polygons(fill = "MAP_COLORS")
 ```
 
@@ -291,7 +291,7 @@ tm_shape(worldvector) +
 #| eval: false
 #| fig-cap: Example of a map with adjacent polygons having different colors.
 #| fig-height: 2
-tm_uni = tm_shape(worldvector) +
+tm_uni = tm_shape(slo_regions) +
   tm_polygons(fill = "MAP_COLORS")
 tm_uni
 ```
