@@ -28,8 +28,14 @@ tm_shape(slo_elev) +
 ```
 
 Such a legend is helpful for quick exploration of the data, but usually, they are not sufficient for sharing the map with others.
-This chapter covers how to customize the legends in **tmap**.
-<!-- also mention/ref to changing the color palette (        col.scale = tm_scale(values = "geyser"),) -->
+This chapter covers how to customize the legend's title, position, and appearance in **tmap**.
+Legends are also closely related to the visual variables and scales used in the map that were covered in chapters @sec-visual-variables and @sec-scales -- we recommend to read those chapters first.
+<!-- also mention/ref to changing the color palette (        col.scale = tm_scale(values = "geyser"),) ?-->
+Legends are customized using the `tm_legend()` function that is passed to `*.legend` arguments of the layer functions, e.g., `col.legend`, `shape.legend`, `size.legend`, etc.
+
+Often, the most important part of the legend is the title.
+It informs the reader about the meaning of the colors or symbols used in the map, providing also additional context such as the unit of measurement.
+The title is set using the `title` argument of the `tm_legend()` function <!--fig ref-->.
 
 ```{r}
 #| label: legend2
@@ -40,6 +46,13 @@ tm_shape(slo_elev) +
     )
 ```
 
+In some cases, the title is not needed, e.g., when the map is self-explanatory, and then this argument can be set to `""`.
+Another possibility, when only one legend is used is to remove the legend title, but specify the map variable and its unit in the map title.
+
+The legend title and its text can be customized in many ways, including changing its font size (`title.size` and `text.size`), font family (`title.family` and `text.family`), and font color (`title.color` and `text.color`).
+
+By default, values in the legend are ordered from low to high (i.e., from top to bottom), but this can be reversed using the `reverse` argument <!--fig ref-->.
+
 ```{r}
 #| label: legend3
 #| eval: false
@@ -49,7 +62,13 @@ tm_shape(slo_elev) +
     )
 ```
 
+In our example of Slovenia, we have enough white space inside the map frame to place the legend.
+This can be done with the `position` argument of the `tm_legend()` function  <!--fig ref-->.
+To put the legend inside the map frame, we can use the `tm_pos_in()` function and specify the location of the legend using its first two arguments (@sec-positions).
+
 ```{r}
+#| label: legend4
+#| eval: false
 tm_shape(slo_elev) +
     tm_raster(
         col.legend = tm_legend(
@@ -59,7 +78,13 @@ tm_shape(slo_elev) +
     )
 ```
 
+Depending on the map content, used colors, and expected aesthetic, the legend background can be colored or made transparent.
+The default legend background is white, but it can be changed using the `bg.color` argument of the `tm_legend()` function.
+In the following example, we set the background color to gray and also make it semi-transparent using the `bg.alpha` argument  <!--fig ref-->.
+
 ```{r}
+#| label: legend5
+#| eval: false
 tm_shape(slo_elev) +
     tm_raster(
         col.legend = tm_legend(
@@ -72,6 +97,8 @@ tm_shape(slo_elev) +
 ```
 
 ```{r}
+#| label: legend6
+#| eval: false
 tm_shape(slo_elev) +
     tm_raster(
         col.legend = tm_legend(
@@ -83,6 +110,8 @@ tm_shape(slo_elev) +
 ```
 
 ```{r}
+#| label: legend7
+#| eval: false
 tm_shape(slo_elev) +
     tm_raster(
         col.legend = tm_legend(show = FALSE)
