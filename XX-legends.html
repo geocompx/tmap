@@ -424,6 +424,8 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <span>        <span class="op">)</span></span>
 <span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>All of the previous examples used the default legend orientation type, <code>"portrait".</code> Its alternative is <code>"landscape"</code>, which can be set using the <code>orientation</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code> function. This changes the legend layout to a horizontal orientation, which can be useful either as a mean to better fit to the map content or to change the map aesthetic.</p>
+<p>Here, we not only change the legend orientation, but also customize its position <!--ref position chapter--> with <code><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out()</a></code> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. The three arguments used, <code>"center"</code>, <code>"top"</code>, and <code>"center"</code> specify the legend position in horizontal and vertical position outside the map frame and then its position relative to that placement.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span></span>
@@ -434,6 +436,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <span>        <span class="op">)</span></span>
 <span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>To disable the legend, we can set the <code>show</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code> function to <code>FALSE</code>. This is useful when we want to use the same legend for multiple layers, or just when we only are interested in the map content and not in the legend – which may be the case when we are using the map for graphical purposes only.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span></span>
@@ -444,8 +447,10 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <!-- tm_legend_combine -->
 
 
-
-</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+<ol>
+<li id="fn1"><p>By default, the <code>"landscape"</code> legend is located in the bottom right outside of the map frame<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
