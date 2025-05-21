@@ -96,6 +96,13 @@ tm_shape(slo_elev) +
     )
 ```
 
+All of the previous examples used the default legend orientation type, `"portrait".`
+Its alternative is `"landscape"`, which can be set using the `orientation` argument of the `tm_legend()` function.
+This changes the legend layout to a horizontal orientation, which can be useful either as a mean to better fit to the map content or to change the map aesthetic.
+
+Here, we not only change the legend orientation, but also customize its position <!--ref position chapter--> with `tm_pos_out()` ^[By default, the `"landscape"` legend is located in the bottom right outside of the map frame].
+The three arguments used, `"center"`, `"top"`, and `"center"` specify the legend position in horizontal and vertical position outside the map frame and then its position relative to that placement.
+
 ```{r}
 #| label: legend6
 #| eval: false
@@ -108,6 +115,9 @@ tm_shape(slo_elev) +
         )
     )
 ```
+
+To disable the legend, we can set the `show` argument of the `tm_legend()` function to `FALSE`.
+This is useful when we want to use the same legend for multiple layers, or just when we only are interested in the map content and not in the legend -- which may be the case when we are using the map for graphical purposes only.
 
 ```{r}
 #| label: legend7
