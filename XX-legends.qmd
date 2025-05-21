@@ -6,6 +6,7 @@ source("code/before_script.R")
 # Legends {#sec-legends}
 
 ```{r}
+#| message: false
 library(sf)
 library(stars)
 library(tmap)
