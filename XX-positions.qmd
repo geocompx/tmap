@@ -17,6 +17,8 @@ tm = tm_shape(slo_elev) +
 
 ## Positioning
 
+<!-- idea: add figures inspired by https://r-tmap.github.io/tmap/articles/adv_positions#grouping-components but without the code itself -->
+
 ### Inside the map frame
 
 ```{r}
