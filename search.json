@@ -24,7 +24,7 @@
     "href": "index.html#additional-information",
     "title": "Elegant and informative maps with tmap\n",
     "section": "Additional information",
-    "text": "Additional information\nThis work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs 4.0 International License.\n\n\nCC BY-NC-ND 4.0\n\nThe code samples in this book are licensed under a Creative Commons CC0 1.0 Universal (CC0 1.0) Public Domain Dedication.\n\n\nCC0 1.0\n\nThis version of the book was built on GH Actions on 2025-05-26.",
+    "text": "Additional information\nThis work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs 4.0 International License.\n\n\nCC BY-NC-ND 4.0\n\nThe code samples in this book are licensed under a Creative Commons CC0 1.0 Universal (CC0 1.0) Public Domain Dedication.\n\n\nCC0 1.0\n\nThis version of the book was built on GH Actions on 2025-05-29.",
     "crumbs": [
       "Welcome"
     ]
@@ -661,7 +661,7 @@
     "href": "XX-positions.html#grouping",
     "title": "11  Positions",
     "section": "\n11.2 Grouping",
-    "text": "11.2 Grouping",
+    "text": "11.2 Grouping\n\ntm_shape(slo_elev) +\n  tm_raster(col.legend = tm_legend(group_id = 1)) +\n  tm_scalebar(group_id = 2) +\n  tm_credits(\"My credits\", group_id = 2) +\n  tm_comp_group(1, position = tm_pos_in(\"right\", \"bottom\")) +\n  tm_comp_group(2, position = tm_pos_in(\"left\", \"top\"))\n#&gt; [scale] tm_raster:() the data variable assigned to 'col' contains positive and negative values, so midpoint is set to 0. Set 'midpoint = NA' in 'fill.scale = tm_scale_intervals(&lt;HERE&gt;)' to use all visual values (e.g. colors)\n\n\n\n\n\n\n\n\ntm_shape(slo_elev) +\n  tm_raster(col.legend = tm_legend(group_id = 1)) +\n  tm_scalebar(group_id = 2) +\n  tm_credits(\"My credits\", group_id = 2) +\n  tm_comp_group(1, position = tm_pos_in(\"right\", \"bottom\")) +\n  tm_comp_group(2, position = tm_pos_in(\"left\", \"top\"), stack = \"horizontal\")\n#&gt; [scale] tm_raster:() the data variable assigned to 'col' contains positive and negative values, so midpoint is set to 0. Set 'midpoint = NA' in 'fill.scale = tm_scale_intervals(&lt;HERE&gt;)' to use all visual values (e.g. colors)",
     "crumbs": [
       "Building blocks",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>Positions</span>"
