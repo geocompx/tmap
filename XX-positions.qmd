@@ -104,3 +104,27 @@ tm_shape(slo_elev) +
 <!-- align?? -->
 
 ## Grouping
+
+```{r}
+tm_shape(slo_elev) +
+  tm_raster(col.legend = tm_legend(group_id = 1)) +
+  tm_scalebar(group_id = 2) +
+  tm_credits("My credits", group_id = 2) +
+  tm_comp_group(1, position = tm_pos_in("right", "bottom")) +
+  tm_comp_group(2, position = tm_pos_in("left", "top"))
+```
+
+```{r}
+tm_shape(slo_elev) +
+  tm_raster(col.legend = tm_legend(group_id = 1)) +
+  tm_scalebar(group_id = 2) +
+  tm_credits("My credits", group_id = 2) +
+  tm_comp_group(1, position = tm_pos_in("right", "bottom")) +
+  tm_comp_group(2, position = tm_pos_in("left", "top"), stack = "horizontal")
+```
+
+<!-- z -- order -->
+<!-- , frame_combine = FALSE -->
+<!-- equalize = FALSE -->
+<!-- , offset = 0, stack_margin = 1 -->
+<!-- frame = TRUE, bg.color = "purple", bg.alpha = 0.5 -->
