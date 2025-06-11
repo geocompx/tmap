@@ -368,7 +368,8 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
   <li><a href="#outside-the-map-frame" id="toc-outside-the-map-frame" class="nav-link" data-scroll-target="#outside-the-map-frame"><span class="header-section-number">11.1.2</span> Outside the map frame</a></li>
   </ul>
 </li>
-  <li><a href="#sec-grouping" id="toc-sec-grouping" class="nav-link" data-scroll-target="#sec-grouping"><span class="header-section-number">11.2</span> Grouping</a></li>
+  <li><a href="#sec-position-many-components" id="toc-sec-position-many-components" class="nav-link" data-scroll-target="#sec-position-many-components"><span class="header-section-number">11.2</span> Many components</a></li>
+  <li><a href="#sec-grouping" id="toc-sec-grouping" class="nav-link" data-scroll-target="#sec-grouping"><span class="header-section-number">11.3</span> Grouping</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/XX-positions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -397,7 +398,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <span><span class="va">tm</span> <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This chapter focuses on how to move map components, such as legends, scale bars, and insets, freely in the map. They can be placed both inside and outside the map frame – with some being in and some being out (<a href="#sec-positioning" class="quarto-xref"><span>Section 11.1</span></a>). Moreover, map components can be grouped together, which allows to move them and arrange them as a single unit (<a href="#sec-grouping" class="quarto-xref"><span>Section 11.2</span></a>).</p>
+<p>This chapter focuses on how to move map components, such as legends, scale bars, and insets, freely in the map. They can be placed both inside and outside the map frame – with some being in and some being out (<a href="#sec-positioning" class="quarto-xref"><span>Section 11.1</span></a>). Moreover, map components can be grouped together, which allows to move them and arrange them as a single unit (<a href="#sec-grouping" class="quarto-xref"><span>Section 11.3</span></a>).</p>
 <section id="sec-positioning" class="level2" data-number="11.1"><h2 data-number="11.1" class="anchored" data-anchor-id="sec-positioning">
 <span class="header-section-number">11.1</span> Positioning</h2>
 <p>All of the map components can be positioned in any location in the map frame or outside of it. The positioning is done via the <code>position</code> argument, which can take a variety of values. The most common are:</p>
@@ -443,11 +444,10 @@ Figure&nbsp;11.1: Examples of positioning map components inside the map frame.
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.8</span>, <span class="fl">0.4</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-nrow="3" data-layout-align="center">
 <div id="fig-positions-in" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-positions-in-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-positions-in" style="flex-basis: 100.0%;justify-content: center;">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-positions-in" style="flex-basis: 33.3%;justify-content: center;">
 <div id="fig-positions-in-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-positions-in-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-positions-in-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-positions-in">
@@ -457,9 +457,7 @@ Figure&nbsp;11.1: Examples of positioning map components inside the map frame.
 </figcaption></figure>
 </div>
 </div>
-</div>
-<div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-positions-in" style="flex-basis: 100.0%;justify-content: center;">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-positions-in" style="flex-basis: 33.3%;justify-content: center;">
 <div id="fig-positions-in-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-positions-in-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-positions-in-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-positions-in">
@@ -469,9 +467,7 @@ Figure&nbsp;11.1: Examples of positioning map components inside the map frame.
 </figcaption></figure>
 </div>
 </div>
-</div>
-<div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-positions-in" style="flex-basis: 100.0%;justify-content: center;">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-positions-in" style="flex-basis: 33.3%;justify-content: center;">
 <div id="fig-positions-in-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-positions-in-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-positions-in-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-positions-in">
@@ -487,20 +483,31 @@ Figure&nbsp;11.1: Examples of positioning map components inside the map frame.
 Figure&nbsp;11.2: Positioning legends inside the map frame.
 </figcaption></figure>
 </div>
+<p>There is one important difference between specifying the position with a vector and with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_in()</a></code> function. The latter allows to control the position more precisely with additional arguments – <code>just.h</code>, <code>just.v</code>, <code>align.h</code>, and <code>align.v</code>. The <code>just.h</code> and <code>just.v</code> only work when the position is specified with numbers between 0 and 1, and they arguments control the justification of the map component to that position.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
 </div>
-<!-- explain more control with tm_pos_in() -->
-<!-- tm_pos_in() -- middle of a cell -->
+</div>
+</div>
+<p>The <code>align.h</code> and <code>align.v</code> arguments are used when many map components are grouped together, which is explained in <a href="#sec-grouping" class="quarto-xref"><span>Section 11.3</span></a>.</p>
 </section><section id="outside-the-map-frame" class="level3" data-number="11.1.2"><h3 data-number="11.1.2" class="anchored" data-anchor-id="outside-the-map-frame">
 <span class="header-section-number">11.1.2</span> Outside the map frame</h3>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/unnamed-chunk-4-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>Examples of positioning map components outside the map frame.</figcaption></figure>
+<div id="fig-positions-out-scheme" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-positions-out-scheme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-positions-out-scheme-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-positions-out-scheme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.3: Examples of positioning map components outside the map frame.
+</figcaption></figure>
 </div>
 </div>
 </div>
-<p>In general, there are eight locations for map components outside the map frame – each of them can be specified with <code><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out()</a></code>. We may place a map component either on one of the sides of the map frame (e.g., <code>tm_pos_out("center", "top")</code>), or in its corner (e.g., <code>tm_pos_out("left", "top")</code>).</p>
+<p>In general, there are eight locations for map components outside the map frame – each of them can be specified with <code><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out()</a></code> (<a href="#fig-positions-out-scheme" class="quarto-xref">Figure&nbsp;<span>11.3</span></a>). We may place a map component either on one of the sides of the map frame (e.g., <code>tm_pos_out("center", "top")</code>), or in its corner (e.g., <code>tm_pos_out("left", "top")</code>).</p>
 <p>At the same time, placing a map component outside a map frame brings some additional complexity. Now, we can not only put a component in a specified place, but also arrange it in that place. For example, <code>tm_pos_out("center," "top")</code> puts the specified component to the top of the map frame but is positioned to the left. What should we do if we want to center it?</p>
 <p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out()</a></code> has four sets of arguments that control the position of a map component outside the map frame:</p>
 <ul>
@@ -509,25 +516,86 @@ Figure&nbsp;11.2: Positioning legends inside the map frame.
 <li>
 <code>pos.h</code> and <code>pos.v</code>: the horizontal and vertical position of the map component inside the cell defined by <code>cell.h</code> and <code>cell.v</code>.</li>
 <li>
-<code>align.h</code> and <code>align.v</code>: the alignment of the components is only used when many components are grouped together. <!--ref to the next section?-->
-</li>
+<code>just.h</code> and <code>just.v</code>: the justification of the map components in relation to the position of the map component inside the cell – only used when <code>pos.h</code> and <code>pos.v</code> are specified as numbers between 0 and 1.</li>
 <li>
-<code>just.h</code> and <code>just.v</code>: the justification of the map components only used when <code>pos.h</code> and <code>pos.v</code> are specified as numbers between 0 and 1.</li>
+<code>align.h</code> and <code>align.v</code>: the alignment of the components is only used when many components are grouped together (<a href="#sec-grouping" class="quarto-xref"><span>Section 11.3</span></a>).</li>
 </ul>
+<p>Let’s see how these arguments work in practice. The <code>cell.h</code> and <code>cell.v</code> arguments are the first two arguments of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out()</a></code> function and they define the cell in which the map component will be placed (<a href="#fig-positions-out-1" class="quarto-xref">Figure&nbsp;<span>11.4 (a)</span></a>; <a href="#fig-positions-out-2" class="quarto-xref">Figure&nbsp;<span>11.4 (b)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"center"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [scale] tm_raster:() the data variable assigned to 'col' contains positive and negative values, so midpoint is set to 0. Set 'midpoint = NA' in 'fill.scale = tm_scale_intervals(&lt;HERE&gt;)' to use all visual values (e.g. colors)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
+<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"center"</span>, <span class="st">"bottom"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"center"</span>, pos.v <span class="op">=</span> <span class="st">"center"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"center"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then, we may to control the location of the map component inside the cell with <code>pos.h</code> and <code>pos.v</code> arguments. The <code>pos.h</code> argument controls the horizontal position of the map component inside the cell, while the <code>pos.v</code> argument – the vertical position. The former is mostly useful when our legend is on the top of the map frame and the latter is useful when it is on the left or right side of the map frame (<a href="#fig-positions-out-3" class="quarto-xref">Figure&nbsp;<span>11.4 (c)</span></a>; <a href="#fig-positions-out-4" class="quarto-xref">Figure&nbsp;<span>11.4 (d)</span></a>).</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"center"</span>, <span class="st">"bottom"</span>, pos.h <span class="op">=</span> <span class="st">"center"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"center"</span>, pos.v <span class="op">=</span> <span class="st">"center"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="fig-positions-out" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-positions-out-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-positions-out" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-positions-out-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-positions-out-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-positions-out-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-positions-out">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-positions-out-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) With <code>cell.h = "center"</code> and <code>cell.v = "bottom"</code>
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-positions-out" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-positions-out-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-positions-out-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-positions-out-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-positions-out">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-positions-out-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) With <code>cell.h = "left"</code> and <code>cell.v = "center"</code>
+</figcaption></figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-positions-out" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-positions-out-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-positions-out-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-positions-out-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-positions-out">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-positions-out-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) With <code>pos.h = "center"</code> in cell (<code>cell.h = "center"</code>, <code>cell.v = "bottom"</code>)
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-positions-out" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-positions-out-4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-positions-out-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-positions-out-4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-positions-out">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-positions-out-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d) With <code>pos.v = "center"</code> in cell (<code>cell.h = "left"</code>, <code>cell.v = "center"</code>)
+</figcaption></figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-positions-out-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.4: Positioning legends outside the map frame.
+</figcaption></figure>
+</div>
+</section></section><section id="sec-position-many-components" class="level2" data-number="11.2"><h2 data-number="11.2" class="anchored" data-anchor-id="sec-position-many-components">
+<span class="header-section-number">11.2</span> Many components</h2>
+<p>Various map components can be either positioned at the same time. For example, we can place a scale bar outside the map frame and a legend inside the map frame <!--ref-->.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"right"</span>, <span class="st">"bottom"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scalebar.html">tm_scalebar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"center"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [scale] tm_raster:() the data variable assigned to 'col' contains positive and negative values, so midpoint is set to 0. Set 'midpoint = NA' in 'fill.scale = tm_scale_intervals(&lt;HERE&gt;)' to use all visual values (e.g. colors)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -536,10 +604,11 @@ Figure&nbsp;11.2: Positioning legends inside the map frame.
 </div>
 </div>
 </div>
+<p>Now,</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"center"</span>, <span class="st">"center"</span>,</span>
-<span>                                                           pos.h <span class="op">=</span> <span class="st">"left"</span>, pos.v <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"center"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scalebar.html">tm_scalebar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"center"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [scale] tm_raster:() the data variable assigned to 'col' contains positive and negative values, so midpoint is set to 0. Set 'midpoint = NA' in 'fill.scale = tm_scale_intervals(&lt;HERE&gt;)' to use all visual values (e.g. colors)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -548,61 +617,8 @@ Figure&nbsp;11.2: Positioning legends inside the map frame.
 </div>
 </div>
 </div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/unnamed-chunk-8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"center"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scalebar.html">tm_scalebar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"center"</span>, pos.v <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [scale] tm_raster:() the data variable assigned to 'col' contains positive and negative values, so midpoint is set to 0. Set 'midpoint = NA' in 'fill.scale = tm_scale_intervals(&lt;HERE&gt;)' to use all visual values (e.g. colors)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/unnamed-chunk-10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"center"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scalebar.html">tm_scalebar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"center"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [scale] tm_raster:() the data variable assigned to 'col' contains positive and negative values, so midpoint is set to 0. Set 'midpoint = NA' in 'fill.scale = tm_scale_intervals(&lt;HERE&gt;)' to use all visual values (e.g. colors)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/unnamed-chunk-11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scalebar.html">tm_scalebar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>component.position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"center"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [scale] tm_raster:() the data variable assigned to 'col' contains positive and negative values, so midpoint is set to 0. Set 'midpoint = NA' in 'fill.scale = tm_scale_intervals(&lt;HERE&gt;)' to use all visual values (e.g. colors)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/unnamed-chunk-12-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</section></section><section id="sec-grouping" class="level2" data-number="11.2"><h2 data-number="11.2" class="anchored" data-anchor-id="sec-grouping">
-<span class="header-section-number">11.2</span> Grouping</h2>
+</section><section id="sec-grouping" class="level2" data-number="11.3"><h2 data-number="11.3" class="anchored" data-anchor-id="sec-grouping">
+<span class="header-section-number">11.3</span> Grouping</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>group_id <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -613,7 +629,7 @@ Figure&nbsp;11.2: Positioning legends inside the map frame.
 <span><span class="co">#&gt; [scale] tm_raster:() the data variable assigned to 'col' contains positive and negative values, so midpoint is set to 0. Set 'midpoint = NA' in 'fill.scale = tm_scale_intervals(&lt;HERE&gt;)' to use all visual values (e.g. colors)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/unnamed-chunk-13-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figure class="figure"><p><img src="figures/unnamed-chunk-10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -628,7 +644,7 @@ Figure&nbsp;11.2: Positioning legends inside the map frame.
 <span><span class="co">#&gt; [scale] tm_raster:() the data variable assigned to 'col' contains positive and negative values, so midpoint is set to 0. Set 'midpoint = NA' in 'fill.scale = tm_scale_intervals(&lt;HERE&gt;)' to use all visual values (e.g. colors)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/unnamed-chunk-14-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figure class="figure"><p><img src="figures/unnamed-chunk-11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
