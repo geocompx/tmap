@@ -109,7 +109,7 @@ tm_shape(slo_elev) +
 #| label: fig-positions-in
 #| warning: false
 #| echo: false
-#| layout-nrow: 3
+#| layout-ncol: 3
 #| fig-cap: "Positioning legends inside the map frame."
 #| fig-subcap:
 #|   - "With lowercase letters: \"right\", \"bottom\""
@@ -121,8 +121,27 @@ tm_shape(slo_elev) +
 <<position-in3>>
 ```
 
-<!-- explain more control with tm_pos_in() -->
-<!-- tm_pos_in() -- middle of a cell -->
+There is one important difference between specifying the position with a vector and with the `tm_pos_in()` function.
+The latter allows to control the position more precisely with additional arguments -- `just.h`, `just.v`, `align.h`, and `align.v`.
+The `just.h` and `just.v` only work when the position is specified with numbers between 0 and 1, and they arguments control the justification of the map component to that position.
+
+```{r}
+#| echo: false
+#| message: false
+#| dpi: 150
+tm_shape(slo_elev) +
+    tm_raster(col.legend = tm_legend(show = FALSE)) +
+    tm_inset(b("pos.h = 0.5\npos.v = 0.5\nin center cell"),
+               position = tm_pos_in(pos.h = 0.5, pos.v = 0.5)) +
+    tm_inset(b("pos.h = 1\npos.v = 1\nin center cell"),
+               position = tm_pos_in(pos.h = 1, pos.v = 1,
+                                    just.h = "right", just.v = "top")) +
+    tm_inset(b("pos.h = 0\npos.v = 0.5\nin center cell"),
+               position = tm_pos_in(pos.h = 0, pos.v = 0.5,
+                                    just.h = "left", just.v = "center"))
+```
+
+The `align.h` and `align.v` arguments are used when many map components are grouped together, which is explained in [@sec-grouping].
 
 ### Outside the map frame
 
@@ -131,6 +150,7 @@ tm_shape(slo_elev) +
 #| message: false
 #| dpi: 150
 #| fig-asp: 1
+#| label: fig-positions-out-scheme
 #| fig-cap: "Examples of positioning map components outside the map frame."
 tm_shape(slo_elev) +
     tm_raster(col.legend = tm_legend(show = FALSE)) + 
@@ -146,7 +166,7 @@ tm_shape(slo_elev) +
     tm_layout(asp = 1, frame.lwd = 2)
 ```
 
-In general, there are eight locations for map components outside the map frame -- each of them can be specified with `tm_pos_out()`.
+In general, there are eight locations for map components outside the map frame -- each of them can be specified with `tm_pos_out()` (@fig-positions-out-scheme).
 We may place a map component either on one of the sides of the map frame (e.g., `tm_pos_out("center", "top")`), or in its corner (e.g., `tm_pos_out("left", "top")`).
 
 At the same time, placing a map component outside a map frame brings some additional complexity.
@@ -158,32 +178,70 @@ The `tm_pos_out()` has four sets of arguments that control the position of a map
 
 - `cell.h` and `cell.v`: the horizontal and vertical position of the map component outside the map frame. 
 - `pos.h` and `pos.v`: the horizontal and vertical position of the map component inside the cell defined by `cell.h` and `cell.v`.
-- `align.h` and `align.v`: the alignment of the components is only used when many components are grouped together. <!--ref to the next section?-->
-- `just.h` and `just.v`: the justification of the map components only used when `pos.h` and `pos.v` are specified as numbers between 0 and 1.
+- `just.h` and `just.v`: the justification of the map components in relation to the position of the map component inside the cell -- only used when `pos.h` and `pos.v` are specified as numbers between 0 and 1.
+- `align.h` and `align.v`: the alignment of the components is only used when many components are grouped together (@sec-grouping).
+
+Let's see how these arguments work in practice.
+The `cell.h` and `cell.v` arguments are the first two arguments of the `tm_pos_out()` function and they define the cell in which the map component will be placed (@fig-positions-out-1; @fig-positions-out-2).
 
 ```{r}
+#| label: position-out1
+#| eval: false
+tm_shape(slo_elev) +
+    tm_raster(col.legend = tm_legend(position = tm_pos_out("center", "bottom")))
+```
+
+```{r}
+#| label: position-out2
+#| eval: false
 tm_shape(slo_elev) +
     tm_raster(col.legend = tm_legend(position = tm_pos_out("left", "center")))
 ```
 
+Then, we may to control the location of the map component inside the cell with `pos.h` and `pos.v` arguments.
+The `pos.h` argument controls the horizontal position of the map component inside the cell, while the `pos.v` argument -- the vertical position.
+The former is mostly useful when our legend is on the top of the map frame and the latter is useful when it is on the left or right side of the map frame (@fig-positions-out-3; @fig-positions-out-4).
+
 ```{r}
+#| label: position-out3
+#| eval: false
+tm_shape(slo_elev) +
+    tm_raster(col.legend = tm_legend(position = tm_pos_out("center", "bottom", pos.h = "center")))
+```
+
+```{r}
+#| label: position-out4
+#| eval: false
 tm_shape(slo_elev) +
     tm_raster(col.legend = tm_legend(position = tm_pos_out("left", "center", pos.v = "center")))
 ```
 
-
 ```{r}
-tm_shape(slo_elev) +
-    tm_raster(col.legend = tm_legend(position = tm_pos_out("center", "center",
-                                                           pos.h = "left", pos.v = "bottom")))
+#| label: fig-positions-out
+#| warning: false
+#| echo: false
+#| layout-nrow: 2
+#| layout-ncol: 2
+#| fig-cap: "Positioning legends outside the map frame."
+#| fig-subcap:
+#|  - "With `cell.h = \"center\"` and `cell.v = \"bottom\"`"
+#|  - "With `cell.h = \"left\"` and `cell.v = \"center\"`"
+#|  - "With `pos.h = \"center\"` in cell (`cell.h = \"center\"`, `cell.v = \"bottom\"`)"
+#|  - "With `pos.v = \"center\"` in cell (`cell.h = \"left\"`, `cell.v = \"center\"`)"
+<<position-out1>>
+<<position-out2>>
+<<position-out3>>
+<<position-out4>>
 ```
 
-
 ```{r}
+#| eval: false
 #| echo: false
 #| message: false
 #| dpi: 150
 #| fig-asp: 1
+#| label: fig-positions-out-pos-scheme
+#| fig-cap: "Examples of positioning map components outside the map frame with different `pos.h` and `pos.v` arguments."
 tm_shape(slo_elev) +
     tm_raster(col.legend = tm_legend(show = FALSE)) + 
     tm_inset(g("pos.v = \"top\" in\ncell (\"left\", \"center\")"), 
@@ -198,26 +256,25 @@ tm_shape(slo_elev) +
 ```
 
 ```{r}
+#| echo: false
+#| eval: false
 tm_shape(slo_elev) +
-  tm_raster(col.legend = tm_legend(position = tm_pos_out("left", "center"))) +
-  tm_scalebar(position = tm_pos_out("left", "center", pos.v = "bottom"))
+    tm_raster(col.legend = tm_legend(position = tm_pos_out("center", "center",
+                                                           pos.h = "left", pos.v = "bottom")))
 ```
 
+## Many components {#sec-position-many-components}
+
+Various map components can be either positioned at the same time.
+For example, we can place a scale bar outside the map frame and a legend inside the map frame <!--ref-->.
+
 ```{r}
-#| echo: false
-#| message: false
-#| dpi: 150
 tm_shape(slo_elev) +
-    tm_raster(col.legend = tm_legend(show = FALSE)) +
-    tm_inset(b("pos.h = 0.5\npos.v = 0.5\nin center cell"),
-               position = tm_pos_in(pos.h = 0.5, pos.v = 0.5)) +
-    tm_inset(b("pos.h = 0.5\npos.v = 0.5\nin center cell"),
-               position = tm_pos_in(pos.h = 1, pos.v = 1,
-                                    just.h = "right", just.v = "top")) +
-    tm_inset(b("pos.h = 0.5\npos.v = 0.5\nin center cell"),
-               position = tm_pos_in(pos.h = 0, pos.v = 0.5,
-                                    just.h = "left", just.v = "center"))
+  tm_raster(col.legend = tm_legend(position = c("right", "bottom"))) +
+  tm_scalebar(position = tm_pos_out("left", "center"))
 ```
+
+Now, 
 
 ```{r}
 tm_shape(slo_elev) +
@@ -226,6 +283,16 @@ tm_shape(slo_elev) +
 ```
 
 ```{r}
+#| eval: false
+#| echo: false
+tm_shape(slo_elev) +
+  tm_raster(col.legend = tm_legend(position = tm_pos_out("left", "center"))) +
+  tm_scalebar(position = tm_pos_out("left", "center", pos.v = "bottom"))
+```
+
+```{r}
+#| eval: false
+#| echo: false
 tm_shape(slo_elev) +
   tm_raster() +
   tm_scalebar() +
