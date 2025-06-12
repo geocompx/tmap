@@ -5,17 +5,164 @@ source("code/before_script.R")
 
 # Map layout {#sec-map-layout}
 
+```{r}
+#| message: false
+library(sf)
+library(tmap)
+slo_borders = read_sf("data/slovenia/slo_border.gpkg")
+slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
+slo_cities = read_sf("data/slovenia/slo_cities.gpkg")
+```
+
 <!-- tm_layout -->
 <!-- which features are the most important to explain? -->
-<!-- add scale explanation -->
+<!-- mention that is has tons of arguments -- we do not going to explain them all, but suggest to look at the help file, when needed -->
+
+```{r}
+tm = tm_shape(slo_borders) +
+    tm_polygons() +
+    tm_shape(slo_regions) +
+    tm_polygons(fill = "pop_dens") + 
+    tm_text(text = "NUTS_NAME", size = "population") +
+    tm_credits("Data source: GISCO Eurostat database", fontface = "bold") +
+    tm_title("Population density in Slovenia")
+tm
+```
+
+## Scale and aspect {#sec-scale-aspect}
+
+```{r}
+tm + 
+  tm_layout(scale = 2)
+```
+
+```{r}
+tm + 
+  tm_layout(scale = 0.5)
+```
+
+<!-- Aspect ratio of each map. When asp is set to NA (default) the aspect ratio will be adjusted to the used shapes. When set to 0 the aspect ratio is adjusted to the size of the device divided by the number of columns and rows. -->
+
+```{r}
+tm + 
+  tm_layout(asp = 0)
+```
+
+```{r}
+tm + 
+  tm_layout(asp = 0.5)
+```
+
+```{r}
+tm + 
+  tm_layout(asp = 1)
+```
+
+```{r}
+tm + 
+  tm_layout(asp = 2)
+```
 
 ## Colors {#sec-lcolors}
 
+idea: have tm1 and tm
+
+<!-- update colors -->
+```{r}
+tm + 
+  tm_layout(bg.color = "red",
+            outer.bg.color = "pink")
+```
+
 <!-- e.g. background colors -->
+
+<!-- color.sepia_intensity, 0-1  -->
+<!-- default: 0 -->
+
+```{r}
+tm + 
+  tm_layout(color.sepia_intensity = 0.4)
+```
+
+<!-- color.saturation, 0-1-->
+<!-- default: 1 -->
+
+```{r}
+tm + 
+  tm_layout(color.saturation = 0.6)
+```
+
+<!-- color_vision_deficiency_sim, -- better docs? possible options? -->
+
+```{r}
+tm + 
+  tm_layout(color_vision_deficiency_sim = "deutan")
+```
+  
+<!-- ?  earth_boundary.color, -->
+<!-- ?   space.color, -->
 
 ## Frame {#sec-lframe}
 
+<!-- frame -->
+```{r}
+tm + 
+  tm_layout(frame = FALSE)
+```
+
+<!-- frame.color -->
+<!-- frame.alpha -->
+<!-- frame.lwd -->
+```{r}
+tm + 
+  tm_layout(frame.color = "black",
+            frame.alpha = 0.6,
+            frame.lwd = 8)
+```
+
+<!-- frame.r --> 
+<!-- -- units? ranges of values? -->
+<!-- from 0 to 180? try 180 as a footnote? -->
+<!-- -- note that r can be specified to many other components< -->
+<!-- frame.double_line -->
+
+```{r}
+tm + 
+  tm_layout(frame.r = 30,
+            frame.double_line = TRUE)
+```
+
 ## Margins {#sec-lmargins}
+
+<!-- A vector of 4 values: bottom, left, top, right. The unit is the device height (for bottom and top) or width (for left and right). -->
+<!-- mention defaults! -->
+<!-- inner.margins, -->
+<!-- units? -->
+<!-- inner.margins.extra -- ???? -->
+
+```{r}
+tm + 
+  tm_layout(inner.margins = 0)
+```
+
+```{r}
+tm + 
+  tm_layout(inner.margins = c(0.8, 0.4, 0.2, 0))
+```
+
+<!-- outer.margins, -->
+
+```{r}
+tm + 
+  tm_layout(outer.margins = c(0.08, 0.04, 0.02, 0))
+```
+
+<!-- explain why/when customization of the margins is needed -->
+
+<!-- meta.margins  -- ???? -->
+<!-- meta.auto_margins  -- ???? -->
+<!-- between_margin, -->
+<!-- panel.margin, -->
 
 ## Typography {#sec-ltypography}
 
@@ -181,14 +328,6 @@ Thirdly, the **extrafont** [@R-extrafont] package allows embedding the fonts in 
 
 #### Fonts on maps {#sec-fonts-on-maps}
 
-```{r}
-#| message: false
-library(tmap)
-library(sf)
-slo_borders = read_sf("data/slovenia/slo_border.gpkg")
-slo_cities = read_sf("data/slovenia/slo_cities.gpkg")
-```
-
 <!-- explain defaults -->
 By default, **tmap** uses the `"sans"` font family with the `"plain"` font face (@fig-fonts). 
 There are, however, three ways to customize the used fonts.
@@ -198,12 +337,7 @@ This can be done with the `text.fontfamily` and `text.fontface` arguments of `tm
 ```{r}
 #| label: font1
 #| eval: false
-tm_shape(slo_borders) +
-    tm_polygons() +
-    tm_shape(slo_cities) +
-    tm_text(text = "name", size = "elevation") +
-    tm_credits("Data source: OSM") +
-    tm_title("Cities in Slovenia") +
+tm +
     tm_layout(
         text.fontface = "italic",
         text.fontfamily = "serif"
@@ -217,12 +351,7 @@ Additionally, `tm_layout()` allows to customize fonts for other map elements usi
 ```{r}
 #| label: font2
 #| eval: false
-tm_shape(slo_borders) +
-    tm_polygons() +
-    tm_shape(slo_cities) +
-    tm_text(text = "name", size = "elevation", fontfamily = "sans") +
-    tm_credits("Data source: OSM", fontface = "bold") +
-    tm_title("Cities in Slovenia") +
+tm +
     tm_layout(
         title.fontface = "bold.italic",
         legend.title.fontfamily = "monospace"
@@ -239,27 +368,8 @@ tm_shape(slo_borders) +
 #| fig-subcap:
 #|   - One font for all elements
 #|   - Different fonts for different elements
-tm_shape(slo_borders) +
-    tm_polygons() +
-    tm_shape(slo_cities) +
-    tm_text(text = "name", size = "population") +
-    tm_credits("Data source: OSM") +
-    tm_title("Cities in Slovenia") +
-    tm_layout(
-        text.fontface = "italic",
-        text.fontfamily = "serif"
-    )
-tm_shape(slo_borders) +
-    tm_polygons() +
-    tm_shape(slo_cities) +
-    tm_text(text = "name", size = "population", fontfamily = "sans") +
-    tm_credits("Data source: OSM", fontface = "bold") +
-    tm_title("Cities in Slovenia") +
-    tm_title_in("B") +
-    tm_layout(
-        title.fontface = "bold.italic",
-        legend.title.fontfamily = "monospace"
-    )
+<<font1>>
+<<font2>>
 ```
 
 <!-- The third way is to use a different *tmap style* - see section \@ref() for more details. -->
