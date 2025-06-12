@@ -128,7 +128,7 @@ tm_shape(slo_elev) +
         col.legend = tm_legend(
             title = "Elevation (m asl)",
             orientation = "landscape",
-            position = tm_pos_out("center", "top", "center")
+            position = tm_pos_out("center", "top", pos.h = "center")
         )
     )
 ```
