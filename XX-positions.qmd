@@ -13,7 +13,8 @@ boxy = function(text, fill) {
   )
 }
 g = \(text) boxy(text, fill = "#B34B37")
-b = \(text) boxy(text, fill = "#B33788")
+b = \(text) boxy(text, fill = "#2D536E")  #"#B33788"
+m = \(text) boxy(text, fill = "#AE7327")
 ```
 
 # Positions {#sec-positions}
@@ -156,14 +157,14 @@ The `align.h` and `align.v` arguments are used when many map components are grou
 tm_shape(slo_elev) +
     tm_raster(col.legend = tm_legend(show = FALSE)) + 
     # tm_inset(g('"center", "center"'), position = tm_pos_on_top(pos.h = "center", pos.v = "center")) +
-    tm_inset(g('"left", "center"'), position = tm_pos_out("left", "center", pos.v = "center")) +
-    tm_inset(g('"right", "center"'), position = tm_pos_out("right", "center", pos.v = "center")) +
-    tm_inset(g('"left", "top"'), position = tm_pos_out("left", "top")) +
-    tm_inset(g('"center", "top"'), position = tm_pos_out("center", "top", pos.h = "center")) +
-    tm_inset(g('"right", "top"'), position = tm_pos_out("right", "top")) +
-    tm_inset(g('"left", "bottom"'), position = tm_pos_out("left", "bottom")) +
-    tm_inset(g('"center", "bottom"'), position = tm_pos_out("center", "bottom", pos.h = "center")) +
-    tm_inset(g('"right", "bottom"'), position = tm_pos_out("right", "bottom")) +
+    tm_inset(m('"left", "center"'), position = tm_pos_out("left", "center", pos.v = "center")) +
+    tm_inset(m('"right", "center"'), position = tm_pos_out("right", "center", pos.v = "center")) +
+    tm_inset(m('"left", "top"'), position = tm_pos_out("left", "top")) +
+    tm_inset(m('"center", "top"'), position = tm_pos_out("center", "top", pos.h = "center")) +
+    tm_inset(m('"right", "top"'), position = tm_pos_out("right", "top")) +
+    tm_inset(m('"left", "bottom"'), position = tm_pos_out("left", "bottom")) +
+    tm_inset(m('"center", "bottom"'), position = tm_pos_out("center", "bottom", pos.h = "center")) +
+    tm_inset(m('"right", "bottom"'), position = tm_pos_out("right", "bottom")) +
     tm_layout(asp = 1, frame.lwd = 2)
 ```
 
