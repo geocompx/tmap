@@ -381,15 +381,16 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#sec-lcolors" id="toc-sec-lcolors" class="nav-link" data-scroll-target="#sec-lcolors"><span class="header-section-number">12.1</span> Colors</a></li>
-  <li><a href="#sec-lframe" id="toc-sec-lframe" class="nav-link" data-scroll-target="#sec-lframe"><span class="header-section-number">12.2</span> Frame</a></li>
-  <li><a href="#sec-lmargins" id="toc-sec-lmargins" class="nav-link" data-scroll-target="#sec-lmargins"><span class="header-section-number">12.3</span> Margins</a></li>
+<li><a href="#sec-scale-aspect" id="toc-sec-scale-aspect" class="nav-link" data-scroll-target="#sec-scale-aspect"><span class="header-section-number">12.1</span> Scale and aspect</a></li>
+  <li><a href="#sec-lcolors" id="toc-sec-lcolors" class="nav-link" data-scroll-target="#sec-lcolors"><span class="header-section-number">12.2</span> Colors</a></li>
+  <li><a href="#sec-lframe" id="toc-sec-lframe" class="nav-link" data-scroll-target="#sec-lframe"><span class="header-section-number">12.3</span> Frame</a></li>
+  <li><a href="#sec-lmargins" id="toc-sec-lmargins" class="nav-link" data-scroll-target="#sec-lmargins"><span class="header-section-number">12.4</span> Margins</a></li>
   <li>
-<a href="#sec-ltypography" id="toc-sec-ltypography" class="nav-link" data-scroll-target="#sec-ltypography"><span class="header-section-number">12.4</span> Typography</a>
+<a href="#sec-ltypography" id="toc-sec-ltypography" class="nav-link" data-scroll-target="#sec-ltypography"><span class="header-section-number">12.5</span> Typography</a>
   <ul>
-<li><a href="#sec-fonts" id="toc-sec-fonts" class="nav-link" data-scroll-target="#sec-fonts"><span class="header-section-number">12.4.0.1</span> Font families and faces</a></li>
-  <li><a href="#sec-fonts-tmap" id="toc-sec-fonts-tmap" class="nav-link" data-scroll-target="#sec-fonts-tmap"><span class="header-section-number">12.4.0.2</span> Fonts available in <strong>tmap</strong></a></li>
-  <li><a href="#sec-fonts-on-maps" id="toc-sec-fonts-on-maps" class="nav-link" data-scroll-target="#sec-fonts-on-maps"><span class="header-section-number">12.4.0.3</span> Fonts on maps</a></li>
+<li><a href="#sec-fonts" id="toc-sec-fonts" class="nav-link" data-scroll-target="#sec-fonts"><span class="header-section-number">12.5.0.1</span> Font families and faces</a></li>
+  <li><a href="#sec-fonts-tmap" id="toc-sec-fonts-tmap" class="nav-link" data-scroll-target="#sec-fonts-tmap"><span class="header-section-number">12.5.0.2</span> Fonts available in <strong>tmap</strong></a></li>
+  <li><a href="#sec-fonts-on-maps" id="toc-sec-fonts-on-maps" class="nav-link" data-scroll-target="#sec-fonts-on-maps"><span class="header-section-number">12.5.0.3</span> Fonts on maps</a></li>
   </ul>
 </li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/XX-layout.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -412,22 +413,283 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
   
 
 
-</header><!-- tm_layout --><!-- which features are the most important to explain? --><!-- add scale explanation --><section id="sec-lcolors" class="level2" data-number="12.1"><h2 data-number="12.1" class="anchored" data-anchor-id="sec-lcolors">
-<span class="header-section-number">12.1</span> Colors</h2>
+</header><div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
+<span><span class="va">slo_borders</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_border.gpkg"</span><span class="op">)</span></span>
+<span><span class="va">slo_regions</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_regions.gpkg"</span><span class="op">)</span></span>
+<span><span class="va">slo_cities</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_cities.gpkg"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- tm_layout -->
+<!-- which features are the most important to explain? -->
+<!-- mention that is has tons of arguments -- we do not going to explain them all, but suggest to look at the help file, when needed -->
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"NUTS_NAME"</span>, size <span class="op">=</span> <span class="st">"population"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits</a></span><span class="op">(</span><span class="st">"Data source: GISCO Eurostat database"</span>, fontface <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_title.html">tm_title</a></span><span class="op">(</span><span class="st">"Population density in Slovenia"</span><span class="op">)</span></span>
+<span><span class="va">tm</span></span>
+<span><span class="co">#&gt; [plot mode] legend/component: Some components or legends are too "high" and are</span></span>
+<span><span class="co">#&gt; therefore rescaled.</span></span>
+<span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="sec-scale-aspect" class="level2" data-number="12.1"><h2 data-number="12.1" class="anchored" data-anchor-id="sec-scale-aspect">
+<span class="header-section-number">12.1</span> Scale and aspect</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>scale <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [plot mode] fit legend/component: Some legend items or map compoments do not</span></span>
+<span><span class="co">#&gt; fit well, and are therefore rescaled.</span></span>
+<span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>scale <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<!-- Aspect ratio of each map. When asp is set to NA (default) the aspect ratio will be adjusted to the used shapes. When set to 0 the aspect ratio is adjusted to the size of the device divided by the number of columns and rows. -->
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>asp <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>asp <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [plot mode] fit legend/component: Some legend items or map compoments do not</span></span>
+<span><span class="co">#&gt; fit well, and are therefore rescaled.</span></span>
+<span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>asp <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>asp <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [plot mode] legend/component: Some components or legends are too "high" and are</span></span>
+<span><span class="co">#&gt; therefore rescaled.</span></span>
+<span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="sec-lcolors" class="level2" data-number="12.2"><h2 data-number="12.2" class="anchored" data-anchor-id="sec-lcolors">
+<span class="header-section-number">12.2</span> Colors</h2>
+<p>idea: have tm1 and tm</p>
+<!-- update colors -->
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>bg.color <span class="op">=</span> <span class="st">"red"</span>,</span>
+<span>            outer.bg.color <span class="op">=</span> <span class="st">"pink"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [plot mode] legend/component: Some components or legends are too "high" and are</span></span>
+<span><span class="co">#&gt; therefore rescaled.</span></span>
+<span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
 <!-- e.g. background colors -->
-</section><section id="sec-lframe" class="level2" data-number="12.2"><h2 data-number="12.2" class="anchored" data-anchor-id="sec-lframe">
-<span class="header-section-number">12.2</span> Frame</h2>
-</section><section id="sec-lmargins" class="level2" data-number="12.3"><h2 data-number="12.3" class="anchored" data-anchor-id="sec-lmargins">
-<span class="header-section-number">12.3</span> Margins</h2>
-</section><section id="sec-ltypography" class="level2" data-number="12.4"><h2 data-number="12.4" class="anchored" data-anchor-id="sec-ltypography">
-<span class="header-section-number">12.4</span> Typography</h2>
+<!-- color.sepia_intensity, 0-1  -->
+<!-- default: 0 -->
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>color.sepia_intensity <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [plot mode] legend/component: Some components or legends are too "high" and are</span></span>
+<span><span class="co">#&gt; therefore rescaled.</span></span>
+<span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<!-- color.saturation, 0-1-->
+<!-- default: 1 -->
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>color.saturation <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [plot mode] legend/component: Some components or legends are too "high" and are</span></span>
+<span><span class="co">#&gt; therefore rescaled.</span></span>
+<span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-12-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<!-- color_vision_deficiency_sim, -- better docs? possible options? -->
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>color_vision_deficiency_sim <span class="op">=</span> <span class="st">"deutan"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [plot mode] legend/component: Some components or legends are too "high" and are</span></span>
+<span><span class="co">#&gt; therefore rescaled.</span></span>
+<span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-13-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<!-- ?  earth_boundary.color, -->
+<!-- ?   space.color, -->
+</section><section id="sec-lframe" class="level2" data-number="12.3"><h2 data-number="12.3" class="anchored" data-anchor-id="sec-lframe">
+<span class="header-section-number">12.3</span> Frame</h2>
+<!-- frame -->
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>frame <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [plot mode] legend/component: Some components or legends are too "high" and are</span></span>
+<span><span class="co">#&gt; therefore rescaled.</span></span>
+<span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-14-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<!-- frame.color -->
+<!-- frame.alpha -->
+<!-- frame.lwd -->
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>frame.color <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>            frame.alpha <span class="op">=</span> <span class="fl">0.6</span>,</span>
+<span>            frame.lwd <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [plot mode] legend/component: Some components or legends are too "high" and are</span></span>
+<span><span class="co">#&gt; therefore rescaled.</span></span>
+<span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-15-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<!-- frame.r -->
+<!-- -- units? ranges of values? -->
+<!-- from 0 to 180? try 180 as a footnote? -->
+<!-- -- note that r can be specified to many other components< -->
+<!-- frame.double_line -->
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>frame.r <span class="op">=</span> <span class="fl">30</span>,</span>
+<span>            frame.double_line <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [plot mode] legend/component: Some components or legends are too "high" and are</span></span>
+<span><span class="co">#&gt; therefore rescaled.</span></span>
+<span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-16-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="sec-lmargins" class="level2" data-number="12.4"><h2 data-number="12.4" class="anchored" data-anchor-id="sec-lmargins">
+<span class="header-section-number">12.4</span> Margins</h2>
+<!-- A vector of 4 values: bottom, left, top, right. The unit is the device height (for bottom and top) or width (for left and right). -->
+<!-- mention defaults! -->
+<!-- inner.margins, -->
+<!-- units? -->
+<!-- inner.margins.extra -- ???? -->
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>inner.margins <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [plot mode] legend/component: Some components or legends are too "high" and are</span></span>
+<span><span class="co">#&gt; therefore rescaled.</span></span>
+<span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-17-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>inner.margins <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.8</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-18-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<!-- outer.margins, -->
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>outer.margins <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.08</span>, <span class="fl">0.04</span>, <span class="fl">0.02</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [plot mode] legend/component: Some components or legends are too "high" and are</span></span>
+<span><span class="co">#&gt; therefore rescaled.</span></span>
+<span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-19-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<!-- explain why/when customization of the margins is needed -->
+<!-- meta.margins  -- ???? -->
+<!-- meta.auto_margins  -- ???? -->
+<!-- between_margin, -->
+<!-- panel.margin, -->
+</section><section id="sec-ltypography" class="level2" data-number="12.5"><h2 data-number="12.5" class="anchored" data-anchor-id="sec-ltypography">
+<span class="header-section-number">12.5</span> Typography</h2>
 <!-- Font faces and font families -->
 <p>The decision about the used fonts is often neglected when creating programmable plots and maps. Most often, the default fonts are used in these kinds of graphs. This, however, could be a missed opportunity. A lot of map information is expressed by text, including text labels (<a href="XX-layers.html#sec-text" class="quarto-xref"><span>Section 6.4</span></a>), legend labels, text in attribute layers (<a href="XX-attr-layers.html" class="quarto-xref"><span>Chapter 10</span></a>), or the map title (<span class="quarto-unresolved-ref">?sec-layout-elements</span>). The used fonts impact the tone of the map <span class="citation" data-cites="guidero_typography_2017">(<a href="references.html#ref-guidero_typography_2017" role="doc-biblioref">Guidero 2017</a>)</span>, and their customization allows for a map to stand out from maps using default options.</p>
 <!-- role of font faces and font families: -->
 <!-- - highlight different levels/importance -->
 <p>As we mentioned above, many different map elements can be expressed or can use fonts. In theory, we are able to set different fonts to each of them. However, this could result in a confusing visual mix that would hinder our map information. Therefore, the decision on the used fonts should be taken after considering the main map message, expected map audience, other related graph styles, etc. In the following three sections, we explain font families and font faces, and give some overall tips on font selections, show how to define used fonts, and how to customize fonts on maps.</p>
-<section id="sec-fonts" class="level4" data-number="12.4.0.1"><h4 data-number="12.4.0.1" class="anchored" data-anchor-id="sec-fonts">
-<span class="header-section-number">12.4.0.1</span> Font families and faces</h4>
+<section id="sec-fonts" class="level4" data-number="12.5.0.1"><h4 data-number="12.5.0.1" class="anchored" data-anchor-id="sec-fonts">
+<span class="header-section-number">12.5.0.1</span> Font families and faces</h4>
 <div id="fig-fonts" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-fonts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
@@ -462,36 +724,25 @@ Figure&nbsp;12.1: Basic font families, and font faces implemented in the tmap pa
 <p>Mixing the use of serif and sans serif fonts often works well for maps. However, a rule of thumb is not to mix more than two font families on one map. A sans serif font can be used to label cultural objects, while serif fonts to label physical features. Then, italics, for example, can be used to distinguish water areas. The role of bold font faces, together with increased font size, is to highlight the hierarchy of labels – larger, bold fonts indicate more prominent map features. Additionally, customizing the fonts’ colors can be helpful to distinguish different groups of map objects. <!-- cite - https://www.axismaps.com/guide/labeling --></p>
 <p>The decision on which fonts to use should also relates to the expected map look and feel. Each font family has a distinct personality (creates a “semantic effect”), which can affect how the map is perceived. <!-- references - https://gistbok.ucgis.org/bok-topics/typography --> Some fonts are more formal, some are less. Some fonts have a modern look, while others look more traditional. <!-- add examples --> Another important concern is personal taste or map branding. We should filter the decision about the used fonts based on our preferences or even our sense of beauty as it could create more personal and unique maps. We just need to remember about the readability of the fonts – they should not be too elaborate as it can hinder the main map message.</p>
 <!-- suggested fonts or references??? -->
-</section><section id="sec-fonts-tmap" class="level4" data-number="12.4.0.2"><h4 data-number="12.4.0.2" class="anchored" data-anchor-id="sec-fonts-tmap">
-<span class="header-section-number">12.4.0.2</span> Fonts available in <strong>tmap</strong>
+</section><section id="sec-fonts-tmap" class="level4" data-number="12.5.0.2"><h4 data-number="12.5.0.2" class="anchored" data-anchor-id="sec-fonts-tmap">
+<span class="header-section-number">12.5.0.2</span> Fonts available in <strong>tmap</strong>
 </h4>
 <p>Before we discuss how to set a font family and its face, it is important to highlight that a different set of fonts could exist for each operating system (and even each computer). Additionally, which fonts are available and how they are supported depends on the used <em>graphic device</em>. A graphic device is a place where a plot or map is rendered. The most commonly it is a some kind of a screen device, where we can see our plot or map directly after running the R code. Other graphic devices allow for saving plots or maps as files in various formats (e.g., <code>.png</code>, <code>.jpg</code>, <code>.pdf</code>). Therefore, it is possible to get different fonts on your map on the screen, and a (slightly) different one when saved to a file. Visit <code><a href="https://rdrr.io/r/grDevices/Devices.html">?Devices</a></code> or read the Graphic Devices chapter of <span class="citation" data-cites="peng2016exploratory">Peng (<a href="references.html#ref-peng2016exploratory" role="doc-biblioref">2016</a>)</span> to learn more about graphic devices.</p>
 <p>The <strong>tmap</strong> package has two mechanism to select a font family. The first one is by specifying on of three general font families: <code>"serif"</code>, <code>"sans"</code>, or <code>"monospace"</code>. It tries to match selected general font family with a font family existing on the operating system. <!-- https://github.com/r-lib/systemfonts#system-defaults --> For example, <code>"serif"</code> could the <code>"Times"</code> font family, <code>"sans"</code> – <code>"Helvetica"</code> or <code>"Arial"</code>, and <code>"monospace"</code> – <code>"Courier"</code> (<a href="#fig-fonts-1" class="quarto-xref">Figure&nbsp;<span>12.1 (a)</span></a>). The second mechanism allows to select a font family based on its name (e.g., <code>"Times"</code> or <code>"Palatino"</code>). Next, a member of the selected font families can be selected with one of the font faces: <code>"plain"</code>, <code>"italic"</code>, <code>"bold"</code>, and <code>"bold.italic"</code> (<a href="#fig-fonts-2" class="quarto-xref">Figure&nbsp;<span>12.1 (b)</span></a>).</p>
 <!-- build-in fonts only -->
 <p>As mentioned before, available fonts depend on the computer setup (including operating system) and used graphic device. Fonts available on the operating system can be checked with the <code><a href="https://systemfonts.r-lib.org/reference/system_fonts.html">system_fonts()</a></code> function of the <strong>systemfonts</strong> package <span class="citation" data-cites="R-systemfonts">(<a href="references.html#ref-R-systemfonts" role="doc-biblioref">Pedersen, Ooms, and Govett 2021</a>)</span> (result not shown).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-lib/systemfonts">systemfonts</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-lib/systemfonts">systemfonts</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://systemfonts.r-lib.org/reference/system_fonts.html">system_fonts</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Information on installing and debugging custom fonts can be found in <a href="https://yjunechoe.github.io/posts/2021-06-24-setting-up-and-debugging-custom-fonts/">a blog post</a> by June Choe and in the <strong>showtext</strong> package <span class="citation" data-cites="R-showtext">(<a href="references.html#ref-R-showtext" role="doc-biblioref">Qiu and See file AUTHORS for details. 2021</a>)</span> documentation.</p>
 <p>The next step is to either view or save the map. This also means that we need to carry over our fonts to the output window/file, which largely depends on the selected graphic device. In general, screen device or graphical raster output formats, such as PNG, JPEG, or TIFF, works well with custom fonts as they rasterize them during saving. In case of any problems with graphical raster outputs, it is possible to try alternative graphics devices implemented in the <strong>ragg</strong> package <span class="citation" data-cites="R-ragg">(<a href="references.html#ref-R-ragg" role="doc-biblioref">Pedersen and Shemanarev 2021</a>)</span>. On the other hand, graphical vector formats, such as PDF or SVG, could have some problems with saving maps containing custom fonts<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. The PDF device in R, by default, adds metadata about the used fonts, but does not store them. When the PDF reader shows the document, it tries to locate the font on your computer, and use other fonts when the expected one does not exist. An alternative approach is called embedding, which adds a copy of each necessary font to the PDF file itself. Gladly, the creation of a PDF with proper fonts can be achieved in a few ways. Firstly, it could be worth trying some alternative graphic devices such as <code>cairo_pdf</code> or <code><a href="https://svglite.r-lib.org/reference/svglite.html">svglite::svglite</a></code>. The second option is to use the <strong>showtext</strong> package <span class="citation" data-cites="R-showtext">(<a href="references.html#ref-R-showtext" role="doc-biblioref">Qiu and See file AUTHORS for details. 2021</a>)</span>, which converts text into color-filled polygonal outlines for graphical vector formats. <!-- footnote: if/when the device argument is added to tmap_save, then mention saving to ragg/cairo_pdf --> Thirdly, the <strong>extrafont</strong> <span class="citation" data-cites="R-extrafont">(<a href="references.html#ref-R-extrafont" role="doc-biblioref">Chang 2014</a>)</span> package allows embedding the fonts in the PDF file, which makes PDFs properly displayed on computers that do not have the given font. <!-- ref to map_save!! --></p>
-</section><section id="sec-fonts-on-maps" class="level4" data-number="12.4.0.3"><h4 data-number="12.4.0.3" class="anchored" data-anchor-id="sec-fonts-on-maps">
-<span class="header-section-number">12.4.0.3</span> Fonts on maps</h4>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
-<span><span class="va">slo_borders</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_border.gpkg"</span><span class="op">)</span></span>
-<span><span class="va">slo_cities</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_cities.gpkg"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+</section><section id="sec-fonts-on-maps" class="level4" data-number="12.5.0.3"><h4 data-number="12.5.0.3" class="anchored" data-anchor-id="sec-fonts-on-maps">
+<span class="header-section-number">12.5.0.3</span> Fonts on maps</h4>
 <!-- explain defaults -->
 <p>By default, <strong>tmap</strong> uses the <code>"sans"</code> font family with the <code>"plain"</code> font face (<a href="#fig-fonts" class="quarto-xref">Figure&nbsp;<span>12.1</span></a>). There are, however, three ways to customize the used fonts. The first one is to change all of the fonts and font faces for the whole map at once (<a href="#fig-mfonts-1" class="quarto-xref">Figure&nbsp;<span>12.2 (a)</span></a>). This can be done with the <code>text.fontfamily</code> and <code>text.fontface</code> arguments of <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_cities</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"name"</span>, size <span class="op">=</span> <span class="st">"elevation"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits</a></span><span class="op">(</span><span class="st">"Data source: OSM"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_title.html">tm_title</a></span><span class="op">(</span><span class="st">"Cities in Slovenia"</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span></span>
 <span>        text.fontface <span class="op">=</span> <span class="st">"italic"</span>,</span>
 <span>        text.fontfamily <span class="op">=</span> <span class="st">"serif"</span></span>
@@ -499,12 +750,7 @@ Figure&nbsp;12.1: Basic font families, and font faces implemented in the tmap pa
 </div>
 <p>The second way is to specify just some text elements independently (<a href="#fig-mfonts-2" class="quarto-xref">Figure&nbsp;<span>12.2 (b)</span></a>). Many <strong>tmap</strong> functions, such as <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text()</a></code> or <code><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits()</a></code>, have their own <code>fontfamily</code> and <code>fontface</code> arguments that can be adjusted. Additionally, <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> allows to customize fonts for other map elements using prefixed arguments, such as, <code>title.fontface</code> or <code>legend.title.fontfamily</code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_cities</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"name"</span>, size <span class="op">=</span> <span class="st">"elevation"</span>, fontfamily <span class="op">=</span> <span class="st">"sans"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits</a></span><span class="op">(</span><span class="st">"Data source: OSM"</span>, fontface <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_title.html">tm_title</a></span><span class="op">(</span><span class="st">"Cities in Slovenia"</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span></span>
 <span>        title.fontface <span class="op">=</span> <span class="st">"bold.italic"</span>,</span>
 <span>        legend.title.fontfamily <span class="op">=</span> <span class="st">"monospace"</span></span>
@@ -513,6 +759,14 @@ Figure&nbsp;12.1: Basic font families, and font faces implemented in the tmap pa
 <div id="fig-mfonts" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-mfonts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<pre><code>#&gt; [plot mode] legend/component: Some components or legends are too "high" and are
+#&gt; therefore rescaled.
+#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.
+#&gt; [plot mode] legend/component: Some components or legends are too "high" and are
+#&gt; therefore rescaled.
+#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</code></pre>
+</div>
 <div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-mfonts" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-mfonts-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-mfonts-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -523,6 +777,8 @@ Figure&nbsp;12.1: Basic font families, and font faces implemented in the tmap pa
 </figcaption></figure>
 </div>
 </div>
+</div>
+<div class="quarto-layout-row">
 <div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-mfonts" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-mfonts-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-mfonts-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
