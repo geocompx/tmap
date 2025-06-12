@@ -7,13 +7,13 @@ source("code/before_script.R")
 #| echo: false
 boxy = function(text, fill) {
   grid::gList(
-    grid::rectGrob(gp = grid::gpar(fill = "gold")), 
+    grid::rectGrob(gp = grid::gpar(fill = fill)), 
     grid::circleGrob(r = .45), 
     grid::textGrob(text)
   )
 }
-g = \(text) boxy(text, fill = "gold")
-b = \(text) boxy(text, fill = "steelblue")
+g = \(text) boxy(text, fill = "#B34B37")
+b = \(text) boxy(text, fill = "#B33788")
 ```
 
 # Positions {#sec-positions}
@@ -30,7 +30,7 @@ tm = tm_shape(slo_elev) +
 
 This chapter focuses on how to move map components, such as legends, scale bars, and insets, freely in the map.
 They can be placed both inside and outside the map frame -- with some being in and some being out (@sec-positioning).
-Moreover, map components can be grouped together, which allows to move them and arrange them as a single unit (@sec-grouping).
+Moreover, map components can be grouped together, which allows to move them and arrange them as a single unit (@sec-position-many-components).
 
 ## Positioning {#sec-positioning}
 
@@ -63,7 +63,7 @@ tm_shape(slo_elev) +
     tm_inset(g('"LEFT", "BOTTOM"'), position = c("LEFT", "BOTTOM")) +
     tm_inset(g('"left", "center"'), position = c("left", "center")) +
     tm_inset(b('0.5, 0.5'), position = c(0.5, 0.5)) +
-    tm_inset(b('0.6, 1'), position = c(0.6, 1))
+    tm_inset(b('0.6, 1.0'), position = c(0.6, 1.0))
 ```
 
 Map legends, by default, are placed outside of the map frame -- that is often expected as it does not overlap with the rest of the map content.
@@ -126,6 +126,7 @@ The latter allows to control the position more precisely with additional argumen
 The `just.h` and `just.v` only work when the position is specified with numbers between 0 and 1, and they arguments control the justification of the map component to that position.
 
 ```{r}
+#| eval: false
 #| echo: false
 #| message: false
 #| dpi: 150
@@ -141,7 +142,7 @@ tm_shape(slo_elev) +
                                     just.h = "left", just.v = "center"))
 ```
 
-The `align.h` and `align.v` arguments are used when many map components are grouped together, which is explained in [@sec-grouping].
+The `align.h` and `align.v` arguments are used when many map components are grouped together, which is explained in [@sec-position-many-components].
 
 ### Outside the map frame
 
@@ -179,7 +180,7 @@ The `tm_pos_out()` has four sets of arguments that control the position of a map
 - `cell.h` and `cell.v`: the horizontal and vertical position of the map component outside the map frame. 
 - `pos.h` and `pos.v`: the horizontal and vertical position of the map component inside the cell defined by `cell.h` and `cell.v`.
 - `just.h` and `just.v`: the justification of the map components in relation to the position of the map component inside the cell -- only used when `pos.h` and `pos.v` are specified as numbers between 0 and 1.
-- `align.h` and `align.v`: the alignment of the components is only used when many components are grouped together (@sec-grouping).
+- `align.h` and `align.v`: the alignment of the components is only used when many components are grouped together (@sec-position-many-components).
 
 Let's see how these arguments work in practice.
 The `cell.h` and `cell.v` arguments are the first two arguments of the `tm_pos_out()` function and they define the cell in which the map component will be placed (@fig-positions-out-1; @fig-positions-out-2).
@@ -265,21 +266,26 @@ tm_shape(slo_elev) +
 
 ## Many components {#sec-position-many-components}
 
-Various map components can be either positioned at the same time.
-For example, we can place a scale bar outside the map frame and a legend inside the map frame <!--ref-->.
+Various map components can be positioned at the same time -- either to a different locations or to the same one.
+For example, we can place a scale bar outside the map frame and a legend inside the map frame (@fig-many-comp-1).
 
 ```{r}
+#| label: many-comp1
+#| eval: false
 tm_shape(slo_elev) +
   tm_raster(col.legend = tm_legend(position = c("right", "bottom"))) +
   tm_scalebar(position = tm_pos_out("left", "center"))
 ```
 
-Now, 
+Now, you may be wondering what happens if we want to place two (or more) components in the same location.
+As you can see in @fig-many-comp-2, they will be stacked on top of each other inside a one frame.
 
 ```{r}
+#| label: many-comp2
+#| eval: false
 tm_shape(slo_elev) +
-  tm_raster(col.legend = tm_legend(position = tm_pos_out("left", "center"))) +
-  tm_scalebar(position = tm_pos_out("left", "center"))
+  tm_raster(col.legend = tm_legend(position = tm_pos_out("right", "center"))) +
+  tm_scalebar(position = tm_pos_out("right", "center"))
 ```
 
 ```{r}
@@ -291,6 +297,19 @@ tm_shape(slo_elev) +
 ```
 
 ```{r}
+#| label: fig-many-comp
+#| warning: false
+#| echo: false
+#| layout-ncol: 2
+#| fig-cap: "Positioning many map components."
+#| fig-subcap:
+#|  - "Two components in different locations"
+#|  - "Two components in the same location"
+<<many-comp1>>
+<<many-comp2>>
+```
+
+```{r}
 #| eval: false
 #| echo: false
 tm_shape(slo_elev) +
@@ -299,9 +318,19 @@ tm_shape(slo_elev) +
   tm_layout(component.position = tm_pos_out("left", "center"))
 ```
 
-## Grouping {#sec-grouping}
+The **tmap** package also has a mechanism to group map components together and then position and organize them as a single unit.
+This requires two steps:
+
+1. Specifying the `group_id` argument in the map component that we want to group together -- this should be a unique integer number.
+2. Using the `tm_comp_group()` function to select which group of map components we want to position together and where.
+
+In the following example, we have three map components -- a legend, a scale bar, and credits -- and we want to group the scale bar and credits together (@fig-comp-group-1).
+First, we specify the `group_id` argument in the map components functions, and then we use the `tm_comp_group()` function to position them together.
+Here, the position argument works exactly as we already described in the previous sections, i.e., it can be specified with a vector or with the `tm_pos_in()` or `tm_pos_out()` functions.
 
 ```{r}
+#| label: comp-group1
+#| eval: false
 tm_shape(slo_elev) +
   tm_raster(col.legend = tm_legend(group_id = 1)) +
   tm_scalebar(group_id = 2) +
@@ -310,7 +339,12 @@ tm_shape(slo_elev) +
   tm_comp_group(2, position = tm_pos_in("left", "top"))
 ```
 
+The `tm_comp_group()` function can also be used to customize the arrangement of map components in the same location.
+For example, we can stack them vertically (`stack = "vertical"`, default) or horizontally (`stack = "horizontal"`) (@fig-comp-group-2).
+
 ```{r}
+#| label: comp-group2
+#| eval: false
 tm_shape(slo_elev) +
   tm_raster(col.legend = tm_legend(group_id = 1)) +
   tm_scalebar(group_id = 2) +
@@ -319,7 +353,22 @@ tm_shape(slo_elev) +
   tm_comp_group(2, position = tm_pos_in("left", "top"), stack = "horizontal")
 ```
 
-<!-- z -- order -->
+```{r}
+#| label: fig-comp-group
+#| warning: false
+#| echo: false
+#| layout-ncol: 2
+#| fig-cap: "Grouping map components together."
+#| fig-subcap:
+#| - "Two groups of map components in different locations"
+#| - "Two groups of map components in the same location, one stacked horizontally"
+<<comp-group1>>
+<<comp-group2>>
+```
+
+Each additional map component is placed on the bottom of the previous one if they are in the same location.
+This can be controlled with the `z` argument of the map component functions -- lower the number the component is placed on the top.
+
 <!-- , frame_combine = FALSE -->
 <!-- equalize = FALSE -->
 <!-- , offset = 0, stack_margin = 1 -->
