@@ -22,50 +22,31 @@ slo_cities = read_sf("data/slovenia/slo_cities.gpkg")
 tm = tm_shape(slo_borders) +
     tm_polygons() +
     tm_shape(slo_regions) +
-    tm_polygons(fill = "pop_dens") + 
+    tm_polygons(fill = "region_group") + 
     tm_text(text = "NUTS_NAME", size = "population") +
     tm_credits("Data source: GISCO Eurostat database", fontface = "bold") +
-    tm_title("Population density in Slovenia")
+    tm_title("Slovenia")
 tm
 ```
 
-## Scale and aspect {#sec-scale-aspect}
+## Scale {#sec-scale}
 
 ```{r}
-tm + 
-  tm_layout(scale = 2)
-```
-
-```{r}
+#| label: fig-layout-scale
+#| warning: false
+#| echo: false
+#| layout-ncol: 2
+#| fig-cap: "Impact of the scale argument on the map layout."
+#| fig-subcap:
+#|  - "`scale = 0.5`"
+#|  - "`scale = 1.5`"
 tm + 
   tm_layout(scale = 0.5)
-```
-
-<!-- Aspect ratio of each map. When asp is set to NA (default) the aspect ratio will be adjusted to the used shapes. When set to 0 the aspect ratio is adjusted to the size of the device divided by the number of columns and rows. -->
-
-```{r}
 tm + 
-  tm_layout(asp = 0)
-```
-
-```{r}
-tm + 
-  tm_layout(asp = 0.5)
-```
-
-```{r}
-tm + 
-  tm_layout(asp = 1)
-```
-
-```{r}
-tm + 
-  tm_layout(asp = 2)
+  tm_layout(scale = 1.5)
 ```
 
 ## Colors {#sec-lcolors}
-
-idea: have tm1 and tm
 
 <!-- update colors -->
 ```{r}
@@ -80,25 +61,64 @@ tm +
 <!-- default: 0 -->
 
 ```{r}
+#| label: fig-layout-sepia
+#| warning: false
+#| echo: false
+#| layout-ncol: 3
+#| fig-cap: "Impact of the `color.sepia_intensity` argument on the map layout."
+#| fig-subcap:
+#|  - "Value: `0.4`"
+#|  - "Value: `0.7`"
+#|  - "Value: `1`"
 tm + 
   tm_layout(color.sepia_intensity = 0.4)
+tm + 
+  tm_layout(color.sepia_intensity = 0.7)
+tm + 
+  tm_layout(color.sepia_intensity = 1)
 ```
 
 <!-- color.saturation, 0-1-->
 <!-- default: 1 -->
 
 ```{r}
+#| label: fig-layout-saturation
+#| warning: false
+#| echo: false
+#| layout-ncol: 3
+#| fig-cap: "Impact of the `color.saturation` argument on the map layout."
+#| fig-subcap:
+#|  - "Value: `0`"
+#|  - "Value: `0.4`"
+#|  - "Value: `0.7`"
 tm + 
-  tm_layout(color.saturation = 0.6)
+  tm_layout(color.saturation = 0)
+tm + 
+  tm_layout(color.saturation = 0.4)
+tm + 
+  tm_layout(color.saturation = 0.7)
 ```
 
 <!-- color_vision_deficiency_sim, -- better docs? possible options? -->
 
 ```{r}
+#| label: fig-layout-color-vision
+#| warning: false
+#| echo: false
+#| layout-ncol: 3
+#| fig-cap: "Impact of the `color_vision_deficiency_sim` argument on the map layout."
+#| fig-subcap:
+#|  - "Value: `\"protan\"`"
+#|  - "Value: `\"deutan\"`"
+#|  - "Value: `\"tritan\"`"
+tm + 
+  tm_layout(color_vision_deficiency_sim = "protan")
 tm + 
   tm_layout(color_vision_deficiency_sim = "deutan")
+tm + 
+  tm_layout(color_vision_deficiency_sim = "tritan")
 ```
-  
+
 <!-- ?  earth_boundary.color, -->
 <!-- ?   space.color, -->
 
@@ -106,6 +126,8 @@ tm +
 
 <!-- frame -->
 ```{r}
+#| label: frame1
+#| eval: false
 tm + 
   tm_layout(frame = FALSE)
 ```
@@ -114,6 +136,8 @@ tm +
 <!-- frame.alpha -->
 <!-- frame.lwd -->
 ```{r}
+#| label: frame2
+#| eval: false
 tm + 
   tm_layout(frame.color = "black",
             frame.alpha = 0.6,
@@ -127,42 +151,28 @@ tm +
 <!-- frame.double_line -->
 
 ```{r}
+#| label: frame3
+#| eval: false
 tm + 
   tm_layout(frame.r = 30,
             frame.double_line = TRUE)
 ```
 
-## Margins {#sec-lmargins}
-
-<!-- A vector of 4 values: bottom, left, top, right. The unit is the device height (for bottom and top) or width (for left and right). -->
-<!-- mention defaults! -->
-<!-- inner.margins, -->
-<!-- units? -->
-<!-- inner.margins.extra -- ???? -->
-
 ```{r}
-tm + 
-  tm_layout(inner.margins = 0)
+#| label: fig-layout-frame
+#| echo: false
+#| message: false
+#| layout-ncol: 3
+#| fig-cap: "Impact of the frame arguments on the map layout."
+#| fig-subcap:
+#|  - "No frame"
+#|  - "Custom color, alpha, and width"
+#|  - "Rounded double line"
+<<frame1>>
+<<frame2>>
+<<frame3>>
 ```
 
-```{r}
-tm + 
-  tm_layout(inner.margins = c(0.8, 0.4, 0.2, 0))
-```
-
-<!-- outer.margins, -->
-
-```{r}
-tm + 
-  tm_layout(outer.margins = c(0.08, 0.04, 0.02, 0))
-```
-
-<!-- explain why/when customization of the margins is needed -->
-
-<!-- meta.margins  -- ???? -->
-<!-- meta.auto_margins  -- ???? -->
-<!-- between_margin, -->
-<!-- panel.margin, -->
 
 ## Typography {#sec-ltypography}
 
@@ -383,3 +393,89 @@ tmap_save(tmt2, "tmt2.pdf")
 ```
 
 <!-- ## Legend {#sec-llegend} -->
+
+## Design mode {#sec-design-mode}
+
+<!-- design.mode explain -->
+```{r}
+tmap_design_mode(TRUE)
+tm
+```
+
+## Aspect ratio {#sec-aspect}
+
+<!-- Aspect ratio of each map. When asp is set to NA (default) the aspect ratio will be adjusted to the used shapes. When set to 0 the aspect ratio is adjusted to the size of the device divided by the number of columns and rows. -->
+
+```{r}
+#| label: fig-layout-asp
+#| warning: false
+#| echo: false
+#| layout-ncol: 2
+#| layout-nrow: 2
+#| fig-cap: "Impact of the aspect ratio on the map layout."
+#| fig-subcap:
+#|  - "`asp = 0`"
+#|  - "`asp = 0.5`"
+#|  - "`asp = 1`"
+#|  - "`asp = 2`"
+tm + 
+  tm_layout(asp = 0)
+tm +
+  tm_layout(asp = 0.5)
+tm +
+  tm_layout(asp = 1)
+tm +
+  tm_layout(asp = 2)
+```
+
+## Margins {#sec-lmargins}
+
+<!-- scheme figure showing the order of values? -->
+
+<!-- A vector of 4 values: bottom, left, top, right. The unit is the device height (for bottom and top) or width (for left and right). -->
+<!-- mention defaults! -->
+<!-- inner.margins, -->
+<!-- units? -->
+<!-- inner.margins.extra -- ???? -->
+
+```{r}
+#| label: fig-inner-margins
+#| warning: false
+#| echo: false
+#| layout-ncol: 2
+#| fig-cap: "Impact of the `inner.margins` argument on the map layout."
+#| fig-subcap:
+#|  - "No margins"
+#|  - "`c(0.8, 0.4, 0.2, 0)`"
+tm + 
+  tm_layout(inner.margins = 0)
+tm + 
+  tm_layout(inner.margins = c(0.8, 0.4, 0.2, 0))
+```
+
+<!-- outer.margins, -->
+```{r}
+#| label: fig-outer-margins
+#| warning: false
+#| echo: false
+#| layout-ncol: 2
+#| fig-cap: "Impact of the `outer.margins` argument on the map layout."
+#| fig-subcap:
+#|  - "No margins"
+#|  - "`c(0.08, 0.04, 0.02, 0)`"
+tm + 
+  tm_layout(outer.margins = 0)
+tm + 
+  tm_layout(outer.margins = c(0.08, 0.04, 0.02, 0))
+```
+
+<!-- explain why customization of the margins is needed -->
+
+<!-- meta.margins  -- ???? -->
+<!-- meta.auto_margins  -- ???? -->
+<!-- between_margin, -->
+<!-- panel.margin, -->
+
+```{r}
+tmap_design_mode(FALSE)
+```
