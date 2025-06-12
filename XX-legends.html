@@ -378,7 +378,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <span><span class="va">slo_elev</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_elev.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Legends are an essential part of most maps. They provide meaning to the symbols or colors used in the map, and often add information about the map content. They allow to interpret the map correctly, and are therefore crucial for the map readability.</p>
-<p>In <strong>tmap</strong>, legends are created automatically when we add a layer with a data-driven visual variable. By default, such a legend consists of a title based on the variable name and a color/shape/symbol scale <a href="#fig-legend1" class="quarto-xref">Figure&nbsp;<span>9.1</span></a>. <!--REF to the color scale section?--> It is placed outside of the map frame, either on the right or on the bottom of the map, depending on the automatically determined map aspect ratio.</p>
+<p>In <strong>tmap</strong>, legends are created automatically when we add a layer with a data-driven visual variable. By default, such a legend consists of a title based on the variable name and a color/shape/symbol scale (<a href="#fig-legend1" class="quarto-xref">Figure&nbsp;<span>9.1</span></a>). <!--REF to the color scale section?--> It is placed outside of the map frame, either on the right or on the bottom of the map, depending on the automatically determined map aspect ratio.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -394,7 +394,7 @@ Figure&nbsp;9.1: A map with an automatically generated legend.
 </div>
 </div>
 <p>Such a legend is helpful for quick exploration of the data, but usually, they are not sufficient for sharing the map with others. This chapter covers how to customize the legend’s title, position, and appearance in <strong>tmap</strong>. Legends are also closely related to the visual variables and scales used in the map that were covered in chapters <a href="XX-visual-variables.html" class="quarto-xref"><span>Chapter 7</span></a> and <a href="XX-scales.html" class="quarto-xref"><span>Chapter 8</span></a> – we recommend to read those chapters first. <!-- also mention/ref to changing the color palette (        col.scale = tm_scale(values = "geyser"),) ?--> Legends are customized using the <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code> function that is passed to <code>*.legend</code> arguments of the layer functions, e.g., <code>col.legend</code>, <code>shape.legend</code>, <code>size.legend</code>, etc.</p>
-<p>Often, the most important part of the legend is the title. It informs the reader about the meaning of the colors or symbols used in the map, providing also additional context such as the unit of measurement. The title is set using the <code>title</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code> function <!--fig ref-->.</p>
+<p>Often, the most important part of the legend is the title. It informs the reader about the meaning of the colors or symbols used in the map, providing also additional context such as the unit of measurement. The title is set using the <code>title</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code> function (<a href="#fig-legend2-1" class="quarto-xref">Figure&nbsp;<span>9.2 (a)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span></span>
@@ -403,14 +403,14 @@ Figure&nbsp;9.1: A map with an automatically generated legend.
 </div>
 <p>In some cases, the title is not needed, e.g., when the map is self-explanatory, and then this argument can be set to <code>""</code>. Another possibility, when only one legend is used is to remove the legend title, but specify the map variable and its unit in the map title.</p>
 <p>The legend title and its text can be customized in many ways, including changing its font size (<code>title.size</code> and <code>text.size</code>), font family (<code>title.family</code> and <code>text.family</code>), and font color (<code>title.color</code> and <code>text.color</code>).</p>
-<p>By default, values in the legend are ordered from low to high (i.e., from top to bottom), but this can be reversed using the <code>reverse</code> argument <!--fig ref-->.</p>
+<p>By default, values in the legend are ordered from low to high (i.e., from top to bottom), but this can be reversed using the <code>reverse</code> argument (<a href="#fig-legend2-2" class="quarto-xref">Figure&nbsp;<span>9.2 (b)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span></span>
 <span>        col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Elevation (m asl)"</span>, reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In our example of Slovenia, we have enough white space inside the map frame to place the legend. This can be done with the <code>position</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code> function <!--fig ref-->. To put the legend inside the map frame, we can use the <code><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_in()</a></code> function and specify the location of the legend using its first two arguments (<a href="XX-positions.html" class="quarto-xref"><span>Chapter 11</span></a>).</p>
+<p>In our example of Slovenia, we have enough white space inside the map frame to place the legend. This can be done with the <code>position</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code> function (<a href="#fig-legend2-3" class="quarto-xref">Figure&nbsp;<span>9.2 (c)</span></a>). To put the legend inside the map frame, we can use the <code><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_in()</a></code> function and specify the location of the legend using its first two arguments (<a href="XX-positions.html" class="quarto-xref"><span>Chapter 11</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span></span>
@@ -418,37 +418,6 @@ Figure&nbsp;9.1: A map with an automatically generated legend.
 <span>            title <span class="op">=</span> <span class="st">"Elevation (m asl)"</span>,</span>
 <span>            position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_in</a></span><span class="op">(</span><span class="st">"right"</span>, <span class="st">"bottom"</span><span class="op">)</span></span>
 <span>        <span class="op">)</span></span>
-<span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Depending on the map content, used colors, and expected aesthetic, the legend background can be colored or made transparent. The default legend background is white, but it can be changed using the <code>bg.color</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code> function. In the following example, we set the background color to gray and also make it semi-transparent using the <code>bg.alpha</code> argument <!--fig ref-->.</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span></span>
-<span>        col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span></span>
-<span>            title <span class="op">=</span> <span class="st">"Elevation (m asl)"</span>,</span>
-<span>            position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_in</a></span><span class="op">(</span><span class="st">"right"</span>, <span class="st">"bottom"</span><span class="op">)</span>,</span>
-<span>            bg.color <span class="op">=</span> <span class="st">"gray"</span>,</span>
-<span>            bg.alpha <span class="op">=</span> <span class="fl">0.5</span></span>
-<span>        <span class="op">)</span></span>
-<span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>All of the previous examples used the default legend orientation type, <code>"portrait".</code> Its alternative is <code>"landscape"</code>, which can be set using the <code>orientation</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code> function. This changes the legend layout to a horizontal orientation, which can be useful either as a mean to better fit to the map content or to change the map aesthetic.</p>
-<p>Here, we not only change the legend orientation, but also customize its position <!--ref position chapter--> with <code><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out()</a></code> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. The three arguments used, <code>"center"</code>, <code>"top"</code>, and <code>"center"</code> specify the legend position in horizontal and vertical position outside the map frame and then its position relative to that placement.</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span></span>
-<span>        col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span></span>
-<span>            title <span class="op">=</span> <span class="st">"Elevation (m asl)"</span>,</span>
-<span>            orientation <span class="op">=</span> <span class="st">"landscape"</span>,</span>
-<span>            position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"center"</span>, <span class="st">"top"</span>, <span class="st">"center"</span><span class="op">)</span></span>
-<span>        <span class="op">)</span></span>
-<span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>To disable the legend, we can set the <code>show</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code> function to <code>FALSE</code>. This is useful when we want to use the same legend for multiple layers, or just when we only are interested in the map content and not in the legend – which may be the case when we are using the map for graphical purposes only.</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span></span>
-<span>        col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>show <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="fig-legend2" class="quarto-layout-panel">
@@ -485,41 +454,79 @@ Figure&nbsp;9.1: A map with an automatically generated legend.
 </div>
 </div>
 </div>
-<div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-legend2" style="flex-basis: 33.3%;justify-content: center;">
-<div id="fig-legend2-4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-legend2-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-legend2-4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-legend2">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-legend2-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(d) Legend with a custom background color and transparency.
-</figcaption></figure>
-</div>
-</div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-legend2" style="flex-basis: 33.3%;justify-content: center;">
-<div id="fig-legend2-5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-legend2-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-legend2-5.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-legend2">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-legend2-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(e) Legend with a custom orientation and position outside the map frame.
-</figcaption></figure>
-</div>
-</div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-legend2" style="flex-basis: 33.3%;justify-content: center;">
-<div id="fig-legend2-6" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-legend2-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-legend2-6.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-legend2">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-legend2-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(f) No legend.
-</figcaption></figure>
-</div>
-</div>
-</div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-legend2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;9.2: Legend customization examples.
+</figcaption></figure>
+</div>
+<p>Depending on the map content, used colors, and expected aesthetic, the legend background can be colored or made transparent. The default legend background is white, but it can be changed using the <code>bg.color</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code> function. In the following example, we set the background color to gray and also make it semi-transparent using the <code>bg.alpha</code> argument (<a href="#fig-legend3-1" class="quarto-xref">Figure&nbsp;<span>9.3 (a)</span></a>).</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span></span>
+<span>        col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span></span>
+<span>            title <span class="op">=</span> <span class="st">"Elevation (m asl)"</span>,</span>
+<span>            position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_in</a></span><span class="op">(</span><span class="st">"right"</span>, <span class="st">"bottom"</span><span class="op">)</span>,</span>
+<span>            bg.color <span class="op">=</span> <span class="st">"gray"</span>,</span>
+<span>            bg.alpha <span class="op">=</span> <span class="fl">0.5</span></span>
+<span>        <span class="op">)</span></span>
+<span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>All of the previous examples used the default legend orientation type, <code>"portrait".</code> Its alternative is <code>"landscape"</code>, which can be set using the <code>orientation</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code> function. This changes the legend layout to a horizontal orientation, which can be useful either as a mean to better fit to the map content or to change the map aesthetic.</p>
+<p>Here, we not only change the legend orientation, but also customize its position with <code><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out()</a></code> (<a href="XX-positions.html" class="quarto-xref"><span>Chapter 11</span></a>) <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. The three arguments used, <code>"center"</code>, <code>"top"</code>, and <code>"center"</code> specify the legend position in horizontal and vertical position outside the map frame and then its position relative to that placement (<a href="#fig-legend3-2" class="quarto-xref">Figure&nbsp;<span>9.3 (b)</span></a>).</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span></span>
+<span>        col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span></span>
+<span>            title <span class="op">=</span> <span class="st">"Elevation (m asl)"</span>,</span>
+<span>            orientation <span class="op">=</span> <span class="st">"landscape"</span>,</span>
+<span>            position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"center"</span>, <span class="st">"top"</span>, <span class="st">"center"</span><span class="op">)</span></span>
+<span>        <span class="op">)</span></span>
+<span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To disable the legend, we can set the <code>show</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code> function to <code>FALSE</code> (<a href="#fig-legend3-3" class="quarto-xref">Figure&nbsp;<span>9.3 (c)</span></a>). This is useful when we want to use the same legend for multiple layers, or just when we only are interested in the map content and not in the legend – which may be the case when we are using the map for graphical purposes only.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span></span>
+<span>        col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>show <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="fig-legend3" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-legend3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-legend3" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-legend3-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-legend3-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-legend3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-legend3">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-legend3-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Legend with a custom background color and transparency.
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-legend3" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-legend3-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-legend3-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-legend3-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-legend3">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-legend3-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Legend with a custom orientation and position outside the map frame.
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-legend3" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-legend3-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-legend3-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-legend3-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-legend3">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-legend3-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) No legend.
+</figcaption></figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-legend3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.3: Additional legend customization examples.
 </figcaption></figure>
 </div>
 <!-- tm_legend_bivariate -->
