@@ -369,7 +369,6 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
   </ul>
 </li>
   <li><a href="#sec-position-many-components" id="toc-sec-position-many-components" class="nav-link" data-scroll-target="#sec-position-many-components"><span class="header-section-number">11.2</span> Many components</a></li>
-  <li><a href="#sec-grouping" id="toc-sec-grouping" class="nav-link" data-scroll-target="#sec-grouping"><span class="header-section-number">11.3</span> Grouping</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/XX-positions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -398,7 +397,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <span><span class="va">tm</span> <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This chapter focuses on how to move map components, such as legends, scale bars, and insets, freely in the map. They can be placed both inside and outside the map frame – with some being in and some being out (<a href="#sec-positioning" class="quarto-xref"><span>Section 11.1</span></a>). Moreover, map components can be grouped together, which allows to move them and arrange them as a single unit (<a href="#sec-grouping" class="quarto-xref"><span>Section 11.3</span></a>).</p>
+<p>This chapter focuses on how to move map components, such as legends, scale bars, and insets, freely in the map. They can be placed both inside and outside the map frame – with some being in and some being out (<a href="#sec-positioning" class="quarto-xref"><span>Section 11.1</span></a>). Moreover, map components can be grouped together, which allows to move them and arrange them as a single unit (<a href="#sec-position-many-components" class="quarto-xref"><span>Section 11.2</span></a>).</p>
 <section id="sec-positioning" class="level2" data-number="11.1"><h2 data-number="11.1" class="anchored" data-anchor-id="sec-positioning">
 <span class="header-section-number">11.1</span> Positioning</h2>
 <p>All of the map components can be positioned in any location in the map frame or outside of it. The positioning is done via the <code>position</code> argument, which can take a variety of values. The most common are:</p>
@@ -484,15 +483,7 @@ Figure&nbsp;11.2: Positioning legends inside the map frame.
 </figcaption></figure>
 </div>
 <p>There is one important difference between specifying the position with a vector and with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_in()</a></code> function. The latter allows to control the position more precisely with additional arguments – <code>just.h</code>, <code>just.v</code>, <code>align.h</code>, and <code>align.v</code>. The <code>just.h</code> and <code>just.v</code> only work when the position is specified with numbers between 0 and 1, and they arguments control the justification of the map component to that position.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>The <code>align.h</code> and <code>align.v</code> arguments are used when many map components are grouped together, which is explained in <a href="#sec-grouping" class="quarto-xref"><span>Section 11.3</span></a>.</p>
+<p>The <code>align.h</code> and <code>align.v</code> arguments are used when many map components are grouped together, which is explained in <a href="#sec-position-many-components" class="quarto-xref"><span>Section 11.2</span></a>.</p>
 </section><section id="outside-the-map-frame" class="level3" data-number="11.1.2"><h3 data-number="11.1.2" class="anchored" data-anchor-id="outside-the-map-frame">
 <span class="header-section-number">11.1.2</span> Outside the map frame</h3>
 <div class="cell" data-layout-align="center">
@@ -518,7 +509,7 @@ Figure&nbsp;11.3: Examples of positioning map components outside the map frame.
 <li>
 <code>just.h</code> and <code>just.v</code>: the justification of the map components in relation to the position of the map component inside the cell – only used when <code>pos.h</code> and <code>pos.v</code> are specified as numbers between 0 and 1.</li>
 <li>
-<code>align.h</code> and <code>align.v</code>: the alignment of the components is only used when many components are grouped together (<a href="#sec-grouping" class="quarto-xref"><span>Section 11.3</span></a>).</li>
+<code>align.h</code> and <code>align.v</code>: the alignment of the components is only used when many components are grouped together (<a href="#sec-position-many-components" class="quarto-xref"><span>Section 11.2</span></a>).</li>
 </ul>
 <p>Let’s see how these arguments work in practice. The <code>cell.h</code> and <code>cell.v</code> arguments are the first two arguments of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out()</a></code> function and they define the cell in which the map component will be placed (<a href="#fig-positions-out-1" class="quarto-xref">Figure&nbsp;<span>11.4 (a)</span></a>; <a href="#fig-positions-out-2" class="quarto-xref">Figure&nbsp;<span>11.4 (b)</span></a>).</p>
 <div class="cell" data-layout-align="center">
@@ -591,65 +582,100 @@ Figure&nbsp;11.4: Positioning legends outside the map frame.
 </div>
 </section></section><section id="sec-position-many-components" class="level2" data-number="11.2"><h2 data-number="11.2" class="anchored" data-anchor-id="sec-position-many-components">
 <span class="header-section-number">11.2</span> Many components</h2>
-<p>Various map components can be either positioned at the same time. For example, we can place a scale bar outside the map frame and a legend inside the map frame <!--ref-->.</p>
+<p>Various map components can be positioned at the same time – either to a different locations or to the same one. For example, we can place a scale bar outside the map frame and a legend inside the map frame (<a href="#fig-many-comp-1" class="quarto-xref">Figure&nbsp;<span>11.5 (a)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"right"</span>, <span class="st">"bottom"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scalebar.html">tm_scalebar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"center"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [scale] tm_raster:() the data variable assigned to 'col' contains positive and negative values, so midpoint is set to 0. Set 'midpoint = NA' in 'fill.scale = tm_scale_intervals(&lt;HERE&gt;)' to use all visual values (e.g. colors)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scalebar.html">tm_scalebar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"center"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
-<p>Now,</p>
+<p>Now, you may be wondering what happens if we want to place two (or more) components in the same location. As you can see in <a href="#fig-many-comp-2" class="quarto-xref">Figure&nbsp;<span>11.5 (b)</span></a>, they will be stacked on top of each other inside a one frame.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"center"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scalebar.html">tm_scalebar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"center"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [scale] tm_raster:() the data variable assigned to 'col' contains positive and negative values, so midpoint is set to 0. Set 'midpoint = NA' in 'fill.scale = tm_scale_intervals(&lt;HERE&gt;)' to use all visual values (e.g. colors)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"right"</span>, <span class="st">"center"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scalebar.html">tm_scalebar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"right"</span>, <span class="st">"center"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="fig-many-comp" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-many-comp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-many-comp" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-many-comp-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-many-comp-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-many-comp-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-many-comp">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-many-comp-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Two components in different locations
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-many-comp" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-many-comp-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-many-comp-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-many-comp-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-many-comp">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-many-comp-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Two components in the same location
+</figcaption></figure>
 </div>
 </div>
 </div>
-</section><section id="sec-grouping" class="level2" data-number="11.3"><h2 data-number="11.3" class="anchored" data-anchor-id="sec-grouping">
-<span class="header-section-number">11.3</span> Grouping</h2>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-many-comp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.5: Positioning many map components.
+</figcaption></figure>
+</div>
+<p>The <strong>tmap</strong> package also has a mechanism to group map components together and then position and organize them as a single unit. This requires two steps:</p>
+<ol type="1">
+<li>Specifying the <code>group_id</code> argument in the map component that we want to group together – this should be a unique integer number.</li>
+<li>Using the <code><a href="https://r-tmap.github.io/tmap/reference/tm_comp_group.html">tm_comp_group()</a></code> function to select which group of map components we want to position together and where.</li>
+</ol>
+<p>In the following example, we have three map components – a legend, a scale bar, and credits – and we want to group the scale bar and credits together (<a href="#fig-comp-group-1" class="quarto-xref">Figure&nbsp;<span>11.6 (a)</span></a>). First, we specify the <code>group_id</code> argument in the map components functions, and then we use the <code><a href="https://r-tmap.github.io/tmap/reference/tm_comp_group.html">tm_comp_group()</a></code> function to position them together. Here, the position argument works exactly as we already described in the previous sections, i.e., it can be specified with a vector or with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_in()</a></code> or <code><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out()</a></code> functions.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>group_id <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scalebar.html">tm_scalebar</a></span><span class="op">(</span>group_id <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits</a></span><span class="op">(</span><span class="st">"My credits"</span>, group_id <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_comp_group.html">tm_comp_group</a></span><span class="op">(</span><span class="fl">1</span>, position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_in</a></span><span class="op">(</span><span class="st">"right"</span>, <span class="st">"bottom"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_comp_group.html">tm_comp_group</a></span><span class="op">(</span><span class="fl">2</span>, position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_in</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"top"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [scale] tm_raster:() the data variable assigned to 'col' contains positive and negative values, so midpoint is set to 0. Set 'midpoint = NA' in 'fill.scale = tm_scale_intervals(&lt;HERE&gt;)' to use all visual values (e.g. colors)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/unnamed-chunk-10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_comp_group.html">tm_comp_group</a></span><span class="op">(</span><span class="fl">2</span>, position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_in</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"top"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
+<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_comp_group.html">tm_comp_group()</a></code> function can also be used to customize the arrangement of map components in the same location. For example, we can stack them vertically (<code>stack = "vertical"</code>, default) or horizontally (<code>stack = "horizontal"</code>) (<a href="#fig-comp-group-2" class="quarto-xref">Figure&nbsp;<span>11.6 (b)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>group_id <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scalebar.html">tm_scalebar</a></span><span class="op">(</span>group_id <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits</a></span><span class="op">(</span><span class="st">"My credits"</span>, group_id <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_comp_group.html">tm_comp_group</a></span><span class="op">(</span><span class="fl">1</span>, position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_in</a></span><span class="op">(</span><span class="st">"right"</span>, <span class="st">"bottom"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_comp_group.html">tm_comp_group</a></span><span class="op">(</span><span class="fl">2</span>, position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_in</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"top"</span><span class="op">)</span>, stack <span class="op">=</span> <span class="st">"horizontal"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [scale] tm_raster:() the data variable assigned to 'col' contains positive and negative values, so midpoint is set to 0. Set 'midpoint = NA' in 'fill.scale = tm_scale_intervals(&lt;HERE&gt;)' to use all visual values (e.g. colors)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/unnamed-chunk-11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_comp_group.html">tm_comp_group</a></span><span class="op">(</span><span class="fl">2</span>, position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_in</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"top"</span><span class="op">)</span>, stack <span class="op">=</span> <span class="st">"horizontal"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="fig-comp-group" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-comp-group-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-comp-group" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-comp-group-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-comp-group-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-comp-group-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-comp-group">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-comp-group-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Two groups of map components in different locations
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-comp-group" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-comp-group-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-comp-group-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-comp-group-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-comp-group">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-comp-group-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Two groups of map components in the same location, one stacked horizontally
+</figcaption></figure>
 </div>
 </div>
 </div>
-<!-- z -- order -->
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-comp-group-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.6: Grouping map components together.
+</figcaption></figure>
+</div>
+<p>Each additional map component is placed on the bottom of the previous one if they are in the same location. This can be controlled with the <code>z</code> argument of the map component functions – lower the number the component is placed on the top.</p>
 <!-- , frame_combine = FALSE -->
 <!-- equalize = FALSE -->
 <!-- , offset = 0, stack_margin = 1 -->
