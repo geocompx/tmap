@@ -267,7 +267,7 @@ tm_shape(slo_elev) +
 
 ## Many components {#sec-position-many-components}
 
-Various map components can be positioned at the same time -- either to a different locations or to the same one.
+Various map components can be positioned at the same time -- either to different locations or to the same one.
 For example, we can place a scale bar outside the map frame and a legend inside the map frame (@fig-many-comp-1).
 
 ```{r}
@@ -279,7 +279,7 @@ tm_shape(slo_elev) +
 ```
 
 Now, you may be wondering what happens if we want to place two (or more) components in the same location.
-As you can see in @fig-many-comp-2, they will be stacked on top of each other inside a one frame.
+As you can see in @fig-many-comp-2, they will be stacked on top of each other inside one frame.
 
 ```{r}
 #| label: many-comp2
@@ -325,7 +325,7 @@ This requires two steps:
 1. Specifying the `group_id` argument in the map component that we want to group together -- this should be a unique integer number.
 2. Using the `tm_comp_group()` function to select which group of map components we want to position together and where.
 
-In the following example, we have three map components -- a legend, a scale bar, and credits -- and we want to group the scale bar and credits together (@fig-comp-group-1).
+In the following example, we have three map components -- a legend, a scale bar, and credits -- and we want to group the scale bar and credits (@fig-comp-group-1).
 First, we specify the `group_id` argument in the map components functions, and then we use the `tm_comp_group()` function to position them together.
 Here, the position argument works exactly as we already described in the previous sections, i.e., it can be specified with a vector or with the `tm_pos_in()` or `tm_pos_out()` functions.
 
