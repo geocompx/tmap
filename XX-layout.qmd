@@ -51,9 +51,9 @@ tm +
             legend.bg.color = "lightblue")
 ```
 
-The `tm_layout()` function has also tools to modify the the complete map color style with arguments such as `color.saturation`, `color.sepia_intensity`, and `color_vision_deficiency_sim`.
-The first one represents the saturation of all of the colors on the map, including the backgrounds, but also the visual variables, such as fill or color of polygons and lines.
-The `color.saturation` parameter accepts a value between `0` and `1`, where `0` means no color saturation (i.e., the map is black and white), and `1` means full color saturation (i.e., the map is colorful, default) (@fig-layout-saturation).
+The `tm_layout()` function also has tools to modify the complete map color style with arguments such as `color.saturation`, `color.sepia_intensity`, and `color_vision_deficiency_sim.`
+The first one represents the saturation of all colors on the map, including the backgrounds, as well as visual variables such as the fill or color of polygons and lines.
+The `color.saturation` parameter accepts a value between `0` and `1`, where `0` means no color saturation (i.e., the map is black and white), and `1` means full-color saturation (i.e., the map is colorful, default) (@fig-layout-saturation).
 <!-- why it is needed -->
 
 ```{r}
@@ -98,7 +98,7 @@ tm +
 ```
 
 Both of the above options aim to change the overall map look and feel.
-The `color_vision_deficiency_sim` has a different purpose: it allows us to see how the map would look like for people with different color vision deficiencies.
+The `color_vision_deficiency_sim` has a different purpose: it enables us to visualize how the map would appear to people with different color vision deficiencies.
 Three main types of color vision deficiencies are: *protanopia* (red-green color blindness, `"protan"`), *deuteranopia* (red-green color blindness, `"deutan"`), and *tritanopia* (blue-yellow color blindness, `"tritan"`).
 
 <!-- color_vision_deficiency_sim, -- better docs? possible options? -->
@@ -130,7 +130,7 @@ tm +
 ## Frame {#sec-lframe}
 
 Another possibility to change the map look is to customize the frame around the map content.
-Its style depends on a several arguments of the `tm_layout()` function.
+Its style depends on several arguments of the `tm_layout()` function.
 For example, `frame.color`, `frame.alpha`, and `frame.lwd` change the frame color, transparency (0-1), and line width, respectively (@fig-layout-frame-1).
 <!-- find a place in the book (or an appendix??) to explain what units are used for various elements, what do they mean, what are the ranges of values, etc. -->
 
@@ -143,7 +143,7 @@ tm +
             frame.lwd = 8)
 ```
 
-Another arguments that can be used to customize the frame are `frame.r` and `frame.double_line`  (@fig-layout-frame-2).
+Other arguments that can be used to customize the frame are `frame.r` and `frame.double_line`  (@fig-layout-frame-2).
 The first one makes the corners of the frame rounded -- the value of `0` means no rounding, while `30` means that the corners are rounded with a radius of 30.
 <!-- -- units? ranges of values? -->
 <!-- from 0 to 180? try 180 as a footnote? -->
@@ -433,8 +433,8 @@ tm +
 
 ## Design mode {#sec-design-mode}
 
-Maps consist of various pieces, such as the map content (with its frame), additional map elements (e.g., a credits or title), and the legend located in different places.
-They also have many margins -- spaces between data and the frame, spaces between the frame and the plotting spaces between the icons and the labels, etc.
+Maps consist of various components, including the map content (with its frame), additional map elements (e.g., credits or a title), and the legend, which are often located in different places.
+They also have numerous margins -- spaces between data and the frame, spaces between the frame and the plotting, spaces between the icons and the labels, etc.
 
 Many of these properties can be customized, however, it may be difficult to understand the effect of the changes.
 <!-- ... -->
@@ -465,12 +465,11 @@ In the next few sections, we will show how the design mode can help us to unders
 
 <!-- Aspect ratio of each map. When asp is set to NA (default) the aspect ratio will be adjusted to the used shapes. When set to 0 the aspect ratio is adjusted to the size of the device divided by the number of columns and rows. -->
 
-Aspect ratio specifies the relation between the width and height of the map area of the plot.
-For statistical plots aspect ratios usually adjust to the plotting space -- thus customization of an aspect ratio is usually not needed.
-For maps, this is not the case -- we should not change the relation between the width and height of the data in a map as it has a specific projection which determines the spatial relation between the map features.
+The aspect ratio specifies the relation between the width and height of the map area of the plot.
+For statistical plots, aspect ratios usually adjust to the plotting space -- thus, customization of an aspect ratio is usually not needed.
+For maps, this is not the case -- we should not change the relation between the width and height of the data in a map as it has a specific projection that determines the spatial relation between the map features.
 
-By default, the aspect ratio of the *tmap* is set to `NA`, which means that it is adjusted to the used shapes (@fig-layout-example)
-
+By default, the aspect ratio of the *tmap* is set to `NA`, which means that it is adjusted to the used shapes (@fig-layout-example).
 <!--Martijn, please explain the rest of the aspect values in the code/map below -- I do not know what they exactly mean. -->
 
 ```{r}
