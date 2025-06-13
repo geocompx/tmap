@@ -433,20 +433,22 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"NUTS_NAME"</span>, size <span class="op">=</span> <span class="st">"population"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits</a></span><span class="op">(</span><span class="st">"Data source: GISCO Eurostat database"</span>, fontface <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_title.html">tm_title</a></span><span class="op">(</span><span class="st">"Slovenia"</span><span class="op">)</span></span>
-<span><span class="va">tm</span></span>
-<span><span class="co">#&gt; [plot mode] legend/component: Some components or legends are too "high" and are</span></span>
-<span><span class="co">#&gt; therefore rescaled.</span></span>
-<span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">tm</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<div id="fig-layout-example" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-layout-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-layout-example-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-layout-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.1: A map of Slovenia with a default layout.
+</figcaption></figure>
 </div>
 </div>
 </div>
+<!-- an introduction to the rest of the sections -->
 <section id="sec-lcolors" class="level2" data-number="12.1"><h2 data-number="12.1" class="anchored" data-anchor-id="sec-lcolors">
 <span class="header-section-number">12.1</span> Colors</h2>
-<p>The most basic map layout customization is the color of the map background. Actually, there are a few separate zones on the map that can be colored – it includes, among others, the map background, the outer space background, and the map legend background (<a href="#fig-layout-colors" class="quarto-xref">Figure&nbsp;<span>12.1</span></a>). They can be customized with the <code>bg.color</code>, <code>outer.bg.color</code>, and <code>legend.bg.color</code> arguments of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function. <!-- more similar arguments exist --> <!-- why it is needed --></p>
+<p>The most basic map layout customization is the color of the map background. Actually, there are a few separate zones on the map that can be colored – it includes, among others, the map background, the outer space background, and the map legend background (<a href="#fig-layout-colors" class="quarto-xref">Figure&nbsp;<span>12.2</span></a>). They can be customized with the <code>bg.color</code>, <code>outer.bg.color</code>, and <code>legend.bg.color</code> arguments of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function. <!-- more similar arguments exist --> <!-- why it is needed --></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>bg.color <span class="op">=</span> <span class="st">"lightgreen"</span>,</span>
@@ -461,12 +463,12 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <img src="figures/fig-layout-colors-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-layout-colors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12.1: Customized map layout colors: background, outer space, and legend background.
+Figure&nbsp;12.2: Customized map layout colors: background, outer space, and legend background.
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function has also tools to modify the the complete map color style with arguments such as <code>color.saturation</code>, <code>color.sepia_intensity</code>, and <code>color_vision_deficiency_sim</code>. The first one represents the saturation of all of the colors on the map, including the backgrounds, but also the visual variables, such as fill or color of polygons and lines. The <code>color.saturation</code> parameter accepts a value between <code>0</code> and <code>1</code>, where <code>0</code> means no color saturation (i.e., the map is black and white), and <code>1</code> means full color saturation (i.e., the map is colorful, default) (<a href="#fig-layout-saturation" class="quarto-xref">Figure&nbsp;<span>12.2</span></a>). <!-- why it is needed --></p>
+<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function has also tools to modify the the complete map color style with arguments such as <code>color.saturation</code>, <code>color.sepia_intensity</code>, and <code>color_vision_deficiency_sim</code>. The first one represents the saturation of all of the colors on the map, including the backgrounds, but also the visual variables, such as fill or color of polygons and lines. The <code>color.saturation</code> parameter accepts a value between <code>0</code> and <code>1</code>, where <code>0</code> means no color saturation (i.e., the map is black and white), and <code>1</code> means full color saturation (i.e., the map is colorful, default) (<a href="#fig-layout-saturation" class="quarto-xref">Figure&nbsp;<span>12.3</span></a>). <!-- why it is needed --></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>color.saturation <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
 <span><span class="va">tm</span> <span class="op">+</span> </span>
@@ -509,10 +511,10 @@ Figure&nbsp;12.1: Customized map layout colors: background, outer space, and leg
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-layout-saturation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12.2: Impact of the <code>color.saturation</code> argument on the map layout.
+Figure&nbsp;12.3: Impact of the <code>color.saturation</code> argument on the map layout.
 </figcaption></figure>
 </div>
-<p>The <code>color.sepia_intensity</code> argument allows to apply a sepia filter to the map. <!-- explain --> Its value can be set between <code>0</code> and <code>1</code>, where <code>0</code> means no sepia filter (i.e., the map is colorful, default), and <code>1</code> means full sepia filter (i.e., the map is brownish) (<a href="#fig-layout-sepia" class="quarto-xref">Figure&nbsp;<span>12.3</span></a>). <!-- color.sepia_intensity, 0-1  --> <!-- default: 0 --> <!-- why it is needed --></p>
+<p>The <code>color.sepia_intensity</code> argument allows to apply a sepia filter to the map. <!-- explain --> Its value can be set between <code>0</code> and <code>1</code>, where <code>0</code> means no sepia filter (i.e., the map is colorful, default), and <code>1</code> means full sepia filter (i.e., the map is brownish) (<a href="#fig-layout-sepia" class="quarto-xref">Figure&nbsp;<span>12.4</span></a>). <!-- color.sepia_intensity, 0-1  --> <!-- default: 0 --> <!-- why it is needed --></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>color.sepia_intensity <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span></span>
 <span><span class="va">tm</span> <span class="op">+</span> </span>
@@ -555,7 +557,7 @@ Figure&nbsp;12.2: Impact of the <code>color.saturation</code> argument on the ma
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-layout-sepia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12.3: Impact of the <code>color.sepia_intensity</code> argument on the map layout.
+Figure&nbsp;12.4: Impact of the <code>color.sepia_intensity</code> argument on the map layout.
 </figcaption></figure>
 </div>
 <p>Both of the above options aim to change the overall map look and feel. The <code>color_vision_deficiency_sim</code> has a different purpose: it allows us to see how the map would look like for people with different color vision deficiencies. Three main types of color vision deficiencies are: <em>protanopia</em> (red-green color blindness, <code>"protan"</code>), <em>deuteranopia</em> (red-green color blindness, <code>"deutan"</code>), and <em>tritanopia</em> (blue-yellow color blindness, <code>"tritan"</code>).</p>
@@ -597,7 +599,7 @@ Figure&nbsp;12.3: Impact of the <code>color.sepia_intensity</code> argument on t
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-layout-color-vision-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12.4: Impact of the <code>color_vision_deficiency_sim</code> argument on the map layout.
+Figure&nbsp;12.5: Impact of the <code>color_vision_deficiency_sim</code> argument on the map layout.
 </figcaption></figure>
 </div>
 <!-- add a sentence or two explaining the above maps -->
@@ -605,20 +607,20 @@ Figure&nbsp;12.4: Impact of the <code>color_vision_deficiency_sim</code> argumen
 <!-- ?   space.color, -->
 </section><section id="sec-lframe" class="level2" data-number="12.2"><h2 data-number="12.2" class="anchored" data-anchor-id="sec-lframe">
 <span class="header-section-number">12.2</span> Frame</h2>
-<p>Another possibility to change the map look is to customize the frame around the map content. Its style depends on a several arguments of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function. For example, <code>frame.color</code>, <code>frame.alpha</code>, and <code>frame.lwd</code> change the frame color, transparency (0-1), and line width, respectively (<a href="#fig-layout-frame-1" class="quarto-xref">Figure&nbsp;<span>12.5 (a)</span></a>). <!-- find a place in the book (or an appendix??) to explain what units are used for various elements, what do they mean, what are the ranges of values, etc. --></p>
+<p>Another possibility to change the map look is to customize the frame around the map content. Its style depends on a several arguments of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function. For example, <code>frame.color</code>, <code>frame.alpha</code>, and <code>frame.lwd</code> change the frame color, transparency (0-1), and line width, respectively (<a href="#fig-layout-frame-1" class="quarto-xref">Figure&nbsp;<span>12.6 (a)</span></a>). <!-- find a place in the book (or an appendix??) to explain what units are used for various elements, what do they mean, what are the ranges of values, etc. --></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>frame.color <span class="op">=</span> <span class="st">"black"</span>,</span>
 <span>            frame.alpha <span class="op">=</span> <span class="fl">0.6</span>,</span>
 <span>            frame.lwd <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Another arguments that can be used to customize the frame are <code>frame.r</code> and <code>frame.double_line</code> (<a href="#fig-layout-frame-2" class="quarto-xref">Figure&nbsp;<span>12.5 (b)</span></a>). The first one makes the corners of the frame rounded – the value of <code>0</code> means no rounding, while <code>30</code> means that the corners are rounded with a radius of 30. <!-- -- units? ranges of values? --> <!-- from 0 to 180? try 180 as a footnote? --> <!-- -- note that r can be specified to many other components< --> The second one allows to add a second frame line around the frame.</p>
+<p>Another arguments that can be used to customize the frame are <code>frame.r</code> and <code>frame.double_line</code> (<a href="#fig-layout-frame-2" class="quarto-xref">Figure&nbsp;<span>12.6 (b)</span></a>). The first one makes the corners of the frame rounded – the value of <code>0</code> means no rounding, while <code>30</code> means that the corners are rounded with a radius of 30. <!-- -- units? ranges of values? --> <!-- from 0 to 180? try 180 as a footnote? --> <!-- -- note that r can be specified to many other components< --> The second one allows to add a second frame line around the frame.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>frame.r <span class="op">=</span> <span class="fl">30</span>,</span>
 <span>            frame.double_line <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Finally, we can remove the frame completely by setting the <code>frame</code> argument to <code>FALSE</code> (<a href="#fig-layout-frame-3" class="quarto-xref">Figure&nbsp;<span>12.5 (c)</span></a>). <!-- explain when this is recommended or may be needed --></p>
+<p>Finally, we can remove the frame completely by setting the <code>frame</code> argument to <code>FALSE</code> (<a href="#fig-layout-frame-3" class="quarto-xref">Figure&nbsp;<span>12.6 (c)</span></a>). <!-- explain when this is recommended or may be needed --></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>frame <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -659,7 +661,7 @@ Figure&nbsp;12.4: Impact of the <code>color_vision_deficiency_sim</code> argumen
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-layout-frame-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12.5: Impact of the frame arguments on the map layout.
+Figure&nbsp;12.6: Impact of the frame arguments on the map layout.
 </figcaption></figure>
 </div>
 </section><section id="sec-ltypography" class="level2" data-number="12.3"><h2 data-number="12.3" class="anchored" data-anchor-id="sec-ltypography">
@@ -697,11 +699,11 @@ Figure&nbsp;12.5: Impact of the frame arguments on the map layout.
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fonts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12.6: Basic font families, and font faces implemented in the tmap package.
+Figure&nbsp;12.7: Basic font families, and font faces implemented in the tmap package.
 </figcaption></figure>
 </div>
-<p>In <strong>tmap</strong>, fonts are represented by a font family (<a href="#fig-fonts-1" class="quarto-xref">Figure&nbsp;<span>12.6 (a)</span></a>) and a font face (<a href="#fig-fonts-2" class="quarto-xref">Figure&nbsp;<span>12.6 (b)</span></a>). A font family is a collection of closely related lettering designs. Examples of font families include <em>Times</em>, <em>Helvetica</em>, <em>Courier</em>, <em>Palatino</em>, etc. On the other hand, font faces, such as <em>italic</em> or <em>bold</em>, influence the orientation or width of the fonts. A <em>font</em> is, thus, a combination of a selected font family and font face.</p>
-<p>There are a few general font families, such as serifs, sans serifs, and monospaced fonts. Fonts from the serif family have small lines (known as <em>a serif</em>) attached to the end of some letters. Notice, for example, short horizontal lines on the bottom of letters <em>r</em>, <em>i</em>, and <em>f</em> or vertical lines at the ends of the letter <em>s</em> in the top row of <a href="#fig-fonts-1" class="quarto-xref">Figure&nbsp;<span>12.6 (a)</span></a>. The fonts in this family are often viewed as more formal. On the other hand, the sans serif family do not have serifs and is considered more informal and modern. The last font family, monospaced fonts, is often used in computer programming (IDEs, software text editors), but less often on maps. A distinguishing feature of the monospaced fonts is that each letter or character in this family has the same width. Therefore, letters, such as <em>i</em> and <em>a</em> will occupy the same space in the monospaced fonts. <!-- explain what are font faces --></p>
+<p>In <strong>tmap</strong>, fonts are represented by a font family (<a href="#fig-fonts-1" class="quarto-xref">Figure&nbsp;<span>12.7 (a)</span></a>) and a font face (<a href="#fig-fonts-2" class="quarto-xref">Figure&nbsp;<span>12.7 (b)</span></a>). A font family is a collection of closely related lettering designs. Examples of font families include <em>Times</em>, <em>Helvetica</em>, <em>Courier</em>, <em>Palatino</em>, etc. On the other hand, font faces, such as <em>italic</em> or <em>bold</em>, influence the orientation or width of the fonts. A <em>font</em> is, thus, a combination of a selected font family and font face.</p>
+<p>There are a few general font families, such as serifs, sans serifs, and monospaced fonts. Fonts from the serif family have small lines (known as <em>a serif</em>) attached to the end of some letters. Notice, for example, short horizontal lines on the bottom of letters <em>r</em>, <em>i</em>, and <em>f</em> or vertical lines at the ends of the letter <em>s</em> in the top row of <a href="#fig-fonts-1" class="quarto-xref">Figure&nbsp;<span>12.7 (a)</span></a>. The fonts in this family are often viewed as more formal. On the other hand, the sans serif family do not have serifs and is considered more informal and modern. The last font family, monospaced fonts, is often used in computer programming (IDEs, software text editors), but less often on maps. A distinguishing feature of the monospaced fonts is that each letter or character in this family has the same width. Therefore, letters, such as <em>i</em> and <em>a</em> will occupy the same space in the monospaced fonts. <!-- explain what are font faces --></p>
 <p>Mixing the use of serif and sans serif fonts often works well for maps. However, a rule of thumb is not to mix more than two font families on one map. A sans serif font can be used to label cultural objects, while serif fonts to label physical features. Then, italics, for example, can be used to distinguish water areas. The role of bold font faces, together with increased font size, is to highlight the hierarchy of labels – larger, bold fonts indicate more prominent map features. Additionally, customizing the fonts’ colors can be helpful to distinguish different groups of map objects. <!-- cite - https://www.axismaps.com/guide/labeling --></p>
 <p>The decision on which fonts to use should also relates to the expected map look and feel. Each font family has a distinct personality (creates a “semantic effect”), which can affect how the map is perceived. <!-- references - https://gistbok.ucgis.org/bok-topics/typography --> Some fonts are more formal, some are less. Some fonts have a modern look, while others look more traditional. <!-- add examples --> Another important concern is personal taste or map branding. We should filter the decision about the used fonts based on our preferences or even our sense of beauty as it could create more personal and unique maps. We just need to remember about the readability of the fonts – they should not be too elaborate as it can hinder the main map message.</p>
 <!-- suggested fonts or references??? -->
@@ -709,7 +711,7 @@ Figure&nbsp;12.6: Basic font families, and font faces implemented in the tmap pa
 <span class="header-section-number">12.3.2</span> Fonts available in <strong>tmap</strong>
 </h3>
 <p>Before we discuss how to set a font family and its face, it is important to highlight that a different set of fonts could exist for each operating system (and even each computer). Additionally, which fonts are available and how they are supported depends on the used <em>graphic device</em>. A graphic device is a place where a plot or map is rendered. The most commonly it is a some kind of a screen device, where we can see our plot or map directly after running the R code. Other graphic devices allow for saving plots or maps as files in various formats (e.g., <code>.png</code>, <code>.jpg</code>, <code>.pdf</code>). Therefore, it is possible to get different fonts on your map on the screen, and a (slightly) different one when saved to a file. Visit <code><a href="https://rdrr.io/r/grDevices/Devices.html">?Devices</a></code> or read the Graphic Devices chapter of <span class="citation" data-cites="peng2016exploratory">Peng (<a href="references.html#ref-peng2016exploratory" role="doc-biblioref">2016</a>)</span> to learn more about graphic devices.</p>
-<p>The <strong>tmap</strong> package has two mechanism to select a font family. The first one is by specifying on of three general font families: <code>"serif"</code>, <code>"sans"</code>, or <code>"monospace"</code>. It tries to match selected general font family with a font family existing on the operating system. <!-- https://github.com/r-lib/systemfonts#system-defaults --> For example, <code>"serif"</code> could the <code>"Times"</code> font family, <code>"sans"</code> – <code>"Helvetica"</code> or <code>"Arial"</code>, and <code>"monospace"</code> – <code>"Courier"</code> (<a href="#fig-fonts-1" class="quarto-xref">Figure&nbsp;<span>12.6 (a)</span></a>). The second mechanism allows to select a font family based on its name (e.g., <code>"Times"</code> or <code>"Palatino"</code>). Next, a member of the selected font families can be selected with one of the font faces: <code>"plain"</code>, <code>"italic"</code>, <code>"bold"</code>, and <code>"bold.italic"</code> (<a href="#fig-fonts-2" class="quarto-xref">Figure&nbsp;<span>12.6 (b)</span></a>).</p>
+<p>The <strong>tmap</strong> package has two mechanism to select a font family. The first one is by specifying on of three general font families: <code>"serif"</code>, <code>"sans"</code>, or <code>"monospace"</code>. It tries to match selected general font family with a font family existing on the operating system. <!-- https://github.com/r-lib/systemfonts#system-defaults --> For example, <code>"serif"</code> could the <code>"Times"</code> font family, <code>"sans"</code> – <code>"Helvetica"</code> or <code>"Arial"</code>, and <code>"monospace"</code> – <code>"Courier"</code> (<a href="#fig-fonts-1" class="quarto-xref">Figure&nbsp;<span>12.7 (a)</span></a>). The second mechanism allows to select a font family based on its name (e.g., <code>"Times"</code> or <code>"Palatino"</code>). Next, a member of the selected font families can be selected with one of the font faces: <code>"plain"</code>, <code>"italic"</code>, <code>"bold"</code>, and <code>"bold.italic"</code> (<a href="#fig-fonts-2" class="quarto-xref">Figure&nbsp;<span>12.7 (b)</span></a>).</p>
 <!-- build-in fonts only -->
 <p>As mentioned before, available fonts depend on the computer setup (including operating system) and used graphic device. Fonts available on the operating system can be checked with the <code><a href="https://systemfonts.r-lib.org/reference/system_fonts.html">system_fonts()</a></code> function of the <strong>systemfonts</strong> package <span class="citation" data-cites="R-systemfonts">(<a href="references.html#ref-R-systemfonts" role="doc-biblioref">Pedersen, Ooms, and Govett 2021</a>)</span> (result not shown).</p>
 <div class="cell" data-layout-align="center">
@@ -721,7 +723,7 @@ Figure&nbsp;12.6: Basic font families, and font faces implemented in the tmap pa
 </section><section id="sec-fonts-on-maps" class="level3" data-number="12.3.3"><h3 data-number="12.3.3" class="anchored" data-anchor-id="sec-fonts-on-maps">
 <span class="header-section-number">12.3.3</span> Fonts on maps</h3>
 <!-- explain defaults -->
-<p>By default, <strong>tmap</strong> uses the <code>"sans"</code> font family with the <code>"plain"</code> font face (<a href="#fig-fonts" class="quarto-xref">Figure&nbsp;<span>12.6</span></a>). There are, however, three ways to customize the used fonts. The first one is to change all of the fonts and font faces for the whole map at once (<a href="#fig-mfonts-1" class="quarto-xref">Figure&nbsp;<span>12.7 (a)</span></a>). This can be done with the <code>text.fontfamily</code> and <code>text.fontface</code> arguments of <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code>.</p>
+<p>By default, <strong>tmap</strong> uses the <code>"sans"</code> font family with the <code>"plain"</code> font face (<a href="#fig-fonts" class="quarto-xref">Figure&nbsp;<span>12.7</span></a>). There are, however, three ways to customize the used fonts. The first one is to change all of the fonts and font faces for the whole map at once (<a href="#fig-mfonts-1" class="quarto-xref">Figure&nbsp;<span>12.8 (a)</span></a>). This can be done with the <code>text.fontfamily</code> and <code>text.fontface</code> arguments of <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span></span>
@@ -729,7 +731,7 @@ Figure&nbsp;12.6: Basic font families, and font faces implemented in the tmap pa
 <span>        text.fontfamily <span class="op">=</span> <span class="st">"serif"</span></span>
 <span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The second way is to specify just some text elements independently (<a href="#fig-mfonts-2" class="quarto-xref">Figure&nbsp;<span>12.7 (b)</span></a>). Many <strong>tmap</strong> functions, such as <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text()</a></code> or <code><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits()</a></code>, have their own <code>fontfamily</code> and <code>fontface</code> arguments that can be adjusted. Additionally, <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> allows to customize fonts for other map elements using prefixed arguments, such as, <code>title.fontface</code> or <code>legend.title.fontfamily</code>.</p>
+<p>The second way is to specify just some text elements independently (<a href="#fig-mfonts-2" class="quarto-xref">Figure&nbsp;<span>12.8 (b)</span></a>). Many <strong>tmap</strong> functions, such as <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text()</a></code> or <code><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits()</a></code>, have their own <code>fontfamily</code> and <code>fontface</code> arguments that can be adjusted. Additionally, <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> allows to customize fonts for other map elements using prefixed arguments, such as, <code>title.fontface</code> or <code>legend.title.fontfamily</code>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span></span>
@@ -773,7 +775,7 @@ Figure&nbsp;12.6: Basic font families, and font faces implemented in the tmap pa
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mfonts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12.7: Examples of one font (font family and font face) used for all of the map elements (title, text labels, legend, and text annotation), and different fonts used for different map elements.
+Figure&nbsp;12.8: Examples of one font (font family and font face) used for all of the map elements (title, text labels, legend, and text annotation), and different fonts used for different map elements.
 </figcaption></figure>
 </div>
 <!-- The third way is to use a different *tmap style* - see section \@ref() for more details. -->
@@ -808,14 +810,20 @@ Figure&nbsp;12.7: Examples of one font (font family and font face) used for all 
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-layout-scale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12.8: Impact of the scale argument on the map layout.
+Figure&nbsp;12.9: Impact of the scale argument on the map layout.
 </figcaption></figure>
 </div>
 <!-- explain when/why it is useful;  -->
 <!-- also maybe connect it to save -->
 </section><section id="sec-design-mode" class="level2" data-number="12.5"><h2 data-number="12.5" class="anchored" data-anchor-id="sec-design-mode">
 <span class="header-section-number">12.5</span> Design mode</h2>
-<!-- design.mode explain -->
+<p>Maps consist of various pieces, such as the map content (with its frame), additional map elements (e.g., a credits or title), and the legend located in different places. They also have many margins – spaces between data and the frame, spaces between the frame and the plotting spaces between the icons and the labels, etc.</p>
+<p>Many of these properties can be customized, however, it may be difficult to understand the effect of the changes. <!-- ... --> To make it easier, <strong>tmap</strong> has a design mode that can be turned on by setting the <code><a href="https://r-tmap.github.io/tmap/reference/tmap_design_mode.html">tmap_design_mode()</a></code> function to <code>TRUE</code>. When the design mode is turned on, the map is displayed in a special way: it shows all of the created map content, but also adds various lines and colored areas to the map. We may see an example of a map in the design mode in <a href="#fig-design-mode" class="quarto-xref">Figure&nbsp;<span>12.10</span></a>:</p>
+<!-- - explain colors -->
+<!-- - as a list -->
+<p>Additionally, it returns a small table in the R console with sizes and an aspect ratio of the device, plot, facets, and map areas. <!-- explain these areas? --></p>
+<p>The design mode is useful to understand how the map is constructed and how the various arguments of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function impact the map layout.</p>
+<!-- info that this is limited to the plot mode? -->
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_design_mode.html">tmap_design_mode</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; design.mode: ON</span></span>
@@ -830,15 +838,23 @@ Figure&nbsp;12.8: Impact of the scale argument on the map layout.
 <span><span class="co">#&gt; therefore rescaled.</span></span>
 <span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/unnamed-chunk-8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<div id="fig-design-mode" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="100%">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-design-mode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-design-mode-1.png" id="fig-design-mode" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-design-mode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.10
+</figcaption></figure>
 </div>
 </div>
 </div>
+<p>This mode is in place until the <code><a href="https://r-tmap.github.io/tmap/reference/tmap_design_mode.html">tmap_design_mode()</a></code> function is set to <code>FALSE</code>. In the next few sections, we will show how the design mode can help us to understand the impact of various arguments of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function on the aspect ratio and margins of the map.</p>
 </section><section id="sec-aspect" class="level2" data-number="12.6"><h2 data-number="12.6" class="anchored" data-anchor-id="sec-aspect">
 <span class="header-section-number">12.6</span> Aspect ratio</h2>
 <!-- Aspect ratio of each map. When asp is set to NA (default) the aspect ratio will be adjusted to the used shapes. When set to 0 the aspect ratio is adjusted to the size of the device divided by the number of columns and rows. -->
+<p>Aspect ratio specifies the relation between the width and height of the map area of the plot. For statistical plots aspect ratios usually adjust to the plotting space – thus customization of an aspect ratio is usually not needed. For maps, this is not the case – we should not change the relation between the width and height of the data in a map as it has a specific projection which determines the spatial relation between the map features.</p>
+<p>By default, the aspect ratio of the <em>tmap</em> is set to <code>NA</code>, which means that it is adjusted to the used shapes (<a href="#fig-layout-example" class="quarto-xref">Figure&nbsp;<span>12.1</span></a>)</p>
+<!--Martijn, please explain the rest of the aspect values in the code/map below -- I do not know what they exactly mean. -->
 <div id="fig-layout-asp" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-layout-asp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
@@ -887,7 +903,7 @@ Figure&nbsp;12.8: Impact of the scale argument on the map layout.
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-layout-asp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12.9: Impact of the aspect ratio on the map layout.
+Figure&nbsp;12.11: Impact of the aspect ratio on the map layout.
 </figcaption></figure>
 </div>
 </section><section id="sec-lmargins" class="level2" data-number="12.7"><h2 data-number="12.7" class="anchored" data-anchor-id="sec-lmargins">
@@ -924,7 +940,7 @@ Figure&nbsp;12.9: Impact of the aspect ratio on the map layout.
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-inner-margins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12.10: Impact of the <code>inner.margins</code> argument on the map layout.
+Figure&nbsp;12.12: Impact of the <code>inner.margins</code> argument on the map layout.
 </figcaption></figure>
 </div>
 <!-- outer.margins, -->
@@ -954,7 +970,7 @@ Figure&nbsp;12.10: Impact of the <code>inner.margins</code> argument on the map 
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-outer-margins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12.11: Impact of the <code>outer.margins</code> argument on the map layout.
+Figure&nbsp;12.13: Impact of the <code>outer.margins</code> argument on the map layout.
 </figcaption></figure>
 </div>
 <!-- explain why customization of the margins is needed -->
