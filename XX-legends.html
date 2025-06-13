@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="This book teaches how to make elegant and informative maps with the R package tmap.">
-<title>9&nbsp; Legends – Elegant and informative maps with **tmap**</title>
+<title>9&nbsp; Legends and titles – Elegant and informative maps with **tmap**</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -112,7 +112,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./XX-tm-shape.html">Building blocks</a></li><li class="breadcrumb-item"><a href="./XX-legends.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legends</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./XX-tm-shape.html">Building blocks</a></li><li class="breadcrumb-item"><a href="./XX-legends.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legends and titles</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -213,7 +213,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-legends.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legends</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legends and titles</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -350,12 +350,26 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 </div>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 class="anchored">First Edition</h2>
+  <ul>
+<li><a href="https://geocompx.org/" class="nav-link active" data-scroll-target="https\://geocompx.org/">Visit the geocompx website 🌐</a></li>
+    <li><a href="https://github.com/geocompx/tmap/issues" class="nav-link" data-scroll-target="https\://github.com/geocompx/tmap/issues">Open an issue ❔</a></li>
+    <li><a href="https://discord.gg/PMztXYgNxp" class="nav-link" data-scroll-target="https\://discord.gg/PMztXYgNxp">Chat on Discord 📣</a></li>
+  </ul>
+<hr>
+<h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li><a href="#sec-legends" id="toc-sec-legends" class="nav-link" data-scroll-target="#sec-legends"><span class="header-section-number">9.1</span> Legends</a></li>
+  <li><a href="#sec-titles" id="toc-sec-titles" class="nav-link" data-scroll-target="#sec-titles"><span class="header-section-number">9.2</span> Titles</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/XX-legends.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./XX-tm-shape.html">Building blocks</a></li><li class="breadcrumb-item"><a href="./XX-legends.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legends</span></a></li></ol></nav><div class="quarto-title">
-<h1 class="title"><span id="sec-legends" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legends</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./XX-tm-shape.html">Building blocks</a></li><li class="breadcrumb-item"><a href="./XX-legends.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legends and titles</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legends and titles</span>
+</h1>
 </div>
 
 <!--
@@ -377,6 +391,8 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
 <span><span class="va">slo_elev</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_elev.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="sec-legends" class="level2" data-number="9.1"><h2 data-number="9.1" class="anchored" data-anchor-id="sec-legends">
+<span class="header-section-number">9.1</span> Legends</h2>
 <p>Legends are an essential part of most maps. They provide meaning to the symbols or colors used in the map, and often add information about the map content. They allow to interpret the map correctly, and are therefore crucial for the map readability.</p>
 <p>In <strong>tmap</strong>, legends are created automatically when we add a layer with a data-driven visual variable. By default, such a legend consists of a title based on the variable name and a color/shape/symbol scale (<a href="#fig-legend1" class="quarto-xref">Figure&nbsp;<span>9.1</span></a>). <!--REF to the color scale section?--> It is placed outside of the map frame, either on the right or on the bottom of the map, depending on the automatically determined map aspect ratio.</p>
 <div class="cell" data-layout-align="center">
@@ -531,9 +547,11 @@ Figure&nbsp;9.3: Additional legend customization examples.
 </div>
 <!-- tm_legend_bivariate -->
 <!-- tm_legend_combine -->
+</section><section id="sec-titles" class="level2" data-number="9.2"><h2 data-number="9.2" class="anchored" data-anchor-id="sec-titles">
+<span class="header-section-number">9.2</span> Titles</h2>
 
 
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+</section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
 <li id="fn1"><p>By default, the <code>"landscape"</code> legend is located in the bottom right outside of the map frame<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
@@ -973,7 +991,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
 <p>Elegant and informative maps with <strong>tmap</strong> by Martijn Tennekes and Jakub Nowosad.</p>
-<div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/XX-legends.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/XX-legends.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

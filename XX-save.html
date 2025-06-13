@@ -213,7 +213,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-legends.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legends</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legends and titles</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -436,7 +436,10 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <p><code>tmap</code> map objects can not only be viewed in the interactive mode (<a href="XX-nutshell.html#sec-map-modes" class="quarto-xref"><span>Section 3.4</span></a>) but also saved as HTML files by adding the <code>.html</code> extension to the output file name.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save</a></span><span class="op">(</span><span class="va">tm</span>, <span class="st">"my_map.html"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Interactive map saved to /__w/tmap/tmap/my_map.html</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; [view mode] Map component `tm_chart_none()` not supported in "view" mode.</span></span>
+<span><span class="co">#&gt; Interactive map saved to /__w/tmap/tmap/my_map.html</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; This message is displayed once per session.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <code><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save()</a></code> function also has several additional arguments reserved for the interactive format, including <code>selfcontained</code> and <code>in.iframe</code>. The <code>selfcontained</code> argument with <code>TRUE</code> by default saves our map together with additional resources (e.g., JavaScript libraries) into one HTML file. Otherwise, additional resources will be saved in an adjacent directory. The <code>in.iframe</code> argument (<code>FALSE</code> by default) allows saving an interactive map as an iframe – when <code>TRUE</code> it creates two HTML files - a small HTML file with the iframe container and a large one with the actual map. <!-- when `in.iframe = TRUE` is useful?? --> <!-- arguments passed on to device functions or to saveWidget or saveWidgetframe --></p>
 
@@ -446,7 +449,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <li id="fn1"><p>Standard R approach of saving graphic files by opening a graphic device, e.g., <code><a href="https://rdrr.io/r/grDevices/png.html">png()</a></code>, plotting the data, and then closing the device with <code><a href="https://rdrr.io/r/grDevices/dev.html">dev.off()</a></code> also works.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>In fact, one argument is enough – if you just provide a <strong>tmap</strong> object, then it will be saved to a <code>tmap01</code> file with some default format.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>You can even specify just one of <code>width</code> or <code>height</code>, and the value of the second one will be calculated using the formula <code>asp = width / height</code>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>Short discussion about graphic devices can be found in section <a href="XX-layout.html#sec-fonts-tmap" class="quarto-xref"><span>Section 12.4.0.2</span></a>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Short discussion about graphic devices can be found in section <a href="XX-layout.html#sec-fonts-tmap" class="quarto-xref"><span>Section 12.3.2</span></a>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

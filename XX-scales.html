@@ -233,7 +233,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./XX-legends.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legends</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legends and titles</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -721,6 +721,55 @@ Figure&nbsp;8.3: Examples of three methods of creating continuous maps
 </div>
 </section><section id="sec-rgb-scales" class="level2" data-number="8.5"><h2 data-number="8.5" class="anchored" data-anchor-id="sec-rgb-scales">
 <span class="header-section-number">8.5</span> RGB scales</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/stars/">stars</a></span><span class="op">)</span></span>
+<span><span class="va">sat</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_mosaic.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The <code>sat</code> object contains four bands of the Sentinel-2 image for Slovenia. The bands (blue, green, red, and near-infrared) are stored in the <code>band</code> dimension as <code>B02</code>, <code>B03</code>, <code>B04</code>, and <code>B08</code>. We can plot all of the bands independently or as a combination of three bands. This combination is known as a color composite image, and we can create such images with the <code>tm_rgb()</code> function (<a href="#fig-tmrgbs" class="quarto-xref">Figure&nbsp;<span>8.4</span></a>).</p>
+<p>Standard composite image (true color composite) uses the visible red, green, and blue bands to represent the data in natural colors. We can specify which band in <code>sat</code> relates to red (third band), green (second band), and blue (first band) color in <code>tm_rgb()</code>. <!-- to update --> <!-- Also, by default, this function expects values from 0 to 255; however, our values are in a different scale, with the maximum value of 31961.  --> <!-- Therefore, to create a map, we can set `max.value` to our dataset's maximum value. --> <!-- The result is a true color composite, with green colors representing forests and other types of vegetation, and yellow color showing bare areas (@fig-tmrgbs-1). --></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">sat</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tm_rgb</span><span class="op">(</span><span class="fu">tm_vars</span><span class="op">(</span>dimvalues <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"B04"</span>, <span class="st">"B03"</span>, <span class="st">"B02"</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">3</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>         col.scale <span class="op">=</span> <span class="fu">tm_scale_rgb</span><span class="op">(</span>stretch <span class="op">=</span> <span class="cn">TRUE</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.02</span>, <span class="fl">0.98</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>True color images are straightforward to interpret and understand, but they make subtle differences in features challenging to recognize. However, nothing stops us from using the above tools to integrate different bands to create so called false color composites. Various band combinations emphasize some spatial characteristics, such as water, agriculture, etc., and allow us to visualize wavelengths that our eyes can not see. <!-- add some reference?? --> <a href="#fig-tmrgbs-2" class="quarto-xref">Figure&nbsp;<span>8.4 (b)</span></a> shows a composite of near-infrared, red, and green bands, highlighting vegetation with a bright red color.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">sat</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tm_rgb</span><span class="op">(</span><span class="fu">tm_vars</span><span class="op">(</span>dimvalues <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"B08"</span>, <span class="st">"B04"</span>, <span class="st">"B03"</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">3</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>         col.scale <span class="op">=</span> <span class="fu">tm_scale_rgb</span><span class="op">(</span>stretch <span class="op">=</span> <span class="cn">TRUE</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.02</span>, <span class="fl">0.98</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-nrow="1" data-layout-align="center">
+<div id="fig-tmrgbs" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmrgbs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmrgbs" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-tmrgbs-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmrgbs-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmrgbs-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmrgbs">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmrgbs-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) True color composite image
+</figcaption></figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmrgbs" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-tmrgbs-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmrgbs-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmrgbs-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmrgbs">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmrgbs-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) False color composite image
+</figcaption></figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmrgbs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.4: Two color composite images
+</figcaption></figure>
+</div>
+</div>
+<!-- explain tm_vars above! -->
 </section><section id="sec-bivariate-scales" class="level2" data-number="8.6"><h2 data-number="8.6" class="anchored" data-anchor-id="sec-bivariate-scales">
 <span class="header-section-number">8.6</span> Bivariate scales</h2>
 </section><section id="sec-asis-scales" class="level2" data-number="8.7"><h2 data-number="8.7" class="anchored" data-anchor-id="sec-asis-scales">
@@ -1178,8 +1227,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./XX-legends.html" class="pagination-link" aria-label="Legends">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legends</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./XX-legends.html" class="pagination-link" aria-label="Legends and titles">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Legends and titles</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
