@@ -29,62 +29,31 @@ tm = tm_shape(slo_borders) +
 tm
 ```
 
-## Scale {#sec-scale}
-
-```{r}
-#| label: fig-layout-scale
-#| warning: false
-#| echo: false
-#| layout-ncol: 2
-#| fig-cap: "Impact of the scale argument on the map layout."
-#| fig-subcap:
-#|  - "`scale = 0.5`"
-#|  - "`scale = 1.5`"
-tm + 
-  tm_layout(scale = 0.5)
-tm + 
-  tm_layout(scale = 1.5)
-```
-
 ## Colors {#sec-lcolors}
 
-<!-- update colors -->
-```{r}
-tm + 
-  tm_layout(bg.color = "red",
-            outer.bg.color = "pink")
-```
-
-<!-- e.g. background colors -->
-
-<!-- color.sepia_intensity, 0-1  -->
-<!-- default: 0 -->
+The most basic map layout customization is the color of the map background.
+Actually, there are a few separate zones on the map that can be colored -- it includes, among others, the map background, the outer space background, and the map legend background (@fig-layout-colors).
+They can be customized with the `bg.color`, `outer.bg.color`, and `legend.bg.color` arguments of the `tm_layout()` function.
+<!-- more similar arguments exist -->
+<!-- why it is needed -->
 
 ```{r}
-#| label: fig-layout-sepia
-#| warning: false
-#| echo: false
-#| layout-ncol: 3
-#| fig-cap: "Impact of the `color.sepia_intensity` argument on the map layout."
-#| fig-subcap:
-#|  - "Value: `0.4`"
-#|  - "Value: `0.7`"
-#|  - "Value: `1`"
+#| label: fig-layout-colors
+#| fig-cap: "Customized map layout colors: background, outer space, and legend background."
 tm + 
-  tm_layout(color.sepia_intensity = 0.4)
-tm + 
-  tm_layout(color.sepia_intensity = 0.7)
-tm + 
-  tm_layout(color.sepia_intensity = 1)
+  tm_layout(bg.color = "lightgreen",
+            outer.bg.color = "forestgreen",
+            legend.bg.color = "lightblue")
 ```
 
-<!-- color.saturation, 0-1-->
-<!-- default: 1 -->
+The `tm_layout()` function has also tools to modify the the complete map color style with arguments such as `color.saturation`, `color.sepia_intensity`, and `color_vision_deficiency_sim`.
+The first one represents the saturation of all of the colors on the map, including the backgrounds, but also the visual variables, such as fill or color of polygons and lines.
+The `color.saturation` parameter accepts a value between `0` and `1`, where `0` means no color saturation (i.e., the map is black and white), and `1` means full color saturation (i.e., the map is colorful, default) (@fig-layout-saturation).
+<!-- why it is needed -->
 
 ```{r}
 #| label: fig-layout-saturation
 #| warning: false
-#| echo: false
 #| layout-ncol: 3
 #| fig-cap: "Impact of the `color.saturation` argument on the map layout."
 #| fig-subcap:
@@ -99,7 +68,36 @@ tm +
   tm_layout(color.saturation = 0.7)
 ```
 
+The `color.sepia_intensity` argument allows to apply a sepia filter to the map.
+<!-- explain -->
+Its value can be set between `0` and `1`, where `0` means no sepia filter (i.e., the map is colorful, default), and `1` means full sepia filter (i.e., the map is brownish) (@fig-layout-sepia).
+<!-- color.sepia_intensity, 0-1  -->
+<!-- default: 0 -->
+<!-- why it is needed -->
+
+```{r}
+#| label: fig-layout-sepia
+#| warning: false
+#| layout-ncol: 3
+#| fig-cap: "Impact of the `color.sepia_intensity` argument on the map layout."
+#| fig-subcap:
+#|  - "Value: `0.4`"
+#|  - "Value: `0.7`"
+#|  - "Value: `1`"
+tm + 
+  tm_layout(color.sepia_intensity = 0.4)
+tm + 
+  tm_layout(color.sepia_intensity = 0.7)
+tm + 
+  tm_layout(color.sepia_intensity = 1)
+```
+
+Both of the above options aim to change the overall map look and feel.
+The `color_vision_deficiency_sim` has a different purpose: it allows us to see how the map would look like for people with different color vision deficiencies.
+Three main types of color vision deficiencies are: *protanopia* (red-green color blindness, `"protan"`), *deuteranopia* (red-green color blindness, `"deutan"`), and *tritanopia* (blue-yellow color blindness, `"tritan"`).
+
 <!-- color_vision_deficiency_sim, -- better docs? possible options? -->
+<!-- why it is needed -->
 
 ```{r}
 #| label: fig-layout-color-vision
@@ -119,24 +117,20 @@ tm +
   tm_layout(color_vision_deficiency_sim = "tritan")
 ```
 
+<!-- add a sentence or two explaining the above maps -->
+
 <!-- ?  earth_boundary.color, -->
 <!-- ?   space.color, -->
 
 ## Frame {#sec-lframe}
 
-<!-- frame -->
+Another possibility to change the map look is to customize the frame around the map content.
+Its style depends on a several arguments of the `tm_layout()` function.
+For example, `frame.color`, `frame.alpha`, and `frame.lwd` change the frame color, transparency (0-1), and line width, respectively (@fig-layout-frame-1).
+<!-- find a place in the book (or an appendix??) to explain what units are used for various elements, what do they mean, what are the ranges of values, etc. -->
+
 ```{r}
 #| label: frame1
-#| eval: false
-tm + 
-  tm_layout(frame = FALSE)
-```
-
-<!-- frame.color -->
-<!-- frame.alpha -->
-<!-- frame.lwd -->
-```{r}
-#| label: frame2
 #| eval: false
 tm + 
   tm_layout(frame.color = "black",
@@ -144,18 +138,29 @@ tm +
             frame.lwd = 8)
 ```
 
-<!-- frame.r --> 
+Another arguments that can be used to customize the frame are `frame.r` and `frame.double_line`  (@fig-layout-frame-2).
+The first one makes the corners of the frame rounded -- the value of `0` means no rounding, while `30` means that the corners are rounded with a radius of 30.
 <!-- -- units? ranges of values? -->
 <!-- from 0 to 180? try 180 as a footnote? -->
 <!-- -- note that r can be specified to many other components< -->
-<!-- frame.double_line -->
+The second one allows to add a second frame line around the frame.
+
+```{r}
+#| label: frame2
+#| eval: false
+tm + 
+  tm_layout(frame.r = 30,
+            frame.double_line = TRUE)
+```
+
+Finally, we can remove the frame completely by setting the `frame` argument to `FALSE` (@fig-layout-frame-3).
+<!-- explain when this is recommended or may be needed -->
 
 ```{r}
 #| label: frame3
 #| eval: false
 tm + 
-  tm_layout(frame.r = 30,
-            frame.double_line = TRUE)
+  tm_layout(frame = FALSE)
 ```
 
 ```{r}
@@ -172,7 +177,6 @@ tm +
 <<frame2>>
 <<frame3>>
 ```
-
 
 ## Typography {#sec-ltypography}
 
@@ -191,7 +195,7 @@ However, this could result in a confusing visual mix that would hinder our map i
 Therefore, the decision on the used fonts should be taken after considering the main map message, expected map audience, other related graph styles, etc.
 In the following three sections, we explain font families and font faces, and give some overall tips on font selections, show how to define used fonts, and how to customize fonts on maps.
 
-#### Font families and faces {#sec-fonts}
+### Font families and faces {#sec-fonts}
 
 ```{r}
 #| echo: false
@@ -291,7 +295,7 @@ We just need to remember about the readability of the fonts -- they should not b
 
 <!-- suggested fonts or references??? -->
 
-#### Fonts available in **tmap** {#sec-fonts-tmap}
+### Fonts available in **tmap** {#sec-fonts-tmap}
 
 Before we discuss how to set a font family and its face, it is important to highlight that a different set of fonts could exist for each operating system (and even each computer).
 Additionally, which fonts are available and how they are supported depends on the used *graphic device*.
@@ -336,7 +340,7 @@ The second option is to use the **showtext** package [@R-showtext], which conver
 Thirdly, the **extrafont** [@R-extrafont] package allows embedding the fonts in the PDF file, which makes PDFs properly displayed on computers that do not have the given font.
 <!-- ref to map_save!! -->
 
-#### Fonts on maps {#sec-fonts-on-maps}
+### Fonts on maps {#sec-fonts-on-maps}
 
 <!-- explain defaults -->
 By default, **tmap** uses the `"sans"` font family with the `"plain"` font face (@fig-fonts). 
@@ -392,7 +396,35 @@ tmap_save(tmt2, "tmt2.png")
 tmap_save(tmt2, "tmt2.pdf")
 ```
 
+<!-- font sizes customization? -->
+
 <!-- ## Legend {#sec-llegend} -->
+
+## Scale {#sec-scale}
+
+The **tmap** package has a set of default sizes and widths for various map elements, such as the frame, text, borders, symbol sizes, and more.
+In the previous parts of this book, we modify some of these values for selected elements, such as the frame width or text size.
+At the same time, we can also change the size of all of the map elements at once -- this is a role of the `scale` argument of the `tm_layout()` function.
+<!-- It accepts a numeric value, where `1` means the default sizes and widths, `0.5` means that all of the map elements are half as large as the default ones, and `1.5` means that all of the map elements are 1.5 times larger than the default ones. -->
+<!-- Martijn: is the above statement correct? -->
+
+```{r}
+#| label: fig-layout-scale
+#| warning: false
+#| echo: false
+#| layout-ncol: 2
+#| fig-cap: "Impact of the scale argument on the map layout."
+#| fig-subcap:
+#|  - "`scale = 0.5`"
+#|  - "`scale = 1.5`"
+tm + 
+  tm_layout(scale = 0.5)
+tm + 
+  tm_layout(scale = 1.5)
+```
+
+<!-- explain when/why it is useful;  -->
+<!-- also maybe connect it to save -->
 
 ## Design mode {#sec-design-mode}
 
