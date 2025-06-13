@@ -19,6 +19,9 @@ slo_cities = read_sf("data/slovenia/slo_cities.gpkg")
 <!-- mention that is has tons of arguments -- we do not going to explain them all, but suggest to look at the help file, when needed -->
 
 ```{r}
+#| label: fig-layout-example
+#| message: false
+#| fig-cap: "A map of Slovenia with a default layout."
 tm = tm_shape(slo_borders) +
     tm_polygons() +
     tm_shape(slo_regions) +
@@ -28,6 +31,8 @@ tm = tm_shape(slo_borders) +
     tm_title("Slovenia")
 tm
 ```
+
+<!-- an introduction to the rest of the sections -->
 
 ## Colors {#sec-lcolors}
 
@@ -428,15 +433,45 @@ tm +
 
 ## Design mode {#sec-design-mode}
 
-<!-- design.mode explain -->
+Maps consist of various pieces, such as the map content (with its frame), additional map elements (e.g., a credits or title), and the legend located in different places.
+They also have many margins -- spaces between data and the frame, spaces between the frame and the plotting spaces between the icons and the labels, etc.
+
+Many of these properties can be customized, however, it may be difficult to understand the effect of the changes.
+<!-- ... -->
+To make it easier, **tmap** has a design mode that can be turned on by setting the `tmap_design_mode()` function to `TRUE`.
+When the design mode is turned on, the map is displayed in a special way: it shows all of the created map content, but also adds various lines and colored areas to the map.
+We may see an example of a map in the design mode in @fig-design-mode:
+
+<!-- - explain colors -->
+<!-- - as a list -->
+
+Additionally, it returns a small table in the R console with sizes and an aspect ratio of the device, plot, facets, and map areas.
+<!-- explain these areas? -->
+
+The design mode is useful to understand how the map is constructed and how the various arguments of the `tm_layout()` function impact the map layout.
+
+<!-- info that this is limited to the plot mode? -->
+
 ```{r}
+#| label: fig-design-mode
 tmap_design_mode(TRUE)
 tm
 ```
 
+This mode is in place until the `tmap_design_mode()` function is set to `FALSE`.
+In the next few sections, we will show how the design mode can help us to understand the impact of various arguments of the `tm_layout()` function on the aspect ratio and margins of the map.
+
 ## Aspect ratio {#sec-aspect}
 
 <!-- Aspect ratio of each map. When asp is set to NA (default) the aspect ratio will be adjusted to the used shapes. When set to 0 the aspect ratio is adjusted to the size of the device divided by the number of columns and rows. -->
+
+Aspect ratio specifies the relation between the width and height of the map area of the plot.
+For statistical plots aspect ratios usually adjust to the plotting space -- thus customization of an aspect ratio is usually not needed.
+For maps, this is not the case -- we should not change the relation between the width and height of the data in a map as it has a specific projection which determines the spatial relation between the map features.
+
+By default, the aspect ratio of the *tmap* is set to `NA`, which means that it is adjusted to the used shapes (@fig-layout-example)
+
+<!--Martijn, please explain the rest of the aspect values in the code/map below -- I do not know what they exactly mean. -->
 
 ```{r}
 #| label: fig-layout-asp
