@@ -426,59 +426,7 @@ tm_shape(raster2) +
   tm_layout(panel.labels = c("Elevation", "Geomorphons"))
 ```
 
-If you want to learn more -- we focus on how to specify and modify facets (also known as small multiples) in @sec-multiples and how to modify map layout in @sec-layout.
-
-```{r}
-library(stars)
-sat = read_stars("data/slovenia/slo_mosaic.tif")
-```
-
-The `sat` object contains four bands of the Sentinel-2 image for Slovenia.
-The bands (blue, green, red, and near-infrared) are stored in the `band` dimension as `B02`, `B03`, `B04`, and `B08`.
-We can plot all of the bands independently or as a combination of three bands.
-This combination is known as a color composite image, and we can create such images with the `tm_rgb()` function (@fig-tmrgbs).
-
-Standard composite image (true color composite) uses the visible red, green, and blue bands to represent the data in natural colors.
-We can specify which band in `sat` relates to red (third band), green (second band), and blue (first band) color in `tm_rgb()`.
-<!-- to update -->
-<!-- Also, by default, this function expects values from 0 to 255; however, our values are in a different scale, with the maximum value of 31961.  -->
-<!-- Therefore, to create a map, we can set `max.value` to our dataset's maximum value. -->
-<!-- The result is a true color composite, with green colors representing forests and other types of vegetation, and yellow color showing bare areas (@fig-tmrgbs-1). -->
-
-```{r}
-#| label: tmrgbs1
-#| eval: false
-tm_shape(sat) +
-  tm_rgb(tm_vars(dimvalues = c("B04", "B03", "B02"), n = 3, multivariate = TRUE),
-         col.scale = tm_scale_rgb(stretch = TRUE, probs = c(0.02, 0.98)))
-```
-
-True color images are straightforward to interpret and understand, but they make subtle differences in features challenging to recognize.
-However, nothing stops us from using the above tools to integrate different bands to create so called false color composites.
-Various band combinations emphasize some spatial characteristics, such as water, agriculture, etc., and allow us to visualize wavelengths that our eyes can not see.
-<!-- add some reference?? -->
-@fig-tmrgbs-2 shows a composite of near-infrared, red, and green bands, highlighting vegetation with a bright red color.
-
-```{r}
-#| label: tmrgbs2
-#| eval: false
-tm_shape(sat) +
-  tm_rgb(tm_vars(dimvalues = c("B08", "B04", "B03"), n = 3, multivariate = TRUE),
-         col.scale = tm_scale_rgb(stretch = TRUE, probs = c(0.02, 0.98)))
-```
-
-```{r}
-#| label: fig-tmrgbs
-#| message: false
-#| echo: false
-#| layout-nrow: 1
-#| fig-cap: 'Two color composite images'
-#| fig-subcap:
-#|   - 'True color composite image'
-#|   - 'False color composite image'
-<<tmrgbs1>>
-<<tmrgbs2>>
-```
+If you want to learn more -- we focus on how to specify and modify facets (also known as small multiples) in @sec-multiples and how to modify map layout in @sec-map-layout.
 
 <!-- raster.warp -->
 <!-- raster margins -->
