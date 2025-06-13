@@ -381,9 +381,7 @@ tm +
 #| label: fig-mfonts
 #| echo: false
 #| layout-ncol: 2
-#| fig-cap: Examples of one font (font family and font face) used for all of the
-#|   map elements (title, text labels, legend, and text annotation), and different
-#|   fonts used for different map elements.
+#| fig-cap: Examples of one font (font family and font face) used for all of the map elements (title, text labels, legend, and text annotation), and different fonts used for different map elements.
 #| fig-subcap:
 #|   - One font for all elements
 #|   - Different fonts for different elements
