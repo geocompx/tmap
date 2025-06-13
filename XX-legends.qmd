@@ -3,7 +3,7 @@
 source("code/before_script.R")
 ```
 
-# Legends {#sec-legends}
+# Legends and titles
 
 ```{r}
 #| message: false
@@ -12,6 +12,8 @@ library(stars)
 library(tmap)
 slo_elev = read_stars("data/slovenia/slo_elev.tif")
 ```
+
+## Legends {#sec-legends}
 
 Legends are an essential part of most maps.
 They provide meaning to the symbols or colors used in the map, and often add information about the map content.
@@ -163,3 +165,7 @@ tm_shape(slo_elev) +
 
 <!-- tm_legend_bivariate -->
 <!-- tm_legend_combine -->
+
+## Titles {#sec-titles}
+
+
