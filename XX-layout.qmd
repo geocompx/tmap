@@ -18,6 +18,8 @@ slo_cities = read_sf("data/slovenia/slo_cities.gpkg")
 <!-- which features are the most important to explain? -->
 <!-- mention that is has tons of arguments -- we do not going to explain them all, but suggest to look at the help file, when needed -->
 
+<!-- maybe highlight that many layout arguments are valid for the plot mode only -->
+
 ```{r}
 #| label: fig-layout-example
 #| message: false
@@ -494,12 +496,23 @@ tm +
 
 ## Margins {#sec-lmargins}
 
+Margins are spaces around the map content, which can be used to separate the map from other elements, such as the legend or the title or separate the map from the extent of the plotting area.
+They may serve various purposes, such as to make the map more readable, to avoid overlapping the map content with other elements, to create space for additional elements.
+On the other hand, making margins smaller can help to increase the map area or make the map more condensed.
+
+There are several arguments in `tm_layout()` related to margins.
+All of the margin arguments can be customized either with a single value (which is then applied to all sides) or with a vector of four values, which represent the bottom, left, top, and right margins.
+<!-- units? -->
+<!-- The unit is the device height (for bottom and top) or width (for left and right). -->
+The most important margins arguments are `inner.margins` and `outer.margins`.
 <!-- scheme figure showing the order of values? -->
 
-<!-- A vector of 4 values: bottom, left, top, right. The unit is the device height (for bottom and top) or width (for left and right). -->
-<!-- mention defaults! -->
 <!-- inner.margins, -->
-<!-- units? -->
+The inner margins are spaces between the map content (e.g., symbols, lines, polygons, raster) and the frame of the map (@fig-inner-margins).
+By default, the inner margins are set to `c(0.02, 0.02, 0.02, 0.02)`, which means that there is a 2% margin on each side of the map content (@fig-layout-example).
+An exception to this rule is raster maps, where the inner margins are set to `c(0, 0, 0, 0)` -- meaning that there are no margins around the raster map content -- by default.
+Increasing the inner margins can help to avoid overlapping of the map content with other elements, such as the legend or the title -- for example, we could add some margin on the right side of the map and then place the legend there.
+<!-- mention defaults! -->
 <!-- inner.margins.extra -- ???? -->
 
 ```{r}
@@ -518,6 +531,11 @@ tm +
 ```
 
 <!-- outer.margins, -->
+Outer margins are spaces between the map frame and the plotting area (@fig-outer-margins).
+By default, they are always set to `c(0.02, 0.02, 0.02, 0.02)`, which means that there is a 2% margin outside of the map frame -- giving a small "breathing space" around the map (@fig-layout-example).
+We can increase it on a specific side, for example, to create more space for the legend or other map elements or we can remove it completely to, for example, arrange the map in a grid with other maps (@sec-arranging-maps) (@fig-outer-margins).
+<!-- interplay between margins and plotting device dimensions -->
+
 ```{r}
 #| label: fig-outer-margins
 #| warning: false
@@ -533,12 +551,12 @@ tm +
   tm_layout(outer.margins = c(0.08, 0.04, 0.02, 0))
 ```
 
-<!-- explain why customization of the margins is needed -->
-
 <!-- meta.margins  -- ???? -->
 <!-- meta.auto_margins  -- ???? -->
 <!-- between_margin, -->
 <!-- panel.margin, -->
+
+Now, as we have seen how the design mode can help us to understand the impact of various arguments of the `tm_layout()` function, we can turn it off.
 
 ```{r}
 tmap_design_mode(FALSE)
