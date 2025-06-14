@@ -425,6 +425,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <!-- tm_layout -->
 <!-- which features are the most important to explain? -->
 <!-- mention that is has tons of arguments -- we do not going to explain them all, but suggest to look at the help file, when needed -->
+<!-- maybe highlight that many layout arguments are valid for the plot mode only -->
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -838,7 +839,7 @@ Figure&nbsp;12.9: Impact of the scale argument on the map layout.
 <span><span class="co">#&gt; therefore rescaled.</span></span>
 <span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-design-mode" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="100%">
+<div id="fig-design-mode" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-design-mode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-design-mode-1.png" id="fig-design-mode" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:100.0%">
 </div>
@@ -907,12 +908,10 @@ Figure&nbsp;12.11: Impact of the aspect ratio on the map layout.
 </div>
 </section><section id="sec-lmargins" class="level2" data-number="12.7"><h2 data-number="12.7" class="anchored" data-anchor-id="sec-lmargins">
 <span class="header-section-number">12.7</span> Margins</h2>
-<!-- scheme figure showing the order of values? -->
-<!-- A vector of 4 values: bottom, left, top, right. The unit is the device height (for bottom and top) or width (for left and right). -->
-<!-- mention defaults! -->
+<p>Margins are spaces around the map content, which can be used to separate the map from other elements, such as the legend or the title or separate the map from the extent of the plotting area. They may serve various purposes, such as to make the map more readable, to avoid overlapping the map content with other elements, to create space for additional elements. On the other hand, making margins smaller can help to increase the map area or make the map more condensed.</p>
+<p>There are several arguments in <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> related to margins. All of the margin arguments can be customized either with a single value (which is then applied to all sides) or with a vector of four values, which represent the bottom, left, top, and right margins. <!-- units? --> <!-- The unit is the device height (for bottom and top) or width (for left and right). --> The most important margins arguments are <code>inner.margins</code> and <code>outer.margins</code>. <!-- scheme figure showing the order of values? --></p>
 <!-- inner.margins, -->
-<!-- units? -->
-<!-- inner.margins.extra -- ???? -->
+<p>The inner margins are spaces between the map content (e.g., symbols, lines, polygons, raster) and the frame of the map (<a href="#fig-inner-margins" class="quarto-xref">Figure&nbsp;<span>12.12</span></a>). By default, the inner margins are set to <code>c(0.02, 0.02, 0.02, 0.02)</code>, which means that there is a 2% margin on each side of the map content (<a href="#fig-layout-example" class="quarto-xref">Figure&nbsp;<span>12.1</span></a>). An exception to this rule is raster maps, where the inner margins are set to <code>c(0, 0, 0, 0)</code> – meaning that there are no margins around the raster map content – by default. Increasing the inner margins can help to avoid overlapping of the map content with other elements, such as the legend or the title – for example, we could add some margin on the right side of the map and then place the legend there. <!-- mention defaults! --> <!-- inner.margins.extra -- ???? --></p>
 <div id="fig-inner-margins" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-inner-margins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
@@ -943,6 +942,7 @@ Figure&nbsp;12.12: Impact of the <code>inner.margins</code> argument on the map 
 </figcaption></figure>
 </div>
 <!-- outer.margins, -->
+<p>Outer margins are spaces between the map frame and the plotting area (<a href="#fig-outer-margins" class="quarto-xref">Figure&nbsp;<span>12.13</span></a>). By default, they are always set to <code>c(0.02, 0.02, 0.02, 0.02)</code>, which means that there is a 2% margin outside of the map frame – giving a small “breathing space” around the map (<a href="#fig-layout-example" class="quarto-xref">Figure&nbsp;<span>12.1</span></a>). We can increase it on a specific side, for example, to create more space for the legend or other map elements or we can remove it completely to, for example, arrange the map in a grid with other maps (<span class="quarto-unresolved-ref">?sec-arranging-maps</span>) (<a href="#fig-outer-margins" class="quarto-xref">Figure&nbsp;<span>12.13</span></a>). <!-- interplay between margins and plotting device dimensions --></p>
 <div id="fig-outer-margins" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-outer-margins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
@@ -972,11 +972,11 @@ Figure&nbsp;12.12: Impact of the <code>inner.margins</code> argument on the map 
 Figure&nbsp;12.13: Impact of the <code>outer.margins</code> argument on the map layout.
 </figcaption></figure>
 </div>
-<!-- explain why customization of the margins is needed -->
 <!-- meta.margins  -- ???? -->
 <!-- meta.auto_margins  -- ???? -->
 <!-- between_margin, -->
 <!-- panel.margin, -->
+<p>Now, as we have seen how the design mode can help us to understand the impact of various arguments of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function, we can turn it off.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_design_mode.html">tmap_design_mode</a></span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; design.mode: OFF</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
