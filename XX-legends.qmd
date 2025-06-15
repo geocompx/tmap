@@ -219,8 +219,6 @@ tm_shape(slo_elev) +
   tm_title_in("Elevation Map")
 ```
 
-
 <!-- add placement ref -->
-<!-- add subtitle? -->
 
 <!-- refs to positions and typography chapters/sections -->
