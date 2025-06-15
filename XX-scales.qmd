@@ -340,8 +340,8 @@ tm_shape(slo_regions) +
 
 ```{r}
 library(stars)
-slo_tavg = read_stars("data/slovenia/slo_tavg.tif") |>
-  dplyr::filter(band %in% c("tavg_1", "tavg_7"))
+slo_tavg = read_stars("data/slovenia/slo_tavg.tif") 
+slo_tavg = slo_tavg[,,,c(1, 7)]
 ```
 
 <!-- the color palette below needs to be improved (flipped?) -->
