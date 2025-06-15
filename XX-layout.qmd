@@ -257,7 +257,7 @@ tm_ff = tm_shape(World) +
 #| label: fig-fonts
 #| message: false
 #| echo: false
-#| layout-ncol: 2
+#| layout-nrow: 2
 #| fig-cap: Basic font families, and font faces implemented in the tmap package.
 #| fig-subcap:
 #|   - Font families
