@@ -257,7 +257,7 @@ tm_ff = tm_shape(World) +
 #| label: fig-fonts
 #| message: false
 #| echo: false
-#| layout-nrow: 2
+#| layout-ncol: 2
 #| fig-cap: Basic font families, and font faces implemented in the tmap package.
 #| fig-subcap:
 #|   - Font families
@@ -382,7 +382,7 @@ tm +
 ```{r}
 #| label: fig-mfonts
 #| echo: false
-#| layout-ncol: 2
+#| layout-nrow: 2
 #| fig-cap: Examples of one font (font family and font face) used for all of the map elements (title, text labels, legend, and text annotation), and different fonts used for different map elements.
 #| fig-subcap:
 #|   - One font for all elements
