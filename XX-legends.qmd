@@ -210,7 +210,17 @@ tm_shape(slo_elev) +
            )
 ```
 
-<!-- add placement -->
+```{r}
+tm_shape(slo_elev) +
+    tm_raster(
+        col.legend = tm_legend(title = "")
+    ) +
+  tm_title("Slovenia") +
+  tm_title_in("Elevation Map")
+```
+
+
+<!-- add placement ref -->
 <!-- add subtitle? -->
 
 <!-- refs to positions and typography chapters/sections -->
