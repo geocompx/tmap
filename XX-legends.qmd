@@ -168,4 +168,49 @@ tm_shape(slo_elev) +
 
 ## Titles {#sec-titles}
 
+```{r}
+tm_shape(slo_elev) +
+    tm_raster(
+        col.legend = tm_legend(title = "Elevation (m asl)")
+    ) +
+  tm_title("Slovenia")
+```
 
+```{r}
+tm_shape(slo_elev) +
+    tm_raster(
+        col.legend = tm_legend(title = "")
+    ) +
+  tm_title("Elevation Map of Slovenia")
+```
+
+```{r}
+tm_shape(slo_elev) +
+    tm_raster(
+        col.legend = tm_legend(title = "")
+    ) +
+  tm_title("Elevation Map of Slovenia", 
+           size = 1.5,
+           color = "gray10",
+           fontface = "bold"
+           )
+```
+
+```{r}
+tm_shape(slo_elev) +
+    tm_raster(
+        col.legend = tm_legend(title = "")
+    ) +
+  tm_title("Elevation Map of Slovenia", 
+           size = 1.5,
+           color = "white",
+           fontface = "bold",
+           bg = TRUE,
+           bg.color = "black"
+           )
+```
+
+<!-- add placement -->
+<!-- add subtitle? -->
+
+<!-- refs to positions and typography chapters/sections -->
