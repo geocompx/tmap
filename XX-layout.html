@@ -674,10 +674,11 @@ Figure&nbsp;12.6: Impact of the frame arguments on the map layout.
 <p>As we mentioned above, many different map elements can be expressed or can use fonts. In theory, we are able to set different fonts to each of them. However, this could result in a confusing visual mix that would hinder our map information. Therefore, the decision on the used fonts should be taken after considering the main map message, expected map audience, other related graph styles, etc. In the following three sections, we explain font families and font faces, and give some overall tips on font selections, show how to define used fonts, and how to customize fonts on maps.</p>
 <section id="sec-fonts" class="level3" data-number="12.3.1"><h3 data-number="12.3.1" class="anchored" data-anchor-id="sec-fonts">
 <span class="header-section-number">12.3.1</span> Font families and faces</h3>
+<div class="cell" data-layout-nrow="2" data-layout-align="center">
 <div id="fig-fonts" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-fonts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-fonts" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-fonts" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-fonts-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-fonts-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-fonts-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-fonts">
@@ -687,7 +688,9 @@ Figure&nbsp;12.6: Impact of the frame arguments on the map layout.
 </figcaption></figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-fonts" style="flex-basis: 50.0%;justify-content: center;">
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-fonts" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-fonts-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-fonts-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-fonts-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-fonts">
@@ -702,6 +705,7 @@ Figure&nbsp;12.6: Impact of the frame arguments on the map layout.
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fonts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;12.7: Basic font families, and font faces implemented in the tmap package.
 </figcaption></figure>
+</div>
 </div>
 <p>In <strong>tmap</strong>, fonts are represented by a font family (<a href="#fig-fonts-1" class="quarto-xref">Figure&nbsp;<span>12.7 (a)</span></a>) and a font face (<a href="#fig-fonts-2" class="quarto-xref">Figure&nbsp;<span>12.7 (b)</span></a>). A font family is a collection of closely related lettering designs. Examples of font families include <em>Times</em>, <em>Helvetica</em>, <em>Courier</em>, <em>Palatino</em>, etc. On the other hand, font faces, such as <em>italic</em> or <em>bold</em>, influence the orientation or width of the fonts. A <em>font</em> is, thus, a combination of a selected font family and font face.</p>
 <p>There are a few general font families, such as serifs, sans serifs, and monospaced fonts. Fonts from the serif family have small lines (known as <em>a serif</em>) attached to the end of some letters. Notice, for example, short horizontal lines on the bottom of letters <em>r</em>, <em>i</em>, and <em>f</em> or vertical lines at the ends of the letter <em>s</em> in the top row of <a href="#fig-fonts-1" class="quarto-xref">Figure&nbsp;<span>12.7 (a)</span></a>. The fonts in this family are often viewed as more formal. On the other hand, the sans serif family do not have serifs and is considered more informal and modern. The last font family, monospaced fonts, is often used in computer programming (IDEs, software text editors), but less often on maps. A distinguishing feature of the monospaced fonts is that each letter or character in this family has the same width. Therefore, letters, such as <em>i</em> and <em>a</em> will occupy the same space in the monospaced fonts. <!-- explain what are font faces --></p>
@@ -839,7 +843,7 @@ Figure&nbsp;12.9: Impact of the scale argument on the map layout.
 <span><span class="co">#&gt; therefore rescaled.</span></span>
 <span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-design-mode" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%" data-fig-align="center">
+<div id="fig-design-mode" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="100%">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-design-mode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-design-mode-1.png" id="fig-design-mode" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:100.0%">
 </div>
