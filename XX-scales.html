@@ -385,9 +385,9 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
   <li><a href="#sec-intervals-scales" id="toc-sec-intervals-scales" class="nav-link" data-scroll-target="#sec-intervals-scales"><span class="header-section-number">8.2</span> Intervals scales</a></li>
   <li><a href="#sec-discrete-scales" id="toc-sec-discrete-scales" class="nav-link" data-scroll-target="#sec-discrete-scales"><span class="header-section-number">8.3</span> Discrete scales</a></li>
   <li><a href="#sec-continuous-scales" id="toc-sec-continuous-scales" class="nav-link" data-scroll-target="#sec-continuous-scales"><span class="header-section-number">8.4</span> Continuous scales</a></li>
-  <li><a href="#sec-rgb-scales" id="toc-sec-rgb-scales" class="nav-link" data-scroll-target="#sec-rgb-scales"><span class="header-section-number">8.5</span> RGB scales</a></li>
-  <li><a href="#sec-bivariate-scales" id="toc-sec-bivariate-scales" class="nav-link" data-scroll-target="#sec-bivariate-scales"><span class="header-section-number">8.6</span> Bivariate scales</a></li>
-  <li><a href="#sec-asis-scales" id="toc-sec-asis-scales" class="nav-link" data-scroll-target="#sec-asis-scales"><span class="header-section-number">8.7</span> As-is scales</a></li>
+  <li><a href="#sec-asis-scales" id="toc-sec-asis-scales" class="nav-link" data-scroll-target="#sec-asis-scales"><span class="header-section-number">8.5</span> As-is scales</a></li>
+  <li><a href="#sec-rgb-scales" id="toc-sec-rgb-scales" class="nav-link" data-scroll-target="#sec-rgb-scales"><span class="header-section-number">8.6</span> RGB scales</a></li>
+  <li><a href="#sec-bivariate-scales" id="toc-sec-bivariate-scales" class="nav-link" data-scroll-target="#sec-bivariate-scales"><span class="header-section-number">8.7</span> Bivariate scales</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/XX-scales.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -533,16 +533,16 @@ Table&nbsp;8.1
                   <td>Logarithmic scales</td>
                 </tr>
 <tr>
+<td>tm_scale_asis()</td>
+                  <td>As-is scale</td>
+                </tr>
+<tr>
 <td>tm_scale_rgb()</td>
                   <td>RGB scale</td>
                 </tr>
 <tr>
 <td>tm_scale_bivariate()</td>
                   <td>Bivariate scale</td>
-                </tr>
-<tr>
-<td>tm_scale_asis()</td>
-                  <td>As-is scale</td>
                 </tr>
 </tbody>
 </table>
@@ -719,22 +719,36 @@ Figure&nbsp;8.2: Examples of four methods of creating intervals maps
 Figure&nbsp;8.3: Examples of three methods of creating continuous maps
 </figcaption></figure>
 </div>
-</section><section id="sec-rgb-scales" class="level2" data-number="8.5"><h2 data-number="8.5" class="anchored" data-anchor-id="sec-rgb-scales">
-<span class="header-section-number">8.5</span> RGB scales</h2>
+</section><section id="sec-asis-scales" class="level2" data-number="8.5"><h2 data-number="8.5" class="anchored" data-anchor-id="sec-asis-scales">
+<span class="header-section-number">8.5</span> As-is scales</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/stars/">stars</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">slo_regions</span><span class="op">$</span><span class="va">URBN_TYPE</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">$</span><span class="va">URBN_TYPE</span><span class="op">)</span></span>
+<span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tm_symbols</span><span class="op">(</span>size <span class="op">=</span> <span class="st">"URBN_TYPE"</span>,</span>
+<span>             size.scale <span class="op">=</span> <span class="fu">tm_scale_asis</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="sec-rgb-scales" class="level2" data-number="8.6"><h2 data-number="8.6" class="anchored" data-anchor-id="sec-rgb-scales">
+<span class="header-section-number">8.6</span> RGB scales</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/stars/">stars</a></span><span class="op">)</span></span>
 <span><span class="va">sat</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_mosaic.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <code>sat</code> object contains four bands of the Sentinel-2 image for Slovenia. The bands (blue, green, red, and near-infrared) are stored in the <code>band</code> dimension as <code>B02</code>, <code>B03</code>, <code>B04</code>, and <code>B08</code>. We can plot all of the bands independently or as a combination of three bands. This combination is known as a color composite image, and we can create such images with the <code>tm_rgb()</code> function (<a href="#fig-tmrgbs" class="quarto-xref">Figure&nbsp;<span>8.4</span></a>).</p>
 <p>Standard composite image (true color composite) uses the visible red, green, and blue bands to represent the data in natural colors. We can specify which band in <code>sat</code> relates to red (third band), green (second band), and blue (first band) color in <code>tm_rgb()</code>. <!-- to update --> <!-- Also, by default, this function expects values from 0 to 255; however, our values are in a different scale, with the maximum value of 31961.  --> <!-- Therefore, to create a map, we can set `max.value` to our dataset's maximum value. --> <!-- The result is a true color composite, with green colors representing forests and other types of vegetation, and yellow color showing bare areas (@fig-tmrgbs-1). --></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">sat</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">sat</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_rgb</span><span class="op">(</span><span class="fu">tm_vars</span><span class="op">(</span>dimvalues <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"B04"</span>, <span class="st">"B03"</span>, <span class="st">"B02"</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">3</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>         col.scale <span class="op">=</span> <span class="fu">tm_scale_rgb</span><span class="op">(</span>stretch <span class="op">=</span> <span class="cn">TRUE</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.02</span>, <span class="fl">0.98</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>True color images are straightforward to interpret and understand, but they make subtle differences in features challenging to recognize. However, nothing stops us from using the above tools to integrate different bands to create so called false color composites. Various band combinations emphasize some spatial characteristics, such as water, agriculture, etc., and allow us to visualize wavelengths that our eyes can not see. <!-- add some reference?? --> <a href="#fig-tmrgbs-2" class="quarto-xref">Figure&nbsp;<span>8.4 (b)</span></a> shows a composite of near-infrared, red, and green bands, highlighting vegetation with a bright red color.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">sat</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">sat</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_rgb</span><span class="op">(</span><span class="fu">tm_vars</span><span class="op">(</span>dimvalues <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"B08"</span>, <span class="st">"B04"</span>, <span class="st">"B03"</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">3</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>         col.scale <span class="op">=</span> <span class="fu">tm_scale_rgb</span><span class="op">(</span>stretch <span class="op">=</span> <span class="cn">TRUE</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.02</span>, <span class="fl">0.98</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -770,10 +784,60 @@ Figure&nbsp;8.4: Two color composite images
 </div>
 </div>
 <!-- explain tm_vars above! -->
-</section><section id="sec-bivariate-scales" class="level2" data-number="8.6"><h2 data-number="8.6" class="anchored" data-anchor-id="sec-bivariate-scales">
-<span class="header-section-number">8.6</span> Bivariate scales</h2>
-</section><section id="sec-asis-scales" class="level2" data-number="8.7"><h2 data-number="8.7" class="anchored" data-anchor-id="sec-asis-scales">
-<span class="header-section-number">8.7</span> As-is scales</h2>
+</section><section id="sec-bivariate-scales" class="level2" data-number="8.7"><h2 data-number="8.7" class="anchored" data-anchor-id="sec-bivariate-scales">
+<span class="header-section-number">8.7</span> Bivariate scales</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="fu">tm_vars</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"pop_dens"</span>, <span class="st">"pop65perc"</span><span class="op">)</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_bivariate</span><span class="op">(</span>values <span class="op">=</span> <span class="st">"purplegold"</span><span class="op">)</span>,</span>
+<span>              fill.legend <span class="op">=</span> <span class="fu">tm_legend_bivariate</span><span class="op">(</span>xlab <span class="op">=</span> <span class="st">"Pop. 65+ %"</span>, </span>
+<span>                                                ylab <span class="op">=</span> <span class="st">"Pop. density\n(per sq. km)"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Labels abbreviated by the first two letters, e.g.: "20 to 21" =&gt; "20"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/stars/">stars</a></span><span class="op">)</span></span>
+<span><span class="va">slo_tavg</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_tavg.tif"</span><span class="op">)</span> </span>
+<span><span class="va">slo_tavg</span> <span class="op">=</span> <span class="va">slo_tavg</span><span class="op">[</span>,,,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">7</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- the color palette below needs to be improved (flipped?) -->
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_tavg</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tm_raster</span><span class="op">(</span>col <span class="op">=</span> <span class="fu">tm_vars</span><span class="op">(</span>dimvalues <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tavg_1"</span>, <span class="st">"tavg_7"</span><span class="op">)</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>            col.scale <span class="op">=</span> <span class="fu">tm_scale_bivariate</span><span class="op">(</span>values <span class="op">=</span> <span class="st">"pinkblue"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [scale] tm_raster:() the data variable assigned to 'col' contains positive and negative values, so midpoint is set to 0. Set 'midpoint = NA' in 'fill.scale = tm_scale_intervals(&lt;HERE&gt;)' to use all visual values (e.g. colors)</span></span>
+<span><span class="co">#&gt; Labels abbreviated by the first two letters, e.g.: "5 to 10" =&gt; "5 "</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_tavg</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">tm_raster</span><span class="op">(</span>col <span class="op">=</span> <span class="fu">tm_vars</span><span class="op">(</span>dimvalues <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tavg_1"</span>, <span class="st">"tavg_7"</span><span class="op">)</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>            col.scale <span class="op">=</span> <span class="fu">tm_scale_bivariate</span><span class="op">(</span>values <span class="op">=</span> <span class="st">"pinkblue"</span>,</span>
+<span>                                           scale1 <span class="op">=</span> <span class="fu">tm_scale_intervals</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">8</span>, <span class="op">-</span><span class="fl">4</span>, <span class="fl">0</span>, <span class="fl">4</span>, <span class="fl">8</span><span class="op">)</span>, </span>
+<span>                                                                       labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Very cold"</span>, <span class="st">"Cold"</span>, <span class="st">"Mild"</span>, <span class="st">"Warm"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                                           scale2 <span class="op">=</span> <span class="fu">tm_scale_intervals</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span>, <span class="fl">25</span><span class="op">)</span>,</span>
+<span>                                                                       labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Very cold"</span>, <span class="st">"Cold"</span>, <span class="st">"Mild"</span>, <span class="st">"Warm"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>            col.legend <span class="op">=</span> <span class="fu">tm_legend_bivariate</span><span class="op">(</span>xlab <span class="op">=</span> <span class="st">"July"</span>, ylab <span class="op">=</span> <span class="st">"January"</span>,</span>
+<span>                                             reverse <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [scale] tm_raster:() the data variable assigned to 'col' contains positive and negative values, so midpoint is set to 0. Set 'midpoint = NA' in 'fill.scale = tm_scale_intervals(&lt;HERE&gt;)' to use all visual values (e.g. colors)</span></span>
+<span><span class="co">#&gt; Labels abbreviated by the first letters, e.g.: "Very cold" =&gt; "V"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
 <!-- OLDER STUFF: -->
 <!-- The `tm_polygons()` also offer a third way of specifying the fill color. -->
 <!-- When the `fill` argument is set to `"MAP_COLORS"` then polygons will be colored in such a way that adjacent polygons do not get the same color (@fig-colorscalesmc). -->
@@ -781,8 +845,6 @@ Figure&nbsp;8.4: Two color composite images
 <!-- In this case, it is also possible to change the default colors with the `palette` argument, but also to activate the internal algorithm to search for a minimal number of colors for visualization by setting `minimize = TRUE`. -->
 <!-- All of the scales and styles mentioned above work not only for `tm_polygons()` -- they can be also applied for `tm_symbols()` (and its derivatives - `tm_dots()`, `tm_bubbles()`, `tm_squares()`), `tm_lines()`, `tm_fill()`, and `tm_raster()`. -->
 <!-- add  -->
-<!-- title?? -->
-<!-- legends?? -->
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
