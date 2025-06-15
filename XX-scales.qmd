@@ -28,9 +28,9 @@ scales_df = tibble::tribble(
   "tm_scale_continuous()", "Continuous scale",
   "tm_scale_rank()", "Rank scale",
   "tm_scale_continuous_log(), tm_scale_continuous_log2(), tm_scale_continuous_log10(), tm_scale_continuous_log1p(), tm_scale_continuous_sqrt(), tm_scale_continuous_pseudo_log()", "Logarithmic scales",
+  "tm_scale_asis()", "As-is scale",
   "tm_scale_rgb()", "RGB scale",
-  "tm_scale_bivariate()", "Bivariate scale",
-  "tm_scale_asis()", "As-is scale"
+  "tm_scale_bivariate()", "Bivariate scale"
 )
 ```
 
@@ -262,6 +262,15 @@ tm_shape(slo_regions) +
 <<cont-methods3>>
 ```
 
+## As-is scales {#sec-asis-scales}
+
+```{r}
+slo_regions$URBN_TYPE = as.numeric(slo_regions$URBN_TYPE)
+tm_shape(slo_regions) +
+  tm_symbols(size = "URBN_TYPE",
+             size.scale = tm_scale_asis())
+```
+
 ## RGB scales {#sec-rgb-scales}
 
 ```{r}
@@ -321,7 +330,42 @@ tm_shape(sat) +
 
 ## Bivariate scales {#sec-bivariate-scales}
 
-## As-is scales {#sec-asis-scales}
+```{r}
+tm_shape(slo_regions) +
+  tm_polygons(fill = tm_vars(c("pop_dens", "pop65perc"), multivariate = TRUE),
+              fill.scale = tm_scale_bivariate(values = "purplegold"),
+              fill.legend = tm_legend_bivariate(xlab = "Pop. 65+ %", 
+                                                ylab = "Pop. density\n(per sq. km)"))
+```
+
+```{r}
+library(stars)
+slo_tavg = read_stars("data/slovenia/slo_tavg.tif") |>
+  dplyr::filter(band %in% c("tavg_1", "tavg_7"))
+```
+
+<!-- the color palette below needs to be improved (flipped?) -->
+
+```{r}
+tm_shape(slo_tavg) +
+  tm_raster(col = tm_vars(dimvalues = c("tavg_1", "tavg_7"), multivariate = TRUE),
+            col.scale = tm_scale_bivariate(values = "pinkblue"))
+```
+
+```{r}
+tm_shape(slo_tavg) +
+  tm_raster(col = tm_vars(dimvalues = c("tavg_1", "tavg_7"), multivariate = TRUE),
+            col.scale = tm_scale_bivariate(values = "pinkblue",
+                                           scale1 = tm_scale_intervals(breaks = c(-8, -4, 0, 4, 8), 
+                                                                       labels = c("Very cold", "Cold", "Mild", "Warm")),
+                                           scale2 = tm_scale_intervals(breaks = c(5, 10, 15, 20, 25),
+                                                                       labels = c("Very cold", "Cold", "Mild", "Warm"))),
+            col.legend = tm_legend_bivariate(xlab = "July", ylab = "January",
+                                             reverse = FALSE))
+```
+
+
+
 
 <!-- OLDER STUFF: -->
 
@@ -369,5 +413,3 @@ tm_shape(land) +
  tm_raster(col = "elevation", col.scale = tm_scale_continuous()) 
 ```
 
-<!-- title?? -->
-<!-- legends?? -->
