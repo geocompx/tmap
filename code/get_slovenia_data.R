@@ -80,13 +80,20 @@ slovenia_regions = tibble::tibble(
 
 # Merge all datasets
 slo_regions2 = slo_regions |>
+  mutate(URBN_TYPE = as.numeric(slo_regions$URBN_TYPE)) |>
+  rename(urbn_type = URBN_TYPE) |>
+  mutate(urbn_type_col = case_when(
+    urbn_type == 2 ~ "#2CA02C",
+    urbn_type == 3 ~ "#994F88",
+  )) |>
   left_join(slo_popdens, by = c("NUTS_ID" = "geo")) |>
   left_join(slo_population, by = c("NUTS_ID" = "geo", "time" = "time")) |>
   left_join(slo_gdppercap, by = c("NUTS_ID" = "geo", "time" = "time")) |>
   left_join(slo_tourism, by = c("NUTS_ID" = "geo", "time" = "time")) |>
   left_join(slo_pop65, by = c("NUTS_ID" = "geo", "time" = "time")) |>
   mutate(pop65perc = pop65 / population * 100) |>
-  left_join(slovenia_regions, by = c("NUTS_NAME" = "region_name"))
+  left_join(slovenia_regions, by = c("NUTS_NAME" = "region_name")) |>
+  rename(id = NUTS_ID, region_name = NUTS_NAME)
 
 write_sf(slo_regions2, "data/slovenia/slo_regions_ts.gpkg")
 
