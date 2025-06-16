@@ -5,28 +5,28 @@ source("code/before_script.R")
 
 # Scales {#sec-scales}
 
-Sections @sec-colors, @sec-sizes, and @sec-shapes showed how to set colors, sizes, and shapes for different types of spatial objects.
+Sections [-@sec-colors], [-@sec-sizes], and [-@sec-shapes] showed how to set colors, sizes, and shapes for different types of spatial objects.
 In them, we often used the `tm_scale()` function to modify the appearance of the map, such as changing the color palette (`col.scale` and `fill.scale`), sizes (`size.scale`), or shapes (`shape.scale`).
 The `tm_scale()` function automatically sets the scale for the given visual variable and the data type (factor, numeric, and integer).
 Thus, for example, when we provide a character variable's name to the `fill` argument, then the `tm_scale()` function automatically sets the color scale for a categorical variable, and when we provide a numeric variable's name to the `size` argument, then the `tm_scale()` function automatically sets the size scale for a continuous variable.
 
 However, we often want to have more control over how our spatial objects are presented on the map.
 For that purpose, the `tm_scale()` function has a set of related functions that can be used to modify and customize the used scale.
-Table @tbl-scale-table presents all available scale functions in **tmap**.
-Let's see how to use them in the following sections -- we will mostly focus on using scales for the `fill.scale` argument, but the same principles apply to the `col.scale`, `size.scale`, and `shape.scale` arguments.
+@tbl-scale-table presents all available scale functions in **tmap** and @fig-scales shows examples of how some of them look like when applied to the same variable.
 
 <!-- table -->
 <!-- tmap_options()$scales.var -->
+<!-- add short description of each scale function in the table below? -->
 ```{r}
 #| echo: false
 scales_df = tibble::tribble(
   ~Function, ~Description,
   "tm_scale_categorical()", "Categorical scale",
   "tm_scale_ordinal()", "Ordinal scale",
-  "tm_scale_intervals()", "Intervals scale",
   "tm_scale_discrete()", "Discrete scale",
-  "tm_scale_continuous()", "Continuous scale",
   "tm_scale_rank()", "Rank scale",
+  "tm_scale_intervals()", "Intervals scale",
+  "tm_scale_continuous()", "Continuous scale",
   "tm_scale_continuous_log(), tm_scale_continuous_log2(), tm_scale_continuous_log10(), tm_scale_continuous_log1p(), tm_scale_continuous_sqrt(), tm_scale_continuous_pseudo_log()", "Logarithmic scales",
   "tm_scale_asis()", "As-is scale",
   "tm_scale_rgb()", "RGB scale",
@@ -36,6 +36,7 @@ scales_df = tibble::tribble(
 
 ```{r}
 #| label: tbl-scale-table
+#| tbl-cap: "Map scales"
 #| echo: false
 #| warning: false
 #| message: false
@@ -48,7 +49,7 @@ scales_df = tibble::tribble(
 #                             latex_options = "striped", 
 #                             full_width = FALSE) |> 
 #   kableExtra::column_spec(1, bold = TRUE, monospace = TRUE) 
-tinytable::tt(scales_df, caption = "Map scales") |>
+tinytable::tt(scales_df) |>
   tinytable::style_tt(j = 1, monospace = TRUE)
 ```
 
@@ -60,6 +61,31 @@ library(tmap)
 library(sf)
 slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
 ```
+
+```{r}
+#| label: fig-scales
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-cap: "Examples of different scales applied to the same variable"
+slo_regions$pop65perc2 = as.integer(slo_regions$pop65perc)
+tm_shape(slo_regions) +
+    tm_polygons(rep("pop65perc2", 6), 
+                fill.scale = list(tm_scale_categorical(),
+                                  tm_scale_ordinal(),
+                                  tm_scale_discrete(),
+                                  tm_scale_intervals(),
+                                  tm_scale_continuous(),
+                                  tm_scale_continuous_log10()),
+                fill.legend = tm_legend(title = "", position = tm_pos_in("LEFT", "TOP"))) +
+    tm_layout(panel.labels = c("tm_scale_categorical()", "tm_scale_ordinal()", 
+                               "tm_scale_discrete()", "tm_scale_intervals()", 
+                               "tm_scale_continuous()", "tm_scale_continuous_log10()"), 
+              inner.margins = c(0.05, 0.4, 0.1, 0.05),
+              legend.text.size = 0.5)
+```
+
+Let's see how to use scales in the following sections -- we will mostly focus on using scales for the `fill.scale` argument, but the same principles apply to the `col.scale`, `size.scale`, and `shape.scale` arguments.
 
 ## Categorical scales {#sec-categorical-scales}
 
@@ -76,9 +102,12 @@ We created it by providing a character variable's name, `"region_group"`, in the
 #|   variable.
 tm_shape(slo_regions) +
   tm_polygons(fill = "region_group")
+# same as:
+# tm_shape(slo_regions) +
+#   tm_polygons(fill = "region_group", fill.scale = tm_scale_categorical())
 ```
 
-The `tm_polygons(fill = "region_un", fill.scale = tm_scale_categorical())` code is run automatically in the background in this case.
+The `tm_polygons(fill = "region_group", fill.scale = tm_scale_categorical())` code is run automatically in the background in this case.
 It is possible to change the names of legend labels with the `labels` argument of the `tm_scale()` function.
 As mentioned in the @sec-colors we can also change the used color palette with the `values` argument.
 
@@ -90,7 +119,39 @@ tm_shape(slo_regions) +
               fill.scale = tm_scale_categorical(labels = as.character(1:5)))
 ```
 
-<!-- ordinal scales here -->
+## Ordinal scales {#sec-ordinal-scales}
+
+The ordinal scale is similar to the categorical scale, but it is used for ordered categorical variables.
+By default, this scale uses a sequential color palette, which is suitable for ordered categorical variables [@fig-ordinal-scales].
+We may use `tm_scale_ordinal()` when the order of the values matters to highlight some hierarchy or ranking.
+
+```{r}
+#| label: fig-ordinal-scales
+#| warning: false
+#| message: false
+#| fig-cap: "Example of a map in which polygons are colored based on the values of an ordered categorical variable."
+tm_shape(slo_regions) +
+  tm_polygons(fill = "region_group",
+              fill.scale = tm_scale_ordinal())
+```
+
+## Discrete scales {#sec-discrete-scales}
+
+<!-- Martijn: a better example is probably needed here -- we could add some new variable to the data. Also -- should the value 1.5 be shown here? -->
+
+```{r}
+#| label: fig-discrete-scales
+#| warning: false
+#| message: false
+#| fig-cap: "Example of a map in which polygons are colored based on the values of a discrete variable."
+tm_shape(slo_regions) +
+  tm_polygons(fill = "urbn_type",
+              fill.scale = tm_scale_discrete())
+```
+
+## Rank scales {#sec-rank-scales}
+
+<!-- Martijn: any ideas for a good example? -->
 
 ## Intervals scales {#sec-intervals-scales}
 
@@ -199,8 +260,6 @@ tm_shape(slo_regions) +
 
 <!-- The numeric variable can be either regarded as a continuous variable or a count (integer) variable. See as.count. Only applicable if style is "pretty", "fixed", or "log10_pretty". -->
 
-## Discrete scales {#sec-discrete-scales}
-
 ## Continuous scales {#sec-continuous-scales}
 
 \index{Continuous maps}
@@ -265,9 +324,25 @@ tm_shape(slo_regions) +
 ## As-is scales {#sec-asis-scales}
 
 ```{r}
-slo_regions$URBN_TYPE = as.numeric(slo_regions$URBN_TYPE)
+slo_regions$urbn_type_col
+```
+
+```{r}
+#| label: fig-asis-scales
+#| warning: false
+#| message: false
+#| fig-cap: "Example of a map in which polygons are directly colored based on the values of a variable (an as-is scale)."
 tm_shape(slo_regions) +
-  tm_symbols(size = "URBN_TYPE",
+  tm_polygons(fill = "urbn_type_col",
+              fill.scale = tm_scale_asis()) 
+```
+
+```{r}
+#| echo: false
+#| eval: false
+tm_shape(slo_regions) +
+  tm_polygons() +
+  tm_symbols(size = "urbn_type",
              size.scale = tm_scale_asis())
 ```
 
