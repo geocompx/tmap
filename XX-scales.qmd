@@ -323,9 +323,20 @@ tm_shape(slo_regions) +
 
 ## As-is scales {#sec-asis-scales}
 
+In most cases, we want to use a color scale based on the variable's values.
+Then, **tmap** takes these values, groups them into classes, and assigns a color to each class.
+However, it is also possible to use the values of the variables directly to specify the fill color or other visual properties of the spatial objects.
+For example, your spatial vector data may contain a column with colors, such as `"blue"`, `"red"`, and `"green"`, and then we want to use these colors directly to color the polygons.
+This is known as an as-is scale, and it can be used with the `tm_scale_asis()` function.
+
+For example, let's take a look at the `urbn_type_col` variable in the `slo_regions` dataset.
+It contains the names of the colors (in a hexadecimal format) that we want to use to color the polygons.
+
 ```{r}
 slo_regions$urbn_type_col
 ```
+
+To fill each polygon with the color specified in the `urbn_type_col` variable, we should specify that column with the `fill` argument of the `tm_polygons()` function and then set the `fill.scale` argument to `tm_scale_asis()` (@fig-asis-scales).
 
 ```{r}
 #| label: fig-asis-scales
@@ -336,6 +347,11 @@ tm_shape(slo_regions) +
   tm_polygons(fill = "urbn_type_col",
               fill.scale = tm_scale_asis()) 
 ```
+
+This scale does not return any legend -- it is not needed, as the colors are already specified in the data.
+
+The `tm_scale_asis()` function can be used not only for the `fill` argument, but also for the `col`, `size`, `shape`, and other similar arguments.
+In such cases, the values of the variable should be appropriate for the visual property, e.g., a set of colors for `col` or a set of numeric values, representing sizes, for `size` and, representing shapes for `shape`.
 
 ```{r}
 #| echo: false
