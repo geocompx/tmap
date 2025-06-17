@@ -421,7 +421,34 @@ tm_shape(sat) +
 
 ## Bivariate scales {#sec-bivariate-scales}
 
+\index{Bivariate maps}
+In cases when we have two variables that we want to visualize, the most common approach is to create two separate maps, one for each variable (@fig-bivariate-scales1).
+We can do that using the `tm_vars()` function, which allows us to specify multiple variables (see the code below) or with the facet functions (see @sec-multiples).
+
 ```{r}
+#| label: fig-bivariate-scales1
+#| message: false
+#| fig-cap: "Example of two separate maps, one for each variable."
+tm_shape(slo_regions) +
+  tm_polygons(fill = tm_vars(c("pop_dens", "pop65perc")),
+              fill.scale = tm_scale(values = "purples"))
+```
+
+<!-- Bivariate maps are useful when we want to show the relationship between two variables. -->
+Another approach is to create a bivariate map, where the two variables are combined into a single map.
+This is done by representing not only the values of each variable independently but also their interaction using a bivariate color scale.
+@fig-bivariate-scales2 shows an example of a bivariate map, where the population density and the percentage of the population aged 65 and older are combined into a single map.
+Areas with a small population density and a small percentage of the population aged 65 and older are colored in gray, while areas with a high population density and a high percentage of the population aged 65 and older are colored in dark brown.
+Additionally, the areas with a high population density and a low percentage of the population aged 65 and older are colored in purple, while areas with a low population density and a high percentage of the population aged 65 and older are colored in gold.
+
+The creation of bivariate maps is done with the `tm_vars()` function, where we specify the two variables we want to combine and set the `multivariate` argument to `TRUE`.
+Bivariate maps also require a special color palette, which can be specified with `tm_scale_bivariate()` provided to the `*.scale` argument.
+Additionally, we can modify the `*.legend` argument with `tm_legend_bivariate()`.
+
+```{r}
+#| label: fig-bivariate-scales2
+#| message: false
+#| fig-cap: "Example of a bivariate map, where two variables are combined into a single map."
 tm_shape(slo_regions) +
   tm_polygons(fill = tm_vars(c("pop_dens", "pop65perc"), multivariate = TRUE),
               fill.scale = tm_scale_bivariate(values = "purplegold"),
@@ -455,8 +482,7 @@ tm_shape(slo_tavg) +
                                              reverse = FALSE))
 ```
 
-
-
+<!-- advice regarding color palettes? -->
 
 <!-- OLDER STUFF: -->
 
