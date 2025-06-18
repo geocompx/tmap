@@ -376,7 +376,7 @@ We can plot all of the bands independently or as a combination of three bands.
 This combination is known as a color composite image, and we can create such images with the `tm_rgb()` function (@fig-tmrgbs).
 
 Standard composite image (true color composite) uses the visible red, green, and blue bands to represent the data in natural colors.
-We can specify which band in `sat` relates to red (third band), green (second band), and blue (first band) color in `tm_rgb()`.
+We can specify which band in `sat` relates to red (third band), green (second band), and blue (first band) color in `tm_rgb()` with the `tm_vars()` function.
 <!-- to update -->
 <!-- Also, by default, this function expects values from 0 to 255; however, our values are in a different scale, with the maximum value of 31961.  -->
 <!-- Therefore, to create a map, we can set `max.value` to our dataset's maximum value. -->
@@ -389,6 +389,18 @@ tm_shape(sat) +
   tm_rgb(tm_vars(dimvalues = c("B04", "B03", "B02"), n = 3, multivariate = TRUE),
          col.scale = tm_scale_rgb(stretch = TRUE, probs = c(0.02, 0.98)))
 ```
+
+::: {.callout-note}
+The `tm_vars()` function allows to specify more than one variable to be visualized at the same time. 
+This is useful when we want to present a few variables as facets or combine multiple variables or layers to create a color composite image (`tm_rgb()`), a bivariate map, or an animation.
+It has five arguments: 
+
+- `x`: variable names, variable indices, or a dimension name (for `sf`, `stars`, and `SpatRaster` objects)
+- `dimvalues`: dimension values (for `stars` objects)
+- `n`: (if specified) the first *n* variables that are used
+- `multivariate`: in case multiple variables are specified, should they serve as facets (FALSE; default) or as a multivariate visual variable?
+- `animate`: should the variable(s) be animated?
+:::
 
 True color images are straightforward to interpret and understand, but they make subtle differences in features challenging to recognize.
 However, nothing stops us from using the above tools to integrate different bands to create so called false color composites.
@@ -443,7 +455,9 @@ Additionally, the areas with a high population density and a low percentage of t
 
 The creation of bivariate maps is done with the `tm_vars()` function, where we specify the two variables we want to combine and set the `multivariate` argument to `TRUE`.
 Bivariate maps also require a special color palette, which can be specified with `tm_scale_bivariate()` provided to the `*.scale` argument.
+<!-- advice regarding color palettes? -->
 Additionally, we can modify the `*.legend` argument with `tm_legend_bivariate()`.
+In the case of bivariate maps, the `xlab` and `ylab` arguments are used to add labels to the x and y axes of the legend, respectively.
 
 ```{r}
 #| label: fig-bivariate-scales2
@@ -456,6 +470,10 @@ tm_shape(slo_regions) +
                                                 ylab = "Pop. density\n(per sq. km)"))
 ```
 
+The map of a relationship between two variables can also be done for raster data, such as `stars` objects.
+Below, we read the monthly average temperature for Slovenia from a GeoTIFF file and then select only the two months of interest -- January and July.
+Our aim is to visualize how winter and summer temperatures differ in Slovenia.
+
 ```{r}
 library(stars)
 slo_tavg = read_stars("data/slovenia/slo_tavg.tif") 
@@ -463,26 +481,61 @@ slo_tavg = slo_tavg[,,,c(1, 7)]
 ```
 
 <!-- the color palette below needs to be improved (flipped?) -->
+As you can see below, the syntax to create a bivariate map using `tm_vars()` is the same as for vector data, except in this case, we use `tm_raster()` instead of `tm_polygons()` and provide our variables as a `dimvalues` argument of `tm_vars()` (@fig-tmrastbiv-1).
 
 ```{r}
+#| label: tmrastbiv1
+#| eval: false
 tm_shape(slo_tavg) +
-  tm_raster(col = tm_vars(dimvalues = c("tavg_1", "tavg_7"), multivariate = TRUE),
-            col.scale = tm_scale_bivariate(values = "pinkblue"))
+  tm_raster(col = tm_vars(dimvalues = c("tavg_1", "tavg_7"), 
+                          multivariate = TRUE))
 ```
+
+One important difference between a regular map and a bivariate map is that the latter is based on two scales -- and we are able to specify them separately.
+Thus, all of the scales from sections [-@sec-categorical-scales] to [-@sec-continuous-scales] can be used for bivariate maps, and we can use one of them for each variable.
+<!-- as-is-scales? -->
+In the example below, we use two scales for the temperature -- one for the January temperatures and one for the July temperatures.
+In both cases, our scales are intervals, but we customize their breaks and add text labels.
 
 ```{r}
+#| label: tmrastbiv2
+#| eval: false
 tm_shape(slo_tavg) +
-  tm_raster(col = tm_vars(dimvalues = c("tavg_1", "tavg_7"), multivariate = TRUE),
-            col.scale = tm_scale_bivariate(values = "pinkblue",
-                                           scale1 = tm_scale_intervals(breaks = c(-8, -4, 0, 4, 8), 
-                                                                       labels = c("Very cold", "Cold", "Mild", "Warm")),
-                                           scale2 = tm_scale_intervals(breaks = c(5, 10, 15, 20, 25),
-                                                                       labels = c("Very cold", "Cold", "Mild", "Warm"))),
-            col.legend = tm_legend_bivariate(xlab = "July", ylab = "January",
-                                             reverse = FALSE))
+  tm_raster(col = tm_vars(dimvalues = c("tavg_1", "tavg_7"), 
+                          multivariate = TRUE),
+            col.scale = tm_scale_bivariate(
+              values = "pinkblue",
+              scale1 = tm_scale_intervals(
+                breaks = c(-8, -4, 0, 4, 8), 
+                labels = c("Very cold", "Cold", "Mild", "Warm")
+ ),
+              scale2 = tm_scale_intervals(
+                breaks = c(5, 10, 15, 20, 25),
+                labels = c("Very cold", "Cold", "Mild", "Warm")
+ )
+ ),
+            col.legend = tm_legend_bivariate(
+              xlab = "July", ylab = "January", reverse = FALSE
+ )
+ )
 ```
 
-<!-- advice regarding color palettes? -->
+@fig-tmrastbiv-2 shows a customized bivariate map for the January and July temperatures in Slovenia.
+We may see that most of the country is characterized by mild temperatures in both months, while the cold temperatures are observed in the mountainous regions in the northwest, and the warm temperatures are observed in the southwest part of the country.
+There are also a few areas where the temperature category is very different between the two months, such as the northeastern part of the country, with warm July and cold January temperatures.
+
+```{r}
+#| label: fig-tmrastbiv
+#| message: false
+#| echo: false
+#| layout-ncol: 1
+#| fig-cap: 'Bivariate maps for raster data'
+#| fig-subcap:
+#|   - 'Simple map'
+#|   - 'Customized map'
+<<tmrastbiv1>>
+<<tmrastbiv2>>
+```
 
 <!-- OLDER STUFF: -->
 
