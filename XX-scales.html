@@ -807,11 +807,36 @@ Figure&nbsp;8.7: Example of a map in which polygons are directly colored based o
 <span><span class="va">sat</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_mosaic.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <code>sat</code> object contains four bands of the Sentinel-2 image for Slovenia. The bands (blue, green, red, and near-infrared) are stored in the <code>band</code> dimension as <code>B02</code>, <code>B03</code>, <code>B04</code>, and <code>B08</code>. We can plot all of the bands independently or as a combination of three bands. This combination is known as a color composite image, and we can create such images with the <code>tm_rgb()</code> function (<a href="#fig-tmrgbs" class="quarto-xref">Figure&nbsp;<span>8.8</span></a>).</p>
-<p>Standard composite image (true color composite) uses the visible red, green, and blue bands to represent the data in natural colors. We can specify which band in <code>sat</code> relates to red (third band), green (second band), and blue (first band) color in <code>tm_rgb()</code>. <!-- to update --> <!-- Also, by default, this function expects values from 0 to 255; however, our values are in a different scale, with the maximum value of 31961.  --> <!-- Therefore, to create a map, we can set `max.value` to our dataset's maximum value. --> <!-- The result is a true color composite, with green colors representing forests and other types of vegetation, and yellow color showing bare areas (@fig-tmrgbs-1). --></p>
+<p>Standard composite image (true color composite) uses the visible red, green, and blue bands to represent the data in natural colors. We can specify which band in <code>sat</code> relates to red (third band), green (second band), and blue (first band) color in <code>tm_rgb()</code> with the <code>tm_vars()</code> function. <!-- to update --> <!-- Also, by default, this function expects values from 0 to 255; however, our values are in a different scale, with the maximum value of 31961.  --> <!-- Therefore, to create a map, we can set `max.value` to our dataset's maximum value. --> <!-- The result is a true color composite, with green colors representing forests and other types of vegetation, and yellow color showing bare areas (@fig-tmrgbs-1). --></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">sat</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_rgb</span><span class="op">(</span><span class="fu">tm_vars</span><span class="op">(</span>dimvalues <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"B04"</span>, <span class="st">"B03"</span>, <span class="st">"B02"</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">3</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>         col.scale <span class="op">=</span> <span class="fu">tm_scale_rgb</span><span class="op">(</span>stretch <span class="op">=</span> <span class="cn">TRUE</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.02</span>, <span class="fl">0.98</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <code>tm_vars()</code> function allows to specify more than one variable to be visualized at the same time. This is useful when we want to present a few variables as facets or combine multiple variables or layers to create a color composite image (<code>tm_rgb()</code>), a bivariate map, or an animation. It has five arguments:</p>
+<ul>
+<li>
+<code>x</code>: variable names, variable indices, or a dimension name (for <code>sf</code>, <code>stars</code>, and <code>SpatRaster</code> objects)</li>
+<li>
+<code>dimvalues</code>: dimension values (for <code>stars</code> objects)</li>
+<li>
+<code>n</code>: (if specified) the first <em>n</em> variables that are used</li>
+<li>
+<code>multivariate</code>: in case multiple variables are specified, should they serve as facets (FALSE; default) or as a multivariate visual variable?</li>
+<li>
+<code>animate</code>: should the variable(s) be animated?</li>
+</ul>
+</div>
 </div>
 <p>True color images are straightforward to interpret and understand, but they make subtle differences in features challenging to recognize. However, nothing stops us from using the above tools to integrate different bands to create so called false color composites. Various band combinations emphasize some spatial characteristics, such as water, agriculture, etc., and allow us to visualize wavelengths that our eyes can not see. <!-- add some reference?? --> <a href="#fig-tmrgbs-2" class="quarto-xref">Figure&nbsp;<span>8.8 (b)</span></a> shows a composite of near-infrared, red, and green bands, highlighting vegetation with a bright red color.</p>
 <div class="cell" data-layout-align="center">
@@ -871,7 +896,7 @@ Figure&nbsp;8.9: Example of two separate maps, one for each variable.
 </div>
 <!-- Bivariate maps are useful when we want to show the relationship between two variables. -->
 <p>Another approach is to create a bivariate map, where the two variables are combined into a single map. This is done by representing not only the values of each variable independently but also their interaction using a bivariate color scale. <a href="#fig-bivariate-scales2" class="quarto-xref">Figure&nbsp;<span>8.10</span></a> shows an example of a bivariate map, where the population density and the percentage of the population aged 65 and older are combined into a single map. Areas with a small population density and a small percentage of the population aged 65 and older are colored in gray, while areas with a high population density and a high percentage of the population aged 65 and older are colored in dark brown. Additionally, the areas with a high population density and a low percentage of the population aged 65 and older are colored in purple, while areas with a low population density and a high percentage of the population aged 65 and older are colored in gold.</p>
-<p>The creation of bivariate maps is done with the <code>tm_vars()</code> function, where we specify the two variables we want to combine and set the <code>multivariate</code> argument to <code>TRUE</code>. Bivariate maps also require a special color palette, which can be specified with <code>tm_scale_bivariate()</code> provided to the <code>*.scale</code> argument. Additionally, we can modify the <code>*.legend</code> argument with <code>tm_legend_bivariate()</code>.</p>
+<p>The creation of bivariate maps is done with the <code>tm_vars()</code> function, where we specify the two variables we want to combine and set the <code>multivariate</code> argument to <code>TRUE</code>. Bivariate maps also require a special color palette, which can be specified with <code>tm_scale_bivariate()</code> provided to the <code>*.scale</code> argument. <!-- advice regarding color palettes? --> Additionally, we can modify the <code>*.legend</code> argument with <code>tm_legend_bivariate()</code>. In the case of bivariate maps, the <code>xlab</code> and <code>ylab</code> arguments are used to add labels to the x and y axes of the legend, respectively.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="fu">tm_vars</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"pop_dens"</span>, <span class="st">"pop65perc"</span><span class="op">)</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
@@ -889,45 +914,72 @@ Figure&nbsp;8.10: Example of a bivariate map, where two variables are combined i
 </div>
 </div>
 </div>
+<p>The map of a relationship between two variables can also be done for raster data, such as <code>stars</code> objects. Below, we read the monthly average temperature for Slovenia from a GeoTIFF file and then select only the two months of interest – January and July. Our aim is to visualize how winter and summer temperatures differ in Slovenia.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/stars/">stars</a></span><span class="op">)</span></span>
 <span><span class="va">slo_tavg</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_tavg.tif"</span><span class="op">)</span> </span>
 <span><span class="va">slo_tavg</span> <span class="op">=</span> <span class="va">slo_tavg</span><span class="op">[</span>,,,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">7</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- the color palette below needs to be improved (flipped?) -->
+<p>As you can see below, the syntax to create a bivariate map using <code>tm_vars()</code> is the same as for vector data, except in this case, we use <code>tm_raster()</code> instead of <code>tm_polygons()</code> and provide our variables as a <code>dimvalues</code> argument of <code>tm_vars()</code> (<a href="#fig-tmrastbiv-1" class="quarto-xref">Figure&nbsp;<span>8.11 (a)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_tavg</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_raster</span><span class="op">(</span>col <span class="op">=</span> <span class="fu">tm_vars</span><span class="op">(</span>dimvalues <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tavg_1"</span>, <span class="st">"tavg_7"</span><span class="op">)</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>            col.scale <span class="op">=</span> <span class="fu">tm_scale_bivariate</span><span class="op">(</span>values <span class="op">=</span> <span class="st">"pinkblue"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [scale] tm_raster:() the data variable assigned to 'col' contains positive and negative values, so midpoint is set to 0. Set 'midpoint = NA' in 'fill.scale = tm_scale_intervals(&lt;HERE&gt;)' to use all visual values (e.g. colors)</span></span>
-<span><span class="co">#&gt; Labels abbreviated by the first two letters, e.g.: "5 to 10" =&gt; "5 "</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<span>  <span class="fu">tm_raster</span><span class="op">(</span>col <span class="op">=</span> <span class="fu">tm_vars</span><span class="op">(</span>dimvalues <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tavg_1"</span>, <span class="st">"tavg_7"</span><span class="op">)</span>, </span>
+<span>                          multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
+<p>One important difference between a regular map and a bivariate map is that the latter is based on two scales – and we are able to specify them separately. Thus, all of the scales from sections <a href="#sec-categorical-scales" class="quarto-xref"><span>8.1</span></a> to <a href="#sec-continuous-scales" class="quarto-xref"><span>8.6</span></a> can be used for bivariate maps, and we can use one of them for each variable. <!-- as-is-scales? --> In the example below, we use two scales for the temperature – one for the January temperatures and one for the July temperatures. In both cases, our scales are intervals, but we customize their breaks and add text labels.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_tavg</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_raster</span><span class="op">(</span>col <span class="op">=</span> <span class="fu">tm_vars</span><span class="op">(</span>dimvalues <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tavg_1"</span>, <span class="st">"tavg_7"</span><span class="op">)</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>            col.scale <span class="op">=</span> <span class="fu">tm_scale_bivariate</span><span class="op">(</span>values <span class="op">=</span> <span class="st">"pinkblue"</span>,</span>
-<span>                                           scale1 <span class="op">=</span> <span class="fu">tm_scale_intervals</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">8</span>, <span class="op">-</span><span class="fl">4</span>, <span class="fl">0</span>, <span class="fl">4</span>, <span class="fl">8</span><span class="op">)</span>, </span>
-<span>                                                                       labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Very cold"</span>, <span class="st">"Cold"</span>, <span class="st">"Mild"</span>, <span class="st">"Warm"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>                                           scale2 <span class="op">=</span> <span class="fu">tm_scale_intervals</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span>, <span class="fl">25</span><span class="op">)</span>,</span>
-<span>                                                                       labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Very cold"</span>, <span class="st">"Cold"</span>, <span class="st">"Mild"</span>, <span class="st">"Warm"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>            col.legend <span class="op">=</span> <span class="fu">tm_legend_bivariate</span><span class="op">(</span>xlab <span class="op">=</span> <span class="st">"July"</span>, ylab <span class="op">=</span> <span class="st">"January"</span>,</span>
-<span>                                             reverse <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [scale] tm_raster:() the data variable assigned to 'col' contains positive and negative values, so midpoint is set to 0. Set 'midpoint = NA' in 'fill.scale = tm_scale_intervals(&lt;HERE&gt;)' to use all visual values (e.g. colors)</span></span>
-<span><span class="co">#&gt; Labels abbreviated by the first letters, e.g.: "Very cold" =&gt; "V"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/unnamed-chunk-10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<span>  <span class="fu">tm_raster</span><span class="op">(</span>col <span class="op">=</span> <span class="fu">tm_vars</span><span class="op">(</span>dimvalues <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tavg_1"</span>, <span class="st">"tavg_7"</span><span class="op">)</span>, </span>
+<span>                          multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>            col.scale <span class="op">=</span> <span class="fu">tm_scale_bivariate</span><span class="op">(</span></span>
+<span>              values <span class="op">=</span> <span class="st">"pinkblue"</span>,</span>
+<span>              scale1 <span class="op">=</span> <span class="fu">tm_scale_intervals</span><span class="op">(</span></span>
+<span>                breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">8</span>, <span class="op">-</span><span class="fl">4</span>, <span class="fl">0</span>, <span class="fl">4</span>, <span class="fl">8</span><span class="op">)</span>, </span>
+<span>                labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Very cold"</span>, <span class="st">"Cold"</span>, <span class="st">"Mild"</span>, <span class="st">"Warm"</span><span class="op">)</span></span>
+<span> <span class="op">)</span>,</span>
+<span>              scale2 <span class="op">=</span> <span class="fu">tm_scale_intervals</span><span class="op">(</span></span>
+<span>                breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span>, <span class="fl">25</span><span class="op">)</span>,</span>
+<span>                labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Very cold"</span>, <span class="st">"Cold"</span>, <span class="st">"Mild"</span>, <span class="st">"Warm"</span><span class="op">)</span></span>
+<span> <span class="op">)</span></span>
+<span> <span class="op">)</span>,</span>
+<span>            col.legend <span class="op">=</span> <span class="fu">tm_legend_bivariate</span><span class="op">(</span></span>
+<span>              xlab <span class="op">=</span> <span class="st">"July"</span>, ylab <span class="op">=</span> <span class="st">"January"</span>, reverse <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span> <span class="op">)</span></span>
+<span> <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><a href="#fig-tmrastbiv-2" class="quarto-xref">Figure&nbsp;<span>8.11 (b)</span></a> shows a customized bivariate map for the January and July temperatures in Slovenia. We may see that most of the country is characterized by mild temperatures in both months, while the cold temperatures are observed in the mountainous regions in the northwest, and the warm temperatures are observed in the southwest part of the country. There are also a few areas where the temperature category is very different between the two months, such as the northeastern part of the country, with warm July and cold January temperatures.</p>
+<div id="fig-tmrastbiv" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmrastbiv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmrastbiv" style="flex-basis: 100.0%;justify-content: center;">
+<div id="fig-tmrastbiv-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmrastbiv-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmrastbiv-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmrastbiv">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmrastbiv-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Simple map
+</figcaption></figure>
 </div>
 </div>
 </div>
-<!-- advice regarding color palettes? -->
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmrastbiv" style="flex-basis: 100.0%;justify-content: center;">
+<div id="fig-tmrastbiv-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmrastbiv-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmrastbiv-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmrastbiv">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmrastbiv-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Customized map
+</figcaption></figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmrastbiv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.11: Bivariate maps for raster data
+</figcaption></figure>
+</div>
 <!-- OLDER STUFF: -->
 <!-- The `tm_polygons()` also offer a third way of specifying the fill color. -->
 <!-- When the `fill` argument is set to `"MAP_COLORS"` then polygons will be colored in such a way that adjacent polygons do not get the same color (@fig-colorscalesmc). -->
