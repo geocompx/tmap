@@ -5,17 +5,16 @@ source("code/before_script.R")
 
 # Layers {#sec-layers}
 
-<!-- make the order of the table to be consistent with the rest of the chapter! -->
-
+<!-- make sure that the order of the table is consistent with the rest of the chapter! -->
 ```{r}
 #| echo: false
 layers_basic_df = tibble::tribble(
   ~Function, ~Element, ~Geometry,
   "tm_polygons()", "polygons (borders and fill)", "polygons",
   "tm_symbols()", "symbols", "points, polygons, and lines", 
-  "tm_lines()", "lines", "lines", 
-  "tm_raster()", "raster", "raster",
+  "tm_lines()", "lines", "lines",   
   "tm_text()", "text", "points, polygons, and lines",
+  "tm_raster()", "raster", "raster",
   "tm_basemap()", "tile" , "",
   "tm_tiles()", "tile", ""
 )
@@ -30,11 +29,21 @@ layers_extended_df = tibble::tribble(
   "tm_iso()", "lines with text labels", "lines",
   "tm_rgb()/tm_rgba()", "raster (RGB image)", "raster"
 )
-layers_df = rbind(layers_basic_df, 
-                  layers_extended_df)
+layers_df = rbind(layers_basic_df, layers_extended_df)
 ```
 
-@tbl-layers-table
+Map layers are the main building blocks of a map.
+They specify how the specific data should be visualized -- for example, as polygons, symbols, lines, text labels, or raster.
+There is also an interplay between the data and the map layers: raster data can be plotted with the `tm_raster()` or `tm_rgb()` functions, while point data can be visualized with `tm_symbols()`, `tm_dots()`, `tm_bubbles()`, `tm_markers()`, or `tm_squares()`.
+Moreover, some data types can be simplified and shown with a different geometry, such as polygons that are usually visualized with `tm_polygons()` but can also converted into centroids and plotted with `tm_symbols()`.
+
+Each dataset may have one or more layers, and each layer can be visualized in different ways.
+For example, a dataset with polygons can be visualized using `tm_polygons()` to display the polygon areas, and then the names of the polygons can be added with `tm_text()`.
+
+@tbl-layers-table shows the available map layers in **tmap**.
+They are divided into two groups: basic functions and derived functions.
+The basic functions are the main functions for visualizing data, are useful for most cases, and are highly customizable.
+The derived functions are built on top of the basic functions but with different default values aimed at specific use cases.
 
 ```{r}
 #| label: tbl-layers-table
