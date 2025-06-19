@@ -23,7 +23,7 @@ jobs:
           sudo apt-get update && sudo apt-get install -y cargo
           Rscript -e 'install.packages("remotes")'
           Rscript -e 'remotes::install_cran(c("tinytable", "viridis", "rmapshaper"))'
-          Rscript -e 'remotes::install_github("r-tmap/tmap", dependencies = TRUE, force = TRUE)'
+          Rscript -e 'remotes::install_github("geocompx/tmap", dependencies = TRUE, force = TRUE)'
           # quarto render
           # ls docs
       - name: Get Quarto
