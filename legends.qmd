@@ -168,7 +168,12 @@ tm_shape(slo_elev) +
 
 ## Titles {#sec-titles}
 
+Titles are another essential part of the map, as they can provide context and information about the map content.
+In **tmap**, titles are added with the `tm_title()` function. 
+
 ```{r}
+#| label: title1
+#| eval: false
 tm_shape(slo_elev) +
     tm_raster(
         col.legend = tm_legend(title = "Elevation (m asl)")
@@ -176,7 +181,13 @@ tm_shape(slo_elev) +
   tm_title("Slovenia")
 ```
 
+Titles could serve as a few roles. 
+They may provide a general description of the map content, such as the name of the area (@fig-title1-1).
+Titles can also be used to replace the legend title (@fig-title1-2) -- then the reader can interpret the map content based on the title, which is more prominent than the legend title.
+
 ```{r}
+#| label: title2
+#| eval: false
 tm_shape(slo_elev) +
     tm_raster(
         col.legend = tm_legend(title = "")
@@ -185,6 +196,23 @@ tm_shape(slo_elev) +
 ```
 
 ```{r}
+#| label: fig-titles1
+#| echo: false
+#| message: false
+#| layout-ncol: 2
+#| fig-cap: "Map title examples."
+#| fig-subcap:
+#|  - Simple title
+#|  - Title replacing the legend title
+<<title1>>
+<<title2>>
+```
+
+Titles are text elements and therefore can be customized in many ways, including changing the font size (`size`), font color (`color`), and font face (`fontface`) (@fig-titles2-1)
+
+```{r}
+#| label: title3
+#| eval: false
 tm_shape(slo_elev) +
     tm_raster(
         col.legend = tm_legend(title = "")
@@ -196,7 +224,12 @@ tm_shape(slo_elev) +
            )
 ```
 
+We can also add a background to the title, which can improve the visibility of the title text while providing a distinct aesthetic (@fig-titles2-2).
+A map title is treated as all of the rest of the map elements and, therefore, can be placed outside or inside of the map frame using the `position` argument of the `tm_title()` function (see @sec-positions for more details).
+
 ```{r}
+#| label: title4
+#| eval: false
 tm_shape(slo_elev) +
     tm_raster(
         col.legend = tm_legend(title = "")
@@ -206,11 +239,31 @@ tm_shape(slo_elev) +
            color = "white",
            fontface = "bold",
            bg = TRUE,
-           bg.color = "black"
+           bg.color = "black",
+           position = tm_pos_out("center", "top", pos.h = "right")
            )
 ```
 
 ```{r}
+#| label: fig-titles2
+#| echo: false
+#| message: false
+#| layout-ncol: 2
+#| fig-cap: "Title customization examples."
+#| fig-subcap:
+#|   - Title with custom font size, color, and face.
+#|   - Title with custom font size, color, face, and background.
+<<title3>>
+<<title4>>
+```
+
+Many titles can be used in the same map, e.g., a main title and a subtitle (@fig-titles3).
+This can be done by adding multiple `tm_title()` functions to the map, which is placed on the top left of the map by default, and `tm_title_in()` function to place the title inside the top left corner of the map frame.
+
+```{r}
+#| label: fig-titles3
+#| message: false
+#| fig-cap: "A map with a title and a subtitle."
 tm_shape(slo_elev) +
     tm_raster(
         col.legend = tm_legend(title = "")
@@ -219,6 +272,4 @@ tm_shape(slo_elev) +
   tm_title_in("Elevation Map")
 ```
 
-<!-- add placement ref -->
-
-<!-- refs to positions and typography chapters/sections -->
+<!-- refs typography chapters/sections -->
