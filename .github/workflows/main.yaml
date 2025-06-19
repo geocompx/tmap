@@ -22,7 +22,7 @@ jobs:
         run: |
           sudo apt-get update && sudo apt-get install -y cargo
           Rscript -e 'install.packages("remotes")'
-          Rscript -e 'remotes::install_github("geocompx/tmap", dependencies = TRUE, force = TRUE)'
+          Rscript -e 'remotes::install_github("geocompx/tmap", dependencies = NA, force = TRUE)'
           # quarto render
           # ls docs
       - name: Get Quarto
