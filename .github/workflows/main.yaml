@@ -18,7 +18,7 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v3
-      - name: Render
+      - name: Get deps
         run: |
           sudo apt-get update && sudo apt-get install -y cargo
           Rscript -e 'install.packages("remotes")'
