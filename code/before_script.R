@@ -1,7 +1,7 @@
 library(methods)
 library(webshot)
 library(ragg)
-ragg_png = function(..., res = 150) {
+ragg_png = function(..., res = 300) {
   ragg::agg_png(..., res = res, units = "in")
 }
 
@@ -13,6 +13,7 @@ knitr::opts_chunk$set(
   # fig.pos = "h", #"t"
   fig.path = "figures/",
   fig.align = "center",
+  fig.retina = 2,
   # fig.height = 7,
   fig.width = 6,
   fig.asp = 0.618,  # 1 / phi
