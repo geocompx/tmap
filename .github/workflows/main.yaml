@@ -10,7 +10,7 @@ jobs:
   bookdown:
     name: GH-Pages
     runs-on: ubuntu-latest
-    container: ghcr.io/geocompx/docker:minimal
+    container: ghcr.io/geocompx/minimal:latest
     defaults:
       run:
         shell: bash -l {0}
