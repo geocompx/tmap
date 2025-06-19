@@ -1,5 +1,6 @@
 library(methods)
 library(webshot)
+library(ragg)
 
 knitr::opts_chunk$set(
   background = "#FCFCFC", # code chunk color in latex
@@ -14,7 +15,9 @@ knitr::opts_chunk$set(
   fig.asp = 0.618,  # 1 / phi
   fig.show = "hold",
   out.width = "100%", #70%
-  dev.args = list(png = list(type = "cairo-png")),
+  # dev.args = list(png = list(type = "cairo-png")),
+  # dev.args = list(png = list(type = "cairo")),
+  dev = "ragg",
   optipng = "-o1 -quiet",
   widgetframe_widgets_dir = "widgets",
   screenshot.opt = list(delay = 0.3)
