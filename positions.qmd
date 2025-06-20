@@ -19,19 +19,20 @@ m = \(text) boxy(text, fill = "#AE7327")
 
 # Positions {#sec-positions}
 
+This chapter focuses on how to move map components, such as legends, scale bars, and insets, freely in the map.
+They can be placed both inside and outside the map frame -- with some being in and some being out (@sec-positioning).
+Moreover, map components can be grouped together, which allows them to be moved and arranged as a single unit (@sec-position-many-components).
+
+To demonstrate the positioning of map components, we will use a simple map with the elevation raster data of Slovenia in meters above sea level (*m asl*). 
+
 ```{r}
 #| message: false
-library(sf)
 library(stars)
 library(tmap)
 slo_elev = read_stars("data/slovenia/slo_elev.tif")
 tm = tm_shape(slo_elev) +
     tm_raster()
 ```
-
-This chapter focuses on how to move map components, such as legends, scale bars, and insets, freely in the map.
-They can be placed both inside and outside the map frame -- with some being in and some being out (@sec-positioning).
-Moreover, map components can be grouped together, which allows to move them and arrange them as a single unit (@sec-position-many-components).
 
 ## Positioning {#sec-positioning}
 
@@ -323,10 +324,10 @@ The **tmap** package also has a mechanism to group map components together and t
 This requires two steps:
 
 1. Specifying the `group_id` argument in the map component that we want to group together -- this should be a unique integer number.
-2. Using the `tm_comp_group()` function to select which group of map components we want to position together and where.
+2. Using the `tm_components()` function to select which group of map components we want to position together and where.
 
 In the following example, we have three map components -- a legend, a scale bar, and credits -- and we want to group the scale bar and credits (@fig-comp-group-1).
-First, we specify the `group_id` argument in the map components functions, and then we use the `tm_comp_group()` function to position them together.
+First, we specify the `group_id` argument in the map components functions, and then we use the `tm_components()` function to position them together.
 Here, the position argument works exactly as we already described in the previous sections, i.e., it can be specified with a vector or with the `tm_pos_in()` or `tm_pos_out()` functions.
 
 ```{r}
@@ -336,11 +337,11 @@ tm_shape(slo_elev) +
   tm_raster(col.legend = tm_legend(group_id = 1)) +
   tm_scalebar(group_id = 2) +
   tm_credits("My credits", group_id = 2) +
-  tm_comp_group(1, position = tm_pos_in("right", "bottom")) +
-  tm_comp_group(2, position = tm_pos_in("left", "top"))
+  tm_components(1, position = tm_pos_in("right", "bottom")) +
+  tm_components(2, position = tm_pos_in("left", "top"))
 ```
 
-The `tm_comp_group()` function can also be used to customize the arrangement of map components in the same location.
+The `tm_components()` function can also be used to customize the arrangement of map components in the same location.
 For example, we can stack them vertically (`stack = "vertical"`, default) or horizontally (`stack = "horizontal"`) (@fig-comp-group-2).
 
 ```{r}
@@ -350,8 +351,8 @@ tm_shape(slo_elev) +
   tm_raster(col.legend = tm_legend(group_id = 1)) +
   tm_scalebar(group_id = 2) +
   tm_credits("My credits", group_id = 2) +
-  tm_comp_group(1, position = tm_pos_in("right", "bottom")) +
-  tm_comp_group(2, position = tm_pos_in("left", "top"), stack = "horizontal")
+  tm_components(1, position = tm_pos_in("right", "bottom")) +
+  tm_components(2, position = tm_pos_in("left", "top"), stack = "horizontal")
 ```
 
 ```{r}
