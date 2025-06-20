@@ -5,25 +5,24 @@ source("code/before_script.R")
 
 # Map layout {#sec-map-layout}
 
-```{r}
-#| message: false
-library(sf)
-library(tmap)
-slo_borders = read_sf("data/slovenia/slo_border.gpkg")
-slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
-slo_cities = read_sf("data/slovenia/slo_cities.gpkg")
-```
+Map layout relates to all of the visual aspects of the created plot except the visual variables (@sec-visual-variables), legends (@sec-legends), and map components (@sec-attributes-layers).
+It includes the map background, frame, typography, scale, aspect ratio, margins, and more.
 
-<!-- tm_layout -->
-<!-- which features are the most important to explain? -->
+We can customize the map layout using the `tm_layout()` function.
+In this chapter, we cover the most often used arguments of this function using a map of Slovenia's regions as an example (@fig-layout-example).
+
 <!-- mention that is has tons of arguments -- we do not going to explain them all, but suggest to look at the help file, when needed -->
-
 <!-- maybe highlight that many layout arguments are valid for the plot mode only -->
 
 ```{r}
 #| label: fig-layout-example
 #| message: false
 #| fig-cap: "A map of Slovenia with a default layout."
+library(sf)
+library(tmap)
+slo_borders = read_sf("data/slovenia/slo_border.gpkg")
+slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
+slo_cities = read_sf("data/slovenia/slo_cities.gpkg")
 tm = tm_shape(slo_borders) +
     tm_polygons() +
     tm_shape(slo_regions) +
@@ -33,8 +32,6 @@ tm = tm_shape(slo_borders) +
     tm_title("Slovenia")
 tm
 ```
-
-<!-- an introduction to the rest of the sections -->
 
 ## Colors {#sec-lcolors}
 

@@ -47,18 +47,13 @@ tinytable::tt(attr_layers_df) |>
 #   kableExtra::column_spec(1, bold = TRUE, monospace = TRUE)
 ```
 
+For the examples in this section, we will use a simple map of the Slovenia polygon (not shown).
+
 ```{r}
 #| message: false
 library(tmap)
 library(sf)
 slo_borders = read_sf("data/slovenia/slo_border.gpkg")
-slo_cities = read_sf("data/slovenia/slo_cities.gpkg")
-```
-
-For the examples in this section, we will use a simple map of the Slovenia polygon (not shown).
-
-```{r}
-#| fig-show: hide
 tm = tm_shape(slo_borders) +
   tm_polygons()
 tm
