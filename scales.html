@@ -413,7 +413,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 
 
 </header><p>Sections <a href="visual-variables.html#sec-colors" class="quarto-xref"><span>7.3</span></a>, <a href="visual-variables.html#sec-sizes" class="quarto-xref"><span>7.4</span></a>, and <a href="visual-variables.html#sec-shapes" class="quarto-xref"><span>7.5</span></a> showed how to set colors, sizes, and shapes for different types of spatial objects. In them, we often used the <code>tm_scale()</code> function to modify the appearance of the map, such as changing the color palette (<code>col.scale</code> and <code>fill.scale</code>), sizes (<code>size.scale</code>), or shapes (<code>shape.scale</code>). The <code>tm_scale()</code> function automatically sets the scale for the given visual variable and the data type (factor, numeric, and integer). Thus, for example, when we provide a character variable’s name to the <code>fill</code> argument, then the <code>tm_scale()</code> function automatically sets the color scale for a categorical variable, and when we provide a numeric variable’s name to the <code>size</code> argument, then the <code>tm_scale()</code> function automatically sets the size scale for a continuous variable.</p>
-<p>However, we often want to have more control over how our spatial objects are presented on the map. For that purpose, the <code>tm_scale()</code> function has a set of related functions that can be used to modify and customize the used scale. <a href="#tbl-scale-table" class="quarto-xref">Table&nbsp;<span>8.1</span></a> presents all available scale functions in <strong>tmap</strong> and <a href="#fig-scales" class="quarto-xref">Figure&nbsp;<span>8.1</span></a> shows examples of how some of them look like when applied to the same variable.</p>
+<p>However, we often want to have more control over how our spatial objects are presented on the map. For that purpose, the <code>tm_scale()</code> function has a set of related functions that can be used to modify and customize the used scale. <a href="#tbl-scale-table" class="quarto-xref">Table&nbsp;<span>8.1</span></a> presents all available scale functions in <strong>tmap</strong>.</p>
 <!-- table -->
 <!-- tmap_options()$scales.var -->
 <!-- add short description of each scale function in the table below? -->
@@ -555,6 +555,7 @@ Table&nbsp;8.1: Map scales
 </figure>
 </div>
 </div>
+<p><a href="#fig-scales" class="quarto-xref">Figure&nbsp;<span>8.1</span></a> shows examples of how some of them look like when applied to the same variable.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-scales" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
