@@ -18,17 +18,31 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v3
-      - name: Get deps
+
+      - name: Install cargo
         run: |
-          sudo apt-get update && sudo apt-get install -y cargo
-          Rscript -e 'install.packages("remotes")'
+          sudo apt-get update
+          sudo apt-get install -y cargo
+
+      # Cache R packages
+      - name: Cache R packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/share/R
+          key: ${{ runner.os }}-r-${{ hashFiles('**/*.R') }}
+          restore-keys: |
+            ${{ runner.os }}-r-
+
+      - name: Install R packages
+        run: |
+          Rscript -e 'install.packages("remotes", repos = "https://cloud.r-project.org")'
           Rscript -e 'remotes::install_github("geocompx/tmap", dependencies = NA, force = TRUE)'
-          # quarto render
-          # ls docs
+
       - name: Get Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
           version: 1.7.31
+
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@v2
       # - name: Publish to GitHub Pages (and render)
@@ -37,6 +51,7 @@ jobs:
       #     target: gh-pages
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # this secret is always available for github actions
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
