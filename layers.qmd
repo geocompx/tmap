@@ -47,10 +47,11 @@ The derived functions are built on top of the basic functions but with different
 
 ```{r}
 #| label: tbl-layers-table
+#| fig-cap: "Available map layers."
 #| echo: false
 #| warning: false
 #| message: false
-tinytable::tt(layers_df, caption = "Map layers.") |>
+tinytable::tt(layers_df) |>
   tinytable::group_tt(i = list("Basic functions" = 1, "Derived functions" = 8)) |>
   tinytable::style_tt(i = c(1, 9), color = "white", background = "gray", bold = TRUE) |>
   tinytable::style_tt(j = 1, monospace = TRUE)

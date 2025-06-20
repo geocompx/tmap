@@ -12,7 +12,7 @@ Thus, for example, when we provide a character variable's name to the `fill` arg
 
 However, we often want to have more control over how our spatial objects are presented on the map.
 For that purpose, the `tm_scale()` function has a set of related functions that can be used to modify and customize the used scale.
-@tbl-scale-table presents all available scale functions in **tmap** and @fig-scales shows examples of how some of them look like when applied to the same variable.
+@tbl-scale-table presents all available scale functions in **tmap**.
 
 <!-- table -->
 <!-- tmap_options()$scales.var -->
@@ -52,6 +52,8 @@ scales_df = tibble::tribble(
 tinytable::tt(scales_df) |>
   tinytable::style_tt(j = 1, monospace = TRUE)
 ```
+
+@fig-scales shows examples of how some of them look like when applied to the same variable.
 
 ```{r}
 #| echo: false

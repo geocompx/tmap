@@ -19,7 +19,6 @@ We recommend `sf` objects for vector data and `stars` objects for raster data^[H
 #| warning: false
 #| message: false
 library(tmap)
-library(dplyr)
 library(sf)
 library(stars)
 worldelevation = read_stars("data/worldelevation.tif")

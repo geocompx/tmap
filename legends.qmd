@@ -7,7 +7,6 @@ source("code/before_script.R")
 
 ```{r}
 #| message: false
-library(sf)
 library(stars)
 library(tmap)
 slo_elev = read_stars("data/slovenia/slo_elev.tif")

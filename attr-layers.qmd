@@ -29,9 +29,10 @@ We cover and demonstrate these functions in the following sections.
 
 ```{r}
 #| label: tbl-attr-layers-table
+#| fig-cap: "Attribute layers in **tmap**."
 #| echo: false
 #| warning: false
-tinytable::tt(attr_layers_df, caption = "Attribute layers.") |>
+tinytable::tt(attr_layers_df) |>
   tinytable::style_tt(j = 1, monospace = TRUE)
 # library(magrittr)
 # library(kableExtra)
