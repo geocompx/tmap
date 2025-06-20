@@ -531,35 +531,38 @@ Table&nbsp;10.1
 </figure>
 </div>
 </div>
+<p>For the examples in this section, we will use a simple map of the Slovenia polygon (not shown).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
 <span><span class="va">slo_borders</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_border.gpkg"</span><span class="op">)</span></span>
-<span><span class="va">slo_cities</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_cities.gpkg"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>For the examples in this section, we will use a simple map of the Slovenia polygon (not shown).</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="va">tm</span> <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">tm</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
 </div>
 <section id="sec-grid-lines" class="level2" data-number="10.1"><h2 data-number="10.1" class="anchored" data-anchor-id="sec-grid-lines">
 <span class="header-section-number">10.1</span> Grid lines</h2>
 <p>The <strong>tmap</strong> package offers two ways to draws coordinate lines - <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules()</a></code>. The role of <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid()</a></code> is to represent the input data’s coordinates. For example, the <code>slo_borders</code> object’s CRS is ETRS89-extended / LAEA Europe with the units in meters (<a href="#fig-grids-1" class="quarto-xref">Figure&nbsp;<span>10.1 (a)</span></a>), and thus the grid lines are in meters.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules()</a></code> shows longitude lines (meridians) and latitude lines (parallels), with degrees as units. This can be seen with the degree signs in the labels (<a href="#fig-grids-2" class="quarto-xref">Figure&nbsp;<span>10.1 (b)</span></a>).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Both, <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules()</a></code> can be placed above or below the map layers as their position on the map depends on their place in the code. When <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid()</a></code> or <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules()</a></code> is placed after the map layer (e.g., <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code>), the grid lines are plotted on the top of the map. On the other hand, when <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid()</a></code> or <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules()</a></code> is placed before the map layer code, the grid lines are plotted behind the spatial data (<a href="#fig-grids-3" class="quarto-xref">Figure&nbsp;<span>10.1 (c)</span></a>).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -608,7 +611,7 @@ Figure&nbsp;10.1: Examples of grid lines and graticules.
 <p>Scale bar is a graphic indicator of the relation between a distance on a map and the corresponding distance in the real world. Nowadays, it is more often used than a traditional representative fraction (e.g., 1:10000). Compared to the representative fraction, scale bars work correctly on variable screen sizes or different print sizes, as their sizes change together with the rest of the map.</p>
 <p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_scalebar.html">tm_scalebar()</a></code> function adds a scale bar. <!-- update the below statement:  --> <!-- By default, it tries to create a scale bar with the width of 1/4 of the whole map, and fills it with several breaks.  --> It is possible, however, to manually update the values of scale bar’s breaks with the <code>breaks</code> argument and its size with the <code>text.size</code> argument (<a href="#fig-scalebar" class="quarto-xref">Figure&nbsp;<span>10.2</span></a>).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scalebar.html">tm_scalebar</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">15</span>, <span class="fl">30</span><span class="op">)</span>, text.size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-scalebar" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -628,7 +631,7 @@ Figure&nbsp;10.2: A map with a customized scale bar.
 <p>North arrow, also known as a map compass or a compass rose, is a prominent orientation indicator pointing to which way is north<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. The decision on whether to use north arrows or not usually requires some critical thinking. While, it can be added to every map, north arrows are not always necessary – especially on maps of large areas (e.g., continents), where the cardinal directions are obvious for most people. The north arrow is, however, necessary when the north on the map is offset (rotated) and recommended when we want to help orient the map readers.</p>
 <p>We can use the <code><a href="https://r-tmap.github.io/tmap/reference/tm_compass.html">tm_compass()</a></code> function to add the north arrow. By default, its <em>north</em> is oriented toward the top of the map (the <code>north</code> argument of <code>0</code>), and the north arrow is represented by an actual arrow (the <code>type</code> argument of <code>"arrow"</code>). <strong>tmap</strong> offers also a few other north arrow types, including <code>"4star"</code> (<a href="#fig-northarrow" class="quarto-xref">Figure&nbsp;<span>10.3</span></a>), <code>"8star"</code>, <code>"radar"</code>, and <code>"rose"</code>. The north arrow can be also further customized with the <code>size</code>, <code>show.labels</code> and <code>cardinal.directions</code> arguments, and its colors may be modified (<code>text.color</code>, <code>color.dark</code>, <code>color.light</code>) (<a href="#fig-northarrow" class="quarto-xref">Figure&nbsp;<span>10.3</span></a>).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_compass.html">tm_compass</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"4star"</span>, size <span class="op">=</span> <span class="fl">2</span>, position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"top"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-northarrow" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -649,7 +652,7 @@ Figure&nbsp;10.3: A map with customized north arrow.
 <p>Text annotations, also known as map credits, are used to store additional information about the created map. They can include the source of data, the name of the author, the date of map creation, or information about the map projection.</p>
 <p>Text annotations are created with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits()</a></code> function, which can be used more than one time (<a href="#fig-credits" class="quarto-xref">Figure&nbsp;<span>10.4</span></a>).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits</a></span><span class="op">(</span><span class="st">"Data source: "</span>, fontface <span class="op">=</span> <span class="st">"italic"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits</a></span><span class="op">(</span><span class="st">"Author: "</span>, fontface <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -669,7 +672,7 @@ Figure&nbsp;10.4: A map with placeholders for text annotations.
 <p>Logos on maps can serve a similar purpose as text annotation or accompany them. They can represent your affiliation, funding institution, data sources logos, etc.</p>
 <p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_logo.html">tm_logo()</a></code> function adds png images, either from a file or url, to the map (<a href="#fig-logos" class="quarto-xref">Figure&nbsp;<span>10.5</span></a>).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_logo.html">tm_logo</a></span><span class="op">(</span><span class="st">"https://www.r-project.org/logo/Rlogo.png"</span>,</span>
 <span>          height <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_logo.html">tm_logo</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"https://www.r-project.org/logo/Rlogo.png"</span>,</span>
@@ -690,12 +693,12 @@ Figure&nbsp;10.5: A map with an array of R logos.
 </section><section id="sec-axis-labels" class="level2" data-number="10.6"><h2 data-number="10.6" class="anchored" data-anchor-id="sec-axis-labels">
 <span class="header-section-number">10.6</span> Axis labels</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_xlab.html">tm_xlab</a></span><span class="op">(</span><span class="st">"X"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_xlab.html">tm_ylab</a></span><span class="op">(</span><span class="st">"Y"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figure class="figure"><p><img src="figures/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -704,11 +707,11 @@ Figure&nbsp;10.5: A map with an array of R logos.
 </section><section id="sec-minimap" class="level2" data-number="10.7"><h2 data-number="10.7" class="anchored" data-anchor-id="sec-minimap">
 <span class="header-section-number">10.7</span> Minimap</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_mode.html">tmap_mode</a></span><span class="op">(</span><span class="st">"view"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_mode.html">tmap_mode</a></span><span class="op">(</span><span class="st">"view"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ℹ tmap mode set to "view".</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_minimap.html">tm_minimap</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="leaflet html-widget html-fill-item" id="htmlwidget-82e3410b7b7df3598bfe" style="width:100%;height:341.136px;"></div>
@@ -717,7 +720,7 @@ Figure&nbsp;10.5: A map with an array of R logos.
 </div>
 <!-- mention/reference inset maps -->
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_mode.html">tmap_mode</a></span><span class="op">(</span><span class="st">"plot"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_mode.html">tmap_mode</a></span><span class="op">(</span><span class="st">"plot"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; ℹ tmap mode set to "plot".</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 

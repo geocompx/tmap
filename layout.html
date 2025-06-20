@@ -417,19 +417,17 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
   
 
 
-</header><div class="cell" data-layout-align="center">
+</header><p>Map layout relates to all of the visual aspects of the created plot except the visual variables (<a href="visual-variables.html" class="quarto-xref"><span>Chapter 7</span></a>), legends (<a href="legends.html#sec-legends" class="quarto-xref"><span>Section 9.1</span></a>), and map components (<a href="attr-layers.html" class="quarto-xref"><span>Chapter 10</span></a>). It includes the map background, frame, typography, scale, aspect ratio, margins, and more.</p>
+<p>We can customize the map layout using the <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function. In this chapter, we cover the most often used arguments of this function using a map of Slovenia’s regions as an example (<a href="#fig-layout-example" class="quarto-xref">Figure&nbsp;<span>12.1</span></a>).</p>
+<!-- mention that is has tons of arguments -- we do not going to explain them all, but suggest to look at the help file, when needed -->
+<!-- maybe highlight that many layout arguments are valid for the plot mode only -->
+<div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
 <span><span class="va">slo_borders</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_border.gpkg"</span><span class="op">)</span></span>
 <span><span class="va">slo_regions</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_regions.gpkg"</span><span class="op">)</span></span>
-<span><span class="va">slo_cities</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_cities.gpkg"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<!-- tm_layout -->
-<!-- which features are the most important to explain? -->
-<!-- mention that is has tons of arguments -- we do not going to explain them all, but suggest to look at the help file, when needed -->
-<!-- maybe highlight that many layout arguments are valid for the plot mode only -->
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="va">slo_cities</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_cities.gpkg"</span><span class="op">)</span></span>
+<span><span class="va">tm</span> <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"region_group"</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -448,12 +446,11 @@ Figure&nbsp;12.1: A map of Slovenia with a default layout.
 </div>
 </div>
 </div>
-<!-- an introduction to the rest of the sections -->
 <section id="sec-lcolors" class="level2" data-number="12.1"><h2 data-number="12.1" class="anchored" data-anchor-id="sec-lcolors">
 <span class="header-section-number">12.1</span> Colors</h2>
 <p>The most basic map layout customization is the color of the map background. Actually, there are a few separate zones on the map that can be colored – it includes, among others, the map background, the outer space background, and the map legend background (<a href="#fig-layout-colors" class="quarto-xref">Figure&nbsp;<span>12.2</span></a>). They can be customized with the <code>bg.color</code>, <code>outer.bg.color</code>, and <code>legend.bg.color</code> arguments of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function. <!-- more similar arguments exist --> <!-- why it is needed --></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>bg.color <span class="op">=</span> <span class="st">"lightgreen"</span>,</span>
 <span>            outer.bg.color <span class="op">=</span> <span class="st">"forestgreen"</span>,</span>
 <span>            legend.bg.color <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -469,7 +466,7 @@ Figure&nbsp;12.2: Customized map layout colors: background, outer space, and leg
 </div>
 </div>
 <p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function also has tools to modify the complete map color style with arguments such as <code>color.saturation</code>, <code>color.sepia_intensity</code>, and <code>color_vision_deficiency_sim.</code> The first one represents the saturation of all colors on the map, including the backgrounds, as well as visual variables such as the fill or color of polygons and lines. The <code>color.saturation</code> parameter accepts a value between <code>0</code> and <code>1</code>, where <code>0</code> means no color saturation (i.e., the map is black and white), and <code>1</code> means full-color saturation (i.e., the map is colorful, default) (<a href="#fig-layout-saturation" class="quarto-xref">Figure&nbsp;<span>12.3</span></a>). <!-- why it is needed --></p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>color.saturation <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
 <span><span class="va">tm</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>color.saturation <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span></span>
@@ -515,7 +512,7 @@ Figure&nbsp;12.3: Impact of the <code>color.saturation</code> argument on the ma
 </figcaption></figure>
 </div>
 <p>The <code>color.sepia_intensity</code> argument allows to apply a sepia filter to the map. <!-- explain --> Its value can be set between <code>0</code> and <code>1</code>, where <code>0</code> means no sepia filter (i.e., the map is colorful, default), and <code>1</code> means full sepia filter (i.e., the map is brownish) (<a href="#fig-layout-sepia" class="quarto-xref">Figure&nbsp;<span>12.4</span></a>). <!-- color.sepia_intensity, 0-1  --> <!-- default: 0 --> <!-- why it is needed --></p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>color.sepia_intensity <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span></span>
 <span><span class="va">tm</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>color.sepia_intensity <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span></span>
@@ -609,20 +606,20 @@ Figure&nbsp;12.5: Impact of the <code>color_vision_deficiency_sim</code> argumen
 <span class="header-section-number">12.2</span> Frame</h2>
 <p>Another possibility to change the map look is to customize the frame around the map content. Its style depends on several arguments of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function. For example, <code>frame.color</code>, <code>frame.alpha</code>, and <code>frame.lwd</code> change the frame color, transparency (0-1), and line width, respectively (<a href="#fig-layout-frame-1" class="quarto-xref">Figure&nbsp;<span>12.6 (a)</span></a>). <!-- find a place in the book (or an appendix??) to explain what units are used for various elements, what do they mean, what are the ranges of values, etc. --></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>frame.color <span class="op">=</span> <span class="st">"black"</span>,</span>
 <span>            frame.alpha <span class="op">=</span> <span class="fl">0.6</span>,</span>
 <span>            frame.lwd <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Other arguments that can be used to customize the frame are <code>frame.r</code> and <code>frame.double_line</code> (<a href="#fig-layout-frame-2" class="quarto-xref">Figure&nbsp;<span>12.6 (b)</span></a>). The first one makes the corners of the frame rounded – the value of <code>0</code> means no rounding, while <code>30</code> means that the corners are rounded with a radius of 30. <!-- -- units? ranges of values? --> <!-- from 0 to 180? try 180 as a footnote? --> <!-- -- note that r can be specified to many other components< --> The second one allows to add a second frame line around the frame.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>frame.r <span class="op">=</span> <span class="fl">30</span>,</span>
 <span>            frame.double_line <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Finally, we can remove the frame completely by setting the <code>frame</code> argument to <code>FALSE</code> (<a href="#fig-layout-frame-3" class="quarto-xref">Figure&nbsp;<span>12.6 (c)</span></a>). <!-- explain when this is recommended or may be needed --></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>frame <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="fig-layout-frame" class="quarto-layout-panel">
@@ -715,7 +712,7 @@ Figure&nbsp;12.7: Basic font families, and font faces implemented in the tmap pa
 <!-- build-in fonts only -->
 <p>As mentioned before, available fonts depend on the computer setup (including operating system) and used graphic device. Fonts available on the operating system can be checked with the <code><a href="https://systemfonts.r-lib.org/reference/system_fonts.html">system_fonts()</a></code> function of the <strong>systemfonts</strong> package <span class="citation" data-cites="R-systemfonts">(<a href="references.html#ref-R-systemfonts" role="doc-biblioref">Pedersen, Ooms, and Govett 2021</a>)</span> (result not shown).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-lib/systemfonts">systemfonts</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-lib/systemfonts">systemfonts</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://systemfonts.r-lib.org/reference/system_fonts.html">system_fonts</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Information on installing and debugging custom fonts can be found in <a href="https://yjunechoe.github.io/posts/2021-06-24-setting-up-and-debugging-custom-fonts/">a blog post</a> by June Choe and in the <strong>showtext</strong> package <span class="citation" data-cites="R-showtext">(<a href="references.html#ref-R-showtext" role="doc-biblioref">Qiu and See file AUTHORS for details. 2021</a>)</span> documentation.</p>
@@ -725,7 +722,7 @@ Figure&nbsp;12.7: Basic font families, and font faces implemented in the tmap pa
 <!-- explain defaults -->
 <p>By default, <strong>tmap</strong> uses the <code>"sans"</code> font family with the <code>"plain"</code> font face (<a href="#fig-fonts" class="quarto-xref">Figure&nbsp;<span>12.7</span></a>). There are, however, three ways to customize the used fonts. The first one is to change all of the fonts and font faces for the whole map at once (<a href="#fig-mfonts-1" class="quarto-xref">Figure&nbsp;<span>12.8 (a)</span></a>). This can be done with the <code>text.fontfamily</code> and <code>text.fontface</code> arguments of <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span></span>
 <span>        text.fontface <span class="op">=</span> <span class="st">"italic"</span>,</span>
 <span>        text.fontfamily <span class="op">=</span> <span class="st">"serif"</span></span>
@@ -733,7 +730,7 @@ Figure&nbsp;12.7: Basic font families, and font faces implemented in the tmap pa
 </div>
 <p>The second way is to specify just some text elements independently (<a href="#fig-mfonts-2" class="quarto-xref">Figure&nbsp;<span>12.8 (b)</span></a>). Many <strong>tmap</strong> functions, such as <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text()</a></code> or <code><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits()</a></code>, have their own <code>fontfamily</code> and <code>fontface</code> arguments that can be adjusted. Additionally, <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> allows to customize fonts for other map elements using prefixed arguments, such as, <code>title.fontface</code> or <code>legend.title.fontfamily</code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span></span>
 <span>        title.fontface <span class="op">=</span> <span class="st">"bold.italic"</span>,</span>
 <span>        legend.title.fontfamily <span class="op">=</span> <span class="st">"monospace"</span></span>
@@ -819,7 +816,7 @@ Figure&nbsp;12.9: Impact of the scale argument on the map layout.
 <p>The design mode is useful to understand how the map is constructed and how the various arguments of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function impact the map layout.</p>
 <!-- info that this is limited to the plot mode? -->
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_design_mode.html">tmap_design_mode</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_design_mode.html">tmap_design_mode</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; design.mode: ON</span></span>
 <span><span class="va">tm</span></span>
 <span><span class="co">#&gt; ----------------W (in)--H (in)--asp---</span></span>
@@ -968,7 +965,7 @@ Figure&nbsp;12.13: Impact of the <code>outer.margins</code> argument on the map 
 <!-- panel.margin, -->
 <p>Now, as we have seen how the design mode can help us to understand the impact of various arguments of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function, we can turn it off.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_design_mode.html">tmap_design_mode</a></span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_design_mode.html">tmap_design_mode</a></span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; design.mode: OFF</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
