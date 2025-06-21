@@ -55,7 +55,6 @@ Both functions can take additional arguments to control the position more precis
 ```{r}
 #| echo: false
 #| message: false
-#| dpi: 150
 #| label: fig-positions-in-scheme
 #| fig-cap: "Examples of positioning map components inside the map frame."
 tm_shape(slo_elev) +
@@ -131,7 +130,6 @@ The `just.h` and `just.v` only work when the position is specified with numbers 
 #| eval: false
 #| echo: false
 #| message: false
-#| dpi: 150
 tm_shape(slo_elev) +
     tm_raster(col.legend = tm_legend(show = FALSE)) +
     tm_inset(b("pos.h = 0.5\npos.v = 0.5\nin center cell"),
@@ -151,7 +149,6 @@ The `align.h` and `align.v` arguments are used when many map components are grou
 ```{r}
 #| echo: false
 #| message: false
-#| dpi: 150
 #| fig-asp: 1
 #| label: fig-positions-out-scheme
 #| fig-cap: "Examples of positioning map components outside the map frame."
@@ -241,7 +238,6 @@ tm_shape(slo_elev) +
 #| eval: false
 #| echo: false
 #| message: false
-#| dpi: 150
 #| fig-asp: 1
 #| label: fig-positions-out-pos-scheme
 #| fig-cap: "Examples of positioning map components outside the map frame with different `pos.h` and `pos.v` arguments."

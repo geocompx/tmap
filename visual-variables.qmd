@@ -665,7 +665,7 @@ tm_shape(slo_cities) +
 #| label: fig-tmsymshape
 #| echo: false
 #| message: false
-#| layout-row: 4
+#| layout-row: 2
 #| fig-asp: 1.32
 #| fig-cap: 'Examples of maps with different symbols'
 #| fig-subcap:
