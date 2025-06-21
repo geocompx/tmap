@@ -1,9 +1,6 @@
 library(methods)
 library(webshot)
 library(ragg)
-ragg_png = function(..., res = 300) {
-  ragg::agg_png(..., res = res, units = "in")
-}
 
 knitr::opts_chunk$set(
   background = "#FCFCFC", # code chunk color in latex
@@ -15,12 +12,12 @@ knitr::opts_chunk$set(
   fig.align = "center",
   fig.retina = 2,
   # fig.height = 7,
-  fig.width = 6,
+  fig.width = 9,
   fig.asp = 0.618,  # 1 / phi
   fig.show = "hold",
+  # dpi = 150,
   out.width = "100%", #70%
   # dev.args = list(png = list(type = "cairo-png")),
-  # dev.args = list(png = list(type = "cairo")),
   dev = "ragg_png",
   optipng = "-o1 -quiet",
   widgetframe_widgets_dir = "widgets",
