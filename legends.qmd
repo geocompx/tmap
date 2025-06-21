@@ -184,8 +184,8 @@ tm_shape(slo_elev) +
 ```
 
 Titles could serve as a few roles. 
-They may provide a general description of the map content, such as the name of the area (@fig-title1-1).
-Titles can also be used to replace the legend title (@fig-title1-2) -- then the reader can interpret the map content based on the title, which is more prominent than the legend title.
+They may provide a general description of the map content, such as the name of the area (@fig-titles1-1).
+Titles can also be used to replace the legend title (@fig-titles1-2) -- then the reader can interpret the map content based on the title, which is more prominent than the legend title.
 
 ```{r}
 #| label: title2
