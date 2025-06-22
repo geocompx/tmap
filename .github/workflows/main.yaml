@@ -25,18 +25,7 @@ jobs:
           sudo apt-get install -y cargo optipng
 
       # Cache R packages
-      - name: Cache R packages
-        uses: actions/cache@v4
-        with:
-          path: ~/.local/share/R
-          key: ${{ runner.os }}-r-${{ hashFiles('**/*.R') }}
-          restore-keys: |
-            ${{ runner.os }}-r-
-
-      - name: Install R packages
-        run: |
-          Rscript -e 'install.packages("remotes", repos = "https://cloud.r-project.org")'
-          Rscript -e 'remotes::install_github("geocompx/tmap", dependencies = NA, force = TRUE)'
+      - uses: r-lib/actions/setup-r-dependencies@v2
 
       - name: Get Quarto
         uses: quarto-dev/quarto-actions/setup@v2
