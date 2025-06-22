@@ -157,10 +157,8 @@ The decision on whether to use north arrows or not usually requires some critica
 While, it can be added to every map, north arrows are not always necessary -- especially on maps of large areas (e.g., continents), where the cardinal directions are obvious for most people.
 The north arrow is, however, necessary when the north on the map is offset (rotated) and recommended when we want to help orient the map readers. 
 
-We can use the `tm_compass()` function to add the north arrow. 
+We can use the `tm_compass()` function to add the north arrow (@fig-northarrow). 
 By default, its *north* is oriented toward the top of the map (the `north` argument of `0`), and the north arrow is represented by an actual arrow (the `type` argument of `"arrow"`).
-**tmap** offers also a few other north arrow types, including `"4star"` (@fig-northarrow), `"8star"`, `"radar"`, and `"rose"`.
-The north arrow can be also further customized with the `size`, `show.labels` and `cardinal.directions` arguments, and its colors may be modified (`text.color`, `color.dark`, `color.light`) (@fig-northarrow).
 
 ```{r}
 #| label: fig-northarrow
@@ -169,12 +167,43 @@ tm +
   tm_compass(type = "4star", size = 2, position = c("left", "top"))
 ```
 
+**tmap** offers also a few other north arrow types, including `"arrow"`, `"4star"`, `"8star"`, `"radar"`, and `"rose"` (@fig-compasses).
+The north arrow can be also further customized with the `size`, `show.labels` and `cardinal.directions` arguments, and its colors may be modified (`text.color`, `color.dark`, `color.light`) (@fig-northarrow).
 The location of the north arrow, by default, is placed automatically, but can also be changed using the `position` argument.
 <!-- to update -->
 <!-- It expects a vector of two values, specifying the x and y coordinates. -->
 <!-- The x coordinate can be set with `"left"`, `"LEFT"`, `"center"`, `"right"`, or `"RIGHT"`, while the y coordinate uses `"top"`, `"TOP"`, `"center"`, `"bottom"`, or `"BOTTOM"`. -->
 <!-- The arguments with all letters uppercase result in a position closer to the map frame (without margins). -->
 <!-- Alternatively, `position` can be specified with numeric values between 0 and 1 representing the x and y value of the left bottom corner of the north arrow. -->
+
+```{r}
+#| label: fig-compasses
+#| fig-cap: "North arrow types"
+#| echo: false
+#| message: false
+#| fig-asp: 0.22
+library(tmap)
+data("World")
+tm_comp = tm_shape(World) +
+    tm_borders(col_alpha = 0) +
+    tm_credits('"arrow"', group_id = 1, z = 1, size = 1.25) +
+    tm_compass(type = "arrow", group_id = 1, z = 2, size = 5) + 
+    tm_credits('"4star"', group_id = 2, z = 1, size = 1.25) +
+    tm_compass(type = "4star", group_id = 2, z = 2, size = 5) +
+    tm_credits('"8star"', group_id = 3, z = 1, size = 1.25) +
+    tm_compass(type = "8star", group_id = 3, z = 2, size = 5) +
+    tm_credits('"radar"', group_id = 4, z = 1, size = 1.25) +
+    tm_compass(type = "radar", group_id = 4, z = 2, size = 5) +
+    tm_credits('"rose"', group_id = 5, z = 1, size = 1.25) +
+    tm_compass(type = "rose", group_id = 5, z = 2, size = 5) +
+    tm_components(1, position = tm_pos_in(0.0, 0.7, just.h = "left", align.h = "center")) +
+    tm_components(2, position = tm_pos_in(0.2, 0.7, just.h = "left", align.h = "center")) +
+    tm_components(3, position = tm_pos_in(0.4, 0.7, align.h = "center")) +
+    tm_components(4, position = tm_pos_in(0.6, 0.7, align.h = "center")) +
+    tm_components(5, position = tm_pos_in(0.8, 0.7, align.h = "center")) +
+    tm_layout(frame = FALSE)
+tm_comp
+```
 
 The `position` argument also works in the same way in other functions, such as `tm_scalebar()`, `tm_credits()`, `tm_logo()`, and in some of the `tm_layout()` arguments: `legend.position`, `title.position`, or `chart.position`.
 
