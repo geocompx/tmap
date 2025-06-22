@@ -629,7 +629,7 @@ Figure&nbsp;10.2: A map with a customized scale bar.
 </section><section id="sec-north-arrow" class="level2" data-number="10.3"><h2 data-number="10.3" class="anchored" data-anchor-id="sec-north-arrow">
 <span class="header-section-number">10.3</span> North arrow</h2>
 <p>North arrow, also known as a map compass or a compass rose, is a prominent orientation indicator pointing to which way is north<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. The decision on whether to use north arrows or not usually requires some critical thinking. While, it can be added to every map, north arrows are not always necessary – especially on maps of large areas (e.g., continents), where the cardinal directions are obvious for most people. The north arrow is, however, necessary when the north on the map is offset (rotated) and recommended when we want to help orient the map readers.</p>
-<p>We can use the <code><a href="https://r-tmap.github.io/tmap/reference/tm_compass.html">tm_compass()</a></code> function to add the north arrow. By default, its <em>north</em> is oriented toward the top of the map (the <code>north</code> argument of <code>0</code>), and the north arrow is represented by an actual arrow (the <code>type</code> argument of <code>"arrow"</code>). <strong>tmap</strong> offers also a few other north arrow types, including <code>"4star"</code> (<a href="#fig-northarrow" class="quarto-xref">Figure&nbsp;<span>10.3</span></a>), <code>"8star"</code>, <code>"radar"</code>, and <code>"rose"</code>. The north arrow can be also further customized with the <code>size</code>, <code>show.labels</code> and <code>cardinal.directions</code> arguments, and its colors may be modified (<code>text.color</code>, <code>color.dark</code>, <code>color.light</code>) (<a href="#fig-northarrow" class="quarto-xref">Figure&nbsp;<span>10.3</span></a>).</p>
+<p>We can use the <code><a href="https://r-tmap.github.io/tmap/reference/tm_compass.html">tm_compass()</a></code> function to add the north arrow (<a href="#fig-northarrow" class="quarto-xref">Figure&nbsp;<span>10.3</span></a>). By default, its <em>north</em> is oriented toward the top of the map (the <code>north</code> argument of <code>0</code>), and the north arrow is represented by an actual arrow (the <code>type</code> argument of <code>"arrow"</code>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_compass.html">tm_compass</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"4star"</span>, size <span class="op">=</span> <span class="fl">2</span>, position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"top"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -644,13 +644,25 @@ Figure&nbsp;10.3: A map with customized north arrow.
 </div>
 </div>
 </div>
-<p>The location of the north arrow, by default, is placed automatically, but can also be changed using the <code>position</code> argument. <!-- to update --> <!-- It expects a vector of two values, specifying the x and y coordinates. --> <!-- The x coordinate can be set with `"left"`, `"LEFT"`, `"center"`, `"right"`, or `"RIGHT"`, while the y coordinate uses `"top"`, `"TOP"`, `"center"`, `"bottom"`, or `"BOTTOM"`. --> <!-- The arguments with all letters uppercase result in a position closer to the map frame (without margins). --> <!-- Alternatively, `position` can be specified with numeric values between 0 and 1 representing the x and y value of the left bottom corner of the north arrow. --></p>
+<p><strong>tmap</strong> offers also a few other north arrow types, including <code>"arrow"</code>, <code>"4star"</code>, <code>"8star"</code>, <code>"radar"</code>, and <code>"rose"</code> (<a href="#fig-compasses" class="quarto-xref">Figure&nbsp;<span>10.4</span></a>). The north arrow can be also further customized with the <code>size</code>, <code>show.labels</code> and <code>cardinal.directions</code> arguments, and its colors may be modified (<code>text.color</code>, <code>color.dark</code>, <code>color.light</code>) (<a href="#fig-northarrow" class="quarto-xref">Figure&nbsp;<span>10.3</span></a>). The location of the north arrow, by default, is placed automatically, but can also be changed using the <code>position</code> argument. <!-- to update --> <!-- It expects a vector of two values, specifying the x and y coordinates. --> <!-- The x coordinate can be set with `"left"`, `"LEFT"`, `"center"`, `"right"`, or `"RIGHT"`, while the y coordinate uses `"top"`, `"TOP"`, `"center"`, `"bottom"`, or `"BOTTOM"`. --> <!-- The arguments with all letters uppercase result in a position closer to the map frame (without margins). --> <!-- Alternatively, `position` can be specified with numeric values between 0 and 1 representing the x and y value of the left bottom corner of the north arrow. --></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-compasses" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-compasses-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-compasses-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-compasses-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.4: North arrow types
+</figcaption></figure>
+</div>
+</div>
+</div>
 <p>The <code>position</code> argument also works in the same way in other functions, such as <code><a href="https://r-tmap.github.io/tmap/reference/tm_scalebar.html">tm_scalebar()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_logo.html">tm_logo()</a></code>, and in some of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> arguments: <code>legend.position</code>, <code>title.position</code>, or <code>chart.position</code>.</p>
 </section><section id="sec-text-annotation" class="level2" data-number="10.4"><h2 data-number="10.4" class="anchored" data-anchor-id="sec-text-annotation">
 <span class="header-section-number">10.4</span> Text annotation</h2>
 <!-- Text on maps serves many purposes - some are related to spatial objects (e.g., text labels, section \@ref(text)), while other are used to inform the map reader about the presented content (e.g., map title, section \@ref(layout-elements)). -->
 <p>Text annotations, also known as map credits, are used to store additional information about the created map. They can include the source of data, the name of the author, the date of map creation, or information about the map projection.</p>
-<p>Text annotations are created with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits()</a></code> function, which can be used more than one time (<a href="#fig-credits" class="quarto-xref">Figure&nbsp;<span>10.4</span></a>).</p>
+<p>Text annotations are created with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits()</a></code> function, which can be used more than one time (<a href="#fig-credits" class="quarto-xref">Figure&nbsp;<span>10.5</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits</a></span><span class="op">(</span><span class="st">"Data source: "</span>, fontface <span class="op">=</span> <span class="st">"italic"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -661,7 +673,7 @@ Figure&nbsp;10.3: A map with customized north arrow.
 <img src="figures/fig-credits-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-credits-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10.4: A map with placeholders for text annotations.
+Figure&nbsp;10.5: A map with placeholders for text annotations.
 </figcaption></figure>
 </div>
 </div>
@@ -670,7 +682,7 @@ Figure&nbsp;10.4: A map with placeholders for text annotations.
 </section><section id="sec-logo" class="level2" data-number="10.5"><h2 data-number="10.5" class="anchored" data-anchor-id="sec-logo">
 <span class="header-section-number">10.5</span> Logo</h2>
 <p>Logos on maps can serve a similar purpose as text annotation or accompany them. They can represent your affiliation, funding institution, data sources logos, etc.</p>
-<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_logo.html">tm_logo()</a></code> function adds png images, either from a file or url, to the map (<a href="#fig-logos" class="quarto-xref">Figure&nbsp;<span>10.5</span></a>).</p>
+<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_logo.html">tm_logo()</a></code> function adds png images, either from a file or url, to the map (<a href="#fig-logos" class="quarto-xref">Figure&nbsp;<span>10.6</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_logo.html">tm_logo</a></span><span class="op">(</span><span class="st">"https://www.r-project.org/logo/Rlogo.png"</span>,</span>
@@ -684,7 +696,7 @@ Figure&nbsp;10.4: A map with placeholders for text annotations.
 <img src="figures/fig-logos-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-logos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10.5: A map with an array of R logos.
+Figure&nbsp;10.6: A map with an array of R logos.
 </figcaption></figure>
 </div>
 </div>

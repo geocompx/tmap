@@ -628,7 +628,7 @@
     "href": "attr-layers.html#sec-north-arrow",
     "title": "10  Attributes layers",
     "section": "\n10.3 North arrow",
-    "text": "10.3 North arrow\nNorth arrow, also known as a map compass or a compass rose, is a prominent orientation indicator pointing to which way is north1. The decision on whether to use north arrows or not usually requires some critical thinking. While, it can be added to every map, north arrows are not always necessary – especially on maps of large areas (e.g., continents), where the cardinal directions are obvious for most people. The north arrow is, however, necessary when the north on the map is offset (rotated) and recommended when we want to help orient the map readers.\nWe can use the tm_compass() function to add the north arrow. By default, its north is oriented toward the top of the map (the north argument of 0), and the north arrow is represented by an actual arrow (the type argument of \"arrow\"). tmap offers also a few other north arrow types, including \"4star\" (Figure 10.3), \"8star\", \"radar\", and \"rose\". The north arrow can be also further customized with the size, show.labels and cardinal.directions arguments, and its colors may be modified (text.color, color.dark, color.light) (Figure 10.3).\n\ntm +\n  tm_compass(type = \"4star\", size = 2, position = c(\"left\", \"top\"))\n\n\n\n\n\n\nFigure 10.3: A map with customized north arrow.\n\n\n\n\nThe location of the north arrow, by default, is placed automatically, but can also be changed using the position argument.     \nThe position argument also works in the same way in other functions, such as tm_scalebar(), tm_credits(), tm_logo(), and in some of the tm_layout() arguments: legend.position, title.position, or chart.position.",
+    "text": "10.3 North arrow\nNorth arrow, also known as a map compass or a compass rose, is a prominent orientation indicator pointing to which way is north1. The decision on whether to use north arrows or not usually requires some critical thinking. While, it can be added to every map, north arrows are not always necessary – especially on maps of large areas (e.g., continents), where the cardinal directions are obvious for most people. The north arrow is, however, necessary when the north on the map is offset (rotated) and recommended when we want to help orient the map readers.\nWe can use the tm_compass() function to add the north arrow (Figure 10.3). By default, its north is oriented toward the top of the map (the north argument of 0), and the north arrow is represented by an actual arrow (the type argument of \"arrow\").\n\ntm +\n  tm_compass(type = \"4star\", size = 2, position = c(\"left\", \"top\"))\n\n\n\n\n\n\nFigure 10.3: A map with customized north arrow.\n\n\n\n\ntmap offers also a few other north arrow types, including \"arrow\", \"4star\", \"8star\", \"radar\", and \"rose\" (Figure 10.4). The north arrow can be also further customized with the size, show.labels and cardinal.directions arguments, and its colors may be modified (text.color, color.dark, color.light) (Figure 10.3). The location of the north arrow, by default, is placed automatically, but can also be changed using the position argument.     \n\n\n\n\n\n\n\nFigure 10.4: North arrow types\n\n\n\n\nThe position argument also works in the same way in other functions, such as tm_scalebar(), tm_credits(), tm_logo(), and in some of the tm_layout() arguments: legend.position, title.position, or chart.position.",
     "crumbs": [
       "Building blocks",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Attributes layers</span>"
@@ -639,7 +639,7 @@
     "href": "attr-layers.html#sec-text-annotation",
     "title": "10  Attributes layers",
     "section": "\n10.4 Text annotation",
-    "text": "10.4 Text annotation\n\nText annotations, also known as map credits, are used to store additional information about the created map. They can include the source of data, the name of the author, the date of map creation, or information about the map projection.\nText annotations are created with the tm_credits() function, which can be used more than one time (Figure 10.4).\n\ntm +\n  tm_credits(\"Data source: \", fontface = \"italic\") +\n  tm_credits(\"Author: \", fontface = \"bold\")\n\n\n\n\n\n\nFigure 10.4: A map with placeholders for text annotations.\n\n\n\n\nThe first argument of tm_credits() is the text, which can be spread over multiple lines with the line break symbol \\n. When the created map has several facets (Chapter 14), it is also possible to provide each facet a different text. In that case, a vector of characters is expected, where you can use \"\" to omit the credits for specific facets. Text annotations can also be further customized, by changing their sizes (size), colors (color), positions, and fonts (Section 12.3.3).",
+    "text": "10.4 Text annotation\n\nText annotations, also known as map credits, are used to store additional information about the created map. They can include the source of data, the name of the author, the date of map creation, or information about the map projection.\nText annotations are created with the tm_credits() function, which can be used more than one time (Figure 10.5).\n\ntm +\n  tm_credits(\"Data source: \", fontface = \"italic\") +\n  tm_credits(\"Author: \", fontface = \"bold\")\n\n\n\n\n\n\nFigure 10.5: A map with placeholders for text annotations.\n\n\n\n\nThe first argument of tm_credits() is the text, which can be spread over multiple lines with the line break symbol \\n. When the created map has several facets (Chapter 14), it is also possible to provide each facet a different text. In that case, a vector of characters is expected, where you can use \"\" to omit the credits for specific facets. Text annotations can also be further customized, by changing their sizes (size), colors (color), positions, and fonts (Section 12.3.3).",
     "crumbs": [
       "Building blocks",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Attributes layers</span>"
@@ -650,7 +650,7 @@
     "href": "attr-layers.html#sec-logo",
     "title": "10  Attributes layers",
     "section": "\n10.5 Logo",
-    "text": "10.5 Logo\nLogos on maps can serve a similar purpose as text annotation or accompany them. They can represent your affiliation, funding institution, data sources logos, etc.\nThe tm_logo() function adds png images, either from a file or url, to the map (Figure 10.5).\n\ntm +\n  tm_logo(\"https://www.r-project.org/logo/Rlogo.png\",\n          height = 2) +\n  tm_logo(c(\"https://www.r-project.org/logo/Rlogo.png\",\n            \"https://www.r-project.org/logo/Rlogo.png\"),\n          height = 1)\n\n\n\n\n\n\nFigure 10.5: A map with an array of R logos.\n\n\n\n\nThere are two ways to use multiple logos. Many tm_logo() functions will places logos on top of each other, while providing a vector of png files will show them next to each other. Additional arguments include the height of the logo (height, the width is scaled automatically) and its position (position).",
+    "text": "10.5 Logo\nLogos on maps can serve a similar purpose as text annotation or accompany them. They can represent your affiliation, funding institution, data sources logos, etc.\nThe tm_logo() function adds png images, either from a file or url, to the map (Figure 10.6).\n\ntm +\n  tm_logo(\"https://www.r-project.org/logo/Rlogo.png\",\n          height = 2) +\n  tm_logo(c(\"https://www.r-project.org/logo/Rlogo.png\",\n            \"https://www.r-project.org/logo/Rlogo.png\"),\n          height = 1)\n\n\n\n\n\n\nFigure 10.6: A map with an array of R logos.\n\n\n\n\nThere are two ways to use multiple logos. Many tm_logo() functions will places logos on top of each other, while providing a vector of png files will show them next to each other. Additional arguments include the height of the logo (height, the width is scaled automatically) and its position (position).",
     "crumbs": [
       "Building blocks",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Attributes layers</span>"
@@ -826,7 +826,7 @@
     "href": "small-multiples.html",
     "title": "14  Small multiples",
     "section": "",
-    "text": "14.1 Vector data",
+    "text": "14.1 Vector data\nlibrary(sf)\nlibrary(tmap)\nslo_borders = read_sf(\"data/slovenia/slo_border.gpkg\")\nslo_regions_ts = read_sf(\"data/slovenia/slo_regions_ts.gpkg\")\ntm_shape(slo_borders) +\n  tm_borders() +\n  tm_shape(slo_regions_ts) +\n  tm_fill(\"gdppercap\") +\n  tm_facets(by = \"time\", ncol = 5)",
     "crumbs": [
       "Expanding the toolbox",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Small multiples</span>"
@@ -841,6 +841,17 @@
     "crumbs": [
       "Expanding the toolbox",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Small multiples</span>"
+    ]
+  },
+  {
+    "objectID": "animations.html",
+    "href": "animations.html",
+    "title": "15  Animations",
+    "section": "",
+    "text": "library(sf)\nlibrary(tmap)\nslo_borders = read_sf(\"data/slovenia/slo_border.gpkg\")\nslo_regions_ts = read_sf(\"data/slovenia/slo_regions_ts.gpkg\")\n\n\ntma1 = tm_shape(slo_borders) +\n  tm_borders() +\n  tm_shape(slo_regions_ts) +\n  tm_polygons(\"gdppercap\") +\n  tm_animate_slow(by = \"time\", play = \"pingpong\")\n\n\ntmap_animation(tma1, \"tma1.gif\")",
+    "crumbs": [
+      "Expanding the toolbox",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Animations</span>"
     ]
   },
   {
