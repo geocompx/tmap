@@ -2,8 +2,10 @@ library(methods)
 library(webshot)
 library(ragg)
 
-knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
-knitr::knit_hooks$set(optipng = knitr::hook_optipng)
+knitr::knit_hooks$set(
+  crop = knitr::hook_pdfcrop,
+  optipng = knitr::hook_optipng
+)
 
 knitr::opts_chunk$set(
   background = "#FCFCFC", # code chunk color in latex
