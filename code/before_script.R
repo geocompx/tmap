@@ -2,6 +2,9 @@ library(methods)
 library(webshot)
 library(ragg)
 
+knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
+knitr::knit_hooks$set(optipng = knitr::hook_optipng)
+
 knitr::opts_chunk$set(
   background = "#FCFCFC", # code chunk color in latex
   comment = "#>",
@@ -24,7 +27,6 @@ knitr::opts_chunk$set(
   screenshot.opt = list(delay = 0.3)
 )
 
-knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 
 if(!knitr:::is_html_output()){
   options("width" = 56)
