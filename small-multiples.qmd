@@ -5,7 +5,35 @@ source("code/before_script.R")
 
 # Small multiples {#sec-multiples}
 
+<!-- tm_facets() -->
+<!-- tm_facets_grid(rows = NULL, columns = NULL, pages = NULL, ...) -->
+<!-- tm_facets_wrap(by = "VARS__", nrow = NA, ncol = NA, byrow = TRUE, ...) -->
+<!-- tm_facets_pagewise(by = "VARS__", byrow = TRUE, ...) -->
+<!-- tm_facets_stack(by = "VARS__", orientation = NA, ...) -->
+<!-- tm_facets_hstack(by = "VARS__", ...) -->
+<!-- tm_facets_vstack(by = "VARS__", ...) -->
+<!-- tm_facets_flip(...) -->
+
+<!-- where to put tmap_arrange? -->
+
 ## Vector data
+
+```{r}
+#| eval: false
+library(sf)
+library(tmap)
+slo_borders = read_sf("data/slovenia/slo_border.gpkg")
+slo_regions_ts = read_sf("data/slovenia/slo_regions_ts.gpkg")
+```
+
+```{r}
+#| eval: false
+tm_shape(slo_borders) +
+  tm_borders() +
+  tm_shape(slo_regions_ts) +
+  tm_fill("gdppercap") +
+  tm_facets(by = "time", ncol = 5)
+```
 
 ## Raster data
 
