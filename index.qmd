@@ -10,7 +10,7 @@ We encourage contributions on any part of the book, including:
 
 - Improvements to the text, e.g., clarifying unclear sentences, fixing typos
 - Changes to the code
-- Suggestions on content (see [the project’s issue tracker](https://github.com/r-tmap/tmap-book/issues))
+- Suggestions on content (see [the project’s issue tracker](https://github.com/geocompx/tmap/issues))
 
 ## Additional information {-}
 
@@ -26,7 +26,6 @@ The code samples in this book are licensed under a [Creative Commons CC0 1.0 Uni
 [cc-by-nc-nd-image]: https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png
 [cc0]: https://creativecommons.org/publicdomain/zero/1.0/  
 [cc0-image]: https://i.creativecommons.org/l/zero/1.0/88x31.png  
-
 
 ```{r}
 #| echo: false
