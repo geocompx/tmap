@@ -27,7 +27,7 @@ tm = tm_shape(slo_borders) +
     tm_polygons() +
     tm_shape(slo_regions) +
     tm_polygons(fill = "region_group") + 
-    tm_text(text = "NUTS_NAME", size = "population") +
+    tm_text(text = "region_name", size = "population") +
     tm_credits("Data source: GISCO Eurostat database", fontface = "bold") +
     tm_title("Slovenia")
 tm
