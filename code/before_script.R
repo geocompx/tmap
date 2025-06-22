@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
   out.width = "100%", #70%
   # dev.args = list(png = list(type = "cairo-png")),
   dev = "ragg_png",
-  optipng = "-o1 -quiet",
+  optipng = "-o2 -quiet",
   widgetframe_widgets_dir = "widgets",
   screenshot.opt = list(delay = 0.3)
 )
