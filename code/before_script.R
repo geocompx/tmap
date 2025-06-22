@@ -1,6 +1,8 @@
 library(methods)
 library(webshot)
 library(ragg)
+set.seed(2020-05-06)
+options(digits = 3)
 
 knitr::knit_hooks$set(
   crop = knitr::hook_pdfcrop,
@@ -29,15 +31,11 @@ knitr::opts_chunk$set(
   screenshot.opt = list(delay = 0.3)
 )
 
-
 if(!knitr:::is_html_output()){
   options("width" = 56)
   knitr::opts_chunk$set(tidy.opts = list(width.cutoff = 56, indent = 2),
                         tidy = TRUE)
 }
-
-set.seed(2020-05-06)
-options(digits = 3)
 
 view_map = function(x, name){
   if (knitr::is_latex_output()){
