@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.7.31">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="This book teaches how to make elegant and informative maps with the R package tmap.">
-<title>10&nbsp; Attributes layers – Elegant and informative maps with **tmap**</title>
+<title>10&nbsp; Map components – Elegant and informative maps with **tmap**</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -119,7 +119,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tm-shape.html">Building blocks</a></li><li class="breadcrumb-item"><a href="./attr-layers.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Attributes layers</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tm-shape.html">Building blocks</a></li><li class="breadcrumb-item"><a href="./map-components.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Map components</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -225,8 +225,8 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./attr-layers.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Attributes layers</span></span></a>
+  <a href="./map-components.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Map components</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -382,11 +382,11 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
   <li><a href="#sec-logo" id="toc-sec-logo" class="nav-link" data-scroll-target="#sec-logo"><span class="header-section-number">10.6</span> Logo</a></li>
   <li><a href="#sec-inset-maps" id="toc-sec-inset-maps" class="nav-link" data-scroll-target="#sec-inset-maps"><span class="header-section-number">10.7</span> Inset maps</a></li>
   <li><a href="#sec-minimap" id="toc-sec-minimap" class="nav-link" data-scroll-target="#sec-minimap"><span class="header-section-number">10.8</span> Minimap</a></li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/attr-layers.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/map-components.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tm-shape.html">Building blocks</a></li><li class="breadcrumb-item"><a href="./attr-layers.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Attributes layers</span></a></li></ol></nav><div class="quarto-title">
-<h1 class="title"><span id="sec-attributes-layers" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Attributes layers</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tm-shape.html">Building blocks</a></li><li class="breadcrumb-item"><a href="./map-components.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Map components</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title"><span id="sec-map-components" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Map components</span></span></h1>
 </div>
 
 <!--
@@ -402,7 +402,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
   
 
 
-</header><p>Attribute layers are map components that are not directly related to the data-driven map layers while providing additional information or context to the map. They are not tied to the map’s coordinates but rather to the map’s layout and design. <a href="#tbl-attr-layers-table" class="quarto-xref">Table&nbsp;<span>10.1</span></a> shows the list of available attribute layers in <strong>tmap</strong>. It includes functions that draw coordinate grid lines, latitude and longitude graticules, scale bars, north arrows, text annotations, logos, axis labels, and minimaps. We cover and demonstrate these functions in the following sections.</p>
+</header><p>Map components are visual elements that are not directly related to the data-driven map layers while providing additional information or context to the map. They are not tied to the map’s coordinates but rather to the map’s layout and design. <a href="#tbl-attr-layers-table" class="quarto-xref">Table&nbsp;<span>10.1</span></a> shows the list of available map components in <strong>tmap</strong>. It includes functions that draw coordinate grid lines, latitude and longitude graticules, scale bars, north arrows, text annotations, logos, axis labels, and minimaps. We cover and demonstrate these functions in the following sections.</p>
 <div class="cell" data-layout-align="center">
 <div id="tbl-attr-layers-table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-attr-layers-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -536,7 +536,7 @@ Table&nbsp;10.1
 </table>
 </div>
 <!-- hack to avoid NA insertion in last line -->
-<p>Attribute layers in <strong>tmap</strong>.</p>
+<p>Map components in <strong>tmap</strong>.</p>
 </div>
 </div>
 </figure>
@@ -1170,7 +1170,7 @@ Figure&nbsp;10.6: A map with an array of R logos.
     </div>   
     <div class="nav-footer-center">
 <p>Elegant and informative maps with <strong>tmap</strong> by Martijn Tennekes and Jakub Nowosad.</p>
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/attr-layers.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/map-components.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
