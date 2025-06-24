@@ -3,7 +3,8 @@ project:
   output-dir: docs
 
 execute:
-  cache: true
+  # cache: true
+  freeze: auto # only changed files are re-executed
 
 book:
   title: "Elegant and informative maps with **tmap**"
