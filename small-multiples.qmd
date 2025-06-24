@@ -14,7 +14,7 @@ source("code/before_script.R")
 <!-- tm_facets_vstack(by = "VARS__", ...) -->
 <!-- tm_facets_flip(...) -->
 
-<!-- where to put tmap_arrange? -->
+<!-- tm_xlab and tm_ylab for better labels -->
 
 ## Vector data
 
@@ -38,6 +38,3 @@ tm_shape(slo_borders) +
 ## Raster data
 
 <!-- show how to add colors independently to each raster panel -->
-
-
-<!-- adding a one chapter before this one on tmap_arrange and tm_inset?? (or including tm_inset in attributes?) -->
