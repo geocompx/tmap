@@ -82,7 +82,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./charts.html" rel="next">
+<link href="./map-projections.html" rel="next">
 <link href="./positions.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -269,38 +269,44 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./map-projections.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Map projections</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./charts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Charts</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Charts</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./small-multiples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Small multiples</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Small multiples</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./arrangements.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Arranging maps</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Arranging maps</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./animations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Animations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Animations</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./interactive.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Interactive settings</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Interactive settings</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./shiny.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
   </div>
 </li>
       </ul>
@@ -317,13 +323,13 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./options.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">tmap options</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">tmap options</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./extensions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Extensions</span></span></a>
+  <a href="./creating-extensions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Creating extensions</span></span></a>
   </div>
 </li>
       </ul>
@@ -340,7 +346,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./good-maps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">How to make good maps?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">How to make good maps?</span></span></a>
   </div>
 </li>
       </ul>
@@ -935,7 +941,7 @@ Figure&nbsp;12.12: Impact of the <code>inner.margins</code> argument on the map 
 </figcaption></figure>
 </div>
 <!-- outer.margins, -->
-<p>Outer margins are spaces between the map frame and the plotting area (<a href="#fig-outer-margins" class="quarto-xref">Figure&nbsp;<span>12.13</span></a>). By default, they are always set to <code>c(0.02, 0.02, 0.02, 0.02)</code>, which means that there is a 2% margin outside of the map frame – giving a small “breathing space” around the map (<a href="#fig-layout-example" class="quarto-xref">Figure&nbsp;<span>12.1</span></a>). We can increase it on a specific side, for example, to create more space for the legend or other map elements or we can remove it completely to, for example, arrange the map in a grid with other maps (<a href="arrangements.html" class="quarto-xref"><span>Chapter 15</span></a>) (<a href="#fig-outer-margins" class="quarto-xref">Figure&nbsp;<span>12.13</span></a>). <!-- interplay between margins and plotting device dimensions --></p>
+<p>Outer margins are spaces between the map frame and the plotting area (<a href="#fig-outer-margins" class="quarto-xref">Figure&nbsp;<span>12.13</span></a>). By default, they are always set to <code>c(0.02, 0.02, 0.02, 0.02)</code>, which means that there is a 2% margin outside of the map frame – giving a small “breathing space” around the map (<a href="#fig-layout-example" class="quarto-xref">Figure&nbsp;<span>12.1</span></a>). We can increase it on a specific side, for example, to create more space for the legend or other map elements or we can remove it completely to, for example, arrange the map in a grid with other maps (<a href="arrangements.html" class="quarto-xref"><span>Chapter 16</span></a>) (<a href="#fig-outer-margins" class="quarto-xref">Figure&nbsp;<span>12.13</span></a>). <!-- interplay between margins and plotting device dimensions --></p>
 <div id="fig-outer-margins" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-outer-margins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
@@ -1403,8 +1409,8 @@ Qiu, Yixuan, and authors/contributors of the included software. See file AUTHORS
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./charts.html" class="pagination-link" aria-label="Charts">
-        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Charts</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./map-projections.html" class="pagination-link" aria-label="Map projections">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Map projections</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -254,38 +254,44 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./map-projections.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Map projections</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./charts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Charts</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Charts</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./small-multiples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Small multiples</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Small multiples</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./arrangements.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Arranging maps</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Arranging maps</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./animations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Animations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Animations</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./interactive.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Interactive settings</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Interactive settings</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./shiny.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
   </div>
 </li>
       </ul>
@@ -302,13 +308,13 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./options.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">tmap options</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">tmap options</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./extensions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Extensions</span></span></a>
+  <a href="./creating-extensions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Creating extensions</span></span></a>
   </div>
 </li>
       </ul>
@@ -325,7 +331,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./good-maps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">How to make good maps?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">How to make good maps?</span></span></a>
   </div>
 </li>
       </ul>
@@ -689,7 +695,7 @@ Figure&nbsp;10.5: A map with placeholders for text annotations.
 </div>
 </div>
 </div>
-<p>The first argument of <code><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits()</a></code> is the text, which can be spread over multiple lines with the line break symbol <code>\n</code>. When the created map has several facets (<a href="small-multiples.html" class="quarto-xref"><span>Chapter 14</span></a>), it is also possible to provide each facet a different text. In that case, a vector of characters is expected, where you can use <code>""</code> to omit the credits for specific facets. Text annotations can also be further customized, by changing their sizes (<code>size</code>), colors (<code>color</code>), positions, and fonts (<a href="layout.html#sec-fonts-on-maps" class="quarto-xref"><span>Section 12.3.3</span></a>).</p>
+<p>The first argument of <code><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits()</a></code> is the text, which can be spread over multiple lines with the line break symbol <code>\n</code>. When the created map has several facets (<a href="small-multiples.html" class="quarto-xref"><span>Chapter 15</span></a>), it is also possible to provide each facet a different text. In that case, a vector of characters is expected, where you can use <code>""</code> to omit the credits for specific facets. Text annotations can also be further customized, by changing their sizes (<code>size</code>), colors (<code>color</code>), positions, and fonts (<a href="layout.html#sec-fonts-on-maps" class="quarto-xref"><span>Section 12.3.3</span></a>).</p>
 </section><section id="sec-axis-labels" class="level2" data-number="10.5"><h2 data-number="10.5" class="anchored" data-anchor-id="sec-axis-labels">
 <span class="header-section-number">10.5</span> Axis labels</h2>
 <p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_xlab.html">tm_xlab()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_xlab.html">tm_ylab()</a></code> functions add x and y axis labels to the map.</p>

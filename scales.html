@@ -269,38 +269,44 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./map-projections.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Map projections</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./charts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Charts</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Charts</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./small-multiples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Small multiples</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Small multiples</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./arrangements.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Arranging maps</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Arranging maps</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./animations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Animations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Animations</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./interactive.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Interactive settings</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Interactive settings</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./shiny.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
   </div>
 </li>
       </ul>
@@ -317,13 +323,13 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./options.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">tmap options</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">tmap options</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./extensions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Extensions</span></span></a>
+  <a href="./creating-extensions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Creating extensions</span></span></a>
   </div>
 </li>
       </ul>
@@ -340,7 +346,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./good-maps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">How to make good maps?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">How to make good maps?</span></span></a>
   </div>
 </li>
       </ul>
@@ -885,7 +891,7 @@ Figure&nbsp;8.8: Two color composite images
 <!-- explain tm_vars above! -->
 </section><section id="sec-bivariate-scales" class="level2" data-number="8.9"><h2 data-number="8.9" class="anchored" data-anchor-id="sec-bivariate-scales">
 <span class="header-section-number">8.9</span> Bivariate scales</h2>
-<p> In cases when we have two variables that we want to visualize, the most common approach is to create two separate maps, one for each variable (<a href="#fig-bivariate-scales1" class="quarto-xref">Figure&nbsp;<span>8.9</span></a>). We can do that using the <code>tm_vars()</code> function, which allows us to specify multiple variables (see the code below) or with the facet functions (see <a href="small-multiples.html" class="quarto-xref"><span>Chapter 14</span></a>).</p>
+<p> In cases when we have two variables that we want to visualize, the most common approach is to create two separate maps, one for each variable (<a href="#fig-bivariate-scales1" class="quarto-xref">Figure&nbsp;<span>8.9</span></a>). We can do that using the <code>tm_vars()</code> function, which allows us to specify multiple variables (see the code below) or with the facet functions (see <a href="small-multiples.html" class="quarto-xref"><span>Chapter 15</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="fu">tm_vars</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"pop_dens"</span>, <span class="st">"pop65perc"</span><span class="op">)</span><span class="op">)</span>,</span>
