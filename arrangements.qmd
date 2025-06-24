@@ -6,3 +6,44 @@ source("code/before_script.R")
 # Arranging maps {#sec-arranging-maps}
 
 <!-- tmap_grob? -->
+
+```{r}
+library(tmap)
+```
+
+```{r}
+library(sf)
+slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
+tm1 = tm_shape(slo_regions) +
+  tm_fill("gdppercap") +
+  tm_borders() +
+  tm_title("GDP per capita in Slovenia")
+```
+
+```{r}
+library(stars)
+slo_elev = read_stars("data/slovenia/slo_elev.tif")
+tm2 = tm_shape(slo_elev) +
+  tm_raster() +
+  tm_borders() +
+  tm_title("Elevation in Slovenia")
+```
+
+<!-- nrow, -->
+<!-- ncol -->
+
+```{r}
+tmap_arrange(tm1, tm2, nrow = 2)
+```
+
+<!-- widths, heights -->
+<!-- any better example idea? -->
+
+```{r}
+tmap_arrange(tm1, tm2, nrow = 2, heights = c(0.8, 0.2))
+```
+
+<!-- reexplain asp -->
+
+<!-- tmap view mode (sync) -->
+<!-- tmap_save -->
