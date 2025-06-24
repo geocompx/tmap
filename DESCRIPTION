@@ -1,7 +1,7 @@
 Package: tmapbook
 Type: Book
 Title: Elegant and informative maps with tmap
-Version: 0.0.6
+Version: 0.0.7
 Imports: 
   tmaptools,
   tmap,
@@ -14,7 +14,8 @@ Imports:
   tinytable,
   curl,
   viridis,
-  webshot
+  webshot,
+  gifski
 Remotes: 
   r-tmap/tmaptools,
   r-tmap/tmap,
