@@ -1,13 +1,7 @@
 ---
 title: "The tmap book style"
 author: "Martijn Tennekes, Jakub Nowosad"
-date: "`r Sys.Date()`"
-output: html_document
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 # Text
 
@@ -40,7 +34,7 @@ Use capital first letter for full-line comment:
 x = 1:9
 ```
 
-Do not capitalise comment for end-of-line comment:
+Do not capitalize comment for end-of-line comment:
 
 ```r
 y = x^2 # square of x
@@ -66,5 +60,4 @@ Zotero?
 
 # More information
 
-- https://bookdown.org/yihui/bookdown/
-- https://bookdown.org/yihui/rmarkdown/books.html
+- https://quarto.org/docs/books/

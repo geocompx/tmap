@@ -1,14 +1,8 @@
 ---
-title: "The tmap book outline"
+title: "The tmap book outline (ideas from 2021)"
 author: "Martijn Tennekes, Jakub Nowosad"
-date: "`r Sys.Date()`"
-output: html_document
 ---
   
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 # Draft outline
 
 1. Introduction
