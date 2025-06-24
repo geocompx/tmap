@@ -42,7 +42,8 @@ book:
         - "positions.qmd"
         - "layout.qmd" 
     - part: "Expanding the toolbox"
-      chapters: 
+      chapters:
+        - "map-projections.qmd"
         - "charts.qmd"
         - "small-multiples.qmd"
         - "arrangements.qmd"
