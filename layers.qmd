@@ -47,7 +47,7 @@ The derived functions are built on top of the basic functions but with different
 
 ```{r}
 #| label: tbl-layers-table
-#| fig-cap: "Available map layers."
+#| tbl-cap: "Available map layers."
 #| echo: false
 #| warning: false
 #| message: false

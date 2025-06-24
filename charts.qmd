@@ -21,7 +21,7 @@ charts_df = tibble::tribble(
 
 ```{r}
 #| label: tbl-layers-table
-#| fig-cap: "Available chart types."
+#| tbl-cap: "Available chart types."
 #| echo: false
 #| warning: false
 #| message: false
@@ -30,6 +30,7 @@ tinytable::tt(charts_df) |>
 ```
 
 ```{r}
+#| message: false
 library(tmap)
 library(sf)
 slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
