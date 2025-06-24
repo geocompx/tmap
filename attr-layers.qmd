@@ -13,10 +13,11 @@ attr_layers_df = tibble::tribble(
   "tm_graticules()", "draws latitude and longitude graticules", 
   "tm_scalebar()", "adds a scale bar", 
   "tm_compass()", "adds a compass rose (north arrow)", 
-  "tm_credits()", "adds a text annotation", 
-  "tm_logo()", "adds a logo",
+  "tm_credits()", "adds a text annotation",
   "tm_xlab()", "adds an x axis labels", 
   "tm_ylab()", "adds an y axis labels",
+  "tm_logo()", "adds a logo",
+  "tm_inset", "adds an inset map or plot",
   "tm_minimap()", "adds minimap in the view mode only"
 )
 ```
@@ -228,6 +229,18 @@ When the created map has several facets (@sec-multiples), it is also possible to
 In that case, a vector of characters is expected, where you can use `""` to omit the credits for specific facets.
 Text annotations can also be further customized, by changing their sizes (`size`), colors (`color`), positions, and fonts (@sec-fonts-on-maps).
 
+## Axis labels {#sec-axis-labels}
+
+The `tm_xlab()` and `tm_ylab()` functions add x and y axis labels to the map.
+
+```{r}
+tm +
+  tm_xlab("X") +
+  tm_ylab("Y")
+```
+
+<!-- Martijn when this is useful? -->
+
 ## Logo {#sec-logo}
 
 Logos on maps can serve a similar purpose as text annotation or accompany them.
@@ -250,15 +263,8 @@ There are two ways to use multiple logos.
 Many `tm_logo()` functions will places logos on top of each other, while providing a vector of png files will show them next to each other.
 Additional arguments include the height of the logo (`height`, the width is scaled automatically) and its position (`position`).
 
-## Axis labels {#sec-axis-labels}
+## Inset maps {#sec-inset-maps}
 
-```{r}
-tm +
-  tm_xlab("X") +
-  tm_ylab("Y")
-```
-
-<!-- when this is useful? -->
 
 ## Minimap {#sec-minimap}
 
