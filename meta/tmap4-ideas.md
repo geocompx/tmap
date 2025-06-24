@@ -43,7 +43,7 @@ More info at https://github.com/r-tmap/tmap/issues/338.
 # Other
 
 1. Revise default colors, sizes, etc.
-1. Replace the `is.main` by `is.main`
+1. Replace the `is.master` by `is.main`
 1. Decide on the **tmap** hex logo
 1. Bivariate/multivariate color palettes (https://github.com/r-tmap/tmap/issues/183)
 1. Add possibility to fill polygons with pattern (https://github.com/r-tmap/tmap/issues/49)
