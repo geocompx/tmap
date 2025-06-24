@@ -37,7 +37,7 @@ book:
         - "visual-variables.qmd" 
         - "scales.qmd"
         - "legends.qmd"
-        - "attr-layers.qmd"
+        - "map-components.qmd"
         - "positions.qmd"
         - "layout.qmd" 
     - part: "Expanding the toolbox"

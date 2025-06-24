@@ -37,7 +37,7 @@ knitr::opts_chunk$set(echo = TRUE)
     5. raster
 6. Other map types*cartogram,geogrid*
 7. Layout
-    1. attribute layers *compass, scale bar, etc*
+    1. map components *compass, scale bar, etc*
     2. styles
     3. (advanced) margins and aspect ratio *asp, inner-, outer-margins, design.mode*
 8. Interactive settings

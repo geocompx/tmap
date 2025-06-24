@@ -5,7 +5,7 @@ source("code/before_script.R")
 
 # Map layout {#sec-map-layout}
 
-Map layout relates to all of the visual aspects of the created plot except the visual variables (@sec-visual-variables), legends (@sec-legends), and map components (@sec-attributes-layers).
+Map layout relates to all of the visual aspects of the created plot except the visual variables (@sec-visual-variables), legends (@sec-legends), and map components (@sec-map-components).
 It includes the map background, frame, typography, scale, aspect ratio, margins, and more.
 
 We can customize the map layout using the `tm_layout()` function.
@@ -188,7 +188,7 @@ tm +
 The decision about the used fonts is often neglected when creating programmable plots and maps.
 Most often, the default fonts are used in these kinds of graphs.
 This, however, could be a missed opportunity.
-A lot of map information is expressed by text, including text labels (@sec-text), legend labels, text in attribute layers (@sec-attributes-layers), or the map title (@sec-layout-elements).
+A lot of map information is expressed by text, including text labels (@sec-text), legend labels, text in map components (@sec-map-components), or the map title (@sec-layout-elements).
 The used fonts impact the tone of the map [@guidero_typography_2017], and their customization allows for a map to stand out from maps using default options.
 
 <!-- role of font faces and font families: -->

@@ -3,7 +3,7 @@
 source("code/before_script.R")
 ```
 
-# Attributes layers {#sec-attributes-layers}
+# Map components {#sec-map-components}
 
 ```{r}
 #| echo: false
@@ -22,15 +22,15 @@ attr_layers_df = tibble::tribble(
 )
 ```
 
-Attribute layers are map components that are not directly related to the data-driven map layers while providing additional information or context to the map.
+Map components are visual elements that are not directly related to the data-driven map layers while providing additional information or context to the map.
 They are not tied to the map's coordinates but rather to the map's layout and design.
-@tbl-attr-layers-table shows the list of available attribute layers in **tmap**.
+@tbl-attr-layers-table shows the list of available map components in **tmap**.
 It includes functions that draw coordinate grid lines, latitude and longitude graticules, scale bars, north arrows, text annotations, logos, axis labels, and minimaps.
 We cover and demonstrate these functions in the following sections.
 
 ```{r}
 #| label: tbl-attr-layers-table
-#| fig-cap: "Attribute layers in **tmap**."
+#| fig-cap: "Map components in **tmap**."
 #| echo: false
 #| warning: false
 tinytable::tt(attr_layers_df) |>
@@ -39,8 +39,8 @@ tinytable::tt(attr_layers_df) |>
 # library(kableExtra)
 # options(kableExtra.html.bsTable = TRUE)
 # knitr::kable(attr_layers_df, 
-#              caption = "Attribute layers.",
-#              caption.short = "Attribute layers.",
+#              caption = "map components.",
+#              caption.short = "map components.",
 #              booktabs = TRUE) |>
 #   kableExtra::kable_styling("striped",
 #                             latex_options = "striped", 
