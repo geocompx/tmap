@@ -48,13 +48,14 @@ book:
         - "small-multiples.qmd"
         - "arrangements.qmd"
         - "animations.qmd"
+        # - "basic-modes.qmd"
         - "interactive.qmd" 
         - "shiny.qmd"
-        #- "other-types.qmd"
+        #- "extended-modes.qmd"
     - part: "Advanced topics"
       chapters:
         - "options.qmd"
-        - "extensions.qmd"
+        - "creating-extensions.qmd"
     - part: "Good practices"
       chapters:
         - "good-maps.qmd"

@@ -4,3 +4,6 @@ source("code/before_script.R")
 ```
 
 # Interactive settings {#sec-interactive}
+
+<!-- tm_minimap move here?? -->
+<!-- tm_mouse_coordinates() -->
