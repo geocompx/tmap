@@ -532,5 +532,3 @@ tm_basemap("CartoDB.VoyagerNoLabels") +
   tm_credits(maptiles::get_credit("CartoDB.VoyagerNoLabels"),
              bg.color = "white")
 ```
-
-<!-- also: tm_tiles -->

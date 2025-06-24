@@ -16,6 +16,8 @@ source("code/before_script.R")
 
 <!-- tm_xlab and tm_ylab for better labels -->
 
+<!-- also: https://r-tmap.github.io/tmap/articles/adv_multivariate -->
+
 ## Vector data
 
 ```{r}

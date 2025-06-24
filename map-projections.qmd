@@ -4,3 +4,6 @@ source("code/before_script.R")
 ```
 
 # Map projections {#map-projections}
+
+<!-- https://r-tmap.github.io/tmap/articles/foundations_crs -->
+<!-- maybe also include map_boundary stuff here -->

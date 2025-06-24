@@ -7,3 +7,7 @@ source("code/before_script.R")
 
 <!-- tm_minimap move here?? -->
 <!-- tm_mouse_coordinates() -->
+
+<!-- basemaps? -->
+
+<!-- layer groups? -->
