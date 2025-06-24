@@ -92,6 +92,7 @@ tm_shape(slo_regions) +
 ## Additional customization
 
 <!-- with ggplot2 package and/or book reference -->
+<!-- e.g., change labels? -->
 
 ```{r}
 tm_shape(slo_regions) +

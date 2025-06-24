@@ -12,6 +12,7 @@ library(tmap)
 ```
 
 ```{r}
+#| message: false
 library(sf)
 slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
 tm1 = tm_shape(slo_regions) +
@@ -21,6 +22,7 @@ tm1 = tm_shape(slo_regions) +
 ```
 
 ```{r}
+#| message: false
 library(stars)
 slo_elev = read_stars("data/slovenia/slo_elev.tif")
 tm2 = tm_shape(slo_elev) +
@@ -44,6 +46,8 @@ tmap_arrange(tm1, tm2, nrow = 2, heights = c(0.8, 0.2))
 ```
 
 <!-- reexplain asp -->
+
+<!-- possibly add a tm_add_legend example plus a ref -->
 
 <!-- tmap view mode (sync) -->
 <!-- tmap_save -->
