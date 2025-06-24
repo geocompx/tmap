@@ -4,3 +4,102 @@ source("code/before_script.R")
 ```
 
 # Charts {#sec-charts}
+
+```{r}
+#| echo: false
+charts_df = tibble::tribble(
+  ~Function, ~Description,
+  "tm_chart_histogram()", "Histogram",
+  "tm_chart_box()", "Box plot",
+  "tm_chart_violin()", "Violin plot",
+  "tm_chart_bar()", "Bar chart",
+  "tm_chart_donut()", "Donut chart",
+  "tm_chart_heatmap()", "Heatmap",
+  "tm_chart_none()", "No chart"
+)
+```
+
+```{r}
+#| label: tbl-layers-table
+#| fig-cap: "Available chart types."
+#| echo: false
+#| warning: false
+#| message: false
+tinytable::tt(charts_df) |>
+  tinytable::style_tt(j = 1, monospace = TRUE)
+```
+
+```{r}
+library(tmap)
+library(sf)
+slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
+tm_shape(slo_regions) +
+  tm_polygons(fill = "pop_dens")
+```
+
+```{r}
+tm_shape(slo_regions) +
+  tm_polygons(fill = "pop_dens",
+              fill.chart = tm_chart_histogram())
+```
+
+<!-- mention positioning -->
+
+## Numerical data
+
+```{r}
+tm_shape(slo_regions) +
+  tm_polygons(fill = "pop_dens",
+              fill.chart = tm_chart_box())
+```
+
+```{r}
+tm_shape(slo_regions) +
+  tm_polygons(fill = "pop_dens",
+              fill.chart = tm_chart_violin())
+```
+
+```{r}
+tm_shape(slo_regions) +
+  tm_polygons(fill = "pop_dens",
+              fill.chart = tm_chart_donut())
+```
+
+## Categorical data
+
+```{r}
+tm_shape(slo_regions) +
+  tm_polygons(fill = "region_group",
+              fill.chart = tm_chart_bar())
+```
+
+```{r}
+tm_shape(slo_regions) +
+  tm_polygons(fill = "region_group",
+              fill.chart = tm_chart_donut())
+```
+
+## Bivariate data
+
+```{r}
+tm_shape(slo_regions) +
+  tm_polygons(fill = tm_vars(c("pop_dens", "pop65perc"), multivariate = TRUE),
+              fill.scale = tm_scale_bivariate(values = "purplegold"),
+              fill.chart = tm_chart_heatmap())
+```
+
+## Additional customization
+
+```{r}
+tm_shape(slo_regions) +
+  tm_polygons(fill = "pop_dens",
+              fill.chart = tm_chart_histogram(
+                extra.ggplot2 = ggplot2::theme_dark()
+              ))
+```
+
+```{r}
+tm_shape(slo_regions) +
+  tm_polygons(fill = "pop_dens",
+              fill.chart = tm_chart_histogram())
+```
