@@ -90,6 +90,8 @@ tm_shape(slo_regions) +
 
 ## Additional customization
 
+<!-- with ggplot2 package and/or book reference -->
+
 ```{r}
 tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens",

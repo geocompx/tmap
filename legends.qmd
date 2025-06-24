@@ -167,6 +167,7 @@ tm_shape(slo_elev) +
 
 <!-- tm_legend_bivariate -->
 <!-- tm_legend_combine -->
+<!-- tm_add_legend -->
 
 ## Titles {#sec-titles}
 
