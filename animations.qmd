@@ -8,20 +8,34 @@ source("code/before_script.R")
 <!-- tmap animations are a set of raster graphic images stitched together -->
 
 ```{r}
-#| eval: false
 library(sf)
 library(tmap)
 slo_borders = read_sf("data/slovenia/slo_border.gpkg")
 slo_regions_ts = read_sf("data/slovenia/slo_regions_ts.gpkg")
 ```
 
+## Creating animations
+
 ```{r}
-#| eval: false
+tm_shape(slo_borders) +
+  tm_borders() +
+  tm_shape(slo_regions_ts) +
+  tm_polygons("gdppercap") +
+  tm_animate(by = "time")
+```
+
+<!-- fps -->
+<!-- , play = "pingpong" -->
+<!-- passing other arguments to tm_facets (+ ref) -->
+
+## Saving animations
+
+```{r}
 tma1 = tm_shape(slo_borders) +
   tm_borders() +
   tm_shape(slo_regions_ts) +
   tm_polygons("gdppercap") +
-  tm_animate_slow(by = "time", play = "pingpong")
+  tm_animate(by = "time")
 ```
 
 ```{r}
@@ -29,3 +43,5 @@ tma1 = tm_shape(slo_borders) +
 tmap_animation(tma1, "tma1.gif")
 ```
 
+<!-- width/height/dpi, scale -->
+<!-- also ref to tmap_save -->
