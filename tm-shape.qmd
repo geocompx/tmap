@@ -189,9 +189,10 @@ Another limitation of `raster.warp = TRUE` is the use of the nearest neighbor re
 #| label: tm-map-proj1
 #| warning: false
 #| eval: false
-tm_shape(worldelevation, crs = "EPSG:8857") +
+tm_shape(worldelevation) +
   tm_raster("worldelevation.tif", 
-            col.scale = tm_scale(values = terrain.colors(8))) 
+            col.scale = tm_scale(values = terrain.colors(8))) +
+  tm_crs("EPSG:8857")
 ```
 
 The second approach (`tm_options(raster.warp = FALSE)`) computes new coordinates for each raster cell keeping all of the original values and results in a curvilinear grid.
@@ -204,9 +205,10 @@ However, the creation of the (b) map takes about ten times longer than the (a) m
 #| label: tm-map-proj2
 #| warning: false
 #| eval: false
-tm_shape(worldelevation, crs = "EPSG:8857") +
+tm_shape(worldelevation) +
   tm_raster("worldelevation.tif", 
             col.scale = tm_scale(values = terrain.colors(8))) +
+  tm_crs("EPSG:8857") +
   tm_options(raster.warp = FALSE)
 ```
 

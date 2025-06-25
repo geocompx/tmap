@@ -7,3 +7,57 @@ source("code/before_script.R")
 
 <!-- https://r-tmap.github.io/tmap/articles/foundations_crs -->
 <!-- maybe also include map_boundary stuff here -->
+
+<!-- global: -->
+
+```{r}
+#| message: false
+library(tmap)
+library(sf)
+library(stars)
+worldelevation = read_stars("data/worldelevation.tif")
+worldvector = read_sf("data/worldvector.gpkg")
+worldcities = read_sf("data/worldcities.gpkg")
+```
+
+```{r}
+tm = tm_shape(worldvector) +
+  tm_polygons() +
+  tm_shape(worldcities) +
+  tm_dots() +
+  tm_text("name")
+tm
+```
+ 
+```{r}
+tm + 
+  tm_crs("auto")
+```
+
+```{r}
+tm +
+  tm_crs("+proj=eck4") +
+  tm_layout(earth_boundary = TRUE, frame = FALSE)
+```
+
+<!-- customize -->
+
+```{r}
+tm +
+  tm_crs("+proj=eck4") +
+  tm_layout(earth_boundary = TRUE, frame = FALSE)
+```
+
+<!-- maybe bbox could be a part of tm_crs? -->
+
+```{r}
+tm_shape(worldvector, bbox = "FULL") +
+  tm_polygons() +
+  tm_graticules() +
+  tm_crs("+proj=ortho +lat_0=30 +lon_0=0")+
+  tm_layout(earth_boundary = TRUE, frame = FALSE)
+```
+
+<!-- local? -->
+
+<!-- specific: south pole? -->
