@@ -19,7 +19,7 @@ data/mosaic
 data/slovenia_tmp
 data-raw/
 docs/
-figures/
+#figures/
 /.quarto/
 *_cache/
 *_files/
