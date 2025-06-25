@@ -3,7 +3,9 @@
 source("code/before_script.R")
 ```
 
-# Small multiples {#sec-multiples}
+# Facets {#sec-facets}
+
+<!-- small-multiples -->
 
 <!-- tm_facets() -->
 <!-- tm_facets_grid(rows = NULL, columns = NULL, pages = NULL, ...) -->

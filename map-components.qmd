@@ -225,7 +225,7 @@ tm +
 ```
 
 The first argument of `tm_credits()` is the text, which can be spread over multiple lines with the line break symbol `\n`.
-When the created map has several facets (@sec-multiples), it is also possible to provide each facet a different text.
+When the created map has several facets (@sec-facets), it is also possible to provide each facet a different text.
 In that case, a vector of characters is expected, where you can use `""` to omit the credits for specific facets.
 Text annotations can also be further customized, by changing their sizes (`size`), colors (`color`), positions, and fonts (@sec-fonts-on-maps).
 

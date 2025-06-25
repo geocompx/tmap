@@ -246,11 +246,11 @@ my_map
 
 More information about the interactive `"view"` mode and how to customize its outputs is in @sec-interactive.
 
-## Small multiples {#sec-sm-section}
+## Facets {#sec-f-section}
 
 <!-- to write after the \@ref(multiples) chapter is done -->
 
-@sec-multiples
+@sec-facets
 
 ## Animations {#sec-ani-section}
 

@@ -437,7 +437,7 @@ tm_shape(sat) +
 
 \index{Bivariate maps}
 In cases when we have two variables that we want to visualize, the most common approach is to create two separate maps, one for each variable (@fig-bivariate-scales1).
-We can do that using the `tm_vars()` function, which allows us to specify multiple variables (see the code below) or with the facet functions (see @sec-multiples).
+We can do that using the `tm_vars()` function, which allows us to specify multiple variables (see the code below) or with the facet functions (see @sec-facets).
 
 ```{r}
 #| label: fig-bivariate-scales1

@@ -436,7 +436,7 @@ tm_shape(raster2) +
   tm_layout(panel.labels = c("Elevation", "Geomorphons"))
 ```
 
-If you want to learn more -- we focus on how to specify and modify facets (also known as small multiples) in @sec-multiples and how to modify map layout in @sec-map-layout.
+If you want to learn more -- we focus on how to specify and modify facets (also known as small multiples) in @sec-facets and how to modify map layout in @sec-map-layout.
 
 <!-- raster.warp -->
 <!-- raster margins -->

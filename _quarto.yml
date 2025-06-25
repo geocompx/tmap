@@ -45,7 +45,7 @@ book:
       chapters:
         - "map-projections.qmd"
         - "charts.qmd"
-        - "small-multiples.qmd"
+        - "facets.qmd"
         - "arrangements.qmd"
         - "animations.qmd"
         # - "basic-modes.qmd"
