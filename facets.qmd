@@ -4,34 +4,32 @@ source("code/before_script.R")
 ```
 
 # Facets {#sec-facets}
-
 <!-- small-multiples -->
 
-<!-- tm_facets() -->
-<!-- tm_facets_grid(rows = NULL, columns = NULL, pages = NULL, ...) -->
-<!-- tm_facets_wrap(by = "VARS__", nrow = NA, ncol = NA, byrow = TRUE, ...) -->
-<!-- tm_facets_pagewise(by = "VARS__", byrow = TRUE, ...) -->
-<!-- tm_facets_stack(by = "VARS__", orientation = NA, ...) -->
-<!-- tm_facets_hstack(by = "VARS__", ...) -->
-<!-- tm_facets_vstack(by = "VARS__", ...) -->
-<!-- tm_facets_flip(...) -->
-
-<!-- tm_xlab and tm_ylab for better labels -->
-
-<!-- also: https://r-tmap.github.io/tmap/articles/adv_multivariate -->
-
-## Vector data
-
 ```{r}
-#| eval: false
+#| message: false
 library(sf)
 library(tmap)
 slo_borders = read_sf("data/slovenia/slo_border.gpkg")
+slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
 slo_regions_ts = read_sf("data/slovenia/slo_regions_ts.gpkg")
+slo_regions_ts = subset(slo_regions_ts, time %in% c("2006", "2010", "2014", "2018", "2022"))
+```
+
+<!-- tm_facets() -->
+<!-- two approaches -- variables (e.g., columns) vs values in one variable -->
+<!-- + a mix of both approaches -->
+<!-- should we limit to e.g., 5 years? -->
+
+```{r}
+tm_shape(slo_borders) +
+  tm_borders() +
+  tm_shape(slo_regions) +
+  tm_fill(c("pop_dens", "gdppercap", "tourism")) +
+  tm_facets(by = "time")
 ```
 
 ```{r}
-#| eval: false
 tm_shape(slo_borders) +
   tm_borders() +
   tm_shape(slo_regions_ts) +
@@ -39,6 +37,119 @@ tm_shape(slo_borders) +
   tm_facets(by = "time", ncol = 5)
 ```
 
-## Raster data
+```{r}
+tm_shape(slo_borders) +
+  tm_borders() +
+  tm_shape(slo_regions_ts) +
+  tm_fill(c("pop_dens", "gdppercap", "tourism")) +
+  tm_facets(by = "time")
+```
 
+<!-- customize -->
+```{r}
+tm_shape(slo_borders) +
+  tm_borders() +
+  tm_shape(slo_regions_ts) +
+  tm_fill("gdppercap") +
+  tm_facets(by = "region_group", ncol = 5)
+```
+
+```{r}
+tm_shape(slo_regions_ts) +
+  tm_fill("gdppercap") +
+  tm_facets(by = "region_group", ncol = 5) +
+  tm_shape(slo_borders) +
+  tm_borders()
+```
+
+```{r}
+tm_shape(slo_regions_ts) +
+  tm_fill("gdppercap") +
+  tm_facets(by = "region_group", ncol = 5, free.coords = FALSE) +
+  tm_shape(slo_borders) +
+  tm_borders()
+```
+
+<!-- other facets functions -->
+<!-- tm_facets_wrap(by = "VARS__", nrow = NA, ncol = NA, byrow = TRUE, ...) -->
+<!-- tm_facets_grid(rows = NULL, columns = NULL, pages = NULL, ...) -->
+
+```{r}
+tm_shape(slo_borders) +
+  tm_borders() +
+  tm_shape(slo_regions_ts) +
+  tm_fill("gdppercap") +
+  tm_facets_wrap(by = "region_group", ncol = 5)
+```
+
+```{r}
+tm_shape(slo_borders) +
+  tm_borders() +
+  tm_shape(slo_regions_ts) +
+  tm_fill("gdppercap") +
+  tm_facets_grid(rows = "region_group", columns = "time")
+```
+
+<!-- tm_xlab and tm_ylab for better labels -->
+```{r}
+tm_shape(slo_borders) +
+  tm_borders() +
+  tm_shape(slo_regions_ts) +
+  tm_fill("gdppercap") +
+  tm_facets_grid(rows = "region_group", columns = "time") +
+  tm_xlab("Year", side = "top", size = 2, space = 1) +
+  tm_ylab("Region", rotation = 90, size = 2, space = 1)
+```
+
+<!-- also: https://r-tmap.github.io/tmap/articles/adv_multivariate -->
+
+<!-- mention the rest -->
+<!-- tm_facets_stack(by = "VARS__", orientation = NA, ...) -->
+<!-- tm_facets_hstack(by = "VARS__", ...) -->
+<!-- tm_facets_vstack(by = "VARS__", ...) -->
+<!-- tm_facets_pagewise(by = "VARS__", byrow = TRUE, ...) -->
+<!-- tm_facets_flip(...) -->
+
+<!-- Raster data -- where to add it in this section: either mix with the other content or after it -->
 <!-- show how to add colors independently to each raster panel -->
+
+```{r}
+#| message: false
+library(stars)
+slo_tavg = read_stars("data/slovenia/slo_tavg.tif")
+slo_elev = read_stars("data/slovenia/slo_elev.tif")
+```
+
+```{r}
+tm_shape(slo_tavg) +
+  tm_raster() +
+  tm_facets(by = "band", ncol = 4)
+```
+
+```{r}
+tm_shape(slo_tavg) +
+  tm_raster(
+    col.scale = tm_scale_continuous(values = "viridis"),
+    col.legend = tm_legend(title = "Temperature (°C)"),
+    col.free = TRUE) +
+  tm_facets(by = "band", ncol = 4)
+```
+
+<!-- mixing with vector data -->
+
+```{r}
+tm_shape(slo_elev) +
+  tm_raster() +
+  tm_shape(slo_regions, is.main = TRUE) + 
+  tm_borders() +
+  tm_facets(by = "region_group", free.coords = TRUE)
+```
+
+```{r}
+#| eval: false
+tm_shape(slo_regions, is.main = TRUE) + 
+  tm_borders() +
+  tm_facets(by = "region_group", free.coords = TRUE) +
+  tm_shape(slo_elev) +
+  tm_raster() 
+```

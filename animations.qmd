@@ -38,6 +38,19 @@ tm +
   tm_animate(by = "time", fps = 5, play = "pingpong")
 ```
 
+
+```{r}
+#| message: false
+library(stars)
+slo_tavg = read_stars("data/slovenia/slo_tavg.tif")
+```
+
+```{r}
+tm_shape(slo_tavg) +
+  tm_raster() +
+  tm_animate(by = "band", fps = 6)
+```
+
 <!-- passing other arguments to tm_facets (+ ref) -->
 
 ## Saving animations
