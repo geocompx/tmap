@@ -111,7 +111,7 @@
     "href": "nutshell.html",
     "title": "3  tmap in a nutshell",
     "section": "",
-    "text": "3.1 Shape objects\nThe tmap package allows the creation of thematic maps with great flexibility. It accepts spatial data in various formats – shape objects (Section 3.1) Next, the data can be used to create simple, quick maps (Section 3.2) and more complex and expandable maps (Section 3.3). These maps can be presented in two modes: as a static map and an interactive one. Additionally, tmap makes it possible to create small multiples maps (Section 3.5) and map animations (Section 3.6). The goal of this chapter is to provide a brief overview of the main tmap features.\nAs we established in Chapter 2, spatial data comes in various file formats related to two main data models – vector and raster. There are also several spatial object classes in R, for example, sf from the sf package for vector data and stars from stars for raster data and spatial data cubes. Additionally, packages such as sp, raster, or terra offer their own classes, and this abundance of spatial object classes can be generally overwhelming. Gladly, tmap can work with all of the above objects – it treats all supported spatial data classes as so-called shape objects.\nFor example, we read the slo_cities.gpkg file containing several point locations representing cities and towns in Slovenia into a new object, slo_cities. The slo_cities object is a shape object.\nlibrary(tmap)\nlibrary(sf)\nslo_cities = read_sf(\"data/slovenia/slo_cities.gpkg\")\nSpatial data, no matter the class, usually stores two interrelated sets of information - about the locations/geometries and their associated values/attributes. Visualization of the attributes only can be done with regular plotting functions (e.g., plot(), hist(), barplot()) or dedicated packages, such as ggplot2 . On the other hand, tmap is suitable when our goal is to visualize spatial geometries only or spatial geometries together with their attributes.",
+    "text": "3.1 Shape objects\nThe tmap package allows the creation of thematic maps with great flexibility. It accepts spatial data in various formats – shape objects (Section 3.1) Next, the data can be used to create simple, quick maps (Section 3.2) and more complex and expandable maps (Section 3.3). These maps can be presented in two modes: as a static map and an interactive one. Additionally, tmap makes it possible to create small multiples maps (?sec-sm-section) and map animations (Section 3.6). The goal of this chapter is to provide a brief overview of the main tmap features.\nAs we established in Chapter 2, spatial data comes in various file formats related to two main data models – vector and raster. There are also several spatial object classes in R, for example, sf from the sf package for vector data and stars from stars for raster data and spatial data cubes. Additionally, packages such as sp, raster, or terra offer their own classes, and this abundance of spatial object classes can be generally overwhelming. Gladly, tmap can work with all of the above objects – it treats all supported spatial data classes as so-called shape objects.\nFor example, we read the slo_cities.gpkg file containing several point locations representing cities and towns in Slovenia into a new object, slo_cities. The slo_cities object is a shape object.\nlibrary(tmap)\nlibrary(sf)\nslo_cities = read_sf(\"data/slovenia/slo_cities.gpkg\")\nSpatial data, no matter the class, usually stores two interrelated sets of information - about the locations/geometries and their associated values/attributes. Visualization of the attributes only can be done with regular plotting functions (e.g., plot(), hist(), barplot()) or dedicated packages, such as ggplot2 . On the other hand, tmap is suitable when our goal is to visualize spatial geometries only or spatial geometries together with their attributes.",
     "crumbs": [
       "Basics",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>**tmap** in a nutshell</span>"
@@ -151,11 +151,11 @@
     ]
   },
   {
-    "objectID": "nutshell.html#sec-sm-section",
-    "href": "nutshell.html#sec-sm-section",
+    "objectID": "nutshell.html#sec-f-section",
+    "href": "nutshell.html#sec-f-section",
     "title": "3  tmap in a nutshell",
-    "section": "\n3.5 Small multiples",
-    "text": "3.5 Small multiples\n\nChapter 15",
+    "section": "\n3.5 Facets",
+    "text": "3.5 Facets\n\nChapter 15",
     "crumbs": [
       "Basics",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>**tmap** in a nutshell</span>"
@@ -320,7 +320,7 @@
     "href": "layers.html#sec-text",
     "title": "6  Layers",
     "section": "\n6.4 Text",
-    "text": "6.4 Text\n\nText labels are often an integral part of many maps. They can serve several functions, from naming features, indicating relations between them, or representing a given variable’s values. The main function for creating text labels is tm_text(), which adds a label to each spatial feature (Figure 6.5).\n\ntm_shape(slo_cities) +\n  tm_text(text = \"name\", size = \"population\")\n\n\n\n\n\n\nFigure 6.5: Example of a map created with tm_text().\n\n\n\n\nWe can adjust sizes (size; Section 7.4), colors (col), font faces (fontface), and background colors (bgcol) of labels either by providing a single value or a name of a data variable. Text labels can be further modified with the opt_tm_text() function provided to the options argument. It includes a set of arguments that allow to adjustment of the text labels’ appearance, such as remove_overlap, along_lines, and shadow. \n\n\n\n\n\n\n\n\n\nText labels can be added to spatial (multi-)points, (multi-)lines, and (multi-)polygons, and each of the cases is quite different. The simplest case is for POINT data, for which each text label will be located precisely in the coordinates of the given points (Figure 6.5). However, how to add text labels to multipoints, lines, multilines, polygons, or multipolygons? Should each label correspond to one spatial feature, or should every sub-feature have its own label? Where should the labels be placed for lines or polygons - in the center of a line and centroid of a polygon or somewhat different?  \n\n# x2 = x |&gt; \n#   dplyr::group_by(region_un) |&gt; \n#   dplyr::summarise()\n# tm_shape(x2) +\n#   tm_polygons() +\n#   tm_text(\"region_un\")\n\n\n\n\n\n\n\nText labels are also often presented together with lines (Section 6.3). One example is an isopleth – a line drawn on a map through all points having the same value of a given variable, such as atmospheric pressure or elevation. Isopleths can be created with the tm_iso() function.\n\n# to improve\nlibrary(stars)\n#&gt; Loading required package: abind\nlibrary(terra)\n#&gt; terra 1.8.42\nslo_elev = read_stars(\"data/slovenia/slo_elev.tif\")\nslo_elev_raster = rast(slo_elev)\nelev_isopleths = as.contour(slo_elev_raster, nlevels = 4)\ntm_shape(elev_isopleths) +\n  tm_iso()\n\n\n\n\n\n\n\n\nei_terrain = terra::terrain(slo_elev_raster, c(\"slope\", \"aspect\"), unit = \"radians\")\nhs = terra::shade(ei_terrain[[1]]*3, ei_terrain[[2]])\n\ntm_shape(hs) +\n    tm_grid() +\n    tm_raster(col.scale = tm_scale(values = gray(0:100 / 100), n = 100),\n            col.legend = tm_legend_hide()) +\n    tm_shape(slo_elev) +\n    tm_raster(col_alpha = 0.25,\n            col.scale = tm_scale(values = terrain.colors(25)),\n            col.legend = tm_legend_hide()) +\n    tm_shape(elev_isopleths) +\n    tm_lines(col = \"white\") +\n    tm_text(\"level\", col = \"white\")",
+    "text": "6.4 Text\n\nText labels are often an integral part of many maps. They can serve several functions, from naming features, indicating relations between them, or representing a given variable’s values. The main function for creating text labels is tm_text(), which adds a label to each spatial feature (Figure 6.5).\n\ntm_shape(slo_cities) +\n  tm_text(text = \"name\", size = \"population\")\n\n\n\n\n\n\nFigure 6.5: Example of a map created with tm_text().\n\n\n\n\nWe can adjust sizes (size; Section 7.4), colors (col), font faces (fontface), and background colors (bgcol) of labels either by providing a single value or a name of a data variable. Text labels can be further modified with the opt_tm_text() function provided to the options argument. It includes a set of arguments that allow to adjustment of the text labels’ appearance, such as remove_overlap, along_lines, and shadow. \n\n#&gt; [plot mode] legend/component: Some components or legends are too \"high\" and are\n#&gt; therefore rescaled.\n#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.\n\n\n\n\n\n\n\n\nText labels can be added to spatial (multi-)points, (multi-)lines, and (multi-)polygons, and each of the cases is quite different. The simplest case is for POINT data, for which each text label will be located precisely in the coordinates of the given points (Figure 6.5). However, how to add text labels to multipoints, lines, multilines, polygons, or multipolygons? Should each label correspond to one spatial feature, or should every sub-feature have its own label? Where should the labels be placed for lines or polygons - in the center of a line and centroid of a polygon or somewhat different?  \n\n# x2 = x |&gt; \n#   dplyr::group_by(region_un) |&gt; \n#   dplyr::summarise()\n# tm_shape(x2) +\n#   tm_polygons() +\n#   tm_text(\"region_un\")\n\n\n\n\n\n\n\nText labels are also often presented together with lines (Section 6.3). One example is an isopleth – a line drawn on a map through all points having the same value of a given variable, such as atmospheric pressure or elevation. Isopleths can be created with the tm_iso() function.\n\n# to improve\nlibrary(stars)\n#&gt; Loading required package: abind\nlibrary(terra)\n#&gt; terra 1.8.54\nslo_elev = read_stars(\"data/slovenia/slo_elev.tif\")\nslo_elev_raster = rast(slo_elev)\nelev_isopleths = as.contour(slo_elev_raster, nlevels = 4)\ntm_shape(elev_isopleths) +\n  tm_iso()\n\n\n\n\n\n\n\n\nei_terrain = terra::terrain(slo_elev_raster, c(\"slope\", \"aspect\"), unit = \"radians\")\nhs = terra::shade(ei_terrain[[1]]*3, ei_terrain[[2]])\n\ntm_shape(hs) +\n    tm_grid() +\n    tm_raster(col.scale = tm_scale(values = gray(0:100 / 100), n = 100),\n            col.legend = tm_legend_hide()) +\n    tm_shape(slo_elev) +\n    tm_raster(col_alpha = 0.25,\n            col.scale = tm_scale(values = terrain.colors(25)),\n            col.legend = tm_legend_hide()) +\n    tm_shape(elev_isopleths) +\n    tm_lines(col = \"white\") +\n    tm_text(\"level\", col = \"white\")",
     "crumbs": [
       "Building blocks",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Layers</span>"
@@ -877,25 +877,25 @@
     ]
   },
   {
-    "objectID": "small-multiples.html",
-    "href": "small-multiples.html",
-    "title": "15  Small multiples",
+    "objectID": "facets.html",
+    "href": "facets.html",
+    "title": "15  Facets",
     "section": "",
     "text": "15.1 Vector data\nlibrary(sf)\nlibrary(tmap)\nslo_borders = read_sf(\"data/slovenia/slo_border.gpkg\")\nslo_regions_ts = read_sf(\"data/slovenia/slo_regions_ts.gpkg\")\ntm_shape(slo_borders) +\n  tm_borders() +\n  tm_shape(slo_regions_ts) +\n  tm_fill(\"gdppercap\") +\n  tm_facets(by = \"time\", ncol = 5)",
     "crumbs": [
       "Expanding the toolbox",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Small multiples</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Facets</span>"
     ]
   },
   {
-    "objectID": "small-multiples.html#raster-data",
-    "href": "small-multiples.html#raster-data",
-    "title": "15  Small multiples",
+    "objectID": "facets.html#raster-data",
+    "href": "facets.html#raster-data",
+    "title": "15  Facets",
     "section": "\n15.2 Raster data",
     "text": "15.2 Raster data",
     "crumbs": [
       "Expanding the toolbox",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Small multiples</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Facets</span>"
     ]
   },
   {
@@ -914,7 +914,7 @@
     "href": "animations.html",
     "title": "17  Animations",
     "section": "",
-    "text": "17.1 Creating animations\ntm_shape(slo_borders) +\n  tm_borders() +\n  tm_shape(slo_regions_ts) +\n  tm_polygons(\"gdppercap\") +\n  tm_animate(by = \"time\")",
+    "text": "17.1 Creating animations\ntm = tm_shape(slo_borders) +\n  tm_borders() +\n  tm_shape(slo_regions_ts) +\n  tm_polygons(\"gdppercap\")\ntm +\n  tm_animate(by = \"time\")\ntm +\n  tm_animate_fast(by = \"time\")\ntm +\n  tm_animate(by = \"time\", fps = 5, play = \"pingpong\")",
     "crumbs": [
       "Expanding the toolbox",
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>Animations</span>"
@@ -925,7 +925,7 @@
     "href": "animations.html#saving-animations",
     "title": "17  Animations",
     "section": "\n17.2 Saving animations",
-    "text": "17.2 Saving animations\n\ntma1 = tm_shape(slo_borders) +\n  tm_borders() +\n  tm_shape(slo_regions_ts) +\n  tm_polygons(\"gdppercap\") +\n  tm_animate(by = \"time\")\n\n\ntmap_animation(tma1, \"tma1.gif\")",
+    "text": "17.2 Saving animations\n\ntma1 = tm +\n  tm_animate_fast(by = \"time\")\n\n\ntmap_animation(tma1, \"tma1.gif\")",
     "crumbs": [
       "Expanding the toolbox",
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>Animations</span>"
