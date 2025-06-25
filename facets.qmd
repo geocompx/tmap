@@ -25,8 +25,7 @@ slo_regions_ts = subset(slo_regions_ts, time %in% c("2006", "2010", "2014", "201
 tm_shape(slo_borders) +
   tm_borders() +
   tm_shape(slo_regions) +
-  tm_fill(c("pop_dens", "gdppercap", "tourism")) +
-  tm_facets(by = "time")
+  tm_fill(c("pop_dens", "gdppercap", "tourism"))
 ```
 
 ```{r}
