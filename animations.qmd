@@ -8,6 +8,7 @@ source("code/before_script.R")
 <!-- tmap animations are a set of raster graphic images stitched together -->
 
 ```{r}
+#| message: false
 library(sf)
 library(tmap)
 slo_borders = read_sf("data/slovenia/slo_border.gpkg")
