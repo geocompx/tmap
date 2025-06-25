@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   # cache = TRUE, #https://github.com/rstudio/bookdown/issues/15#issuecomment-591478143
   # fig.pos = "h", #"t"
-  # fig.path = "figures/",
+  fig.path = "figures/",
   fig.align = "center",
   fig.retina = 2,
   # fig.height = 7,
@@ -40,7 +40,7 @@ if(!knitr:::is_html_output()){
 view_map = function(x, name){
   if (knitr::is_latex_output()){
     tf = tempfile(fileext = ".html")
-    tmap_save(x, tf)
+    tmap::tmap_save(x, tf)
     webshot2::webshot(tf, file = paste0("widgets/", name, ".png"))
     knitr::include_graphics(paste0("widgets/", name, ".png"))
   } else {
