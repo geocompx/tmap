@@ -17,25 +17,34 @@ slo_regions_ts = read_sf("data/slovenia/slo_regions_ts.gpkg")
 ## Creating animations
 
 ```{r}
-tm_shape(slo_borders) +
+tm = tm_shape(slo_borders) +
   tm_borders() +
   tm_shape(slo_regions_ts) +
-  tm_polygons("gdppercap") +
+  tm_polygons("gdppercap")
+```
+
+```{r}
+tm +
   tm_animate(by = "time")
 ```
 
-<!-- fps -->
-<!-- , play = "pingpong" -->
+```{r}
+tm +
+  tm_animate_fast(by = "time")
+```
+
+```{r}
+tm +
+  tm_animate(by = "time", fps = 5, play = "pingpong")
+```
+
 <!-- passing other arguments to tm_facets (+ ref) -->
 
 ## Saving animations
 
 ```{r}
-tma1 = tm_shape(slo_borders) +
-  tm_borders() +
-  tm_shape(slo_regions_ts) +
-  tm_polygons("gdppercap") +
-  tm_animate(by = "time")
+tma1 = tm +
+  tm_animate_fast(by = "time")
 ```
 
 ```{r}
