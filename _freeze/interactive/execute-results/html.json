@@ -2,10 +2,8 @@
   "hash": "f2b2cca188f3b425e937e0480d83c293",
   "result": {
     "engine": "knitr",
-    "markdown": "::: {.cell}\n\n:::\n\n\n\n\n# Interactive settings {#sec-interactive}\n\n<!-- tm_minimap move here?? -->\n<!-- tm_mouse_coordinates() -->\n\n<!-- basemaps? -->\n\n<!-- layer groups? -->\n\n",
-    "supporting": [
-      "interactive_files"
-    ],
+    "markdown": "\n::: {.cell}\n\n:::\n\n\n# Interactive settings {#sec-interactive}\n\n<!-- tm_minimap move here?? -->\n<!-- tm_mouse_coordinates() -->\n\n<!-- basemaps? -->\n\n<!-- layer groups? -->\n\n",
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],

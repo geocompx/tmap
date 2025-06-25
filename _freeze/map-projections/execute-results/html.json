@@ -2,7 +2,7 @@
   "hash": "f6c00865ba4ced18ba0bc2362cc166a5",
   "result": {
     "engine": "knitr",
-    "markdown": "::: {.cell}\n\n:::\n\n\n\n\n# Map projections {#map-projections}\n\n<!-- https://r-tmap.github.io/tmap/articles/foundations_crs -->\n<!-- maybe also include map_boundary stuff here -->\n",
+    "markdown": "\n::: {.cell}\n\n:::\n\n\n# Map projections {#map-projections}\n\n<!-- https://r-tmap.github.io/tmap/articles/foundations_crs -->\n<!-- maybe also include map_boundary stuff here -->\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

@@ -2,7 +2,7 @@
   "hash": "fac22f581bfa73b8206c7b9898aa03a3",
   "result": {
     "engine": "knitr",
-    "markdown": "::: {.cell}\n\n:::\n\n\n\n# How to make good maps? {#sec-good-maps}\n\n",
+    "markdown": "\n::: {.cell}\n\n:::\n\n\n# How to make good maps? {#sec-good-maps}\n\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

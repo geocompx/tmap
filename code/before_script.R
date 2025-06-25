@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   # cache = TRUE, #https://github.com/rstudio/bookdown/issues/15#issuecomment-591478143
   # fig.pos = "h", #"t"
-  fig.path = "figures/",
+  # fig.path = "figures/",
   fig.align = "center",
   fig.retina = 2,
   # fig.height = 7,
