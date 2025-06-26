@@ -465,10 +465,7 @@ Figure&nbsp;12.1: A map of Slovenia with a default layout.
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>bg.color <span class="op">=</span> <span class="st">"lightgreen"</span>,</span>
 <span>            outer.bg.color <span class="op">=</span> <span class="st">"forestgreen"</span>,</span>
-<span>            legend.bg.color <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [plot mode] legend/component: Some components or legends are too "high" and are</span></span>
-<span><span class="co">#&gt; therefore rescaled.</span></span>
-<span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>            legend.bg.color <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-layout-colors" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-layout-colors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -753,12 +750,6 @@ Figure&nbsp;12.7: Basic font families, and font faces implemented in the tmap pa
 <span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-nrow="2" data-layout-align="center">
-<pre><code>#&gt; [plot mode] legend/component: Some components or legends are too "high" and are
-#&gt; therefore rescaled.
-#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.
-#&gt; [plot mode] legend/component: Some components or legends are too "high" and are
-#&gt; therefore rescaled.
-#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</code></pre>
 <div id="fig-mfonts" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-mfonts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
@@ -838,20 +829,17 @@ Figure&nbsp;12.9: Impact of the scale argument on the map layout.
 <p>The design mode is useful to understand how the map is constructed and how the various arguments of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function impact the map layout.</p>
 <!-- info that this is limited to the plot mode? -->
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_design_mode.html">tmap_design_mode</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_design_mode.html">tmap_design_mode</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; design.mode: ON</span></span>
 <span><span class="va">tm</span></span>
 <span><span class="co">#&gt; ----------------W (in)--H (in)--asp---</span></span>
 <span><span class="co">#&gt; | device        9.00 5.56 1.62 |</span></span>
-<span><span class="co">#&gt; | plot area     8.58 5.33 1.61 |</span></span>
-<span><span class="co">#&gt; | facets area   6.36 4.54 1.40 |</span></span>
-<span><span class="co">#&gt; | map area      6.16 4.34 1.42 |</span></span>
-<span><span class="co">#&gt; --------------------------------</span></span>
-<span><span class="co">#&gt; [plot mode] legend/component: Some components or legends are too "high" and are</span></span>
-<span><span class="co">#&gt; therefore rescaled.</span></span>
-<span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; | plot area     8.08 5.33 1.51 |</span></span>
+<span><span class="co">#&gt; | facets area   6.97 4.94 1.41 |</span></span>
+<span><span class="co">#&gt; | map area      6.87 4.84 1.42 |</span></span>
+<span><span class="co">#&gt; --------------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-design-mode" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="100%">
+<div id="fig-design-mode" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-design-mode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-design-mode-1.png" id="fig-design-mode" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:100.0%">
 </div>
@@ -991,7 +979,7 @@ Figure&nbsp;12.13: Impact of the <code>outer.margins</code> argument on the map 
 <!-- panel.margin, -->
 <p>Now, as we have seen how the design mode can help us to understand the impact of various arguments of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function, we can turn it off.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_design_mode.html">tmap_design_mode</a></span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_design_mode.html">tmap_design_mode</a></span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; design.mode: OFF</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
