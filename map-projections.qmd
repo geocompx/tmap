@@ -29,11 +29,7 @@ tm = tm_shape(worldvector) +
   tm_crs("EPSG:4326")
 tm
 ```
- 
-```{r map-projections-4}
-tm + 
-  tm_crs("auto")
-```
+
 
 ```{r map-projections-5}
 tm +
@@ -85,7 +81,26 @@ tm_shape(worldvector, bbox = "FULL") +
   tm_layout(earth_boundary = TRUE, frame = FALSE)
 ```
 
+```{r map-projections-4}
+tm + 
+  tm_crs("auto")
+```
+
 <!-- local? -->
+```{r}
+# slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
+# slo_regions = subset(worldvector, name == "Chile")
+# tm_shape(slo_regions) +
+#   tm_polygons() +
+#   tm_crs("auto", property = "area")
+# tm_shape(slo_regions) +
+#   tm_polygons() +
+#   tm_crs("auto", property = "distance")
+# tm_shape(slo_regions) +
+#   tm_polygons() +
+#   tm_crs("auto", property = "shape")
+```
+
 <!-- properies -->
 
 <!-- specific: south pole? -->
