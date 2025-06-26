@@ -10,7 +10,7 @@ source("code/before_script.R")
 
 <!-- global: -->
 
-```{r map-projections-2}
+```{r}
 #| message: false
 library(tmap)
 library(sf)
@@ -20,7 +20,9 @@ worldvector = read_sf("data/worldvector.gpkg")
 worldcities = read_sf("data/worldcities.gpkg")
 ```
 
-```{r map-projections-3}
+```{r}
+#| label: mproj1
+#| eval: false
 tm = tm_shape(worldvector) +
   tm_polygons() +
   tm_shape(worldcities) +
@@ -30,20 +32,32 @@ tm = tm_shape(worldvector) +
 tm
 ```
 
-
-```{r map-projections-5}
+```{r}
+#| label: mproj2
+#| eval: false
 tm +
   tm_crs("+proj=eck4") +
   tm_layout(bg.color = "lightblue",
             earth_boundary = TRUE)
 ```
 
+```{r}
+#| label: fig-mproj12
+#| ecbo: false
+#| message: false
+#| layout-nrow: 2
+<<mproj1>>
+<<mproj2>>
+```
+
 <!-- tm + tm_style("natural") -->
 
 ```{r}
+#| label: fig-exprojs
 #| message: false
 #| echo: false
 #| fig-asp: 1
+#| fig-cap: "Examples of map projections"
 world_projs_code = c("boggs", "eck1", "eck4", "eqearth", "goode", 
                      #"hatano", 
                      "moll", "nell", "robin", "times", "wag1", "wintri",
@@ -76,9 +90,31 @@ tmap_arrange(tms, ncol= 3)
 ```{r map-projections-7}
 tm_shape(worldvector, bbox = "FULL") +
   tm_polygons() +
-  tm_graticules() +
+  tm_graticules(labels.show = FALSE) +
   tm_crs("+proj=ortho +lat_0=30 +lon_0=0")+
-  tm_layout(earth_boundary = TRUE, frame = FALSE)
+  tm_layout(bg.color = "lightblue",
+            earth_boundary = TRUE,
+            frame = FALSE)
+tm_shape(worldvector, bbox = "FULL") +
+  tm_polygons() +
+  tm_graticules(labels.show = FALSE) +
+  tm_crs("+proj=ortho +lat_0=0 +lon_0=100")+
+  tm_layout(bg.color = "lightblue",
+            earth_boundary = TRUE,
+            frame = FALSE)
+```
+
+
+```{r}
+#| echo: false
+#| eval: false
+tm_shape(worldvector, bbox = "FULL", crs = "+proj=ortho +lat_0=0 +lon_0=100") +
+  tm_polygons() +
+  tm_graticules(labels.show = FALSE) +
+  # tm_crs()+
+  tm_layout(bg.color = "lightblue",
+            earth_boundary = TRUE,
+            frame = FALSE)
 ```
 
 ```{r map-projections-4}
