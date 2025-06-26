@@ -837,7 +837,7 @@
     "href": "map-projections.html",
     "title": "13  Map projections",
     "section": "",
-    "text": "library(tmap)\nlibrary(sf)\nlibrary(stars)\nworldelevation = read_stars(\"data/worldelevation.tif\")\nworldvector = read_sf(\"data/worldvector.gpkg\")\nworldcities = read_sf(\"data/worldcities.gpkg\")\n\n\ntm = tm_shape(worldvector) +\n  tm_polygons() +\n  tm_shape(worldcities) +\n  tm_dots() +\n  tm_text(\"name\")\ntm\n\n\n\n\n\n\n\n\ntm + \n  tm_crs(\"auto\")\n\n\n\n\n\n\n\n\ntm +\n  tm_crs(\"+proj=eck4\") +\n  tm_layout(earth_boundary = TRUE, frame = FALSE)\n\n\n\n\n\n\n\n\n\ntm +\n  tm_crs(\"+proj=eck4\") +\n  tm_layout(earth_boundary = TRUE, frame = FALSE)\n\n\n\n\n\n\n\n\n\ntm_shape(worldvector, bbox = \"FULL\") +\n  tm_polygons() +\n  tm_graticules() +\n  tm_crs(\"+proj=ortho +lat_0=30 +lon_0=0\")+\n  tm_layout(earth_boundary = TRUE, frame = FALSE)",
+    "text": "library(tmap)\nlibrary(sf)\nlibrary(stars)\nworldelevation = read_stars(\"data/worldelevation.tif\")\nworldvector = read_sf(\"data/worldvector.gpkg\")\nworldcities = read_sf(\"data/worldcities.gpkg\")\n\n\ntm = tm_shape(worldvector) +\n  tm_polygons() +\n  tm_shape(worldcities) +\n  tm_dots() +\n  tm_text(\"name\") +\n  tm_crs(\"EPSG:4326\")\ntm\n\n\n\n\n\n\n\n\ntm + \n  tm_crs(\"auto\")\n\n\n\n\n\n\n\n\ntm +\n  tm_crs(\"+proj=eck4\") +\n  tm_layout(bg.color = \"lightblue\",\n            earth_boundary = TRUE)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ntm_shape(worldvector, bbox = \"FULL\") +\n  tm_polygons() +\n  tm_graticules() +\n  tm_crs(\"+proj=ortho +lat_0=30 +lon_0=0\")+\n  tm_layout(earth_boundary = TRUE, frame = FALSE)",
     "crumbs": [
       "Expanding the toolbox",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>Map projections</span>"
