@@ -25,7 +25,8 @@ tm = tm_shape(worldvector) +
   tm_polygons() +
   tm_shape(worldcities) +
   tm_dots() +
-  tm_text("name")
+  tm_text("name") +
+  tm_crs("EPSG:4326")
 tm
 ```
  
@@ -37,16 +38,42 @@ tm +
 ```{r map-projections-5}
 tm +
   tm_crs("+proj=eck4") +
-  tm_layout(earth_boundary = TRUE, frame = FALSE)
+  tm_layout(bg.color = "lightblue",
+            earth_boundary = TRUE)
 ```
 
-<!-- customize -->
+<!-- tm + tm_style("natural") -->
 
-```{r map-projections-6}
-tm +
-  tm_crs("+proj=eck4") +
-  tm_layout(earth_boundary = TRUE, frame = FALSE)
+```{r}
+#| message: false
+#| echo: false
+#| fig-asp: 1
+world_projs_code = c("boggs", "eck1", "eck4", "eqearth", "goode", 
+                     #"hatano", 
+                     "moll", "nell", "robin", "times", "wag1", "wintri",
+                     "vandg4")
+world_projs_names = c("Boggs", "Eckert I", "Eckert IV", "Equal Earth", 
+                      "Goode Homolosine",
+                      #"Hatano",
+                      "Mollweide", "Nell-Hammer",
+                      "Robinson", "Times", "Wagner I", "Winkel Tripel", 
+                      "Van der Grinten IV")
+world_projs = cbind(world_projs_code, world_projs_names)
+
+# create a tmap for each of them
+tms = lapply(1:nrow(world_projs), function(p) {
+  tm_shape(worldvector) +
+    tm_polygons() +
+    tm_crs(paste0("+proj=", world_projs[p, 1])) +
+    tm_layout(panel.labels = world_projs[p, 2]) +
+    tm_layout(bg.color = "lightblue",
+            earth_boundary = TRUE)
+  # tm_shape(World, crs = paste0("+proj=", p)) + tm_polygons() + tm_style("natural") + tm_layout(panel.labels = p)
+})
+tmap_arrange(tms, ncol= 3)
 ```
+
+<!-- https://proj.org/en/stable/operations/projections/index.html -->
 
 <!-- maybe bbox could be a part of tm_crs? -->
 
@@ -59,5 +86,6 @@ tm_shape(worldvector, bbox = "FULL") +
 ```
 
 <!-- local? -->
+<!-- properies -->
 
 <!-- specific: south pole? -->
