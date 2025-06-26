@@ -1,4 +1,4 @@
-```{r}
+```{r map-projections-1}
 #| echo: false
 source("code/before_script.R")
 ```
@@ -10,7 +10,7 @@ source("code/before_script.R")
 
 <!-- global: -->
 
-```{r}
+```{r map-projections-2}
 #| message: false
 library(tmap)
 library(sf)
@@ -20,7 +20,7 @@ worldvector = read_sf("data/worldvector.gpkg")
 worldcities = read_sf("data/worldcities.gpkg")
 ```
 
-```{r}
+```{r map-projections-3}
 tm = tm_shape(worldvector) +
   tm_polygons() +
   tm_shape(worldcities) +
@@ -29,12 +29,12 @@ tm = tm_shape(worldvector) +
 tm
 ```
  
-```{r}
+```{r map-projections-4}
 tm + 
   tm_crs("auto")
 ```
 
-```{r}
+```{r map-projections-5}
 tm +
   tm_crs("+proj=eck4") +
   tm_layout(earth_boundary = TRUE, frame = FALSE)
@@ -42,7 +42,7 @@ tm +
 
 <!-- customize -->
 
-```{r}
+```{r map-projections-6}
 tm +
   tm_crs("+proj=eck4") +
   tm_layout(earth_boundary = TRUE, frame = FALSE)
@@ -50,7 +50,7 @@ tm +
 
 <!-- maybe bbox could be a part of tm_crs? -->
 
-```{r}
+```{r map-projections-7}
 tm_shape(worldvector, bbox = "FULL") +
   tm_polygons() +
   tm_graticules() +

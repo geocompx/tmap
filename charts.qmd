@@ -1,11 +1,11 @@
-```{r}
+```{r charts-1}
 #| echo: false
 source("code/before_script.R")
 ```
 
 # Charts {#sec-charts}
 
-```{r}
+```{r charts-2}
 #| echo: false
 charts_df = tibble::tribble(
   ~Function, ~Description,
@@ -19,7 +19,7 @@ charts_df = tibble::tribble(
 )
 ```
 
-```{r}
+```{r charts-3}
 #| label: tbl-layers-table
 #| tbl-cap: "Available chart types."
 #| echo: false
@@ -29,7 +29,7 @@ tinytable::tt(charts_df) |>
   tinytable::style_tt(j = 1, monospace = TRUE)
 ```
 
-```{r}
+```{r charts-4}
 #| message: false
 library(tmap)
 library(sf)
@@ -38,7 +38,7 @@ tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens")
 ```
 
-```{r}
+```{r charts-5}
 tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens",
               fill.chart = tm_chart_histogram())
@@ -48,19 +48,19 @@ tm_shape(slo_regions) +
 
 ## Numerical data
 
-```{r}
+```{r charts-6}
 tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens",
               fill.chart = tm_chart_box())
 ```
 
-```{r}
+```{r charts-7}
 tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens",
               fill.chart = tm_chart_violin())
 ```
 
-```{r}
+```{r charts-8}
 tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens",
               fill.chart = tm_chart_donut())
@@ -68,13 +68,13 @@ tm_shape(slo_regions) +
 
 ## Categorical data
 
-```{r}
+```{r charts-9}
 tm_shape(slo_regions) +
   tm_polygons(fill = "region_group",
               fill.chart = tm_chart_bar())
 ```
 
-```{r}
+```{r charts-10}
 tm_shape(slo_regions) +
   tm_polygons(fill = "region_group",
               fill.chart = tm_chart_donut())
@@ -82,7 +82,7 @@ tm_shape(slo_regions) +
 
 ## Bivariate data
 
-```{r}
+```{r charts-11}
 tm_shape(slo_regions) +
   tm_polygons(fill = tm_vars(c("pop_dens", "pop65perc"), multivariate = TRUE),
               fill.scale = tm_scale_bivariate(values = "purplegold"),
@@ -94,7 +94,7 @@ tm_shape(slo_regions) +
 <!-- with ggplot2 package and/or book reference -->
 <!-- e.g., change labels? -->
 
-```{r}
+```{r charts-12}
 tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens",
               fill.chart = tm_chart_histogram(
@@ -102,7 +102,7 @@ tm_shape(slo_regions) +
               ))
 ```
 
-```{r}
+```{r charts-13}
 tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens",
               fill.chart = tm_chart_histogram())

@@ -1,4 +1,4 @@
-```{r}
+```{r facets-1}
 #| echo: false
 source("code/before_script.R")
 ```
@@ -6,7 +6,7 @@ source("code/before_script.R")
 # Facets {#sec-facets}
 <!-- small-multiples -->
 
-```{r}
+```{r facets-2}
 #| message: false
 library(sf)
 library(tmap)
@@ -21,14 +21,14 @@ slo_regions_ts = subset(slo_regions_ts, time %in% c("2006", "2010", "2014", "201
 <!-- + a mix of both approaches -->
 <!-- should we limit to e.g., 5 years? -->
 
-```{r}
+```{r facets-3}
 tm_shape(slo_borders) +
   tm_borders() +
   tm_shape(slo_regions) +
   tm_fill(c("pop_dens", "gdppercap", "tourism"))
 ```
 
-```{r}
+```{r facets-4}
 tm_shape(slo_borders) +
   tm_borders() +
   tm_shape(slo_regions_ts) +
@@ -36,7 +36,7 @@ tm_shape(slo_borders) +
   tm_facets(by = "time", ncol = 5)
 ```
 
-```{r}
+```{r facets-5}
 tm_shape(slo_borders) +
   tm_borders() +
   tm_shape(slo_regions_ts) +
@@ -45,7 +45,7 @@ tm_shape(slo_borders) +
 ```
 
 <!-- customize -->
-```{r}
+```{r facets-6}
 tm_shape(slo_borders) +
   tm_borders() +
   tm_shape(slo_regions_ts) +
@@ -53,7 +53,7 @@ tm_shape(slo_borders) +
   tm_facets(by = "region_group", ncol = 5)
 ```
 
-```{r}
+```{r facets-7}
 tm_shape(slo_regions_ts) +
   tm_fill("gdppercap") +
   tm_facets(by = "region_group", ncol = 5) +
@@ -61,7 +61,7 @@ tm_shape(slo_regions_ts) +
   tm_borders()
 ```
 
-```{r}
+```{r facets-8}
 tm_shape(slo_regions_ts) +
   tm_fill("gdppercap") +
   tm_facets(by = "region_group", ncol = 5, free.coords = FALSE) +
@@ -73,7 +73,7 @@ tm_shape(slo_regions_ts) +
 <!-- tm_facets_wrap(by = "VARS__", nrow = NA, ncol = NA, byrow = TRUE, ...) -->
 <!-- tm_facets_grid(rows = NULL, columns = NULL, pages = NULL, ...) -->
 
-```{r}
+```{r facets-9}
 tm_shape(slo_borders) +
   tm_borders() +
   tm_shape(slo_regions_ts) +
@@ -81,7 +81,7 @@ tm_shape(slo_borders) +
   tm_facets_wrap(by = "region_group", ncol = 5)
 ```
 
-```{r}
+```{r facets-10}
 tm_shape(slo_borders) +
   tm_borders() +
   tm_shape(slo_regions_ts) +
@@ -90,7 +90,7 @@ tm_shape(slo_borders) +
 ```
 
 <!-- tm_xlab and tm_ylab for better labels -->
-```{r}
+```{r facets-11}
 tm_shape(slo_borders) +
   tm_borders() +
   tm_shape(slo_regions_ts) +
@@ -112,20 +112,20 @@ tm_shape(slo_borders) +
 <!-- Raster data -- where to add it in this section: either mix with the other content or after it -->
 <!-- show how to add colors independently to each raster panel -->
 
-```{r}
+```{r facets-12}
 #| message: false
 library(stars)
 slo_tavg = read_stars("data/slovenia/slo_tavg.tif")
 slo_elev = read_stars("data/slovenia/slo_elev.tif")
 ```
 
-```{r}
+```{r facets-13}
 tm_shape(slo_tavg) +
   tm_raster() +
   tm_facets(by = "band", ncol = 4)
 ```
 
-```{r}
+```{r facets-14}
 tm_shape(slo_tavg) +
   tm_raster(
     col.scale = tm_scale_continuous(values = "viridis"),
@@ -136,7 +136,7 @@ tm_shape(slo_tavg) +
 
 <!-- mixing with vector data -->
 
-```{r}
+```{r facets-15}
 tm_shape(slo_elev) +
   tm_raster() +
   tm_shape(slo_regions, is.main = TRUE) + 
@@ -144,7 +144,7 @@ tm_shape(slo_elev) +
   tm_facets(by = "region_group", free.coords = TRUE)
 ```
 
-```{r}
+```{r facets-16}
 #| eval: false
 tm_shape(slo_regions, is.main = TRUE) + 
   tm_borders() +
