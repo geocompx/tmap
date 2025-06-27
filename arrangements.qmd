@@ -5,7 +5,6 @@ source("code/before_script.R")
 
 # Arranging maps {#sec-arranging-maps}
 
-<!-- tmap_grob? -->
 
 ```{r arrangements-2}
 library(tmap)
@@ -33,10 +32,19 @@ tm2 = tm_shape(slo_elev) +
 
 <!-- nrow, -->
 <!-- ncol -->
+<!-- asp -->
 
 ```{r arrangements-5}
-tmap_arrange(tm1, tm2, nrow = 2)
+#| label: fig-arrangements1
+#| fig-cap: "Arranging two maps in one layout."
+#| message: false
+#| fig-asp: 0.8
+tmap_arrange(tm1, tm2, ncol = 2)
 ```
+
+<!-- frame alighnment -->
+
+<!-- tmap_grob? -->
 
 <!-- widths, heights -->
 <!-- any better example idea? -->

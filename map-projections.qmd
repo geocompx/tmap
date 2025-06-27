@@ -49,9 +49,18 @@ tm +
 #|   - "Eckert IV"
 #| echo: false
 #| message: false
+#| fig-asp: 0.5
 #| layout-nrow: 2
 <<mproj1>>
 <<mproj2>>
+```
+
+```{r map-projections-4}
+#| label: fig-mproj-auto
+#| fig-cap: "Map with data projected into the automatically selected projection."
+#| fig-asp: 0.5
+tm + 
+  tm_crs("auto")
 ```
 
 ## Global map projections
@@ -102,6 +111,9 @@ tmap_arrange(tms, ncol = 3)
 <!-- maybe bbox could be a part of tm_crs? -->
 
 ```{r map-projections-7}
+#| label: fig-mproj-ortho
+#| fig-cap: "Orthographic projection examples."
+#| layout-ncol: 2
 tm_shape(worldvector, bbox = "FULL") +
   tm_polygons() +
   tm_graticules(labels.show = FALSE) +
@@ -131,13 +143,11 @@ tm_shape(worldvector, bbox = "FULL", crs = "+proj=ortho +lat_0=0 +lon_0=100") +
             frame = FALSE)
 ```
 
-```{r map-projections-4}
-tm + 
-  tm_crs("auto")
-```
+## Local map projections
 
 <!-- local? -->
 ```{r}
+#| echo: false
 # slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
 # slo_regions = subset(worldvector, name == "Chile")
 # tm_shape(slo_regions) +
