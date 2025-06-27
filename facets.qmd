@@ -21,6 +21,8 @@ slo_regions_ts = subset(slo_regions_ts, time %in% c("2006", "2010", "2014", "201
 <!-- + a mix of both approaches -->
 <!-- should we limit to e.g., 5 years? -->
 
+## Specifying facets
+
 ```{r}
 #| label: fig-facets1
 #| fig-cap: "Facets for different variables."
@@ -41,11 +43,13 @@ tm_shape(slo_regions_ts) +
 ```{r}
 #| label: fig-facets3
 #| fig-cap: "Facets for multiple variables over time."
-#| fig-asp: 1
+#| fig-asp: 1.2
 tm_shape(slo_regions_ts) +
   tm_polygons(c("pop_dens", "gdppercap", "tourism")) +
   tm_facets(by = "time")
 ```
+
+# Imporance of layers order
 
 <!-- customize -->
 ```{r}
@@ -81,35 +85,31 @@ tm_shape(slo_regions_ts) +
   tm_borders()
 ```
 
+## Facets types
+
 <!-- other facets functions -->
 <!-- tm_facets_wrap(by = "VARS__", nrow = NA, ncol = NA, byrow = TRUE, ...) -->
 <!-- tm_facets_grid(rows = NULL, columns = NULL, pages = NULL, ...) -->
 
-```{r facets-9}
+```{r}
+#| label: fig-facets7
+#| fig-cap: "Facets for one variable with wrapping."
 tm_shape(slo_borders) +
   tm_borders() +
   tm_shape(slo_regions_ts) +
   tm_polygons("gdppercap") +
-  tm_facets_wrap(by = "region_group", ncol = 5)
+  tm_facets_wrap(by = "region_group", nrow = 2)
 ```
 
-```{r facets-10}
+```{r}
+#| label: fig-facets8
+#| fig-cap: "Two-dimensional facets for one variable in various region groups over time."
+#| fig-asp: 0.8
 tm_shape(slo_borders) +
   tm_borders() +
   tm_shape(slo_regions_ts) +
   tm_polygons("gdppercap") +
   tm_facets_grid(rows = "region_group", columns = "time")
-```
-
-<!-- tm_xlab and tm_ylab for better labels -->
-```{r facets-11}
-tm_shape(slo_borders) +
-  tm_borders() +
-  tm_shape(slo_regions_ts) +
-  tm_polygons("gdppercap") +
-  tm_facets_grid(rows = "region_group", columns = "time") +
-  tm_xlab("Year", side = "top", size = 2, space = 1) +
-  tm_ylab("Region", rotation = 90, size = 2, space = 1)
 ```
 
 <!-- also: https://r-tmap.github.io/tmap/articles/adv_multivariate -->
@@ -121,34 +121,58 @@ tm_shape(slo_borders) +
 <!-- tm_facets_pagewise(by = "VARS__", byrow = TRUE, ...) -->
 <!-- tm_facets_flip(...) -->
 
+## Customizing facets
+
+<!-- tm_xlab and tm_ylab for better labels -->
+```{r}
+#| label: fig-facets9
+#| fig-cap: "Two-dimensional facets with labeled axes."
+#| fig-asp: 0.8
+tm_shape(slo_borders) +
+  tm_borders() +
+  tm_shape(slo_regions_ts) +
+  tm_polygons("gdppercap") +
+  tm_facets_grid(rows = "region_group", columns = "time") +
+  tm_xlab("Year", side = "top", size = 2, space = 1) +
+  tm_ylab("Region", rotation = 90, size = 2, space = 1)
+```
+
+
 <!-- Raster data -- where to add it in this section: either mix with the other content or after it -->
 <!-- show how to add colors independently to each raster panel -->
 
-```{r facets-12}
+```{r}
 #| message: false
 library(stars)
 slo_tavg = read_stars("data/slovenia/slo_tavg.tif")
 slo_elev = read_stars("data/slovenia/slo_elev.tif")
 ```
 
-```{r facets-13}
+```{r}
+#| label: fig-facets10
+#| fig-cap: "Facets for raster data."
+#| message: false
 tm_shape(slo_tavg) +
   tm_raster() +
-  tm_facets(by = "band", ncol = 4)
+  tm_facets(by = "band", ncol = 3)
 ```
 
-```{r facets-14}
+```{r}
+#| label: fig-facets11
+#| fig-cap: "Facets for raster data independent legends."
 tm_shape(slo_tavg) +
   tm_raster(
     col.scale = tm_scale_continuous(values = "viridis"),
     col.legend = tm_legend(title = "Temperature (°C)"),
     col.free = TRUE) +
-  tm_facets(by = "band", ncol = 4)
+  tm_facets(by = "band", ncol = 3)
 ```
 
 <!-- mixing with vector data -->
 
-```{r facets-15}
+```{r}
+#| label: fig-facets12
+#| fig-cap: "Facets with raster data and vector data."
 tm_shape(slo_elev) +
   tm_raster() +
   tm_shape(slo_regions, is.main = TRUE) + 
@@ -158,9 +182,10 @@ tm_shape(slo_elev) +
 
 ```{r facets-16}
 #| eval: false
+#| echo: false
 tm_shape(slo_regions, is.main = TRUE) + 
   tm_borders() +
   tm_facets(by = "region_group", free.coords = TRUE) +
   tm_shape(slo_elev) +
-  tm_raster() 
+  tm_raster()
 ```
