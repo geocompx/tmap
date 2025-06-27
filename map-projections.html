@@ -364,8 +364,20 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 </div>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 class="anchored">First Edition</h2>
+  <ul>
+<li><a href="https://geocompx.org/" class="nav-link active" data-scroll-target="https\://geocompx.org/">Visit the geocompx website 🌐</a></li>
+    <li><a href="https://github.com/geocompx/tmap/issues" class="nav-link" data-scroll-target="https\://github.com/geocompx/tmap/issues">Open an issue ❔</a></li>
+    <li><a href="https://discord.gg/PMztXYgNxp" class="nav-link" data-scroll-target="https\://discord.gg/PMztXYgNxp">Chat on Discord 📣</a></li>
+  </ul>
+<hr>
+<h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li><a href="#specifying-map-projections" id="toc-specifying-map-projections" class="nav-link" data-scroll-target="#specifying-map-projections"><span class="header-section-number">13.1</span> Specifying map projections</a></li>
+  <li><a href="#global-map-projections" id="toc-global-map-projections" class="nav-link" data-scroll-target="#global-map-projections"><span class="header-section-number">13.2</span> Global map projections</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/map-projections.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./map-projections.html">Expanding the toolbox</a></li><li class="breadcrumb-item"><a href="./map-projections.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Map projections</span></a></li></ol></nav><div class="quarto-title">
@@ -393,6 +405,8 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <span><span class="va">worldvector</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/worldvector.gpkg"</span><span class="op">)</span></span>
 <span><span class="va">worldcities</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/worldcities.gpkg"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="specifying-map-projections" class="level2" data-number="13.1"><h2 data-number="13.1" class="anchored" data-anchor-id="specifying-map-projections">
+<span class="header-section-number">13.1</span> Specifying map projections</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -404,48 +418,60 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 </div>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_crs.html">tm_crs</a></span><span class="op">(</span><span class="st">"+proj=eck4"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>bg.color <span class="op">=</span> <span class="st">"lightblue"</span>,</span>
-<span>            earth_boundary <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_crs.html">tm_crs</a></span><span class="op">(</span><span class="st">"+proj=eck4"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldcities</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text</a></span><span class="op">(</span><span class="st">"name"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_crs.html">tm_crs</a></span><span class="op">(</span><span class="st">"EPSG:4326"</span><span class="op">)</span></span>
-<span><span class="va">tm</span></span>
-<span><span class="va">tm</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_crs.html">tm_crs</a></span><span class="op">(</span><span class="st">"+proj=eck4"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>bg.color <span class="op">=</span> <span class="st">"lightblue"</span>,</span>
-<span>            earth_boundary <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell quarto-layout-panel" data-ecbo="false" data-layout-align="center" data-layout-nrow="2">
+<div class="cell" data-layout-nrow="2" data-layout-align="center">
+<div id="fig-mproj12" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-mproj12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<div id="fig-mproj12-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="100%">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-mproj12-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-mproj12-1.png" id="fig-mproj12-1" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:100.0%">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-mproj12" style="flex-basis: 100.0%;justify-content: center;">
+<div id="fig-mproj12-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-mproj12-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-mproj12-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-mproj12">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-mproj12-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.1
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-mproj12-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) EPSG:4326 (WGS 84)
 </figcaption></figure>
 </div>
 </div>
 </div>
 <div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<div id="fig-mproj12-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="100%">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-mproj12-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-mproj12-2.png" id="fig-mproj12-2" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:100.0%">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-mproj12" style="flex-basis: 100.0%;justify-content: center;">
+<div id="fig-mproj12-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-mproj12-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-mproj12-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-mproj12">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-mproj12-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.2
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-mproj12-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Eckert IV
 </figcaption></figure>
 </div>
 </div>
 </div>
 </div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mproj12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.1: Map projections examples.
+</figcaption></figure>
+</div>
+</div>
+</section><section id="global-map-projections" class="level2" data-number="13.2"><h2 data-number="13.2" class="anchored" data-anchor-id="global-map-projections">
+<span class="header-section-number">13.2</span> Global map projections</h2>
 <!-- tm + tm_style("natural") -->
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_crs.html">tm_crs</a></span><span class="op">(</span><span class="st">"+proj=eck4"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>bg.color <span class="op">=</span> <span class="st">"lightblue"</span>,</span>
+<span>            earth_boundary <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-mproj3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-mproj3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-mproj3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mproj3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.2: Map with data projected into Eckert IV and with a customized style.
+</figcaption></figure>
+</div>
+</div>
+</div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-exprojs" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -453,7 +479,7 @@ Figure&nbsp;13.2
 <img src="figures/fig-exprojs-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-exprojs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.3: Examples of map projections
+Figure&nbsp;13.3: Examples of map projections for the whole world.
 </figcaption></figure>
 </div>
 </div>
@@ -510,8 +536,7 @@ Figure&nbsp;13.3: Examples of map projections
 <!-- specific: south pole? -->
 
 
-
-</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -927,7 +952,7 @@ Figure&nbsp;13.3: Examples of map projections
     </div>   
     <div class="nav-footer-center">
 <p>Elegant and informative maps with <strong>tmap</strong> by Martijn Tennekes and Jakub Nowosad.</p>
-<div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/map-projections.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/map-projections.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
