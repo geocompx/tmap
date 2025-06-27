@@ -48,24 +48,35 @@ tm_shape(slo_regions_ts) +
 ```
 
 <!-- customize -->
-```{r facets-6}
-tm_shape(slo_regions_ts) +
+```{r}
+#| label: fig-facets4
+#| fig-cap: "Facets for one variable for different region groups."
+tm_shape(slo_borders) +
+  tm_borders() +
+  tm_shape(slo_regions_ts) +
   tm_polygons("gdppercap") +
-  tm_facets(by = "region_group", ncol = 2)
+  tm_facets(by = "region_group", nrow = 2)
 ```
 
-```{r facets-7}
+```{r}
+#| label: fig-facets5
+#| fig-cap: "Facets for one variable limiting the view to a specific region group."
 tm_shape(slo_regions_ts) +
   tm_polygons("gdppercap") +
-  tm_facets(by = "region_group", ncol = 5) +
+  tm_facets(by = "region_group", nrow = 2) +
   tm_shape(slo_borders) +
   tm_borders()
 ```
 
-```{r facets-8}
+<!-- free.coords = FALSE) -->
+
+```{r}
+#| eval: false
+#| label: fig-facets6
+#| fig-cap: "Facets for one variable with free coordinates."
 tm_shape(slo_regions_ts) +
   tm_polygons("gdppercap") +
-  tm_facets(by = "region_group", ncol = 5, free.coords = FALSE) +
+  tm_facets(by = "region_group", nrow = 2, free.coords = FALSE) +
   tm_shape(slo_borders) +
   tm_borders()
 ```
