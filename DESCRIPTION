@@ -1,7 +1,7 @@
 Package: tmapbook
 Type: Book
-Title: Elegant and informative maps with tmap
-Version: 0.0.7
+Title: Spatial Data Visualization with tmap
+Version: 0.0.8
 Imports: 
   tmaptools,
   tmap,

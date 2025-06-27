@@ -2,7 +2,7 @@
 ::: {.content-visible when-format="html"}
 # Welcome {.unnumbered}
 
-This is the online home of *Elegant and informative maps with **tmap***, a work-in-progress book on geospatial data visualization with the R-package [tmap](https://github.com/r-tmap/tmap).
+This is the online home of *Spatial Data Visualization with tmap: A Practical Guide to Thematic Mapping in R*, a work-in-progress book on geospatial data visualization with the R-package [tmap](https://github.com/r-tmap/tmap).
 
 ## How to contribute? {-}
 
@@ -33,7 +33,7 @@ The code samples in this book are licensed under a [Creative Commons CC0 1.0 Uni
 is_on_ghactions = identical(Sys.getenv("GITHUB_ACTIONS"), "true")
 is_online = curl::has_internet()
 is_html = knitr::is_html_output()
-if (is_on_ghactions){
+if (is_on_ghactions) {
     cat(paste0("This version of the book was built on GH Actions on ", Sys.Date(), "."))
 } else {
     cat(paste0("This version of the book was built on ", Sys.Date(), "."))
