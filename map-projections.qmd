@@ -20,6 +20,8 @@ worldvector = read_sf("data/worldvector.gpkg")
 worldcities = read_sf("data/worldcities.gpkg")
 ```
 
+## Specifying map projections
+
 ```{r}
 #| label: mproj1
 #| eval: false
@@ -36,28 +38,41 @@ tm
 #| label: mproj2
 #| eval: false
 tm +
-  tm_crs("+proj=eck4") +
-  tm_layout(bg.color = "lightblue",
-            earth_boundary = TRUE)
+  tm_crs("+proj=eck4")
 ```
 
 ```{r}
 #| label: fig-mproj12
-#| ecbo: false
+#| fig-cap: "Map projections examples."
+#| fig-subcap:
+#|   - "EPSG:4326 (WGS 84)"
+#|   - "Eckert IV"
+#| echo: false
 #| message: false
 #| layout-nrow: 2
 <<mproj1>>
 <<mproj2>>
 ```
 
+## Global map projections
+
 <!-- tm + tm_style("natural") -->
+
+```{r}
+#| label: fig-mproj3
+#| fig-cap: "Map with data projected into Eckert IV and with a customized style."
+tm +
+  tm_crs("+proj=eck4") +
+  tm_layout(bg.color = "lightblue",
+            earth_boundary = TRUE)
+```
 
 ```{r}
 #| label: fig-exprojs
 #| message: false
 #| echo: false
 #| fig-asp: 1
-#| fig-cap: "Examples of map projections"
+#| fig-cap: "Examples of map projections for the whole world."
 world_projs_code = c("boggs", "eck1", "eck4", "eqearth", "goode", 
                      #"hatano", 
                      "moll", "nell", "robin", "times", "wag1", "wintri",
@@ -78,9 +93,8 @@ tms = lapply(1:nrow(world_projs), function(p) {
     tm_layout(panel.labels = world_projs[p, 2]) +
     tm_layout(bg.color = "lightblue",
             earth_boundary = TRUE)
-  # tm_shape(World, crs = paste0("+proj=", p)) + tm_polygons() + tm_style("natural") + tm_layout(panel.labels = p)
 })
-tmap_arrange(tms, ncol= 3)
+tmap_arrange(tms, ncol = 3)
 ```
 
 <!-- https://proj.org/en/stable/operations/projections/index.html -->
