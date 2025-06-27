@@ -98,20 +98,35 @@ tm_shape(slo_regions) +
 ## Additional customization
 
 <!-- with ggplot2 package and/or book reference -->
-<!-- e.g., change labels? -->
-<!-- add x axis? -->
-<!-- remove list legend -->
 
-```{r charts-12}
+```{r}
+#| label: fig-chart-ggplot1
+#| fig-cap: "Customizing charts with ggplot2."
+#| message: false
+library(ggplot2)
 tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens",
+               plot.axis.x = TRUE,
               fill.chart = tm_chart_histogram(
-                extra.ggplot2 = ggplot2::theme_dark()
+                extra.ggplot2 = list(theme(plot.background = element_rect(fill = "lightgray")))
               ))
 ```
 
-```{r charts-13}
+```{r}
+#| label: fig-chart-ggplot2
+#| fig-cap: "Using chart as a map legend."
+#| message: false
 tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens",
-              fill.chart = tm_chart_histogram())
+              fill.chart = tm_chart_histogram(
+                plot.axis.x = TRUE,
+                plot.axis.y = TRUE,
+                extra.ggplot2 = list(theme(plot.background = element_rect(fill = "#FFC067"),
+                                           plot.title = ggplot2::element_text(size = 10)),
+                                     coord_flip(),
+                                     labs(title = "Population density")),
+                position = tm_pos_in("left", "top"),
+                width = 20,
+              ),
+              fill.legend = tm_legend(show = FALSE))
 ```
