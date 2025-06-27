@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Elegant and informative maps with tmap\n",
+    "title": "Spatial Data Visualization with tmap",
     "section": "",
-    "text": "Welcome\nThis is the online home of Elegant and informative maps with tmap, a work-in-progress book on geospatial data visualization with the R-package tmap.",
+    "text": "Welcome\nThis is the online home of Spatial Data Visualization with tmap: A Practical Guide to Thematic Mapping in R, a work-in-progress book on geospatial data visualization with the R-package tmap.",
     "crumbs": [
       "Welcome"
     ]
@@ -12,7 +12,7 @@
   {
     "objectID": "index.html#how-to-contribute",
     "href": "index.html#how-to-contribute",
-    "title": "Elegant and informative maps with tmap\n",
+    "title": "Spatial Data Visualization with tmap",
     "section": "How to contribute?",
     "text": "How to contribute?\nWe encourage contributions on any part of the book, including:\n\nImprovements to the text, e.g., clarifying unclear sentences, fixing typos\nChanges to the code\nSuggestions on content (see the project’s issue tracker)",
     "crumbs": [
@@ -22,9 +22,9 @@
   {
     "objectID": "index.html#additional-information",
     "href": "index.html#additional-information",
-    "title": "Elegant and informative maps with tmap\n",
+    "title": "Spatial Data Visualization with tmap",
     "section": "Additional information",
-    "text": "Additional information\nThis work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs 4.0 International License.\n\n\nCC BY-NC-ND 4.0\n\nThe code samples in this book are licensed under a Creative Commons CC0 1.0 Universal (CC0 1.0) Public Domain Dedication.\n\n\nCC0 1.0\n\nThis version of the book was built on 2025-06-25.",
+    "text": "Additional information\nThis work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs 4.0 International License.\n\n\nCC BY-NC-ND 4.0\n\nThe code samples in this book are licensed under a Creative Commons CC0 1.0 Universal (CC0 1.0) Public Domain Dedication.\n\n\nCC0 1.0\n\nThis version of the book was built on GH Actions on 2025-06-27.",
     "crumbs": [
       "Welcome"
     ]
