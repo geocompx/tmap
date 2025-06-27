@@ -892,7 +892,7 @@
     "href": "charts.html#additional-customization",
     "title": "14  Charts",
     "section": "\n14.4 Additional customization",
-    "text": "14.4 Additional customization\n\n\n\n\n\ntm_shape(slo_regions) +\n  tm_polygons(fill = \"pop_dens\",\n              fill.chart = tm_chart_histogram(\n                extra.ggplot2 = ggplot2::theme_dark()\n              ))\n\n\n\n\n\n\n\n\ntm_shape(slo_regions) +\n  tm_polygons(fill = \"pop_dens\",\n              fill.chart = tm_chart_histogram())",
+    "text": "14.4 Additional customization\n\n\nlibrary(ggplot2)\ntm_shape(slo_regions) +\n  tm_polygons(fill = \"pop_dens\",\n              fill.chart = tm_chart_histogram(\n                plot.axis.x = TRUE,\n                extra.ggplot2 = list(theme(plot.background = element_rect(fill = \"lightgray\")))\n              ))\n\n\n\n\n\n\nFigure 14.8: Customizing charts with ggplot2.\n\n\n\n\n\ntm_shape(slo_regions) +\n  tm_polygons(fill = \"pop_dens\",\n              fill.chart = tm_chart_histogram(\n                plot.axis.x = TRUE,\n                plot.axis.y = TRUE,\n                extra.ggplot2 = list(theme(plot.background = element_rect(fill = \"#FFC067\"),\n                                           plot.title = ggplot2::element_text(size = 10)),\n                                     coord_flip(),\n                                     labs(title = \"Population density\")),\n                position = tm_pos_in(\"left\", \"top\"),\n                width = 20,\n              ),\n              fill.legend = tm_legend(show = FALSE))\n\n\n\n\n\n\nFigure 14.9: Using chart as a map legend.",
     "crumbs": [
       "Expanding the toolbox",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Charts</span>"
