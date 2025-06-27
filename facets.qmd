@@ -34,7 +34,7 @@ tm_shape(slo_regions) +
 ```{r}
 #| label: fig-facets2
 #| fig-cap: "Facets for one variable over time."
-#| fig-asp: 0.4
+#| fig-asp: 0.5
 tm_shape(slo_regions_ts) +
   tm_polygons("gdppercap") +
   tm_facets(by = "time", ncol = 5)
