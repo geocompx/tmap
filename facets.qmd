@@ -34,7 +34,7 @@ tm_shape(slo_regions) +
 ```{r}
 #| label: fig-facets2
 #| fig-cap: "Facets for one variable over time."
-#| fig-asp: 0.5
+#| fig-asp: 0.4
 tm_shape(slo_regions_ts) +
   tm_polygons("gdppercap") +
   tm_facets(by = "time", ncol = 5)
@@ -49,12 +49,13 @@ tm_shape(slo_regions_ts) +
   tm_facets(by = "time")
 ```
 
-# Imporance of layers order
+## Imporance of layers order
 
 <!-- customize -->
 ```{r}
 #| label: fig-facets4
 #| fig-cap: "Facets for one variable for different region groups."
+#| fig-asp: 0.4
 tm_shape(slo_borders) +
   tm_borders() +
   tm_shape(slo_regions_ts) +
@@ -94,6 +95,7 @@ tm_shape(slo_regions_ts) +
 ```{r}
 #| label: fig-facets7
 #| fig-cap: "Facets for one variable with wrapping."
+#| fig-asp: 0.4
 tm_shape(slo_borders) +
   tm_borders() +
   tm_shape(slo_regions_ts) +
@@ -104,7 +106,7 @@ tm_shape(slo_borders) +
 ```{r}
 #| label: fig-facets8
 #| fig-cap: "Two-dimensional facets for one variable in various region groups over time."
-#| fig-asp: 0.8
+#| fig-asp: 0.7
 tm_shape(slo_borders) +
   tm_borders() +
   tm_shape(slo_regions_ts) +
@@ -127,7 +129,7 @@ tm_shape(slo_borders) +
 ```{r}
 #| label: fig-facets9
 #| fig-cap: "Two-dimensional facets with labeled axes."
-#| fig-asp: 0.8
+#| fig-asp: 0.7
 tm_shape(slo_borders) +
   tm_borders() +
   tm_shape(slo_regions_ts) +
@@ -152,6 +154,7 @@ slo_elev = read_stars("data/slovenia/slo_elev.tif")
 #| label: fig-facets10
 #| fig-cap: "Facets for raster data."
 #| message: false
+#| fig.asp: 1.1
 tm_shape(slo_tavg) +
   tm_raster() +
   tm_facets(by = "band", ncol = 3)
@@ -160,6 +163,8 @@ tm_shape(slo_tavg) +
 ```{r}
 #| label: fig-facets11
 #| fig-cap: "Facets for raster data independent legends."
+#| message: false
+#| fig.asp: 1.1
 tm_shape(slo_tavg) +
   tm_raster(
     col.scale = tm_scale_continuous(values = "viridis"),
@@ -173,6 +178,7 @@ tm_shape(slo_tavg) +
 ```{r}
 #| label: fig-facets12
 #| fig-cap: "Facets with raster data and vector data."
+#| message: false
 tm_shape(slo_elev) +
   tm_raster() +
   tm_shape(slo_regions, is.main = TRUE) + 
