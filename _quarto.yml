@@ -45,8 +45,8 @@ book:
       chapters:
         - "map-projections.qmd"
         - "charts.qmd"
-        - "facets.qmd"
         - "arrangements.qmd"
+        - "facets.qmd"
         - "animations.qmd"
         # - "basic-modes.qmd"
         - "interactive.qmd" 
