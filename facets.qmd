@@ -157,7 +157,8 @@ slo_elev = read_stars("data/slovenia/slo_elev.tif")
 #| fig.asp: 1.1
 tm_shape(slo_tavg) +
   tm_raster() +
-  tm_facets(by = "band", ncol = 3)
+  tm_facets(by = "band", ncol = 3) +
+  tm_layout(panel.labels = c(1:12))
 ```
 
 ```{r}
@@ -168,9 +169,11 @@ tm_shape(slo_tavg) +
 tm_shape(slo_tavg) +
   tm_raster(
     col.scale = tm_scale_continuous(values = "viridis"),
-    col.legend = tm_legend(title = "Temperature (°C)"),
+    col.legend = tm_legend(title = ""),
     col.free = TRUE) +
-  tm_facets(by = "band", ncol = 3)
+  tm_facets(by = "band", ncol = 3) +
+  tm_layout(panel.labels = c(1:12)) +
+  tm_title("Average monthly temperature in Slovenia") 
 ```
 
 <!-- mixing with vector data -->
