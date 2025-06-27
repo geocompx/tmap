@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.7.31">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="This book teaches how to make elegant and informative maps with the R package tmap.">
-<title>15&nbsp; Facets – Elegant and informative maps with **tmap**</title>
+<title>16&nbsp; Facets – Elegant and informative maps with **tmap**</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -62,8 +62,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./arrangements.html" rel="next">
-<link href="./charts.html" rel="prev">
+<link href="./animations.html" rel="next">
+<link href="./arrangements.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -114,7 +114,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./map-projections.html">Expanding the toolbox</a></li><li class="breadcrumb-item"><a href="./facets.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Facets</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./map-projections.html">Expanding the toolbox</a></li><li class="breadcrumb-item"><a href="./facets.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Facets</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -261,14 +261,14 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./facets.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Facets</span></span></a>
+  <a href="./arrangements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Arranging maps</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./arrangements.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Arranging maps</span></span></a>
+  <a href="./facets.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Facets</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -375,15 +375,15 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#specifying-facets" id="toc-specifying-facets" class="nav-link" data-scroll-target="#specifying-facets"><span class="header-section-number">15.1</span> Specifying facets</a></li>
-  <li><a href="#imporance-of-layers-order" id="toc-imporance-of-layers-order" class="nav-link" data-scroll-target="#imporance-of-layers-order"><span class="header-section-number">15.2</span> Imporance of layers order</a></li>
-  <li><a href="#facets-types" id="toc-facets-types" class="nav-link" data-scroll-target="#facets-types"><span class="header-section-number">15.3</span> Facets types</a></li>
-  <li><a href="#customizing-facets" id="toc-customizing-facets" class="nav-link" data-scroll-target="#customizing-facets"><span class="header-section-number">15.4</span> Customizing facets</a></li>
+<li><a href="#specifying-facets" id="toc-specifying-facets" class="nav-link" data-scroll-target="#specifying-facets"><span class="header-section-number">16.1</span> Specifying facets</a></li>
+  <li><a href="#imporance-of-layers-order" id="toc-imporance-of-layers-order" class="nav-link" data-scroll-target="#imporance-of-layers-order"><span class="header-section-number">16.2</span> Imporance of layers order</a></li>
+  <li><a href="#facets-types" id="toc-facets-types" class="nav-link" data-scroll-target="#facets-types"><span class="header-section-number">16.3</span> Facets types</a></li>
+  <li><a href="#customizing-facets" id="toc-customizing-facets" class="nav-link" data-scroll-target="#customizing-facets"><span class="header-section-number">16.4</span> Customizing facets</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/facets.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./map-projections.html">Expanding the toolbox</a></li><li class="breadcrumb-item"><a href="./facets.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Facets</span></a></li></ol></nav><div class="quarto-title">
-<h1 class="title"><span id="sec-facets" class="quarto-section-identifier"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Facets</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./map-projections.html">Expanding the toolbox</a></li><li class="breadcrumb-item"><a href="./facets.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Facets</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title"><span id="sec-facets" class="quarto-section-identifier"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Facets</span></span></h1>
 </div>
 
 <!--
@@ -411,8 +411,8 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <!-- two approaches -- variables (e.g., columns) vs values in one variable -->
 <!-- + a mix of both approaches -->
 <!-- should we limit to e.g., 5 years? -->
-<section id="specifying-facets" class="level2" data-number="15.1"><h2 data-number="15.1" class="anchored" data-anchor-id="specifying-facets">
-<span class="header-section-number">15.1</span> Specifying facets</h2>
+<section id="specifying-facets" class="level2" data-number="16.1"><h2 data-number="16.1" class="anchored" data-anchor-id="specifying-facets">
+<span class="header-section-number">16.1</span> Specifying facets</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"pop_dens"</span>, <span class="st">"gdppercap"</span>, <span class="st">"tourism"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -422,7 +422,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <img src="figures/fig-facets1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facets1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.1: Facets for different variables.
+Figure&nbsp;16.1: Facets for different variables.
 </figcaption></figure>
 </div>
 </div>
@@ -440,7 +440,7 @@ Figure&nbsp;15.1: Facets for different variables.
 <img src="figures/fig-facets2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facets2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.2: Facets for one variable over time.
+Figure&nbsp;16.2: Facets for one variable over time.
 </figcaption></figure>
 </div>
 </div>
@@ -455,13 +455,13 @@ Figure&nbsp;15.2: Facets for one variable over time.
 <img src="figures/fig-facets3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facets3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.3: Facets for multiple variables over time.
+Figure&nbsp;16.3: Facets for multiple variables over time.
 </figcaption></figure>
 </div>
 </div>
 </div>
-</section><section id="imporance-of-layers-order" class="level2" data-number="15.2"><h2 data-number="15.2" class="anchored" data-anchor-id="imporance-of-layers-order">
-<span class="header-section-number">15.2</span> Imporance of layers order</h2>
+</section><section id="imporance-of-layers-order" class="level2" data-number="16.2"><h2 data-number="16.2" class="anchored" data-anchor-id="imporance-of-layers-order">
+<span class="header-section-number">16.2</span> Imporance of layers order</h2>
 <!-- customize -->
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
@@ -475,7 +475,7 @@ Figure&nbsp;15.3: Facets for multiple variables over time.
 <img src="figures/fig-facets4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facets4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.4: Facets for one variable for different region groups.
+Figure&nbsp;16.4: Facets for one variable for different region groups.
 </figcaption></figure>
 </div>
 </div>
@@ -492,7 +492,7 @@ Figure&nbsp;15.4: Facets for one variable for different region groups.
 <img src="figures/fig-facets5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facets5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.5: Facets for one variable limiting the view to a specific region group.
+Figure&nbsp;16.5: Facets for one variable limiting the view to a specific region group.
 </figcaption></figure>
 </div>
 </div>
@@ -505,8 +505,8 @@ Figure&nbsp;15.5: Facets for one variable limiting the view to a specific region
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="facets-types" class="level2" data-number="15.3"><h2 data-number="15.3" class="anchored" data-anchor-id="facets-types">
-<span class="header-section-number">15.3</span> Facets types</h2>
+</section><section id="facets-types" class="level2" data-number="16.3"><h2 data-number="16.3" class="anchored" data-anchor-id="facets-types">
+<span class="header-section-number">16.3</span> Facets types</h2>
 <!-- other facets functions -->
 <!-- tm_facets_wrap(by = "VARS__", nrow = NA, ncol = NA, byrow = TRUE, ...) -->
 <!-- tm_facets_grid(rows = NULL, columns = NULL, pages = NULL, ...) -->
@@ -522,7 +522,7 @@ Figure&nbsp;15.5: Facets for one variable limiting the view to a specific region
 <img src="figures/fig-facets7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facets7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.6: Facets for one variable with wrapping.
+Figure&nbsp;16.6: Facets for one variable with wrapping.
 </figcaption></figure>
 </div>
 </div>
@@ -539,7 +539,7 @@ Figure&nbsp;15.6: Facets for one variable with wrapping.
 <img src="figures/fig-facets8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facets8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.7: Two-dimensional facets for one variable in various region groups over time.
+Figure&nbsp;16.7: Two-dimensional facets for one variable in various region groups over time.
 </figcaption></figure>
 </div>
 </div>
@@ -551,8 +551,8 @@ Figure&nbsp;15.7: Two-dimensional facets for one variable in various region grou
 <!-- tm_facets_vstack(by = "VARS__", ...) -->
 <!-- tm_facets_pagewise(by = "VARS__", byrow = TRUE, ...) -->
 <!-- tm_facets_flip(...) -->
-</section><section id="customizing-facets" class="level2" data-number="15.4"><h2 data-number="15.4" class="anchored" data-anchor-id="customizing-facets">
-<span class="header-section-number">15.4</span> Customizing facets</h2>
+</section><section id="customizing-facets" class="level2" data-number="16.4"><h2 data-number="16.4" class="anchored" data-anchor-id="customizing-facets">
+<span class="header-section-number">16.4</span> Customizing facets</h2>
 <!-- tm_xlab and tm_ylab for better labels -->
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
@@ -568,7 +568,7 @@ Figure&nbsp;15.7: Two-dimensional facets for one variable in various region grou
 <img src="figures/fig-facets9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facets9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.8: Two-dimensional facets with labeled axes.
+Figure&nbsp;16.8: Two-dimensional facets with labeled axes.
 </figcaption></figure>
 </div>
 </div>
@@ -583,14 +583,15 @@ Figure&nbsp;15.8: Two-dimensional facets with labeled axes.
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_tavg</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets</a></span><span class="op">(</span>by <span class="op">=</span> <span class="st">"band"</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets</a></span><span class="op">(</span>by <span class="op">=</span> <span class="st">"band"</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>panel.labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-facets10" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-facets10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-facets10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facets10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.9: Facets for raster data.
+Figure&nbsp;16.9: Facets for raster data.
 </figcaption></figure>
 </div>
 </div>
@@ -599,16 +600,18 @@ Figure&nbsp;15.9: Facets for raster data.
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_tavg</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span></span>
 <span>    col.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_continuous.html">tm_scale_continuous</a></span><span class="op">(</span>values <span class="op">=</span> <span class="st">"viridis"</span><span class="op">)</span>,</span>
-<span>    col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Temperature (°C)"</span><span class="op">)</span>,</span>
+<span>    col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">""</span><span class="op">)</span>,</span>
 <span>    col.free <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets</a></span><span class="op">(</span>by <span class="op">=</span> <span class="st">"band"</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets</a></span><span class="op">(</span>by <span class="op">=</span> <span class="st">"band"</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>panel.labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_title.html">tm_title</a></span><span class="op">(</span><span class="st">"Average monthly temperature in Slovenia"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-facets11" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-facets11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-facets11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facets11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.10: Facets for raster data independent legends.
+Figure&nbsp;16.10: Facets for raster data independent legends.
 </figcaption></figure>
 </div>
 </div>
@@ -626,7 +629,7 @@ Figure&nbsp;15.10: Facets for raster data independent legends.
 <img src="figures/fig-facets12-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facets12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.11: Facets with raster data and vector data.
+Figure&nbsp;16.11: Facets with raster data and vector data.
 </figcaption></figure>
 </div>
 </div>
@@ -1032,13 +1035,13 @@ Figure&nbsp;15.11: Facets with raster data and vector data.
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./charts.html" class="pagination-link" aria-label="Charts">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Charts</span></span>
+      <a href="./arrangements.html" class="pagination-link" aria-label="Arranging maps">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Arranging maps</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./arrangements.html" class="pagination-link" aria-label="Arranging maps">
-        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Arranging maps</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./animations.html" class="pagination-link" aria-label="Animations">
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Animations</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
