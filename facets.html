@@ -376,13 +376,9 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
    
   <ul>
 <li><a href="#specifying-facets" id="toc-specifying-facets" class="nav-link" data-scroll-target="#specifying-facets"><span class="header-section-number">15.1</span> Specifying facets</a></li>
-  <li>
-<a href="#imporance-of-layers-order" id="toc-imporance-of-layers-order" class="nav-link" data-scroll-target="#imporance-of-layers-order"><span class="header-section-number">16</span> Imporance of layers order</a>
-  <ul>
-<li><a href="#facets-types" id="toc-facets-types" class="nav-link" data-scroll-target="#facets-types"><span class="header-section-number">16.1</span> Facets types</a></li>
-  <li><a href="#customizing-facets" id="toc-customizing-facets" class="nav-link" data-scroll-target="#customizing-facets"><span class="header-section-number">16.2</span> Customizing facets</a></li>
-  </ul>
-</li>
+  <li><a href="#imporance-of-layers-order" id="toc-imporance-of-layers-order" class="nav-link" data-scroll-target="#imporance-of-layers-order"><span class="header-section-number">15.2</span> Imporance of layers order</a></li>
+  <li><a href="#facets-types" id="toc-facets-types" class="nav-link" data-scroll-target="#facets-types"><span class="header-section-number">15.3</span> Facets types</a></li>
+  <li><a href="#customizing-facets" id="toc-customizing-facets" class="nav-link" data-scroll-target="#customizing-facets"><span class="header-section-number">15.4</span> Customizing facets</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/facets.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -434,7 +430,10 @@ Figure&nbsp;15.1: Facets for different variables.
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions_ts</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="st">"gdppercap"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets</a></span><span class="op">(</span>by <span class="op">=</span> <span class="st">"time"</span>, ncol <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets</a></span><span class="op">(</span>by <span class="op">=</span> <span class="st">"time"</span>, ncol <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [plot mode] fit legend/component: Some legend items or map compoments do not</span></span>
+<span><span class="co">#&gt; fit well, and are therefore rescaled.</span></span>
+<span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-facets2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-facets2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -461,8 +460,8 @@ Figure&nbsp;15.3: Facets for multiple variables over time.
 </div>
 </div>
 </div>
-</section><section id="imporance-of-layers-order" class="level1" data-number="16"><h1 data-number="16">
-<span class="header-section-number">16</span> Imporance of layers order</h1>
+</section><section id="imporance-of-layers-order" class="level2" data-number="15.2"><h2 data-number="15.2" class="anchored" data-anchor-id="imporance-of-layers-order">
+<span class="header-section-number">15.2</span> Imporance of layers order</h2>
 <!-- customize -->
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
@@ -476,7 +475,7 @@ Figure&nbsp;15.3: Facets for multiple variables over time.
 <img src="figures/fig-facets4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facets4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16.1: Facets for one variable for different region groups.
+Figure&nbsp;15.4: Facets for one variable for different region groups.
 </figcaption></figure>
 </div>
 </div>
@@ -493,7 +492,7 @@ Figure&nbsp;16.1: Facets for one variable for different region groups.
 <img src="figures/fig-facets5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facets5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16.2: Facets for one variable limiting the view to a specific region group.
+Figure&nbsp;15.5: Facets for one variable limiting the view to a specific region group.
 </figcaption></figure>
 </div>
 </div>
@@ -506,8 +505,8 @@ Figure&nbsp;16.2: Facets for one variable limiting the view to a specific region
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="facets-types" class="level2" data-number="16.1"><h2 data-number="16.1" class="anchored" data-anchor-id="facets-types">
-<span class="header-section-number">16.1</span> Facets types</h2>
+</section><section id="facets-types" class="level2" data-number="15.3"><h2 data-number="15.3" class="anchored" data-anchor-id="facets-types">
+<span class="header-section-number">15.3</span> Facets types</h2>
 <!-- other facets functions -->
 <!-- tm_facets_wrap(by = "VARS__", nrow = NA, ncol = NA, byrow = TRUE, ...) -->
 <!-- tm_facets_grid(rows = NULL, columns = NULL, pages = NULL, ...) -->
@@ -523,7 +522,7 @@ Figure&nbsp;16.2: Facets for one variable limiting the view to a specific region
 <img src="figures/fig-facets7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facets7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16.3: Facets for one variable with wrapping.
+Figure&nbsp;15.6: Facets for one variable with wrapping.
 </figcaption></figure>
 </div>
 </div>
@@ -540,7 +539,7 @@ Figure&nbsp;16.3: Facets for one variable with wrapping.
 <img src="figures/fig-facets8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facets8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16.4: Two-dimensional facets for one variable in various region groups over time.
+Figure&nbsp;15.7: Two-dimensional facets for one variable in various region groups over time.
 </figcaption></figure>
 </div>
 </div>
@@ -552,8 +551,8 @@ Figure&nbsp;16.4: Two-dimensional facets for one variable in various region grou
 <!-- tm_facets_vstack(by = "VARS__", ...) -->
 <!-- tm_facets_pagewise(by = "VARS__", byrow = TRUE, ...) -->
 <!-- tm_facets_flip(...) -->
-</section><section id="customizing-facets" class="level2" data-number="16.2"><h2 data-number="16.2" class="anchored" data-anchor-id="customizing-facets">
-<span class="header-section-number">16.2</span> Customizing facets</h2>
+</section><section id="customizing-facets" class="level2" data-number="15.4"><h2 data-number="15.4" class="anchored" data-anchor-id="customizing-facets">
+<span class="header-section-number">15.4</span> Customizing facets</h2>
 <!-- tm_xlab and tm_ylab for better labels -->
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
@@ -569,7 +568,7 @@ Figure&nbsp;16.4: Two-dimensional facets for one variable in various region grou
 <img src="figures/fig-facets9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facets9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16.5: Two-dimensional facets with labeled axes.
+Figure&nbsp;15.8: Two-dimensional facets with labeled axes.
 </figcaption></figure>
 </div>
 </div>
@@ -591,7 +590,7 @@ Figure&nbsp;16.5: Two-dimensional facets with labeled axes.
 <img src="figures/fig-facets10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facets10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16.6: Facets for raster data.
+Figure&nbsp;15.9: Facets for raster data.
 </figcaption></figure>
 </div>
 </div>
@@ -602,17 +601,14 @@ Figure&nbsp;16.6: Facets for raster data.
 <span>    col.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_continuous.html">tm_scale_continuous</a></span><span class="op">(</span>values <span class="op">=</span> <span class="st">"viridis"</span><span class="op">)</span>,</span>
 <span>    col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Temperature (°C)"</span><span class="op">)</span>,</span>
 <span>    col.free <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets</a></span><span class="op">(</span>by <span class="op">=</span> <span class="st">"band"</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [plot mode] fit legend/component: Some legend items or map compoments do not</span></span>
-<span><span class="co">#&gt; fit well, and are therefore rescaled.</span></span>
-<span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets</a></span><span class="op">(</span>by <span class="op">=</span> <span class="st">"band"</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-facets11" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-facets11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-facets11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facets11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16.7: Facets for raster data independent legends.
+Figure&nbsp;15.10: Facets for raster data independent legends.
 </figcaption></figure>
 </div>
 </div>
@@ -623,22 +619,21 @@ Figure&nbsp;16.7: Facets for raster data independent legends.
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span>, is.main <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets</a></span><span class="op">(</span>by <span class="op">=</span> <span class="st">"region_group"</span>, free.coords <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [scale] tm_raster:() the data variable assigned to 'col' contains positive and negative values, so midpoint is set to 0. Set 'midpoint = NA' in 'fill.scale = tm_scale_intervals(&lt;HERE&gt;)' to use all visual values (e.g. colors)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets</a></span><span class="op">(</span>by <span class="op">=</span> <span class="st">"region_group"</span>, free.coords <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-facets12" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-facets12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-facets12-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-facets12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16.8: Facets with raster data and vector data.
+Figure&nbsp;15.11: Facets with raster data and vector data.
 </figcaption></figure>
 </div>
 </div>
 </div>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
