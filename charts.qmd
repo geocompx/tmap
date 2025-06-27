@@ -52,8 +52,8 @@ tm_shape(slo_regions) +
 ```{r}
 #| label: fig-chart-num
 #| fig-cap: "Charts for numerical data."
-#| layout-nrow: 3
 #| message: false
+#| layout-ncol: 3
 # box plot
 tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens",
@@ -73,7 +73,7 @@ tm_shape(slo_regions) +
 ```{r}
 #| label: fig-chart-cat
 #| fig-cap: "Charts for categorical data."
-#| layout-nrow: 2
+#| layout-ncol: 2
 #| message: false
 tm_shape(slo_regions) +
   tm_polygons(fill = "region_group",
@@ -125,7 +125,7 @@ tm_shape(slo_regions) +
                                            plot.title = ggplot2::element_text(size = 10)),
                                      coord_flip(),
                                      labs(title = "Population density")),
-                position = tm_pos_in("left", "top"),
+                position = tm_pos_in("LEFT", "TOP"),
                 width = 20,
               ),
               fill.legend = tm_legend(show = FALSE))
