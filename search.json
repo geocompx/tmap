@@ -936,7 +936,7 @@
     "href": "facets.html",
     "title": "16  Facets",
     "section": "",
-    "text": "16.1 Specifying facets\ntm_shape(slo_regions) +\n  tm_polygons(c(\"pop_dens\", \"gdppercap\", \"tourism\"))\n\n\n\n\n\n\nFigure 16.1: Facets for different variables.\ntm_shape(slo_regions_ts) +\n  tm_polygons(\"gdppercap\") +\n  tm_facets(by = \"time\", ncol = 5)\n#&gt; [plot mode] fit legend/component: Some legend items or map compoments do not\n#&gt; fit well, and are therefore rescaled.\n#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.\n\n\n\n\n\n\nFigure 16.2: Facets for one variable over time.\ntm_shape(slo_regions_ts) +\n  tm_polygons(c(\"pop_dens\", \"gdppercap\", \"tourism\")) +\n  tm_facets(by = \"time\")\n\n\n\n\n\n\nFigure 16.3: Facets for multiple variables over time.",
+    "text": "16.1 Specifying facets\ntm_shape(slo_regions) +\n  tm_polygons(c(\"pop_dens\", \"gdppercap\", \"tourism\"))\n\n\n\n\n\n\nFigure 16.1: Facets for different variables.\ntm_shape(slo_regions_ts) +\n  tm_polygons(\"gdppercap\") +\n  tm_facets(by = \"time\", ncol = 5)\n\n\n\n\n\n\nFigure 16.2: Facets for one variable over time.\ntm_shape(slo_regions_ts) +\n  tm_polygons(c(\"pop_dens\", \"gdppercap\", \"tourism\")) +\n  tm_facets(by = \"time\")\n\n\n\n\n\n\nFigure 16.3: Facets for multiple variables over time.",
     "crumbs": [
       "Expanding the toolbox",
       "<span class='chapter-number'>16</span>  <span class='chapter-title'>Facets</span>"
