@@ -34,11 +34,12 @@ tinytable::tt(charts_df) |>
 library(tmap)
 library(sf)
 slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
-tm_shape(slo_regions) +
-  tm_polygons(fill = "pop_dens")
 ```
 
-```{r charts-5}
+```{r}
+#| label: fig-chart-hist
+#| fig-cap: "Histogram added to a map to represent the distribution of a variable."
+#| message: false
 tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens",
               fill.chart = tm_chart_histogram())
@@ -48,19 +49,20 @@ tm_shape(slo_regions) +
 
 ## Numerical data
 
-```{r charts-6}
+```{r}
+#| label: fig-chart-num
+#| fig-cap: "Charts for numerical data."
+#| layout-nrow: 3
+#| message: false
+# box plot
 tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens",
               fill.chart = tm_chart_box())
-```
-
-```{r charts-7}
+# violin plot
 tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens",
               fill.chart = tm_chart_violin())
-```
-
-```{r charts-8}
+# donut plot
 tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens",
               fill.chart = tm_chart_donut())
@@ -68,13 +70,14 @@ tm_shape(slo_regions) +
 
 ## Categorical data
 
-```{r charts-9}
+```{r}
+#| label: fig-chart-cat
+#| fig-cap: "Charts for categorical data."
+#| layout-nrow: 2
+#| message: false
 tm_shape(slo_regions) +
   tm_polygons(fill = "region_group",
               fill.chart = tm_chart_bar())
-```
-
-```{r charts-10}
 tm_shape(slo_regions) +
   tm_polygons(fill = "region_group",
               fill.chart = tm_chart_donut())
@@ -82,7 +85,10 @@ tm_shape(slo_regions) +
 
 ## Bivariate data
 
-```{r charts-11}
+```{r}
+#| label: fig-chart-bivariate
+#| fig-cap: "Bivariate charts used in case of representing a relationship between two numerical variables."
+#| message: false
 tm_shape(slo_regions) +
   tm_polygons(fill = tm_vars(c("pop_dens", "pop65perc"), multivariate = TRUE),
               fill.scale = tm_scale_bivariate(values = "purplegold"),
@@ -93,6 +99,8 @@ tm_shape(slo_regions) +
 
 <!-- with ggplot2 package and/or book reference -->
 <!-- e.g., change labels? -->
+<!-- add x axis? -->
+<!-- remove list legend -->
 
 ```{r charts-12}
 tm_shape(slo_regions) +
