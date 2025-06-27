@@ -528,99 +528,125 @@ Table&nbsp;14.1: Available chart types.
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
-<span><span class="va">slo_regions</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_regions.gpkg"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/charts-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
+<span><span class="va">slo_regions</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_regions.gpkg"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>,</span>
 <span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_histogram</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/charts-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<div id="fig-chart-hist" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-chart-hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-chart-hist-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chart-hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.1: Histogram added to a map to represent the distribution of a variable.
+</figcaption></figure>
 </div>
 </div>
 </div>
 <!-- mention positioning -->
 <section id="numerical-data" class="level2" data-number="14.1"><h2 data-number="14.1" class="anchored" data-anchor-id="numerical-data">
 <span class="header-section-number">14.1</span> Numerical data</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># box plot</span></span>
+<span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>,</span>
-<span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_box</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/charts-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_box</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># violin plot</span></span>
+<span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>,</span>
-<span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_violin</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/charts-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_violin</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># donut plot</span></span>
+<span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>,</span>
 <span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_donut</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/charts-8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<div class="cell quarto-layout-panel" data-layout-align="center" data-layout-nrow="3">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<div id="fig-chart-num-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-chart-num-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-chart-num-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chart-num-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.2: Charts for numerical data.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<div id="fig-chart-num-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-chart-num-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-chart-num-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chart-num-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.3: Charts for numerical data.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<div id="fig-chart-num-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-chart-num-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-chart-num-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chart-num-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.4: Charts for numerical data.
+</figcaption></figure>
+</div>
 </div>
 </div>
 </div>
 </section><section id="categorical-data" class="level2" data-number="14.2"><h2 data-number="14.2" class="anchored" data-anchor-id="categorical-data">
 <span class="header-section-number">14.2</span> Categorical data</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"region_group"</span>,</span>
-<span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_bar</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/charts-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_bar</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"region_group"</span>,</span>
 <span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_donut</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/charts-10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<div class="cell quarto-layout-panel" data-layout-align="center" data-layout-nrow="2">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<div id="fig-chart-cat-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-chart-cat-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-chart-cat-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chart-cat-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.5: Charts for categorical data.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<div id="fig-chart-cat-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-chart-cat-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-chart-cat-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chart-cat-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.6: Charts for categorical data.
+</figcaption></figure>
+</div>
 </div>
 </div>
 </div>
 </section><section id="bivariate-data" class="level2" data-number="14.3"><h2 data-number="14.3" class="anchored" data-anchor-id="bivariate-data">
 <span class="header-section-number">14.3</span> Bivariate data</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_vars.html">tm_vars</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"pop_dens"</span>, <span class="st">"pop65perc"</span><span class="op">)</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>              fill.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_bivariate.html">tm_scale_bivariate</a></span><span class="op">(</span>values <span class="op">=</span> <span class="st">"purplegold"</span><span class="op">)</span>,</span>
-<span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_heatmap</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Labels abbreviated by the first two letters, e.g.: "20 to 21" =&gt; "20"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_heatmap</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/charts-11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<div id="fig-chart-bivariate" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-chart-bivariate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-chart-bivariate-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chart-bivariate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.7: Bivariate charts used in case of representing a relationship between two numerical variables.
+</figcaption></figure>
 </div>
 </div>
 </div>
@@ -628,8 +654,10 @@ Table&nbsp;14.1: Available chart types.
 <span class="header-section-number">14.4</span> Additional customization</h2>
 <!-- with ggplot2 package and/or book reference -->
 <!-- e.g., change labels? -->
+<!-- add x axis? -->
+<!-- remove list legend -->
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>,</span>
 <span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_histogram</a></span><span class="op">(</span></span>
 <span>                extra.ggplot2 <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_dark</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -642,7 +670,7 @@ Table&nbsp;14.1: Available chart types.
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>,</span>
 <span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_histogram</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
