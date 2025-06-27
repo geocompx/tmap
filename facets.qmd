@@ -21,41 +21,42 @@ slo_regions_ts = subset(slo_regions_ts, time %in% c("2006", "2010", "2014", "201
 <!-- + a mix of both approaches -->
 <!-- should we limit to e.g., 5 years? -->
 
-```{r facets-3}
-tm_shape(slo_borders) +
-  tm_borders() +
-  tm_shape(slo_regions) +
-  tm_fill(c("pop_dens", "gdppercap", "tourism"))
+```{r}
+#| label: fig-facets1
+#| fig-cap: "Facets for different variables."
+#| fig-asp: 0.5
+tm_shape(slo_regions) +
+  tm_polygons(c("pop_dens", "gdppercap", "tourism"))
 ```
 
-```{r facets-4}
-tm_shape(slo_borders) +
-  tm_borders() +
-  tm_shape(slo_regions_ts) +
-  tm_fill("gdppercap") +
+```{r}
+#| label: fig-facets2
+#| fig-cap: "Facets for one variable over time."
+#| fig-asp: 0.5
+tm_shape(slo_regions_ts) +
+  tm_polygons("gdppercap") +
   tm_facets(by = "time", ncol = 5)
 ```
 
-```{r facets-5}
-tm_shape(slo_borders) +
-  tm_borders() +
-  tm_shape(slo_regions_ts) +
-  tm_fill(c("pop_dens", "gdppercap", "tourism")) +
+```{r}
+#| label: fig-facets3
+#| fig-cap: "Facets for multiple variables over time."
+#| fig-asp: 1
+tm_shape(slo_regions_ts) +
+  tm_polygons(c("pop_dens", "gdppercap", "tourism")) +
   tm_facets(by = "time")
 ```
 
 <!-- customize -->
 ```{r facets-6}
-tm_shape(slo_borders) +
-  tm_borders() +
-  tm_shape(slo_regions_ts) +
-  tm_fill("gdppercap") +
-  tm_facets(by = "region_group", ncol = 5)
+tm_shape(slo_regions_ts) +
+  tm_polygons("gdppercap") +
+  tm_facets(by = "region_group", ncol = 2)
 ```
 
 ```{r facets-7}
 tm_shape(slo_regions_ts) +
-  tm_fill("gdppercap") +
+  tm_polygons("gdppercap") +
   tm_facets(by = "region_group", ncol = 5) +
   tm_shape(slo_borders) +
   tm_borders()
@@ -63,7 +64,7 @@ tm_shape(slo_regions_ts) +
 
 ```{r facets-8}
 tm_shape(slo_regions_ts) +
-  tm_fill("gdppercap") +
+  tm_polygons("gdppercap") +
   tm_facets(by = "region_group", ncol = 5, free.coords = FALSE) +
   tm_shape(slo_borders) +
   tm_borders()
@@ -77,7 +78,7 @@ tm_shape(slo_regions_ts) +
 tm_shape(slo_borders) +
   tm_borders() +
   tm_shape(slo_regions_ts) +
-  tm_fill("gdppercap") +
+  tm_polygons("gdppercap") +
   tm_facets_wrap(by = "region_group", ncol = 5)
 ```
 
@@ -85,7 +86,7 @@ tm_shape(slo_borders) +
 tm_shape(slo_borders) +
   tm_borders() +
   tm_shape(slo_regions_ts) +
-  tm_fill("gdppercap") +
+  tm_polygons("gdppercap") +
   tm_facets_grid(rows = "region_group", columns = "time")
 ```
 
@@ -94,7 +95,7 @@ tm_shape(slo_borders) +
 tm_shape(slo_borders) +
   tm_borders() +
   tm_shape(slo_regions_ts) +
-  tm_fill("gdppercap") +
+  tm_polygons("gdppercap") +
   tm_facets_grid(rows = "region_group", columns = "time") +
   tm_xlab("Year", side = "top", size = 2, space = 1) +
   tm_ylab("Region", rotation = 90, size = 2, space = 1)
