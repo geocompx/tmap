@@ -173,7 +173,7 @@ tm_shape(slo_tavg) +
     col.free = TRUE) +
   tm_facets(by = "band", ncol = 3) +
   tm_layout(panel.labels = c(1:12),
-            inner.margins = c(0.02, 0.12, 0.02, 0.02)) +
+            inner.margins = c(0.02, 0.2, 0.02, 0.02)) +
   tm_title("Average monthly temperature in Slovenia") 
 ```
 
