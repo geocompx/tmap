@@ -4,7 +4,17 @@
     "href": "index.html",
     "title": "Spatial Data Visualization with tmap",
     "section": "",
-    "text": "Welcome\nThis is the online home of Spatial Data Visualization with tmap: A Practical Guide to Thematic Mapping in R, a work-in-progress book on geospatial data visualization with the R-package tmap.",
+    "text": "Welcome\nWelcome to the online home of Spatial Data Visualization with tmap: A Practical Guide to Thematic Mapping in R. This book is a hands-on, open-source resource for anyone interested in creating maps using R and the tmap package.\nWhether you’re a beginner in geospatial analysis or an experienced GIS user transitioning to R, this book will help you learn how to visualize spatial data for print, the web, and interactive applications.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#what-youll-learn",
+    "href": "index.html#what-youll-learn",
+    "title": "Spatial Data Visualization with tmap",
+    "section": "What you’ll learn",
+    "text": "What you’ll learn\nThis book walks you through the full process of thematic mapping with tmap, including:\n\nLoad, explore, and prepare spatial data in R\nBuild maps using tmap’s core components like shapes, layers, and visual variables\nCustomize map appearance with legends, scales, layouts, and annotations\nCreate faceted, animated, and interactive maps for various audiences\nIntegrate tmap maps into reports, web apps, and Shiny dashboards\nExtend tmap by adding new map layer types, spatial data classes, and output modes\nApply good design practices to make maps that are clear, consistent, and effective\n\nEach chapter combines concise explanations, reproducible code, and real-world examples.",
     "crumbs": [
       "Welcome"
     ]
@@ -13,18 +23,28 @@
     "objectID": "index.html#how-to-contribute",
     "href": "index.html#how-to-contribute",
     "title": "Spatial Data Visualization with tmap",
-    "section": "How to contribute?",
-    "text": "How to contribute?\nWe encourage contributions on any part of the book, including:\n\nImprovements to the text, e.g., clarifying unclear sentences, fixing typos\nChanges to the code\nSuggestions on content (see the project’s issue tracker)",
+    "section": "How to contribute",
+    "text": "How to contribute\nWe welcome your contributions to make this book better!\nYou can help by:\n\nSuggesting topics or reporting issues via the issue tracker\n\nFixing typos or improving clarity\nEnhancing code examples or adding new ones\n\nTo contribute:\n\nVisit the GitHub repository\n\nFork the project and create a branch\nMake your changes\nOpen a pull request with a short description of your contribution\n\nAll contributions are appreciated and acknowledged.",
     "crumbs": [
       "Welcome"
     ]
   },
   {
-    "objectID": "index.html#additional-information",
-    "href": "index.html#additional-information",
+    "objectID": "index.html#citation",
+    "href": "index.html#citation",
     "title": "Spatial Data Visualization with tmap",
-    "section": "Additional information",
-    "text": "Additional information\nThis work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs 4.0 International License.\n\n\nCC BY-NC-ND 4.0\n\nThe code samples in this book are licensed under a Creative Commons CC0 1.0 Universal (CC0 1.0) Public Domain Dedication.\n\n\nCC0 1.0\n\nThis version of the book was built on GH Actions on 2025-06-29.",
+    "section": "Citation",
+    "text": "Citation\nIf you use this book in your work, please cite it as:\n\nTennekes M., Nowosad J. (2025) Spatial Data Visualization with tmap: A Practical Guide to Thematic Mapping in R. Available at: https://tmap.geocompx.org",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#license",
+    "href": "index.html#license",
+    "title": "Spatial Data Visualization with tmap",
+    "section": "License",
+    "text": "License\nThis work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs 4.0 International License.\n\n\nCC BY-NC-ND 4.0\n\nThe code samples in this book are licensed under a Creative Commons CC0 1.0 Universal (CC0 1.0) Public Domain Dedication.\n\n\nCC0 1.0\n\nThis version of the book was built on GH Actions on 2025-06-29.",
     "crumbs": [
       "Welcome"
     ]
