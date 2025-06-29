@@ -19,7 +19,7 @@ book:
     open-source book that teaches you how to create static and interactive maps using the tmap package in R.
     Covering core concepts in thematic cartography, map design, and spatial visualization, this guide provides
     step-by-step approaches to help you produce high-quality maps for reports, presentations, and web applications.
-  # cover-image: https://geocompx.org/static/img/book_cover_py.png
+  cover-image: images/cover_tmp_all_mockup.png
   site-url: https://tmap.geocompx.org/
   repo-url: https://github.com/geocompx/tmap/
   date: now
