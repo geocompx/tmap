@@ -956,18 +956,18 @@
     "href": "facets.html",
     "title": "16  Facets",
     "section": "",
-    "text": "16.1 Specifying facets\ntm_shape(slo_regions) +\n  tm_polygons(c(\"pop_dens\", \"gdppercap\", \"tourism\"))\n\n\n\n\n\n\nFigure 16.1: Facets for different variables.\ntm_shape(slo_regions_ts) +\n  tm_polygons(\"gdppercap\") +\n  tm_facets(by = \"time\", ncol = 5)\n\n\n\n\n\n\nFigure 16.2: Facets for one variable over time.\ntm_shape(slo_regions_ts) +\n  tm_polygons(c(\"pop_dens\", \"gdppercap\", \"tourism\")) +\n  tm_facets(by = \"time\")\n\n\n\n\n\n\nFigure 16.3: Facets for multiple variables over time.",
+    "text": "16.1 Specifying facets\nFacet can be based on data coming from various sources: it can be a set of variables (e.g., columns in an sf object) or a single variable with multiple values.\nThe first approach is seen below, where we specify multiple variables (c(\"pop_dens\", \"gdppercap\", \"tourism\")) from the slo_regions dataset to create facets. Each variable is displayed in its own facet with a separate scale and legend (Figure 16.1). This allows for quick comparison of different variables across the same regions.\ntm_shape(slo_regions) +\n  tm_polygons(c(\"pop_dens\", \"gdppercap\", \"tourism\"))\n\n\n\n\n\n\nFigure 16.1: Facets for different variables.\nThe second approach uses a single variable to create facets, where each facet represents a unique value of that variable. Here, we need to use tm_facets() to specify the faceting variable. This function creates a grid of panels, each showing the data for a specific value of the variable (here \"time\"), and also allows to specify the layout of the facets (e.g., number of columns) (Figure 16.2). In such cases, all of the facets share the same scale and legend, which is useful, for example, for comparing the same variable across different times.\ntm_shape(slo_regions_ts) +\n  tm_polygons(\"gdppercap\") +\n  tm_facets(by = \"time\", ncol = 5)\n\n\n\n\n\n\nFigure 16.2: Facets for one variable over time.\nBoth approaches can be combined, allowing to create facets for multiple variables over time (Figure 16.3). Here, variables specified as a visual variable (c(\"pop_dens\", \"gdppercap\", \"tourism\")) and show in columns, while the faceting variable is set with tm_facets(by = \"time\") and presents the data for each year in a separate row.\ntm_shape(slo_regions_ts) +\n  tm_polygons(c(\"pop_dens\", \"gdppercap\", \"tourism\")) +\n  tm_facets(by = \"time\")\n\n\n\n\n\n\nFigure 16.3: Facets for multiple variables over time.",
     "crumbs": [
       "Expanding the toolbox",
       "<span class='chapter-number'>16</span>  <span class='chapter-title'>Facets</span>"
     ]
   },
   {
-    "objectID": "facets.html#imporance-of-layers-order",
-    "href": "facets.html#imporance-of-layers-order",
+    "objectID": "facets.html#imporance-of-layers-order-for-faceting",
+    "href": "facets.html#imporance-of-layers-order-for-faceting",
     "title": "16  Facets",
-    "section": "\n16.2 Imporance of layers order",
-    "text": "16.2 Imporance of layers order\n\n\ntm_shape(slo_borders) +\n  tm_borders() +\n  tm_shape(slo_regions_ts) +\n  tm_polygons(\"gdppercap\") +\n  tm_facets(by = \"region_group\", nrow = 2)\n\n\n\n\n\n\nFigure 16.4: Facets for one variable for different region groups.\n\n\n\n\n\ntm_shape(slo_regions_ts) +\n  tm_polygons(\"gdppercap\") +\n  tm_facets(by = \"region_group\", nrow = 2) +\n  tm_shape(slo_borders) +\n  tm_borders()\n\n\n\n\n\n\nFigure 16.5: Facets for one variable limiting the view to a specific region group.\n\n\n\n\n\n\ntm_shape(slo_regions_ts) +\n  tm_polygons(\"gdppercap\") +\n  tm_facets(by = \"region_group\", nrow = 2, free.coords = FALSE) +\n  tm_shape(slo_borders) +\n  tm_borders()",
+    "section": "\n16.2 Imporance of layers order for faceting",
+    "text": "16.2 Imporance of layers order for faceting\n\n\ntm_shape(slo_borders) +\n  tm_borders() +\n  tm_shape(slo_regions_ts) +\n  tm_polygons(\"gdppercap\") +\n  tm_facets(by = \"region_group\", nrow = 2)\n\n\n\n\n\n\nFigure 16.4: Facets for one variable for different region groups.\n\n\n\n\n\ntm_shape(slo_regions_ts) +\n  tm_polygons(\"gdppercap\") +\n  tm_facets(by = \"region_group\", nrow = 2) +\n  tm_shape(slo_borders) +\n  tm_borders()\n\n\n\n\n\n\nFigure 16.5: Facets for one variable limiting the view to a specific region group.\n\n\n\n\n\n\ntm_shape(slo_regions_ts) +\n  tm_polygons(\"gdppercap\") +\n  tm_facets(by = \"region_group\", nrow = 2, free.coords = FALSE) +\n  tm_shape(slo_borders) +\n  tm_borders()",
     "crumbs": [
       "Expanding the toolbox",
       "<span class='chapter-number'>16</span>  <span class='chapter-title'>Facets</span>"
