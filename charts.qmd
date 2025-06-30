@@ -98,6 +98,7 @@ tm_shape(slo_regions) +
 ## Additional customization
 
 <!-- with ggplot2 package and/or book reference -->
+<!-- https://github.com/geocompx/tmap/issues/10#issuecomment-3007409988 -->
 
 ```{r}
 #| label: fig-chart-ggplot1
