@@ -501,6 +501,7 @@ Figure&nbsp;13.4: Examples of map projections for the whole world.
 </div>
 <!-- https://proj.org/en/stable/operations/projections/index.html -->
 <!-- maybe bbox could be a part of tm_crs? -->
+<!-- https://github.com/r-tmap/tmap/issues/1152#issuecomment-3007324769 -->
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldvector</span>, bbox <span class="op">=</span> <span class="st">"FULL"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules</a></span><span class="op">(</span>labels.show <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
