@@ -4,7 +4,12 @@ source("code/before_script.R")
 ```
 
 # Facets {#sec-facets}
-<!-- small-multiples -->
+
+\index{facets}
+\index{small multiples}
+<!-- also known as small-multiples -->
+
+<!-- should we limit to e.g., 5 years? -->
 
 ```{r facets-2}
 #| message: false
@@ -17,11 +22,17 @@ slo_regions_ts = subset(slo_regions_ts, time %in% c("2006", "2010", "2014", "201
 ```
 
 <!-- tm_facets() -->
-<!-- two approaches -- variables (e.g., columns) vs values in one variable -->
-<!-- + a mix of both approaches -->
-<!-- should we limit to e.g., 5 years? -->
 
 ## Specifying facets
+
+<!-- two approaches -- variables (e.g., columns) vs values in one variable -->
+<!-- + a mix of both approaches -->
+
+Facet can be based on data coming from various sources: it can be a set of variables (e.g., columns in an `sf` object) or a single variable with multiple values.
+
+The first approach is seen below, where we specify multiple variables (`c("pop_dens", "gdppercap", "tourism")`) from the `slo_regions` dataset to create facets. 
+Each variable is displayed in its own facet with a separate scale and legend (@fig-facets1).
+This allows for quick comparison of different variables across the same regions.
 
 ```{r}
 #| label: fig-facets1
@@ -30,6 +41,11 @@ slo_regions_ts = subset(slo_regions_ts, time %in% c("2006", "2010", "2014", "201
 tm_shape(slo_regions) +
   tm_polygons(c("pop_dens", "gdppercap", "tourism"))
 ```
+
+The second approach uses a single variable to create facets, where each facet represents a unique value of that variable.
+Here, we need to use `tm_facets()` to specify the faceting variable.
+This function creates a grid of panels, each showing the data for a specific value of the variable (here `"time"`), and also allows to specify the layout of the facets (e.g., number of columns) (@fig-facets2).
+In such cases, all of the facets share the same scale and legend, which is useful, for example, for comparing the same variable across different times.
 
 ```{r}
 #| label: fig-facets2
@@ -40,6 +56,9 @@ tm_shape(slo_regions_ts) +
   tm_facets(by = "time", ncol = 5)
 ```
 
+Both approaches can be combined, allowing to create facets for multiple variables over time (@fig-facets3).
+Here, variables specified as a visual variable (`c("pop_dens", "gdppercap", "tourism")`) and show in columns, while the faceting variable is set with `tm_facets(by = "time")` and presents the data for each year in a separate row.
+
 ```{r}
 #| label: fig-facets3
 #| fig-cap: "Facets for multiple variables over time."
@@ -49,7 +68,7 @@ tm_shape(slo_regions_ts) +
   tm_facets(by = "time")
 ```
 
-## Imporance of layers order
+## Imporance of layers order for faceting
 
 <!-- customize -->
 ```{r}
