@@ -21,6 +21,7 @@ slo_regions_ts = read_sf("data/slovenia/slo_regions_ts.gpkg")
 slo_regions_ts = subset(slo_regions_ts, time %in% c("2006", "2010", "2014", "2018", "2022"))
 ```
 
+<!-- explain data -->
 <!-- tm_facets() -->
 
 ## Specifying facets
@@ -122,35 +123,46 @@ tm_shape(slo_regions_ts) +
 
 ## Facets types
 
-<!-- other facets functions -->
-<!-- tm_facets_wrap(by = "VARS__", nrow = NA, ncol = NA, byrow = TRUE, ...) -->
-<!-- tm_facets_grid(rows = NULL, columns = NULL, pages = NULL, ...) -->
+All of the above examples use the `tm_facets()` function.
+This is a general function that can be used to create facets for various types of data.
+At the same time, **tmap** provides several specialized functions for creating facets that can be used to create more complex faceting layouts.
+
+The most common ones are:
+
+- `tm_facets_wrap()` -- creates facets that wrap around the specified variable -- it can be thought as a one-dimensional grid of panels
+- `tm_facets_grid()` -- creates facets in a two-dimensional grid, where the specified variables define the rows and columns
+
+@fig-facets7 shows how to use `tm_facets_wrap()` to create facets for the `region_group` variable, wrapping the panels into two rows.
+By default, the panels are filled from left to right, and then from top to bottom, but we can change this behavior by setting the `byrow` argument to `FALSE`.
 
 ```{r}
 #| label: fig-facets7
 #| fig-cap: "Facets for one variable with wrapping."
 #| fig-asp: 0.4
 tm_shape(slo_borders) +
-  tm_borders() +
+  tm_borders(lwd = 4) +
   tm_shape(slo_regions_ts) +
   tm_polygons("gdppercap") +
-  tm_facets_wrap(by = "region_group", nrow = 2)
+  tm_facets_wrap(by = "region_group", nrow = 2, byrow = FALSE)
 ```
+
+Two-dimensional facets are shown in @fig-facets8, where the `region_group` variable is used for the rows and the `time` variable for the columns.
 
 ```{r}
 #| label: fig-facets8
 #| fig-cap: "Two-dimensional facets for one variable in various region groups over time."
 #| fig-asp: 0.7
 tm_shape(slo_borders) +
-  tm_borders() +
+  tm_borders(lwd = 4) +
   tm_shape(slo_regions_ts) +
   tm_polygons("gdppercap") +
   tm_facets_grid(rows = "region_group", columns = "time")
 ```
 
-<!-- also: https://r-tmap.github.io/tmap/articles/adv_multivariate -->
+<!-- any other crucial arguments? -->
 
 <!-- mention the rest -->
+<!-- Martijn, should I add some content of any other of the facets type? -->
 <!-- tm_facets_stack(by = "VARS__", orientation = NA, ...) -->
 <!-- tm_facets_hstack(by = "VARS__", ...) -->
 <!-- tm_facets_vstack(by = "VARS__", ...) -->
@@ -165,7 +177,7 @@ tm_shape(slo_borders) +
 #| fig-cap: "Two-dimensional facets with labeled axes."
 #| fig-asp: 0.7
 tm_shape(slo_borders) +
-  tm_borders() +
+  tm_borders(lwd = 4) +
   tm_shape(slo_regions_ts) +
   tm_polygons("gdppercap") +
   tm_facets_grid(rows = "region_group", columns = "time") +
@@ -220,7 +232,7 @@ tm_shape(slo_tavg) +
 tm_shape(slo_elev) +
   tm_raster() +
   tm_shape(slo_regions, is.main = TRUE) + 
-  tm_borders() +
+  tm_borders(lwd = 4) +
   tm_facets(by = "region_group", free.coords = TRUE)
 ```
 
@@ -228,7 +240,7 @@ tm_shape(slo_elev) +
 #| eval: false
 #| echo: false
 tm_shape(slo_regions, is.main = TRUE) + 
-  tm_borders() +
+  tm_borders(lwd = 4) +
   tm_facets(by = "region_group", free.coords = TRUE) +
   tm_shape(slo_elev) +
   tm_raster()
