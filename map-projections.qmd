@@ -55,7 +55,7 @@ tm +
 <<mproj2>>
 ```
 
-```{r map-projections-4}
+```{r}
 #| label: fig-mproj-auto
 #| fig-cap: "Map with data projected into the automatically selected projection."
 #| fig-asp: 0.5
@@ -111,7 +111,7 @@ tmap_arrange(tms, ncol = 3)
 <!-- maybe bbox could be a part of tm_crs? -->
 <!-- https://github.com/r-tmap/tmap/issues/1152#issuecomment-3007324769 -->
 
-```{r map-projections-7}
+```{r}
 #| label: fig-mproj-ortho
 #| fig-cap: "Orthographic projection examples."
 #| layout-ncol: 2

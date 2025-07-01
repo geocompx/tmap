@@ -19,7 +19,7 @@ charts_df = tibble::tribble(
 )
 ```
 
-```{r charts-3}
+```{r}
 #| label: tbl-layers-table
 #| tbl-cap: "Available chart types."
 #| echo: false

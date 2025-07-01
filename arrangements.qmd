@@ -34,7 +34,7 @@ tm2 = tm_shape(slo_elev) +
 <!-- ncol -->
 <!-- asp -->
 
-```{r arrangements-5}
+```{r}
 #| label: fig-arrangements1
 #| fig-cap: "Arranging two maps in one layout."
 #| message: false
