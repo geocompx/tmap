@@ -88,7 +88,7 @@ This results in a map where each facet shows the GDP per capita for different re
 #| fig-asp: 0.4
 tm_shape(slo_borders) +
   tm_borders(lwd = 4) +
-  tm_shape(slo_regions_ts) +
+  tm_shape(slo_regions) +
   tm_polygons("gdppercap") +
   tm_facets(by = "region_group", nrow = 2)
 ```
@@ -99,7 +99,7 @@ This results in a map where each facet zooms into a specific region group, showi
 ```{r}
 #| label: fig-facets5
 #| fig-cap: "Facets for one variable limiting the view to a specific region group."
-tm_shape(slo_regions_ts) +
+tm_shape(slo_regions) +
   tm_polygons("gdppercap") +
   tm_facets(by = "region_group", nrow = 2) +
   tm_shape(slo_borders) +
@@ -113,7 +113,7 @@ In this case, we may either set the `slo_borders` layer as a main one (`tm_shape
 #| eval: false
 #| label: fig-facets6
 #| fig-cap: "Facets for one variable with free coordinates."
-tm_shape(slo_regions_ts) +
+tm_shape(slo_regions) +
   tm_polygons("gdppercap") +
   tm_facets(by = "region_group", nrow = 2, free.coords = FALSE) +
   tm_shape(slo_borders) +
@@ -140,7 +140,7 @@ By default, the panels are filled from left to right, and then from top to botto
 #| fig-asp: 0.4
 tm_shape(slo_borders) +
   tm_borders(lwd = 4) +
-  tm_shape(slo_regions_ts) +
+  tm_shape(slo_regions) +
   tm_polygons("gdppercap") +
   tm_facets_wrap(by = "region_group", nrow = 2, byrow = FALSE)
 ```
