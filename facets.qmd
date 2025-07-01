@@ -171,7 +171,16 @@ tm_shape(slo_borders) +
 
 ## Customizing facets
 
-<!-- tm_xlab and tm_ylab for better labels -->
+Now that we know how to create facets, we can customize them to make them more informative and to focus on the message we want to convey.
+Often, faceting variables are self-explanatory -- we can easily understand what their values mean.
+However, sometimes, we want to add more information to the facets, such as labels for the axes or titles for the panels.
+
+The labels can be added using the `tm_xlab()` and `tm_ylab()` functions (@fig-facets9).
+By default, they are located on the bottom and left side of the map, but we can change their position using the `side` argument.
+Moreover, they maintain a horizontal orientation.
+This is fine for the x-axis, but not for the y-axis, where we may want to rotate the label to be vertical with the `rotation` argument.
+Finally, we could customize their size and distance from the map border to make them more readable using the `size` and `space` arguments, respectively.
+
 ```{r}
 #| label: fig-facets9
 #| fig-cap: "Two-dimensional facets with labeled axes."
@@ -185,7 +194,9 @@ tm_shape(slo_borders) +
   tm_ylab("Region", rotation = 90, size = 2, space = 1)
 ```
 
-
+<!-- should it not be a part of the tm_facets function? -->
+Panel labels can be adjusted using the `tm_layout(panel.labels = c(...))` function.
+To see it in action, we read the `slo_tavg` raster data, which contains average monthly temperatures in Slovenia.
 <!-- Raster data -- where to add it in this section: either mix with the other content or after it -->
 <!-- show how to add colors independently to each raster panel -->
 
@@ -193,8 +204,11 @@ tm_shape(slo_borders) +
 #| message: false
 library(stars)
 slo_tavg = read_stars("data/slovenia/slo_tavg.tif")
-slo_elev = read_stars("data/slovenia/slo_elev.tif")
 ```
+
+Next, we create facets for the raster data using `tm_facets()`, specify the `band` variable that stores the month information and set the number of columns to three.
+This results in a grid of panels, each showing the average temperature for a specific month, with the panel labels based on the `band` variable name.
+Such a name is usually not very informative, so we can replace it with more descriptive labels with a vector of labels provided to the `panel.labels` argument of the `tm_layout()` function, e.g., `panel.labels = c(1:12)` (@fig-facets10).
 
 ```{r}
 #| label: fig-facets10
@@ -202,10 +216,18 @@ slo_elev = read_stars("data/slovenia/slo_elev.tif")
 #| message: false
 #| fig.asp: 1.1
 tm_shape(slo_tavg) +
-  tm_raster() +
+  tm_raster(col.scale = tm_scale_continuous()) +
   tm_facets(by = "band", ncol = 3) +
   tm_layout(panel.labels = c(1:12))
 ```
+
+Note that in the above example only one legend is shown and it is shared across all panels.
+This allows for easy comparison of the values across different months, e.g., we can see that the average temperature in January is much lower than in July.
+
+<!-- .free should be mentioned, initially explained in the scale chapter, and then references here -->
+On the other hand, we may be interested in comparing the spatial patterns of average temperatures across different months rather than their values.
+To do that, we need to create independent legends for each panel --  we should set the `col.free` argument of `tm_raster()` to `TRUE` (@fig-facets11).
+In the example below, we also customize the map further by updating the color scale to use the "viridis" palette, removing the title from the legend and adding a title to the map, improving the panel labels, adjusting the inner margins of the facets to make them more readable.
 
 ```{r}
 #| label: fig-facets11
@@ -215,7 +237,7 @@ tm_shape(slo_tavg) +
 tm_shape(slo_tavg) +
   tm_raster(
     col.scale = tm_scale_continuous(values = "viridis"),
-    col.legend = tm_legend(title = ""),
+    col.legend = tm_legend(title = "", position = c("LEFT", "BOTTOM")),
     col.free = TRUE) +
   tm_facets(by = "band", ncol = 3) +
   tm_layout(panel.labels = c(1:12),
@@ -223,14 +245,20 @@ tm_shape(slo_tavg) +
   tm_title("Average monthly temperature in Slovenia") 
 ```
 
-<!-- mixing with vector data -->
+## Facets with raster and vector data
+
+@fig-facets12 shows how to combine raster and vector data in facets.
+In this example, we use the `slo_elev` raster data, which contains elevation data for Slovenia, and the `slo_regions` vector data, which includes the borders of the regions in Slovenia.
+To display the elevation data for each region group, we must first specify the raster data and then use the vector data as the main layer (`is.main = TRUE` in `tm_shape()`).
+Next, we can use `tm_facets()` to create facets for the `region_group` variable.
 
 ```{r}
 #| label: fig-facets12
 #| fig-cap: "Facets with raster data and vector data."
 #| message: false
+slo_elev = read_stars("data/slovenia/slo_elev.tif")
 tm_shape(slo_elev) +
-  tm_raster() +
+  tm_raster(col.scale = tm_scale_continuous()) +
   tm_shape(slo_regions, is.main = TRUE) + 
   tm_borders(lwd = 4) +
   tm_facets(by = "region_group", free.coords = TRUE)
@@ -243,5 +271,15 @@ tm_shape(slo_regions, is.main = TRUE) +
   tm_borders(lwd = 4) +
   tm_facets(by = "region_group", free.coords = TRUE) +
   tm_shape(slo_elev) +
+  tm_raster()
+```
+
+```{r facets-16}
+#| eval: false
+#| echo: false
+tm_shape(slo_regions, is.main = TRUE) + 
+  tm_borders(lwd = 4) +
+  tm_facets(by = "region_group", free.coords = TRUE) +
+  tm_shape(slo_tavg) +
   tm_raster()
 ```
