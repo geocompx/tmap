@@ -118,8 +118,6 @@ Look at the following example and try to guess how many *groups* it has, and how
 ```{r}
 #| label: fig-rmap1
 #| warning: false
-#| fig-height: 9
-#| fig-asp: 0.73
 #| fig-cap: "Example of a map with four groups of map layers: an elevation layer, country borders layer, railroads layer, and cities layer."
 tm_shape(slo_elev) +
   tm_raster(col.scale = tm_scale(values = "geyser"),
@@ -186,8 +184,6 @@ This is a useful feature that allows to use one map in a few places in a code, m
 ```{r}
 #| label: fig-rmap2
 #| message: false
-#| fig-height: 9
-#| fig-asp: 0.73
 #| fig-cap: Example of a map with four groups of map layers and additional map elements, such as graticule lines, north arrow, scale bar, and text annotation. It also has a manually added legend.
 my_map
 ```
@@ -196,9 +192,38 @@ my_map
 
 ## Facets {#sec-facets-section}
 
-<!-- to write after the @sec-facets chapter is done -->
+\index{facets}
+\index{small multiples}
+The **tmap** package allows the creation of facet maps, also known as small multiples.
+In such maps, the same data is visualized in several panels, each showing a different subset of the data.
+The panels may represent different variables, time periods, or spatial extents.
 
-@sec-facets
+The `slo_regions` object contains the administrative regions of Slovenia with their names, population density (`gdppercap`), GDP per capita (`gdppercap`), region group name (`region_group`), and other attributes.
+One way to visualize this data as facets is to specify selected columns as visual variables in the map layer function (e.g., `tm_polygons()`) (@fig-sec-facets1).
+
+```{r}
+#| label: fig-sec-facets1
+#| fig-cap: A facet map with three variables visualized in separate panels.
+slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
+tm_shape(slo_regions) +
+  tm_polygons(fill = c("pop_dens", "gdppercap", "region_group"))
+```
+
+Another possible approach is to use the `tm_facets()` function.
+Let's illustrate it with the `slo_regions_ts` object containing the same variables as `slo_regions` but for many years (`time` column).
+@fig-sec-facets2 shows a facet map with the GDP per capita, specified with `tm_polygons()`, and visualized in separate panels for each year as defined by the `tm_facets()` function.
+
+```{r}
+#| label: fig-sec-facets2
+#| fig-cap: A facet map with the GDP per capita visualized in separate panels for each year.
+slo_regions_ts = read_sf("data/slovenia/slo_regions_ts.gpkg")
+tm_shape(slo_regions_ts) +
+  tm_polygons("gdppercap") +
+  tm_facets(by = "time", ncol = 5)
+```
+
+Facet maps can be used for vector and raster data, their extents can be adjusted, and they can be further customized with additional labels.
+This is a topic of the @sec-facets.
 
 ## Animations {#sec-ani-section}
 
