@@ -3,6 +3,7 @@ library(webshot)
 library(ragg)
 set.seed(2020-05-06)
 options(digits = 3)
+tmap::tmap_options(scale = 0.8)
 
 knitr::knit_hooks$set(
   crop = knitr::hook_pdfcrop,
