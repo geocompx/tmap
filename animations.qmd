@@ -48,7 +48,7 @@ slo_tavg = read_stars("data/slovenia/slo_tavg.tif")
 
 ```{r animations-8}
 tm_shape(slo_tavg) +
-  tm_raster() +
+  tm_raster(col.scale = tm_scale_continuous()) +
   tm_animate(by = "band", fps = 6)
 ```
 
