@@ -70,6 +70,7 @@ slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
 #| warning: false
 #| message: false
 #| fig-cap: "Examples of different scales applied to the same variable"
+#| fig-asp: 0.5
 slo_regions$pop65perc2 = as.integer(slo_regions$pop65perc)
 tm_shape(slo_regions) +
     tm_polygons(rep("pop65perc2", 6), 
