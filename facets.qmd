@@ -50,7 +50,7 @@ In such cases, all of the facets share the same scale and legend, which is usefu
 ```{r}
 #| label: fig-facets2
 #| fig-cap: "Facets for one variable over time."
-#| fig-asp: 0.5
+#| fig-asp: 0.45
 tm_shape(slo_regions_ts) +
   tm_polygons("gdppercap") +
   tm_facets(by = "time", ncol = 5)
@@ -70,17 +70,31 @@ tm_shape(slo_regions_ts) +
 
 ## Imporance of layers order for faceting
 
-<!-- customize -->
+The placement of the `tm_facets()` function in the code is crucial for how facets are applied to the map.
+When presenting multiple layers in a map, the `tm_facets()` function must be defined after the layer to be faceted.
+
+Moreover, the order of layers is essential when using facets for two reasons:
+
+1. The first layer in the map is used to determine the extent of the map.
+2. Each layer lies on top of the previous one, so the last layer is the one that is in the foreground.
+
+@fig-facets4 has the `slo_borders` layer first, which means that the borders of Slovenia are drawn first -- each facet will have the same extent and the borders will be visible in each facet.
+Next, the `slo_regions_ts` layer is added and faceted by the `region_group` variable.
+This results in a map where each facet shows the GDP per capita for different region groups with the borders of Slovenia in the background.
+
 ```{r}
 #| label: fig-facets4
 #| fig-cap: "Facets for one variable for different region groups."
 #| fig-asp: 0.4
 tm_shape(slo_borders) +
-  tm_borders() +
+  tm_borders(lwd = 4) +
   tm_shape(slo_regions_ts) +
   tm_polygons("gdppercap") +
   tm_facets(by = "region_group", nrow = 2)
 ```
+
+On the other hand, @fig-facets5 has the `slo_regions_ts` layer first, which means that the GDP per capita is drawn first and then the borders of Slovenia are added.
+This results in a map where each facet zooms into a specific region group, showing the GDP per capita for that group.
 
 ```{r}
 #| label: fig-facets5
@@ -89,10 +103,11 @@ tm_shape(slo_regions_ts) +
   tm_polygons("gdppercap") +
   tm_facets(by = "region_group", nrow = 2) +
   tm_shape(slo_borders) +
-  tm_borders()
+  tm_borders(lwd = 4)
 ```
 
-<!-- free.coords = FALSE) -->
+What to do in case we want to keep the borders layer on the top, but also have its extent in every panel?
+In this case, we may either set the `slo_borders` layer as a main one (`tm_shape(slo_borders, is.main = TRUE)`; @sec-shapes-hierarchy) or set the `free.coords` argument of `tm_facets()` to FALSE -- then each facet will use the complete extent of the provided `slo_regions_ts` data.
 
 ```{r}
 #| eval: false
@@ -102,7 +117,7 @@ tm_shape(slo_regions_ts) +
   tm_polygons("gdppercap") +
   tm_facets(by = "region_group", nrow = 2, free.coords = FALSE) +
   tm_shape(slo_borders) +
-  tm_borders()
+  tm_borders(lwd = 4)
 ```
 
 ## Facets types
