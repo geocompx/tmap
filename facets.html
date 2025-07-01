@@ -464,10 +464,16 @@ Figure&nbsp;16.3: Facets for multiple variables over time.
 </div>
 </section><section id="imporance-of-layers-order-for-faceting" class="level2" data-number="16.2"><h2 data-number="16.2" class="anchored" data-anchor-id="imporance-of-layers-order-for-faceting">
 <span class="header-section-number">16.2</span> Imporance of layers order for faceting</h2>
-<!-- customize -->
+<p>The placement of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets()</a></code> function in the code is crucial for how facets are applied to the map. When presenting multiple layers in a map, the <code><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets()</a></code> function must be defined after the layer to be faceted.</p>
+<p>Moreover, the order of layers is essential when using facets for two reasons:</p>
+<ol type="1">
+<li>The first layer in the map is used to determine the extent of the map.</li>
+<li>Each layer lies on top of the previous one, so the last layer is the one that is in the foreground.</li>
+</ol>
+<p><a href="#fig-facets4" class="quarto-xref">Figure&nbsp;<span>16.4</span></a> has the <code>slo_borders</code> layer first, which means that the borders of Slovenia are drawn first – each facet will have the same extent and the borders will be visible in each facet. Next, the <code>slo_regions_ts</code> layer is added and faceted by the <code>region_group</code> variable. This results in a map where each facet shows the GDP per capita for different region groups with the borders of Slovenia in the background.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders</a></span><span class="op">(</span>lwd <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions_ts</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="st">"gdppercap"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets</a></span><span class="op">(</span>by <span class="op">=</span> <span class="st">"region_group"</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -482,12 +488,13 @@ Figure&nbsp;16.4: Facets for one variable for different region groups.
 </div>
 </div>
 </div>
+<p>On the other hand, <a href="#fig-facets5" class="quarto-xref">Figure&nbsp;<span>16.5</span></a> has the <code>slo_regions_ts</code> layer first, which means that the GDP per capita is drawn first and then the borders of Slovenia are added. This results in a map where each facet zooms into a specific region group, showing the GDP per capita for that group.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions_ts</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="st">"gdppercap"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets</a></span><span class="op">(</span>by <span class="op">=</span> <span class="st">"region_group"</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders</a></span><span class="op">(</span>lwd <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-facets5" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-facets5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -499,13 +506,13 @@ Figure&nbsp;16.5: Facets for one variable limiting the view to a specific region
 </div>
 </div>
 </div>
-<!-- free.coords = FALSE) -->
+<p>What to do in case we want to keep the borders layer on the top, but also have its extent in every panel? In this case, we may either set the <code>slo_borders</code> layer as a main one (<code>tm_shape(slo_borders, is.main = TRUE)</code>; <a href="tm-shape.html#sec-shapes-hierarchy" class="quarto-xref"><span>Section 5.2</span></a>) or set the <code>free.coords</code> argument of <code><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets()</a></code> to FALSE – then each facet will use the complete extent of the provided <code>slo_regions_ts</code> data.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions_ts</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="st">"gdppercap"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets</a></span><span class="op">(</span>by <span class="op">=</span> <span class="st">"region_group"</span>, nrow <span class="op">=</span> <span class="fl">2</span>, free.coords <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders</a></span><span class="op">(</span>lwd <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="facets-types" class="level2" data-number="16.3"><h2 data-number="16.3" class="anchored" data-anchor-id="facets-types">
 <span class="header-section-number">16.3</span> Facets types</h2>
