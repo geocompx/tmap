@@ -7,9 +7,14 @@ source("code/before_script.R")
 
 \index{facets}
 \index{small multiples}
-<!-- also known as small-multiples -->
+Facets, also known as small multiples, are a powerful way to visualize multiple variables or values of a single variable in a grid of panels.
+In other words, they open the possibility of visualizing multiple maps in a single figure.
+They allow for quick comparison of different variables or values across the same regions or time periods.
+This chapter not only shows how to define facets in **tmap** but also how to customize them to make them more informative and appealing.
 
-<!-- should we limit to e.g., 5 years? -->
+To demonstrate the use of facets, we will use a few datasets from Slovenia.
+This includes the borders of Slovenia (`slo_borders` -- just one polygon), the regions of Slovenia (`slo_regions` -- multiple polygons for many variables) and the regions of Slovenia over time (`slo_regions_ts` -- multiple polygons with a time variable representing different years).
+To simplify the examples, we will subset the `slo_regions_ts` dataset to include only five years: 2006, 2010, 2014, 2018, and 2022.
 
 ```{r facets-2}
 #| message: false
@@ -21,13 +26,7 @@ slo_regions_ts = read_sf("data/slovenia/slo_regions_ts.gpkg")
 slo_regions_ts = subset(slo_regions_ts, time %in% c("2006", "2010", "2014", "2018", "2022"))
 ```
 
-<!-- explain data -->
-<!-- tm_facets() -->
-
 ## Specifying facets
-
-<!-- two approaches -- variables (e.g., columns) vs values in one variable -->
-<!-- + a mix of both approaches -->
 
 Facet can be based on data coming from various sources: it can be a set of variables (e.g., columns in an `sf` object) or a single variable with multiple values.
 
