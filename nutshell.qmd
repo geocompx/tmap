@@ -194,6 +194,18 @@ my_map
 
 <!-- refs  -->
 
+## Facets {#sec-facets-section}
+
+<!-- to write after the @sec-facets chapter is done -->
+
+@sec-facets
+
+## Animations {#sec-ani-section}
+
+<!-- to write after the \@ref(animations) chapter is done -->
+
+@sec-animations
+
 ## Map modes {#sec-map-modes}
 
 Each map created with **tmap** can be viewed in one of two modes: `"plot"` and `"view"`.
@@ -245,15 +257,3 @@ my_map
 ```
 
 More information about the interactive `"view"` mode and how to customize its outputs is in @sec-interactive.
-
-## Facets {#sec-facets-section}
-
-<!-- to write after the @sec-facets chapter is done -->
-
-@sec-facets
-
-## Animations {#sec-ani-section}
-
-<!-- to write after the \@ref(animations) chapter is done -->
-
-@sec-animations
