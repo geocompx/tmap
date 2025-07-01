@@ -409,6 +409,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <span><span class="va">slo_regions_ts</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_regions_ts.gpkg"</span><span class="op">)</span></span>
 <span><span class="va">slo_regions_ts</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">slo_regions_ts</span>, <span class="va">time</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"2006"</span>, <span class="st">"2010"</span>, <span class="st">"2014"</span>, <span class="st">"2018"</span>, <span class="st">"2022"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<!-- explain data -->
 <!-- tm_facets() -->
 <section id="specifying-facets" class="level2" data-number="16.1"><h2 data-number="16.1" class="anchored" data-anchor-id="specifying-facets">
 <span class="header-section-number">16.1</span> Specifying facets</h2>
@@ -516,15 +517,21 @@ Figure&nbsp;16.5: Facets for one variable limiting the view to a specific region
 </div>
 </section><section id="facets-types" class="level2" data-number="16.3"><h2 data-number="16.3" class="anchored" data-anchor-id="facets-types">
 <span class="header-section-number">16.3</span> Facets types</h2>
-<!-- other facets functions -->
-<!-- tm_facets_wrap(by = "VARS__", nrow = NA, ncol = NA, byrow = TRUE, ...) -->
-<!-- tm_facets_grid(rows = NULL, columns = NULL, pages = NULL, ...) -->
+<p>All of the above examples use the <code><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets()</a></code> function. This is a general function that can be used to create facets for various types of data. At the same time, <strong>tmap</strong> provides several specialized functions for creating facets that can be used to create more complex faceting layouts.</p>
+<p>The most common ones are:</p>
+<ul>
+<li>
+<code><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets_wrap()</a></code> – creates facets that wrap around the specified variable – it can be thought as a one-dimensional grid of panels</li>
+<li>
+<code><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets_grid()</a></code> – creates facets in a two-dimensional grid, where the specified variables define the rows and columns</li>
+</ul>
+<p><a href="#fig-facets7" class="quarto-xref">Figure&nbsp;<span>16.6</span></a> shows how to use <code><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets_wrap()</a></code> to create facets for the <code>region_group</code> variable, wrapping the panels into two rows. By default, the panels are filled from left to right, and then from top to bottom, but we can change this behavior by setting the <code>byrow</code> argument to <code>FALSE</code>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders</a></span><span class="op">(</span>lwd <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions_ts</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="st">"gdppercap"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets_wrap</a></span><span class="op">(</span>by <span class="op">=</span> <span class="st">"region_group"</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets_wrap</a></span><span class="op">(</span>by <span class="op">=</span> <span class="st">"region_group"</span>, nrow <span class="op">=</span> <span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-facets7" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-facets7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -536,9 +543,10 @@ Figure&nbsp;16.6: Facets for one variable with wrapping.
 </div>
 </div>
 </div>
+<p>Two-dimensional facets are shown in <a href="#fig-facets8" class="quarto-xref">Figure&nbsp;<span>16.7</span></a>, where the <code>region_group</code> variable is used for the rows and the <code>time</code> variable for the columns.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders</a></span><span class="op">(</span>lwd <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions_ts</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="st">"gdppercap"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets_grid</a></span><span class="op">(</span>rows <span class="op">=</span> <span class="st">"region_group"</span>, columns <span class="op">=</span> <span class="st">"time"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -553,8 +561,9 @@ Figure&nbsp;16.7: Two-dimensional facets for one variable in various region grou
 </div>
 </div>
 </div>
-<!-- also: https://r-tmap.github.io/tmap/articles/adv_multivariate -->
+<!-- any other crucial arguments? -->
 <!-- mention the rest -->
+<!-- Martijn, should I add some content of any other of the facets type? -->
 <!-- tm_facets_stack(by = "VARS__", orientation = NA, ...) -->
 <!-- tm_facets_hstack(by = "VARS__", ...) -->
 <!-- tm_facets_vstack(by = "VARS__", ...) -->
@@ -565,7 +574,7 @@ Figure&nbsp;16.7: Two-dimensional facets for one variable in various region grou
 <!-- tm_xlab and tm_ylab for better labels -->
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders</a></span><span class="op">(</span>lwd <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions_ts</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="st">"gdppercap"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets_grid</a></span><span class="op">(</span>rows <span class="op">=</span> <span class="st">"region_group"</span>, columns <span class="op">=</span> <span class="st">"time"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -631,7 +640,7 @@ Figure&nbsp;16.10: Facets for raster data independent legends.
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span>, is.main <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders</a></span><span class="op">(</span>lwd <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets</a></span><span class="op">(</span>by <span class="op">=</span> <span class="st">"region_group"</span>, free.coords <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-facets12" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
