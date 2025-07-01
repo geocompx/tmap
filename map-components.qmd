@@ -52,6 +52,7 @@ For the examples in this section, we will use a simple map of the Slovenia polyg
 
 ```{r}
 #| message: false
+#| fig-show: "hide"
 library(tmap)
 library(sf)
 slo_borders = read_sf("data/slovenia/slo_border.gpkg")
