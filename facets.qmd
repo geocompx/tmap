@@ -263,7 +263,7 @@ tm_shape(slo_elev) +
   tm_facets(by = "region_group", free.coords = TRUE)
 ```
 
-```{r facets-16}
+```{r}
 #| eval: false
 #| echo: false
 tm_shape(slo_regions, is.main = TRUE) + 
@@ -273,7 +273,7 @@ tm_shape(slo_regions, is.main = TRUE) +
   tm_raster()
 ```
 
-```{r facets-16}
+```{r}
 #| eval: false
 #| echo: false
 tm_shape(slo_regions, is.main = TRUE) + 
