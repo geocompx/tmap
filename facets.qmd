@@ -213,7 +213,7 @@ Such a name is usually not very informative, so we can replace it with more desc
 #| label: fig-facets10
 #| fig-cap: "Facets for raster data."
 #| message: false
-#| fig.asp: 1.1
+#| fig.asp: 0.9
 tm_shape(slo_tavg) +
   tm_raster(col.scale = tm_scale_continuous()) +
   tm_facets(by = "band", ncol = 3) +
@@ -232,7 +232,7 @@ In the example below, we also customize the map further by updating the color sc
 #| label: fig-facets11
 #| fig-cap: "Facets for raster data independent legends."
 #| message: false
-#| fig.asp: 1.1
+#| fig.asp: 1
 tm_shape(slo_tavg) +
   tm_raster(
     col.scale = tm_scale_continuous(values = "viridis"),
