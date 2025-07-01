@@ -50,3 +50,5 @@ svg_img = image_resize(svg_img,
 
 composite_img = image_composite(png_img, svg_img, operator = "over")
 print(composite_img)
+magick::image_write(composite_img, "images/cover_tmp_all.png", format = "png")
+
