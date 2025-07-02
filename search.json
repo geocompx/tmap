@@ -868,7 +868,7 @@
     "href": "map-projections.html#global-map-projections",
     "title": "13  Map projections",
     "section": "\n13.2 Global map projections",
-    "text": "13.2 Global map projections\n\n\ntm +\n  tm_crs(\"+proj=eck4\") +\n  tm_layout(bg.color = \"lightblue\",\n            earth_boundary = TRUE)\n\n\n\n\n\n\nFigure 13.3: Map with data projected into Eckert IV and with a customized style.\n\n\n\n\n\n\n\n\n\n\n\nFigure 13.4: Examples of map projections for the whole world.\n\n\n\n\n\n\n\ntm_shape(worldvector, bbox = \"FULL\") +\n  tm_polygons() +\n  tm_graticules(labels.show = FALSE) +\n  tm_crs(\"+proj=ortho +lat_0=30 +lon_0=0\")+\n  tm_layout(bg.color = \"lightblue\",\n            earth_boundary = TRUE,\n            frame = FALSE)\ntm_shape(worldvector, bbox = \"FULL\") +\n  tm_polygons() +\n  tm_graticules(labels.show = FALSE) +\n  tm_crs(\"+proj=ortho +lat_0=0 +lon_0=100\")+\n  tm_layout(bg.color = \"lightblue\",\n            earth_boundary = TRUE,\n            frame = FALSE)\n\n\n\n\n\n\n\n\nFigure 13.5: Orthographic projection examples.\n\n\n\n\n\n\n\n\n\nFigure 13.6: Orthographic projection examples.",
+    "text": "13.2 Global map projections\n\n\ntm +\n  tm_crs(\"+proj=eck4\") +\n  tm_layout(bg.color = \"lightblue\",\n            earth_boundary = TRUE)\n\n\n\n\n\n\nFigure 13.3: Map with data projected into Eckert IV and with a customized style.\n\n\n\n\n\n\n\n\n\n\n\nFigure 13.4: Examples of map projections for the whole world.\n\n\n\n\n\n\n\ntm_shape(worldvector, bbox = \"FULL\") +\n  tm_polygons()  +\n  tm_shape(worldcities) +\n  tm_dots() +\n  tm_text(\"name\") +\n  tm_graticules(labels.show = FALSE) +\n  tm_crs(\"+proj=ortho +lat_0=30 +lon_0=0\")+\n  tm_layout(bg.color = \"lightblue\",\n            earth_boundary = TRUE,\n            frame = FALSE)\ntm_shape(worldvector, bbox = \"FULL\") +\n  tm_polygons()  +\n  tm_shape(worldcities) +\n  tm_dots() +\n  tm_text(\"name\") +\n  tm_graticules(labels.show = FALSE) +\n  tm_crs(\"+proj=ortho +lat_0=0 +lon_0=100\")+\n  tm_layout(bg.color = \"lightblue\",\n            earth_boundary = TRUE,\n            frame = FALSE)\n\n\n\n\n\n\n\n\nFigure 13.5: Orthographic projection examples.\n\n\n\n\n\n\n\n\n\nFigure 13.6: Orthographic projection examples.",
     "crumbs": [
       "Expanding the toolbox",
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>Map projections</span>"
@@ -890,18 +890,7 @@
     "href": "charts.html",
     "title": "14  Charts",
     "section": "",
-    "text": "14.1 Numerical data\nFigure 14.2: Charts for numerical data.\n\n\n\n\n\n\n\n\n\nFigure 14.3: Charts for numerical data.\n\n\n\n\n\n\n\n\n\nFigure 14.4: Charts for numerical data.",
-    "crumbs": [
-      "Expanding the toolbox",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Charts</span>"
-    ]
-  },
-  {
-    "objectID": "charts.html#numerical-data",
-    "href": "charts.html#numerical-data",
-    "title": "14  Charts",
-    "section": "",
-    "text": "# box plot\ntm_shape(slo_regions) +\n  tm_polygons(fill = \"pop_dens\",\n              fill.chart = tm_chart_box())\n# violin plot\ntm_shape(slo_regions) +\n  tm_polygons(fill = \"pop_dens\",\n              fill.chart = tm_chart_violin())\n# donut plot\ntm_shape(slo_regions) +\n  tm_polygons(fill = \"pop_dens\",\n              fill.chart = tm_chart_donut())",
+    "text": "14.1 Numerical data\n# box plot\ntm_shape(slo_regions) +\n  tm_polygons(fill = \"pop_dens\",\n              fill.chart = tm_chart_box())\n# violin plot\ntm_shape(slo_regions) +\n  tm_polygons(fill = \"pop_dens\",\n              fill.chart = tm_chart_violin())\n# donut plot\ntm_shape(slo_regions) +\n  tm_polygons(fill = \"pop_dens\",\n              fill.chart = tm_chart_donut())\nFigure 14.2: Charts for numerical data.",
     "crumbs": [
       "Expanding the toolbox",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Charts</span>"
@@ -912,7 +901,7 @@
     "href": "charts.html#categorical-data",
     "title": "14  Charts",
     "section": "\n14.2 Categorical data",
-    "text": "14.2 Categorical data\ntm_shape(slo_regions) +\n  tm_polygons(fill = \"region_group\",\n              fill.chart = tm_chart_bar())\ntm_shape(slo_regions) +\n  tm_polygons(fill = \"region_group\",\n              fill.chart = tm_chart_donut())\n\n\n\n\n\n\n\n\nFigure 14.5: Charts for categorical data.\n\n\n\n\n\n\n\n\n\nFigure 14.6: Charts for categorical data.",
+    "text": "14.2 Categorical data\n\ntm_shape(slo_regions) +\n  tm_polygons(fill = \"region_group\",\n              fill.chart = tm_chart_bar())\ntm_shape(slo_regions) +\n  tm_polygons(fill = \"region_group\",\n              fill.chart = tm_chart_donut())\n\n\n\n\n\n\n\n\nFigure 14.3: Charts for categorical data.",
     "crumbs": [
       "Expanding the toolbox",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Charts</span>"
@@ -923,7 +912,7 @@
     "href": "charts.html#bivariate-data",
     "title": "14  Charts",
     "section": "\n14.3 Bivariate data",
-    "text": "14.3 Bivariate data\n\ntm_shape(slo_regions) +\n  tm_polygons(fill = tm_vars(c(\"pop_dens\", \"pop65perc\"), multivariate = TRUE),\n              fill.scale = tm_scale_bivariate(values = \"purplegold\"),\n              fill.chart = tm_chart_heatmap())\n\n\n\n\n\n\nFigure 14.7: Bivariate charts used in case of representing a relationship between two numerical variables.",
+    "text": "14.3 Bivariate data\n\ntm_shape(slo_regions) +\n  tm_polygons(fill = tm_vars(c(\"pop_dens\", \"pop65perc\"), multivariate = TRUE),\n              fill.scale = tm_scale_bivariate(values = \"purplegold\"),\n              fill.chart = tm_chart_heatmap())\n\n\n\n\n\n\nFigure 14.4: Bivariate charts used in case of representing a relationship between two numerical variables.",
     "crumbs": [
       "Expanding the toolbox",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Charts</span>"
@@ -934,7 +923,7 @@
     "href": "charts.html#additional-customization",
     "title": "14  Charts",
     "section": "\n14.4 Additional customization",
-    "text": "14.4 Additional customization\n\n\n\nlibrary(ggplot2)\ntm_shape(slo_regions) +\n  tm_polygons(fill = \"pop_dens\",\n              fill.chart = tm_chart_histogram(\n                plot.axis.x = TRUE,\n                extra.ggplot2 = list(theme(plot.background = element_rect(fill = \"lightgray\")))\n              ))\n\n\n\n\n\n\nFigure 14.8: Customizing charts with ggplot2.\n\n\n\n\n\ntm_shape(slo_regions) +\n  tm_polygons(fill = \"pop_dens\",\n              fill.chart = tm_chart_histogram(\n                plot.axis.x = TRUE,\n                plot.axis.y = TRUE,\n                extra.ggplot2 = list(theme(plot.background = element_rect(fill = \"#FFC067\"),\n                                           plot.title = ggplot2::element_text(size = 10)),\n                                     coord_flip(),\n                                     labs(title = \"Population density\")),\n                position = tm_pos_in(\"LEFT\", \"TOP\"),\n                width = 20,\n              ),\n              fill.legend = tm_legend(show = FALSE))\n\n\n\n\n\n\nFigure 14.9: Using chart as a map legend.",
+    "text": "14.4 Additional customization\n\n\n\nlibrary(ggplot2)\ntm_shape(slo_regions) +\n  tm_polygons(fill = \"pop_dens\",\n              fill.chart = tm_chart_histogram(\n                plot.axis.x = TRUE,\n                extra.ggplot2 = list(theme(plot.background = element_rect(fill = \"lightgray\")))\n              ))\n\n\n\n\n\n\nFigure 14.5: Customizing charts with ggplot2.\n\n\n\n\n\ntm_shape(slo_regions) +\n  tm_polygons(fill = \"pop_dens\",\n              fill.chart = tm_chart_histogram(\n                plot.axis.x = TRUE,\n                plot.axis.y = TRUE,\n                extra.ggplot2 = list(theme(plot.background = element_rect(fill = \"#FFC067\"),\n                                           plot.title = ggplot2::element_text(size = 10)),\n                                     coord_flip(),\n                                     labs(title = \"Population density\")),\n                position = tm_pos_in(\"LEFT\", \"TOP\"),\n                width = 20,\n              ),\n              fill.legend = tm_legend(show = FALSE))\n\n\n\n\n\n\nFigure 14.6: Using chart as a map legend.",
     "crumbs": [
       "Expanding the toolbox",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Charts</span>"
