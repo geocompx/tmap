@@ -50,10 +50,7 @@ tm_shape(slo_regions) +
 ## Numerical data
 
 ```{r}
-#| label: fig-chart-num
-#| fig-cap: "Charts for numerical data."
-#| message: false
-#| layout-ncol: 3
+#| eval: false
 # box plot
 tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens",
@@ -68,19 +65,48 @@ tm_shape(slo_regions) +
               fill.chart = tm_chart_donut())
 ```
 
+```{r}
+#| label: fig-chart-num
+#| fig-cap: "Charts for numerical data."
+#| message: false
+#| echo: false
+tm_shape(slo_regions) +
+  tm_polygons(fill = "pop_dens",
+              fill.chart = tm_chart_box(position = tm_pos_out("center", "bottom", 0.1, 1)),
+              fill.legend = tm_legend(position = tm_pos_out("center", "bottom", 0, 1))) +
+  tm_polygons(fill = "pop_dens",
+              fill.chart = tm_chart_violin(position = tm_pos_out("center", "bottom", 0.45, 1)),
+              fill.legend = tm_legend(position = tm_pos_out("center", "bottom", 0.35, 1))) +
+  tm_polygons(fill = "pop_dens",
+              fill.chart = tm_chart_donut(position = tm_pos_out("center", "bottom", 0.8, 1)),
+              fill.legend = tm_legend(position = tm_pos_out("center", "bottom", 0.7, 1)))
+```
+
+
 ## Categorical data
 
 ```{r}
-#| label: fig-chart-cat
-#| fig-cap: "Charts for categorical data."
-#| layout-ncol: 2
-#| message: false
+#| eval: false
 tm_shape(slo_regions) +
   tm_polygons(fill = "region_group",
               fill.chart = tm_chart_bar())
 tm_shape(slo_regions) +
   tm_polygons(fill = "region_group",
               fill.chart = tm_chart_donut())
+```
+
+```{r}
+#| label: fig-chart-cat
+#| fig-cap: "Charts for categorical data."
+#| message: false
+#| echo: false
+tm_shape(slo_regions) +
+  tm_polygons(fill = "region_group",
+              fill.chart = tm_chart_bar(position = tm_pos_out("center", "bottom", 0.15, 1)),
+              fill.legend = tm_legend(position = tm_pos_out("center", "bottom", 0, 1))) +
+  tm_polygons(fill = "region_group",
+              fill.chart = tm_chart_donut(position = tm_pos_out("center", "bottom", 0.75, 1)),
+              fill.legend = tm_legend(position = tm_pos_out("center", "bottom", 0.6, 1)))
 ```
 
 ## Bivariate data
