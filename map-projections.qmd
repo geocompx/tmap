@@ -116,14 +116,20 @@ tmap_arrange(tms, ncol = 3)
 #| fig-cap: "Orthographic projection examples."
 #| layout-ncol: 2
 tm_shape(worldvector, bbox = "FULL") +
-  tm_polygons() +
+  tm_polygons()  +
+  tm_shape(worldcities) +
+  tm_dots() +
+  tm_text("name") +
   tm_graticules(labels.show = FALSE) +
   tm_crs("+proj=ortho +lat_0=30 +lon_0=0")+
   tm_layout(bg.color = "lightblue",
             earth_boundary = TRUE,
             frame = FALSE)
 tm_shape(worldvector, bbox = "FULL") +
-  tm_polygons() +
+  tm_polygons()  +
+  tm_shape(worldcities) +
+  tm_dots() +
+  tm_text("name") +
   tm_graticules(labels.show = FALSE) +
   tm_crs("+proj=ortho +lat_0=0 +lon_0=100")+
   tm_layout(bg.color = "lightblue",
