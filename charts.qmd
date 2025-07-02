@@ -73,17 +73,6 @@ tm_shape(slo_regions) +
 #| fig-asp: 0.8
 tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens",
-              fill.chart = tm_chart_box(position = tm_pos_out("center", "bottom", 0.1, 1)),
-              fill.legend = tm_legend(position = tm_pos_out("center", "bottom", 0, 1))) +
-  tm_polygons(fill = "pop_dens",
-              fill.chart = tm_chart_violin(position = tm_pos_out("center", "bottom", 0.45, 1)),
-              fill.legend = tm_legend(position = tm_pos_out("center", "bottom", 0.35, 1))) +
-  tm_polygons(fill = "pop_dens",
-              fill.chart = tm_chart_donut(position = tm_pos_out("center", "bottom", 0.8, 1)),
-              fill.legend = tm_legend(position = tm_pos_out("center", "bottom", 0.7, 1)))
-
-tm_shape(slo_regions) +
-  tm_polygons(fill = "pop_dens",
               fill.chart = tm_chart_box(group_id = "a"),
               fill.legend = tm_legend(group_id = "a")) +
   tm_polygons(fill = "pop_dens",
