@@ -70,6 +70,7 @@ tm_shape(slo_regions) +
 #| fig-cap: "Charts for numerical data."
 #| message: false
 #| echo: false
+#| fig-asp: 0.8
 tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens",
               fill.chart = tm_chart_box(position = tm_pos_out("center", "bottom", 0.1, 1)),
@@ -80,6 +81,20 @@ tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens",
               fill.chart = tm_chart_donut(position = tm_pos_out("center", "bottom", 0.8, 1)),
               fill.legend = tm_legend(position = tm_pos_out("center", "bottom", 0.7, 1)))
+
+tm_shape(slo_regions) +
+  tm_polygons(fill = "pop_dens",
+              fill.chart = tm_chart_box(group_id = "a"),
+              fill.legend = tm_legend(group_id = "a")) +
+  tm_polygons(fill = "pop_dens",
+              fill.chart = tm_chart_violin(group_id = "b"),
+              fill.legend = tm_legend(group_id = "b")) +
+  tm_polygons(fill = "pop_dens",
+              fill.chart = tm_chart_donut(group_id = "c"),
+              fill.legend = tm_legend(group_id = "c")) +
+  tm_components("a", position = tm_pos_out("center", "bottom", 0, 1), stack = "horizontal") +
+  tm_components("b", position = tm_pos_out("center", "bottom", 0.35, 1), stack = "horizontal") +
+  tm_components("c", position = tm_pos_out("center", "bottom", 0.7, 1), stack = "horizontal")
 ```
 
 
@@ -100,13 +115,16 @@ tm_shape(slo_regions) +
 #| fig-cap: "Charts for categorical data."
 #| message: false
 #| echo: false
+#| fig-asp: 0.8
 tm_shape(slo_regions) +
   tm_polygons(fill = "region_group",
-              fill.chart = tm_chart_bar(position = tm_pos_out("center", "bottom", 0.15, 1)),
-              fill.legend = tm_legend(position = tm_pos_out("center", "bottom", 0, 1))) +
+              fill.chart = tm_chart_bar(group_id = "a"),
+              fill.legend = tm_legend(group_id = "a")) +
   tm_polygons(fill = "region_group",
-              fill.chart = tm_chart_donut(position = tm_pos_out("center", "bottom", 0.75, 1)),
-              fill.legend = tm_legend(position = tm_pos_out("center", "bottom", 0.6, 1)))
+              fill.chart = tm_chart_donut(group_id = "b"),
+              fill.legend = tm_legend(group_id = "b")) +
+  tm_components("a", position = tm_pos_out("center", "bottom", 0, 1), stack = "horizontal") +
+  tm_components("b", position = tm_pos_out("center", "bottom", 0.7, 1), stack = "horizontal") 
 ```
 
 ## Bivariate data
