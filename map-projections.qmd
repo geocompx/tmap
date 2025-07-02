@@ -122,15 +122,14 @@ tm_shape(worldvector, bbox = "FULL") +
   tm_layout(bg.color = "lightblue",
             earth_boundary = TRUE,
             frame = FALSE)
-# tm_shape(worldvector, bbox = "FULL") +
-#   tm_polygons() +
-#   tm_graticules(labels.show = FALSE) +
-#   tm_crs("+proj=ortho +lat_0=0 +lon_0=100")+
-#   tm_layout(bg.color = "lightblue",
-#             earth_boundary = TRUE,
-#             frame = FALSE)
+tm_shape(worldvector, bbox = "FULL") +
+  tm_polygons() +
+  tm_graticules(labels.show = FALSE) +
+  tm_crs("+proj=ortho +lat_0=0 +lon_0=100")+
+  tm_layout(bg.color = "lightblue",
+            earth_boundary = TRUE,
+            frame = FALSE)
 ```
-
 
 ```{r}
 #| echo: false
