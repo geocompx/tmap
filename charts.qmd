@@ -81,9 +81,9 @@ tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens",
               fill.chart = tm_chart_donut(group_id = "c"),
               fill.legend = tm_legend(group_id = "c")) +
-  tm_components("a", position = tm_pos_out("center", "bottom", 0, 1), stack = "horizontal") +
-  tm_components("b", position = tm_pos_out("center", "bottom", 0.35, 1), stack = "horizontal") +
-  tm_components("c", position = tm_pos_out("center", "bottom", 0.7, 1), stack = "horizontal")
+  tm_components("a", position = tm_pos_out("center", "bottom", "left", "top"), stack = "horizontal") +
+  tm_components("b", position = tm_pos_out("center", "bottom", "center", "top"), stack = "horizontal") +
+  tm_components("c", position = tm_pos_out("center", "bottom", "right", "top"), stack = "horizontal")
 ```
 
 
@@ -112,8 +112,8 @@ tm_shape(slo_regions) +
   tm_polygons(fill = "region_group",
               fill.chart = tm_chart_donut(group_id = "b"),
               fill.legend = tm_legend(group_id = "b")) +
-  tm_components("a", position = tm_pos_out("center", "bottom", 0, 1), stack = "horizontal") +
-  tm_components("b", position = tm_pos_out("center", "bottom", 0.7, 1), stack = "horizontal") 
+  tm_components("a", position = tm_pos_out("center", "bottom", "left", "top"), stack = "horizontal") +
+  tm_components("b", position = tm_pos_out("center", "bottom", "right", "top"), stack = "horizontal") 
 ```
 
 ## Bivariate data
