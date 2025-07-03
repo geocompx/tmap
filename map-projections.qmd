@@ -110,6 +110,7 @@ tmap_arrange(tms, ncol = 3)
 
 <!-- maybe bbox could be a part of tm_crs? -->
 <!-- https://github.com/r-tmap/tmap/issues/1152#issuecomment-3007324769 -->
+<!-- https://github.com/r-tmap/tmap/issues/1156#issuecomment-3030990315 -->
 
 ```{r}
 #| label: fig-mproj-ortho
