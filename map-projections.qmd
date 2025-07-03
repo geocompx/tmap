@@ -114,6 +114,9 @@ tmap_arrange(tms, ncol = 3)
 ```{r}
 #| label: fig-mproj-ortho
 #| fig-cap: "Orthographic projection examples."
+#| fig-subcap:
+#|   - "Centered on 30°N, 0°E"
+#|   - "Centered on 0°N/S, 100°E"
 #| layout-ncol: 2
 tm_shape(worldvector, bbox = "FULL") +
   tm_polygons()  +
