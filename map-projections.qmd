@@ -118,6 +118,7 @@ tmap_arrange(tms, ncol = 3)
 #|   - "Centered on 30°N, 0°E"
 #|   - "Centered on 0°N/S, 100°E"
 #| layout-ncol: 2
+#| fig-asp: 1
 tm_shape(worldvector, bbox = "FULL") +
   tm_polygons()  +
   tm_shape(worldcities) +
