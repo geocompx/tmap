@@ -378,7 +378,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <li><a href="#numerical-data" id="toc-numerical-data" class="nav-link" data-scroll-target="#numerical-data"><span class="header-section-number">14.1</span> Numerical data</a></li>
   <li><a href="#categorical-data" id="toc-categorical-data" class="nav-link" data-scroll-target="#categorical-data"><span class="header-section-number">14.2</span> Categorical data</a></li>
   <li><a href="#bivariate-data" id="toc-bivariate-data" class="nav-link" data-scroll-target="#bivariate-data"><span class="header-section-number">14.3</span> Bivariate data</a></li>
-  <li><a href="#additional-customization" id="toc-additional-customization" class="nav-link" data-scroll-target="#additional-customization"><span class="header-section-number">14.4</span> Additional customization</a></li>
+  <li><a href="#sec-charts-customization" id="toc-sec-charts-customization" class="nav-link" data-scroll-target="#sec-charts-customization"><span class="header-section-number">14.4</span> Additional customization</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/charts.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -399,7 +399,10 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
   
 
 
-</header><div class="cell" data-layout-align="center">
+</header><p>Thematic maps usually represent one or more variables using colors, shapes, or sizes. Then, the map legend is used to explain the meaning of these visual variables (<a href="legends.html#sec-legends" class="quarto-xref"><span>Section 9.1</span></a>). Such a legend can be expanded (or even replaced, <a href="#sec-charts-customization" class="quarto-xref"><span>Section 14.4</span></a>) with a chart that provides more information about the distribution of the variable values.</p>
+<p>The <strong>tmap</strong> package provides several chart types that can be used in the map legend (<a href="#tbl-layers-table" class="quarto-xref">Table&nbsp;<span>14.1</span></a>). They are specified in one of the <code>*.chart</code> arguments of a layer function, e.g., <code>fill.chart</code> of <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code>, <code>size.chart</code> of <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots()</a></code>, etc. The use of a chart type depends on the type of data we want to represent, i.e., whether it is numerical or categorical, and whether it is univariate or bivariate.</p>
+<!-- Martijn, why do we need `tm_chart_none()`? -->
+<div class="cell" data-layout-align="center">
 <div id="tbl-layers-table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-layers-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;14.1: Available chart types.
@@ -525,31 +528,69 @@ Table&nbsp;14.1: Available chart types.
 </figure>
 </div>
 </div>
+<p>For the examples in this chapter, we will use the Slovenian regions dataset that contains information about the population density, region group, and the percentage of the population aged 65 or more in each region.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
 <span><span class="va">slo_regions</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_regions.gpkg"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="numerical-data" class="level2" data-number="14.1"><h2 data-number="14.1" class="anchored" data-anchor-id="numerical-data">
+<span class="header-section-number">14.1</span> Numerical data</h2>
+<p>The first group of charts is used for numerical data, i.e., data that can take any value within a range. It includes histograms, box plots, violin plots, and donut charts.</p>
+<p>Histograms are the most common chart type used to represent the distribution of a numerical variable. They show how often each range of values occurs in the data – helping to understand which values are more common and if there are any outliers. To add a histogram to the map, we use the <code><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_histogram()</a></code> function in the <code>fill.chart</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code> function (<a href="#fig-chart-hist-1" class="quarto-xref">Figure&nbsp;<span>14.1 (a)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>,</span>
+<span>             fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_histogram</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Such a histogram, like other charts, is automatically placed along the map legend. However, we can position them independently of the map legend using the <code>position</code> argument of the <code>tm_chart_*()</code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code> functions (<a href="#fig-chart-hist-2" class="quarto-xref">Figure&nbsp;<span>14.1 (b)</span></a>).</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>,</span>
-<span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_histogram</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div id="fig-chart-hist" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_histogram</a></span><span class="op">(</span></span>
+<span>                position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"center"</span><span class="op">)</span></span>
+<span>                <span class="op">)</span>,</span>
+<span>              fill.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span></span>
+<span>                position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out</a></span><span class="op">(</span><span class="st">"right"</span>, <span class="st">"center"</span><span class="op">)</span></span>
+<span>                <span class="op">)</span></span>
+<span>              <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-nrow="2" data-layout-align="center">
+<div id="fig-chart-hist" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-chart-hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-chart-hist-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-chart-hist" style="flex-basis: 100.0%;justify-content: center;">
+<div id="fig-chart-hist-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-chart-hist-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-chart-hist-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-chart-hist">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-chart-hist-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Default histogram
+</figcaption></figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-chart-hist" style="flex-basis: 100.0%;justify-content: center;">
+<div id="fig-chart-hist-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-chart-hist-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-chart-hist-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-chart-hist">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-chart-hist-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Repositioned histogram
+</figcaption></figure>
+</div>
+</div>
+</div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chart-hist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;14.1: Histogram added to a map to represent the distribution of a variable.
 </figcaption></figure>
 </div>
 </div>
-</div>
-<!-- mention positioning -->
-<section id="numerical-data" class="level2" data-number="14.1"><h2 data-number="14.1" class="anchored" data-anchor-id="numerical-data">
-<span class="header-section-number">14.1</span> Numerical data</h2>
+<p><a href="#fig-chart-num" class="quarto-xref">Figure&nbsp;<span>14.2</span></a> shows additional three chart types that can be used for numerical data: box plots, violin plots, and donut charts. They can be added to the map using the <code><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_box()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_violin()</a></code>, and <code><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_donut()</a></code> functions, respectively. As you may notice, these charts show similar messages, e.g., than the middle value range is the most common. On the other hand, box plots directly show the median and quartiles of the data, violin plots also show the density of the data distribution, and donut charts show the proportions of the data. They also have different aesthetics. Thus, the choice of the chart type depends on the message we want to convey and the aesthetics we prefer.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># box plot</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># box plot</span></span>
 <span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>,</span>
 <span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_box</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
@@ -577,12 +618,12 @@ Figure&nbsp;14.2: Charts for numerical data.
 </section><section id="categorical-data" class="level2" data-number="14.2"><h2 data-number="14.2" class="anchored" data-anchor-id="categorical-data">
 <span class="header-section-number">14.2</span> Categorical data</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"region_group"</span>,</span>
-<span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_bar</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_donut</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"region_group"</span>,</span>
-<span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_donut</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_bar</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -599,7 +640,7 @@ Figure&nbsp;14.3: Charts for categorical data.
 </section><section id="bivariate-data" class="level2" data-number="14.3"><h2 data-number="14.3" class="anchored" data-anchor-id="bivariate-data">
 <span class="header-section-number">14.3</span> Bivariate data</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_vars.html">tm_vars</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"pop_dens"</span>, <span class="st">"pop65perc"</span><span class="op">)</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>              fill.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_bivariate.html">tm_scale_bivariate</a></span><span class="op">(</span>values <span class="op">=</span> <span class="st">"purplegold"</span><span class="op">)</span>,</span>
 <span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_heatmap</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -614,12 +655,12 @@ Figure&nbsp;14.4: Bivariate charts used in case of representing a relationship b
 </div>
 </div>
 </div>
-</section><section id="additional-customization" class="level2" data-number="14.4"><h2 data-number="14.4" class="anchored" data-anchor-id="additional-customization">
+</section><section id="sec-charts-customization" class="level2" data-number="14.4"><h2 data-number="14.4" class="anchored" data-anchor-id="sec-charts-customization">
 <span class="header-section-number">14.4</span> Additional customization</h2>
 <!-- with ggplot2 package and/or book reference -->
 <!-- https://github.com/geocompx/tmap/issues/10#issuecomment-3007409988 -->
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>,</span>
 <span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_histogram</a></span><span class="op">(</span></span>
@@ -638,7 +679,7 @@ Figure&nbsp;14.5: Customizing charts with ggplot2.
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>,</span>
 <span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_histogram</a></span><span class="op">(</span></span>
 <span>                plot.axis.x <span class="op">=</span> <span class="cn">TRUE</span>,</span>
