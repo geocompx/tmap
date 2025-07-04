@@ -142,6 +142,10 @@ tm_shape(slo_regions) +
 
 ## Categorical data
 
+The second group of charts is used for categorical data -- which can take only a limited number of values.
+It includes bar charts (`tm_chart_donut()`) and donut charts (`tm_chart_bar()`): bar charts show the frequency of each category, while donut charts show the proportions of each category (@fig-chart-cat).
+In the examples below, we represent the region groups of each region in Slovenia and observe that there are more regions in the "Central" and "West" groups than in the others.
+
 ```{r}
 #| eval: false
 tm_shape(slo_regions) +
@@ -171,6 +175,10 @@ tm_shape(slo_regions) +
 
 ## Bivariate data
 
+The third group of charts is used for bivariate data, i.e., data that contains two variables.
+It includes a heatmap chart (`tm_chart_heatmap()`) that shows how often each combination of values occurs in the data (@fig-chart-bivariate).
+<!-- one more sentence? -->
+
 ```{r}
 #| label: fig-chart-bivariate
 #| fig-cap: "Bivariate charts used in case of representing a relationship between two numerical variables."
@@ -181,10 +189,28 @@ tm_shape(slo_regions) +
               fill.chart = tm_chart_heatmap())
 ```
 
-## Additional customization {#sec-charts-customization}
+```{r}
+#| echo: false
+#| eval: false
+library(stars)
+slo_tavg = read_stars("data/slovenia/slo_tavg.tif")
+tm_shape(slo_tavg) +
+  tm_raster(col = tm_vars(dimvalues = c("tavg_1", "tavg_7"), multivariate = TRUE),
+            col.scale = tm_scale_bivariate(values = "purplegold"),
+            col.chart = tm_chart_heatmap())
+```
 
+## Additional chart customization {#sec-charts-customization}
+
+All of the charts are directly based on the visual variables from the map layer and then created using the **ggplot2** package.
+By default, however, the charts are much simplified, not showing all the details that **ggplot2** can provide, such as axis labels, titles, and various theme elements.
 <!-- with ggplot2 package and/or book reference -->
 <!-- https://github.com/geocompx/tmap/issues/10#issuecomment-3007409988 -->
+
+At the same time, we may want to customize the charts to fit our map design better or to add more information.
+This can be done with additional arguments of the `tm_chart_*()` functions, such as `plot.axis.x`, `plot.axis.y`, and `extra.ggplot2`.
+The first two are logical arguments that control whether the x and y axes are shown in the chart, respectively.
+The last one, `extra.ggplot2`, is a list of additional **ggplot2** functions that are applied to the chart -- for example, we may want to change the aesthetics of the chart, such as the background color as shown in @fig-chart-ggplot1.
 
 ```{r}
 #| label: fig-chart-ggplot1
@@ -194,10 +220,16 @@ library(ggplot2)
 tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens",
               fill.chart = tm_chart_histogram(
-                plot.axis.x = TRUE,
+                plot.axis.x = FALSE,
                 extra.ggplot2 = list(theme(plot.background = element_rect(fill = "lightgray")))
               ))
 ```
+
+@fig-chart-ggplot2 shows a more advanced modification of the chart.
+It adds x and y axes, next, it adds a title to the chart, flips the chart coordinates, and changes the chart background color and title size.
+Next, it moves the chart to the top left corner of the map and sets its width.
+Having such a customized chart provides all of the important map context information: variable name, unit, ranges of the values and their related colors.
+Thus, we can treat it as a map legend and remove the default legend using `fill.legend = tm_legend(show = FALSE)`.
 
 ```{r}
 #| label: fig-chart-ggplot2
@@ -208,10 +240,10 @@ tm_shape(slo_regions) +
               fill.chart = tm_chart_histogram(
                 plot.axis.x = TRUE,
                 plot.axis.y = TRUE,
-                extra.ggplot2 = list(theme(plot.background = element_rect(fill = "#FFC067"),
-                                           plot.title = ggplot2::element_text(size = 10)),
+                extra.ggplot2 = list(labs(title = "Population density (people/sq. km)"),
                                      coord_flip(),
-                                     labs(title = "Population density")),
+                                     theme(plot.background = element_rect(fill = "#FFC067"),
+                                           plot.title = ggplot2::element_text(size = 10))),
                 position = tm_pos_in("LEFT", "TOP"),
                 width = 20,
               ),
