@@ -120,23 +120,23 @@ tmap_arrange(tms, ncol = 3)
 #|   - "Centered on 0°N/S, 100°E"
 #| layout-ncol: 2
 #| fig-asp: 1
-tm_shape(worldvector, bbox = "FULL") +
+tm_shape(worldvector) +
   tm_polygons()  +
   tm_shape(worldcities) +
   tm_dots() +
   tm_text("name") +
   tm_graticules(labels.show = FALSE) +
-  tm_crs("+proj=ortho +lat_0=30 +lon_0=0")+
+  tm_crs("+proj=ortho +lat_0=30 +lon_0=0", bbox = "FULL")+
   tm_layout(bg.color = "lightblue",
             earth_boundary = TRUE,
             frame = FALSE)
-tm_shape(worldvector, bbox = "FULL") +
+tm_shape(worldvector) +
   tm_polygons()  +
   tm_shape(worldcities) +
   tm_dots() +
   tm_text("name") +
   tm_graticules(labels.show = FALSE) +
-  tm_crs("+proj=ortho +lat_0=0 +lon_0=100")+
+  tm_crs("+proj=ortho +lat_0=0 +lon_0=100", bbox = "FULL")+
   tm_layout(bg.color = "lightblue",
             earth_boundary = TRUE,
             frame = FALSE)
