@@ -5,10 +5,18 @@ source("code/before_script.R")
 
 # Charts {#sec-charts}
 
+Thematic maps usually represent one or more variables using colors, shapes, or sizes.
+Then, the map legend is used to explain the meaning of these visual variables (@sec-legends).
+Such a legend can be expanded (or even replaced, @sec-charts-customization) with a chart that provides more information about the distribution of the variable values.
+
+The **tmap** package provides several chart types that can be used in the map legend (@tbl-layers-table).
+They are specified in one of the `*.chart` arguments of a layer function, e.g., `fill.chart` of `tm_polygons()`, `size.chart` of `tm_dots()`, etc.
+The use of a chart type depends on the type of data we want to represent, i.e., whether it is numerical or categorical, and whether it is univariate or bivariate.
+
 ```{r charts-2}
 #| echo: false
 charts_df = tibble::tribble(
-  ~Function, ~Description,
+  ~Function, ~Description, 
   "tm_chart_histogram()", "Histogram",
   "tm_chart_box()", "Box plot",
   "tm_chart_violin()", "Violin plot",
@@ -18,6 +26,8 @@ charts_df = tibble::tribble(
   "tm_chart_none()", "No chart"
 )
 ```
+
+<!-- Martijn, why do we need `tm_chart_none()`? -->
 
 ```{r}
 #| label: tbl-layers-table
@@ -29,25 +39,69 @@ tinytable::tt(charts_df) |>
   tinytable::style_tt(j = 1, monospace = TRUE)
 ```
 
-```{r charts-4}
+For the examples in this chapter, we will use the Slovenian regions dataset that contains information about the population density, region group, and the percentage of the population aged 65 or more in each region.
+
+```{r}
 #| message: false
 library(tmap)
 library(sf)
 slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
 ```
 
+## Numerical data
+
+The first group of charts is used for numerical data, i.e., data that can take any value within a range.
+It includes histograms, box plots, violin plots, and donut charts.
+
+Histograms are the most common chart type used to represent the distribution of a numerical variable.
+They show how often each range of values occurs in the data -- helping to understand which values are more common and if there are any outliers.
+To add a histogram to the map, we use the `tm_chart_histogram()` function in the `fill.chart` argument of the `tm_polygons()` function (@fig-chart-hist-1).
+
+```{r}
+#| label: hist1
+#| eval: false
+tm_shape(slo_regions) +
+  tm_symbols(fill = "pop_dens",
+             fill.chart = tm_chart_histogram())
+```
+
+Such a histogram, like other charts, is automatically placed along the map legend.
+However, we can position them independently of the map legend using the `position` argument of the `tm_chart_*()` and `tm_legend()` functions (@fig-chart-hist-2).
+
+```{r}
+#| label: hist2
+#| eval: false
+tm_shape(slo_regions) +
+  tm_polygons(fill = "pop_dens",
+              fill.chart = tm_chart_histogram(
+                position = tm_pos_out("left", "center")
+                ),
+              fill.legend = tm_legend(
+                position = tm_pos_out("right", "center")
+                )
+              )
+```
+
 ```{r}
 #| label: fig-chart-hist
 #| fig-cap: "Histogram added to a map to represent the distribution of a variable."
+#| fig-subcap: 
+#|   - "Default histogram"
+#|   - "Repositioned histogram"
 #| message: false
-tm_shape(slo_regions) +
-  tm_polygons(fill = "pop_dens",
-              fill.chart = tm_chart_histogram())
+#| echo: false
+#| layout-nrow: 2
+#| fig-asp: 0.5
+<<hist1>>
+<<hist2>>
 ```
 
-<!-- mention positioning -->
-
-## Numerical data
+@fig-chart-num shows additional three chart types that can be used for numerical data: box plots, violin plots, and donut charts.
+They can be added to the map using the `tm_chart_box()`, `tm_chart_violin()`, and `tm_chart_donut()` functions, respectively.
+As you may notice, these charts show similar messages, e.g., than the middle value range is the most common.
+On the other hand, box plots directly show the median and quartiles of the data, violin plots also show the density of the data distribution, and donut charts show the proportions of the data.
+They also have different aesthetics.
+Thus, the choice of the chart type depends on the message we want to convey and the aesthetics we prefer.
 
 ```{r}
 #| eval: false
@@ -86,17 +140,16 @@ tm_shape(slo_regions) +
   tm_components("c", position = tm_pos_out("center", "bottom", "right", "top"), stack = "horizontal")
 ```
 
-
 ## Categorical data
 
 ```{r}
 #| eval: false
 tm_shape(slo_regions) +
   tm_polygons(fill = "region_group",
-              fill.chart = tm_chart_bar())
+              fill.chart = tm_chart_donut())
 tm_shape(slo_regions) +
   tm_polygons(fill = "region_group",
-              fill.chart = tm_chart_donut())
+              fill.chart = tm_chart_bar())
 ```
 
 ```{r}
@@ -107,10 +160,10 @@ tm_shape(slo_regions) +
 #| fig-asp: 0.8
 tm_shape(slo_regions) +
   tm_polygons(fill = "region_group",
-              fill.chart = tm_chart_bar(group_id = "a"),
+              fill.chart = tm_chart_donut(group_id = "a"),
               fill.legend = tm_legend(group_id = "a")) +
   tm_polygons(fill = "region_group",
-              fill.chart = tm_chart_donut(group_id = "b"),
+              fill.chart = tm_chart_bar(group_id = "b"),
               fill.legend = tm_legend(group_id = "b")) +
   tm_components("a", position = tm_pos_out("center", "bottom", "left", "top"), stack = "horizontal") +
   tm_components("b", position = tm_pos_out("center", "bottom", "right", "top"), stack = "horizontal") 
@@ -128,7 +181,7 @@ tm_shape(slo_regions) +
               fill.chart = tm_chart_heatmap())
 ```
 
-## Additional customization
+## Additional customization {#sec-charts-customization}
 
 <!-- with ggplot2 package and/or book reference -->
 <!-- https://github.com/geocompx/tmap/issues/10#issuecomment-3007409988 -->
