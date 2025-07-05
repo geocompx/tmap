@@ -407,14 +407,14 @@ window.Quarto = {
   <li>
 <a href="#sec-crs-choose" id="toc-sec-crs-choose" class="nav-link" data-scroll-target="#sec-crs-choose"><span class="header-section-number">13.5</span> Which projection to choose?</a>
   <ul>
-<li><a href="#map-projection-properties-sec-map-projection-properties" id="toc-map-projection-properties-sec-map-projection-properties" class="nav-link" data-scroll-target="#map-projection-properties-sec-map-projection-properties"><span class="header-section-number">13.5.1</span> Map projection properties (#sec-map-projection-properties)</a></li>
-  <li><a href="#area-of-interest-sec-area-of-interest" id="toc-area-of-interest-sec-area-of-interest" class="nav-link" data-scroll-target="#area-of-interest-sec-area-of-interest"><span class="header-section-number">13.5.2</span> Area of interest (#sec-area-of-interest)</a></li>
+<li><a href="#sec-map-projection-properties" id="toc-sec-map-projection-properties" class="nav-link" data-scroll-target="#sec-map-projection-properties"><span class="header-section-number">13.5.1</span> Map projection properties</a></li>
+  <li><a href="#sec-area-of-interest" id="toc-sec-area-of-interest" class="nav-link" data-scroll-target="#sec-area-of-interest"><span class="header-section-number">13.5.2</span> Area of interest</a></li>
   </ul>
 </li>
   <li><a href="#sec-crs-in-r" id="toc-sec-crs-in-r" class="nav-link" data-scroll-target="#sec-crs-in-r"><span class="header-section-number">13.6</span> CRS in R</a></li>
-  <li><a href="#specifying-map-projections" id="toc-specifying-map-projections" class="nav-link" data-scroll-target="#specifying-map-projections"><span class="header-section-number">13.7</span> Specifying map projections</a></li>
-  <li><a href="#global-map-projections" id="toc-global-map-projections" class="nav-link" data-scroll-target="#global-map-projections"><span class="header-section-number">13.8</span> Global map projections</a></li>
-  <li><a href="#local-map-projections" id="toc-local-map-projections" class="nav-link" data-scroll-target="#local-map-projections"><span class="header-section-number">13.9</span> Local map projections</a></li>
+  <li><a href="#specifying-map-projections-within-tmap" id="toc-specifying-map-projections-within-tmap" class="nav-link" data-scroll-target="#specifying-map-projections-within-tmap"><span class="header-section-number">13.7</span> Specifying map projections within <strong>tmap</strong></a></li>
+  <li><a href="#global-map-projections-in-tmap" id="toc-global-map-projections-in-tmap" class="nav-link" data-scroll-target="#global-map-projections-in-tmap"><span class="header-section-number">13.8</span> Global map projections in <strong>tmap</strong></a></li>
+  <li><a href="#local-map-projections-in-tmap" id="toc-local-map-projections-in-tmap" class="nav-link" data-scroll-target="#local-map-projections-in-tmap"><span class="header-section-number">13.9</span> Local map projections in <strong>tmap</strong></a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/map-projections.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -579,10 +579,10 @@ Figure&nbsp;13.7: Examples of a conic and a planar projection.
 <p> The (interrupted) Goode homolosine projection shown in <a href="#fig-crs-goode" class="quarto-xref">Figure&nbsp;<span>13.2</span></a> is an example of an interrupted projection. A special class of these projections are polyhedral projections, which consists of planar faces. In <a href="#fig-crs-types" class="quarto-xref">Figure&nbsp;<span>13.5</span></a> a polyhedral of six faces is illustrated. There is no limit of the number of faces, as the myriahedral projections <!--(TODO reference Van Wijck paper)--> illustrate.</p>
 </section><section id="sec-crs-choose" class="level2" data-number="13.5"><h2 data-number="13.5" class="anchored" data-anchor-id="sec-crs-choose">
 <span class="header-section-number">13.5</span> Which projection to choose?</h2>
-<p> Hopefully, it is clear that there is no perfect projection, as each has its pros and cons. Whether a projection is suitable for a certain application depends on two factors. The first factor is the type of application and, in particular, which map projection properties are useful or even required for that application (<span class="quarto-unresolved-ref">?sec-map-projection-properties</span>). For instance, navigation requires other map projection properties than statistical maps. The second factor is the area of interest (<span class="quarto-unresolved-ref">?sec-area-of-interest</span>). Is the whole World visualized or only a part, and in the latter case, which part? In this section, guidelines are provided to help you choose a suitable projection based on these two aspects.</p>
+<p> Hopefully, it is clear that there is no perfect projection, as each has its pros and cons. Whether a projection is suitable for a certain application depends on two factors. The first factor is the type of application and, in particular, which map projection properties are useful or even required for that application (<a href="#sec-map-projection-properties" class="quarto-xref"><span>Section 13.5.1</span></a>). For instance, navigation requires other map projection properties than statistical maps. The second factor is the area of interest (<a href="#sec-area-of-interest" class="quarto-xref"><span>Section 13.5.2</span></a>). Is the whole World visualized or only a part, and in the latter case, which part? In this section, guidelines are provided to help you choose a suitable projection based on these two aspects.</p>
 <p>Before we delve deeper into selecting a projection, it is worth noting that for many countries and continents, government agencies have already chosen projections to be the standard for mapping spatial data. For instance, a standard for Europe, used by Eurostat (the statistical agency of the European Union), is the Lambert Azimuthal Equal-Area projection, shown in <a href="#fig-crs-conic-planar-2" class="quarto-xref">Figure&nbsp;<span>13.7 (b)</span></a>. If the area of interest has such a standard, it is recommended to use it, because it can be safely assumed that this standard is a proper projection, and moreover, it makes cooperation and communication with other parties easier. However, be aware of the limitations that this particular projection may have, and that there may be better alternatives out there.</p>
-<section id="map-projection-properties-sec-map-projection-properties" class="level3" data-number="13.5.1"><h3 data-number="13.5.1" class="anchored" data-anchor-id="map-projection-properties-sec-map-projection-properties">
-<span class="header-section-number">13.5.1</span> Map projection properties (#sec-map-projection-properties)</h3>
+<section id="sec-map-projection-properties" class="level3" data-number="13.5.1"><h3 data-number="13.5.1" class="anchored" data-anchor-id="sec-map-projection-properties">
+<span class="header-section-number">13.5.1</span> Map projection properties</h3>
 <p> The type of application is important for the choice of a map projection. However, it would be quite tedious to list all possible applications and provide projection recommendations for each of them. Instead, we focus on four map projection properties. The key step is to find out which of these properties are useful or even required for the target application. The four properties are listed in <a href="#tbl-crs-properties" class="quarto-xref">Table&nbsp;<span>13.1</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div id="tbl-crs-properties" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
@@ -770,8 +770,8 @@ Figure&nbsp;13.8: Comparison of Web Mercator and Eckert IV projections.
 </div>
 <p> The other two map projection properties are related to one central point on the map. A map projection is called <em>equidistant</em> if the distances to any other point in the map are preserved and <em>azimuthal</em> if the directions to any other point are preserved. These properties are, in particular, useful in the field of geology. One example is a seismic map around the epicenter of a recent earthquake, where it is crucial to show how far and in which direction the vibrations are spreading.</p>
 <p> A map projection can satisfy at most two of these properties. Many map projections do not satisfy any property but are intended as a compromise. An example is the Robinson projection, shown in <a href="#fig-crs-robin" class="quarto-xref">Figure&nbsp;<span>13.6</span></a>. <!-- maybe add one more sentence explaining what the Robinson projection compromises? --></p>
-</section><section id="area-of-interest-sec-area-of-interest" class="level3" data-number="13.5.2"><h3 data-number="13.5.2" class="anchored" data-anchor-id="area-of-interest-sec-area-of-interest">
-<span class="header-section-number">13.5.2</span> Area of interest (#sec-area-of-interest)</h3>
+</section><section id="sec-area-of-interest" class="level3" data-number="13.5.2"><h3 data-number="13.5.2" class="anchored" data-anchor-id="sec-area-of-interest">
+<span class="header-section-number">13.5.2</span> Area of interest</h3>
 <p> The next aspect that is important for the choice of a map projection is the area of interest. In general, the larger the area, the more concessions have to be made, since the larger the area, the more difficult it is to make a two-dimensional projection.</p>
 <p>The following <a href="#tbl-crs-recommendations" class="quarto-xref">Table&nbsp;<span>13.2</span></a> provides recommendations for map projection types based on the area size and latitude of the area.</p>
 <div class="cell" data-layout-align="center">
@@ -895,8 +895,8 @@ Table&nbsp;13.2: Recommended projections for different areas.
 <p>For areas with the size of a continent or country, the azimuthal map projection type can be used when centered on the area of interest. In particular, the Lambert Azimuthal Equal-Area projection when the equal area is required and the Azimuthal Equidistant projection when preserving distances is essential. Alternatively, cylindrical and conic map projection types can be used for areas at low and mid-latitudes, respectively. Another alternative is to use a UTM projection. However, this is only recommended when the target area spans less than 6 degrees longitude and does not cross the UTM zone lines.</p>
 </section></section><section id="sec-crs-in-r" class="level2" data-number="13.6"><h2 data-number="13.6" class="anchored" data-anchor-id="sec-crs-in-r">
 <span class="header-section-number">13.6</span> CRS in R</h2>
-<p> Coordinate Reference Systems (CRSs) are implemented in the software library <a href="https://proj.org/"><strong>PROJ</strong></a>. With implementation, we mean specifying a CRS and transforming coordinates from one CRS to another. <strong>PROJ</strong> is used by every popular software application for spatial data, in particular <strong>ArcGIS</strong>, <strong>QGIS</strong>, and <strong>GRASS GIS</strong>, and also by many programming languages, including R. The <strong>sf</strong> package integrates the <strong>PROJ</strong> functions into R.</p>
-<p>A CRS is represented in R by an object of class <code>crs</code>, which can be retrieved or set with the function <code>st_crs</code> (from the <strong>sf</strong> package). In the following example, a <code>crs</code> object is created from an EPSG code, in this case 3035, the Lambert Azimuthal Equal-Area projection for Europe.</p>
+<p> Coordinate Reference Systems (CRSs) are implemented in the software library <a href="https://proj.org/"><strong>PROJ</strong></a>. With implementation, we mean specifying a CRS and transforming coordinates from one CRS to another. <strong>PROJ</strong> is used by every popular software application for spatial data, in particular, <strong>ArcGIS</strong>, <strong>QGIS</strong>, and <strong>GRASS GIS</strong>, and also by many programming languages, including R. The <strong>sf</strong> and <strong>terra</strong> packages integrate the <strong>PROJ</strong> capabilities into R.</p>
+<p>A CRS is represented in <strong>sf</strong> by an object of class <code>crs</code>, which can be retrieved or set with the function <code>st_crs</code>(). In the following example, a <code>crs</code> object is created from an EPSG code, in this case, 3035, the Lambert Azimuthal Equal-Area projection for Europe.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
 <span><span class="co"># CRS Lambert Azimuthal Equal-Area projection</span></span>
@@ -952,15 +952,16 @@ Table&nbsp;13.2: Recommended projections for different areas.
 <span><span class="co">#&gt;         BBOX[24.6,-35.58,84.73,44.83]],</span></span>
 <span><span class="co">#&gt;     ID["EPSG",3035]]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p> A <code>crs</code> object is represented by Well Known Text (WKT). It includes a specification of the used datum as well as information how to transform it into other CRSs. Understanding the exact content of the WTK is not important for most users, since it is not needed to write a WKT yourself.</p>
+<p> A <code>crs</code> object contains Well Known Text (WKT). It includes a specification of the used datum as well as information how to transform it into other CRSs. Understanding the exact content of the WTK is not important for most users, since it is not needed to write a WKT yourself.</p>
 <p> A <code>crs</code> object can be created in several ways: <!--to improve in the future--></p>
 <ol type="1">
 <li>The first is with an EPSG number as user input specification as shown above. <!--it can be also some other "provider", e.g. "ESRI:37001"-->
 </li>
-<li>The second is also with a user input specification, but with a so-called <em>proj4</em> character string. The <em>proj4</em> character string for the LAEA projection is <code>"+proj=laea +lat_0=52 +lon_0=10 +x_0=4321000 +y_0=3210000 +ellps=GRS80 +units=m +no_defs"</code>. However, <em>proj4</em> character strings should be used with caution since they often lack important CRS information regarding datums and CRS transformations. Also note that the name <em>proj4</em> stands for the <strong>PROJ</strong> library version 4, while the current major version of <strong>PROJ</strong> at the time of writing is already 8.</li>
+<li>The second is also with a user input specification, but with a so-called <em>proj4</em> character string. The <em>proj4</em> character string for the LAEA projection is <code>"+proj=laea +lat_0=52 +lon_0=10 +x_0=4321000 +y_0=3210000 +ellps=GRS80 +units=m +no_defs"</code>. However, <em>proj4</em> character strings should be used with caution since they often lack important CRS information regarding datums and CRS transformations. Also note that the name <em>proj4</em> stands for the <strong>PROJ</strong> library version 4, while the current major version of <strong>PROJ</strong> at the time of writing is already 9. <!--update-->
+</li>
 <li>The third way is to provide some WKT definition of the projection. <!--...-->
 </li>
-<li>The last way to create a <code>crs</code> object is to extract it from an existing spatial data object (e.g., an <strong>sf</strong> or <strong>stars</strong> object) using the <code><a href="https://r-spatial.github.io/sf/reference/st_crs.html">st_crs()</a></code> function.</li>
+<li>The last way to create a <code>crs</code> object is to extract it from an existing spatial data object (e.g., an <strong>sf</strong>, <strong>terra</strong>, or <strong>stars</strong> object) using the <code><a href="https://r-spatial.github.io/sf/reference/st_crs.html">st_crs()</a></code> function.</li>
 </ol>
 <p>A <code>crs</code> object can define a new spatial object’s projection or transform an existing spatial object into another projection. In the example below, we created a new object, <code>waterfalls</code>, with names and coordinates of three famous waterfalls. Next, we converted it into a spatial object of the <code>sf</code> class, <code>waterfalls_sf()</code> with <code><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html">st_as_sf()</a></code>. We can see that our object’s coordinate reference system is not defined with the <code><a href="https://r-spatial.github.io/sf/reference/st_crs.html">st_crs()</a></code> function.</p>
 <div class="cell" data-layout-align="center">
@@ -974,7 +975,7 @@ Table&nbsp;13.2: Recommended projections for different areas.
 <span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html">st_crs</a></span><span class="op">(</span><span class="va">waterfalls_sf</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Coordinate Reference System: NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This function also allows us to specify CRS of our object - in this example, coordinates of our object are in the WGS84 coordinate system, and thus we can use the EPSG code of 4326. We can also confirmed that our operation was successful also using <code><a href="https://r-spatial.github.io/sf/reference/st_crs.html">st_crs()</a></code>.</p>
+<p>This function also allows us to specify CRS of our object – in this example, coordinates of our object are in the WGS84 coordinate system, and thus we can use the EPSG code of 4326. We can also confirmed that our operation was successful also using <code><a href="https://r-spatial.github.io/sf/reference/st_crs.html">st_crs()</a></code>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># specify crs</span></span>
 <span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html">st_crs</a></span><span class="op">(</span><span class="va">waterfalls_sf</span><span class="op">)</span> <span class="op">=</span> <span class="st">"EPSG:4326"</span></span>
@@ -1014,7 +1015,7 @@ Table&nbsp;13.2: Recommended projections for different areas.
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">waterfalls_sf</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html">st_as_sf</a></span><span class="op">(</span><span class="va">waterfalls</span>, coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"lon"</span>, <span class="st">"lat"</span><span class="op">)</span>, crs <span class="op">=</span> <span class="st">"EPSG:4326"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The <code><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform()</a></code> function is used to convert the existing spatial object’s coordinates into another projection. For example, let’s transform our <code>waterfalls_sf</code> object to the Equal Earth projection (EPSG 8857).</p>
+<p>The <code><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform()</a></code> function is used to convert the existing vector spatial object’s coordinates into another projection. For example, let’s transform our <code>waterfalls_sf</code> object to the Equal Earth projection (<code>EPSG:8857</code>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">waterfalls_sf_trans</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform</a></span><span class="op">(</span><span class="va">waterfalls_sf</span>, <span class="st">"EPSG:8857"</span><span class="op">)</span></span>
 <span><span class="va">waterfalls_sf_trans</span></span>
@@ -1028,7 +1029,7 @@ Table&nbsp;13.2: Recommended projections for different areas.
 <span><span class="co">#&gt; 2  Niagara Falls  POINT (-6583123 5261565)</span></span>
 <span><span class="co">#&gt; 3 Victoria Falls  POINT (2416945 -2285044)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><a href="#fig-crs-trans-plot" class="quarto-xref">Figure&nbsp;<span>13.9</span></a> shows the data in the WGS84 coordinate system on the top and in the Equal Earth projection on the bottom. You can see here that the decision of the projection used has an impact not only on the coordinates (notice the grid values), but also the continents’ shapes.</p>
+<p><a href="#fig-crs-trans-plot" class="quarto-xref">Figure&nbsp;<span>13.9</span></a> shows the example data in the WGS84 coordinate system on the top and in the Equal Earth projection on the bottom. You can see here that the decision of the projection used has an impact not only on the coordinates (notice the grid values), but also the continents’ shapes.</p>
 <div class="cell" data-layout-nrow="2" data-layout-align="center">
 <div id="fig-crs-trans-plot" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-crs-trans-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1062,6 +1063,9 @@ Figure&nbsp;13.9: Comparison between the same dataset of three waterfalls
 </figcaption></figure>
 </div>
 </div>
+</section><section id="specifying-map-projections-within-tmap" class="level2" data-number="13.7"><h2 data-number="13.7" class="anchored" data-anchor-id="specifying-map-projections-within-tmap">
+<span class="header-section-number">13.7</span> Specifying map projections within <strong>tmap</strong>
+</h2>
 <!-- https://r-tmap.github.io/tmap/articles/foundations_crs -->
 <!-- maybe also include map_boundary stuff here -->
 <!-- global: -->
@@ -1073,8 +1077,6 @@ Figure&nbsp;13.9: Comparison between the same dataset of three waterfalls
 <span><span class="va">worldvector</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/worldvector.gpkg"</span><span class="op">)</span></span>
 <span><span class="va">worldcities</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/worldcities.gpkg"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="specifying-map-projections" class="level2" data-number="13.7"><h2 data-number="13.7" class="anchored" data-anchor-id="specifying-map-projections">
-<span class="header-section-number">13.7</span> Specifying map projections</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1135,8 +1137,9 @@ Figure&nbsp;13.11: Map with data projected into the automatically selected proje
 </div>
 </div>
 </div>
-</section><section id="global-map-projections" class="level2" data-number="13.8"><h2 data-number="13.8" class="anchored" data-anchor-id="global-map-projections">
-<span class="header-section-number">13.8</span> Global map projections</h2>
+</section><section id="global-map-projections-in-tmap" class="level2" data-number="13.8"><h2 data-number="13.8" class="anchored" data-anchor-id="global-map-projections-in-tmap">
+<span class="header-section-number">13.8</span> Global map projections in <strong>tmap</strong>
+</h2>
 <!-- tm + tm_style("natural") -->
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
@@ -1219,8 +1222,9 @@ Figure&nbsp;13.13: Examples of map projections for the whole world.
 Figure&nbsp;13.14: Orthographic projection examples.
 </figcaption></figure>
 </div>
-</section><section id="local-map-projections" class="level2" data-number="13.9"><h2 data-number="13.9" class="anchored" data-anchor-id="local-map-projections">
-<span class="header-section-number">13.9</span> Local map projections</h2>
+</section><section id="local-map-projections-in-tmap" class="level2" data-number="13.9"><h2 data-number="13.9" class="anchored" data-anchor-id="local-map-projections-in-tmap">
+<span class="header-section-number">13.9</span> Local map projections in <strong>tmap</strong>
+</h2>
 <!-- local? -->
 <!-- properies -->
 <!-- specific: south pole? -->
