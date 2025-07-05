@@ -511,6 +511,11 @@ For example `my_sf = st_as_sf(my_df, coords = c("Xcolumn", "Ycolumn"), crs = "EP
 If you want to learn more about operating on `sf` objects, we recommend visiting the package website and vignettes at <https://r-spatial.github.io/sf/> and reading [the Geocomputation with R book](https://geocompr.github.io/) [@lovelace_geocomputation_2025].
 <!-- - vector simplification? -->
 
+### The terra package {#sec-the-terra-package}
+
+\index{terra}
+\index{terra (package)|see {terra}}
+
 ### The stars package {#sec-the-stars-package}
 
 \index{stars}
