@@ -255,7 +255,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./map-projections.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Map projections</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Map projections (CRS)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -636,7 +636,7 @@ Figure&nbsp;10.2: A map with a customized scale bar.
 </div>
 </div>
 <p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_scalebar.html">tm_scalebar()</a></code> also has several additional arguments, allowing to modify its colors, and position (<a href="#sec-north-arrow" class="quarto-xref"><span>Section 10.3</span></a>).</p>
-<p>Importantly, the scale bar is accurate, depending on a map projection, at standard points or lines only (<a href="geodata.html#sec-proj-types" class="quarto-xref"><span>Section 2.4.4</span></a>) – it is never completely correct across the whole map. <!--toDo we need to add an explanation what are standard points and lines in the second chapter!!--> The scale bar distortion increases with the true size of the area we are mapping – it is less visible on local maps, and very prominent on global maps. For example, try to add a scale bar to a world map seen in the <a href="tm-shape.html#sec-shapes-and-layers" class="quarto-xref"><span>Section 5.1</span></a>. The created scale bar will be accurate for the equator, but less and less correct going to the north and south poles.</p>
+<p>Importantly, the scale bar is accurate, depending on a map projection, at standard points or lines only (<a href="map-projections.html#sec-proj-types" class="quarto-xref"><span>Section 13.0.4</span></a>) – it is never completely correct across the whole map. <!--toDo we need to add an explanation what are standard points and lines in the second chapter!!--> The scale bar distortion increases with the true size of the area we are mapping – it is less visible on local maps, and very prominent on global maps. For example, try to add a scale bar to a world map seen in the <a href="tm-shape.html#sec-shapes-and-layers" class="quarto-xref"><span>Section 5.1</span></a>. The created scale bar will be accurate for the equator, but less and less correct going to the north and south poles.</p>
 </section><section id="sec-north-arrow" class="level2" data-number="10.3"><h2 data-number="10.3" class="anchored" data-anchor-id="sec-north-arrow">
 <span class="header-section-number">10.3</span> North arrow</h2>
 <p>North arrow, also known as a map compass or a compass rose, is a prominent orientation indicator pointing to which way is north<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. The decision on whether to use north arrows or not usually requires some critical thinking. While, it can be added to every map, north arrows are not always necessary – especially on maps of large areas (e.g., continents), where the cardinal directions are obvious for most people. The north arrow is, however, necessary when the north on the map is offset (rotated) and recommended when we want to help orient the map readers.</p>
