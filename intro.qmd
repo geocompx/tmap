@@ -41,4 +41,4 @@ The short answer is that **tmap** is an R package for the visualization of spati
 The slightly longer answer is that **tmap** allows users to explore, analyze, and present spatial data in an intuitive way. 
 In this book, you will find the long answer.
 
-## Thematic maps
+<!-- ## Thematic maps -->
