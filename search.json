@@ -61,17 +61,6 @@
     ]
   },
   {
-    "objectID": "intro.html#thematic-maps",
-    "href": "intro.html#thematic-maps",
-    "title": "1  Introduction",
-    "section": "\n1.2 Thematic maps",
-    "text": "1.2 Thematic maps",
-    "crumbs": [
-      "Basics",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
-    ]
-  },
-  {
     "objectID": "geodata.html",
     "href": "geodata.html",
     "title": "2  Spatial data in R",
