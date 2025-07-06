@@ -466,7 +466,7 @@ window.Quarto = {
 <p>The world is depicted as an orange in <a href="#fig-orange" class="quarto-xref">Figure&nbsp;<span>13.1</span></a>, not just to stimulate your appetite for this subject, but also because an orange peel serves as a good analogy for a two-dimensional map. A world map can be seen as an orange peel laid out on the table. The question is how to peel the orange and how to put the peel flat on the table.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-orange" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-scap="How to peel an orange?">
+<div id="fig-orange" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-scap="How to peel an orange?" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-orange-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/orange_world.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-scap="How to peel an orange?">
 </div>
@@ -1038,7 +1038,8 @@ Table&nbsp;13.2: Recommended projections for different areas.
 </div>
 <p>Alternatively, it is possible to set the CRS when creating a new <code>sf</code> object, as you can see below.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">waterfalls_sf</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html">st_as_sf</a></span><span class="op">(</span><span class="va">waterfalls</span>, coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"lon"</span>, <span class="st">"lat"</span><span class="op">)</span>, crs <span class="op">=</span> <span class="st">"EPSG:4326"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">waterfalls_sf</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html">st_as_sf</a></span><span class="op">(</span><span class="va">waterfalls</span>, </span>
+<span>                         coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"lon"</span>, <span class="st">"lat"</span><span class="op">)</span>, crs <span class="op">=</span> <span class="st">"EPSG:4326"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <code><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform()</a></code> function is used to convert the existing vector spatial object’s coordinates into another projection. For example, let’s transform our <code>waterfalls_sf</code> object to the Equal Earth projection (<code>EPSG:8857</code>).</p>
 <div class="cell" data-layout-align="center">
@@ -1182,8 +1183,7 @@ Figure&nbsp;13.12: Map with data projected into the automatically selected proje
 </div>
 </section><section id="raster-data" class="level3" data-number="13.7.2"><h3 data-number="13.7.2" class="anchored" data-anchor-id="raster-data">
 <span class="header-section-number">13.7.2</span> Raster data</h3>
-<p>The above features of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_crs.html">tm_crs()</a></code> function also apply to raster data. However, at the same time, reprojecting raster data is more complex than reprojecting vector data. Reprojections of vector data are usually straightforward because each spatial coordinate is reprojected individually. <!-- mention invalid geometries? --> Reprojecting of raster data, on the other hand, is more complex and requires using one of two approaches. The first approach applies raster warping, which is a name for two separate spatial operations: the creation of a new regular raster object and the computation of new pixel values through resampling (for more details, read Chapter 7 of <span class="citation" data-cites="lovelace_geocomputation_2025">Lovelace, Nowosad, and Muenchow (<a href="references.html#ref-lovelace_geocomputation_2025" role="doc-biblioref">2025</a>)</span>). This is the default option in <strong>tmap</strong>, however, it has some limitations and it is not always possible to use it. The second approach involves transforming the coordinates of the raster cells, resulting in a curvilinear grid.</p>
-<p>Let’s see how to use these two approaches in <strong>tmap</strong> based on the <code>worldelevation.tif</code> raster data.</p>
+<p>The above features of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_crs.html">tm_crs()</a></code> function also apply to raster data. However, at the same time, reprojecting raster data is more complex than reprojecting vector data. Reprojections of vector data are usually straightforward because each spatial coordinate is reprojected individually. <!-- mention invalid geometries? --> Reprojecting of raster data, on the other hand, is more complex and requires using one of two approaches. The first approach applies raster warping, which is a name for two separate spatial operations: the creation of a new regular raster object and the computation of new pixel values through resampling (for more details, read Chapter 7 of <span class="citation" data-cites="lovelace_geocomputation_2025">Lovelace, Nowosad, and Muenchow (<a href="references.html#ref-lovelace_geocomputation_2025" role="doc-biblioref">2025</a>)</span>). This is the default option in <strong>tmap</strong>, however, it has some limitations and it is not always possible to use it. The second approach involves transforming the coordinates of the raster cells, resulting in a curvilinear grid. Let’s see how to use these two approaches in <strong>tmap</strong> based on the <code>worldelevation.tif</code> raster data.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/stars/">stars</a></span><span class="op">)</span></span>
 <span><span class="va">worldelevation</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="st">"data/worldelevation.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1199,7 +1199,7 @@ Figure&nbsp;13.12: Map with data projected into the automatically selected proje
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldelevation</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">terrain.colors</a></span><span class="op">(</span><span class="fl">8</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_crs.html">tm_crs</a></span><span class="op">(</span><span class="st">"+proj=eqearth"</span><span class="op">)</span> <span class="co"># or "EPSG:8857"</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_crs.html">tm_crs</a></span><span class="op">(</span><span class="st">"+proj=eqearth"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_options.html">tm_options</a></span><span class="op">(</span>raster.warp <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-nrow="2" data-layout-align="center">
@@ -1239,23 +1239,24 @@ Figure&nbsp;13.13: Two elevation maps in the Equal Earth projection
 <!-- about reprojecting first vs later - why and how -->
 </section></section><section id="customizing-maps-for-global-projections" class="level2" data-number="13.8"><h2 data-number="13.8" class="anchored" data-anchor-id="customizing-maps-for-global-projections">
 <span class="header-section-number">13.8</span> Customizing maps for global projections</h2>
-<!-- tm + tm_style("natural") -->
+<p>The <strong>tmap</strong> package also offers several additional features that can be used to customize maps with global projections. For instance, the <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function has an argument <code>earth_boundary</code> that can be set to <code>TRUE</code> to add a boundary around the Earth. Then, we can also set the <code>bg.color</code> argument to specify the background color of the map, which will only apply to the area inside the Earth boundary for a given projection (<a href="#fig-mproj3" class="quarto-xref">Figure&nbsp;<span>13.14</span></a>). <!-- should we mention tm + tm_style("natural") ?--></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_crs.html">tm_crs</a></span><span class="op">(</span><span class="st">"+proj=eck4"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>bg.color <span class="op">=</span> <span class="st">"lightblue"</span>,</span>
-<span>            earth_boundary <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_crs.html">tm_crs</a></span><span class="op">(</span><span class="st">"+proj=eqearth"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>earth_boundary <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>            bg.color <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-mproj3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-mproj3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-mproj3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mproj3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.14: Map with data projected into Eckert IV and with a customized style.
+Figure&nbsp;13.14: Map with data projected into Equal Earth and with a customized style.
 </figcaption></figure>
 </div>
 </div>
 </div>
+<p>These features can be used to create more visually appealing maps. They are available to a large set of projections<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, some of which are shown in <a href="#fig-exprojs" class="quarto-xref">Figure&nbsp;<span>13.15</span></a>. You may notice that these projections have not only different visual styles but also different shapes of the Earth boundary and focus on preserving different map projection properties.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-exprojs" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -1268,25 +1269,15 @@ Figure&nbsp;13.15: Examples of map projections for the whole world.
 </div>
 </div>
 </div>
-<!-- https://proj.org/en/stable/operations/projections/index.html -->
-<!-- maybe bbox could be a part of tm_crs? -->
-<!-- https://github.com/r-tmap/tmap/issues/1152#issuecomment-3007324769 -->
-<!-- https://github.com/r-tmap/tmap/issues/1156#issuecomment-3030990315 -->
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span>  <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldcities</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text</a></span><span class="op">(</span><span class="st">"name"</span><span class="op">)</span> <span class="op">+</span></span>
+<!-- Martijn, is there any way to add proper grid lines/graticules for the maps above? -->
+<p>One particular projection that is worth mentioning is the <em>orthographic projection</em>. It is a planar projection that represents the Earth as if it were viewed from space, with the center of the projection at a specific latitude and longitude. We can use the <code><a href="https://r-tmap.github.io/tmap/reference/tm_crs.html">tm_crs()</a></code> function to apply the orthographic projection with the <code>+proj=ortho</code> argument, and then set the <code>lat_0</code> and <code>lon_0</code> parameters to specify the center of the projection. <a href="#fig-mproj-ortho" class="quarto-xref">Figure&nbsp;<span>13.16</span></a> shows two examples of the orthographic projection centered on different coordinates: the first one is centered on 30<span class="math inline">\(^\circ\)</span>N, 0<span class="math inline">\(^\circ\)</span>E, and the second one is centered on 0<span class="math inline">\(^\circ\)</span>N/S, 100<span class="math inline">\(^\circ\)</span>E.</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules</a></span><span class="op">(</span>labels.show <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_crs.html">tm_crs</a></span><span class="op">(</span><span class="st">"+proj=ortho +lat_0=30 +lon_0=0"</span>, bbox <span class="op">=</span> <span class="st">"FULL"</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>bg.color <span class="op">=</span> <span class="st">"lightblue"</span>,</span>
 <span>            earth_boundary <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>            frame <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldvector</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span>  <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldcities</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text</a></span><span class="op">(</span><span class="st">"name"</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules</a></span><span class="op">(</span>labels.show <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_crs.html">tm_crs</a></span><span class="op">(</span><span class="st">"+proj=ortho +lat_0=0 +lon_0=100"</span>, bbox <span class="op">=</span> <span class="st">"FULL"</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>bg.color <span class="op">=</span> <span class="st">"lightblue"</span>,</span>
@@ -1321,6 +1312,19 @@ Figure&nbsp;13.15: Examples of map projections for the whole world.
 Figure&nbsp;13.16: Orthographic projection examples.
 </figcaption></figure>
 </div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note, that in these examples, the <code>bbox</code> argument is set to <code>"FULL"</code>, which means that the whole Earth is displayed – it is useful when the extent of the data is smaller than the whole Earth.</p>
+</div>
+</div>
 <!-- ## Local map projections in **tmap** -->
 <!-- local? -->
 <!-- properies -->
@@ -1335,6 +1339,7 @@ Lovelace, Robin, Jakub Nowosad, and Jannes Muenchow. 2025. <em>Geocomputation wi
 </section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
 <li id="fn1"><p>For more details of the first approach, see <code>?stars::st_warp()</code> and of the second approach, see <code>?stars::st_transform()</code>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Find more projections in the PROJ documentation at <a href="https://proj.org/en/stable/operations/projections" class="uri">https://proj.org/en/stable/operations/projections</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
