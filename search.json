@@ -1044,7 +1044,7 @@
     "href": "animations.html",
     "title": "17  Animations",
     "section": "",
-    "text": "17.1 Creating animations\ntm = tm_shape(slo_borders) +\n  tm_borders() +\n  tm_shape(slo_regions_ts) +\n  tm_polygons(\"gdppercap\")\ntm +\n  tm_animate(by = \"time\")\ntm +\n  tm_animate_fast(by = \"time\")\ntm +\n  tm_animate(by = \"time\", fps = 5, play = \"pingpong\")\nlibrary(stars)\nslo_tavg = read_stars(\"data/slovenia/slo_tavg.tif\")\ntm_shape(slo_tavg) +\n  tm_raster(col.scale = tm_scale_continuous()) +\n  tm_animate(by = \"band\", fps = 6)\n#&gt; Variable(s) \"col\" contains positive and negative values, so midpoint is set to 0. Set midpoint = NA to show the full range of visual values.",
+    "text": "17.1 Creating animations\ntm = tm_shape(slo_borders) +\n  tm_borders() +\n  tm_shape(slo_regions_ts) +\n  tm_polygons(\"gdppercap\")\ntm +\n  tm_animate(by = \"time\")\ntm +\n  tm_animate_fast(by = \"time\")\ntm +\n  tm_animate(by = \"time\", fps = 5, play = \"pingpong\")\nlibrary(stars)\nslo_tavg = read_stars(\"data/slovenia/slo_tavg.tif\")\ntm_shape(slo_tavg) +\n  tm_raster(col.scale = tm_scale_continuous()) +\n  tm_animate(by = \"band\", fps = 6)",
     "crumbs": [
       "Expanding the toolbox",
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>Animations</span>"
