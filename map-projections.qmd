@@ -441,7 +441,6 @@ The perception of World population is different in these maps; in (a) the vast l
 #| label: fig-crs-bias
 #| echo: false
 #| message: false
-#| fig-asp: 0.45
 #| layout-nrow: 2
 #| fig-cap: Comparison of Web Mercator and Eckert IV projections.
 #| fig-subcap:
@@ -453,17 +452,13 @@ tm_shape(World, crs = "EPSG:3857") +
               fill.scale = tm_scale_continuous_log10(),
               fill.legend = tm_legend(expression("Population per " * km^2), 
                                       orientation = "landscape")) +
-  tm_layout(frame = FALSE, legend.frame = TRUE, 
-            inner.margins = c(.1, .02, .02, .02), legend.position = c(.4, .1), 
-            scale = 0.7, asp = 1)
+  tm_layout(frame = FALSE)
 tm_shape(World, crs = "+proj=eck4") + 
   tm_polygons("pop_est_dens",
               fill.scale = tm_scale_continuous_log10(),
               fill.legend = tm_legend(expression("Population per " * km^2), 
                                       orientation = "landscape")) +
-  tm_layout(frame = FALSE, legend.frame = TRUE, 
-            inner.margins = c(.1, .02, .02, .02), legend.position = c(.4, .1), 
-            scale = 0.7, asp = 1)
+  tm_layout(frame = FALSE)
 ```
 
 \index{equidistant map projections}
@@ -715,20 +710,24 @@ tm_shape(worldvector_wgs84) +
 
 ### Raster data
 
+The above features of the `tm_crs()` function also apply to raster data.
+However, at the same time, reprojecting raster data is more complex than reprojecting vector data.
+Reprojections of vector data are usually straightforward because each spatial coordinate is reprojected individually.
+<!-- mention invalid geometries? -->
+Reprojecting of raster data, on the other hand, is more complex and requires using one of two approaches.
+The first approach applies raster warping, which is a name for two separate spatial operations: the creation of a new regular raster object and the computation of new pixel values through resampling (for more details, read Chapter 7 of @lovelace_geocomputation_2025).
+This is the default option in **tmap**, however, it has some limitations and it is not always possible to use it.
+The second approach involves transforming the coordinates of the raster cells, resulting in a curvilinear grid.
+
+Let's see how to use these two approaches in **tmap** based on the `worldelevation.tif` raster data.
+
 ```{r}
 #| message: false
 library(stars)
 worldelevation = read_stars("data/worldelevation.tif")
 ```
 
-Reprojections of vector data are usually straightforward because each spatial coordinate is reprojected individually.
-<!-- mention invalid geometries? -->
-Reprojecting of raster data, on the other hand, is more complex and requires using one of two approaches.
-The first approach applies raster warping, which is a name for two separate spatial operations: creation of a new regular raster object and computation of new pixel values through resampling (for more details read Chapter 7 of @lovelace_geocomputation_2025).
-This is the default option in **tmap**, however, it has some limitations and it is not always possible to use it.
-
-<!-- to fix the rest of the section! -->
-@fig-tm-map-proj-1 shows the world elevation raster reprojected to Equal Earth.
+@fig-tm-map-proj-1 shows the World elevation raster reprojected to Equal Earth.
 Some of you can quickly notice that certain areas, such as parts of Antarctica, New Zealand, Alaska, and the Kamchatka Peninsula, are presented twice, with one version being largely distorted.
 Another limitation of `raster.warp = TRUE` is the use of the nearest neighbor resampling only -- while it can be a proper method to use for categorical rasters, it can have some unintended consequences for continuous rasters (such as the `"worldelevation.tif"` data).
 
@@ -737,15 +736,14 @@ Another limitation of `raster.warp = TRUE` is the use of the nearest neighbor re
 #| warning: false
 #| eval: false
 tm_shape(worldelevation) +
-  tm_raster("worldelevation.tif", 
-            col.scale = tm_scale(values = terrain.colors(8))) +
-  tm_crs("EPSG:8857")
+  tm_raster(col.scale = tm_scale(values = terrain.colors(8))) +
+  tm_crs("+proj=eqearth") # or "EPSG:8857"
 ```
 
-The second approach (`tm_options(raster.warp = FALSE)`) computes new coordinates for each raster cell keeping all of the original values and results in a curvilinear grid.
+The second approach (`tm_options(raster.warp = FALSE)`) computes new coordinates for each raster cell, keeping all of the original values and results in a curvilinear grid.
 This calculation could deform the shapes of original grid cells, and usually curvilinear grids take a longer time to plot^[For more details of the first approach, see `?stars::st_warp()` and of the second approach, see `?stars::st_transform()`.].
 
-@fig-tm-map-proj-2 shows an example of the second approach, which gave a better result in this case without any spurious lands.
+@fig-tm-map-proj-2 illustrates an example of the second approach, which yielded a better result in this case without any spurious land.
 However, the creation of the (b) map takes about ten times longer than the (a) map.
 
 ```{r}
@@ -753,9 +751,8 @@ However, the creation of the (b) map takes about ten times longer than the (a) m
 #| warning: false
 #| eval: false
 tm_shape(worldelevation) +
-  tm_raster("worldelevation.tif", 
-            col.scale = tm_scale(values = terrain.colors(8))) +
-  tm_crs("EPSG:8857") +
+  tm_raster(col.scale = tm_scale(values = terrain.colors(8))) +
+  tm_crs("+proj=eqearth") # or "EPSG:8857"
   tm_options(raster.warp = FALSE)
 ```
 
@@ -764,6 +761,7 @@ tm_shape(worldelevation) +
 #| echo: false
 #| warning: false
 #| layout-nrow: 2
+#| fig-asp: 0.5
 #| fig-cap: Two elevation maps in the Equal Earth projection
 #| fig-subcap: 
 #|   - created using raster.warp = TRUE
@@ -776,8 +774,7 @@ tm_shape(worldelevation) +
 #| echo: false
 #| eval: false
 tmp1 = tm_shape(worldelevation, crs = "EPSG:8857") +
-  tm_raster("worldelevation.tif", 
-            col.scale = tm_scale(values = terrain.colors(8)))
+  tm_raster(col.scale = tm_scale(values = terrain.colors(8)))
 tmp2 = tm_shape(worldelevation, crs = "EPSG:8857") +
   tm_raster("worldelevation.tif", 
             col.scale = tm_scale(values = terrain.colors(8))) +
