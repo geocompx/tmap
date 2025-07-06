@@ -138,7 +138,7 @@ tm_shape(worldelevation, bbox = worldcities) +
 <!-- ?bb -->
 <!-- explain some additional arguments of bb?? -->
 
-## Map projection {#sec-map-projection}
+## Map projection {#sec-map-projection-intro}
 \index{map projection}
 
 As we mentioned in the previous section, created maps use the projection from the main *shape*.
