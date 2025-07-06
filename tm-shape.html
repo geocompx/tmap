@@ -398,7 +398,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <li><a href="#sec-shapes-and-layers" id="toc-sec-shapes-and-layers" class="nav-link" data-scroll-target="#sec-shapes-and-layers"><span class="header-section-number">5.1</span> Shapes and layers</a></li>
   <li><a href="#sec-shapes-hierarchy" id="toc-sec-shapes-hierarchy" class="nav-link" data-scroll-target="#sec-shapes-hierarchy"><span class="header-section-number">5.2</span> Shapes hierarchy</a></li>
   <li><a href="#sec-map-extent" id="toc-sec-map-extent" class="nav-link" data-scroll-target="#sec-map-extent"><span class="header-section-number">5.3</span> Map extent</a></li>
-  <li><a href="#sec-map-projection" id="toc-sec-map-projection" class="nav-link" data-scroll-target="#sec-map-projection"><span class="header-section-number">5.4</span> Map projection</a></li>
+  <li><a href="#sec-map-projection-intro" id="toc-sec-map-projection-intro" class="nav-link" data-scroll-target="#sec-map-projection-intro"><span class="header-section-number">5.4</span> Map projection</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/tm-shape.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -534,7 +534,7 @@ Figure&nbsp;5.5: Global elevation data limited to the extent of the other spatia
 <!-- mention that legend related to the complete object -->
 <!-- ?bb -->
 <!-- explain some additional arguments of bb?? -->
-</section><section id="sec-map-projection" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="sec-map-projection">
+</section><section id="sec-map-projection-intro" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="sec-map-projection-intro">
 <span class="header-section-number">5.4</span> Map projection</h2>
 <p></p>
 <p>As we mentioned in the previous section, created maps use the projection from the main <em>shape</em>. However, we often want to create a map with a different projection, for example, to preserve a specific map property (<span class="quarto-unresolved-ref">?sec-crs</span>). We can do this in three ways. The first way to use a different projection on a map is to reproject the main data before plotting, as shown in <a href="map-projections.html#sec-crs-in-r" class="quarto-xref"><span>Section 13.6</span></a>. The second way is to specify the map projection using the <code>crs</code> argument of <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code>. This argument expects either some <code>crs</code> object or a CRS code. The third way is to use a <code><a href="https://r-tmap.github.io/tmap/reference/tm_crs.html">tm_crs()</a></code> function.</p>
