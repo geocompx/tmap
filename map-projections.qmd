@@ -828,7 +828,6 @@ world_projs = cbind(world_projs_code, world_projs_names)
 tms = lapply(1:nrow(world_projs), function(p) {
   tm_shape(worldvector) +
     tm_polygons() +
-    tm_graticules() +
     tm_crs(paste0("+proj=", world_projs[p, 1])) +
     tm_layout(panel.labels = world_projs[p, 2]) +
     tm_layout(bg.color = "lightblue",
