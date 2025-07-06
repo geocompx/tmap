@@ -579,7 +579,8 @@ st_crs(waterfalls_sf)
 Alternatively, it is possible to set the CRS when creating a new `sf` object, as you can see below.
 
 ```{r}
-waterfalls_sf = st_as_sf(waterfalls, coords = c("lon", "lat"), crs = "EPSG:4326")
+waterfalls_sf = st_as_sf(waterfalls, 
+                         coords = c("lon", "lat"), crs = "EPSG:4326")
 ```
 
 The `st_transform()` function is used to convert the existing vector spatial object's coordinates into another projection.
@@ -718,7 +719,6 @@ Reprojecting of raster data, on the other hand, is more complex and requires usi
 The first approach applies raster warping, which is a name for two separate spatial operations: the creation of a new regular raster object and the computation of new pixel values through resampling (for more details, read Chapter 7 of @lovelace_geocomputation_2025).
 This is the default option in **tmap**, however, it has some limitations and it is not always possible to use it.
 The second approach involves transforming the coordinates of the raster cells, resulting in a curvilinear grid.
-
 Let's see how to use these two approaches in **tmap** based on the `worldelevation.tif` raster data.
 
 ```{r}
@@ -752,7 +752,7 @@ However, the creation of the (b) map takes about ten times longer than the (a) m
 #| eval: false
 tm_shape(worldelevation) +
   tm_raster(col.scale = tm_scale(values = terrain.colors(8))) +
-  tm_crs("+proj=eqearth") # or "EPSG:8857"
+  tm_crs("+proj=eqearth") +
   tm_options(raster.warp = FALSE)
 ```
 
@@ -788,16 +788,23 @@ bench::mark(print(tmp1), print(tmp2), check = FALSE)
 
 ## Customizing maps for global projections
 
-<!-- tm + tm_style("natural") -->
+The **tmap** package also offers several additional features that can be used to customize maps with global projections.
+For instance, the `tm_layout()` function has an argument `earth_boundary` that can be set to `TRUE` to add a boundary around the Earth.
+Then, we can also set the `bg.color` argument to specify the background color of the map, which will only apply to the area inside the Earth boundary for a given projection (@fig-mproj3).
+<!-- should we mention tm + tm_style("natural") ?-->
 
 ```{r}
 #| label: fig-mproj3
-#| fig-cap: "Map with data projected into Eckert IV and with a customized style."
+#| fig-cap: "Map with data projected into Equal Earth and with a customized style."
 tm +
-  tm_crs("+proj=eck4") +
-  tm_layout(bg.color = "lightblue",
-            earth_boundary = TRUE)
+  tm_crs("+proj=eqearth") +
+  tm_layout(earth_boundary = TRUE,
+            bg.color = "lightblue")
 ```
+
+These features can be used to create more visually appealing maps.
+They are available to a large set of projections^[Find more projections in the PROJ documentation at  <https://proj.org/en/stable/operations/projections>], some of which are shown in @fig-exprojs.
+You may notice that these projections have not only different visual styles but also different shapes of the Earth boundary and focus on preserving different map projection properties.
 
 ```{r}
 #| label: fig-exprojs
@@ -821,6 +828,7 @@ world_projs = cbind(world_projs_code, world_projs_names)
 tms = lapply(1:nrow(world_projs), function(p) {
   tm_shape(worldvector) +
     tm_polygons() +
+    tm_graticules() +
     tm_crs(paste0("+proj=", world_projs[p, 1])) +
     tm_layout(panel.labels = world_projs[p, 2]) +
     tm_layout(bg.color = "lightblue",
@@ -829,11 +837,12 @@ tms = lapply(1:nrow(world_projs), function(p) {
 tmap_arrange(tms, ncol = 3)
 ```
 
-<!-- https://proj.org/en/stable/operations/projections/index.html -->
+<!-- Martijn, is there any way to add proper grid lines/graticules for the maps above? -->
 
-<!-- maybe bbox could be a part of tm_crs? -->
-<!-- https://github.com/r-tmap/tmap/issues/1152#issuecomment-3007324769 -->
-<!-- https://github.com/r-tmap/tmap/issues/1156#issuecomment-3030990315 -->
+One particular projection that is worth mentioning is the *orthographic projection*.
+It is a planar projection that represents the Earth as if it were viewed from space, with the center of the projection at a specific latitude and longitude.
+We can use the `tm_crs()` function to apply the orthographic projection with the `+proj=ortho` argument, and then set the `lat_0` and `lon_0` parameters to specify the center of the projection.
+@fig-mproj-ortho shows two examples of the orthographic projection centered on different coordinates: the first one is centered on 30$^\circ$N, 0$^\circ$E, and the second one is centered on 0$^\circ$N/S, 100$^\circ$E.
 
 ```{r}
 #| label: fig-mproj-ortho
@@ -843,21 +852,13 @@ tmap_arrange(tms, ncol = 3)
 #|   - "Centered on 0°N/S, 100°E"
 #| layout-ncol: 2
 #| fig-asp: 1
-tm_shape(worldvector) +
-  tm_polygons()  +
-  tm_shape(worldcities) +
-  tm_dots() +
-  tm_text("name") +
+tm +
   tm_graticules(labels.show = FALSE) +
   tm_crs("+proj=ortho +lat_0=30 +lon_0=0", bbox = "FULL")+
   tm_layout(bg.color = "lightblue",
             earth_boundary = TRUE,
             frame = FALSE)
-tm_shape(worldvector) +
-  tm_polygons()  +
-  tm_shape(worldcities) +
-  tm_dots() +
-  tm_text("name") +
+tm +
   tm_graticules(labels.show = FALSE) +
   tm_crs("+proj=ortho +lat_0=0 +lon_0=100", bbox = "FULL")+
   tm_layout(bg.color = "lightblue",
@@ -865,17 +866,9 @@ tm_shape(worldvector) +
             frame = FALSE)
 ```
 
-```{r}
-#| echo: false
-#| eval: false
-tm_shape(worldvector, bbox = "FULL", crs = "+proj=ortho +lat_0=0 +lon_0=100") +
-  tm_polygons() +
-  tm_graticules(labels.show = FALSE) +
-  # tm_crs()+
-  tm_layout(bg.color = "lightblue",
-            earth_boundary = TRUE,
-            frame = FALSE)
-```
+::: {.callout-note}
+Note, that in these examples, the `bbox` argument is set to `"FULL"`, which means that the whole Earth is displayed -- it is useful when the extent of the data is smaller than the whole Earth.
+:::
 
 <!-- ## Local map projections in **tmap** -->
 
