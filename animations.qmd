@@ -39,6 +39,14 @@ tm +
   tm_animate(by = "time", fps = 5, play = "pingpong")
 ```
 
+<!-- https://github.com/r-tmap/tmap/issues/1160 -->
+```{r}
+#| eval: false
+#| echo: false
+tm +
+  tm_facets(by = "region_group", nrow = 2) +
+  tm_animate_fast(by = "time")
+```
 
 ```{r animations-7}
 #| message: false
@@ -47,6 +55,7 @@ slo_tavg = read_stars("data/slovenia/slo_tavg.tif")
 ```
 
 ```{r animations-8}
+#| message: false
 tm_shape(slo_tavg) +
   tm_raster(col.scale = tm_scale_continuous()) +
   tm_animate(by = "band", fps = 6)
