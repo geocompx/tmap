@@ -524,7 +524,7 @@ With implementation, we mean specifying a CRS and transforming coordinates from 
 **PROJ** is used by every popular software application for spatial data, in particular, **ArcGIS**, **QGIS**, and **GRASS GIS**, and also by many programming languages, including R. 
 The **sf** and **terra** packages integrate the **PROJ** capabilities into R.   
 
-A CRS is represented in **sf** by an object of class `crs`, which can be retrieved or set with the function `st_crs`().
+A CRS is represented in **sf** by an object of class `crs`, which can be retrieved or set with the function `st_crs()`.
 In the following example, a `crs` object is created from an EPSG code, in this case, 3035, the Lambert Azimuthal Equal-Area projection for Europe.
 
 ```{r}
@@ -625,10 +625,14 @@ tm_shape(World, crs = "EPSG:8857") +
 ## Specifying map projections within **tmap**
 
 <!-- https://r-tmap.github.io/tmap/articles/foundations_crs -->
-<!-- maybe also include map_boundary stuff here -->
-<!-- global: -->
+Now that the concepts of map projections are established, we can examine how to specify map projections in **tmap**.
+We will expand on the short introduction from @sec-map-projection-intro and show how to use various tools available in the `tm_crs()` function.
 
 ### Vector data
+
+First, see how to specify a map projection for vector data.
+We will use the `worldvector.gpkg` and `worldcities.gpkg` datasets -- the first one uses the Equal Earth projection (`EPSG:8857`), and the second one uses the WGS 84 coordinate system (`EPSG:4326`).
+Additionally, to show the effect of map projections, we will transform the `worldvector` data into the WGS 84 coordinate system, namely `worldvector_wgs84`.
 
 ```{r}
 #| message: false
@@ -636,40 +640,53 @@ library(tmap)
 library(sf)
 worldvector = read_sf("data/worldvector.gpkg")
 worldcities = read_sf("data/worldcities.gpkg")
+worldvector_wgs84 = st_transform(worldvector, "EPSG:4326")
 ```
+
+@fig-mproj12-1 shows the map of the world in the WGS 84 coordinate system created with the code below.
+We often see this coordinate system used in various global maps.
+However, as discussed earlier in this chapter, it is not the best choice for visualizing the whole World -- WGS 84 is an unprojected coordinate system, and thus it has a lot of distortions, especially going further from the equator.
 
 ```{r}
 #| label: mproj1
 #| eval: false
-tm = tm_shape(worldvector) +
+tm = tm_shape(worldvector_wgs84) +
   tm_polygons() +
   tm_shape(worldcities) +
   tm_dots() +
-  tm_text("name") +
-  tm_crs("EPSG:4326")
+  tm_text("name")
 tm
 ```
+
+We can improve this map by changing the projection to a more suitable one, such as Equal Earth, directly in the map creation code (@fig-mproj12-2).
+We just need to add the `tm_crs()` function with the desired projection, e.g., `tm_crs("+proj=eqearth")`.
 
 ```{r}
 #| label: mproj2
 #| eval: false
 tm +
-  tm_crs("+proj=eck4")
+  tm_crs("+proj=eqearth") # or "EPSG:8857"
 ```
 
 ```{r}
 #| label: fig-mproj12
 #| fig-cap: "Map projections examples."
 #| fig-subcap:
-#|   - "EPSG:4326 (WGS 84)"
-#|   - "Eckert IV"
+#|   - "WGS 84 (EPSG:4326)"
+#|   - "Equal Earth projection (EPSG:8857)"
 #| echo: false
 #| message: false
 #| fig-asp: 0.5
-#| layout-nrow: 2
+#| layout-ncol: 2
 <<mproj1>>
 <<mproj2>>
 ```
+
+The `tm_crs()` function is actually a small toolbox helping to manage map projections.
+As you have seen above, if we know the projection's name (`"+proj=eqearth"`) or code (`"EPSG:8857"`) we can specify it directly.
+You can also use the `tm_crs()` function if you do not know the projection's name or code -- it accepts the `"auto"` argument.
+It will automatically select a suitable projection based on the data's extent and the map's properties.
+For example, if the map is global, it will select the pseudocylindrical projection Equal Earth (@fig-mproj-auto).
 
 ```{r}
 #| label: fig-mproj-auto
@@ -679,8 +696,16 @@ tm +
   tm_crs("auto")
 ```
 
+With the `tm_crs()` function set to `"auto"`, we may also specify the map projection property, such as `"area"`, `"distance"`, or `"shape"`.
+The `"area"` property (*equal area*) uses the Lambert Azimuthal Equal Area projection, `"distance"` (*equidistant*) uses the Azimuthal Equidistant projection, and `"shape"` (*conformal*) uses the Stereographic projection.
+@fig-mproj-auto2 displays the map with the `"distance"` property -- this means that our data is projected into the Azimuthal Equidistant projection, in this case, with the center on the coordinates of zero latitude and zero longitude.
+Then, every point on the map is equidistant from that center.
+
 ```{r}
-tm_shape(World) +
+#| label: fig-mproj-auto2
+#| fig-cap: "Map with data projected into the automatically selected projection with distance property."
+#| fig-asp: 0.5
+tm_shape(worldvector_wgs84) +
   tm_polygons() +
   tm_shape(worldcities) +
   tm_dots() +
@@ -691,6 +716,7 @@ tm_shape(World) +
 ### Raster data
 
 ```{r}
+#| message: false
 library(stars)
 worldelevation = read_stars("data/worldelevation.tif")
 ```
