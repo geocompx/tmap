@@ -331,6 +331,7 @@ This is an orthogonal projection.
 #| warning: false
 #| message: false
 #| layout-ncol: 2
+#| fig-asp: 1
 #| fig-cap: Examples of a conic and a planar projection.
 #| fig-subcap:
 #|   - "World Equidistant Conic projection"
@@ -341,20 +342,18 @@ m3035 = map_3035()
 
 tm_shape(meqdc$bg) +
     tm_polygons(clr_bg, col = clr_border) +
-tm_shape(meqdc$land) +
+    tm_shape(meqdc$land) +
     tm_polygons(clr_land) +
-tm_shape(meqdc$grat) +
+    tm_shape(meqdc$grat) +
     tm_lines(col = clr_grat, lwd = 1) +
-    tm_layout(frame = FALSE) +
-    tm_layout(inner.margins = c(.1, 0.02, 0.02, 0.02))
+    tm_layout(frame = FALSE)
 tm_shape(m3035$bg) +
     tm_polygons(clr_bg, col = clr_border) +
-tm_shape(m3035$land) +
+    tm_shape(m3035$land) +
     tm_polygons(clr_land) +
-tm_shape(m3035$grat) +
+    tm_shape(m3035$grat) +
     tm_lines(col = clr_grat, lwd = 1) +
-    tm_layout(frame = FALSE) +
-    tm_layout(inner.margins = c(.1, 0.02, 0.02, 0.02))
+    tm_layout(frame = FALSE)
 ```
 
 \index{interrupted map projections}
