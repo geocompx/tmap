@@ -45,6 +45,7 @@ The former is more suitable for smaller datasets and cases where we want to allo
 #| fig-subcap:
 #|   - "Using `tm_animate()`"
 #|   - "Using `tm_animate_fast()`"
+#| layout-ncol: 2
 #| echo: false
 tm +
   tm_animate(by = "time")
@@ -54,15 +55,18 @@ tm +
 
 Two main additional arguments for the *animate* functions are `fps` (frames per second) and `play` (playback mode).
 The first one controls the speed of the animation, while the second one controls how the animation is played back: 
-either `"loop"` (default), which plays the animation in a loop, `"once"`, which plays the animation only once and then stops, or `"pingpong"` which plays the animation back and forth.
+either `"loop"` (default), which plays the animation in a loop, `"once"`, which plays the animation only once and then stops, or `"pingpong"` which plays the animation back and forth (@fig-anims2).
 
 ```{r}
 #| label: fig-anims2
+#| fig-cap: "Animations of GDP per capita in Slovenian regions over time with a pingpong playback mode"
 tm +
   tm_animate(by = "time", fps = 5, play = "pingpong")
 ```
 
 <!-- https://github.com/r-tmap/tmap/issues/1160 -->
+<!-- If you read the previous chapters, you may see the similarity between the `tm_animate()` and `tm_facets()` functions, which create a series of static maps based on the values of a variable. -->
+<!-- The main difference is that `tm_animate()` creates an animation -- one frame after another -- while `tm_facets()` creates a grid of static maps, where each map corresponds to a value of the variable. -->
 ```{r}
 #| eval: false
 #| echo: false
@@ -71,17 +75,21 @@ tm +
   tm_animate_fast(by = "time")
 ```
 
-```{r animations-7}
+Animations can also be created from raster data, such as satellite imagery or climate data.
+@fig-anims3 shows an example of an animation of average temperature in Slovenia over monthly time steps.
+
+
+```{r}
+#| label: fig-anims3
 #| message: false
 library(stars)
 slo_tavg = read_stars("data/slovenia/slo_tavg.tif")
-```
-
-```{r animations-8}
-#| message: false
+slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
 tm_shape(slo_tavg) +
   tm_raster(col.scale = tm_scale_continuous()) +
-  tm_animate(by = "band", fps = 6)
+  tm_animate(by = "band", fps = 6) +
+  tm_shape(slo_regions) +
+  tm_borders()
 ```
 
 <!-- passing other arguments to tm_facets (+ ref) -->
