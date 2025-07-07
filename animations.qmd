@@ -5,36 +5,59 @@ source("code/before_script.R")
 
 # Animations {#sec-animations}
 
-<!-- tmap animations are a set of raster graphic images stitched together -->
+Animations are a powerful way to visualize changes in data over time -- to illustrate trends, patterns, and dynamics that might not be immediately apparent in static maps.
+They can also be used to create engaging visualizations that capture the viewer's attention or just to break the monotony of static maps, for example, by comparing different locations.
+
+In **tmap**, animations are created by stitching together a series of static maps into a single animated image. 
+This is done with two types of functions: 
+
+- `tm_animate()` and `tm_animate_fast()`, which create the animation from a **tmap** object
+- `tmap_animation()`, which saves the animation to files in graphical and video formats, such as GIF, MP4, and WebM
+
+## Creating animations
+
+Let's create some animations using the `slo_regions_ts` dataset, which contains various measures of Slovenian regions over time.  
 
 ```{r animations-2}
 #| message: false
 library(sf)
 library(tmap)
-slo_borders = read_sf("data/slovenia/slo_border.gpkg")
 slo_regions_ts = read_sf("data/slovenia/slo_regions_ts.gpkg")
 ```
 
-## Creating animations
+The basis for our animations is a **tmap** object that contains the data and the way we want to visualize it.
 
 ```{r animations-3}
-tm = tm_shape(slo_borders) +
-  tm_borders() +
-  tm_shape(slo_regions_ts) +
+tm = tm_shape(slo_regions_ts) +
   tm_polygons("gdppercap")
 ```
 
-```{r animations-4}
+<!-- idea: animating charts along the data: -->
+<!-- tm_polygons("gdppercap", fill.chart = tm_chart_donut()) -->
+
+To make it animated, we can use the `tm_animate()` or `tm_animate_fast()` functions and specify the variable that we want to animate by, in this case, `time` (@fig-anims).
+The difference between the two functions is that `tm_animate()` renders the animation at 2 frames per second (specified by the `fps` argument), while `tm_animate_fast()` renders it at 24 frames per second.
+The former is more suitable for smaller datasets and cases where we want to allow the viewer to read the values on the map, while the latter is more suitable for larger datasets and cases where we want to create a smooth, cinematic animation.
+
+```{r}
+#| label: fig-anims
+#| fig-cap: "Animations of GDP per capita in Slovenian regions over time"
+#| fig-subcap:
+#|   - "Using `tm_animate()`"
+#|   - "Using `tm_animate_fast()`"
+#| echo: false
 tm +
   tm_animate(by = "time")
-```
-
-```{r animations-5}
 tm +
   tm_animate_fast(by = "time")
 ```
 
-```{r animations-6}
+Two main additional arguments for the *animate* functions are `fps` (frames per second) and `play` (playback mode).
+The first one controls the speed of the animation, while the second one controls how the animation is played back: 
+either `"loop"` (default), which plays the animation in a loop, `"once"`, which plays the animation only once and then stops, or `"pingpong"` which plays the animation back and forth.
+
+```{r}
+#| label: fig-anims2
 tm +
   tm_animate(by = "time", fps = 5, play = "pingpong")
 ```
