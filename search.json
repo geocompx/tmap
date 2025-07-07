@@ -666,22 +666,22 @@
     ]
   },
   {
-    "objectID": "map-components.html#sec-inset-maps",
-    "href": "map-components.html#sec-inset-maps",
+    "objectID": "map-components.html#sec-minimap",
+    "href": "map-components.html#sec-minimap",
     "title": "10  Map components",
-    "section": "\n10.7 Inset maps",
-    "text": "10.7 Inset maps",
+    "section": "\n10.7 Minimap",
+    "text": "10.7 Minimap\n\n\ntmap_mode(\"view\")\n#&gt; ℹ tmap mode set to \"view\".\n\n\ntm + \n  tm_minimap()\n\n\n\n\n\n\n\ntmap_mode(\"plot\")\n#&gt; ℹ tmap mode set to \"plot\".",
     "crumbs": [
       "Building blocks",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Map components</span>"
     ]
   },
   {
-    "objectID": "map-components.html#sec-minimap",
-    "href": "map-components.html#sec-minimap",
+    "objectID": "map-components.html#sec-inset-maps",
+    "href": "map-components.html#sec-inset-maps",
     "title": "10  Map components",
-    "section": "\n10.8 Minimap",
-    "text": "10.8 Minimap\n\ntmap_mode(\"view\")\n#&gt; ℹ tmap mode set to \"view\".\n\n\ntm + \n  tm_minimap()\n\n\n\n\n\n\n\ntmap_mode(\"plot\")\n#&gt; ℹ tmap mode set to \"plot\".",
+    "section": "\n10.8 Inset maps",
+    "text": "10.8 Inset maps",
     "crumbs": [
       "Building blocks",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Map components</span>"
@@ -978,7 +978,7 @@
     "href": "arrangements.html",
     "title": "15  Arranging maps",
     "section": "",
-    "text": "library(tmap)\n\n\nlibrary(sf)\nslo_regions = read_sf(\"data/slovenia/slo_regions.gpkg\")\ntm1 = tm_shape(slo_regions) +\n  tm_fill(\"gdppercap\") +\n  tm_borders() +\n  tm_title(\"GDP per capita in Slovenia\")\n\n\nlibrary(stars)\nslo_elev = read_stars(\"data/slovenia/slo_elev.tif\")\ntm2 = tm_shape(slo_elev) +\n  tm_raster() +\n  tm_borders() +\n  tm_title(\"Elevation in Slovenia\")\n\n\n\n\n\ntmap_arrange(tm1, tm2, ncol = 2)\n\n\n\n\n\n\nFigure 15.1: Arranging two maps in one layout.\n\n\n\n\n\n\n\n\n\ntmap_arrange(tm1, tm2, nrow = 2, heights = c(0.8, 0.2))\n#&gt; [scale] tm_raster:() the data variable assigned to 'col' contains positive and negative values, so midpoint is set to 0. Set 'midpoint = NA' in 'fill.scale = tm_scale_intervals(&lt;HERE&gt;)' to use all visual values (e.g. colors)\n#&gt; [plot mode] fit legend/component: Some legend items or map compoments do not\n#&gt; fit well, and are therefore rescaled.\n#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.",
+    "text": "15.1 Using tmap_arrange()\nThe tmap package offers several tools for arranging multiple maps within a single layout. When we want to display one main map and one or more additional maps, we can use tm_minimap() or tm_inset(). The first function adds a small overview map to the main map using a fixed, non-customizable style (Section 10.7). More advanced arrangements can be made with the tm_inset() function, which adds a graphical object (including a tmap object) to the main map (Section 10.8).\nTo create a layout with multiple maps, we have two main options. The first one, which is the focus of this chapter, is to use the tmap_arrange() function. It takes two or more tmap objects and arranges them in a grid layout. The second option is to create facets with the tm_facet() function, which is described in Chapter 16. The main difference is that tmap_arrange() combines multiple maps, often based on different data, while tm_facet() creates a single map with numerous panels based on the same data.\nLet’s see how the tmap_arrange() function works based on two maps of Slovenia each based on different data sources. The first map is based on the GDP per capita of the regions of Slovenia represented as polygons.\nlibrary(tmap)\nlibrary(sf)\nslo_regions = read_sf(\"data/slovenia/slo_regions.gpkg\")\ntm1 = tm_shape(slo_regions) +\n  tm_polygons(\"gdppercap\") +\n  tm_title(\"GDP per capita in Slovenia\")\nThe second map is based on the elevation of Slovenia, represented as a raster layer.\nlibrary(tmap)\nlibrary(stars)\nslo_elev = read_stars(\"data/slovenia/slo_elev.tif\")\ntm2 = tm_shape(slo_elev) +\n  tm_raster() +\n  tm_title(\"Elevation in Slovenia\")\nIn both cases, we also added titles to the maps using the tm_title() function to make it clear what each map represents, and assigned them to the objects tm1 and tm2. Now, we may arrange these two maps in a single layout using the tmap_arrange() function (Figure 15.1). The tmap_arrange() function can take any number of tmap objects as input or even a list of tmap objects.\ntmap_arrange(tm1, tm2, ncol = 2)\n\n\n\n\n\n\nFigure 15.1: Arranging two maps in one layout.\nIn the example above, we used our two maps and specified the number of columns in the layout using the ncol argument. We can also specify the number of rows using the nrow argument and the aspect ratio of the maps using the asp argument.\nThe tmap_arrange() does not align layouts of multiple maps – you may notice that the frames of the two maps in Figure 15.1 are not equal in height.\ntmap_arrange(tm1, tm2, nrow = 2, heights = c(0.8, 0.2))\n#&gt; [scale] tm_raster:() the data variable assigned to 'col' contains positive and negative values, so midpoint is set to 0. Set 'midpoint = NA' in 'fill.scale = tm_scale_intervals(&lt;HERE&gt;)' to use all visual values (e.g. colors)\n#&gt; [plot mode] fit legend/component: Some legend items or map compoments do not\n#&gt; fit well, and are therefore rescaled.\n#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.",
     "crumbs": [
       "Expanding the toolbox",
       "<span class='chapter-number'>15</span>  <span class='chapter-title'>Arranging maps</span>"
