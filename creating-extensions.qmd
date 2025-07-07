@@ -4,3 +4,5 @@ source("code/before_script.R")
 ```
 
 # Creating extensions {#sec-creating-extensions}
+
+<!-- possibly, one chapter before it could be a short overview of the existing (stable) extensions -->

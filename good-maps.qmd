@@ -5,3 +5,4 @@ source("code/before_script.R")
 
 # How to make good maps? {#sec-good-maps}
 
+<!-- possibly after this chapter, we could add two or three chapters where one map is created step-by-step with the decision made explained (from the visual, not code point of view) -->

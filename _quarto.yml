@@ -56,11 +56,11 @@ book:
         - "animations.qmd"
         # - "basic-modes.qmd"
         - "interactive.qmd" 
-        - "shiny.qmd"
-        #- "extended-modes.qmd"
     - part: "Advanced topics"
       chapters:
         - "options.qmd"
+        - "shiny.qmd"
+        #- "extended-modes.qmd"
         - "creating-extensions.qmd"
     - part: "Good practices"
       chapters:
