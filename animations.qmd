@@ -46,7 +46,6 @@ The former is more suitable for smaller datasets and cases where we want to allo
 #|   - "Using `tm_animate()`"
 #|   - "Using `tm_animate_fast()`"
 #| layout-ncol: 2
-#| echo: false
 tm +
   tm_animate(by = "time")
 tm +
