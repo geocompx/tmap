@@ -378,7 +378,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <li><a href="#specifying-facets" id="toc-specifying-facets" class="nav-link" data-scroll-target="#specifying-facets"><span class="header-section-number">16.1</span> Specifying facets</a></li>
   <li><a href="#imporance-of-layers-order-for-faceting" id="toc-imporance-of-layers-order-for-faceting" class="nav-link" data-scroll-target="#imporance-of-layers-order-for-faceting"><span class="header-section-number">16.2</span> Imporance of layers order for faceting</a></li>
   <li><a href="#facets-types" id="toc-facets-types" class="nav-link" data-scroll-target="#facets-types"><span class="header-section-number">16.3</span> Facets types</a></li>
-  <li><a href="#customizing-facets" id="toc-customizing-facets" class="nav-link" data-scroll-target="#customizing-facets"><span class="header-section-number">16.4</span> Customizing facets</a></li>
+  <li><a href="#sec-customizing-facets" id="toc-sec-customizing-facets" class="nav-link" data-scroll-target="#sec-customizing-facets"><span class="header-section-number">16.4</span> Customizing facets</a></li>
   <li><a href="#facets-with-raster-and-vector-data" id="toc-facets-with-raster-and-vector-data" class="nav-link" data-scroll-target="#facets-with-raster-and-vector-data"><span class="header-section-number">16.5</span> Facets with raster and vector data</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/facets.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -416,7 +416,10 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <p>The first approach is seen below, where we specify multiple variables (<code>c("pop_dens", "gdppercap", "tourism")</code>) from the <code>slo_regions</code> dataset to create facets. Each variable is displayed in its own facet with a separate scale and legend (<a href="#fig-facets1" class="quarto-xref">Figure&nbsp;<span>16.1</span></a>). This allows for quick comparison of different variables across the same regions.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"pop_dens"</span>, <span class="st">"gdppercap"</span>, <span class="st">"tourism"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"pop_dens"</span>, <span class="st">"gdppercap"</span>, <span class="st">"tourism"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [plot mode] fit legend/component: Some legend items or map compoments do not</span></span>
+<span><span class="co">#&gt; fit well, and are therefore rescaled.</span></span>
+<span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-facets1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-facets1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -432,7 +435,10 @@ Figure&nbsp;16.1: Facets for different variables.
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions_ts</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="st">"gdppercap"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets</a></span><span class="op">(</span>by <span class="op">=</span> <span class="st">"time"</span>, ncol <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets</a></span><span class="op">(</span>by <span class="op">=</span> <span class="st">"time"</span>, ncol <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [plot mode] fit legend/component: Some legend items or map compoments do not</span></span>
+<span><span class="co">#&gt; fit well, and are therefore rescaled.</span></span>
+<span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-facets2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-facets2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -566,7 +572,7 @@ Figure&nbsp;16.7: Two-dimensional facets for one variable in various region grou
 <!-- tm_facets_vstack(by = "VARS__", ...) -->
 <!-- tm_facets_pagewise(by = "VARS__", byrow = TRUE, ...) -->
 <!-- tm_facets_flip(...) -->
-</section><section id="customizing-facets" class="level2" data-number="16.4"><h2 data-number="16.4" class="anchored" data-anchor-id="customizing-facets">
+</section><section id="sec-customizing-facets" class="level2" data-number="16.4"><h2 data-number="16.4" class="anchored" data-anchor-id="sec-customizing-facets">
 <span class="header-section-number">16.4</span> Customizing facets</h2>
 <p>Now that we know how to create facets, we can customize them to make them more informative and to focus on the message we want to convey. Often, faceting variables are self-explanatory – we can easily understand what their values mean. However, sometimes, we want to add more information to the facets, such as labels for the axes or titles for the panels.</p>
 <p>The labels can be added using the <code><a href="https://r-tmap.github.io/tmap/reference/tm_xlab.html">tm_xlab()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_xlab.html">tm_ylab()</a></code> functions (<a href="#fig-facets9" class="quarto-xref">Figure&nbsp;<span>16.8</span></a>). By default, they are located on the bottom and left side of the map, but we can change their position using the <code>side</code> argument. Moreover, they maintain a horizontal orientation. This is fine for the x-axis, but not for the y-axis, where we may want to rotate the label to be vertical with the <code>rotation</code> argument. Finally, we could customize their size and distance from the map border to make them more readable using the <code>size</code> and <code>space</code> arguments, respectively.</p>

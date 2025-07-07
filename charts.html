@@ -405,7 +405,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <div class="cell" data-layout-align="center">
 <div id="tbl-layers-table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-layers-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;14.1: Available chart types.
+Table&nbsp;14.1: Available chart types
 </figcaption><div aria-describedby="tbl-layers-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <!-- preamble start -->
@@ -672,7 +672,9 @@ Figure&nbsp;14.4: Bivariate charts used in case of representing a relationship b
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>,</span>
 <span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_histogram</a></span><span class="op">(</span></span>
 <span>                plot.axis.x <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>                extra.ggplot2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"lightgray"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>                extra.ggplot2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<span>                  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"lightgray"</span><span class="op">)</span><span class="op">)</span></span>
+<span>                <span class="op">)</span></span>
 <span>              <span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-chart-ggplot1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
@@ -692,10 +694,11 @@ Figure&nbsp;14.5: Customizing charts with ggplot2.
 <span>              fill.chart <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_chart.html">tm_chart_histogram</a></span><span class="op">(</span></span>
 <span>                plot.axis.x <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>                plot.axis.y <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>                extra.ggplot2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Population density (people/sq. km)"</span><span class="op">)</span>,</span>
-<span>                                     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>                                     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#FFC067"</span><span class="op">)</span>,</span>
-<span>                                           plot.title <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                extra.ggplot2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<span>                  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Population density (people/sq. km)"</span><span class="op">)</span>,</span>
+<span>                  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>                  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#FFC067"</span><span class="op">)</span>,</span>
+<span>                        plot.title <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>                position <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_in</a></span><span class="op">(</span><span class="st">"LEFT"</span>, <span class="st">"TOP"</span><span class="op">)</span>,</span>
 <span>                width <span class="op">=</span> <span class="fl">20</span>,</span>
 <span>              <span class="op">)</span>,</span>

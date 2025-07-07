@@ -436,7 +436,7 @@ Figure&nbsp;7.1: Basic visual variables and their representations on maps
 </div>
 </div>
 </div>
-<p>The use of visual variables on maps depends on two main things: (a) type of the presented variable, and (b) type of the map layer. <a href="#fig-visual-variables" class="quarto-xref">Figure&nbsp;<span>7.1</span></a> shows examples of different visual variables. Color is the most universal visual variable. It can represent both qualitative (categorical) and quantitative (numerical) variables, and also we can color symbols, lines, or polygon fillings. Sizes, on the other hand, should focus on quantitative variables. Small symbols could represent low values of a given variable, and the higher the value, the larger the symbol. Quantitative values of line data can be shown with the widths of the lines (<a href="#sec-sizes" class="quarto-xref"><span>Section 7.4</span></a>). The use of shapes usually should be limited to qualitative variables, and different shapes can represent different categories of points (<a href="#sec-shapes" class="quarto-xref"><span>Section 7.5</span></a>). Similarly, qualitative variables in lines can be presented by different line types. Values of polygons usually cannot be represented by either shapes or sizes, as these two features are connected to the geometries of the objects. <!-- exception - cartograms - ref to other chapter \@ref(other-types) --></p>
+<p>The use of visual variables on maps depends on two main things: (a) type of the presented variable, and (b) type of the map layer (<a href="#sec-const-visual-variables" class="quarto-xref"><span>Section 7.1</span></a>;<a href="#sec-auto-scales" class="quarto-xref"><span>Section 7.2</span></a>). <a href="#fig-visual-variables" class="quarto-xref">Figure&nbsp;<span>7.1</span></a> shows examples of different visual variables. Color is the most universal visual variable (<a href="#sec-colors" class="quarto-xref"><span>Section 7.3</span></a>). It can represent both qualitative (categorical) and quantitative (numerical) variables, and also we can color symbols, lines, or polygon fillings. Sizes, on the other hand, should focus on quantitative variables. Small symbols could represent low values of a given variable, and the higher the value, the larger the symbol. Quantitative values of line data can be shown with the widths of the lines (<a href="#sec-sizes" class="quarto-xref"><span>Section 7.4</span></a>). The use of shapes usually should be limited to qualitative variables, and different shapes can represent different categories of points (<a href="#sec-shapes" class="quarto-xref"><span>Section 7.5</span></a>). Similarly, qualitative variables in lines can be presented by different line types. Values of polygons usually cannot be represented by either shapes or sizes, as these two features are connected to the geometries of the objects. <!-- exception - cartograms - ref to other chapter \@ref(other-types) --></p>
 <!-- also, sometimes it is possible to use several visual variables at the same time (e.g. width lines + colors) -->
 <section id="sec-const-visual-variables" class="level2" data-number="7.1"><h2 data-number="7.1" class="anchored" data-anchor-id="sec-const-visual-variables">
 <span class="header-section-number">7.1</span> Constant visual values</h2>
@@ -760,10 +760,11 @@ Figure&nbsp;7.7: An example of a categorical map with manually selected colors.
 <span>                                  labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"small"</span>, <span class="st">"large"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>For example in the above code, we just show examples of how symbols with population values of 50,000 and 300,000 are represented on the map.</p>
+<div class="cell" data-layout-nrow="3" data-layout-align="center">
 <div id="fig-tmsizes" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmsizes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmsizes" style="flex-basis: 33.3%;justify-content: center;">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmsizes" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-tmsizes-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmsizes-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-tmsizes-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmsizes">
@@ -773,7 +774,9 @@ Figure&nbsp;7.7: An example of a categorical map with manually selected colors.
 </figcaption></figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmsizes" style="flex-basis: 33.3%;justify-content: center;">
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmsizes" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-tmsizes-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmsizes-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-tmsizes-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmsizes">
@@ -783,7 +786,9 @@ Figure&nbsp;7.7: An example of a categorical map with manually selected colors.
 </figcaption></figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmsizes" style="flex-basis: 33.3%;justify-content: center;">
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmsizes" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-tmsizes-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmsizes-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-tmsizes-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmsizes">
@@ -798,6 +803,7 @@ Figure&nbsp;7.7: An example of a categorical map with manually selected colors.
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmsizes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;7.8: Examples of three approaches for changing sizes of symbols
 </figcaption></figure>
+</div>
 </div>
 <p>Widths of the lines can represent values of numerical variables for line data similar to sizes of the symbols for point data. The <code>lwd</code> argument in <code>tm_lines()</code> creates thin lines for small values and thick lines for large values of the given variable (<a href="#fig-tmlwd" class="quarto-xref">Figure&nbsp;<span>7.9</span></a>).</p>
 <div class="cell" data-layout-align="center">
@@ -887,7 +893,7 @@ Figure&nbsp;7.10: Example of a map where text sizes represent elevations of the 
 <span>             shape.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>values <span class="op">=</span> <span class="va">my_icons</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center" data-layout-row="2">
-<div id="fig-tmsymshape" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center" data-layout-row="2">
+<div id="fig-tmsymshape" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-row="2" data-layout-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmsymshape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div id="fig-tmsymshape-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">

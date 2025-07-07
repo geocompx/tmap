@@ -441,7 +441,7 @@ Table&nbsp;8.1: Map scales
 
       function styleCell_lbzwpy41b8f1ocz3enr9(i, j, css_id) {
           var table = document.getElementById("tinytable_lbzwpy41b8f1ocz3enr9");
-          var cell = table.rows[i]?.cells[j];  // Safe navigation to avoid errors
+          var cell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
           if (cell) {
               console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
               cell.classList.add(css_id);
@@ -451,49 +451,54 @@ Table&nbsp;8.1: Map scales
       }
       function insertSpanRow(i, colspan, content) {
         var table = document.getElementById('tinytable_lbzwpy41b8f1ocz3enr9');
-        var newRow = table.insertRow(i);
+        // Find the row with data-row attribute matching i
+        var targetRow = table.querySelector(`tr [data-row="${i}"]`).closest('tr');
+        var newRow = table.insertRow(targetRow.rowIndex);
         var newCell = newRow.insertCell(0);
         newCell.setAttribute("colspan", colspan);
+        newCell.setAttribute("data-col", "0");
+        newCell.setAttribute("data-row", i - 1);
         // newCell.innerText = content;
         // this may be unsafe, but innerText does not interpret <br>
         newCell.innerHTML = content;
       }
       function spanCell_lbzwpy41b8f1ocz3enr9(i, j, rowspan, colspan) {
         var table = document.getElementById("tinytable_lbzwpy41b8f1ocz3enr9");
-        const targetRow = table.rows[i];
-        const targetCell = targetRow.cells[j];
+        const targetCell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
+        if (!targetCell) {
+          console.warn(`Cell at (${i}, ${j}) not found.`);
+        }
+
+        // Get all cells that need to be removed
+        const cellsToRemove = [];
         for (let r = 0; r < rowspan; r++) {
-          // Only start deleting cells to the right for the first row (r == 0)
-          if (r === 0) {
-            // Delete cells to the right of the target cell in the first row
-            for (let c = colspan - 1; c > 0; c--) {
-              if (table.rows[i + r].cells[j + c]) {
-                table.rows[i + r].deleteCell(j + c);
-              }
-            }
-          }
-          // For rows below the first, delete starting from the target column
-          if (r > 0) {
-            for (let c = colspan - 1; c >= 0; c--) {
-              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
-                table.rows[i + r].deleteCell(j);
-              }
+          for (let c = 0; c < colspan; c++) {
+            if (r === 0 && c === 0) continue; // Skip the target cell
+            const cell = table.querySelector(`[data-row="${i + r}"][data-col="${j + c}"]`);
+            if (cell) {
+              cellsToRemove.push(cell);
             }
           }
         }
-        // Set rowspan and colspan of the target cell
-        targetCell.rowSpan = rowspan;
-        targetCell.colSpan = colspan;
+
+        // Remove all cells
+        cellsToRemove.forEach(cell => cell.remove());
+
+        // Set rowspan and colspan of the target cell if it exists
+        if (targetCell) {
+          targetCell.rowSpan = rowspan;
+          targetCell.colSpan = colspan;
+        }
       }
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: 10, j: 1 },  ], css_id: 'tinytable_css_4io4fd32jm8lxpo8i2z1',}, 
-          { positions: [ { i: 0, j: 1 },  ], css_id: 'tinytable_css_lvaok9ny0cmnuu9v1ub7',}, 
-          { positions: [ { i: 10, j: 0 },  ], css_id: 'tinytable_css_fj8i7a6pgov4iz0dghed',}, 
-          { positions: [ { i: 1, j: 0 }, { i: 2, j: 0 }, { i: 3, j: 0 }, { i: 4, j: 0 }, { i: 5, j: 0 }, { i: 6, j: 0 }, { i: 7, j: 0 }, { i: 8, j: 0 }, { i: 9, j: 0 },  ], css_id: 'tinytable_css_hriimk9js5kju5lj4j71',}, 
-          { positions: [ { i: 0, j: 0 },  ], css_id: 'tinytable_css_8upsikl2m15eul1rzwm6',}, 
+          { positions: [ { i: '10', j: 1 },  ], css_id: 'tinytable_css_4io4fd32jm8lxpo8i2z1',}, 
+          { positions: [ { i: '0', j: 1 },  ], css_id: 'tinytable_css_lvaok9ny0cmnuu9v1ub7',}, 
+          { positions: [ { i: '10', j: 0 },  ], css_id: 'tinytable_css_fj8i7a6pgov4iz0dghed',}, 
+          { positions: [ { i: '1', j: 0 }, { i: '2', j: 0 }, { i: '3', j: 0 }, { i: '4', j: 0 }, { i: '5', j: 0 }, { i: '6', j: 0 }, { i: '7', j: 0 }, { i: '8', j: 0 }, { i: '9', j: 0 },  ], css_id: 'tinytable_css_hriimk9js5kju5lj4j71',}, 
+          { positions: [ { i: '0', j: 0 },  ], css_id: 'tinytable_css_8upsikl2m15eul1rzwm6',}, 
           ];
 
           // Loop over the arrays to style the cells
@@ -514,49 +519,49 @@ Table&nbsp;8.1: Map scales
 <div class="container">
       <table class="table table-borderless" id="tinytable_lbzwpy41b8f1ocz3enr9" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
 <thead><tr>
-<th scope="col">Function</th>
-                <th scope="col">Description</th>
+<th scope="col" data-row="0" data-col="0">Function</th>
+                <th scope="col" data-row="0" data-col="1">Description</th>
               </tr></thead>
 <tbody>
 <tr>
-<td>tm_scale_categorical()</td>
-                  <td>Categorical scale</td>
+<td data-row="1" data-col="0">tm_scale_categorical()</td>
+                  <td data-row="1" data-col="1">Categorical scale</td>
                 </tr>
 <tr>
-<td>tm_scale_ordinal()</td>
-                  <td>Ordinal scale</td>
+<td data-row="2" data-col="0">tm_scale_ordinal()</td>
+                  <td data-row="2" data-col="1">Ordinal scale</td>
                 </tr>
 <tr>
-<td>tm_scale_discrete()</td>
-                  <td>Discrete scale</td>
+<td data-row="3" data-col="0">tm_scale_discrete()</td>
+                  <td data-row="3" data-col="1">Discrete scale</td>
                 </tr>
 <tr>
-<td>tm_scale_rank()</td>
-                  <td>Rank scale</td>
+<td data-row="4" data-col="0">tm_scale_rank()</td>
+                  <td data-row="4" data-col="1">Rank scale</td>
                 </tr>
 <tr>
-<td>tm_scale_intervals()</td>
-                  <td>Intervals scale</td>
+<td data-row="5" data-col="0">tm_scale_intervals()</td>
+                  <td data-row="5" data-col="1">Intervals scale</td>
                 </tr>
 <tr>
-<td>tm_scale_continuous()</td>
-                  <td>Continuous scale</td>
+<td data-row="6" data-col="0">tm_scale_continuous()</td>
+                  <td data-row="6" data-col="1">Continuous scale</td>
                 </tr>
 <tr>
-<td>tm_scale_continuous_log(), tm_scale_continuous_log2(), tm_scale_continuous_log10(), tm_scale_continuous_log1p(), tm_scale_continuous_sqrt(), tm_scale_continuous_pseudo_log()</td>
-                  <td>Logarithmic scales</td>
+<td data-row="7" data-col="0">tm_scale_continuous_log(), tm_scale_continuous_log2(), tm_scale_continuous_log10(), tm_scale_continuous_log1p(), tm_scale_continuous_sqrt(), tm_scale_continuous_pseudo_log()</td>
+                  <td data-row="7" data-col="1">Logarithmic scales</td>
                 </tr>
 <tr>
-<td>tm_scale_asis()</td>
-                  <td>As-is scale</td>
+<td data-row="8" data-col="0">tm_scale_asis()</td>
+                  <td data-row="8" data-col="1">As-is scale</td>
                 </tr>
 <tr>
-<td>tm_scale_rgb()</td>
-                  <td>RGB scale</td>
+<td data-row="9" data-col="0">tm_scale_rgb()</td>
+                  <td data-row="9" data-col="1">RGB scale</td>
                 </tr>
 <tr>
-<td>tm_scale_bivariate()</td>
-                  <td>Bivariate scale</td>
+<td data-row="10" data-col="0">tm_scale_bivariate()</td>
+                  <td data-row="10" data-col="1">Bivariate scale</td>
                 </tr>
 </tbody>
 </table>
@@ -655,8 +660,10 @@ Figure&nbsp;8.4: Example of a map in which polygons are colored based on the val
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>, </span>
-<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_intervals</span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span>, <span class="fl">150</span>, <span class="fl">250</span><span class="op">)</span>,</span>
-<span>                                              labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_intervals</span><span class="op">(</span></span>
+<span>                breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span>, <span class="fl">150</span>, <span class="fl">250</span><span class="op">)</span>,</span>
+<span>                labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span><span class="op">)</span><span class="op">)</span></span>
+<span>              <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Another approach is to create breaks automatically using one of many existing classification methods with the <code>style</code> argument of the <code>tm_scale()</code> function. Three basic methods are <code>"equal"</code>, <code>"sd"</code>, and <code>"quantile"</code> styles. Let’s consider a variable with 100 observations ranging from 0 to 10. The <code>"equal"</code> style divides the range of values into <em>n</em> equal-sized intervals. This style works well when the values change fairly continuously and do not contain any outliers. In <strong>tmap</strong>, we can specify the number of classes with the <code>n</code> argument or the number of classes will be computed automatically <!--?nclass.Sturges-->. For example, when we set <code>n</code> to 4, then our breaks will represent four classes ranging from 0 to 2.5, 2.5 to 5, 5 to 7.5, and 7.5 to 10. The <code>"sd"</code> style represents how much values of a given variable varies from its mean, with each interval having a constant width of the standard deviation. This style is used when it is vital to show how values relate to the mean. The <code>"quantile"</code> style creates several classes with exactly the same number of objects (e.g., spatial features), but having intervals of various lengths. This method has an advantage or not having any empty classes or classes with too few or too many values. However, the resulting intervals from the <code>"quantile"</code> style can often be misleading, with very different values located in the same class.</p>
 <p>To create classes that, on the one hand, contain similar values, and on the other hand, are different from the other classes, we can use some optimization method. The most common optimization method used in cartography is the Jenks optimization method implemented at the <code>"jenks"</code> style (<a href="#fig-intervals-methods-3" class="quarto-xref">Figure&nbsp;<span>8.5 (c)</span></a>).</p>
@@ -943,23 +950,25 @@ Figure&nbsp;8.10: Example of a bivariate map, where two variables are combined i
 <p>One important difference between a regular map and a bivariate map is that the latter is based on two scales – and we are able to specify them separately. Thus, all of the scales from sections <a href="#sec-categorical-scales" class="quarto-xref"><span>8.1</span></a> to <a href="#sec-continuous-scales" class="quarto-xref"><span>8.6</span></a> can be used for bivariate maps, and we can use one of them for each variable. <!-- as-is-scales? --> In the example below, we use two scales for the temperature – one for the January temperatures and one for the July temperatures. In both cases, our scales are intervals, but we customize their breaks and add text labels.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_tavg</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_raster</span><span class="op">(</span>col <span class="op">=</span> <span class="fu">tm_vars</span><span class="op">(</span>dimvalues <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tavg_1"</span>, <span class="st">"tavg_7"</span><span class="op">)</span>, </span>
-<span>                          multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>  <span class="fu">tm_raster</span><span class="op">(</span>col <span class="op">=</span> <span class="fu">tm_vars</span><span class="op">(</span></span>
+<span>              dimvalues <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tavg_1"</span>, <span class="st">"tavg_7"</span><span class="op">)</span>, </span>
+<span>              multivariate <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>            <span class="op">)</span>,</span>
 <span>            col.scale <span class="op">=</span> <span class="fu">tm_scale_bivariate</span><span class="op">(</span></span>
 <span>              values <span class="op">=</span> <span class="st">"pinkblue"</span>,</span>
 <span>              scale1 <span class="op">=</span> <span class="fu">tm_scale_intervals</span><span class="op">(</span></span>
 <span>                breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">8</span>, <span class="op">-</span><span class="fl">4</span>, <span class="fl">0</span>, <span class="fl">4</span>, <span class="fl">8</span><span class="op">)</span>, </span>
 <span>                labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Very cold"</span>, <span class="st">"Cold"</span>, <span class="st">"Mild"</span>, <span class="st">"Warm"</span><span class="op">)</span></span>
-<span> <span class="op">)</span>,</span>
+<span>              <span class="op">)</span>,</span>
 <span>              scale2 <span class="op">=</span> <span class="fu">tm_scale_intervals</span><span class="op">(</span></span>
 <span>                breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span>, <span class="fl">25</span><span class="op">)</span>,</span>
 <span>                labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Very cold"</span>, <span class="st">"Cold"</span>, <span class="st">"Mild"</span>, <span class="st">"Warm"</span><span class="op">)</span></span>
-<span> <span class="op">)</span></span>
-<span> <span class="op">)</span>,</span>
+<span>              <span class="op">)</span></span>
+<span>            <span class="op">)</span>,</span>
 <span>            col.legend <span class="op">=</span> <span class="fu">tm_legend_bivariate</span><span class="op">(</span></span>
 <span>              xlab <span class="op">=</span> <span class="st">"July"</span>, ylab <span class="op">=</span> <span class="st">"January"</span>, reverse <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span> <span class="op">)</span></span>
-<span> <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>            <span class="op">)</span></span>
+<span>          <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><a href="#fig-tmrastbiv-2" class="quarto-xref">Figure&nbsp;<span>8.11 (b)</span></a> shows a customized bivariate map for the January and July temperatures in Slovenia. We may see that most of the country is characterized by mild temperatures in both months, while the cold temperatures are observed in the mountainous regions in the northwest, and the warm temperatures are observed in the southwest part of the country. There are also a few areas where the temperature category is very different between the two months, such as the northeastern part of the country, with warm July and cold January temperatures.</p>
 <div id="fig-tmrastbiv" class="quarto-layout-panel">
