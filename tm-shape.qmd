@@ -34,8 +34,7 @@ This is illustrated in the following example (@fig-tmshape1).
 #| label: fig-tmshape1
 #| echo: true
 #| warning: false
-#| fig-cap: A map representing three shapes (worldelevation, worldvector, and worldcities)
-#|   using four layers.
+#| fig-cap: A map representing three shapes (worldelevation, worldvector, and worldcities) using four layers.
 tm_shape(worldelevation) +
   tm_raster("worldelevation.tif", 
             col.scale = tm_scale(values = terrain.colors(8))) +
