@@ -12,7 +12,7 @@ In **tmap**, animations are created by stitching together a series of static map
 This is done with two types of functions: 
 
 - `tm_animate()` and `tm_animate_fast()`, which create the animation from a **tmap** object
-- `tmap_animation()`, which saves the animation to files in graphical and video formats, such as GIF, MP4, and WebM
+- `tmap_animation()`, which saves the animation to files in formats, such as GIF and MP4
 
 ## Creating animations
 
@@ -83,6 +83,7 @@ Finally, we add the borders of Slovenian regions to the map to provide context f
 
 ```{r}
 #| label: fig-anims3
+#| fig-cap: "Animation of average temperature in Slovenia over time"
 #| message: false
 library(stars)
 slo_tavg = read_stars("data/slovenia/slo_tavg.tif")
@@ -98,15 +99,19 @@ tm_shape(slo_tavg) +
 
 ## Saving animations
 
-```{r animations-9}
-tma1 = tm +
-  tm_animate_fast(by = "time")
-```
+The `tm_animate()` and `tm_animate_fast()` functions create a **tmap** object that contains the animation and shows it.
+Now, to save the animation, we can use the `tmap_animation()` function.
+It takes the animation object as the first argument and the file name as the second argument -- the extension of the file name determines the format of the saved animation.
+We may save the animation in either graphical format (GIF) or video format (including MP4).
 
 ```{r animations-10}
 #| eval: false
+tma1 = tm +
+  tm_animate_fast(by = "time")
 tmap_animation(tma1, "tma1.gif")
+# or
+# tmap_animation(tma1, "tma1.mp4")
 ```
 
-<!-- width/height/dpi, scale -->
-<!-- also ref to tmap_save -->
+Additionally, we can customize the output of the animation with various arguments, such as `width`, `height`, `dpi`, `asp`, and `scale` (similarly to `tmap_save()` as shown in @sec-save).
+Moreover, if the animation is saved in a video format, we can also specify various additional arguments, such as `codec` from the **av** package^[Check the documentation of the `av::av_encode_video()` function for more details.].
