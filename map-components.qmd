@@ -264,7 +264,6 @@ There are two ways to use multiple logos.
 Many `tm_logo()` functions will places logos on top of each other, while providing a vector of png files will show them next to each other.
 Additional arguments include the height of the logo (`height`, the width is scaled automatically) and its position (`position`).
 
-
 ## Minimap {#sec-minimap}
 
 <!-- https://github.com/r-tmap/tmap/issues/1048#issuecomment-3044407055 -->
