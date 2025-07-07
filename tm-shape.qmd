@@ -141,9 +141,9 @@ tm_shape(worldelevation, bbox = worldcities) +
 \index{map projection}
 
 As we mentioned in the previous section, created maps use the projection from the main *shape*.
-However, we often want to create a map with a different projection, for example, to preserve a specific map property (@sec-crs).
+However, we often want to create a map with a different projection, for example, to preserve a specific map property.
 We can do this in three ways.
-The first way to use a different projection on a map is to reproject the main data before plotting, as shown in @sec-crs-in-r.
+The first way to use a different projection on a map is to reproject the main data before plotting.
 The second way is to specify the map projection using the `crs` argument of `tm_shape()`.
 This argument expects either some `crs` object or a CRS code.
 The third way is to use a `tm_crs()` function.
@@ -173,4 +173,5 @@ The third way is the most flexible, as it allows changing the projection for the
 Additionally, the `tm_crs()` function can automatically determine the projection based on the expected property of the map, e.g., equal area (`"area"`), equidistant (`"distance"`), or conformal (`"shape"`).
 For example, `tm_crs("auto")` will choose the projection that best preserves the area of the map (*Lambert Azimuthal Equal Area*), while `tm_crs("auto", property = "shape")` will choose the projection that best preserves the shape of the map (*Stereographic*).
 
-
+@sec-map-projections expands on the topic of map projections.
+It starts by explaining the basic concepts and then show how to apply them in **tmap**.

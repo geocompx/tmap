@@ -168,7 +168,7 @@ tm_shape(slo_borders) +
 <!-- tm_facets_pagewise(by = "VARS__", byrow = TRUE, ...) -->
 <!-- tm_facets_flip(...) -->
 
-## Customizing facets
+## Customizing facets {#sec-customizing-facets}
 
 Now that we know how to create facets, we can customize them to make them more informative and to focus on the message we want to convey.
 Often, faceting variables are self-explanatory -- we can easily understand what their values mean.

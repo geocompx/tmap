@@ -30,7 +30,7 @@ We cover and demonstrate these functions in the following sections.
 
 ```{r}
 #| label: tbl-attr-layers-table
-#| fig-cap: "Map components in **tmap**."
+#| tbl-cap: "Map components in **tmap**."
 #| echo: false
 #| warning: false
 tinytable::tt(attr_layers_df) |>
@@ -133,7 +133,7 @@ tm +
   tm_scalebar(breaks = c(0, 15, 30), text.size = 1)
 ```
 
-The `tm_scalebar()` also has several additional arguments, allowing to modify its colors, and position (@sec-north-arrow).
+The `tm_scalebar()` also has several additional arguments, allowing to modify its colors and position.
 
 Importantly, the scale bar is accurate, depending on a map projection, at standard points or lines only (@sec-proj-types) -- it is never completely correct across the whole map. <!--toDo we need to add an explanation what are standard points and lines in the second chapter!!-->
 The scale bar distortion increases with the true size of the area we are mapping -- it is less visible on local maps, and very prominent on global maps.
@@ -214,7 +214,6 @@ The `position` argument also works in the same way in other functions, such as `
 <!-- Text on maps serves many purposes - some are related to spatial objects (e.g., text labels, section \@ref(text)), while other are used to inform the map reader about the presented content (e.g., map title, section \@ref(layout-elements)). -->
 Text annotations, also known as map credits, are used to store additional information about the created map.
 They can include the source of data, the name of the author, the date of map creation, or information about the map projection.
-
 Text annotations are created with the `tm_credits()` function, which can be used more than one time (@fig-credits).
 
 ```{r}
@@ -233,20 +232,23 @@ Text annotations can also be further customized, by changing their sizes (`size`
 ## Axis labels {#sec-axis-labels}
 
 The `tm_xlab()` and `tm_ylab()` functions add x and y axis labels to the map.
+These labels can be used to describe the coordinates of the map, such as longitude and latitude, or faceting variables (@sec-customizing-facets).
 
 ```{r}
+#| label: fig-axis-labels
+#| fig-cap: A map with x and y axis labels.
 tm +
-  tm_xlab("X") +
-  tm_ylab("Y")
+  tm_xlab("X coordinates") +
+  tm_ylab("Y coordinates")
 ```
 
-<!-- Martijn when this is useful? -->
+By default, the x and y-axis labels are placed at the bottom and left sides of the map, respectively, in a horizontal orientation.
+The additional arguments of these functions allow to change the labels' size, color, rotation, space between the labels and the map, and their side.
 
 ## Logo {#sec-logo}
 
 Logos on maps can serve a similar purpose as text annotation or accompany them.
 They can represent your affiliation, funding institution, data sources logos, etc.
-
 The `tm_logo()` function adds png images, either from a file or url, to the map (@fig-logos).
 
 ```{r}

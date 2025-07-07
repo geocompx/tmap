@@ -189,8 +189,10 @@ Additionally, we can add a label to each break with the `labels` argument.
 #| eval: false
 tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens", 
-              fill.scale = tm_scale_intervals(breaks = c(0, 100, 150, 250),
-                                              labels = c("low", "medium", "high")))
+              fill.scale = tm_scale_intervals(
+                breaks = c(0, 100, 150, 250),
+                labels = c("low", "medium", "high"))
+              )
 ```
 
 Another approach is to create breaks automatically using one of many existing classification methods with the `style` argument of the `tm_scale()` function.
@@ -504,23 +506,25 @@ In both cases, our scales are intervals, but we customize their breaks and add t
 #| label: tmrastbiv2
 #| eval: false
 tm_shape(slo_tavg) +
-  tm_raster(col = tm_vars(dimvalues = c("tavg_1", "tavg_7"), 
-                          multivariate = TRUE),
+  tm_raster(col = tm_vars(
+              dimvalues = c("tavg_1", "tavg_7"), 
+              multivariate = TRUE
+            ),
             col.scale = tm_scale_bivariate(
               values = "pinkblue",
               scale1 = tm_scale_intervals(
                 breaks = c(-8, -4, 0, 4, 8), 
                 labels = c("Very cold", "Cold", "Mild", "Warm")
- ),
+              ),
               scale2 = tm_scale_intervals(
                 breaks = c(5, 10, 15, 20, 25),
                 labels = c("Very cold", "Cold", "Mild", "Warm")
- )
- ),
+              )
+            ),
             col.legend = tm_legend_bivariate(
               xlab = "July", ylab = "January", reverse = FALSE
- )
- )
+            )
+          )
 ```
 
 @fig-tmrastbiv-2 shows a customized bivariate map for the January and July temperatures in Slovenia.
@@ -552,7 +556,6 @@ tm_shape(slo_regions) +
   tm_polygons(fill = "MAP_COLORS")
 ```
 
-
 <!-- ??? -->
 <!-- In this case, it is also possible to change the default colors with the `palette` argument, but also to activate the internal algorithm to search for a minimal number of colors for visualization by setting `minimize = TRUE`. -->
 
@@ -570,7 +573,6 @@ tm_uni
 
 <!-- All of the scales and styles mentioned above work not only for `tm_polygons()` -- they can be also applied for `tm_symbols()` (and its derivatives - `tm_dots()`, `tm_bubbles()`, `tm_squares()`), `tm_lines()`, `tm_fill()`, and `tm_raster()`. -->
 <!-- add  -->
-
 
 ```{r}
 #| echo: false

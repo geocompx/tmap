@@ -22,9 +22,9 @@ source("code/visual_variables.R")
 visual_variables()
 ```
 
-The use of visual variables on maps depends on two main things: (a) type of the presented variable, and (b) type of the map layer.
+The use of visual variables on maps depends on two main things: (a) type of the presented variable, and (b) type of the map layer (@sec-const-visual-variables;@sec-auto-scales).
 @fig-visual-variables shows examples of different visual variables.
-Color is the most universal visual variable.
+Color is the most universal visual variable (@sec-colors).
 It can represent both qualitative (categorical) and quantitative (numerical) variables, and also we can color symbols, lines, or polygon fillings.
 Sizes, on the other hand, should focus on quantitative variables.
 Small symbols could represent low values of a given variable, and the higher the value, the larger the symbol.
@@ -55,7 +55,6 @@ For example, with `tm_polygons()` we can fill all polygons with the same color, 
 #| label: fig-colorscales1
 #| warning: false
 #| fig-cap: Example of a map with all polygons filled with the same color.
-#| fig-height: 3.5
 tm_shape(slo_regions) +
   tm_polygons(fill = "lightblue", 
               col = "black",
@@ -504,13 +503,12 @@ For example in the above code, we just show examples of how symbols with populat
 #| label: fig-tmsizes
 #| echo: false
 #| message: false
-#| layout-ncol: 3
+#| layout-nrow: 3
 #| fig-cap: 'Examples of three approaches for changing sizes of symbols'
 #| fig-subcap:
 #|   - all symbols have a consistent size of 0.5
 #|   - sizes of symbols depend on the values of the population variable
 #|   - sizes of symbols have a manually created legend
-#| #fig-asp: 0.42
 <<tmsizes1>>
 <<tmsizes2>>
 <<tmsizes3>>
@@ -521,7 +519,6 @@ The `lwd` argument in `tm_lines()` creates thin lines for small values and thick
 
 ```{r}
 #| label: fig-tmlwd
-#| fig-asp: 0.66
 #| fig-cap: Example of a map where lines' widths represent values of the corresponding
 #|   lines.
 slo_railroads = read_sf("data/slovenia/slo_railroads.gpkg")
@@ -562,7 +559,6 @@ However, text labels can also be used to represent the values of some numerical 
 ```{r}
 #| label: fig-tmtextsize
 #| message: false
-#| fig-asp: 0.25
 #| fig-cap: Example of a map where text sizes represent elevations of the slo_cities.
 tm_shape(slo_cities) +
   tm_text(text = "name", size = "population") +
@@ -666,7 +662,6 @@ tm_shape(slo_cities) +
 #| echo: false
 #| message: false
 #| layout-row: 2
-#| fig-asp: 1.32
 #| fig-cap: 'Examples of maps with different symbols'
 #| fig-subcap:
 #|   - default symbols
@@ -726,7 +721,6 @@ tm_shape(slo_cities) +
 #| echo: false
 #| message: false
 #| layout-nrow: 2
-#| fig-asp: 1
 #| fig-cap: 'Examples of maps using two visual variables at the same time'
 #| fig-subcap: 
 #|   - size and fill

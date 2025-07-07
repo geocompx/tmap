@@ -453,7 +453,7 @@ Several R packages can be used to represent spatial raster data, including **ras
 The **raster** package was used as a backbone of raster data visualization until **tmap** version 3.0.
 Nowadays, the **stars** package is used by **tmap** to operate on raster data and spatial data cubes.
 
-In the two next sections, we introduce the **sf** package (@sec-the-sf-package) and the **stars** package (@sec-the-stars-package).
+In the three next sections, we introduce the **sf** package (@sec-the-sf-package), the **terra** (@sec-the-terra-package), the **stars** package (@sec-the-stars-package).
 
 <!-- spatial data cubes -->
 <!-- https://github.com/appelmar/gdalcubes_R -->
@@ -587,5 +587,5 @@ The **stars** package also has support for vector data cubes, where each geometr
 
 <!-- The **tmap** package accepts spatial raster data objects from both **stars** and **raster** packages. -->
 
-More information on how the `stars` objects are organized and how to operate on them can be found in the **stars** package vignettes at https://r-spatial.github.io/stars. 
+More information on how the `stars` objects are organized and how to operate on them can be found in the **stars** package vignettes at <https://r-spatial.github.io/stars>. 
 <!-- - advice: sometimes/often it is better to prepare spatial object before the mapping, than trying to over-customize the map -->

@@ -31,7 +31,7 @@ charts_df = tibble::tribble(
 
 ```{r}
 #| label: tbl-layers-table
-#| tbl-cap: "Available chart types."
+#| tbl-cap: "Available chart types"
 #| echo: false
 #| warning: false
 #| message: false
@@ -221,7 +221,9 @@ tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens",
               fill.chart = tm_chart_histogram(
                 plot.axis.x = FALSE,
-                extra.ggplot2 = list(theme(plot.background = element_rect(fill = "lightgray")))
+                extra.ggplot2 = list(
+                  theme(plot.background = element_rect(fill = "lightgray"))
+                )
               ))
 ```
 
@@ -240,10 +242,11 @@ tm_shape(slo_regions) +
               fill.chart = tm_chart_histogram(
                 plot.axis.x = TRUE,
                 plot.axis.y = TRUE,
-                extra.ggplot2 = list(labs(title = "Population density (people/sq. km)"),
-                                     coord_flip(),
-                                     theme(plot.background = element_rect(fill = "#FFC067"),
-                                           plot.title = ggplot2::element_text(size = 10))),
+                extra.ggplot2 = list(
+                  labs(title = "Population density (people/sq. km)"),
+                  coord_flip(),
+                  theme(plot.background = element_rect(fill = "#FFC067"),
+                        plot.title = ggplot2::element_text(size = 10))),
                 position = tm_pos_in("LEFT", "TOP"),
                 width = 20,
               ),

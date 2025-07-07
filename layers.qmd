@@ -47,7 +47,7 @@ The derived functions are built on top of the basic functions but with different
 
 ```{r}
 #| label: tbl-layers-table
-#| tbl-cap: "Available map layers."
+#| tbl-cap: "Available map layers"
 #| echo: false
 #| warning: false
 #| message: false
@@ -269,7 +269,6 @@ The main function for creating text labels is `tm_text()`, which adds a label to
 ```{r}
 #| label: fig-tmtext
 #| fig-cap: "Example of a map created with tm_text()."
-#| fig-asp: 0.35
 tm_shape(slo_cities) +
   tm_text(text = "name", size = "population")
 ```
@@ -279,8 +278,10 @@ Text labels can be further modified with the `opt_tm_text()` function provided t
 It includes a set of arguments that allow to adjustment of the text labels' appearance, such as `remove_overlap,` `along_lines,` and `shadow.`
 <!-- ref to the text section?? -->
 
+<!-- improve the example below -->
 ```{r}
 #| echo: false
+#| eval: false
 tm_shape(slo_railroads) + 
   tm_lines(lwd = "track_width") +
   tm_text("rail_status", size = "track_width", col = "red", 
@@ -436,12 +437,14 @@ tm_shape(raster2) +
   tm_layout(panel.labels = c("Elevation", "Geomorphons"))
 ```
 
-If you want to learn more -- we focus on how to specify and modify facets (also known as small multiples) in @sec-facets and how to modify map layout in @sec-map-layout.
+If you want to learn more -- we focus on  how to modify map layout in @sec-map-layout and how to specify and modify facets (also known as small multiples) in @sec-facets.
 
 <!-- raster.warp -->
 <!-- raster margins -->
 
 ## Tile {#sec-tile-layer}
+
+<!-- here or in the separate view mode chapter? -->
 
 <!-- A tile layer is .. -->
 <!-- Tile layers (or just tines) are usually stored as prerendered raster tiles or as vector tiles on online servers. -->

@@ -204,6 +204,7 @@ One way to visualize this data as facets is to specify selected columns as visua
 ```{r}
 #| label: fig-sec-facets1
 #| fig-cap: A facet map with three variables visualized in separate panels.
+#| fig-asp: 0.5
 slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
 tm_shape(slo_regions) +
   tm_polygons(fill = c("pop_dens", "gdppercap", "region_group"))

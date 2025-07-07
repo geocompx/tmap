@@ -389,7 +389,7 @@ The four properties are listed in @tbl-crs-properties.
 
 ```{r}
 #| label: tbl-crs-properties
-#| tbl-cap: "Map projection properties."
+#| tbl-cap: "Map projection properties"
 #| echo: false
 crs_prop_name = c("Conformal", "Equal area", "Equidistant", "Azimuthal")
 crs_prop_attr = c("Local angle (shape)", "Area", "Distance", "Direction")
