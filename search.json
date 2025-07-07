@@ -329,7 +329,7 @@
     "href": "layers.html#sec-raster-layer",
     "title": "6  Layers",
     "section": "\n6.5 Raster",
-    "text": "6.5 Raster\n\nlibrary(stars)\nslo_elev = read_stars(\"data/slovenia/slo_elev.tif\")\nslo_gm = read_stars(\"data/slovenia/slo_gm.tif\")\n\n\nVisualization of raster data depends on the raster type (continuous or categorical), its resolution, and the number of layers. Figure 20.1 shows two simple examples of continuous and categorical raster visualizations created with tm_raster(). This function attempts to recognize the type of a given raster – when the input raster is continuous then the pretty style is used (Figure 6.6 (a)). \n\ntm_shape(slo_elev) +\n  tm_raster()\n\nOn the other hand, when the given raster is categorical, then tm_raster() uses tm_scale_categorical() automatically (Figure 6.6 (b)). We can also adjust the legend title, used colors, and many more, in a similar fashion as in the previously mentioned layers.\n\ntm_shape(slo_gm) +\n  tm_raster()\n\n\n\n\n\n\n\n\n\n\n\n(a) Continuous raster map\n\n\n\n\n\n\n\n\n\n(b) Categorical raster map\n\n\n\n\n\n\nFigure 6.6: Examples of raster maps\n\n\n\nThe above examples used a raster with one layer only. However, rasters can have many layers, either represented by dimensions or attributes. By default, tmap shows all of the layers, where each raster has its own legend.\n\nraster2 = c(slo_elev, slo_gm)\ntm_shape(raster2) +\n  tm_raster()\n\nWe can modify their arrangement with tm_facets() (Figure 6.7).\n\ntm_shape(raster2) +\n  tm_raster() +\n  tm_facets(ncol = 1) +\n  tm_layout(panel.labels = c(\"Elevation\", \"Geomorphons\"))\n\n\n\n\n\n\nFigure 6.7: A map created from a multilayered raster.\n\n\n\n\nIf you want to learn more – we focus on how to specify and modify facets (also known as small multiples) in Chapter 16 and how to modify map layout in Chapter 12.",
+    "text": "6.5 Raster\n\nlibrary(stars)\nslo_elev = read_stars(\"data/slovenia/slo_elev.tif\")\nslo_gm = read_stars(\"data/slovenia/slo_gm.tif\")\n\n\nVisualization of raster data depends on the raster type (continuous or categorical), its resolution, and the number of layers. Figure 19.1 shows two simple examples of continuous and categorical raster visualizations created with tm_raster(). This function attempts to recognize the type of a given raster – when the input raster is continuous then the pretty style is used (Figure 6.6 (a)). \n\ntm_shape(slo_elev) +\n  tm_raster()\n\nOn the other hand, when the given raster is categorical, then tm_raster() uses tm_scale_categorical() automatically (Figure 6.6 (b)). We can also adjust the legend title, used colors, and many more, in a similar fashion as in the previously mentioned layers.\n\ntm_shape(slo_gm) +\n  tm_raster()\n\n\n\n\n\n\n\n\n\n\n\n(a) Continuous raster map\n\n\n\n\n\n\n\n\n\n(b) Categorical raster map\n\n\n\n\n\n\nFigure 6.6: Examples of raster maps\n\n\n\nThe above examples used a raster with one layer only. However, rasters can have many layers, either represented by dimensions or attributes. By default, tmap shows all of the layers, where each raster has its own legend.\n\nraster2 = c(slo_elev, slo_gm)\ntm_shape(raster2) +\n  tm_raster()\n\nWe can modify their arrangement with tm_facets() (Figure 6.7).\n\ntm_shape(raster2) +\n  tm_raster() +\n  tm_facets(ncol = 1) +\n  tm_layout(panel.labels = c(\"Elevation\", \"Geomorphons\"))\n\n\n\n\n\n\nFigure 6.7: A map created from a multilayered raster.\n\n\n\n\nIf you want to learn more – we focus on how to specify and modify facets (also known as small multiples) in Chapter 16 and how to modify map layout in Chapter 12.",
     "crumbs": [
       "Building blocks",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Layers</span>"
@@ -1044,7 +1044,7 @@
     "href": "animations.html",
     "title": "17  Animations",
     "section": "",
-    "text": "17.1 Creating animations\ntm = tm_shape(slo_borders) +\n  tm_borders() +\n  tm_shape(slo_regions_ts) +\n  tm_polygons(\"gdppercap\")\ntm +\n  tm_animate(by = \"time\")\ntm +\n  tm_animate_fast(by = \"time\")\ntm +\n  tm_animate(by = \"time\", fps = 5, play = \"pingpong\")\nlibrary(stars)\nslo_tavg = read_stars(\"data/slovenia/slo_tavg.tif\")\ntm_shape(slo_tavg) +\n  tm_raster(col.scale = tm_scale_continuous()) +\n  tm_animate(by = \"band\", fps = 6)",
+    "text": "17.1 Creating animations\nAnimations are a powerful way to visualize changes in data over time – to illustrate trends, patterns, and dynamics that might not be immediately apparent in static maps. They can also be used to create engaging visualizations that capture the viewer’s attention or just to break the monotony of static maps, for example, by comparing different locations.\nIn tmap, animations are created by stitching together a series of static maps into a single animated image. This is done with two types of functions:\nLet’s create some animations using the slo_regions_ts dataset, which contains various measures of Slovenian regions over time.\nlibrary(sf)\nlibrary(tmap)\nslo_regions_ts = read_sf(\"data/slovenia/slo_regions_ts.gpkg\")\nThe basis for our animations is a tmap object that contains the data and the way we want to visualize it.\ntm = tm_shape(slo_regions_ts) +\n  tm_polygons(\"gdppercap\")\nTo make it animated, we can use the tm_animate() or tm_animate_fast() functions and specify the variable that we want to animate by, in this case, time (Figure 17.1). The difference between the two functions is that tm_animate() renders the animation at 2 frames per second (specified by the fps argument), while tm_animate_fast() renders it at 24 frames per second. The former is more suitable for smaller datasets and cases where we want to allow the viewer to read the values on the map, while the latter is more suitable for larger datasets and cases where we want to create a smooth, cinematic animation.\n(a) Using tm_animate()\n\n\n\n\n\nFigure 17.1: Animations of GDP per capita in Slovenian regions over time\nTwo main additional arguments for the animate functions are fps (frames per second) and play (playback mode). The first one controls the speed of the animation, while the second one controls how the animation is played back: either \"loop\" (default), which plays the animation in a loop, \"once\", which plays the animation only once and then stops, or \"pingpong\" which plays the animation back and forth.\ntm +\n  tm_animate(by = \"time\", fps = 5, play = \"pingpong\")\n\n\n\n\n\n\nFigure 17.2\nlibrary(stars)\nslo_tavg = read_stars(\"data/slovenia/slo_tavg.tif\")\ntm_shape(slo_tavg) +\n  tm_raster(col.scale = tm_scale_continuous()) +\n  tm_animate(by = \"band\", fps = 6)",
     "crumbs": [
       "Expanding the toolbox",
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>Animations</span>"
@@ -1064,23 +1064,23 @@
   {
     "objectID": "options.html",
     "href": "options.html",
-    "title": "20  tmap options",
+    "title": "19  tmap options",
     "section": "",
-    "text": "20.1 Raster resolution\nRaster data is represented by a grid of cells (Section 2.2.2), and the number of cells impacts the time to render a map. Rasters with hundreds of cells will be plotted quickly, while rasters with hundreds of millions or billions of cells will take a lot of time (and RAM) to be shown.  Therefore, the tmap package downsamples large rasters by default to be below 10,000,000 cells in the plot mode and 1,000,000 cells in the view mode.  This values can be adjusted with the raster.max_cells argument of tmap_options(), which expects a named vector with two elements - plot and view (Figure 20.1).\ntmap_options(raster.max_cells = c(plot = 5000, view = 2000))\ntm_shape(worldelevation) +\n  tm_raster(\"worldelevation.tif\")\n\n\n\n\n\n\nFigure 20.1: A raster map with the decreased resolution",
+    "text": "19.1 Raster resolution\nRaster data is represented by a grid of cells (Section 2.2.2), and the number of cells impacts the time to render a map. Rasters with hundreds of cells will be plotted quickly, while rasters with hundreds of millions or billions of cells will take a lot of time (and RAM) to be shown.  Therefore, the tmap package downsamples large rasters by default to be below 10,000,000 cells in the plot mode and 1,000,000 cells in the view mode.  This values can be adjusted with the raster.max_cells argument of tmap_options(), which expects a named vector with two elements - plot and view (Figure 19.1).\ntmap_options(raster.max_cells = c(plot = 5000, view = 2000))\ntm_shape(worldelevation) +\n  tm_raster(\"worldelevation.tif\")\n\n\n\n\n\n\nFigure 19.1: A raster map with the decreased resolution",
     "crumbs": [
       "Advanced topics",
-      "<span class='chapter-number'>20</span>  <span class='chapter-title'>tmap options</span>"
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>tmap options</span>"
     ]
   },
   {
     "objectID": "options.html#resetting-the-options",
     "href": "options.html#resetting-the-options",
-    "title": "20  tmap options",
-    "section": "\n20.2 Resetting the options",
-    "text": "20.2 Resetting the options\nAny tmap options can be reset (set to default) with tmap_options_reset().\n\ntmap_options_reset()",
+    "title": "19  tmap options",
+    "section": "\n19.2 Resetting the options",
+    "text": "19.2 Resetting the options\nAny tmap options can be reset (set to default) with tmap_options_reset().\n\ntmap_options_reset()",
     "crumbs": [
       "Advanced topics",
-      "<span class='chapter-number'>20</span>  <span class='chapter-title'>tmap options</span>"
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>tmap options</span>"
     ]
   },
   {
