@@ -1055,7 +1055,7 @@
     "href": "animations.html#creating-animations",
     "title": "17  Animations",
     "section": "",
-    "text": "(a) Using tm_animate()\n\n\n\n\n\n\nFigure 17.1: Animations of GDP per capita in Slovenian regions over time",
+    "text": "tm +\n  tm_animate(by = \"time\")\ntm +\n  tm_animate_fast(by = \"time\")\n\n\n\n\n\n\n\n\n\n(a) Using tm_animate()\n\n\n\n\n\n\nFigure 17.1: Animations of GDP per capita in Slovenian regions over time",
     "crumbs": [
       "Expanding the toolbox",
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>Animations</span>"
