@@ -5,34 +5,47 @@ source("code/before_script.R")
 
 # Arranging maps {#sec-arranging-maps}
 
+The **tmap** package offers several tools for arranging multiple maps within a single layout.
+When we want to display one main map and one or more additional maps, we can use `tm_minimap()` or `tm_inset()`.
+The first function adds a small overview map to the main map using a fixed, non-customizable style (@sec-minimap).
+More advanced arrangements can be made with the `tm_inset()` function, which adds a graphical object (including a `tmap` object) to the main map (@sec-inset-maps).
 
-```{r arrangements-2}
-library(tmap)
-```
+To create a layout with multiple maps, we have two main options.
+The first one, which is the focus of this chapter, is to use the `tmap_arrange()` function.
+It takes two or more `tmap` objects and arranges them in a grid layout.
+The second option is to create facets with the `tm_facet()` function, which is described in @sec-facets.
+The main difference is that `tmap_arrange()` combines multiple maps, often based on different data, while `tm_facet()` creates a single map with numerous panels based on the same data.
+
+## Using `tmap_arrange()` {#sec-tmap-arrange}
+
+Let's see how the `tmap_arrange()` function works based on two maps of Slovenia each based on different data sources.
+The first map is based on the GDP per capita of the regions of Slovenia represented as polygons.
 
 ```{r arrangements-3}
 #| message: false
+library(tmap)
 library(sf)
 slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
 tm1 = tm_shape(slo_regions) +
-  tm_fill("gdppercap") +
-  tm_borders() +
+  tm_polygons("gdppercap") +
   tm_title("GDP per capita in Slovenia")
 ```
 
+The second map is based on the elevation of Slovenia, represented as a raster layer.
+
 ```{r arrangements-4}
 #| message: false
+library(tmap)
 library(stars)
 slo_elev = read_stars("data/slovenia/slo_elev.tif")
 tm2 = tm_shape(slo_elev) +
   tm_raster() +
-  tm_borders() +
   tm_title("Elevation in Slovenia")
 ```
 
-<!-- nrow, -->
-<!-- ncol -->
-<!-- asp -->
+In both cases, we also added titles to the maps using the `tm_title()` function to make it clear what each map represents, and assigned them to the objects `tm1` and `tm2`.
+Now, we may arrange these two maps in a single layout using the `tmap_arrange()` function (@fig-arrangements1).
+The `tmap_arrange()` function can take any number of `tmap` objects as input or even a list of `tmap` objects.
 
 ```{r}
 #| label: fig-arrangements1
@@ -42,7 +55,19 @@ tm2 = tm_shape(slo_elev) +
 tmap_arrange(tm1, tm2, ncol = 2)
 ```
 
+In the example above, we used our two maps and specified the number of columns in the layout using the `ncol` argument.
+We can also specify the number of rows using the `nrow` argument and the aspect ratio of the maps using the `asp` argument.
+
+The `tmap_arrange()` does not align layouts of multiple maps -- you may notice that the frames of the two maps in @fig-arrangements1 are not equal in height.
+
 <!-- frame alighnment -->
+<!-- tmap_arrange does not use align layouts of multiple maps. T -->
+
+
+
+<!-- also a list input -->
+<!-- also mention the view mode -->
+
 
 <!-- tmap_grob? -->
 
@@ -59,3 +84,6 @@ tmap_arrange(tm1, tm2, nrow = 2, heights = c(0.8, 0.2))
 
 <!-- tmap view mode (sync) -->
 <!-- tmap_save -->
+
+
+<!-- should the tm_inset be moved here? -->
