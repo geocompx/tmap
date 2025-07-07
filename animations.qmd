@@ -39,6 +39,8 @@ To make it animated, we can use the `tm_animate()` or `tm_animate_fast()` functi
 The difference between the two functions is that `tm_animate()` renders the animation at 2 frames per second (specified by the `fps` argument), while `tm_animate_fast()` renders it at 24 frames per second.
 The former is more suitable for smaller datasets and cases where we want to allow the viewer to read the values on the map, while the latter is more suitable for larger datasets and cases where we want to create a smooth, cinematic animation.
 
+<!-- fix: -->
+<!-- https://github.com/r-tmap/tmap/issues/1150#issuecomment-3044249460 -->
 ```{r}
 #| label: fig-anims
 #| fig-cap: "Animations of GDP per capita in Slovenian regions over time"
