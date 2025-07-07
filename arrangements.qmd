@@ -16,10 +16,10 @@ It takes two or more `tmap` objects and arranges them in a grid layout.
 The second option is to create facets with the `tm_facet()` function, which is described in @sec-facets.
 The main difference is that `tmap_arrange()` combines multiple maps, often based on different data, while `tm_facet()` creates a single map with numerous panels based on the same data.
 
-## Using `tmap_arrange()` {#sec-tmap-arrange}
+## Basic arrangements {#sec-arrangements}
 
-Let's see how the `tmap_arrange()` function works based on two maps of Slovenia each based on different data sources.
-The first map is based on the GDP per capita of the regions of Slovenia represented as polygons.
+Let's see how the `tmap_arrange()` function works based on two maps of Slovenia, each based on different data sources.
+The first map is based on the GDP per capita of Slovenia's regions, represented as polygons.
 
 ```{r arrangements-3}
 #| message: false
@@ -43,7 +43,7 @@ tm2 = tm_shape(slo_elev) +
   tm_title("Elevation in Slovenia")
 ```
 
-In both cases, we also added titles to the maps using the `tm_title()` function to make it clear what each map represents, and assigned them to the objects `tm1` and `tm2`.
+In both cases, we also added titles to the maps using the `tm_title()` function to clarify what each map represents, and assigned them to the objects `tm1` and `tm2`.
 Now, we may arrange these two maps in a single layout using the `tmap_arrange()` function (@fig-arrangements1).
 The `tmap_arrange()` function can take any number of `tmap` objects as input or even a list of `tmap` objects.
 
@@ -56,34 +56,45 @@ tmap_arrange(tm1, tm2, ncol = 2)
 ```
 
 In the example above, we used our two maps and specified the number of columns in the layout using the `ncol` argument.
-We can also specify the number of rows using the `nrow` argument and the aspect ratio of the maps using the `asp` argument.
+We can also specify the number of rows using the `nrow` argument, the aspect ratio of the maps using the `asp` argument, and the widths and heights of the maps using the `widths` and `heights` arguments, respectively.
+
+## Customizing arrangements {#sec-customizing-arrangements}
 
 The `tmap_arrange()` does not align layouts of multiple maps -- you may notice that the frames of the two maps in @fig-arrangements1 are not equal in height.
+To align the frames of the maps, we can use the `meta.margins` argument in the `tm_layout()` function for each map.
+This argument allows us to specify the margins around the map frame available for map elements, such as titles and legends, in the order of `c(bottom, left, top, right)`.
+<!-- Martijn, is the above statement correct? -->
 
-<!-- frame alighnment -->
-<!-- tmap_arrange does not use align layouts of multiple maps. T -->
+Here, we set the bottom margin to `0.3`<!-- units? --> for both maps, which will align their frames vertically.
+See the effect of this change in @fig-arrangements2.
 
+```{r}
+#| label: fig-arrangements2
+#| fig-cap: "Arranging two maps in one layout with aligned frames."
+#| message: false
+tm1a = tm1 +
+  tm_layout(meta.margins = c(0.3, 0, 0, 0))
+tm2a = tm2 +
+  tm_layout(meta.margins = c(0.3, 0, 0, 0))
+tmap_arrange(tm1a, tm2a, ncol = 2)
+```
 
+You may also notice that, as we set the top margin of the second map to `0`, the titles of both maps were moved inside the map frames.
+If you want to keep the titles outside, you can set the top margin of the second map to a small value, such as `0.05`.
 
-<!-- also a list input -->
-<!-- also mention the view mode -->
-
-
-<!-- tmap_grob? -->
+::: {.callout-note}
+The outcomes of the `tmap_arrange()` function also work in the **tmap** view mode, which allows you to explore a few maps at once interactively.
+:::
 
 <!-- widths, heights -->
 <!-- any better example idea? -->
-
-```{r arrangements-6}
-tmap_arrange(tm1, tm2, nrow = 2, heights = c(0.8, 0.2))
-```
-
-<!-- reexplain asp -->
-
+<!-- tmap_arrange(tm1a, tm2a, nrow = 2, heights = c(0.8, 0.2)) -->
 <!-- possibly add a tm_add_legend example plus a ref -->
 
-<!-- tmap view mode (sync) -->
-<!-- tmap_save -->
+::: {.callout-note}
+The `tmap_arrange()` function call can be saved to an object, which can then be used in other functions, such as `tmap_save()`, to save the arranged maps to a file.
+For more information on saving maps, see @sec-save.
+:::
 
-
+<!-- tmap_grob? -->
 <!-- should the tm_inset be moved here? -->
