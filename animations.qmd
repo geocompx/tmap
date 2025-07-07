@@ -76,8 +76,10 @@ tm +
 ```
 
 Animations can also be created from raster data, such as satellite imagery or climate data.
-@fig-anims3 shows an example of an animation of average temperature in Slovenia over monthly time steps.
-
+@fig-anims3 shows an example of an animation of the average temperature in Slovenia over monthly time steps.
+First, the raster data is defined, and its scale is set to the continuous one.
+Next, we define the animation using `tm_animate()` and specify the `by` argument to animate by the `band` variable, which represents the time steps in the raster data.
+Finally, we add the borders of Slovenian regions to the map to provide context for the animation.
 
 ```{r}
 #| label: fig-anims3
