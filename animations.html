@@ -403,7 +403,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <li>
 <code><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate_fast()</a></code>, which create the animation from a <strong>tmap</strong> object</li>
 <li>
-<code><a href="https://r-tmap.github.io/tmap/reference/tmap_animation.html">tmap_animation()</a></code>, which saves the animation to files in graphical and video formats, such as GIF, MP4, and WebM</li>
+<code><a href="https://r-tmap.github.io/tmap/reference/tmap_animation.html">tmap_animation()</a></code>, which saves the animation to files in formats, such as GIF and MP4</li>
 </ul>
 <section id="creating-animations" class="level2" data-number="17.1"><h2 data-number="17.1" class="anchored" data-anchor-id="creating-animations">
 <span class="header-section-number">17.1</span> Creating animations</h2>
@@ -458,7 +458,7 @@ Figure&nbsp;17.2: Animations of GDP per capita in Slovenian regions over time wi
 <!-- https://github.com/r-tmap/tmap/issues/1160 -->
 <!-- If you read the previous chapters, you may see the similarity between the `tm_animate()` and `tm_facets()` functions, which create a series of static maps based on the values of a variable. -->
 <!-- The main difference is that `tm_animate()` creates an animation -- one frame after another -- while `tm_facets()` creates a grid of static maps, where each map corresponds to a value of the variable. -->
-<p>Animations can also be created from raster data, such as satellite imagery or climate data. <a href="#fig-anims3" class="quarto-xref">Figure&nbsp;<span>17.3</span></a> shows an example of an animation of average temperature in Slovenia over monthly time steps.</p>
+<p>Animations can also be created from raster data, such as satellite imagery or climate data. <a href="#fig-anims3" class="quarto-xref">Figure&nbsp;<span>17.3</span></a> shows an example of an animation of the average temperature in Slovenia over monthly time steps. First, the raster data is defined, and its scale is set to the continuous one. Next, we define the animation using <code><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate()</a></code> and specify the <code>by</code> argument to animate by the <code>band</code> variable, which represents the time steps in the raster data. Finally, we add the borders of Slovenian regions to the map to provide context for the animation.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/stars/">stars</a></span><span class="op">)</span></span>
 <span><span class="va">slo_tavg</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_tavg.tif"</span><span class="op">)</span></span>
@@ -469,12 +469,12 @@ Figure&nbsp;17.2: Animations of GDP per capita in Slovenian regions over time wi
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-anims3" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%" data-fig-align="center">
+<div id="fig-anims3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-anims3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-anims3-1.gif" id="fig-anims3" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:100.0%">
+<img src="figures/fig-anims3-1.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-anims3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17.3
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anims3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17.3: Animation of average temperature in Slovenia over time
 </figcaption></figure>
 </div>
 </div>
@@ -482,18 +482,21 @@ Figure&nbsp;17.3
 <!-- passing other arguments to tm_facets (+ ref) -->
 </section><section id="saving-animations" class="level2" data-number="17.2"><h2 data-number="17.2" class="anchored" data-anchor-id="saving-animations">
 <span class="header-section-number">17.2</span> Saving animations</h2>
+<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate_fast()</a></code> functions create a <strong>tmap</strong> object that contains the animation and shows it. Now, to save the animation, we can use the <code><a href="https://r-tmap.github.io/tmap/reference/tmap_animation.html">tmap_animation()</a></code> function. It takes the animation object as the first argument and the file name as the second argument – the extension of the file name determines the format of the saved animation. We may save the animation in either graphical format (GIF) or video format (including MP4).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tma1</span> <span class="op">=</span> <span class="va">tm</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate_fast</a></span><span class="op">(</span>by <span class="op">=</span> <span class="st">"time"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate_fast</a></span><span class="op">(</span>by <span class="op">=</span> <span class="st">"time"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_animation.html">tmap_animation</a></span><span class="op">(</span><span class="va">tma1</span>, <span class="st">"tma1.gif"</span><span class="op">)</span></span>
+<span><span class="co"># or</span></span>
+<span><span class="co"># tmap_animation(tma1, "tma1.mp4")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_animation.html">tmap_animation</a></span><span class="op">(</span><span class="va">tma1</span>, <span class="st">"tma1.gif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<!-- width/height/dpi, scale -->
-<!-- also ref to tmap_save -->
+<p>Additionally, we can customize the output of the animation with various arguments, such as <code>width</code>, <code>height</code>, <code>dpi</code>, <code>asp</code>, and <code>scale</code> (similarly to <code><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save()</a></code> as shown in <a href="save.html" class="quarto-xref"><span>Chapter 4</span></a>). Moreover, if the animation is saved in a video format, we can also specify various additional arguments, such as <code>codec</code> from the <strong>av</strong> package<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+<ol>
+<li id="fn1"><p>Check the documentation of the <code>av::av_encode_video()</code> function for more details.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
