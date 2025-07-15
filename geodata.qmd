@@ -521,6 +521,7 @@ To read raster data, the **terra** package has the `rast()` function^[This funct
 This way, we create a new object of the class `SpatRaster,` which is the main class for raster data in the **terra** package.
 
 ```{r}
+#| message: false
 library(terra)
 worldelevation1 = rast("data/worldelevation.tif")
 ```
