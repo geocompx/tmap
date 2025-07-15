@@ -285,6 +285,7 @@ We also can select a basemap or click on any line and point to get some informat
 #| echo: false
 #| cache: false
 #| message: false
+#| fig-width: 9
 #| fig-cap: Map from the previous figure shown using the interactive ("view") mode.
 view_map(my_map, "imap1")
 ```
