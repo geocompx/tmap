@@ -5,7 +5,10 @@ source("code/before_script.R")
 
 # Map projections (CRS) {#sec-map-projections}
 
-<!-- intro -->
+This chapter focuses on the map projections.
+It gives a background on why do we need map projections and how to translate spatial data from an ellipsoid into a flat surface or computer screen.
+Then, it explains basic terms, gives an overview of map projections, and provides guidelines for choosing a suitable map projection for a specific application.
+Finally, it shows how to use R and the **tmap** package to specify and customize map projections.
 
 ## What are map projections? {#sec-crs-intro}
 
