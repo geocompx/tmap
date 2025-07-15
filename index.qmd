@@ -33,12 +33,14 @@ You can help by:
 - Fixing typos or improving clarity
 - Enhancing code examples or adding new ones
 
+<!--
 **To contribute:**
 
 1. Visit the [GitHub repository](https://github.com/geocompx/tmap)
 2. Fork the project and create a branch
 3. Make your changes
 4. Open a pull request with a short description of your contribution
+-->
 
 All contributions are appreciated and acknowledged.
 
