@@ -729,29 +729,12 @@ Projected CRS: WGS 84 / Equal Earth Greenwich
 <p>The <strong>terra</strong> package represents and processes spatial raster data in R. It has many high-performance functions, allowing for efficient transformation and analysis of raster data.</p>
 <p>To read raster data, the <strong>terra</strong> package has the <code><a href="https://rspatial.github.io/terra/reference/rast.html">rast()</a></code> function<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. This way, we create a new object of the class <code>SpatRaster,</code> which is the main class for raster data in the <strong>terra</strong> package.</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/">terra</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>terra 1.8.54</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'terra'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:tidyr':
-
-    extract</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:grid':
-
-    depth</code></pre>
-</div>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">worldelevation1</span> <span class="op">=</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html">rast</a></span><span class="op">(</span><span class="st">"data/worldelevation.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/">terra</a></span><span class="op">)</span></span>
+<span><span class="va">worldelevation1</span> <span class="op">=</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html">rast</a></span><span class="op">(</span><span class="st">"data/worldelevation.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To see the properties of the <code>worldelevation1</code> object, we just need to type its name.</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">worldelevation1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">worldelevation1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>class       : SpatRaster 
 size        : 540, 1080, 1  (nrow, ncol, nlyr)
@@ -773,12 +756,12 @@ name        : worldelevation </code></pre>
 <!-- - how to read stars objects from files -->
 <p>The <code><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars()</a></code> function allow to read both simple and multidimensional spatial raster data from a file<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. This function requires at least one argument with a filename to be read. <!--improve example--></p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/stars/">stars</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/stars/">stars</a></span><span class="op">)</span></span>
 <span><span class="va">worldelevation2</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="st">"data/worldelevation.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The new object, <code>worldelevation2</code>, is of a <code>stars</code> class. It has two dimensions, <code>x</code> and <code>y</code>, and one attribute <code>worldelevation.tif</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">worldelevation2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">worldelevation2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>stars object with 2 dimensions and 1 attribute
 attribute(s):
@@ -793,7 +776,7 @@ y    1  540     90 -0.3333 WGS 84 FALSE [y]</code></pre>
 <p>The <code>worldelevation.tif</code> attribute is a matrix, where each cell represents an elevation value. The <code>x</code> dimension has 1080 elements (columns), starting from a coordinate (<code>offset</code>) of a cell boundary of <code>-180</code>. Next, the coordinates of further cells increase by <code>0.333333</code> (<code>delta</code>) – resolution in the <code>x</code> dimension. The <code>y</code> dimension has 540 elements (rows), starting from a coordinate (<code>offset</code>) of a cell boundary of <code>90</code>. For the <code>y</code> dimension, each further cell’s coordinated decreases by <code>0.333333</code> (notice the negative value of <code>delta</code>) – resolution in the <code>y</code> dimension. Both dimensions also have the same CRS – <code>WGS 84</code>.</p>
 <p><code><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars()</a></code> also has several additional arguments including <code>RasterIO</code>, which gives control over the input data extent and resolution. For example, the below code will read just the first and second bands – in this case, the average montly temperatures for January and February in Slovenia (results not shown). <!-- - including reading chunks, changing resolution, and selecting bands --> <!--improve example--></p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">slo_tavg_fp</span> <span class="op">=</span> <span class="st">"data/slovenia/slo_tavg.tif"</span></span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">slo_tavg_fp</span> <span class="op">=</span> <span class="st">"data/slovenia/slo_tavg.tif"</span></span>
 <span><span class="va">slo_tavg12</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="va">slo_tavg_fp</span>, RasterIO <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>bands <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Internally, a <code>stars</code> object is a list of <code>matrix</code> or <code>array</code> objects with additional attributes describing spatial metadata, such as a number of columns and rows, resolution, coordinate reference system, etc. All of this information is read from the input file.</p>
