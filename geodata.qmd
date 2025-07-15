@@ -11,13 +11,10 @@ These spatial data models are closely related to map making, with each model hav
 <!-- - few introduction sections -->
 <!-- - mention GDAL, PROJ, and GEOS -->
 <!-- - maybe also mention some data sources -->
-This chapter stars by describing several popular spatial data models (@sec-data-models).
+This chapter starts by describing these two popular spatial data models, and their extensions, spatial vector and raster data cubes (@sec-data-models).
 Each data model is introduced, explained how it is built, and how it is stored using different file formats.
 Next, this chapter presents how these different data models are implemented in R (@sec-spatial-data-representations-in-r).
 It includes showing how to read different spatial data formats, how to understand spatial R objects, and where to find more information about preprocessing spatial data.
-Finally, it focuses on the map projections (@sec-crs).
-This section gives a background on why do we need map projections and how to translate spatial data from an ellipsoid into a flat surface or computer screen.
-It also explains basic terms and gives an overview of map projections.
 <!-- - maybe also references to some books (either here or in the next section or both) -->
 <!-- geocompr, spatial data science, some crs book? -->
 <!-- explain that often there is a need to prepare spatial data before mapping -->
@@ -451,7 +448,8 @@ The **tmap** package has been using **sf** since version 2.0.
 \index{spatial data cubes}
 Several R packages can be used to represent spatial raster data, including **raster** and its successor **terra**. 
 The **raster** package was used as a backbone of raster data visualization until **tmap** version 3.0.
-Nowadays, the **stars** package is used by **tmap** to operate on raster data and spatial data cubes.
+Currently, the **terra** package's raster objects can be used in **tmap**.
+Additionally, the **stars** package is used by **tmap** to operate on raster data and spatial data cubes.
 
 In the three next sections, we introduce the **sf** package (@sec-the-sf-package), the **terra** (@sec-the-terra-package), the **stars** package (@sec-the-stars-package).
 
@@ -548,15 +546,15 @@ The `x` dimension has 1080 elements (columns), starting from a coordinate (`offs
 Next, the coordinates of further cells increase by `0.333333` (`delta`) - resolution in the `x` dimension.
 The `y` dimension has 540 elements (rows), starting from a coordinate (`offset`) of a cell boundary of `90`. 
 For the `y` dimension, each further cell's coordinated decreases by `0.333333` (notice the negative value of `delta`) - resolution in the `y` dimension.
-Both dimensions also have the same CRS - `WGS 84`.
+Both dimensions also have the same CRS -- `WGS 84`.
 
 `read_stars()` also has several additional arguments including `RasterIO`, which gives control over the input data extent and resolution.
-For example, the below code will read just the first and second bands (results not shown).
+For example, the below code will read just the first and second bands -- in this case, the average montly temperatures for January and February in Slovenia (results not shown).
 <!-- - including reading chunks, changing resolution, and selecting bands -->
 <!--improve example-->
 ```{r}
-file_path3 = system.file("raster/landsat.tif", package = "spDataLarge")
-x3 = read_stars(file_path3, RasterIO = list(bands = c(1, 2)))
+slo_tavg_fp = "data/slovenia/slo_tavg.tif"
+slo_tavg12 = read_stars(slo_tavg_fp, RasterIO = list(bands = c(1, 2)))
 ```
 
 Internally, a `stars` object is a list of `matrix` or `array` objects with additional attributes describing spatial metadata, such as a number of columns and rows, resolution, coordinate reference system, etc.
