@@ -24,7 +24,7 @@
     "href": "index.html#how-to-contribute",
     "title": "Spatial Data Visualization with tmap",
     "section": "How to contribute",
-    "text": "How to contribute\nWe welcome your contributions to make this book better!\nYou can help by:\n\nSuggesting topics or reporting issues via the issue tracker\n\nFixing typos or improving clarity\nEnhancing code examples or adding new ones\n\nTo contribute:\n\nVisit the GitHub repository\n\nFork the project and create a branch\nMake your changes\nOpen a pull request with a short description of your contribution\n\nAll contributions are appreciated and acknowledged.",
+    "text": "How to contribute\nWe welcome your contributions to make this book better!\nYou can help by:\n\nSuggesting topics or reporting issues via the issue tracker\n\nFixing typos or improving clarity\nEnhancing code examples or adding new ones\n\nAll contributions are appreciated and acknowledged.",
     "crumbs": [
       "Welcome"
     ]
@@ -44,7 +44,7 @@
     "href": "index.html#license",
     "title": "Spatial Data Visualization with tmap",
     "section": "License",
-    "text": "License\nThis work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs 4.0 International License.\n\n\nCC BY-NC-ND 4.0\n\nThe code samples in this book are licensed under a Creative Commons CC0 1.0 Universal (CC0 1.0) Public Domain Dedication.\n\n\nCC0 1.0\n\nThis version of the book was built on 2025-07-01.",
+    "text": "License\nThis work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs 4.0 International License.\n\n\nCC BY-NC-ND 4.0\n\nThe code samples in this book are licensed under a Creative Commons CC0 1.0 Universal (CC0 1.0) Public Domain Dedication.\n\n\nCC0 1.0\n\nThis version of the book was built on GH Actions on 2025-07-15.",
     "crumbs": [
       "Welcome"
     ]
