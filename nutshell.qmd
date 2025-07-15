@@ -10,6 +10,7 @@ It accepts spatial data in various formats -- shape objects (@sec-shape-objects)
 Next, the data can be used to create simple, quick maps (@sec-quick-maps) and more complex and expandable maps (@sec-regular-maps).
 These maps can be presented in two modes: as a static map and an interactive one.
 Additionally, **tmap** makes it possible to create facet maps (@sec-facets-section) and map animations (@sec-ani-section).
+Finally, **tmap** has an interactive mode (@sec-map-modes) that allows users to zoom in and out, pan the map, or click on map objects to get more information -- this can be done without any additional code.
 The goal of this chapter is to provide a brief overview of the main **tmap** features.
 
 ## Shape objects {#sec-shape-objects}
@@ -228,9 +229,24 @@ This is a topic of the @sec-facets.
 
 ## Animations {#sec-ani-section}
 
-<!-- to write after the \@ref(animations) chapter is done -->
+\index{animations}
+@fig-sec-ani1 shows an animated map with the GDP per capita visualized for each year.
+Animations in **tmap** are created similarly to the facet maps, but instead of using the `tm_facets()` function, we use the `tm_animate()` function.
+It defines the variable that will be used to create the animation, in this case, the `time` column from the `slo_regions_ts` object.
 
-@sec-animations
+```{r}
+#| label: fig-sec-ani1
+#| fig-cap: An animated map with the GDP per capita visualized for each year.
+slo_regions_ts = read_sf("data/slovenia/slo_regions_ts.gpkg")
+tm_shape(slo_regions_ts) +
+  tm_polygons("gdppercap") +
+  tm_animate(by = "time")
+```
+
+This function stitches together the map layers for each value of the `time` variable, creating a smooth transition between them.
+We can customize its speed and if it should loop or not with the `fps` and `play` arguments, respectively.
+Animations can be used for both vector and raster data and then saved as GIF or video files using the `tmap_animation()` function.
+@sec-animations expands on this topic and shows how to create more complex animations, such as animated maps with facets.
 
 ## Map modes {#sec-map-modes}
 
