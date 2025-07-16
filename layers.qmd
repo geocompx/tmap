@@ -275,13 +275,11 @@ tm_shape(slo_borders) +
   tm_text(text = "name")
 ```
 
-In the above example, the `text` argument specifies the name of a variable that will be used for text labels.
-We can further adjust colors (`col`; @sec-colors), sizes (`size`; @sec-sizes), font faces (`fontface`; @sec-ltypography), and background colors (`bgcol`) of labels by providing either a single value or the name of a data variable.
-
-The `tm_text()` function has many arguments that allow us to adjust the appearance of text labels.
-It includes arguments related to the x and y offset of the text labels (`xmod` and `ymod`), and the rotation angle (`angle`).
-<!-- any other are worth mentioning? xmod.scale, xmod.legend, xmod.chart, xmod.free, ymod.scale, ymod.legend, ymod.chart, ymod.free	, angle.scale, angle.legend, angle.chart, angle.free		 -->
-@fig-tmtext-2 shows an example of a map with text labels moved a bit to the right and down, and rotated by 12 degrees.
+Two additional functions for adding text labels are `tm_labels()` and `tm_labels_highlighted()`.
+They are similar to `tm_text()`, but have different defaults.
+The `tm_labels()` function is used to add text labels to the map, but also tries to automatically adjust the position of the labels to avoid overlapping with other features (@fig-tmtext-2).
+The `tm_labels_highlighted()` additionally adds a background color to the labels, which makes them more visible (@fig-tmtext-3).
+<!-- explain when to use each one? -->
 
 ```{r}
 #| label: tmtext2
@@ -290,23 +288,52 @@ tm_shape(slo_borders) +
   tm_polygons() + 
   tm_shape(slo_cities) +
   tm_dots() +
-  tm_text(text = "name", xmod = 1, ymod = -0.5, angle = 12)
+  tm_labels(text = "name")
+```
+```{r}
+#| label: tmtext3
+#| eval: false
+tm_shape(slo_borders) +
+  tm_polygons() + 
+  tm_shape(slo_cities) +
+  tm_dots() +
+  tm_labels_highlighted(text = "name")
 ```
 
 ```{r}
 #| label: fig-tmtext
 #| echo: false
-#| fig-cap: "Example of a map created with tm_text()"
+#| fig-cap: "Maps with text labels."
 #| fig-subcap:
-#|   - "Default text labels"
-#|   - "Customized text label position"
+#|   - "tm_text()"
+#|   - "tm_labels()"
+#|   - "tm_labels_highlighted()"
 <<tmtext1>>
 <<tmtext2>>
+<<tmtext3>>
+```
+
+In the above examples, the `text` argument specifies the name of a variable that will be used for text labels.
+We can further adjust colors (`col`; @sec-colors), sizes (`size`; @sec-sizes), font faces (`fontface`; @sec-ltypography), and background colors (`bgcol`) of labels by providing either a single value or the name of a data variable.
+
+The `tm_text()`, `tm_labels()`, and `tm_labels_highlighted()` functions have many arguments that allow us to adjust the appearance of text labels.
+It includes arguments related to the x and y offset of the text labels (`xmod` and `ymod`), and the rotation angle (`angle`).
+<!-- any other are worth mentioning? xmod.scale, xmod.legend, xmod.chart, xmod.free, ymod.scale, ymod.legend, ymod.chart, ymod.free	, angle.scale, angle.legend, angle.chart, angle.free		 -->
+@fig-tmtext2-1 shows an example of a map with text labels moved a bit to the right and down, and rotated by 12 degrees.
+
+```{r}
+#| label: tmtext4
+#| eval: false
+tm_shape(slo_borders) +
+  tm_polygons() + 
+  tm_shape(slo_cities) +
+  tm_dots() +
+  tm_text(text = "name", xmod = 1, ymod = -0.5, angle = 12)
 ```
 
 Text labels can be further modified with the `opt_tm_text()` function provided to the `options` argument.
 <!-- https://github.com/r-tmap/tmap/issues/1167 -->
-It includes a set of arguments that allow for the adjustment of the text labels' appearance, such as `shadow`, `just`, and `remove_overlap` (@fig-tmtext2).
+It includes a set of arguments that allow for the adjustment of the text labels' appearance, such as `shadow`, `just`, and `remove_overlap` (@fig-tmtext2-2).
 
 ```{r}
 #| label: fig-tmtext2
@@ -318,7 +345,32 @@ tm_shape(slo_borders) +
   tm_text(text = "name", xmod = 1, ymod = -0.5, angle = 12,
           options = opt_tm_text(shadow = TRUE,
                                 just = "left",
-                                remove_overlap = FALSE))
+                                remove_overlap = TRUE))
+```
+
+To automatically adjust the position of text labels to avoid overlapping with other features, we can use the `point.label` argument in the `opt_tm_text()` function.
+When set to `TRUE`, it will use an algorithm to find the best position for each label, which can be useful when there are many overlapping features or when the labels are too close to each other.
+
+```{r}
+tm_shape(slo_borders) +
+  tm_polygons() + 
+  tm_shape(slo_cities) +
+  tm_dots() +
+  tm_text(text = "name", 
+          options = opt_tm_text(point.label	= TRUE))
+```
+
+```{r}
+#| label: fig-tmtext2
+#| fig-cap: "Example of a map created with tm_text() with customized options"
+#| fig-subcap:
+#|   - "with x and y offsets and rotation angle"
+#|   - "with shadow and left justification"
+#|   - "with point.label = TRUE"
+#| echo: false
+<<tmtext4>>
+<<tmtext5>>
+<<tmtext6>>
 ```
 
 <!-- on_surface -->
@@ -351,25 +403,6 @@ tm_shape(slo_borders) +
   tm_shape(slo_contours) +
   tm_iso()
 ```
-
-
-
-```{r}
-slo_terrain = terra::terrain(slo_elev, c("slope", "aspect"), unit = "radians")
-slo_hs = terra::shade(slo_terrain$slope * 3, slo_terrain$aspect)
-tm_shape(slo_hs) +
-	tm_raster(col.scale = tm_scale(values = gray(0:100 / 100), n = 100),
-            col.legend = tm_legend_hide()) +
-	tm_shape(slo_elev) +
-	tm_raster(col_alpha = 0.5,
-            col.scale = tm_scale(values = "geyser", midpoint = NA),
-            col.legend = tm_legend_hide()) +
-	tm_shape(slo_contours) +
-  tm_iso("white")
-```
-
-<!-- tm_labels -->
-<!-- tm_labels_highlighted -->
 
 ## Raster {#sec-raster-layer}
 
