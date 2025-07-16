@@ -336,8 +336,8 @@ Text labels can be further modified with the `opt_tm_text()` function provided t
 It includes a set of arguments that allow for the adjustment of the text labels' appearance, such as `shadow`, `just`, and `remove_overlap` (@fig-tmtext2-2).
 
 ```{r}
-#| label: fig-tmtext2
-#| fig-cap: "Example of a map created with tm_text() with customized options"
+#| label: tmtext5
+#| eval: false
 tm_shape(slo_borders) +
   tm_polygons() + 
   tm_shape(slo_cities) +
@@ -352,6 +352,8 @@ To automatically adjust the position of text labels to avoid overlapping with ot
 When set to `TRUE`, it will use an algorithm to find the best position for each label, which can be useful when there are many overlapping features or when the labels are too close to each other.
 
 ```{r}
+#| label: tmtext6
+#| eval: false
 tm_shape(slo_borders) +
   tm_polygons() + 
   tm_shape(slo_cities) +
