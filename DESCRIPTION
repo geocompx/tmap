@@ -1,21 +1,22 @@
 Package: tmapbook
 Type: Book
 Title: Spatial Data Visualization with tmap
-Version: 0.0.8
+Version: 0.0.9
 Imports: 
-  tmaptools,
-  tmap,
-  spDataLarge,
-  spData,
+  curl,
   dplyr,
-  tidyr,
+  gifski,
   rmapshaper,
   ragg,
+  spDataLarge,
+  spData,
+  tidyr,
   tinytable,
-  curl,
+  tmaptools,
+  tmap,
+  usethis,
   viridis,
-  webshot,
-  gifski
+  webshot
 Remotes: 
   r-tmap/tmaptools,
   r-tmap/tmap,
