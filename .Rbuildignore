@@ -1,1 +1,1 @@
-^\.github$
+^.*  # This line excludes everything else (except DESCRIPTION)
