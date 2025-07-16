@@ -42,3 +42,23 @@ The slightly longer answer is that **tmap** allows users to explore, analyze, an
 In this book, you will find the long answer.
 
 <!-- ## Thematic maps -->
+
+## Prerequisites
+
+<!-- remember to create a github release with the data package before the book is published -->
+<!-- and then update use_course() to use the latest released version of the data package -->
+
+To follow all the examples in this book, you’ll need to install the **tmap** package along with a few additional dependencies.
+The easiest way to do this is by installing the **tmapbook** package:
+
+```r
+install.packages("tmapbook", repos = c("https://geocompx.r-universe.dev",
+                                       "https://cloud.r-project.org"))
+```
+
+All datasets used in the book are hosted in the **tmapdata** repository. 
+You can download them using the **usethis** package:
+
+```r
+usethis::use_course("geocompx/tmapdata")
+```
