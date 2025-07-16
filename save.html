@@ -422,7 +422,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <p>By default, DPI is set to 300, and the image width and height is automatically adjusted based on the map aspect ratio. These parameters can be, however, changed with the <code>dpi</code>, <code>width</code>, and <code>height</code> arguments<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save</a></span><span class="op">(</span><span class="va">tm</span>, <span class="st">"my_map.png"</span>, width <span class="op">=</span> <span class="fl">1000</span>, height <span class="op">=</span> <span class="fl">750</span>, dpi <span class="op">=</span> <span class="fl">300</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Map saved to /__w/tmap/tmap/my_map.png</span></span>
+<span><span class="co">#&gt; Map saved to /home/jn/Science/geocompx/tmap/my_map.png</span></span>
 <span><span class="co">#&gt; Resolution: 1000 by 750 pixels</span></span>
 <span><span class="co">#&gt; Size: 3.33 by 2.5 inches (300 dpi)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -439,7 +439,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <p>To save a map to a vector graphic format, we still can use <code><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save()</a></code> but either with a suitable file extension or by using the <code>device</code> argument, for example <code>device = svglite::svglite</code>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save</a></span><span class="op">(</span><span class="va">tm</span>, <span class="st">"my_map.svg"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Map saved to /__w/tmap/tmap/my_map.svg</span></span>
+<span><span class="co">#&gt; Map saved to /home/jn/Science/geocompx/tmap/my_map.svg</span></span>
 <span><span class="co">#&gt; Size: 8.34 by 5.87 inches</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Zooming in and out of vector graphics does not affect their quality. At the same time, the <code>width,</code> <code>height,</code> and <code>scale</code> arguments can still impact the output file. For example, a vector graphic file saved with a narrower width value will have thicker lines and larger fonts compared to the one with a larger width value. You can check this effect by saving the <code>tm</code> object with <code>width = 1</code> and then with <code>width = 10</code>.</p>
@@ -449,7 +449,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <p><code>tmap</code> map objects can not only be viewed in the interactive mode (as shown in <a href="nutshell.html#sec-map-modes" class="quarto-xref"><span>Section 3.6</span></a>) but also saved as HTML files by adding the <code>.html</code> extension to the output file name.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save</a></span><span class="op">(</span><span class="va">tm</span>, <span class="st">"my_map.html"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Interactive map saved to /__w/tmap/tmap/my_map.html</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; Interactive map saved to /home/jn/Science/geocompx/tmap/my_map.html</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <code><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save()</a></code> function also has several additional arguments reserved for the interactive format, including <code>selfcontained</code> and <code>in.iframe</code>. The <code>selfcontained</code> argument with <code>TRUE</code> by default saves our map together with additional resources (e.g., JavaScript libraries) into one HTML file. Otherwise, additional resources will be saved in an adjacent directory. The <code>in.iframe</code> argument (<code>FALSE</code> by default) allows saving an interactive map as an iframe – when <code>TRUE</code> it creates two HTML files - a small HTML file with the iframe container and a large one with the actual map. <!-- when `in.iframe = TRUE` is useful?? --> <!-- arguments passed on to device functions or to saveWidget or saveWidgetframe --></p>
 
