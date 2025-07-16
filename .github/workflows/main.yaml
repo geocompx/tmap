@@ -25,7 +25,10 @@ jobs:
           sudo apt-get install -y cargo optipng
 
       - name: Install R deps (for readers)
-        uses: r-lib/actions/setup-r-dependencies@v2
+        run: |
+          Rscript -e "install.packages('tmapbook', 
+                                       repos = c('https://geocompx.r-universe.dev',
+                                                 'https://cloud.r-project.org'))"
 
       - name: Install R deps (for book building)
         run: |
