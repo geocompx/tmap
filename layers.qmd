@@ -268,10 +268,11 @@ The primary function for creating text labels is `tm_text()`, which adds a label
 ```{r}
 #| label: tmtext1
 #| eval: false
-tm_shape(slo_borders) +
+tm = tm_shape(slo_borders) +
   tm_polygons() + 
   tm_shape(slo_cities) +
-  tm_dots() +
+  tm_dots()
+tm +
   tm_text(text = "name")
 ```
 
@@ -284,19 +285,13 @@ The `tm_labels_highlighted()` additionally adds a background color to the labels
 ```{r}
 #| label: tmtext2
 #| eval: false
-tm_shape(slo_borders) +
-  tm_polygons() + 
-  tm_shape(slo_cities) +
-  tm_dots() +
+tm +
   tm_labels(text = "name")
 ```
 ```{r}
 #| label: tmtext3
 #| eval: false
-tm_shape(slo_borders) +
-  tm_polygons() + 
-  tm_shape(slo_cities) +
-  tm_dots() +
+tm +
   tm_labels_highlighted(text = "name")
 ```
 
@@ -308,6 +303,7 @@ tm_shape(slo_borders) +
 #|   - "tm_text()"
 #|   - "tm_labels()"
 #|   - "tm_labels_highlighted()"
+#| layout-ncol: 3
 <<tmtext1>>
 <<tmtext2>>
 <<tmtext3>>
@@ -324,10 +320,7 @@ It includes arguments related to the x and y offset of the text labels (`xmod` a
 ```{r}
 #| label: tmtext4
 #| eval: false
-tm_shape(slo_borders) +
-  tm_polygons() + 
-  tm_shape(slo_cities) +
-  tm_dots() +
+tm +
   tm_text(text = "name", xmod = 1, ymod = -0.5, angle = 12)
 ```
 
@@ -338,10 +331,7 @@ It includes a set of arguments that allow for the adjustment of the text labels'
 ```{r}
 #| label: tmtext5
 #| eval: false
-tm_shape(slo_borders) +
-  tm_polygons() + 
-  tm_shape(slo_cities) +
-  tm_dots() +
+tm +
   tm_text(text = "name", xmod = 1, ymod = -0.5, angle = 12,
           options = opt_tm_text(shadow = TRUE,
                                 just = "left",
@@ -354,10 +344,7 @@ When set to `TRUE`, it will use an algorithm to find the best position for each 
 ```{r}
 #| label: tmtext6
 #| eval: false
-tm_shape(slo_borders) +
-  tm_polygons() + 
-  tm_shape(slo_cities) +
-  tm_dots() +
+tm +
   tm_text(text = "name", 
           options = opt_tm_text(point.label	= TRUE))
 ```
@@ -370,6 +357,7 @@ tm_shape(slo_borders) +
 #|   - "with shadow and left justification"
 #|   - "with point.label = TRUE"
 #| echo: false
+#| layout-ncol: 3
 <<tmtext4>>
 <<tmtext5>>
 <<tmtext6>>
@@ -396,6 +384,7 @@ In the example below, we create contour lines (isopleths) from the elevation ras
 
 ```{r}
 #| label: fig-tmiso
+#| fig-cap: "Example of a map created with tm_iso() showing contour lines with text labels."
 #| message: false
 library(terra)
 slo_elev = rast("data/slovenia/slo_elev.tif")
