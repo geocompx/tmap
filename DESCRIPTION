@@ -2,6 +2,7 @@ Package: tmapbook
 Type: Book
 Title: Spatial Data Visualization with tmap
 Version: 0.1.0
+Authors@R: c(person("Jakub", "Nowosad", email = "nowosad.jakub@gmail.com", role = c("aut", "cre")))
 Imports:
   gifski,
   rmapshaper,
