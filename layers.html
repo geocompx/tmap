@@ -788,31 +788,26 @@ Figure&nbsp;6.4: Example of a map created with tm_lines().
 <span class="header-section-number">6.4</span> Text</h2>
 <p>Text labels are often an integral part of many maps. They can serve several functions, from naming features, indicating relations between them, or representing a given variable’s values. The primary function for creating text labels is <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text()</a></code>, which adds a label to each spatial feature (<a href="#fig-tmtext-1" class="quarto-xref">Figure&nbsp;<span>6.5 (a)</span></a>).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_cities</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"name"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Two additional functions for adding text labels are <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_labels()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_labels_highlighted()</a></code>. They are similar to <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text()</a></code>, but have different defaults. The <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_labels()</a></code> function is used to add text labels to the map, but also tries to automatically adjust the position of the labels to avoid overlapping with other features (<a href="#fig-tmtext-2" class="quarto-xref">Figure&nbsp;<span>6.5 (b)</span></a>). The <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_labels_highlighted()</a></code> additionally adds a background color to the labels, which makes them more visible (<a href="#fig-tmtext-3" class="quarto-xref">Figure&nbsp;<span>6.5 (c)</span></a>). <!-- explain when to use each one? --></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_cities</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_labels</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"name"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_cities</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_labels_highlighted</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"name"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center">
-<div id="fig-tmtext" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<div id="fig-tmtext" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmtext-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output-display">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmtext" style="flex-basis: 33.3%;justify-content: center;">
 <div id="fig-tmtext-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmtext-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-tmtext-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmtext">
@@ -822,7 +817,7 @@ Figure&nbsp;6.4: Example of a map created with tm_lines().
 </figcaption></figure>
 </div>
 </div>
-<div class="cell-output-display">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmtext" style="flex-basis: 33.3%;justify-content: center;">
 <div id="fig-tmtext-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmtext-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-tmtext-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmtext">
@@ -832,7 +827,7 @@ Figure&nbsp;6.4: Example of a map created with tm_lines().
 </figcaption></figure>
 </div>
 </div>
-<div class="cell-output-display">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmtext" style="flex-basis: 33.3%;justify-content: center;">
 <div id="fig-tmtext-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmtext-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-tmtext-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmtext">
@@ -843,26 +838,20 @@ Figure&nbsp;6.4: Example of a map created with tm_lines().
 </div>
 </div>
 </div>
+</div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmtext-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;6.5: Maps with text labels.
 </figcaption></figure>
 </div>
-</div>
 <p>In the above examples, the <code>text</code> argument specifies the name of a variable that will be used for text labels. We can further adjust colors (<code>col</code>; <a href="visual-variables.html#sec-colors" class="quarto-xref"><span>Section 7.3</span></a>), sizes (<code>size</code>; <a href="visual-variables.html#sec-sizes" class="quarto-xref"><span>Section 7.4</span></a>), font faces (<code>fontface</code>; <a href="layout.html#sec-ltypography" class="quarto-xref"><span>Section 12.3</span></a>), and background colors (<code>bgcol</code>) of labels by providing either a single value or the name of a data variable.</p>
 <p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_labels()</a></code>, and <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_labels_highlighted()</a></code> functions have many arguments that allow us to adjust the appearance of text labels. It includes arguments related to the x and y offset of the text labels (<code>xmod</code> and <code>ymod</code>), and the rotation angle (<code>angle</code>). <!-- any other are worth mentioning? xmod.scale, xmod.legend, xmod.chart, xmod.free, ymod.scale, ymod.legend, ymod.chart, ymod.free , angle.scale, angle.legend, angle.chart, angle.free         --> <a href="#fig-tmtext2-1" class="quarto-xref">Figure&nbsp;<span>6.6 (a)</span></a> shows an example of a map with text labels moved a bit to the right and down, and rotated by 12 degrees.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_cities</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"name"</span>, xmod <span class="op">=</span> <span class="fl">1</span>, ymod <span class="op">=</span> <span class="op">-</span><span class="fl">0.5</span>, angle <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Text labels can be further modified with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">opt_tm_text()</a></code> function provided to the <code>options</code> argument. <!-- https://github.com/r-tmap/tmap/issues/1167 --> It includes a set of arguments that allow for the adjustment of the text labels’ appearance, such as <code>shadow</code>, <code>just</code>, and <code>remove_overlap</code> (<a href="#fig-tmtext2-2" class="quarto-xref">Figure&nbsp;<span>6.6 (b)</span></a>).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_cities</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"name"</span>, xmod <span class="op">=</span> <span class="fl">1</span>, ymod <span class="op">=</span> <span class="op">-</span><span class="fl">0.5</span>, angle <span class="op">=</span> <span class="fl">12</span>,</span>
 <span>          options <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">opt_tm_text</a></span><span class="op">(</span>shadow <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>                                just <span class="op">=</span> <span class="st">"left"</span>,</span>
@@ -870,17 +859,14 @@ Figure&nbsp;6.5: Maps with text labels.
 </div>
 <p>To automatically adjust the position of text labels to avoid overlapping with other features, we can use the <code>point.label</code> argument in the <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">opt_tm_text()</a></code> function. When set to <code>TRUE</code>, it will use an algorithm to find the best position for each label, which can be useful when there are many overlapping features or when the labels are too close to each other.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_cities</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"name"</span>, </span>
 <span>          options <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">opt_tm_text</a></span><span class="op">(</span>point.label <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-layout-align="center">
-<div id="fig-tmtext2" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<div id="fig-tmtext2" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmtext2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output-display">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmtext2" style="flex-basis: 33.3%;justify-content: center;">
 <div id="fig-tmtext2-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmtext2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-tmtext2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmtext2">
@@ -890,7 +876,7 @@ Figure&nbsp;6.5: Maps with text labels.
 </figcaption></figure>
 </div>
 </div>
-<div class="cell-output-display">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmtext2" style="flex-basis: 33.3%;justify-content: center;">
 <div id="fig-tmtext2-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmtext2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-tmtext2-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmtext2">
@@ -900,7 +886,7 @@ Figure&nbsp;6.5: Maps with text labels.
 </figcaption></figure>
 </div>
 </div>
-<div class="cell-output-display">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmtext2" style="flex-basis: 33.3%;justify-content: center;">
 <div id="fig-tmtext2-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmtext2-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-tmtext2-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmtext2">
@@ -911,10 +897,10 @@ Figure&nbsp;6.5: Maps with text labels.
 </div>
 </div>
 </div>
+</div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmtext2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;6.6: Example of a map created with tm_text() with customized options
 </figcaption></figure>
-</div>
 </div>
 <!-- on_surface -->
 <!-- clustering -->
@@ -929,12 +915,12 @@ Figure&nbsp;6.6: Example of a map created with tm_text() with customized options
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_contours</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_iso.html">tm_iso</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-tmiso" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%" data-fig-align="center">
+<div id="fig-tmiso" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmiso-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-tmiso-1.png" id="fig-tmiso" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:100.0%">
+<img src="figures/fig-tmiso-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-tmiso-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.7
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmiso-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.7: Example of a map created with tm_iso() showing contour lines with text labels.
 </figcaption></figure>
 </div>
 </div>
