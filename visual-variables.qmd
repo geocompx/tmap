@@ -625,7 +625,7 @@ It is a low-level graphical object in R that can be used to create custom shapes
 <!-- add intro what are grobs -->
 <!-- add reference to some section explaining tmap_grob (chapter 10??) -->
 In the code below, we create two grob objects: a circle and a rectangle with custom sizes and colors.
-Then, we specify them in the `shape.scale` argument of the `tm_symbols()` function -- see @fig-tmsymshape-2.
+Then, we specify them in the `shape.scale` argument of the `tm_symbols()` function -- see @fig-tmsymshape-3.
 
 ```{r}
 #| label: tmsymshape3
@@ -664,7 +664,7 @@ tm_shape(slo_cities) +
 #| label: fig-tmsymshape
 #| echo: false
 #| message: false
-#| layout-row: 2
+#| layout-nrow: 2
 #| fig-cap: 'Examples of maps with different symbols'
 #| fig-subcap:
 #|   - default symbols
