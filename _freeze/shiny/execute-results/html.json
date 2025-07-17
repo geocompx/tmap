@@ -2,7 +2,7 @@
   "hash": "04e608a4e1c75b45c5346a12937fda19",
   "result": {
     "engine": "knitr",
-    "markdown": "\n::: {.cell}\n\n:::\n\n\n# **tmap** in **shiny** {#sec-shiny}\n",
+    "markdown": "::: {.cell}\n\n:::\n\n\n\n\n# **tmap** in **shiny** {#sec-shiny}\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
