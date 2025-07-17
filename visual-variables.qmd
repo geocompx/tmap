@@ -9,8 +9,10 @@ Visual variables are methods to translate information given in variables into ma
 Basic visual variables are color, size, and shape^[Other visual variables include position, orientation, and texture.].
 All of them can influence our perception and understanding of the presented information; therefore, it is worth understanding when and how they can be used.
 
+The use of visual variables on maps depends on two main things: (a) type of the presented variable, and (b) type of the map layer (@sec-const-visual-variables;@sec-auto-scales).
+
 <!-- raster data in the plot? -->
-<!-- improve/update/expand hte plot -->
+<!-- improve/update/expand the plot -->
 
 ```{r}
 #| label: fig-visual-variables
@@ -22,7 +24,6 @@ source("code/visual_variables.R")
 visual_variables()
 ```
 
-The use of visual variables on maps depends on two main things: (a) type of the presented variable, and (b) type of the map layer (@sec-const-visual-variables;@sec-auto-scales).
 @fig-visual-variables shows examples of different visual variables.
 Color is the most universal visual variable (@sec-colors).
 It can represent both qualitative (categorical) and quantitative (numerical) variables, and also we can color symbols, lines, or polygon fillings.
@@ -33,8 +34,7 @@ The use of shapes usually should be limited to qualitative variables, and differ
 Similarly, qualitative variables in lines can be presented by different line types.
 Values of polygons usually cannot be represented by either shapes or sizes, as these two features are connected to the geometries of the objects.
 <!-- exception - cartograms - ref to other chapter \@ref(other-types) -->
-
-<!-- also, sometimes it is possible to use several visual variables at the same time (e.g. width lines + colors) -->
+Finally, there are some cases in which we can use several visual variables at the same time (@sec-mixing-visual-variables).
 
 ```{r}
 #| echo: false
@@ -61,6 +61,20 @@ tm_shape(slo_regions) +
               lwd = 0.5,
               lty = "dashed")
 ```
+
+Additionally, for polygons, we can set the fill color in such a way that adjacent polygons do not get the same color (@fig-colorscalesmc).
+This is done by setting the `fill` argument to `"MAP_COLORS"`.
+
+```{r}
+#| label: fig-colorscalesmc
+#| echo: false
+#| fig-cap: Example of a map with adjacent polygons having different colors.
+tm_shape(slo_regions) +
+  tm_polygons(fill = "MAP_COLORS")
+```
+
+<!-- ??? -->
+<!-- In this case, it is also possible to change the default colors with the `palette` argument, but also to activate the internal algorithm to search for a minimal number of colors for visualization by setting `minimize = TRUE`. -->
 
 ## Automatic scales {#sec-auto-scales}
 
