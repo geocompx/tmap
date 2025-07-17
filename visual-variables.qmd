@@ -588,14 +588,12 @@ tm_shape(slo_cities) +
 ## Shapes {#sec-shapes}
 <!-- ??and markers -->
 
-<!-- potential tmap improvement: do not allow to use shape for numerical vars -->
-
 Shapes allow representing different categories of point data.
-They can be very generic, e.g., circle or square, just to be able to differentiate between categories, but often we use symbols that we associate with different types of features. 
+They can be very generic, e.g., a circle or square, just to differentiate between categories, but often we use symbols that we associate with different types of features. 
 For example, we use the letter *P* for parking lots, *I* for information centers, an airplane symbol for airports, or a bus symbol for bus stops.
 
 To use different shapes, we should use the `shape` argument in the `tm_symbols()` function.
-It expects the name of the categorical variable.
+It expects the name of the categorical variable, such as `"place"` in the example below (@fig-tmsymshape-1).
 
 ```{r}
 #| label: tmsymshape1
@@ -606,11 +604,11 @@ tm_shape(slo_cities) +
 
 <!-- tmap::tmap_options()$values.var$shape -->
 By default, **tmap** uses symbols of filled circle, square, diamond, point-up triangle, and point-down triangle^[They are represented in R by numbers from 21 to 25.]. 
-However, it is also possible to customize used symbols, their title, and labels.
+However, it is also possible to customize the used symbols, their title, and labels.
 Legend titles related to shapes and their labels are modified with the `shape.legend` argument.
 
-Shapes can be specified with the `shapes` argument, which allows using one of three options.
-The first one is a numeric value that specifies the plotting character of the symbol.
+Shapes are specified with the `shape.scale` argument -- there we can set the `values` argument with three different approaches: a vector of numbers, grob objects, or icons.
+The first one is a numeric value that specifies the plotting character of the symbol (@fig-tmsymshape-2).
 A complete list of available symbols and their corresponding numbers is in the `?pch` function's documentation.
 <!--JN: or should we add a figure with them here??-->
 
@@ -622,46 +620,37 @@ tm_shape(slo_cities) +
              shape.scale = tm_scale(values = c(0, 2)))
 ```
 
-The second option is to use a *grob* object.
+The second option is to use a graphic object (*grob*).
+It is a low-level graphical object in R that can be used to create custom shapes.
 <!-- add intro what are grobs -->
 <!-- add reference to some section explaining tmap_grob (chapter 10??) -->
-
-```{r}
-# library(grid)
-# library(ggplotify)
-library(ggplot2)
-
-# p1 = as.grob(~barplot(1:10))
-# p2 = as.grob(expression(plot(rnorm(10), yaxt = "n", xaxt = "n", ann = FALSE, bty = "n")))
-# p3 = as.grob(function() plot(sin, yaxt = "n", xaxt = "n", ann = FALSE, bty = "n"))
-p4 = ggplotGrob(ggplot(data.frame(x = 1:5, y = 1:5), aes(x, y)) + geom_point() + theme_void())
-```
+In the code below, we create two grob objects: a circle and a rectangle with custom sizes and colors.
+Then, we specify them in the `shape.scale` argument of the `tm_symbols()` function -- see @fig-tmsymshape-2.
 
 ```{r}
 #| label: tmsymshape3
 #| eval: false
+# a circle
+p1 = grid::circleGrob(r = 0.25, 
+                      gp = grid::gpar(fill = "skyblue", col = "darkblue"))
+# a rectangle
+p2 = grid::rectGrob(width = 0.5, height = 0.5, 
+                    gp = grid::gpar(fill = "lightgreen", col = "darkgreen"))
+
 tm_shape(slo_cities) +
   tm_symbols(shape = "place",
-             shape.scale = tm_scale(values = list(p4, p4, p4)))
+             shape.scale = tm_scale(values = list(p1, p2)))
 ```
 
-<!-- explain what's a grob -->
-<!-- try different codes (including the view mode) -->
-<!-- add new example -->
-
-<!-- A grob object, which can be a ggplot2 plot object created with ggplotGrob. To specify multiple shapes, a list of grob objects is required. See example of a proportional symbol map with ggplot2 plots. -->
-
-The last possibility is to use an icon specification created with the `tmap_icons()` function, that uses any png images.
-The `tmap_icons()` function accepts a vector of file paths or urls, and also allows setting the width and height of the icon.
-In our example, we have three distinct groups, therefore we need to create new icons based on three images -- `icon1.png`, `icon2.png`, and `icon3.png` in this case.
+The last possibility is to use an icon specification created with the `tmap_icons()` function, which uses any PNG images.
+The `tmap_icons()` function accepts a vector of file paths or URLs, and also allows setting the width and height of the icon.
+In our example, we have two groups, therefore we need to create new icons based on two images -- `icon1.png` and `icon2.png` in this case.
 
 ```{r}
-my_icons = tmap_icons(c("images/icon1.png", 
-                        "images/icon2.png"))
+my_icons = tmap_icons(c("data/icon1.png", "data/icon2.png"))
 ```
 
-Now, we can use the prepared icons in the `shapes` argument (@fig-tmsymshape-4).
-<!-- border.col = NULL -->
+Now, we can use the prepared icons in the `shape.scale` argument (@fig-tmsymshape-4).
 
 ```{r}
 #| label: tmsymshape4
