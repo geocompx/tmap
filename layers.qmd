@@ -404,11 +404,9 @@ slo_elev = read_stars("data/slovenia/slo_elev.tif")
 slo_gm = read_stars("data/slovenia/slo_gm.tif")
 ```
 
-<!-- Raster data intro -->
 Visualization of raster data depends on the raster type (continuous or categorical), its resolution, and the number of layers.
 @fig-rasterdown shows two simple examples of continuous and categorical raster visualizations created with `tm_raster().`
 This function attempts to recognize the type of a given raster -- when the input raster is continuous then the pretty style is used (@fig-rastertype-1).
-<!-- However, the continuous scale (`tm_scale_continuous()`) often better represent phenomena that progressively vary in space  -->
 
 ```{r}
 #| label: rastertype1
@@ -417,8 +415,9 @@ tm_shape(slo_elev) +
   tm_raster()
 ```
 
+However, the continuous scale (`tm_scale_continuous()`) may better represent phenomena that progressively vary in space -- as you can see in @sec-continuous-scales.
+
 On the other hand, when the given raster is categorical, then `tm_raster()` uses `tm_scale_categorical()` automatically (@fig-rastertype-2).
-We can also adjust the legend title, used colors, and many more, in a similar fashion as in the previously mentioned layers.
 
 ```{r}
 #| label: rastertype2
@@ -440,8 +439,10 @@ tm_shape(slo_gm) +
 <<rastertype2>>
 ```
 
+We can also adjust the legend title, used colors, and many more, in a similar fashion as in the previously mentioned layers.
+
 The above examples used a raster with one layer only.
-However, rasters can have many layers, either represented by dimensions or attributes.
+However, rasters can have many layers, either represented by layers from the **terra** package or dimensions and attributes from the **stars** package.
 By default, **tmap** shows all of the layers, where each raster has its own legend.
 
 ```{r}
