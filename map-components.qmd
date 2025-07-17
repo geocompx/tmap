@@ -183,27 +183,28 @@ The location of the north arrow, by default, is placed automatically, but can al
 #| fig-cap: "North arrow types"
 #| echo: false
 #| message: false
+#| fig-width: 9
 #| fig-asp: 0.22
 library(tmap)
 data("World")
 tm_comp = tm_shape(World) +
     tm_borders(col_alpha = 0) +
-    tm_credits('"arrow"', group_id = 1, z = 1, size = 1.25) +
+    tm_credits('"arrow"', group_id = 1, z = 1, size = 1) +
     tm_compass(type = "arrow", group_id = 1, z = 2, size = 5) + 
-    tm_credits('"4star"', group_id = 2, z = 1, size = 1.25) +
+    tm_credits('"4star"', group_id = 2, z = 1, size = 1) +
     tm_compass(type = "4star", group_id = 2, z = 2, size = 5) +
-    tm_credits('"8star"', group_id = 3, z = 1, size = 1.25) +
+    tm_credits('"8star"', group_id = 3, z = 1, size = 1) +
     tm_compass(type = "8star", group_id = 3, z = 2, size = 5) +
-    tm_credits('"radar"', group_id = 4, z = 1, size = 1.25) +
+    tm_credits('"radar"', group_id = 4, z = 1, size = 1) +
     tm_compass(type = "radar", group_id = 4, z = 2, size = 5) +
-    tm_credits('"rose"', group_id = 5, z = 1, size = 1.25) +
+    tm_credits('"rose"', group_id = 5, z = 1, size = 1) +
     tm_compass(type = "rose", group_id = 5, z = 2, size = 5) +
-    tm_components(1, position = tm_pos_in(0.0, 0.7, just.h = "left", align.h = "center")) +
-    tm_components(2, position = tm_pos_in(0.2, 0.7, just.h = "left", align.h = "center")) +
-    tm_components(3, position = tm_pos_in(0.4, 0.7, align.h = "center")) +
-    tm_components(4, position = tm_pos_in(0.6, 0.7, align.h = "center")) +
-    tm_components(5, position = tm_pos_in(0.8, 0.7, align.h = "center")) +
-    tm_layout(frame = FALSE)
+    tm_components(1, position = tm_pos_in(0.0, 0.75, just.h = "left", align.h = "center")) +
+    tm_components(2, position = tm_pos_in(0.2, 0.75, just.h = "left", align.h = "center")) +
+    tm_components(3, position = tm_pos_in(0.4, 0.75, align.h = "center")) +
+    tm_components(4, position = tm_pos_in(0.6, 0.75, align.h = "center")) +
+    tm_components(5, position = tm_pos_in(0.8, 0.75, align.h = "center")) +
+    tm_layout(frame = FALSE, inner.margins = 0)
 tm_comp
 ```
 
@@ -268,21 +269,15 @@ Additional arguments include the height of the logo (`height`, the width is scal
 
 ## Minimap {#sec-minimap}
 
-<!-- https://github.com/r-tmap/tmap/issues/1048#issuecomment-3044407055 -->
+The minimap is a small overview map that shows the extent of the main map within a larger context.
+The `tm_minimap()` function adds a minimap of a globe to the main map, as illustrated in @fig-minimap. 
 
 ```{r}
-tmap_mode("view")
-```
-
-```{r}
+#| label: fig-minimap
+#| fig-cap: A map with a minimap.
 tm + 
   tm_minimap()
 ```
 
-<!-- mention/reference inset maps -->
-
-```{r}
-tmap_mode("plot")
-```
-
-## Inset maps {#sec-inset-maps}
+The `tm_minimap()` function is simple and straightforward, but does not offer too many customization options.
+If you want to create a more advanced minimap, you can use the `tm_inset()` function, which is described in @sec-inset-maps.

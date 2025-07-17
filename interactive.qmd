@@ -12,3 +12,21 @@ source("code/before_script.R")
 
 <!-- layer groups? -->
 
+
+```{r}
+#| include: false
+tmap_mode("view")
+```
+
+```{r}
+#| include: false
+tm + 
+  tm_minimap()
+```
+
+<!-- mention/reference inset maps -->
+
+```{r}
+#| include: false
+tmap_mode("plot")
+```

@@ -98,3 +98,5 @@ For more information on saving maps, see @sec-save.
 
 <!-- tmap_grob? -->
 <!-- should the tm_inset be moved here? -->
+
+## Inset maps {#sec-inset-maps}
