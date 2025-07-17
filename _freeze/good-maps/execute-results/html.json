@@ -1,9 +1,11 @@
 {
-  "hash": "071475c39d34b241ec3b4f57b812a350",
+  "hash": "3e45f63644df12e459b50b4fceffe169",
   "result": {
     "engine": "knitr",
-    "markdown": "\n::: {.cell}\n\n:::\n\n\n# How to make good maps? {#sec-good-maps}\n\n<!-- possibly after this chapter, we could add two or three chapters where one map is created step-by-step with the decision made explained (from the visual, not code point of view) -->",
-    "supporting": [],
+    "markdown": "::: {.cell}\n\n:::\n\n\n\n\n\n# How to make good maps? {#sec-good-maps}\n\n<!-- possibly after this chapter, we could add two or three chapters where one map is created step-by-step with the decision made explained (from the visual, not code point of view) -->\n\n\n\n\n<!-- placeholder for maps to show somewhere: -->\n\n\n\n\n\n::: {.cell layout-align=\"center\"}\n\n:::",
+    "supporting": [
+      "good-maps_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
