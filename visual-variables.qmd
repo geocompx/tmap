@@ -517,7 +517,7 @@ For example in the above code, we just show examples of how symbols with populat
 #| label: fig-tmsizes
 #| echo: false
 #| message: false
-#| layout-nrow: 3
+#| layout-ncol: 3
 #| fig-cap: 'Examples of three approaches for changing sizes of symbols'
 #| fig-subcap:
 #|   - all symbols have a consistent size of 0.5
