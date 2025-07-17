@@ -361,7 +361,7 @@ Table&nbsp;B.1
 
       function styleCell_lbzwpy41b8f1ocz3enr9(i, j, css_id) {
           var table = document.getElementById("tinytable_lbzwpy41b8f1ocz3enr9");
-          var cell = table.rows[i]?.cells[j];  // Safe navigation to avoid errors
+          var cell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
           if (cell) {
               console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
               cell.classList.add(css_id);
@@ -371,46 +371,51 @@ Table&nbsp;B.1
       }
       function insertSpanRow(i, colspan, content) {
         var table = document.getElementById('tinytable_lbzwpy41b8f1ocz3enr9');
-        var newRow = table.insertRow(i);
+        // Find the row with data-row attribute matching i
+        var targetRow = table.querySelector(`tr [data-row="${i}"]`).closest('tr');
+        var newRow = table.insertRow(targetRow.rowIndex);
         var newCell = newRow.insertCell(0);
         newCell.setAttribute("colspan", colspan);
+        newCell.setAttribute("data-col", "0");
+        newCell.setAttribute("data-row", i - 1);
         // newCell.innerText = content;
         // this may be unsafe, but innerText does not interpret <br>
         newCell.innerHTML = content;
       }
       function spanCell_lbzwpy41b8f1ocz3enr9(i, j, rowspan, colspan) {
         var table = document.getElementById("tinytable_lbzwpy41b8f1ocz3enr9");
-        const targetRow = table.rows[i];
-        const targetCell = targetRow.cells[j];
+        const targetCell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
+        if (!targetCell) {
+          console.warn(`Cell at (${i}, ${j}) not found.`);
+        }
+
+        // Get all cells that need to be removed
+        const cellsToRemove = [];
         for (let r = 0; r < rowspan; r++) {
-          // Only start deleting cells to the right for the first row (r == 0)
-          if (r === 0) {
-            // Delete cells to the right of the target cell in the first row
-            for (let c = colspan - 1; c > 0; c--) {
-              if (table.rows[i + r].cells[j + c]) {
-                table.rows[i + r].deleteCell(j + c);
-              }
-            }
-          }
-          // For rows below the first, delete starting from the target column
-          if (r > 0) {
-            for (let c = colspan - 1; c >= 0; c--) {
-              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
-                table.rows[i + r].deleteCell(j);
-              }
+          for (let c = 0; c < colspan; c++) {
+            if (r === 0 && c === 0) continue; // Skip the target cell
+            const cell = table.querySelector(`[data-row="${i + r}"][data-col="${j + c}"]`);
+            if (cell) {
+              cellsToRemove.push(cell);
             }
           }
         }
-        // Set rowspan and colspan of the target cell
-        targetCell.rowSpan = rowspan;
-        targetCell.colSpan = colspan;
+
+        // Remove all cells
+        cellsToRemove.forEach(cell => cell.remove());
+
+        // Set rowspan and colspan of the target cell if it exists
+        if (targetCell) {
+          targetCell.rowSpan = rowspan;
+          targetCell.colSpan = colspan;
+        }
       }
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: 20, j: 0 }, { i: 20, j: 1 },  ], css_id: 'tinytable_css_hriimk9js5kju5lj4j71',}, 
-          { positions: [ { i: 0, j: 0 }, { i: 0, j: 1 },  ], css_id: 'tinytable_css_8upsikl2m15eul1rzwm6',}, 
+          { positions: [ { i: '20', j: 0 }, { i: '20', j: 1 },  ], css_id: 'tinytable_css_hriimk9js5kju5lj4j71',}, 
+          { positions: [ { i: '0', j: 0 }, { i: '0', j: 1 },  ], css_id: 'tinytable_css_8upsikl2m15eul1rzwm6',}, 
           ];
 
           // Loop over the arrays to style the cells
@@ -430,90 +435,90 @@ Table&nbsp;B.1
 <thead>
 </thead><caption>..</caption>
               <tbody><tr>
-<th scope="col">Term</th>
-                <th scope="col">Explanation</th>
+<th scope="col" data-row="0" data-col="0">Term</th>
+                <th scope="col" data-row="0" data-col="1">Explanation</th>
               </tr>
 
 </tbody><tbody>
 <tr>
-<td>Auxiliary map layer</td>
-                  <td>An auxiliary (or non-data-driven) map layer is a visual representation of geographic information that does not come from a spatial object, but uses the map's coordinates. Examples: `tm_grid()`/`tm_graticules()` and `tm_basemap()`.</td>
+<td data-row="1" data-col="0">Auxiliary map layer</td>
+                  <td data-row="1" data-col="1">An auxiliary (or non-data-driven) map layer is a visual representation of geographic information that does not come from a spatial object, but uses the map's coordinates. Examples: `tm_grid()`/`tm_graticules()` and `tm_basemap()`.</td>
                 </tr>
 <tr>
-<td>Data-driven map layer</td>
-                  <td>A data-driven map layer is a visual representation of a spatial object. E.g., `tm_polygons()` or `tm_raster()`.</td>
+<td data-row="2" data-col="0">Data-driven map layer</td>
+                  <td data-row="2" data-col="1">A data-driven map layer is a visual representation of a spatial object. E.g., `tm_polygons()` or `tm_raster()`.</td>
                 </tr>
 <tr>
-<td>Facets</td>
-                  <td>Multiple maps in one plot. Also called 'small multiples'.</td>
+<td data-row="3" data-col="0">Facets</td>
+                  <td data-row="3" data-col="1">Multiple maps in one plot. Also called 'small multiples'.</td>
                 </tr>
 <tr>
-<td>Features</td>
-                  <td>Elementary spatial data objects. For instance, a row in an `sf` data.frame or a single raster cell.</td>
+<td data-row="4" data-col="0">Features</td>
+                  <td data-row="4" data-col="1">Elementary spatial data objects. For instance, a row in an `sf` data.frame or a single raster cell.</td>
                 </tr>
 <tr>
-<td>Glyph</td>
-                  <td>Mini charts that are used as proportional symbols. See the extension package `tmap.glyphs`.</td>
+<td data-row="5" data-col="0">Glyph</td>
+                  <td data-row="5" data-col="1">Mini charts that are used as proportional symbols. See the extension package `tmap.glyphs`.</td>
                 </tr>
 <tr>
-<td>Layout</td>
-                  <td>All aspects that specify the plot apart from the map layers and map components. Examples: margins, background color, aspect ratio, font sizes, etc. These can be set via `tm_layout`. These layout options form a subset of all tmap options (see **options**).</td>
+<td data-row="6" data-col="0">Layout</td>
+                  <td data-row="6" data-col="1">All aspects that specify the plot apart from the map layers and map components. Examples: margins, background color, aspect ratio, font sizes, etc. These can be set via `tm_layout`. These layout options form a subset of all tmap options (see **options**).</td>
                 </tr>
 <tr>
-<td>Map component</td>
-                  <td>A visual plot object with a position independent of map coordinates. Examples: a legend, a compass, a title.</td>
+<td data-row="7" data-col="0">Map component</td>
+                  <td data-row="7" data-col="1">A visual plot object with a position independent of map coordinates. Examples: a legend, a compass, a title.</td>
                 </tr>
 <tr>
-<td>Map layer</td>
-                  <td>A map layer is a visual representation of geographical information. We distinguish two types: *data-driven* and *auxiliary* map layers. The former requires spatial objects whereas the latter only the geographic information (bounding box and coordinate reference system).</td>
+<td data-row="8" data-col="0">Map layer</td>
+                  <td data-row="8" data-col="1">A map layer is a visual representation of geographical information. We distinguish two types: *data-driven* and *auxiliary* map layers. The former requires spatial objects whereas the latter only the geographic information (bounding box and coordinate reference system).</td>
                 </tr>
 <tr>
-<td>Options</td>
-                  <td>In the context of tmap, we refer to the options as settings, which can be configured using `tm_options`. These can be *layout* options (see **layout**) or otherwise (e.g., `'show.messages'`).</td>
+<td data-row="9" data-col="0">Options</td>
+                  <td data-row="9" data-col="1">In the context of tmap, we refer to the options as settings, which can be configured using `tm_options`. These can be *layout* options (see **layout**) or otherwise (e.g., `'show.messages'`).</td>
                 </tr>
 <tr>
-<td>Proportional symbols</td>
-                  <td>Proportional symbols are symbols that are drawn at geographic locations and that are sized proportionally with a data variable. The result is known as a 'proportional symbol map'. These symbols are usually bubbles (filled circles), but can also be small charts, called **glyphs**.</td>
+<td data-row="10" data-col="0">Proportional symbols</td>
+                  <td data-row="10" data-col="1">Proportional symbols are symbols that are drawn at geographic locations and that are sized proportionally with a data variable. The result is known as a 'proportional symbol map'. These symbols are usually bubbles (filled circles), but can also be small charts, called **glyphs**.</td>
                 </tr>
 <tr>
-<td>Scale function</td>
-                  <td>A scale function determines how to scale a data variable to either a visual variable or a transformation variable. Examples: `tm_scale_continuous`, `tm_scale_categorical`.</td>
+<td data-row="11" data-col="0">Scale function</td>
+                  <td data-row="11" data-col="1">A scale function determines how to scale a data variable to either a visual variable or a transformation variable. Examples: `tm_scale_continuous`, `tm_scale_categorical`.</td>
                 </tr>
 <tr>
-<td>tmap element</td>
-                  <td>A `tm_` object that can be stacked with the `+` operator. These are: `tm_shape()`, map layer functions (such as `tm_polygons()`), facet specification function `tm_facets()`, map components (such as `tm_compass()`), and layout/option specification functions, such as `tm_layout()`.</td>
+<td data-row="12" data-col="0">tmap element</td>
+                  <td data-row="12" data-col="1">A `tm_` object that can be stacked with the `+` operator. These are: `tm_shape()`, map layer functions (such as `tm_polygons()`), facet specification function `tm_facets()`, map components (such as `tm_compass()`), and layout/option specification functions, such as `tm_layout()`.</td>
                 </tr>
 <tr>
-<td>Shape (object)</td>
-                  <td>'Shape' is a nickname for a spatial data object. It is used in `tm_shape()`.</td>
+<td data-row="13" data-col="0">Shape (object)</td>
+                  <td data-row="13" data-col="1">'Shape' is a nickname for a spatial data object. It is used in `tm_shape()`.</td>
                 </tr>
 <tr>
-<td>Shape (visual variable)</td>
-                  <td>The shape is a visual variable for some map layer functions, most prominently `tm_symbols()`. It determines the shape/design of the symbols.</td>
+<td data-row="14" data-col="0">Shape (visual variable)</td>
+                  <td data-row="14" data-col="1">The shape is a visual variable for some map layer functions, most prominently `tm_symbols()`. It determines the shape/design of the symbols.</td>
                 </tr>
 <tr>
-<td>Style</td>
-                  <td>The overall layout of the map. Similar to ggplot2's 'theme' (see **theme**).</td>
+<td data-row="15" data-col="0">Style</td>
+                  <td data-row="15" data-col="1">The overall layout of the map. Similar to ggplot2's 'theme' (see **theme**).</td>
                 </tr>
 <tr>
-<td>Theme</td>
-                  <td>tmap stands for 'thematic maps', where *theme* refers to the topic of the data plotted on a map. Note that in ggplot2, a 'theme' refers to the overall layout, e.g. `ggplot2::theme_minimal()`. In tmap, we use **style** for this.</td>
+<td data-row="16" data-col="0">Theme</td>
+                  <td data-row="16" data-col="1">tmap stands for 'thematic maps', where *theme* refers to the topic of the data plotted on a map. Note that in ggplot2, a 'theme' refers to the overall layout, e.g. `ggplot2::theme_minimal()`. In tmap, we use **style** for this.</td>
                 </tr>
 <tr>
-<td>Transformation variable</td>
-                  <td>A variable of a data-driven map layer that determines a *transformation* of the spatial object. (TO DO: exact definition). For instance, `tm_cartogram(size = "var")`.</td>
+<td data-row="17" data-col="0">Transformation variable</td>
+                  <td data-row="17" data-col="1">A variable of a data-driven map layer that determines a *transformation* of the spatial object. (TO DO: exact definition). For instance, `tm_cartogram(size = "var")`.</td>
                 </tr>
 <tr>
-<td>Visual variable</td>
-                  <td>A variable of a data-driven map layer that determines a *visual* aspect. This can be data-driven, e.g. `tm_polygons(fill = "var")`, where `var` is the name of an `sf` column, or a constant value, such as `tm_polygons(fill = "blue")`.</td>
+<td data-row="18" data-col="0">Visual variable</td>
+                  <td data-row="18" data-col="1">A variable of a data-driven map layer that determines a *visual* aspect. This can be data-driven, e.g. `tm_polygons(fill = "var")`, where `var` is the name of an `sf` column, or a constant value, such as `tm_polygons(fill = "blue")`.</td>
                 </tr>
 <tr>
-<td>Chart</td>
-                  <td>A small non-spatial data visualization. In tmap for several purposes: 1) an addition to a legend `tm_polygons(fill = "var", fill.chart = tm_chart_histogram())`, 2) a glyph (see **glyphs**), 3) a custom chart plotted as an inset.</td>
+<td data-row="19" data-col="0">Chart</td>
+                  <td data-row="19" data-col="1">A small non-spatial data visualization. In tmap for several purposes: 1) an addition to a legend `tm_polygons(fill = "var", fill.chart = tm_chart_histogram())`, 2) a glyph (see **glyphs**), 3) a custom chart plotted as an inset.</td>
                 </tr>
 <tr>
-<td>Inset</td>
-                  <td>A visual object that is plotted on a specific (pre-defined) location. It can be a small map (**minimap**) or a **chart**.</td>
+<td data-row="20" data-col="0">Inset</td>
+                  <td data-row="20" data-col="1">A visual object that is plotted on a specific (pre-defined) location. It can be a small map (**minimap**) or a **chart**.</td>
                 </tr>
 </tbody>
 </table>
