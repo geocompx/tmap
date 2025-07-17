@@ -279,8 +279,6 @@ tm +
 Two additional functions for adding text labels are `tm_labels()` and `tm_labels_highlighted()`.
 They are similar to `tm_text()`, but have different defaults.
 The `tm_labels()` function is used to add text labels to the map, but also tries to automatically adjust the position of the labels to avoid overlapping with other features (@fig-tmtext-2).
-The `tm_labels_highlighted()` additionally adds a background color to the labels, which makes them more visible (@fig-tmtext-3).
-<!-- explain when to use each one? -->
 
 ```{r}
 #| label: tmtext2
@@ -288,6 +286,10 @@ The `tm_labels_highlighted()` additionally adds a background color to the labels
 tm +
   tm_labels(text = "name")
 ```
+
+The `tm_labels_highlighted()` additionally adds a background color to the labels, which makes them more visible (@fig-tmtext-3).
+<!-- explain when to use each one? -->
+
 ```{r}
 #| label: tmtext3
 #| eval: false
