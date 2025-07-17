@@ -115,6 +115,6 @@ visual_variables = function() {
   
   cellplot(1, 2, grid.text("Symbols", just = "left", x = 0.1, gp = gpar(cex = label_size)))
   cellplot(1, 3, grid.text("Lines", just = "left", x = 0.1, gp = gpar(cex = label_size)))
-  cellplot(1, 4, grid.text("Polygons", just = "left", x = 0.1, gp = gpar(cex = label_size)))
+  cellplot(1, 4, grid.text("Polygons/Rasters", just = "left", x = 0.1, gp = gpar(cex = label_size)))
   
 }
