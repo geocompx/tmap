@@ -723,7 +723,7 @@ tm_shape(slo_cities) +
 #| label: fig-mixsymb
 #| echo: false
 #| message: false
-#| layout-nrow: 2
+#| layout-ncol: 2
 #| fig-cap: 'Examples of maps using two visual variables at the same time'
 #| fig-subcap: 
 #|   - size and fill
