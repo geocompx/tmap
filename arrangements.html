@@ -375,9 +375,9 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#sec-arrangements" id="toc-sec-arrangements" class="nav-link" data-scroll-target="#sec-arrangements"><span class="header-section-number">15.1</span> Basic arrangements</a></li>
-  <li><a href="#sec-customizing-arrangements" id="toc-sec-customizing-arrangements" class="nav-link" data-scroll-target="#sec-customizing-arrangements"><span class="header-section-number">15.2</span> Customizing arrangements</a></li>
-  <li><a href="#sec-inset-maps" id="toc-sec-inset-maps" class="nav-link" data-scroll-target="#sec-inset-maps"><span class="header-section-number">15.3</span> Inset maps</a></li>
+<li><a href="#sec-inset-maps" id="toc-sec-inset-maps" class="nav-link" data-scroll-target="#sec-inset-maps"><span class="header-section-number">15.1</span> Inset maps</a></li>
+  <li><a href="#sec-arrangements" id="toc-sec-arrangements" class="nav-link" data-scroll-target="#sec-arrangements"><span class="header-section-number">15.2</span> Basic arrangements</a></li>
+  <li><a href="#sec-customizing-arrangements" id="toc-sec-customizing-arrangements" class="nav-link" data-scroll-target="#sec-customizing-arrangements"><span class="header-section-number">15.3</span> Customizing arrangements</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/arrangements.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -398,13 +398,105 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
   
 
 
-</header><p>The <strong>tmap</strong> package offers several tools for arranging multiple maps within a single layout. When we want to display one main map and one or more additional maps, we can use <code><a href="https://r-tmap.github.io/tmap/reference/tm_minimap.html">tm_minimap()</a></code> or <code><a href="https://r-tmap.github.io/tmap/reference/tm_inset.html">tm_inset()</a></code>. The first function adds a small overview map to the main map using a fixed, non-customizable style (<a href="map-components.html#sec-minimap" class="quarto-xref"><span>Section 10.7</span></a>). More advanced arrangements can be made with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_inset.html">tm_inset()</a></code> function, which adds a graphical object (including a <code>tmap</code> object) to the main map (<a href="#sec-inset-maps" class="quarto-xref"><span>Section 15.3</span></a>).</p>
-<p>To create a layout with multiple maps, we have two main options. The first one, which is the focus of this chapter, is to use the <code><a href="https://r-tmap.github.io/tmap/reference/tmap_arrange.html">tmap_arrange()</a></code> function. It takes two or more <code>tmap</code> objects and arranges them in a grid layout. The second option is to create facets with the <code>tm_facet()</code> function, which is described in <a href="facets.html" class="quarto-xref"><span>Chapter 16</span></a>. The main difference is that <code><a href="https://r-tmap.github.io/tmap/reference/tmap_arrange.html">tmap_arrange()</a></code> combines multiple maps, often based on different data, while <code>tm_facet()</code> creates a single map with numerous panels based on the same data.</p>
-<section id="sec-arrangements" class="level2" data-number="15.1"><h2 data-number="15.1" class="anchored" data-anchor-id="sec-arrangements">
-<span class="header-section-number">15.1</span> Basic arrangements</h2>
-<p>Let’s see how the <code><a href="https://r-tmap.github.io/tmap/reference/tmap_arrange.html">tmap_arrange()</a></code> function works based on two maps of Slovenia, each based on different data sources. The first map is based on the GDP per capita of Slovenia’s regions, represented as polygons.</p>
+</header><p>The <strong>tmap</strong> package offers several tools for arranging multiple maps within a single layout. When we want to display one main map and one or more additional maps, we can use <code><a href="https://r-tmap.github.io/tmap/reference/tm_minimap.html">tm_minimap()</a></code> or <code><a href="https://r-tmap.github.io/tmap/reference/tm_inset.html">tm_inset()</a></code>. The first function adds a small overview map to the main map using a fixed, non-customizable style (<a href="map-components.html#sec-minimap" class="quarto-xref"><span>Section 10.7</span></a>). More advanced arrangements can be made with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_inset.html">tm_inset()</a></code> function, which adds a graphical object (including a <code>tmap</code> object) to the main map (<a href="#sec-inset-maps" class="quarto-xref"><span>Section 15.1</span></a>).</p>
+<p>To create a layout with multiple maps, we have two main options. The first one, which is the focus of this chapter, is to use the <code><a href="https://r-tmap.github.io/tmap/reference/tmap_arrange.html">tmap_arrange()</a></code> function. It takes two or more <code>tmap</code> objects and arranges them in a grid layout as you can learn in <a href="#sec-arrangements" class="quarto-xref"><span>Section 15.2</span></a> and <a href="#sec-customizing-arrangements" class="quarto-xref"><span>Section 15.3</span></a>. The second option is to create facets with the <code>tm_facet()</code> function, which is described in <a href="facets.html" class="quarto-xref"><span>Chapter 16</span></a>. The main difference is that <code><a href="https://r-tmap.github.io/tmap/reference/tmap_arrange.html">tmap_arrange()</a></code> combines multiple maps, often based on different data, while <code>tm_facet()</code> creates a single map with numerous panels based on the same data.</p>
+<section id="sec-inset-maps" class="level2" data-number="15.1"><h2 data-number="15.1" class="anchored" data-anchor-id="sec-inset-maps">
+<span class="header-section-number">15.1</span> Inset maps</h2>
+<p>Inset maps are a powerful way to add additional context or details to a main map. They are typically smaller maps that show a specific area of interest, such as a zoomed-in view of a region, or a different data layer that complements the main map. In <strong>tmap</strong>, insets may be based on image files, <strong>ggplot2</strong> objects, a bounding box, or another <code>tmap</code> object. To add an inset map to a main map, we can use the <code><a href="https://r-tmap.github.io/tmap/reference/tm_inset.html">tm_inset()</a></code> function.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/stars/">stars</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Loading required package: abind</span></span>
+<span><span class="co">#&gt; Loading required package: sf</span></span>
+<span><span class="co">#&gt; Linking to GEOS 3.13.0, GDAL 3.10.3, PROJ 9.6.0; sf_use_s2() is TRUE</span></span>
+<span><span class="va">slo_elev</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_elev.tif"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_inset.html">tm_inset</a></span><span class="op">(</span><span class="fu">tmaptools</span><span class="fu">::</span><span class="fu"><a href="https://r-tmap.github.io/tmaptools/reference/bb.html">bb</a></span><span class="op">(</span><span class="st">"Maribor"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_inset.html">tm_inset</a></span><span class="op">(</span><span class="fu">tmaptools</span><span class="fu">::</span><span class="fu"><a href="https://r-tmap.github.io/tmaptools/reference/bb.html">bb</a></span><span class="op">(</span><span class="st">"Ljubljana"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_inset.html">tm_inset</a></span><span class="op">(</span><span class="fu">tmaptools</span><span class="fu">::</span><span class="fu"><a href="https://r-tmap.github.io/tmaptools/reference/bb.html">bb</a></span><span class="op">(</span><span class="st">"Bled"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [scale] tm_raster:() the data variable assigned to 'col' contains positive and negative values, so midpoint is set to 0. Set 'midpoint = NA' in 'fill.scale = tm_scale_intervals(&lt;HERE&gt;)' to use all visual values (e.g. colors)</span></span>
+<span><span class="co">#&gt; [plot mode] legend/component: Some components or legends are too "high" and are</span></span>
+<span><span class="co">#&gt; therefore rescaled.</span></span>
+<span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/stars/">stars</a></span><span class="op">)</span></span>
+<span><span class="va">slo_elev</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_elev.tif"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span></span>
+<span>    col.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_continuous.html">tm_scale_continuous</a></span><span class="op">(</span>values <span class="op">=</span> <span class="st">"geyser"</span>, midpoint <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_title.html">tm_title</a></span><span class="op">(</span><span class="st">"Maribor"</span>, position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"right"</span>, <span class="st">"bottom"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_inset.html">tm_inset</a></span><span class="op">(</span><span class="fu">tmaptools</span><span class="fu">::</span><span class="fu"><a href="https://r-tmap.github.io/tmaptools/reference/bb.html">bb</a></span><span class="op">(</span><span class="st">"Maribor"</span><span class="op">)</span>, position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"right"</span>, <span class="st">"bottom"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_title.html">tm_title</a></span><span class="op">(</span><span class="st">"Ljubljana"</span>, position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"right"</span>, <span class="st">"bottom"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_inset.html">tm_inset</a></span><span class="op">(</span><span class="fu">tmaptools</span><span class="fu">::</span><span class="fu"><a href="https://r-tmap.github.io/tmaptools/reference/bb.html">bb</a></span><span class="op">(</span><span class="st">"Ljubljana"</span><span class="op">)</span>, position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"right"</span>, <span class="st">"bottom"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_title.html">tm_title</a></span><span class="op">(</span><span class="st">"Bled"</span>, position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"top"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_inset.html">tm_inset</a></span><span class="op">(</span><span class="fu">tmaptools</span><span class="fu">::</span><span class="fu"><a href="https://r-tmap.github.io/tmaptools/reference/bb.html">bb</a></span><span class="op">(</span><span class="st">"Bled"</span><span class="op">)</span>, position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"top"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">worldelevation</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="st">"data/worldelevation.tif"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">tm_slo_elev</span> <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span></span>
+<span>    col.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_continuous.html">tm_scale_continuous</a></span><span class="op">(</span>values <span class="op">=</span> <span class="st">"geyser"</span>, midpoint <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>                                    limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">500</span>, <span class="fl">6500</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>show <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldelevation</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span></span>
+<span>    col.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_continuous.html">tm_scale_continuous</a></span><span class="op">(</span>values <span class="op">=</span> <span class="st">"geyser"</span>, midpoint <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>                                    limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">500</span>, <span class="fl">6500</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_title.html">tm_title</a></span><span class="op">(</span><span class="st">"Slovenia"</span>, position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"LEFT"</span>, <span class="st">"CENTER"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_inset.html">tm_inset</a></span><span class="op">(</span><span class="va">tm_slo_elev</span>, position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"LEFT"</span>, <span class="st">"CENTER"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_crs.html">tm_crs</a></span><span class="op">(</span><span class="st">"+proj=eqearth"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>earth_boundary <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>            space.color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [plot mode] fit legend/component: Some legend items or map compoments do not</span></span>
+<span><span class="co">#&gt; fit well, and are therefore rescaled.</span></span>
+<span><span class="co">#&gt; ℹ Set the tmap option `component.autoscale = FALSE` to disable rescaling.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="figures/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<!-- ggplot2 insets? -->
+<!-- image insets? -->
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Insets are not usually needed in the interactive mode, as we can zoom in and out of the main map. Thus, the <code><a href="https://r-tmap.github.io/tmap/reference/tm_inset.html">tm_inset()</a></code> function calls only work in plot mode.</p>
+</div>
+</div>
+</section><section id="sec-arrangements" class="level2" data-number="15.2"><h2 data-number="15.2" class="anchored" data-anchor-id="sec-arrangements">
+<span class="header-section-number">15.2</span> Basic arrangements</h2>
+<p>Let’s see how the <code><a href="https://r-tmap.github.io/tmap/reference/tmap_arrange.html">tmap_arrange()</a></code> function works based on two maps of Slovenia, each based on different data sources. The first map is based on the GDP per capita of Slovenia’s regions, represented as polygons.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
 <span><span class="va">slo_regions</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_regions.gpkg"</span><span class="op">)</span></span>
 <span><span class="va">tm1</span> <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
@@ -413,7 +505,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 </div>
 <p>The second map is based on the elevation of Slovenia, represented as a raster layer.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/stars/">stars</a></span><span class="op">)</span></span>
 <span><span class="va">slo_elev</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_elev.tif"</span><span class="op">)</span></span>
 <span><span class="va">tm2</span> <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
@@ -422,7 +514,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 </div>
 <p>In both cases, we also added titles to the maps using the <code><a href="https://r-tmap.github.io/tmap/reference/tm_title.html">tm_title()</a></code> function to clarify what each map represents, and assigned them to the objects <code>tm1</code> and <code>tm2</code>. Now, we may arrange these two maps in a single layout using the <code><a href="https://r-tmap.github.io/tmap/reference/tmap_arrange.html">tmap_arrange()</a></code> function (<a href="#fig-arrangements1" class="quarto-xref">Figure&nbsp;<span>15.1</span></a>). The <code><a href="https://r-tmap.github.io/tmap/reference/tmap_arrange.html">tmap_arrange()</a></code> function can take any number of <code>tmap</code> objects as input or even a list of <code>tmap</code> objects.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_arrange.html">tmap_arrange</a></span><span class="op">(</span><span class="va">tm1</span>, <span class="va">tm2</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_arrange.html">tmap_arrange</a></span><span class="op">(</span><span class="va">tm1</span>, <span class="va">tm2</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-arrangements1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-arrangements1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -435,12 +527,12 @@ Figure&nbsp;15.1: Arranging two maps in one layout.
 </div>
 </div>
 <p>In the example above, we used our two maps and specified the number of columns in the layout using the <code>ncol</code> argument. We can also specify the number of rows using the <code>nrow</code> argument, the aspect ratio of the maps using the <code>asp</code> argument, and the widths and heights of the maps using the <code>widths</code> and <code>heights</code> arguments, respectively.</p>
-</section><section id="sec-customizing-arrangements" class="level2" data-number="15.2"><h2 data-number="15.2" class="anchored" data-anchor-id="sec-customizing-arrangements">
-<span class="header-section-number">15.2</span> Customizing arrangements</h2>
+</section><section id="sec-customizing-arrangements" class="level2" data-number="15.3"><h2 data-number="15.3" class="anchored" data-anchor-id="sec-customizing-arrangements">
+<span class="header-section-number">15.3</span> Customizing arrangements</h2>
 <p>The <code><a href="https://r-tmap.github.io/tmap/reference/tmap_arrange.html">tmap_arrange()</a></code> does not align layouts of multiple maps – you may notice that the frames of the two maps in <a href="#fig-arrangements1" class="quarto-xref">Figure&nbsp;<span>15.1</span></a> are not equal in height. To align the frames of the maps, we can use the <code>meta.margins</code> argument in the <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function for each map. This argument allows us to specify the margins around the map frame available for map elements, such as titles and legends, in the order of <code>c(bottom, left, top, right)</code>. <!-- Martijn, is the above statement correct? --></p>
 <p>Here, we set the bottom margin to <code>0.3</code><!-- units? --> for both maps, which will align their frames vertically. See the effect of this change in <a href="#fig-arrangements2" class="quarto-xref">Figure&nbsp;<span>15.2</span></a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm1a</span> <span class="op">=</span> <span class="va">tm1</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm1a</span> <span class="op">=</span> <span class="va">tm1</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>meta.margins <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.3</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">tm2a</span> <span class="op">=</span> <span class="va">tm2</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>meta.margins <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.3</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
@@ -489,8 +581,6 @@ Note
 </div>
 <!-- tmap_grob? -->
 <!-- should the tm_inset be moved here? -->
-</section><section id="sec-inset-maps" class="level2" data-number="15.3"><h2 data-number="15.3" class="anchored" data-anchor-id="sec-inset-maps">
-<span class="header-section-number">15.3</span> Inset maps</h2>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
