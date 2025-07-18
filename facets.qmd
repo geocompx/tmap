@@ -38,6 +38,7 @@ This allows for quick comparison of different variables across the same regions.
 #| label: fig-facets1
 #| fig-cap: "Facets for different variables."
 #| fig-asp: 0.5
+#| message: false
 tm_shape(slo_regions) +
   tm_polygons(c("pop_dens", "gdppercap", "tourism"))
 ```
@@ -51,6 +52,7 @@ In such cases, all of the facets share the same scale and legend, which is usefu
 #| label: fig-facets2
 #| fig-cap: "Facets for one variable over time."
 #| fig-asp: 0.45
+#| message: false
 tm_shape(slo_regions_ts) +
   tm_polygons("gdppercap") +
   tm_facets(by = "time", ncol = 5)

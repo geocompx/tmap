@@ -125,6 +125,7 @@ tm_shape(slo_regions) +
 #| message: false
 #| echo: false
 #| fig-asp: 0.8
+#| fig-width: 9
 tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens",
               fill.chart = tm_chart_box(group_id = "a"),
@@ -162,6 +163,7 @@ tm_shape(slo_regions) +
 #| message: false
 #| echo: false
 #| fig-asp: 0.8
+#| fig-width: 9
 tm_shape(slo_regions) +
   tm_polygons(fill = "region_group",
               fill.chart = tm_chart_donut(group_id = "a"),
@@ -183,6 +185,7 @@ It includes a heatmap chart (`tm_chart_heatmap()`) that shows how often each com
 #| label: fig-chart-bivariate
 #| fig-cap: "Bivariate charts used in case of representing a relationship between two numerical variables."
 #| message: false
+#| fig-width: 9
 tm_shape(slo_regions) +
   tm_polygons(fill = tm_vars(c("pop_dens", "pop65perc"), multivariate = TRUE),
               fill.scale = tm_scale_bivariate(values = "purplegold"),
@@ -237,6 +240,7 @@ Thus, we can treat it as a map legend and remove the default legend using `fill.
 #| label: fig-chart-ggplot2
 #| fig-cap: "Using chart as a map legend."
 #| message: false
+#| fig-width: 9
 tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens",
               fill.chart = tm_chart_histogram(
