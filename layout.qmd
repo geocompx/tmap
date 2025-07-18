@@ -212,21 +212,21 @@ tm_bf = tm_shape(World) +
     tm_borders(col_alpha = 0) +
     tm_credits("plain",
         fontface = "plain", position = c("center", "center"),
-        size = 2
+        size = 4
     ) +
     tm_credits("italic",
         fontface = "italic", position = c("center", "center"),
-        size = 2
+        size = 4
     ) +
     tm_credits("bold",
         fontface = "bold", position = c("center", "center"),
-        size = 2
+        size = 4
     ) +
     tm_credits("bold.italic",
         fontface = "bold.italic", position = c("center", "center"),
-        size = 2
+        size = 4
     ) +
-    tm_layout(frame = FALSE)
+    tm_layout(frame = FALSE, outer.margins = FALSE)
 ```
 
 ```{r}
@@ -239,15 +239,15 @@ tm_ff = tm_shape(World) +
     tm_borders(col_alpha = 0) +
     tm_credits("serif",
         fontfamily = "serif", position = c("center", "center"),
-        size = 2
+        size = 4
     ) +
     tm_credits("sans",
         fontfamily = "sans", position = c("center", "center"),
-        size = 2
+        size = 4
     ) +
     tm_credits("monospace",
         fontfamily = "monospace", position = c("center", "center"),
-        size = 2
+        size = 4
     ) +
     tm_layout(frame = FALSE)
 ```

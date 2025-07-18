@@ -453,13 +453,15 @@ tm_shape(World, crs = "EPSG:3857") +
   tm_polygons("pop_est_dens", 
               fill.scale = tm_scale_continuous_log10(),
               fill.legend = tm_legend(expression("Population per " * km^2), 
-                                      orientation = "landscape")) +
+                                      orientation = "landscape",
+                                      position = tm_pos_out("center", "bottom", pos.h = "center"))) +
   tm_layout(frame = FALSE)
 tm_shape(World, crs = "+proj=eck4") + 
   tm_polygons("pop_est_dens",
               fill.scale = tm_scale_continuous_log10(),
               fill.legend = tm_legend(expression("Population per " * km^2), 
-                                      orientation = "landscape")) +
+                                      orientation = "landscape",
+                                      position = tm_pos_out("center", "bottom", pos.h = "center"))) +
   tm_layout(frame = FALSE)
 ```
 

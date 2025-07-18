@@ -57,6 +57,7 @@ Both functions can take additional arguments to control the position more precis
 #| message: false
 #| label: fig-positions-in-scheme
 #| fig-cap: "Examples of positioning map components inside the map frame."
+#| fig-width: 9
 tm_shape(slo_elev) +
     tm_raster(col.legend = tm_legend(show = FALSE)) +
     tm_inset(g('"left", "top"'), position = c("left", "top")) +

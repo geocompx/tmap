@@ -37,7 +37,7 @@ This is illustrated in the following example (@fig-tmshape1).
 #| fig-cap: A map representing three shapes (worldelevation, worldvector, and worldcities) using four layers.
 tm_shape(worldelevation) +
   tm_raster("worldelevation.tif", 
-            col.scale = tm_scale(values = terrain.colors(8))) +
+            col.scale = tm_scale(values = "geyser", midpoint = NA)) +
   tm_shape(worldvector) +
   tm_borders() +
   tm_shape(worldcities) +
@@ -71,7 +71,7 @@ In the following example, we set the `worldcities` object as the main *shape*, w
 #| fig-cap: "A map representing three shapes (worldelevation, worldvector, and worldcities) using four layers and zoomed into the locations in the worldcities object."
 tm_shape(worldelevation) +
   tm_raster("worldelevation.tif", 
-            col.scale = tm_scale(values = terrain.colors(8))) +
+            col.scale = tm_scale(values = "geyser", midpoint = NA)) +
   tm_shape(worldvector) +
   tm_borders() +
   tm_shape(worldcities, is.main = TRUE) +
@@ -103,7 +103,7 @@ In the following example, we limit our map extent to the rectangular area betwee
 #|   maximum coordinates.
 tm_shape(worldelevation, bbox = c(-15, 35, 45, 65)) +
   tm_raster("worldelevation.tif", 
-            col.scale = tm_scale(values = terrain.colors(8)))
+            col.scale = tm_scale(values = "geyser", midpoint = NA))
 ```
 
 The second approach allows for the map to be set to an extent based on a search query.
@@ -117,7 +117,7 @@ This approach uses the OpenStreetMap tool called Nominatim to automatically gene
 #| fig-cap: Global elevation data limited to the extent specified with the 'Europe' query.
 tm_shape(worldelevation, bbox = "Europe") +
   tm_raster("worldelevation.tif", 
-            col.scale = tm_scale(values = terrain.colors(8)))
+            col.scale = tm_scale(values = "geyser", midpoint = NA))
 ```
 
 In the last approach, the map extent is based on another existing spatial object.
@@ -130,7 +130,7 @@ In the last approach, the map extent is based on another existing spatial object
 #| fig-cap: Global elevation data limited to the extent of the other spatial object.
 tm_shape(worldelevation, bbox = worldcities) +
   tm_raster("worldelevation.tif", 
-            col.scale = tm_scale(values = terrain.colors(8)))
+            col.scale = tm_scale(values = "geyser", midpoint = NA))
 ```
 
 <!-- mention that legend related to the complete object -->

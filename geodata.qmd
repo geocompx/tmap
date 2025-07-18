@@ -224,17 +224,18 @@ sta_sf$A1.2[is.na(sta_sf$A1.1)] = "NA"
 
 tm_shape(sta_sf) +
     tm_polygons() +
-    tm_text("A1") +
-    tm_layout(frame = FALSE)
+    tm_text("A1", size = 2.5) +
+    tm_layout(frame = FALSE, outer.margins = FALSE)
 
 tm_shape(sta_sf) +
     tm_polygons("A1.1") +
-    tm_text("A1.2") +
-    tm_layout(frame = FALSE, legend.show = FALSE)
+    tm_text("A1.2", size = 2.5) +
+    tm_layout(frame = FALSE, legend.show = FALSE, outer.margins = FALSE)
 
 tm_shape(sta) +
     tm_raster("A1.1") +
-    tm_layout(frame = FALSE, legend.show = FALSE, inner.margins = 0.02)
+    tm_layout(frame = FALSE, legend.show = FALSE, 
+              inner.margins = 0.02, outer.margins = FALSE)
 ```
 
 \index{raster data grid types}
@@ -264,27 +265,27 @@ In the last type of raster data grids, curvilinear grids, cells are cuboids of d
 # regular grid
 tm_sta_regular = tm_shape(sta_sf) +
     tm_polygons() +
-    tm_text("A1") +
+    tm_text("A1", size = 2.5) +
     # tm_title("Regular") +
-    tm_layout(frame = FALSE)
+    tm_layout(frame = FALSE, outer.margins = FALSE)
 # rotated grids
 sta_rotated = sta
 attr(attr(sta_rotated, "dimensions"), "raster")$affine = c(0.1, 0.1)
 sta_rotated_sf = st_as_sf(sta_rotated)
 tm_sta_rotated = tm_shape(sta_rotated_sf) +
     tm_polygons() +
-    tm_text("A1") +
+    tm_text("A1", size = 2.5) +
     # tm_title("Rotated") +
-    tm_layout(frame = FALSE)
+    tm_layout(frame = FALSE, outer.margins = FALSE)
 # sheared grids
 sta_sheared = sta
 attr(attr(sta_sheared, "dimensions"), "raster")$affine = c(0.1, 0.2)
 sta_sheared_sf = st_as_sf(sta_sheared)
 tm_sta_sheared = tm_shape(sta_sheared_sf) +
     tm_polygons() +
-    tm_text("A1") +
+    tm_text("A1", size = 2.5) +
     # tm_title("Sheared") +
-    tm_layout(frame = FALSE)
+    tm_layout(frame = FALSE, outer.margins = FALSE)
 # rectilinear grids
 x = c(0, 0.5, 1.5, 2.1, 3, 5)
 y = rev(c(0.1, 1, 1.5, 2, 4))
@@ -294,9 +295,9 @@ sta_rectilinear = st_as_stars(list(m = mat),
 sta_rectilinear_sf = st_as_sf(sta_rectilinear)
 tm_sta_rectilinear = tm_shape(sta_rectilinear_sf) +
     tm_polygons() +
-    tm_text("m") +
+    tm_text("m", size = 2.5) +
     # tm_title("Rectilinear") +
-    tm_layout(frame = FALSE)
+    tm_layout(frame = FALSE, outer.margins = FALSE)
 # curvilinear grids
 sta_curvilinear = sta
 X1 = matrix(rep(1:5, times = 4), nrow = 5, ncol = 4)
@@ -322,10 +323,10 @@ sta_curvilinear = st_as_stars(sta_curvilinear,
 sta_curvilinear_sf = st_as_sf(sta_curvilinear)
 tm_sta_curvilinear = tm_shape(sta_curvilinear_sf) +
     tm_polygons() +
-    tm_text("A1") +
+    tm_text("A1", size = 2.5) +
     # tm_grid() +
     # tm_title("Curvilinear") +
-    tm_layout(frame = FALSE)
+    tm_layout(frame = FALSE, outer.margins = FALSE)
 # all
 tm_sta_regular
 tm_sta_rotated
@@ -349,7 +350,7 @@ Additional information about multi-layer rasters can be also found in @sec-spati
 #| echo: false
 #| message: false
 #| warning: false
-#| #fig-asp: 0.4
+#| fig-asp: 0.4
 #| layout-ncol: 4
 #| fig-cap: 'Example of three satellite imagery bands: red, green, blue, and the composite
 #|   image with true colors created using these three bands.'
@@ -363,19 +364,19 @@ landsat234 = terra::rast(system.file("raster/landsat.tif", package = "spDataLarg
 tm_shape(landsat234[[3]]) +
     tm_raster(col.scale = tm_scale(values = "Greys")) +
     # tm_title("Red") +
-    tm_layout(frame = FALSE, legend.show = FALSE)
+    tm_layout(frame = FALSE, legend.show = FALSE, outer.margins = FALSE)
 tm_shape(landsat234[[2]]) +
     tm_raster(col.scale = tm_scale(values = "Greys")) +
     # tm_title("Green") +
-    tm_layout(frame = FALSE, legend.show = FALSE)
+    tm_layout(frame = FALSE, legend.show = FALSE, outer.margins = FALSE)
 tm_shape(landsat234[[1]]) +
     tm_raster(col.scale = tm_scale(values = "Greys")) +
     # tm_title("Blue") +
-    tm_layout(frame = FALSE, legend.show = FALSE)
+    tm_layout(frame = FALSE, legend.show = FALSE, outer.margins = FALSE)
 tm_shape(landsat234) +
     tm_rgb(tm_vars(names(landsat234)[3:1], multivariate = TRUE)) +
     # tm_title("Composite") +
-    tm_layout(frame = FALSE)
+    tm_layout(frame = FALSE, outer.margins = FALSE)
 ```
 
 \index{spatial file formats}
