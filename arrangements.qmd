@@ -12,9 +12,73 @@ More advanced arrangements can be made with the `tm_inset()` function, which add
 
 To create a layout with multiple maps, we have two main options.
 The first one, which is the focus of this chapter, is to use the `tmap_arrange()` function.
-It takes two or more `tmap` objects and arranges them in a grid layout.
+It takes two or more `tmap` objects and arranges them in a grid layout as you can learn in @sec-arrangements and @sec-customizing-arrangements.
 The second option is to create facets with the `tm_facet()` function, which is described in @sec-facets.
 The main difference is that `tmap_arrange()` combines multiple maps, often based on different data, while `tm_facet()` creates a single map with numerous panels based on the same data.
+
+## Inset maps {#sec-inset-maps}
+
+Inset maps are a powerful way to add additional context or details to a main map.
+They are typically smaller maps that show a specific area of interest, such as a zoomed-in view of a region, or a different data layer that complements the main map.
+In **tmap**, insets may be based on image files, **ggplot2** objects, a bounding box, or another `tmap` object.
+To add an inset map to a main map, we can use the `tm_inset()` function.
+
+```{r}
+library(tmap)
+library(stars)
+slo_elev = read_stars("data/slovenia/slo_elev.tif")
+tm_shape(slo_elev) +
+  tm_raster() +
+  tm_inset(tmaptools::bb("Maribor")) +
+  tm_inset(tmaptools::bb("Ljubljana")) +
+  tm_inset(tmaptools::bb("Bled"))
+```
+
+```{r}
+library(tmap)
+library(stars)
+slo_elev = read_stars("data/slovenia/slo_elev.tif")
+tm_shape(slo_elev) +
+  tm_raster(
+    col.scale = tm_scale_continuous(values = "geyser", midpoint = NA)
+  ) +  
+  tm_title("Maribor", position = c("right", "bottom")) +
+  tm_inset(tmaptools::bb("Maribor"), position = c("right", "bottom")) +
+  tm_title("Ljubljana", position = c("right", "bottom")) +
+  tm_inset(tmaptools::bb("Ljubljana"), position = c("right", "bottom")) +
+  tm_title("Bled", position = c("left", "top")) +
+  tm_inset(tmaptools::bb("Bled"), position = c("left", "top"))
+```
+
+```{r}
+worldelevation = read_stars("data/worldelevation.tif")
+
+tm_slo_elev = tm_shape(slo_elev) +
+  tm_raster(
+    col.scale = tm_scale_continuous(values = "geyser", midpoint = NA,
+                                    limits = c(-500, 6500)),
+    col.legend = tm_legend(show = FALSE)
+  )
+
+tm_shape(worldelevation) +
+  tm_raster(
+    col.scale = tm_scale_continuous(values = "geyser", midpoint = NA,
+                                    limits = c(-500, 6500))
+  ) +
+  tm_title("Slovenia", position = c("LEFT", "CENTER")) +
+  tm_inset(tm_slo_elev, position = c("LEFT", "CENTER")) +
+  tm_crs("+proj=eqearth") +
+  tm_layout(earth_boundary = TRUE,
+            space.color = "red")
+```
+
+<!-- ggplot2 insets? -->
+<!-- image insets? -->
+
+::: {.callout-note}
+Insets are not usually needed in the interactive mode, as we can zoom in and out of the main map.
+Thus, the `tm_inset()` function calls only work in plot mode.
+:::
 
 ## Basic arrangements {#sec-arrangements}
 
@@ -98,5 +162,3 @@ For more information on saving maps, see @sec-save.
 
 <!-- tmap_grob? -->
 <!-- should the tm_inset be moved here? -->
-
-## Inset maps {#sec-inset-maps}
