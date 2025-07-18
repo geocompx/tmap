@@ -377,6 +377,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
   <ul>
 <li><a href="#sec-arrangements" id="toc-sec-arrangements" class="nav-link" data-scroll-target="#sec-arrangements"><span class="header-section-number">15.1</span> Basic arrangements</a></li>
   <li><a href="#sec-customizing-arrangements" id="toc-sec-customizing-arrangements" class="nav-link" data-scroll-target="#sec-customizing-arrangements"><span class="header-section-number">15.2</span> Customizing arrangements</a></li>
+  <li><a href="#sec-inset-maps" id="toc-sec-inset-maps" class="nav-link" data-scroll-target="#sec-inset-maps"><span class="header-section-number">15.3</span> Inset maps</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/arrangements.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -397,7 +398,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
   
 
 
-</header><p>The <strong>tmap</strong> package offers several tools for arranging multiple maps within a single layout. When we want to display one main map and one or more additional maps, we can use <code><a href="https://r-tmap.github.io/tmap/reference/tm_minimap.html">tm_minimap()</a></code> or <code><a href="https://r-tmap.github.io/tmap/reference/tm_inset.html">tm_inset()</a></code>. The first function adds a small overview map to the main map using a fixed, non-customizable style (<a href="map-components.html#sec-minimap" class="quarto-xref"><span>Section 10.7</span></a>). More advanced arrangements can be made with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_inset.html">tm_inset()</a></code> function, which adds a graphical object (including a <code>tmap</code> object) to the main map (<a href="map-components.html#sec-inset-maps" class="quarto-xref"><span>Section 10.8</span></a>).</p>
+</header><p>The <strong>tmap</strong> package offers several tools for arranging multiple maps within a single layout. When we want to display one main map and one or more additional maps, we can use <code><a href="https://r-tmap.github.io/tmap/reference/tm_minimap.html">tm_minimap()</a></code> or <code><a href="https://r-tmap.github.io/tmap/reference/tm_inset.html">tm_inset()</a></code>. The first function adds a small overview map to the main map using a fixed, non-customizable style (<a href="map-components.html#sec-minimap" class="quarto-xref"><span>Section 10.7</span></a>). More advanced arrangements can be made with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_inset.html">tm_inset()</a></code> function, which adds a graphical object (including a <code>tmap</code> object) to the main map (<a href="#sec-inset-maps" class="quarto-xref"><span>Section 15.3</span></a>).</p>
 <p>To create a layout with multiple maps, we have two main options. The first one, which is the focus of this chapter, is to use the <code><a href="https://r-tmap.github.io/tmap/reference/tmap_arrange.html">tmap_arrange()</a></code> function. It takes two or more <code>tmap</code> objects and arranges them in a grid layout. The second option is to create facets with the <code>tm_facet()</code> function, which is described in <a href="facets.html" class="quarto-xref"><span>Chapter 16</span></a>. The main difference is that <code><a href="https://r-tmap.github.io/tmap/reference/tmap_arrange.html">tmap_arrange()</a></code> combines multiple maps, often based on different data, while <code>tm_facet()</code> creates a single map with numerous panels based on the same data.</p>
 <section id="sec-arrangements" class="level2" data-number="15.1"><h2 data-number="15.1" class="anchored" data-anchor-id="sec-arrangements">
 <span class="header-section-number">15.1</span> Basic arrangements</h2>
@@ -488,6 +489,8 @@ Note
 </div>
 <!-- tmap_grob? -->
 <!-- should the tm_inset be moved here? -->
+</section><section id="sec-inset-maps" class="level2" data-number="15.3"><h2 data-number="15.3" class="anchored" data-anchor-id="sec-inset-maps">
+<span class="header-section-number">15.3</span> Inset maps</h2>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

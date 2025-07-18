@@ -423,28 +423,19 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <p>To make it animated, we can use the <code><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate()</a></code> or <code>tm_animate_fast()</code> functions and specify the variable that we want to animate by, in this case, <code>time</code> (<a href="#fig-anims" class="quarto-xref">Figure&nbsp;<span>17.1</span></a>). The difference between the two functions is that <code><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate()</a></code> renders the animation at 2 frames per second (specified by the <code>fps</code> argument), while <code>tm_animate_fast()</code> renders it at 24 frames per second. The former is more suitable for smaller datasets and cases where we want to allow the viewer to read the values on the map, while the latter is more suitable for larger datasets and cases where we want to create a smooth, cinematic animation.</p>
 <!-- fix: -->
 <!-- https://github.com/r-tmap/tmap/issues/1150#issuecomment-3044249460 -->
+<div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate</a></span><span class="op">(</span>by <span class="op">=</span> <span class="st">"time"</span><span class="op">)</span></span>
-<span><span class="va">tm</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_animate_fast</span><span class="op">(</span>by <span class="op">=</span> <span class="st">"time"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="fig-anims" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-anims-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-anims" style="flex-basis: 50.0%;justify-content: center;">
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate</a></span><span class="op">(</span>by <span class="op">=</span> <span class="st">"time"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
 <div id="fig-anims" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-anims-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-anims-1.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-anims">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-anims-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Using <code><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate()</a></code>
-</figcaption></figure>
-</div>
-</div>
-</div>
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-anims-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-anims-1.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anims-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17.1: Animations of GDP per capita in Slovenian regions over time
+Figure&nbsp;17.1: Animations of GDP per capita in Slovenian regions over time using <code><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate()</a></code>
 </figcaption></figure>
+</div>
+</div>
 </div>
 <p>Two main additional arguments for the <em>animate</em> functions are <code>fps</code> (frames per second) and <code>play</code> (playback mode). The first one controls the speed of the animation, while the second one controls how the animation is played back: either <code>"loop"</code> (default), which plays the animation in a loop, <code>"once"</code>, which plays the animation only once and then stops, or <code>"pingpong"</code> which plays the animation back and forth (<a href="#fig-anims2" class="quarto-xref">Figure&nbsp;<span>17.2</span></a>).</p>
 <div class="cell" data-layout-align="center">
