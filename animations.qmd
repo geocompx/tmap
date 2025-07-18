@@ -43,15 +43,9 @@ The former is more suitable for smaller datasets and cases where we want to allo
 <!-- https://github.com/r-tmap/tmap/issues/1150#issuecomment-3044249460 -->
 ```{r}
 #| label: fig-anims
-#| fig-cap: "Animations of GDP per capita in Slovenian regions over time"
-#| fig-subcap:
-#|   - "Using `tm_animate()`"
-#|   - "Using `tm_animate_fast()`"
-#| layout-ncol: 2
+#| fig-cap: "Animations of GDP per capita in Slovenian regions over time using `tm_animate()`"
 tm +
   tm_animate(by = "time")
-tm +
-  tm_animate_fast(by = "time")
 ```
 
 Two main additional arguments for the *animate* functions are `fps` (frames per second) and `play` (playback mode).
