@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
   fig.align = "center",
   fig.retina = 2,
   # fig.height = 7,
-  fig.width = 6,
+  fig.width = 7,
   fig.asp = 0.618,  # 1 / phi
   fig.show = "hold",
   # dpi = 150,
