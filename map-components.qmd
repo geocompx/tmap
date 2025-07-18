@@ -17,7 +17,7 @@ attr_layers_df = tibble::tribble(
   "tm_xlab()", "adds an x axis labels", 
   "tm_ylab()", "adds an y axis labels",
   "tm_logo()", "adds a logo",
-  "tm_inset", "adds an inset map or plot",
+  # "tm_inset", "adds an inset map or plot",
   "tm_minimap()", "adds minimap"
 )
 ```
