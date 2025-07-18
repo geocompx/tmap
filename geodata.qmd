@@ -71,7 +71,7 @@ Each row, on the other hand, relates to a single spatial geometry.
 #| message: false
 library(sf)
 library(tmap)
-point_data <- st_sf(
+point_data = st_sf(
     id = as.factor(c(1, 2)),
     type = c("streetlight", "bench"),
     geom = st_sfc(
@@ -84,10 +84,10 @@ point_data <- st_sf(
 
 ```{r}
 #| echo: false
-linestring_sfg1 <- st_linestring(rbind(c(0.9, 1.9), c(1.6, 1.9), c(1.8, 1.8)))
-linestring_sfg2 <- st_linestring(rbind(c(0.8, 1.6), c(1.4, 1.5), c(2, 1.6)))
-linestring_sfg3 <- st_linestring(rbind(c(1.1, 1), c(1.6, 1.2), c(1.9, 1.2)))
-lines_data <- st_sf(
+linestring_sfg1 = st_linestring(rbind(c(0.9, 1.9), c(1.6, 1.9), c(1.8, 1.8)))
+linestring_sfg2 = st_linestring(rbind(c(0.8, 1.6), c(1.4, 1.5), c(2, 1.6)))
+linestring_sfg3 = st_linestring(rbind(c(1.1, 1), c(1.6, 1.2), c(1.9, 1.2)))
+lines_data = st_sf(
     id = as.factor(1:3),
     type = c("a", "b", "c"),
     geom = st_sfc(linestring_sfg1,
@@ -96,12 +96,12 @@ lines_data <- st_sf(
         crs = "EPSG:4326"
     )
 )
-lines_data_p <- st_cast(lines_data, "MULTIPOINT")
+lines_data_p = st_cast(lines_data, "MULTIPOINT")
 ```
 
 ```{r}
 #| echo: false
-polygon_sfg1 <- st_polygon(list(rbind(
+polygon_sfg1 = st_polygon(list(rbind(
     c(1.4, 1.6),
     c(1.6, 1.6),
     c(1.6, 1.8),
@@ -109,7 +109,7 @@ polygon_sfg1 <- st_polygon(list(rbind(
     c(1.4, 1.6)
 )))
 
-polygon_sfg2 <- st_multipolygon(list(
+polygon_sfg2 = st_multipolygon(list(
     list(rbind(
         c(1.6, 1.3), c(1.8, 1.45), c(1.6, 1.45), c(1.6, 1.3)
     )),
@@ -125,7 +125,7 @@ polygon_sfg2 <- st_multipolygon(list(
     )
 ))
 
-polygon_data <- st_sf(
+polygon_data = st_sf(
     id = as.factor(1:2),
     type = c("a", "b"),
     geom = st_sfc(polygon_sfg1,
@@ -134,7 +134,7 @@ polygon_data <- st_sf(
     )
 )
 
-polygon_data_p <- st_cast(polygon_data, "MULTIPOINT")
+polygon_data_p = st_cast(polygon_data, "MULTIPOINT")
 ```
 
 ```{r}
@@ -210,17 +210,17 @@ library(tmap)
 library(spData)
 library(stars)
 set.seed(2020 - 06 - 25)
-mat <- matrix(1:20, nrow = 5, ncol = 4)
-dim(mat) <- c(x = 5, y = 4)
-mat2 <- matrix(sample.int(100, 20), nrow = 5, ncol = 4)
-mat2[c(4, 12)] <- NA
-dim(mat2) <- c(x = 5, y = 4)
-sta <- c(st_as_stars(mat), st_as_stars(mat2))
-attr(sta, "dimensions")[[2]]$delta <- -1
+mat = matrix(1:20, nrow = 5, ncol = 4)
+dim(mat) = c(x = 5, y = 4)
+mat2 = matrix(sample.int(100, 20), nrow = 5, ncol = 4)
+mat2[c(4, 12)] = NA
+dim(mat2) = c(x = 5, y = 4)
+sta = c(st_as_stars(mat), st_as_stars(mat2))
+attr(sta, "dimensions")[[2]]$delta = -1
 
-sta_sf <- st_as_sf(sta)
-sta_sf$A1.2 <- as.character(as.factor(sta_sf$A1.1))
-sta_sf$A1.2[is.na(sta_sf$A1.1)] <- "NA"
+sta_sf = st_as_sf(sta)
+sta_sf$A1.2 = as.character(as.factor(sta_sf$A1.1))
+sta_sf$A1.2[is.na(sta_sf$A1.1)] = "NA"
 
 tm_shape(sta_sf) +
     tm_polygons() +
@@ -262,45 +262,45 @@ In the last type of raster data grids, curvilinear grids, cells are cuboids of d
 #|   - Rectilinear
 #|   - Curvilinear
 # regular grid
-tm_sta_regular <- tm_shape(sta_sf) +
+tm_sta_regular = tm_shape(sta_sf) +
     tm_polygons() +
     tm_text("A1") +
     # tm_title("Regular") +
     tm_layout(frame = FALSE)
 # rotated grids
-sta_rotated <- sta
-attr(attr(sta_rotated, "dimensions"), "raster")$affine <- c(0.1, 0.1)
-sta_rotated_sf <- st_as_sf(sta_rotated)
-tm_sta_rotated <- tm_shape(sta_rotated_sf) +
+sta_rotated = sta
+attr(attr(sta_rotated, "dimensions"), "raster")$affine = c(0.1, 0.1)
+sta_rotated_sf = st_as_sf(sta_rotated)
+tm_sta_rotated = tm_shape(sta_rotated_sf) +
     tm_polygons() +
     tm_text("A1") +
     # tm_title("Rotated") +
     tm_layout(frame = FALSE)
 # sheared grids
-sta_sheared <- sta
-attr(attr(sta_sheared, "dimensions"), "raster")$affine <- c(0.1, 0.2)
-sta_sheared_sf <- st_as_sf(sta_sheared)
-tm_sta_sheared <- tm_shape(sta_sheared_sf) +
+sta_sheared = sta
+attr(attr(sta_sheared, "dimensions"), "raster")$affine = c(0.1, 0.2)
+sta_sheared_sf = st_as_sf(sta_sheared)
+tm_sta_sheared = tm_shape(sta_sheared_sf) +
     tm_polygons() +
     tm_text("A1") +
     # tm_title("Sheared") +
     tm_layout(frame = FALSE)
 # rectilinear grids
-x <- c(0, 0.5, 1.5, 2.1, 3, 5)
-y <- rev(c(0.1, 1, 1.5, 2, 4))
-sta_rectilinear <- st_as_stars(list(m = mat),
+x = c(0, 0.5, 1.5, 2.1, 3, 5)
+y = rev(c(0.1, 1, 1.5, 2, 4))
+sta_rectilinear = st_as_stars(list(m = mat),
     dimensions = st_dimensions(x = x, y = y)
 )
-sta_rectilinear_sf <- st_as_sf(sta_rectilinear)
-tm_sta_rectilinear <- tm_shape(sta_rectilinear_sf) +
+sta_rectilinear_sf = st_as_sf(sta_rectilinear)
+tm_sta_rectilinear = tm_shape(sta_rectilinear_sf) +
     tm_polygons() +
     tm_text("m") +
     # tm_title("Rectilinear") +
     tm_layout(frame = FALSE)
 # curvilinear grids
-sta_curvilinear <- sta
-X1 <- matrix(rep(1:5, times = 4), nrow = 5, ncol = 4)
-X2 <- matrix(
+sta_curvilinear = sta
+X1 = matrix(rep(1:5, times = 4), nrow = 5, ncol = 4)
+X2 = matrix(
     c(
         seq(3.36, 1, length.out = 4),
         seq(3.52, 1.16, length.out = 4),
@@ -311,16 +311,16 @@ X2 <- matrix(
     nrow = 5, ncol = 4,
     byrow = TRUE
 )
-am <- matrix(1:20, nrow = 5, ncol = 4)
-sta_curvilinear <- st_as_stars(am)
-sta_curvilinear <- st_as_stars(sta_curvilinear,
+am = matrix(1:20, nrow = 5, ncol = 4)
+sta_curvilinear = st_as_stars(am)
+sta_curvilinear = st_as_stars(sta_curvilinear,
     curvilinear = list(
         X1 = X1,
         X2 = X2
     )
 )
-sta_curvilinear_sf <- st_as_sf(sta_curvilinear)
-tm_sta_curvilinear <- tm_shape(sta_curvilinear_sf) +
+sta_curvilinear_sf = st_as_sf(sta_curvilinear)
+tm_sta_curvilinear = tm_shape(sta_curvilinear_sf) +
     tm_polygons() +
     tm_text("A1") +
     # tm_grid() +
@@ -359,7 +359,7 @@ Additional information about multi-layer rasters can be also found in @sec-spati
 #|   - Blue
 #|   - Composite
 # we can/should change this example later
-landsat234 <- terra::rast(system.file("raster/landsat.tif", package = "spDataLarge"))[[1:3]]
+landsat234 = terra::rast(system.file("raster/landsat.tif", package = "spDataLarge"))[[1:3]]
 tm_shape(landsat234[[3]]) +
     tm_raster(col.scale = tm_scale(values = "Greys")) +
     # tm_title("Red") +
@@ -490,7 +490,7 @@ The **sf** package can read all of the spatial data formats mentioned in @sec-ve
 <!--improve example-->
 ```{r}
 library(sf)
-worldvector <- read_sf("data/worldvector.gpkg")
+worldvector = read_sf("data/worldvector.gpkg")
 ```
 
 The new object, `worldvector`, has a `sf` class. 
@@ -540,7 +540,7 @@ This way, we create a new object of the class `SpatRaster,` which is the main cl
 ```{r}
 #| message: false
 library(terra)
-worldelevation1 <- rast("data/worldelevation.tif")
+worldelevation1 = rast("data/worldelevation.tif")
 ```
 
 To see the properties of the `worldelevation1` object, we just need to type its name.
@@ -575,7 +575,7 @@ This function requires at least one argument with a filename to be read.
 <!--improve example-->
 ```{r}
 library(stars)
-worldelevation2 <- read_stars("data/worldelevation.tif")
+worldelevation2 = read_stars("data/worldelevation.tif")
 ```
 
 The new object, `worldelevation2`, is of a `stars` class. 
@@ -597,8 +597,8 @@ For example, the below code will read just the first and second bands -- in this
 <!-- - including reading chunks, changing resolution, and selecting bands -->
 <!--improve example-->
 ```{r}
-slo_tavg_fp <- "data/slovenia/slo_tavg.tif"
-slo_tavg12 <- read_stars(slo_tavg_fp, RasterIO = list(bands = c(1, 2)))
+slo_tavg_fp = "data/slovenia/slo_tavg.tif"
+slo_tavg12 = read_stars(slo_tavg_fp, RasterIO = list(bands = c(1, 2)))
 ```
 
 Internally, a `stars` object is a list of `matrix` or `array` objects with additional attributes describing spatial metadata, such as a number of columns and rows, resolution, coordinate reference system, etc.
