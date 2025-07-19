@@ -60,17 +60,37 @@ tm_slo_elev = tm_shape(slo_elev) +
     col.legend = tm_legend(show = FALSE)
   )
 
-tm_shape(worldelevation) +
+tm_shape(worldelevation, bbox = tmaptools::bb("Europe")) +
   tm_raster(
     col.scale = tm_scale_continuous(values = "geyser", midpoint = NA,
                                     limits = c(-500, 6500))
   ) +
-  tm_title("Slovenia", position = c("LEFT", "CENTER")) +
-  tm_inset(tm_slo_elev, position = c("LEFT", "CENTER")) +
-  tm_crs("+proj=eqearth") +
+  tm_title("Slovenia", position = c("RIGHT", "CENTER")) +
+  tm_inset(tm_slo_elev, position = c("RIGHT", "CENTER")) +
+  tm_crs("+proj=eqearth", bbox = tmaptools::bb("Europe")) +
   tm_layout(earth_boundary = TRUE,
             space.color = "red")
 ```
+
+```{r}
+library(ggplot2)
+library(tmap)
+library(sf)
+slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
+slo_cities = read_sf("data/slovenia/slo_cities.gpkg")
+gg1 = ggplot(slo_cities, aes(place)) +
+  geom_bar() +
+  scale_y_discrete() +
+  labs(x = NULL, y = NULL) +
+  theme_bw()
+tm_shape(slo_regions) +
+  tm_polygons("gdppercap") +
+  tm_shape(slo_cities) +
+  tm_symbols(shape = "place") +
+  tm_labels("name", bgcol = "white") +
+  tm_inset(gg1, position = c("right", "bottom")) 
+```
+
 
 <!-- ggplot2 insets? -->
 <!-- image insets? -->
