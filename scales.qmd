@@ -511,7 +511,7 @@ tm_shape(slo_tavg) +
               multivariate = TRUE
             ),
             col.scale = tm_scale_bivariate(
-              values = "pinkblue",
+              values = "\\pinkblue",
               scale1 = tm_scale_intervals(
                 breaks = c(-8, -4, 0, 4, 8), 
                 labels = c("Very cold", "Cold", "Mild", "Warm")
@@ -543,6 +543,10 @@ There are also a few areas where the temperature category is very different betw
 <<tmrastbiv1>>
 <<tmrastbiv2>>
 ```
+
+<!-- a note about specifying bivariable scale order -->
+<!-- https://r-tmap.github.io/tmap/articles/examples_biv_choro -->
+
 
 <!-- OLDER STUFF: -->
 
