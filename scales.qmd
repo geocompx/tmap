@@ -547,6 +547,31 @@ There are also a few areas where the temperature category is very different betw
 <!-- a note about specifying bivariable scale order -->
 <!-- https://r-tmap.github.io/tmap/articles/examples_biv_choro -->
 
+```{r}
+#| echo: false
+flipops = tibble::tribble(
+  ~Operator,  ~Description,
+  "",         "Normal order",
+  "-",        "Flip columns (left-right)",
+  "|",        "Flip rows (top-bottom)",
+  "+",        "Flip rows and columns",
+  "/",        "Flip main diagonal (top-left to bottom-right)",
+  "\\\\",     "Flip other diagonal (top-right to bottom-left)",
+  "-/",       "Flip main diagonal and rows",
+  "-\\\\",    "Flip other diagonal and rows"
+)
+```
+
+```{r}
+#| label: tbl-flipops-table
+#| tbl-cap: "Operators for flipping bivariate color scales"
+#| echo: false
+#| warning: false
+#| message: false
+tinytable::tt(flipops) |>
+  tinytable::style_tt(j = 1, monospace = TRUE)
+```
+
 
 <!-- OLDER STUFF: -->
 
