@@ -955,7 +955,7 @@ Figure&nbsp;8.10: Example of a bivariate map, where two variables are combined i
 <span>              multivariate <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span>            <span class="op">)</span>,</span>
 <span>            col.scale <span class="op">=</span> <span class="fu">tm_scale_bivariate</span><span class="op">(</span></span>
-<span>              values <span class="op">=</span> <span class="st">"pinkblue"</span>,</span>
+<span>              values <span class="op">=</span> <span class="st">"\\pinkblue"</span>,</span>
 <span>              scale1 <span class="op">=</span> <span class="fu">tm_scale_intervals</span><span class="op">(</span></span>
 <span>                breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">8</span>, <span class="op">-</span><span class="fl">4</span>, <span class="fl">0</span>, <span class="fl">4</span>, <span class="fl">8</span><span class="op">)</span>, </span>
 <span>                labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Very cold"</span>, <span class="st">"Cold"</span>, <span class="st">"Mild"</span>, <span class="st">"Warm"</span><span class="op">)</span></span>
@@ -1001,6 +1001,143 @@ Figure&nbsp;8.10: Example of a bivariate map, where two variables are combined i
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmrastbiv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8.11: Bivariate maps for raster data
 </figcaption></figure>
+</div>
+<!-- a note about specifying bivariable scale order -->
+<!-- https://r-tmap.github.io/tmap/articles/examples_biv_choro -->
+<div class="cell" data-layout-align="center">
+<div id="tbl-flipops-table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-flipops-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;8.2: Operators for flipping bivariate color scales
+</figcaption><div aria-describedby="tbl-flipops-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<!-- preamble start -->
+
+    <script>
+
+      function styleCell_i4jld5s6taplofcb0rct(i, j, css_id) {
+          var table = document.getElementById("tinytable_i4jld5s6taplofcb0rct");
+          var cell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
+          if (cell) {
+              console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
+              cell.classList.add(css_id);
+          } else {
+              console.warn(`Cell at (${i}, ${j}) not found.`);
+          }
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_i4jld5s6taplofcb0rct');
+        // Find the row with data-row attribute matching i
+        var targetRow = table.querySelector(`tr [data-row="${i}"]`).closest('tr');
+        var newRow = table.insertRow(targetRow.rowIndex);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        newCell.setAttribute("data-col", "0");
+        newCell.setAttribute("data-row", i - 1);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_i4jld5s6taplofcb0rct(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_i4jld5s6taplofcb0rct");
+        const targetCell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
+        if (!targetCell) {
+          console.warn(`Cell at (${i}, ${j}) not found.`);
+        }
+
+        // Get all cells that need to be removed
+        const cellsToRemove = [];
+        for (let r = 0; r < rowspan; r++) {
+          for (let c = 0; c < colspan; c++) {
+            if (r === 0 && c === 0) continue; // Skip the target cell
+            const cell = table.querySelector(`[data-row="${i + r}"][data-col="${j + c}"]`);
+            if (cell) {
+              cellsToRemove.push(cell);
+            }
+          }
+        }
+
+        // Remove all cells
+        cellsToRemove.forEach(cell => cell.remove());
+
+        // Set rowspan and colspan of the target cell if it exists
+        if (targetCell) {
+          targetCell.rowSpan = rowspan;
+          targetCell.colSpan = colspan;
+        }
+      }
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '8', j: 1 },  ], css_id: 'tinytable_css_d8sgtaimlnrw98wp0v8y',}, 
+          { positions: [ { i: '0', j: 1 },  ], css_id: 'tinytable_css_t52pkiagyo3wl6hr5x28',}, 
+          { positions: [ { i: '8', j: 0 },  ], css_id: 'tinytable_css_maws9jv2knd7o2mgoqwi',}, 
+          { positions: [ { i: '1', j: 0 }, { i: '2', j: 0 }, { i: '3', j: 0 }, { i: '4', j: 0 }, { i: '5', j: 0 }, { i: '6', j: 0 }, { i: '7', j: 0 },  ], css_id: 'tinytable_css_pn0t1d2ccmflsfzt7lt4',}, 
+          { positions: [ { i: '0', j: 0 },  ], css_id: 'tinytable_css_b1rwip0y5z44gqetcs2g',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  styleCell_i4jld5s6taplofcb0rct(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script><style>
+      /* tinytable css entries after */
+      .table td.tinytable_css_d8sgtaimlnrw98wp0v8y, .table th.tinytable_css_d8sgtaimlnrw98wp0v8y { border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_t52pkiagyo3wl6hr5x28, .table th.tinytable_css_t52pkiagyo3wl6hr5x28 { border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_maws9jv2knd7o2mgoqwi, .table th.tinytable_css_maws9jv2knd7o2mgoqwi { font-family: monospace; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_pn0t1d2ccmflsfzt7lt4, .table th.tinytable_css_pn0t1d2ccmflsfzt7lt4 { font-family: monospace; }
+      .table td.tinytable_css_b1rwip0y5z44gqetcs2g, .table th.tinytable_css_b1rwip0y5z44gqetcs2g { font-family: monospace; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+    </style>
+<div class="container">
+      <table class="table table-borderless" id="tinytable_i4jld5s6taplofcb0rct" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+<thead><tr>
+<th scope="col" data-row="0" data-col="0">Operator</th>
+                <th scope="col" data-row="0" data-col="1">Description</th>
+              </tr></thead>
+<tbody>
+<tr>
+<td data-row="1" data-col="0"></td>
+                  <td data-row="1" data-col="1">Normal order</td>
+                </tr>
+<tr>
+<td data-row="2" data-col="0">-</td>
+                  <td data-row="2" data-col="1">Flip columns (left-right)</td>
+                </tr>
+<tr>
+<td data-row="3" data-col="0">|</td>
+                  <td data-row="3" data-col="1">Flip rows (top-bottom)</td>
+                </tr>
+<tr>
+<td data-row="4" data-col="0">+</td>
+                  <td data-row="4" data-col="1">Flip rows and columns</td>
+                </tr>
+<tr>
+<td data-row="5" data-col="0">/</td>
+                  <td data-row="5" data-col="1">Flip main diagonal (top-left to bottom-right)</td>
+                </tr>
+<tr>
+<td data-row="6" data-col="0">\\</td>
+                  <td data-row="6" data-col="1">Flip other diagonal (top-right to bottom-left)</td>
+                </tr>
+<tr>
+<td data-row="7" data-col="0">-/</td>
+                  <td data-row="7" data-col="1">Flip main diagonal and rows</td>
+                </tr>
+<tr>
+<td data-row="8" data-col="0">-\\</td>
+                  <td data-row="8" data-col="1">Flip other diagonal and rows</td>
+                </tr>
+</tbody>
+</table>
+</div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
+</div>
+</figure>
+</div>
 </div>
 <!-- OLDER STUFF: -->
 <!-- All of the scales and styles mentioned above work not only for `tm_polygons()` -- they can be also applied for `tm_symbols()` (and its derivatives - `tm_dots()`, `tm_bubbles()`, `tm_squares()`), `tm_lines()`, `tm_fill()`, and `tm_raster()`. -->
