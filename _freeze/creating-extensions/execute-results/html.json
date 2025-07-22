@@ -1,9 +1,11 @@
 {
-  "hash": "18d316114c640113649c3fb7a4ce6e57",
+  "hash": "26c97ae81ae2eae59d0e35f1819a4e10",
   "result": {
     "engine": "knitr",
-    "markdown": "::: {.cell}\n\n:::\n\n\n\n\n# Creating extensions {#sec-creating-extensions}\n\n<!-- possibly, one chapter before it could be a short overview of the existing (stable) extensions -->",
-    "supporting": [],
+    "markdown": "\n::: {.cell}\n\n:::\n\n\n# Creating extensions {#sec-creating-extensions}\n\n<!-- possibly, one chapter before it could be a short overview of the existing (stable) extensions -->\n",
+    "supporting": [
+      "creating-extensions_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
