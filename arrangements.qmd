@@ -20,10 +20,17 @@ The main difference is that `tmap_arrange()` combines multiple maps, often based
 
 Inset maps are a powerful way to add additional context or details to a main map.
 They are typically smaller maps that show a specific area of interest, such as a zoomed-in view of a region, or a different data layer that complements the main map.
-In **tmap**, insets may be based on image files, **ggplot2** objects, a bounding box, or another `tmap` object.
+In **tmap**, insets may be based on a bounding box, another `tmap` object, **ggplot2** objects, or image files.
 To add an inset map to a main map, we can use the `tm_inset()` function.
 
+@fig-inset-maps1 shows how to add multiple inset maps to a main map.
+Each inset is defined by a bounding box using the `tmaptools::bb()` function, which takes a place name as input and returns a bounding box for that place.^[Alternatively, you can use a bounding box defined by a vector of coordinates, such as `c(xmin, ymin, xmax, ymax)` or another spatial object.]
+In such cases, inset maps are added to the main map, with the same extent as the bounding box and the same style as the main map.
+
 ```{r}
+#| label: fig-inset-maps1
+#| fig-cap: "Inset maps based on bounding boxes."
+#| message: false
 library(tmap)
 library(stars)
 slo_elev = read_stars("data/slovenia/slo_elev.tif")
@@ -35,19 +42,21 @@ tm_shape(slo_elev) +
 ```
 
 ```{r}
-library(tmap)
-library(stars)
-slo_elev = read_stars("data/slovenia/slo_elev.tif")
+#| label: fig-inset-maps2
+#| fig-cap: "Customized inset maps."
+#| fig-width: 9
 tm_shape(slo_elev) +
   tm_raster(
     col.scale = tm_scale_continuous(values = "geyser", midpoint = NA)
   ) +  
-  tm_title("Maribor", position = c("right", "bottom")) +
-  tm_inset(tmaptools::bb("Maribor"), position = c("right", "bottom")) +
-  tm_title("Ljubljana", position = c("right", "bottom")) +
-  tm_inset(tmaptools::bb("Ljubljana"), position = c("right", "bottom")) +
-  tm_title("Bled", position = c("left", "top")) +
-  tm_inset(tmaptools::bb("Bled"), position = c("left", "top"))
+  tm_title("Maribor", group_id = 1) +
+  tm_inset(tmaptools::bb("Maribor"), group_id = 1) +
+  tm_title("Ljubljana", group_id = 1) +
+  tm_inset(tmaptools::bb("Ljubljana"), group_id = 1) +
+  tm_title("Bled", group_id = 2) +
+  tm_inset(tmaptools::bb("Bled"), group_id = 2) +
+  tm_components(1, position = c("right", "bottom")) +
+  tm_components(2, position = c("left", "top"))
 ```
 
 ```{r}
