@@ -32,14 +32,18 @@ In such cases, inset maps are added to the main map, with the same extent as the
 #| fig-cap: "Inset maps based on bounding boxes."
 #| message: false
 library(tmap)
-library(stars)
-slo_elev = read_stars("data/slovenia/slo_elev.tif")
+library(terra)
+slo_elev = rast("data/slovenia/slo_elev.tif")
 tm_shape(slo_elev) +
   tm_raster() +
   tm_inset(tmaptools::bb("Maribor")) +
   tm_inset(tmaptools::bb("Ljubljana")) +
   tm_inset(tmaptools::bb("Bled"))
 ```
+
+The above map can be further customized by improving the color palette and adding titles to the inset maps.
+We can use the `tm_title()` function to add titles to the inset maps, and the `tm_inset()` function to specify the bounding boxes for each inset map.
+Then, each of these components can be grouped using the `group_id` argument and arranged using the `tm_components()` function (@sec-components).
 
 ```{r}
 #| label: fig-inset-maps2
@@ -59,26 +63,40 @@ tm_shape(slo_elev) +
   tm_components(2, position = c("left", "top"))
 ```
 
-```{r}
-worldelevation = read_stars("data/worldelevation.tif")
+The `tm_inset()` function can also be used to add a `tmap` object as an inset map.
+In the following example, we create a `tmap` object for Slovenia's elevation.
+Importantly, we set the limits of the color scale to match the limits of the elevation data of the main map and remove the legend using the `tm_legend(show = FALSE)` argument.
+We also add a scale bar to the inset map using the `tm_scalebar()` function to facilitate a better understanding of the area's size shown in the inset.
 
+```{r}
 tm_slo_elev = tm_shape(slo_elev) +
   tm_raster(
     col.scale = tm_scale_continuous(values = "geyser", midpoint = NA,
-                                    limits = c(-500, 6500)),
+                                    limits = c(-100, 4000)),
     col.legend = tm_legend(show = FALSE)
-  )
+  ) +
+  tm_scalebar(breaks = c(0, 10, 20),
+              position = c("RIGHT", "BOTTOM"))
+```
 
-tm_shape(worldelevation, bbox = tmaptools::bb("Europe")) +
+Now, we can create our main map and add the inset map based on the `tm_slo_elev` object (@fig-inset-maps3).
+The main map in our case would be the elevation of Europe, using the same color scale as the inset map -- however, this time, we will include the legend.
+<!-- the other order: main map of Slovenia, large of Europe? I know minimap, but maybe also we can find a way here... -->
+
+```{r}
+#| label: fig-inset-maps3
+#| fig-cap: "Inset maps based on tmap objects."
+#| message: false
+worldelevation = rast("data/worldelevation.tif")
+tm_shape(worldelevation, bbox = "Europe") +
   tm_raster(
     col.scale = tm_scale_continuous(values = "geyser", midpoint = NA,
-                                    limits = c(-500, 6500))
+                                    limits = c(-100, 4000))
   ) +
-  tm_title("Slovenia", position = c("RIGHT", "CENTER")) +
-  tm_inset(tm_slo_elev, position = c("RIGHT", "CENTER")) +
-  tm_crs("+proj=eqearth", bbox = tmaptools::bb("Europe")) +
-  tm_layout(earth_boundary = TRUE,
-            space.color = "red")
+  tm_scalebar() +
+  tm_title("Slovenia", group_id = 1) +
+  tm_inset(tm_slo_elev, group_id = 1) +
+  tm_components(1, position = c("LEFT", "TOP")) 
 ```
 
 ```{r}
