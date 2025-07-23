@@ -555,12 +555,39 @@ flipops = tibble::tribble(
   "-",        "Flip columns (left-right)",
   "|",        "Flip rows (top-bottom)",
   "+",        "Flip rows and columns",
-  "/",        "Flip main diagonal (top-left to bottom-right)",
+  "//",        "Flip main diagonal (top-left to bottom-right)",
   "\\\\",     "Flip other diagonal (top-right to bottom-left)",
-  "-/",       "Flip main diagonal and rows",
+  "-//",       "Flip main diagonal and rows",
   "-\\\\",    "Flip other diagonal and rows"
 )
 ```
+
+<!-- https://github.com/cols4all/cols4all-R/issues/45 -->
+
+```{r}
+#| eval: false
+#| echo: false
+tmo_maker = function(op) {
+  tm_shape(slo_tavg) +
+    tm_raster(col = tm_vars(dimvalues = c("tavg_1", "tavg_7"), multivariate = TRUE),
+              col.legend = tm_legend(title = op),
+              col.scale = tm_scale_bivariate(values = paste0(op, "pinkblue"),
+                scale1 = tm_scale_intervals(breaks = c(-8, -4, -1, 1, 4, 8)),
+                scale2 = tm_scale_intervals(breaks = c(5, 10, 15, 20, 25)))) +
+    tm_layout(legend.only = TRUE)
+}
+to1 = tmo_maker(" ")
+to2 = tmo_maker("-")
+to3 = tmo_maker("|")
+to4 = tmo_maker("+")
+to5 = tmo_maker("//")
+to6 = tmo_maker("\\\\")
+to7 = tmo_maker("-//")
+to8 = tmo_maker("-\\\\")
+tmap_arrange(to1, to2, to3, to4, to5, to6, to7, to8,
+              ncol = 2, nrow = 4)
+```
+
 
 ```{r}
 #| label: tbl-flipops-table
@@ -572,9 +599,7 @@ tinytable::tt(flipops) |>
   tinytable::style_tt(j = 1, monospace = TRUE)
 ```
 
-
 <!-- OLDER STUFF: -->
-
 
 <!-- All of the scales and styles mentioned above work not only for `tm_polygons()` -- they can be also applied for `tm_symbols()` (and its derivatives - `tm_dots()`, `tm_bubbles()`, `tm_squares()`), `tm_lines()`, `tm_fill()`, and `tm_raster()`. -->
 <!-- add  -->
