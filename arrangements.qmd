@@ -43,7 +43,7 @@ tm_shape(slo_elev) +
 
 The above map can be further customized by improving the color palette and adding titles to the inset maps.
 We can use the `tm_title()` function to add titles to the inset maps, and the `tm_inset()` function to specify the bounding boxes for each inset map.
-Then, each of these components can be grouped using the `group_id` argument and arranged using the `tm_components()` function (@sec-components).
+Then, each of these components can be grouped using the `group_id` argument and arranged using the `tm_components()` function (@sec-position-many-components).
 
 ```{r}
 #| label: fig-inset-maps2
@@ -87,6 +87,7 @@ The main map in our case would be the elevation of Europe, using the same color 
 #| label: fig-inset-maps3
 #| fig-cap: "Inset maps based on tmap objects."
 #| message: false
+#| fig-asp: 1
 worldelevation = rast("data/worldelevation.tif")
 tm_shape(worldelevation, bbox = "Europe") +
   tm_raster(
@@ -99,17 +100,32 @@ tm_shape(worldelevation, bbox = "Europe") +
   tm_components(1, position = c("LEFT", "TOP")) 
 ```
 
+The **ggplot2** package can also be used to create insets.
+Such insets could be based on some external data or be derived from the map data itself, and then provide additional non-spatial information.
+In the following example, we create a bar plot illustrating the number of people living in Slovenia's cities and towns.
+The default **ggplot2** theme includes many elements, such as grid lines, axis ticks, and background, which are often unnecessary in inset maps and can distract from the main map.
+Thus, we also remove the labeling of the axes and apply the `theme_minimal()` function to simplify the plot.
+
 ```{r}
 library(ggplot2)
-library(tmap)
 library(sf)
-slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
 slo_cities = read_sf("data/slovenia/slo_cities.gpkg")
-gg1 = ggplot(slo_cities, aes(place)) +
-  geom_bar() +
-  scale_y_discrete() +
+gg1 = ggplot(slo_cities, aes(place, population)) +
+  geom_col() +
+  scale_y_continuous(labels = scales::comma) +
   labs(x = NULL, y = NULL) +
-  theme_bw()
+  theme_minimal()
+```
+
+We can add the new **ggplot2** object as an inset map in the same way as we did with the `tmap` object.
+@fig-inset-maps4 displays a map of Slovenia's regions, with points representing cities and towns, and then adds the **ggplot2** object as an inset map.
+It allows us to see that even though there are more towns than cities in our dataset, more people live in cities than in towns.
+
+```{r}
+#| label: fig-inset-maps4
+#| fig-cap: "Inset maps based on a ggplot2 object."
+#| message: false
+slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
 tm_shape(slo_regions) +
   tm_polygons("gdppercap") +
   tm_shape(slo_cities) +
@@ -118,8 +134,6 @@ tm_shape(slo_regions) +
   tm_inset(gg1, position = c("right", "bottom")) 
 ```
 
-
-<!-- ggplot2 insets? -->
 <!-- image insets? -->
 
 ::: {.callout-note}
