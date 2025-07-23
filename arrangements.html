@@ -424,7 +424,7 @@ Figure&nbsp;15.1: Inset maps based on bounding boxes.
 </div>
 </div>
 </div>
-<p>The above map can be further customized by improving the color palette and adding titles to the inset maps. We can use the <code><a href="https://r-tmap.github.io/tmap/reference/tm_title.html">tm_title()</a></code> function to add titles to the inset maps, and the <code><a href="https://r-tmap.github.io/tmap/reference/tm_inset.html">tm_inset()</a></code> function to specify the bounding boxes for each inset map. Then, each of these components can be grouped using the <code>group_id</code> argument and arranged using the <code>tm_components()</code> function (<span class="quarto-unresolved-ref">?sec-components</span>).</p>
+<p>The above map can be further customized by improving the color palette and adding titles to the inset maps. We can use the <code><a href="https://r-tmap.github.io/tmap/reference/tm_title.html">tm_title()</a></code> function to add titles to the inset maps, and the <code><a href="https://r-tmap.github.io/tmap/reference/tm_inset.html">tm_inset()</a></code> function to specify the bounding boxes for each inset map. Then, each of these components can be grouped using the <code>group_id</code> argument and arranged using the <code>tm_components()</code> function (<a href="positions.html#sec-position-many-components" class="quarto-xref"><span>Section 11.2</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span></span>
@@ -483,18 +483,21 @@ Figure&nbsp;15.3: Inset maps based on tmap objects.
 </div>
 </div>
 </div>
+<p>The <strong>ggplot2</strong> package can also be used to create insets. Such insets could be based on some external data or be derived from the map data itself, and then provide additional non-spatial information. In the following example, we create a bar plot illustrating the number of people living in Slovenia’s cities and towns. The default <strong>ggplot2</strong> theme includes many elements, such as grid lines, axis ticks, and background, which are often unnecessary in inset maps and can distract from the main map. Thus, we also remove the labeling of the axes and apply the <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal()</a></code> function to simplify the plot.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; Linking to GEOS 3.13.0, GDAL 3.10.3, PROJ 9.6.0; sf_use_s2() is TRUE</span></span>
-<span><span class="va">slo_regions</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_regions.gpkg"</span><span class="op">)</span></span>
 <span><span class="va">slo_cities</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_cities.gpkg"</span><span class="op">)</span></span>
-<span><span class="va">gg1</span> <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">slo_cities</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">place</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html">scale_y_discrete</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="va">gg1</span> <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">slo_cities</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">place</span>, <span class="va">population</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="va"><a href="https://scales.r-lib.org/reference/comma.html">comma</a></span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can add the new <strong>ggplot2</strong> object as an inset map in the same way as we did with the <code>tmap</code> object. <a href="#fig-inset-maps4" class="quarto-xref">Figure&nbsp;<span>15.4</span></a> displays a map of Slovenia’s regions, with points representing cities and towns, and then adds the <strong>ggplot2</strong> object as an inset map. It allows us to see that even though there are more towns than cities in our dataset, more people live in cities than in towns.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">slo_regions</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_regions.gpkg"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="st">"gdppercap"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_cities</span><span class="op">)</span> <span class="op">+</span></span>
@@ -502,13 +505,16 @@ Figure&nbsp;15.3: Inset maps based on tmap objects.
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_labels</a></span><span class="op">(</span><span class="st">"name"</span>, bgcol <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_inset.html">tm_inset</a></span><span class="op">(</span><span class="va">gg1</span>, position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"right"</span>, <span class="st">"bottom"</span><span class="op">)</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="figures/unnamed-chunk-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<div id="fig-inset-maps4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-inset-maps4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-inset-maps4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-inset-maps4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.4: Inset maps based on a ggplot2 object.
+</figcaption></figure>
 </div>
 </div>
 </div>
-<!-- ggplot2 insets? -->
 <!-- image insets? -->
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -527,7 +533,7 @@ Note
 <span class="header-section-number">15.2</span> Basic arrangements</h2>
 <p>Let’s see how the <code><a href="https://r-tmap.github.io/tmap/reference/tmap_arrange.html">tmap_arrange()</a></code> function works based on two maps of Slovenia, each based on different data sources. The first map is based on the GDP per capita of Slovenia’s regions, represented as polygons.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
 <span><span class="va">slo_regions</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_regions.gpkg"</span><span class="op">)</span></span>
 <span><span class="va">tm1</span> <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
@@ -536,23 +542,23 @@ Note
 </div>
 <p>The second map is based on the elevation of Slovenia, represented as a raster layer.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/stars/">stars</a></span><span class="op">)</span></span>
 <span><span class="va">slo_elev</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_elev.tif"</span><span class="op">)</span></span>
 <span><span class="va">tm2</span> <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_title.html">tm_title</a></span><span class="op">(</span><span class="st">"Elevation in Slovenia"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In both cases, we also added titles to the maps using the <code><a href="https://r-tmap.github.io/tmap/reference/tm_title.html">tm_title()</a></code> function to clarify what each map represents, and assigned them to the objects <code>tm1</code> and <code>tm2</code>. Now, we may arrange these two maps in a single layout using the <code><a href="https://r-tmap.github.io/tmap/reference/tmap_arrange.html">tmap_arrange()</a></code> function (<a href="#fig-arrangements1" class="quarto-xref">Figure&nbsp;<span>15.4</span></a>). The <code><a href="https://r-tmap.github.io/tmap/reference/tmap_arrange.html">tmap_arrange()</a></code> function can take any number of <code>tmap</code> objects as input or even a list of <code>tmap</code> objects.</p>
+<p>In both cases, we also added titles to the maps using the <code><a href="https://r-tmap.github.io/tmap/reference/tm_title.html">tm_title()</a></code> function to clarify what each map represents, and assigned them to the objects <code>tm1</code> and <code>tm2</code>. Now, we may arrange these two maps in a single layout using the <code><a href="https://r-tmap.github.io/tmap/reference/tmap_arrange.html">tmap_arrange()</a></code> function (<a href="#fig-arrangements1" class="quarto-xref">Figure&nbsp;<span>15.5</span></a>). The <code><a href="https://r-tmap.github.io/tmap/reference/tmap_arrange.html">tmap_arrange()</a></code> function can take any number of <code>tmap</code> objects as input or even a list of <code>tmap</code> objects.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_arrange.html">tmap_arrange</a></span><span class="op">(</span><span class="va">tm1</span>, <span class="va">tm2</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_arrange.html">tmap_arrange</a></span><span class="op">(</span><span class="va">tm1</span>, <span class="va">tm2</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-arrangements1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-arrangements1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-arrangements1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-arrangements1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.4: Arranging two maps in one layout.
+Figure&nbsp;15.5: Arranging two maps in one layout.
 </figcaption></figure>
 </div>
 </div>
@@ -560,10 +566,10 @@ Figure&nbsp;15.4: Arranging two maps in one layout.
 <p>In the example above, we used our two maps and specified the number of columns in the layout using the <code>ncol</code> argument. We can also specify the number of rows using the <code>nrow</code> argument, the aspect ratio of the maps using the <code>asp</code> argument, and the widths and heights of the maps using the <code>widths</code> and <code>heights</code> arguments, respectively.</p>
 </section><section id="sec-customizing-arrangements" class="level2" data-number="15.3"><h2 data-number="15.3" class="anchored" data-anchor-id="sec-customizing-arrangements">
 <span class="header-section-number">15.3</span> Customizing arrangements</h2>
-<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tmap_arrange.html">tmap_arrange()</a></code> does not align layouts of multiple maps – you may notice that the frames of the two maps in <a href="#fig-arrangements1" class="quarto-xref">Figure&nbsp;<span>15.4</span></a> are not equal in height. To align the frames of the maps, we can use the <code>meta.margins</code> argument in the <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function for each map. This argument allows us to specify the margins around the map frame available for map elements, such as titles and legends, in the order of <code>c(bottom, left, top, right)</code>. <!-- Martijn, is the above statement correct? --></p>
-<p>Here, we set the bottom margin to <code>0.3</code><!-- units? --> for both maps, which will align their frames vertically. See the effect of this change in <a href="#fig-arrangements2" class="quarto-xref">Figure&nbsp;<span>15.5</span></a>.</p>
+<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tmap_arrange.html">tmap_arrange()</a></code> does not align layouts of multiple maps – you may notice that the frames of the two maps in <a href="#fig-arrangements1" class="quarto-xref">Figure&nbsp;<span>15.5</span></a> are not equal in height. To align the frames of the maps, we can use the <code>meta.margins</code> argument in the <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function for each map. This argument allows us to specify the margins around the map frame available for map elements, such as titles and legends, in the order of <code>c(bottom, left, top, right)</code>. <!-- Martijn, is the above statement correct? --></p>
+<p>Here, we set the bottom margin to <code>0.3</code><!-- units? --> for both maps, which will align their frames vertically. See the effect of this change in <a href="#fig-arrangements2" class="quarto-xref">Figure&nbsp;<span>15.6</span></a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm1a</span> <span class="op">=</span> <span class="va">tm1</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm1a</span> <span class="op">=</span> <span class="va">tm1</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>meta.margins <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.3</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">tm2a</span> <span class="op">=</span> <span class="va">tm2</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>meta.margins <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.3</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
@@ -574,7 +580,7 @@ Figure&nbsp;15.4: Arranging two maps in one layout.
 <img src="figures/fig-arrangements2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-arrangements2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15.5: Arranging two maps in one layout with aligned frames.
+Figure&nbsp;15.6: Arranging two maps in one layout with aligned frames.
 </figcaption></figure>
 </div>
 </div>
