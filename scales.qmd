@@ -502,6 +502,14 @@ Thus, all of the scales from sections [-@sec-categorical-scales] to [-@sec-conti
 In the example below, we use two scales for the temperature -- one for the January temperatures and one for the July temperatures.
 In both cases, our scales are intervals, but we customize their breaks and add text labels.
 
+Another difference is that a regular color scale is one-dimensional -- it has only one axis, and thus we can either use its original form (e.g., from light to dark blue) or flip it (e.g., from dark to light blue).
+A bivariate color scale, on the other hand, is two-dimensional.
+It has two axes, and this opens up many more possibilities for modifying the scale.
+In the example below, we are using the `"pinkblue"` color scale, which, by default, features a gray color at the bottom left, with the vertical axis transitioning to purple and the horizontal axis transitioning to green.
+The colors mix in the top right corner to form a dark blue.
+However, in our case, we may consider flipping this color scale along the main diagonal, so that the vertical axis transitions to green, while the horizontal one transitions to purple.
+This seems more intuitive, as the vertical axis represents January temperatures, which are typically colder than July temperatures in Slovenia.
+
 ```{r}
 #| label: tmrastbiv2
 #| eval: false
@@ -511,7 +519,7 @@ tm_shape(slo_tavg) +
               multivariate = TRUE
             ),
             col.scale = tm_scale_bivariate(
-              values = "\\pinkblue",
+              values = "//pinkblue",
               scale1 = tm_scale_intervals(
                 breaks = c(-8, -4, 0, 4, 8), 
                 labels = c("Very cold", "Cold", "Mild", "Warm")
@@ -570,11 +578,19 @@ flipops = tibble::tribble(
 tmo_maker = function(op) {
   tm_shape(slo_tavg) +
     tm_raster(col = tm_vars(dimvalues = c("tavg_1", "tavg_7"), multivariate = TRUE),
-              col.legend = tm_legend(title = op),
+              col.legend = tm_legend(title = op,
+                                     title.size = 2,
+                                     title.align = "center",
+                                     xlab = "", ylab = "",
+                                     item.width = 3, item.height = 3,
+                                     frame = FALSE),
               col.scale = tm_scale_bivariate(values = paste0(op, "pinkblue"),
-                scale1 = tm_scale_intervals(breaks = c(-8, -4, -1, 1, 4, 8)),
-                scale2 = tm_scale_intervals(breaks = c(5, 10, 15, 20, 25)))) +
-    tm_layout(legend.only = TRUE)
+                scale1 = tm_scale_intervals(breaks = c(-8, -4, 4, 8),
+                                            labels = ""),
+                scale2 = tm_scale_intervals(breaks = c(5, 10, 20, 25),
+                                            labels = ""))) +
+    tm_layout(legend.only = TRUE, inner.margins = 0, outer.margins = 0) + 
+    tm_options(component.autoscale = FALSE)
 }
 to1 = tmo_maker(" ")
 to2 = tmo_maker("-")
@@ -583,9 +599,9 @@ to4 = tmo_maker("+")
 to5 = tmo_maker("//")
 to6 = tmo_maker("\\\\")
 to7 = tmo_maker("-//")
-to8 = tmo_maker("-\\\\")
+to8 = tmo_maker("-\\\\") 
 tmap_arrange(to1, to2, to3, to4, to5, to6, to7, to8,
-              ncol = 2, nrow = 4)
+              ncol = 4, nrow = 2, outer.margins = 0)
 ```
 
 
