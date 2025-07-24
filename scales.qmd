@@ -552,8 +552,9 @@ There are also a few areas where the temperature category is very different betw
 <<tmrastbiv2>>
 ```
 
-<!-- a note about specifying bivariable scale order -->
-<!-- https://r-tmap.github.io/tmap/articles/examples_biv_choro -->
+<!-- https://github.com/cols4all/cols4all-R/issues/45 -->
+
+All possible flipping operators for bivariate color scales are shown in @tbl-flipops-table.
 
 ```{r}
 #| echo: false
@@ -565,16 +566,30 @@ flipops = tibble::tribble(
   "+",        "Flip rows and columns",
   "//",        "Flip main diagonal (top-left to bottom-right)",
   "\\\\",     "Flip other diagonal (top-right to bottom-left)",
-  "-//",       "Flip main diagonal and rows",
-  "-\\\\",    "Flip other diagonal and rows"
+  "-//",       "Flip main diagonal and columns",
+  "-\\\\",    "Flip other diagonal and columns"
 )
 ```
 
-<!-- https://github.com/cols4all/cols4all-R/issues/45 -->
+```{r}
+#| label: tbl-flipops-table
+#| tbl-cap: "Operators for flipping bivariate color scales"
+#| echo: false
+#| warning: false
+#| message: false
+tinytable::tt(flipops) |>
+  tinytable::style_tt(j = 1, monospace = TRUE)
+```
+
+Additionally, @fig-tmo-bivariate shows how these flipping operators work in action on an example bivariate color scale.
 
 ```{r}
-#| eval: false
+#| label: fig-tmo-bivariate
+#| fig-cap: "Bivariate color scales with different flipping operators"
+#| message: false
+#| warning: false
 #| echo: false
+#| fig-asp: 0.5
 tmo_maker = function(op) {
   tm_shape(slo_tavg) +
     tm_raster(col = tm_vars(dimvalues = c("tavg_1", "tavg_7"), multivariate = TRUE),
@@ -604,16 +619,6 @@ tmap_arrange(to1, to2, to3, to4, to5, to6, to7, to8,
               ncol = 4, nrow = 2, outer.margins = 0)
 ```
 
-
-```{r}
-#| label: tbl-flipops-table
-#| tbl-cap: "Operators for flipping bivariate color scales"
-#| echo: false
-#| warning: false
-#| message: false
-tinytable::tt(flipops) |>
-  tinytable::style_tt(j = 1, monospace = TRUE)
-```
 
 <!-- OLDER STUFF: -->
 
