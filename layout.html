@@ -822,33 +822,187 @@ Figure&nbsp;12.9: Impact of the scale argument on the map layout.
 </section><section id="sec-design-mode" class="level2" data-number="12.5"><h2 data-number="12.5" class="anchored" data-anchor-id="sec-design-mode">
 <span class="header-section-number">12.5</span> Design mode</h2>
 <p>Maps consist of various components, including the map content (with its frame), additional map elements (e.g., credits or a title), and the legend, which are often located in different places. They also have numerous margins – spaces between data and the frame, spaces between the frame and the plotting, spaces between the icons and the labels, etc.</p>
-<p>Many of these properties can be customized, however, it may be difficult to understand the effect of the changes. <!-- ... --> To make it easier, <strong>tmap</strong> has a design mode that can be turned on by setting the <code><a href="https://r-tmap.github.io/tmap/reference/tmap_design_mode.html">tmap_design_mode()</a></code> function to <code>TRUE</code>. When the design mode is turned on, the map is displayed in a special way: it shows all of the created map content, but also adds various lines and colored areas to the map. We may see an example of a map in the design mode in <a href="#fig-design-mode" class="quarto-xref">Figure&nbsp;<span>12.10</span></a>:</p>
-<!-- - explain colors -->
-<!-- - as a list -->
-<p>Additionally, it returns a small table in the R console with sizes and an aspect ratio of the device, plot, facets, and map areas. <!-- explain these areas? --></p>
-<p>The design mode is useful to understand how the map is constructed and how the various arguments of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function impact the map layout.</p>
-<!-- info that this is limited to the plot mode? -->
+<p>Many of these properties can be customized, however, it may be difficult to understand the effect of the changes. <!-- ... --> To make it easier, <strong>tmap</strong> has a design mode that can be turned on by setting the <code><a href="https://r-tmap.github.io/tmap/reference/tmap_design_mode.html">tmap_design_mode()</a></code> function to <code>TRUE</code>. When the design mode is turned on, the map is displayed in a special way: it shows all of the created map content, but also adds various lines and colored areas to the map. We may see an example of a map in the design mode in <a href="#fig-design-mode" class="quarto-xref">Figure&nbsp;<span>12.10</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_design_mode.html">tmap_design_mode</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; design.mode: ON</span></span>
+<span><span class="co">#&gt; design.mode: ON (overall layout)</span></span>
 <span><span class="va">tm</span></span>
-<span><span class="co">#&gt; ----------------W (in)--H (in)--asp---</span></span>
+<span><span class="co">#&gt; ---------------W (in)-H (in)-asp---</span></span>
 <span><span class="co">#&gt; | device        7.00 4.32 1.62 |</span></span>
 <span><span class="co">#&gt; | plot area     6.35 4.15 1.53 |</span></span>
 <span><span class="co">#&gt; | facets area   5.41 3.83 1.41 |</span></span>
 <span><span class="co">#&gt; | map area      5.33 3.75 1.42 |</span></span>
-<span><span class="co">#&gt; --------------------------------</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; --------------------------------</span></span>
+<span><span class="co">#&gt; Color codings:</span></span>
+<span><span class="co">#&gt; - light blue  outer margins</span></span>
+<span><span class="co">#&gt; - dark blue   buffers around outside cells</span></span>
+<span><span class="co">#&gt; - light green outside cells</span></span>
+<span><span class="co">#&gt; - dark green  x and ylab cells</span></span>
+<span><span class="co">#&gt; - pink        panels</span></span>
+<span><span class="co">#&gt; - red         margins for outside grid labels</span></span>
+<span><span class="co">#&gt; - orange      margins around maps for grid labels</span></span>
+<span><span class="co">#&gt; - yellow      map area</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-design-mode" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="100%">
+<div id="fig-design-mode" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-design-mode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-design-mode-1.png" id="fig-design-mode" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:100.0%">
+<img src="figures/fig-design-mode-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-design-mode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12.10
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-design-mode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.10: A map of Slovenia in the design mode.
 </figcaption></figure>
 </div>
 </div>
 </div>
+<p>Its colors relate to the map and the margins around the map content. For example, the map area is colored yellow, the outside cells (used, for instance, for legends and titles) are in light green, and the outer margins are in light blue. A complete list of the color codings is shown in <a href="#tbl-color-codings" class="quarto-xref">Table&nbsp;<span>12.1</span></a>.</p>
+<!-- update to the actual colors used in the desing mode: -->
+<div class="cell" data-layout-align="center">
+<div id="tbl-color-codings" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-color-codings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;12.1: Color codings of the design mode.
+</figcaption><div aria-describedby="tbl-color-codings-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<!-- preamble start -->
+
+    <script>
+
+      function styleCell_lbzwpy41b8f1ocz3enr9(i, j, css_id) {
+          var table = document.getElementById("tinytable_lbzwpy41b8f1ocz3enr9");
+          var cell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
+          if (cell) {
+              console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
+              cell.classList.add(css_id);
+          } else {
+              console.warn(`Cell at (${i}, ${j}) not found.`);
+          }
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_lbzwpy41b8f1ocz3enr9');
+        // Find the row with data-row attribute matching i
+        var targetRow = table.querySelector(`tr [data-row="${i}"]`).closest('tr');
+        var newRow = table.insertRow(targetRow.rowIndex);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        newCell.setAttribute("data-col", "0");
+        newCell.setAttribute("data-row", i - 1);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_lbzwpy41b8f1ocz3enr9(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_lbzwpy41b8f1ocz3enr9");
+        const targetCell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
+        if (!targetCell) {
+          console.warn(`Cell at (${i}, ${j}) not found.`);
+        }
+
+        // Get all cells that need to be removed
+        const cellsToRemove = [];
+        for (let r = 0; r < rowspan; r++) {
+          for (let c = 0; c < colspan; c++) {
+            if (r === 0 && c === 0) continue; // Skip the target cell
+            const cell = table.querySelector(`[data-row="${i + r}"][data-col="${j + c}"]`);
+            if (cell) {
+              cellsToRemove.push(cell);
+            }
+          }
+        }
+
+        // Remove all cells
+        cellsToRemove.forEach(cell => cell.remove());
+
+        // Set rowspan and colspan of the target cell if it exists
+        if (targetCell) {
+          targetCell.rowSpan = rowspan;
+          targetCell.colSpan = colspan;
+        }
+      }
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '8', j: 1 },  ], css_id: 'tinytable_css_pn0t1d2ccmflsfzt7lt4',}, 
+          { positions: [ { i: '8', j: 0 },  ], css_id: 'tinytable_css_b1rwip0y5z44gqetcs2g',}, 
+          { positions: [ { i: '7', j: 0 },  ], css_id: 'tinytable_css_i4jld5s6taplofcb0rct',}, 
+          { positions: [ { i: '6', j: 0 },  ], css_id: 'tinytable_css_nis96uawcxbzskjiuqqs',}, 
+          { positions: [ { i: '5', j: 0 },  ], css_id: 'tinytable_css_bpbqytcuqt74lp5w96d8',}, 
+          { positions: [ { i: '4', j: 0 },  ], css_id: 'tinytable_css_4io4fd32jm8lxpo8i2z1',}, 
+          { positions: [ { i: '3', j: 0 },  ], css_id: 'tinytable_css_lvaok9ny0cmnuu9v1ub7',}, 
+          { positions: [ { i: '2', j: 0 },  ], css_id: 'tinytable_css_fj8i7a6pgov4iz0dghed',}, 
+          { positions: [ { i: '1', j: 0 },  ], css_id: 'tinytable_css_hriimk9js5kju5lj4j71',}, 
+          { positions: [ { i: '0', j: 0 }, { i: '0', j: 1 },  ], css_id: 'tinytable_css_8upsikl2m15eul1rzwm6',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  styleCell_lbzwpy41b8f1ocz3enr9(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script><style>
+      /* tinytable css entries after */
+      .table td.tinytable_css_pn0t1d2ccmflsfzt7lt4, .table th.tinytable_css_pn0t1d2ccmflsfzt7lt4 { border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_b1rwip0y5z44gqetcs2g, .table th.tinytable_css_b1rwip0y5z44gqetcs2g { background-color: yellow; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_i4jld5s6taplofcb0rct, .table th.tinytable_css_i4jld5s6taplofcb0rct { background-color: orange; }
+      .table td.tinytable_css_nis96uawcxbzskjiuqqs, .table th.tinytable_css_nis96uawcxbzskjiuqqs { background-color: red; }
+      .table td.tinytable_css_bpbqytcuqt74lp5w96d8, .table th.tinytable_css_bpbqytcuqt74lp5w96d8 { background-color: pink; }
+      .table td.tinytable_css_4io4fd32jm8lxpo8i2z1, .table th.tinytable_css_4io4fd32jm8lxpo8i2z1 { background-color: darkgreen; }
+      .table td.tinytable_css_lvaok9ny0cmnuu9v1ub7, .table th.tinytable_css_lvaok9ny0cmnuu9v1ub7 { background-color: lightgreen; }
+      .table td.tinytable_css_fj8i7a6pgov4iz0dghed, .table th.tinytable_css_fj8i7a6pgov4iz0dghed { background-color: darkblue; }
+      .table td.tinytable_css_hriimk9js5kju5lj4j71, .table th.tinytable_css_hriimk9js5kju5lj4j71 { background-color: lightblue; }
+      .table td.tinytable_css_8upsikl2m15eul1rzwm6, .table th.tinytable_css_8upsikl2m15eul1rzwm6 { border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+    </style>
+<div class="container">
+      <table class="table table-borderless" id="tinytable_lbzwpy41b8f1ocz3enr9" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+<thead><tr>
+<th scope="col" data-row="0" data-col="0">Color</th>
+                <th scope="col" data-row="0" data-col="1">Element</th>
+              </tr></thead>
+<tbody>
+<tr>
+<td data-row="1" data-col="0"></td>
+                  <td data-row="1" data-col="1">Outer margins</td>
+                </tr>
+<tr>
+<td data-row="2" data-col="0"></td>
+                  <td data-row="2" data-col="1">Buffers around outside cells</td>
+                </tr>
+<tr>
+<td data-row="3" data-col="0"></td>
+                  <td data-row="3" data-col="1">Outside cells</td>
+                </tr>
+<tr>
+<td data-row="4" data-col="0"></td>
+                  <td data-row="4" data-col="1">X and Y labels</td>
+                </tr>
+<tr>
+<td data-row="5" data-col="0"></td>
+                  <td data-row="5" data-col="1">Panels</td>
+                </tr>
+<tr>
+<td data-row="6" data-col="0"></td>
+                  <td data-row="6" data-col="1">Margins for outside grid labels</td>
+                </tr>
+<tr>
+<td data-row="7" data-col="0"></td>
+                  <td data-row="7" data-col="1">Margins around maps for grid labels</td>
+                </tr>
+<tr>
+<td data-row="8" data-col="0"></td>
+                  <td data-row="8" data-col="1">Map area</td>
+                </tr>
+</tbody>
+</table>
+</div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Additionally, it returns a small table in the R console with sizes and an aspect ratio of the device, plot, facets, and map areas.</p>
+<p>The design mode is useful to understand how the map is constructed and how the various arguments of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function impact the map layout.</p>
+<!-- info that this is limited to the plot mode? -->
 <p>This mode is in place until the <code><a href="https://r-tmap.github.io/tmap/reference/tmap_design_mode.html">tmap_design_mode()</a></code> function is set to <code>FALSE</code>. In the next few sections, we will show how the design mode can help us to understand the impact of various arguments of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function on the aspect ratio and margins of the map.</p>
 </section><section id="sec-aspect" class="level2" data-number="12.6"><h2 data-number="12.6" class="anchored" data-anchor-id="sec-aspect">
 <span class="header-section-number">12.6</span> Aspect ratio</h2>
