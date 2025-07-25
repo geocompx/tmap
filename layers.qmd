@@ -26,6 +26,8 @@ layers_extended_df = tibble::tribble(
   "tm_dots()", "dots", "points, polygons, and lines",
   "tm_markers()", "marker symbols", "points, polygons, and lines",
   "tm_square()", "squares", "points, polygons, and lines",
+  "tm_labels()", "text labels", "points, polygons, and lines",
+  "tm_labels_highlighted()", "text labels with background", "points, polygons, and lines",
   "tm_iso()", "lines with text labels", "lines",
   "tm_rgb()/tm_rgba()", "raster (RGB image)", "raster"
 )
