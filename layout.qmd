@@ -439,24 +439,51 @@ Many of these properties can be customized, however, it may be difficult to unde
 <!-- ... -->
 To make it easier, **tmap** has a design mode that can be turned on by setting the `tmap_design_mode()` function to `TRUE`.
 When the design mode is turned on, the map is displayed in a special way: it shows all of the created map content, but also adds various lines and colored areas to the map.
-We may see an example of a map in the design mode in @fig-design-mode:
-
-<!-- - explain colors -->
-<!-- - as a list -->
-
-Additionally, it returns a small table in the R console with sizes and an aspect ratio of the device, plot, facets, and map areas.
-<!-- explain these areas? -->
-
-The design mode is useful to understand how the map is constructed and how the various arguments of the `tm_layout()` function impact the map layout.
-
-<!-- info that this is limited to the plot mode? -->
+We may see an example of a map in the design mode in @fig-design-mode.
 
 ```{r}
 #| label: fig-design-mode
+#| fig-cap: "A map of Slovenia in the design mode."
 tmap_design_mode(TRUE)
 tm
 ```
 
+Its colors relate to the map and the margins around the map content.
+For example, the map area is colored yellow, the outside cells (used, for instance, for legends and titles) are in light green, and the outer margins are in light blue.
+A complete list of the color codings is shown in @tbl-color-codings.
+
+<!-- update to the actual colors used in the desing mode: -->
+```{r}
+#| label: tbl-color-codings
+#| tbl-cap: "Color codings of the design mode."
+#| echo: false
+color_codings_df = tibble::tribble(
+  ~Name, ~Color, ~Element,
+  "Light blue", "", "Outer margins",
+  "Dark blue", "", "Buffers around outside cells",
+  "Light green", "", "Outside cells",
+  "Dark green", "", "X and Y labels",
+  "Pink", "", "Panels",
+  "Red", "", "Margins for outside grid labels",
+  "Orange", "", "Margins around maps for grid labels",
+  "Yellow", "", "Map area"
+)
+tinytable::tt(color_codings_df[, 2:3]) |>
+  tinytable::style_tt(i = 1, j = 1, background = "lightblue") |>
+  tinytable::style_tt(i = 2, j = 1, background = "darkblue") |>
+  tinytable::style_tt(i = 3, j = 1, background = "lightgreen") |>
+  tinytable::style_tt(i = 4, j = 1, background = "darkgreen") |>
+  tinytable::style_tt(i = 5, j = 1, background = "pink") |>
+  tinytable::style_tt(i = 6, j = 1, background = "red") |>
+  tinytable::style_tt(i = 7, j = 1, background = "orange") |>
+  tinytable::style_tt(i = 8, j = 1, background = "yellow")
+```
+
+Additionally, it returns a small table in the R console with sizes and an aspect ratio of the device, plot, facets, and map areas.
+
+The design mode is useful to understand how the map is constructed and how the various arguments of the `tm_layout()` function impact the map layout.
+
+<!-- info that this is limited to the plot mode? -->
 This mode is in place until the `tmap_design_mode()` function is set to `FALSE`.
 In the next few sections, we will show how the design mode can help us to understand the impact of various arguments of the `tm_layout()` function on the aspect ratio and margins of the map.
 
