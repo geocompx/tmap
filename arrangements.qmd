@@ -125,6 +125,7 @@ It allows us to see that even though there are more towns than cities in our dat
 #| label: fig-inset-maps4
 #| fig-cap: "Inset maps based on a ggplot2 object."
 #| message: false
+#| fig-width: 7.5
 slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
 tm_shape(slo_regions) +
   tm_polygons("gdppercap") +
