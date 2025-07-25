@@ -948,6 +948,7 @@ Figure&nbsp;8.10: Example of a bivariate map, where two variables are combined i
 <span>                          multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>One important difference between a regular map and a bivariate map is that the latter is based on two scales – and we are able to specify them separately. Thus, all of the scales from sections <a href="#sec-categorical-scales" class="quarto-xref"><span>8.1</span></a> to <a href="#sec-continuous-scales" class="quarto-xref"><span>8.6</span></a> can be used for bivariate maps, and we can use one of them for each variable. <!-- as-is-scales? --> In the example below, we use two scales for the temperature – one for the January temperatures and one for the July temperatures. In both cases, our scales are intervals, but we customize their breaks and add text labels.</p>
+<p>Another difference is that a regular color scale is one-dimensional – it has only one axis, and thus we can either use its original form (e.g., from light to dark blue) or flip it (e.g., from dark to light blue). A bivariate color scale, on the other hand, is two-dimensional. It has two axes, and this opens up many more possibilities for modifying the scale. In the example below, we are using the <code>"pinkblue"</code> color scale, which, by default, features a gray color at the bottom left, with the vertical axis transitioning to purple and the horizontal axis transitioning to green. The colors mix in the top right corner to form a dark blue. However, in our case, we may consider flipping this color scale along the main diagonal, so that the vertical axis transitions to green, while the horizontal one transitions to purple. This seems more intuitive, as the vertical axis represents January temperatures, which are typically colder than July temperatures in Slovenia.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_tavg</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_raster</span><span class="op">(</span>col <span class="op">=</span> <span class="fu">tm_vars</span><span class="op">(</span></span>
@@ -955,7 +956,7 @@ Figure&nbsp;8.10: Example of a bivariate map, where two variables are combined i
 <span>              multivariate <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span>            <span class="op">)</span>,</span>
 <span>            col.scale <span class="op">=</span> <span class="fu">tm_scale_bivariate</span><span class="op">(</span></span>
-<span>              values <span class="op">=</span> <span class="st">"\\pinkblue"</span>,</span>
+<span>              values <span class="op">=</span> <span class="st">"//pinkblue"</span>,</span>
 <span>              scale1 <span class="op">=</span> <span class="fu">tm_scale_intervals</span><span class="op">(</span></span>
 <span>                breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">8</span>, <span class="op">-</span><span class="fl">4</span>, <span class="fl">0</span>, <span class="fl">4</span>, <span class="fl">8</span><span class="op">)</span>, </span>
 <span>                labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Very cold"</span>, <span class="st">"Cold"</span>, <span class="st">"Mild"</span>, <span class="st">"Warm"</span><span class="op">)</span></span>
@@ -1002,9 +1003,8 @@ Figure&nbsp;8.10: Example of a bivariate map, where two variables are combined i
 Figure&nbsp;8.11: Bivariate maps for raster data
 </figcaption></figure>
 </div>
-<!-- a note about specifying bivariable scale order -->
-<!-- https://r-tmap.github.io/tmap/articles/examples_biv_choro -->
 <!-- https://github.com/cols4all/cols4all-R/issues/45 -->
+<p>All possible flipping operators for bivariate color scales are shown in <a href="#tbl-flipops-table" class="quarto-xref">Table&nbsp;<span>8.2</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div id="tbl-flipops-table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-flipops-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1125,11 +1125,11 @@ Table&nbsp;8.2: Operators for flipping bivariate color scales
                 </tr>
 <tr>
 <td data-row="7" data-col="0">-//</td>
-                  <td data-row="7" data-col="1">Flip main diagonal and rows</td>
+                  <td data-row="7" data-col="1">Flip main diagonal and columns</td>
                 </tr>
 <tr>
 <td data-row="8" data-col="0">-\\</td>
-                  <td data-row="8" data-col="1">Flip other diagonal and rows</td>
+                  <td data-row="8" data-col="1">Flip other diagonal and columns</td>
                 </tr>
 </tbody>
 </table>
@@ -1138,6 +1138,19 @@ Table&nbsp;8.2: Operators for flipping bivariate color scales
 </div>
 </div>
 </figure>
+</div>
+</div>
+<p>Additionally, <a href="#fig-tmo-bivariate" class="quarto-xref">Figure&nbsp;<span>8.12</span></a> shows how these flipping operators work in action on an example bivariate color scale.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-tmo-bivariate" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmo-bivariate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-tmo-bivariate-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmo-bivariate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.12: Bivariate color scales with different flipping operators
+</figcaption></figure>
+</div>
 </div>
 </div>
 <!-- OLDER STUFF: -->
