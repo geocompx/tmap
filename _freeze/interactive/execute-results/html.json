@@ -1,11 +1,9 @@
 {
-  "hash": "57a0c7cedafd57755321cc6edaac3b57",
+  "hash": "8c86ca518769fb7ea0ec08b5a55ecd3b",
   "result": {
     "engine": "knitr",
-    "markdown": "::: {.cell}\n\n:::\n\n\n\n\n\n# Interactive settings {#sec-interactive}\n\n<!-- tm_minimap move here?? -->\n<!-- tm_mouse_coordinates() -->\n\n<!-- basemaps? -->\n\n<!-- layer groups? -->\n\n\n\n\n\n::: {.cell layout-align=\"center\"}\n\n:::\n\n::: {.cell layout-align=\"center\"}\n\n:::\n\n\n\n\n\n<!-- mention/reference inset maps -->\n\n\n\n\n\n::: {.cell layout-align=\"center\"}\n\n:::",
-    "supporting": [
-      "interactive_files"
-    ],
+    "markdown": "\n::: {.cell}\n\n:::\n\n\n# Interactive settings {#sec-interactive}\n\n<!-- tm_minimap move here?? -->\n<!-- tm_mouse_coordinates() -->\n\n<!-- basemaps? -->\n\n<!-- layer groups? -->\n\n\n::: {.cell layout-align=\"center\"}\n\n:::\n\n\n\n::: {.cell layout-align=\"center\"}\n\n:::\n\n\n<!-- mention/reference inset maps -->\n\n\n::: {.cell layout-align=\"center\"}\n\n:::\n\n",
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
