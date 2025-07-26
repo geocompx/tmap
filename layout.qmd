@@ -469,15 +469,16 @@ color_codings_df = tibble::tribble(
   "Yellow", "", "Map area"
 )
 tinytable::tt(color_codings_df[, 2:3]) |>
-  tinytable::style_tt(i = 1, j = 1, background = "lightblue") |>
-  tinytable::style_tt(i = 2, j = 1, background = "darkblue") |>
-  tinytable::style_tt(i = 3, j = 1, background = "lightgreen") |>
-  tinytable::style_tt(i = 4, j = 1, background = "darkgreen") |>
-  tinytable::style_tt(i = 5, j = 1, background = "pink") |>
-  tinytable::style_tt(i = 6, j = 1, background = "red") |>
-  tinytable::style_tt(i = 7, j = 1, background = "orange") |>
-  tinytable::style_tt(i = 8, j = 1, background = "yellow")
+  tinytable::style_tt(i = 1, j = 1, background = "#A6CEE3") |>
+  tinytable::style_tt(i = 2, j = 1, background = "#1F78B4") |>
+  tinytable::style_tt(i = 3, j = 1, background = "#B2DF8A") |>
+  tinytable::style_tt(i = 4, j = 1, background = "#33A02C") |>
+  tinytable::style_tt(i = 5, j = 1, background = "#FB9A99") |>
+  tinytable::style_tt(i = 6, j = 1, background = "#E31A1C") |>
+  tinytable::style_tt(i = 7, j = 1, background = "#FDBF6F") |>
+  tinytable::style_tt(i = 8, j = 1, background = "#FFFF99")
 ```
+<!-- cols4all::c4a("brewer.paired") -->
 
 Additionally, it returns a small table in the R console with sizes and an aspect ratio of the device, plot, facets, and map areas.
 
