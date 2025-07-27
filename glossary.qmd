@@ -30,6 +30,7 @@ glossary = tibble::tribble(
   "Chart", 'A small non-spatial data visualization. In tmap for several purposes: 1) an addition to a legend `tm_polygons(fill = "var", fill.chart = tm_chart_histogram())`, 2) a glyph (see **glyphs**), 3) a custom chart plotted as an inset.',
   "Inset", "A visual object that is plotted on a specific (pre-defined) location. It can be a small map (**minimap**) or a **chart**."
 )
+glossary = dplyr::arrange(glossary, Term)
 ```
 
 ```{r}
@@ -37,7 +38,14 @@ glossary = tibble::tribble(
 #| echo: false
 #| warning: false
 #| message: false
-tinytable::tt(glossary, caption = "..")
+#| tbl-cap: "Glossary of tmap terms" 
+if (knitr::is_latex_output()) {
+  knitr::kable(glossary, escape = FALSE, booktabs = TRUE) |>
+    kableExtra::kable_styling(latex_options = "hold_position") 
+} else {
+  knitr::kable(glossary, escape = FALSE, booktabs = TRUE)
+}
+# tinytable::tt(glossary, escape = TRUE)
 # options(DT.options = list(
 #   bPaginate = FALSE, 
 #   dom = "ifrt", 
