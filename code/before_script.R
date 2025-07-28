@@ -1,6 +1,7 @@
 library(methods)
 library(webshot)
 library(ragg)
+library(formatR)
 set.seed(2020-05-06)
 options(digits = 3)
 tmap::tmap_options(scale = 0.8)
@@ -42,6 +43,7 @@ view_map = function(x, name){
   if (knitr::is_latex_output()){
     tf = tempfile(fileext = ".html")
     tmap::tmap_save(x, tf)
+    dir.create("widgets", showWarnings = FALSE)
     webshot2::webshot(tf, file = paste0("widgets/", name, ".png"))
     knitr::include_graphics(paste0("widgets/", name, ".png"))
   } else {
