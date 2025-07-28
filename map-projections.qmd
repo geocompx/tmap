@@ -410,18 +410,16 @@ tb = tibble::tibble(Property = crs_prop_name, Preserves = crs_prop_attr,
 tb2 = as.data.frame(t(rbind(names(tb), as.matrix(tb, dimnames = NULL))))
 tb2 = tb2[, -1]
 colnames(tb2) = NULL
-tinytable::tt(tb2, rownames = TRUE) |>
-  tinytable::style_tt(j = 1, bold = TRUE)
+# tinytable::tt(tb2, rownames = TRUE) |>
+#   tinytable::style_tt(j = 1, bold = TRUE)
 
-# knitr::kable(tb2, 
-#              row.names = TRUE,
-#              col.names = NULL,
-#            caption = "Map projection properties.",
-#            caption.short = "Map projection properties.",
-#            booktabs = TRUE) |> 
-#   kableExtra::kable_styling(font_size = 12) |> 
-#   column_spec(1, width = "14em", bold = TRUE) |> 
-#   column_spec(c(3,5), width = "14em") 
+knitr::kable(tb2,
+             row.names = TRUE,
+             col.names = NULL,
+             booktabs = TRUE) |>
+  kableExtra::kable_styling(font_size = 12) |>
+  kableExtra::column_spec(1, width = "14em", bold = TRUE) |>
+  kableExtra::column_spec(c(3,5), width = "14em")
 ```
 
 \index{conformal map projections}
@@ -494,13 +492,10 @@ tabcrsrec = tibble::tibble(`View` = c("World", "Hemisphere", "Continent or small
                     `Low latitude (equator)` = c("Pseudo-cylindrical", "Azimuthal", "Cylindrical or azimuthal"),
                     `Mid latitude`= c("Pseudo-cylindrical", "Azimuthal", "Conic or azimuthal"),
                     `High latitude (poles)` = c("Pseudo-cylindrical", "Azimuthal", "Azimuthal"))
-tinytable::tt(tabcrsrec)
-# knitr::kable(,
-#              caption = ,
-#              caption.short = "Recommended projections.",
-#              booktabs = TRUE) |> 
-#   kableExtra::kable_styling(font_size = 12) |> 
-#   kableExtra::column_spec(1, width = "10em")
+# tinytable::tt(tabcrsrec)
+knitr::kable(tabcrsrec, booktabs = TRUE) |> 
+  kableExtra::kable_styling(font_size = 12) |> 
+  kableExtra::column_spec(1, width = "10em")
 ```
 
 For World maps, pseudo-cylindrical map projections, such as the Robinson projection (@fig-crs-robin) and the Eckert IV projection (@fig-crs-bias-2) are very popular because they have less distortion than other map projections. 

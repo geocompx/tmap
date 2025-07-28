@@ -35,8 +35,12 @@ charts_df = tibble::tribble(
 #| echo: false
 #| warning: false
 #| message: false
-tinytable::tt(charts_df) |>
-  tinytable::style_tt(j = 1, monospace = TRUE)
+# tinytable::tt(charts_df) |>
+#   tinytable::style_tt(j = 1, monospace = TRUE)
+charts_df |>
+  kableExtra::kbl(escape = FALSE) |>
+  kableExtra::kable_styling(full_width = FALSE) |>
+  kableExtra::column_spec(1, monospace = TRUE)
 ```
 
 For the examples in this chapter, we will use the Slovenian regions dataset that contains information about the population density, region group, and the percentage of the population aged 65 or more in each region.

@@ -53,10 +53,16 @@ The derived functions are built on top of the basic functions but with different
 #| echo: false
 #| warning: false
 #| message: false
-tinytable::tt(layers_df) |>
-  tinytable::group_tt(i = list("Basic functions" = 1, "Derived functions" = 8)) |>
-  tinytable::style_tt(i = c(1, 9), color = "white", background = "gray", bold = TRUE) |>
-  tinytable::style_tt(j = 1, monospace = TRUE)
+# tinytable::tt(layers_df) |>
+#   tinytable::group_tt(i = list("Basic functions" = 1, "Derived functions" = 8)) |>
+#   tinytable::style_tt(i = c(1, 9), color = "white", background = "gray", bold = TRUE) |>
+#   tinytable::style_tt(j = 1, monospace = TRUE)
+layers_df |>
+  kableExtra::kbl(escape = FALSE, booktabs = TRUE) |>
+  kableExtra::kable_styling(full_width = FALSE) |>
+  kableExtra::pack_rows("Basic functions", 1, 7, color = "white", background = "gray", bold = TRUE) |>
+  kableExtra::pack_rows("Derived functions", 8, nrow(layers_df), color = "white", background = "gray", bold = TRUE) |>
+  kableExtra::column_spec(1, monospace = TRUE)
 
 # library(magrittr)
 # library(kableExtra)

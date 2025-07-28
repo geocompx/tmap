@@ -80,7 +80,7 @@ format:
     code-overflow: wrap
     toc-depth: 4
     # css: [helpers/mystyle.css]
-  # pdf:
+  # pdf: #note--simplify authors list before rendering pdf
   #   documentclass: krantz
   #   monofont: 'Source Code Pro'
   #   monofontoptions: 

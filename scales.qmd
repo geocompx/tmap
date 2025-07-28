@@ -42,15 +42,14 @@ scales_df = tibble::tribble(
 #| message: false
 # library(kableExtra)
 # options(kableExtra.html.bsTable = TRUE)
-# knitr::kable(scales_df, 
-#              caption = "Map scales",
-#              booktabs = TRUE) |>
-#   kableExtra::kable_styling("striped",
-#                             latex_options = "striped", 
-#                             full_width = FALSE) |> 
-#   kableExtra::column_spec(1, bold = TRUE, monospace = TRUE) 
-tinytable::tt(scales_df) |>
-  tinytable::style_tt(j = 1, monospace = TRUE)
+knitr::kable(scales_df, 
+             booktabs = TRUE) |>
+  kableExtra::kable_styling("striped",
+                            latex_options = "striped", 
+                            full_width = FALSE) |> 
+  kableExtra::column_spec(1, monospace = TRUE) 
+# tinytable::tt(scales_df) |>
+#   tinytable::style_tt(j = 1, monospace = TRUE)
 ```
 
 @fig-scales shows examples of how some of them look like when applied to the same variable.
@@ -577,8 +576,13 @@ flipops = tibble::tribble(
 #| echo: false
 #| warning: false
 #| message: false
-tinytable::tt(flipops) |>
-  tinytable::style_tt(j = 1, monospace = TRUE)
+# tinytable::tt(flipops) |>
+#   tinytable::style_tt(j = 1, monospace = TRUE)
+kableExtra::kbl(flipops, booktabs = TRUE) |>
+  kableExtra::kable_styling("striped",
+                            latex_options = "striped", 
+                            full_width = FALSE) |> 
+  kableExtra::column_spec(1, monospace = TRUE)
 ```
 
 Additionally, @fig-tmo-bivariate shows how these flipping operators work in action on an example bivariate color scale.

@@ -33,8 +33,12 @@ We cover and demonstrate these functions in the following sections.
 #| tbl-cap: "Map components in **tmap**."
 #| echo: false
 #| warning: false
-tinytable::tt(attr_layers_df) |>
-  tinytable::style_tt(j = 1, monospace = TRUE)
+# tinytable::tt(attr_layers_df) |>
+#   tinytable::style_tt(j = 1, monospace = TRUE)
+attr_layers_df |>
+  kableExtra::kbl(booktabs = TRUE) |>
+  kableExtra::kable_styling(full_width = FALSE) |> 
+  kableExtra::column_spec(1, monospace = TRUE)
 # library(magrittr)
 # library(kableExtra)
 # options(kableExtra.html.bsTable = TRUE)
