@@ -105,7 +105,7 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
-</script>
+</script><script src="site_libs/kePrint-0.0.1/kePrint.js"></script><link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 </head>
 <body class="nav-sidebar floating quarto-light">
 
@@ -409,134 +409,50 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 Table&nbsp;10.1: Map components in <strong>tmap</strong>.
 </figcaption><div aria-describedby="tbl-attr-layers-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<!-- preamble start -->
-
-    <script>
-
-      function styleCell_lbzwpy41b8f1ocz3enr9(i, j, css_id) {
-          var table = document.getElementById("tinytable_lbzwpy41b8f1ocz3enr9");
-          var cell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
-          if (cell) {
-              console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
-              cell.classList.add(css_id);
-          } else {
-              console.warn(`Cell at (${i}, ${j}) not found.`);
-          }
-      }
-      function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_lbzwpy41b8f1ocz3enr9');
-        // Find the row with data-row attribute matching i
-        var targetRow = table.querySelector(`tr [data-row="${i}"]`).closest('tr');
-        var newRow = table.insertRow(targetRow.rowIndex);
-        var newCell = newRow.insertCell(0);
-        newCell.setAttribute("colspan", colspan);
-        newCell.setAttribute("data-col", "0");
-        newCell.setAttribute("data-row", i - 1);
-        // newCell.innerText = content;
-        // this may be unsafe, but innerText does not interpret <br>
-        newCell.innerHTML = content;
-      }
-      function spanCell_lbzwpy41b8f1ocz3enr9(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_lbzwpy41b8f1ocz3enr9");
-        const targetCell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
-        if (!targetCell) {
-          console.warn(`Cell at (${i}, ${j}) not found.`);
-        }
-
-        // Get all cells that need to be removed
-        const cellsToRemove = [];
-        for (let r = 0; r < rowspan; r++) {
-          for (let c = 0; c < colspan; c++) {
-            if (r === 0 && c === 0) continue; // Skip the target cell
-            const cell = table.querySelector(`[data-row="${i + r}"][data-col="${j + c}"]`);
-            if (cell) {
-              cellsToRemove.push(cell);
-            }
-          }
-        }
-
-        // Remove all cells
-        cellsToRemove.forEach(cell => cell.remove());
-
-        // Set rowspan and colspan of the target cell if it exists
-        if (targetCell) {
-          targetCell.rowSpan = rowspan;
-          targetCell.colSpan = colspan;
-        }
-      }
-      // tinytable span after
-      window.addEventListener('load', function () {
-          var cellsToStyle = [
-            // tinytable style arrays after
-          { positions: [ { i: '9', j: 1 },  ], css_id: 'tinytable_css_4io4fd32jm8lxpo8i2z1',}, 
-          { positions: [ { i: '0', j: 1 },  ], css_id: 'tinytable_css_lvaok9ny0cmnuu9v1ub7',}, 
-          { positions: [ { i: '9', j: 0 },  ], css_id: 'tinytable_css_fj8i7a6pgov4iz0dghed',}, 
-          { positions: [ { i: '1', j: 0 }, { i: '2', j: 0 }, { i: '3', j: 0 }, { i: '4', j: 0 }, { i: '5', j: 0 }, { i: '6', j: 0 }, { i: '7', j: 0 }, { i: '8', j: 0 },  ], css_id: 'tinytable_css_hriimk9js5kju5lj4j71',}, 
-          { positions: [ { i: '0', j: 0 },  ], css_id: 'tinytable_css_8upsikl2m15eul1rzwm6',}, 
-          ];
-
-          // Loop over the arrays to style the cells
-          cellsToStyle.forEach(function (group) {
-              group.positions.forEach(function (cell) {
-                  styleCell_lbzwpy41b8f1ocz3enr9(cell.i, cell.j, group.css_id);
-              });
-          });
-      });
-    </script><style>
-      /* tinytable css entries after */
-      .table td.tinytable_css_4io4fd32jm8lxpo8i2z1, .table th.tinytable_css_4io4fd32jm8lxpo8i2z1 { border-bottom: solid #d3d8dc 0.1em; }
-      .table td.tinytable_css_lvaok9ny0cmnuu9v1ub7, .table th.tinytable_css_lvaok9ny0cmnuu9v1ub7 { border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
-      .table td.tinytable_css_fj8i7a6pgov4iz0dghed, .table th.tinytable_css_fj8i7a6pgov4iz0dghed { font-family: monospace; border-bottom: solid #d3d8dc 0.1em; }
-      .table td.tinytable_css_hriimk9js5kju5lj4j71, .table th.tinytable_css_hriimk9js5kju5lj4j71 { font-family: monospace; }
-      .table td.tinytable_css_8upsikl2m15eul1rzwm6, .table th.tinytable_css_8upsikl2m15eul1rzwm6 { font-family: monospace; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
-    </style>
-<div class="container">
-      <table class="table table-borderless" id="tinytable_lbzwpy41b8f1ocz3enr9" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
-<thead><tr>
-<th scope="col" data-row="0" data-col="0">Function</th>
-                <th scope="col" data-row="0" data-col="1">Description</th>
-              </tr></thead>
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<thead><tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Function</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Description</th>
+</tr></thead>
 <tbody>
-<tr>
-<td data-row="1" data-col="0">tm_grid()</td>
-                  <td data-row="1" data-col="1">draws coordinate grid lines of the coordinate system of the main shape object</td>
-                </tr>
-<tr>
-<td data-row="2" data-col="0">tm_graticules()</td>
-                  <td data-row="2" data-col="1">draws latitude and longitude graticules</td>
-                </tr>
-<tr>
-<td data-row="3" data-col="0">tm_scalebar()</td>
-                  <td data-row="3" data-col="1">adds a scale bar</td>
-                </tr>
-<tr>
-<td data-row="4" data-col="0">tm_compass()</td>
-                  <td data-row="4" data-col="1">adds a compass rose (north arrow)</td>
-                </tr>
-<tr>
-<td data-row="5" data-col="0">tm_credits()</td>
-                  <td data-row="5" data-col="1">adds a text annotation</td>
-                </tr>
-<tr>
-<td data-row="6" data-col="0">tm_xlab()</td>
-                  <td data-row="6" data-col="1">adds an x axis labels</td>
-                </tr>
-<tr>
-<td data-row="7" data-col="0">tm_ylab()</td>
-                  <td data-row="7" data-col="1">adds an y axis labels</td>
-                </tr>
-<tr>
-<td data-row="8" data-col="0">tm_logo()</td>
-                  <td data-row="8" data-col="1">adds a logo</td>
-                </tr>
-<tr>
-<td data-row="9" data-col="0">tm_minimap()</td>
-                  <td data-row="9" data-col="1">adds minimap</td>
-                </tr>
+<tr class="odd">
+<td style="text-align: left; font-family: monospace;">tm_grid()</td>
+<td style="text-align: left;">draws coordinate grid lines of the coordinate system of the main shape object</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-family: monospace;">tm_graticules()</td>
+<td style="text-align: left;">draws latitude and longitude graticules</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-family: monospace;">tm_scalebar()</td>
+<td style="text-align: left;">adds a scale bar</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-family: monospace;">tm_compass()</td>
+<td style="text-align: left;">adds a compass rose (north arrow)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-family: monospace;">tm_credits()</td>
+<td style="text-align: left;">adds a text annotation</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-family: monospace;">tm_xlab()</td>
+<td style="text-align: left;">adds an x axis labels</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-family: monospace;">tm_ylab()</td>
+<td style="text-align: left;">adds an y axis labels</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-family: monospace;">tm_logo()</td>
+<td style="text-align: left;">adds a logo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-family: monospace;">tm_minimap()</td>
+<td style="text-align: left;">adds minimap</td>
+</tr>
 </tbody>
 </table>
-</div>
-<!-- hack to avoid NA insertion in last line -->
 </div>
 </div>
 </figure>

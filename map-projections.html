@@ -125,7 +125,8 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
-</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+</script><script src="site_libs/kePrint-0.0.1/kePrint.js"></script><link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -616,144 +617,66 @@ Figure&nbsp;13.7: Examples of a conic and a planar projection.
 Table&nbsp;13.1: Map projection properties
 </figcaption><div aria-describedby="tbl-crs-properties-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<!-- preamble start -->
-
-    <script>
-
-      function styleCell_zwpy41b8f1ocz3enr98u(i, j, css_id) {
-          var table = document.getElementById("tinytable_zwpy41b8f1ocz3enr98u");
-          var cell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
-          if (cell) {
-              console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
-              cell.classList.add(css_id);
-          } else {
-              console.warn(`Cell at (${i}, ${j}) not found.`);
-          }
-      }
-      function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_zwpy41b8f1ocz3enr98u');
-        // Find the row with data-row attribute matching i
-        var targetRow = table.querySelector(`tr [data-row="${i}"]`).closest('tr');
-        var newRow = table.insertRow(targetRow.rowIndex);
-        var newCell = newRow.insertCell(0);
-        newCell.setAttribute("colspan", colspan);
-        newCell.setAttribute("data-col", "0");
-        newCell.setAttribute("data-row", i - 1);
-        // newCell.innerText = content;
-        // this may be unsafe, but innerText does not interpret <br>
-        newCell.innerHTML = content;
-      }
-      function spanCell_zwpy41b8f1ocz3enr98u(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_zwpy41b8f1ocz3enr98u");
-        const targetCell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
-        if (!targetCell) {
-          console.warn(`Cell at (${i}, ${j}) not found.`);
-        }
-
-        // Get all cells that need to be removed
-        const cellsToRemove = [];
-        for (let r = 0; r < rowspan; r++) {
-          for (let c = 0; c < colspan; c++) {
-            if (r === 0 && c === 0) continue; // Skip the target cell
-            const cell = table.querySelector(`[data-row="${i + r}"][data-col="${j + c}"]`);
-            if (cell) {
-              cellsToRemove.push(cell);
-            }
-          }
-        }
-
-        // Remove all cells
-        cellsToRemove.forEach(cell => cell.remove());
-
-        // Set rowspan and colspan of the target cell if it exists
-        if (targetCell) {
-          targetCell.rowSpan = rowspan;
-          targetCell.colSpan = colspan;
-        }
-      }
-      // tinytable span after
-      window.addEventListener('load', function () {
-          var cellsToStyle = [
-            // tinytable style arrays after
-          { positions: [ { i: '7', j: 1 }, { i: '7', j: 2 }, { i: '7', j: 3 }, { i: '7', j: 4 },  ], css_id: 'tinytable_css_o4fd32jm8lxpo8i2z1bp',}, 
-          { positions: [ { i: '1', j: 1 }, { i: '1', j: 2 }, { i: '1', j: 3 }, { i: '1', j: 4 },  ], css_id: 'tinytable_css_aok9ny0cmnuu9v1ub74i',}, 
-          { positions: [ { i: '7', j: 0 },  ], css_id: 'tinytable_css_8i7a6pgov4iz0dghedlv',}, 
-          { positions: [ { i: '2', j: 0 }, { i: '3', j: 0 }, { i: '4', j: 0 }, { i: '5', j: 0 }, { i: '6', j: 0 },  ], css_id: 'tinytable_css_iimk9js5kju5lj4j71fj',}, 
-          { positions: [ { i: '1', j: 0 },  ], css_id: 'tinytable_css_psikl2m15eul1rzwm6hr',}, 
-          ];
-
-          // Loop over the arrays to style the cells
-          cellsToStyle.forEach(function (group) {
-              group.positions.forEach(function (cell) {
-                  styleCell_zwpy41b8f1ocz3enr98u(cell.i, cell.j, group.css_id);
-              });
-          });
-      });
-    </script><style>
-      /* tinytable css entries after */
-      .table td.tinytable_css_o4fd32jm8lxpo8i2z1bp, .table th.tinytable_css_o4fd32jm8lxpo8i2z1bp { border-bottom: solid #d3d8dc 0.1em; }
-      .table td.tinytable_css_aok9ny0cmnuu9v1ub74i, .table th.tinytable_css_aok9ny0cmnuu9v1ub74i { border-top: solid #d3d8dc 0.1em; }
-      .table td.tinytable_css_8i7a6pgov4iz0dghedlv, .table th.tinytable_css_8i7a6pgov4iz0dghedlv { font-weight: bold; border-bottom: solid #d3d8dc 0.1em; }
-      .table td.tinytable_css_iimk9js5kju5lj4j71fj, .table th.tinytable_css_iimk9js5kju5lj4j71fj { font-weight: bold; }
-      .table td.tinytable_css_psikl2m15eul1rzwm6hr, .table th.tinytable_css_psikl2m15eul1rzwm6hr { font-weight: bold; border-top: solid #d3d8dc 0.1em; }
-    </style>
-<div class="container">
-      <table class="table table-borderless" id="tinytable_zwpy41b8f1ocz3enr98u" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
-<thead></thead>
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<thead><tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+</tr></thead>
 <tbody>
-<tr>
-<td data-row="1" data-col="0">Property</td>
-                  <td data-row="1" data-col="1">Conformal</td>
-                  <td data-row="1" data-col="2">Equal area</td>
-                  <td data-row="1" data-col="3">Equidistant</td>
-                  <td data-row="1" data-col="4">Azimuthal</td>
-                </tr>
-<tr>
-<td data-row="2" data-col="0">Preserves</td>
-                  <td data-row="2" data-col="1">Local angle (shape)</td>
-                  <td data-row="2" data-col="2">Area</td>
-                  <td data-row="2" data-col="3">Distance</td>
-                  <td data-row="2" data-col="4">Direction</td>
-                </tr>
-<tr>
-<td data-row="3" data-col="0">Applications</td>
-                  <td data-row="3" data-col="1">Navigation, climate</td>
-                  <td data-row="3" data-col="2">Statistics</td>
-                  <td data-row="3" data-col="3">Geology</td>
-                  <td data-row="3" data-col="4">Geology</td>
-                </tr>
-<tr>
-<td data-row="4" data-col="0">Examples (cyclindrical)</td>
-                  <td data-row="4" data-col="1">Mercator</td>
-                  <td data-row="4" data-col="2">Gall-Peters, Eckert IV</td>
-                  <td data-row="4" data-col="3">Equirectangular</td>
-                  <td data-row="4" data-col="4">none</td>
-                </tr>
-<tr>
-<td data-row="5" data-col="0">Examples (conic)</td>
-                  <td data-row="5" data-col="1">Lambert conformal conic</td>
-                  <td data-row="5" data-col="2">Albers conic</td>
-                  <td data-row="5" data-col="3">Equidistant conic</td>
-                  <td data-row="5" data-col="4">none</td>
-                </tr>
-<tr>
-<td data-row="6" data-col="0">Examples (planar)</td>
-                  <td data-row="6" data-col="1">Stereographic</td>
-                  <td data-row="6" data-col="2">Lambert azimuthal equal-area</td>
-                  <td data-row="6" data-col="3">Azimuthal equidistant</td>
-                  <td data-row="6" data-col="4">Stereographic, Lambert azimuthal equal-area</td>
-                </tr>
-<tr>
-<td data-row="7" data-col="0">Examples (interrupted)</td>
-                  <td data-row="7" data-col="1">Myriahedral</td>
-                  <td data-row="7" data-col="2">Goode homolosine, Myriahedral</td>
-                  <td data-row="7" data-col="3">none</td>
-                  <td data-row="7" data-col="4">none</td>
-                </tr>
+<tr class="odd">
+<td style="text-align: left; width: 14em; font-weight: bold;">Property</td>
+<td style="text-align: left;">Conformal</td>
+<td style="text-align: left; width: 14em;">Equal area</td>
+<td style="text-align: left;">Equidistant</td>
+<td style="text-align: left; width: 14em;">Azimuthal</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 14em; font-weight: bold;">Preserves</td>
+<td style="text-align: left;">Local angle (shape)</td>
+<td style="text-align: left; width: 14em;">Area</td>
+<td style="text-align: left;">Distance</td>
+<td style="text-align: left; width: 14em;">Direction</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 14em; font-weight: bold;">Applications</td>
+<td style="text-align: left;">Navigation, climate</td>
+<td style="text-align: left; width: 14em;">Statistics</td>
+<td style="text-align: left;">Geology</td>
+<td style="text-align: left; width: 14em;">Geology</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 14em; font-weight: bold;">Examples (cyclindrical)</td>
+<td style="text-align: left;">Mercator</td>
+<td style="text-align: left; width: 14em;">Gall-Peters, Eckert IV</td>
+<td style="text-align: left;">Equirectangular</td>
+<td style="text-align: left; width: 14em;">none</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 14em; font-weight: bold;">Examples (conic)</td>
+<td style="text-align: left;">Lambert conformal conic</td>
+<td style="text-align: left; width: 14em;">Albers conic</td>
+<td style="text-align: left;">Equidistant conic</td>
+<td style="text-align: left; width: 14em;">none</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 14em; font-weight: bold;">Examples (planar)</td>
+<td style="text-align: left;">Stereographic</td>
+<td style="text-align: left; width: 14em;">Lambert azimuthal equal-area</td>
+<td style="text-align: left;">Azimuthal equidistant</td>
+<td style="text-align: left; width: 14em;">Stereographic, Lambert azimuthal equal-area</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 14em; font-weight: bold;">Examples (interrupted)</td>
+<td style="text-align: left;">Myriahedral</td>
+<td style="text-align: left; width: 14em;">Goode homolosine, Myriahedral</td>
+<td style="text-align: left;">none</td>
+<td style="text-align: left; width: 14em;">none</td>
+</tr>
 </tbody>
 </table>
-</div>
-<!-- hack to avoid NA insertion in last line -->
 </div>
 </div>
 </figure>
@@ -806,112 +729,34 @@ Figure&nbsp;13.8: Comparison of Web Mercator and Eckert IV projections.
 Table&nbsp;13.2: Recommended projections for different areas.
 </figcaption><div aria-describedby="tbl-crs-recommendations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<!-- preamble start -->
-
-    <script>
-
-      function styleCell_jld5s6taplofcb0rctb1(i, j, css_id) {
-          var table = document.getElementById("tinytable_jld5s6taplofcb0rctb1");
-          var cell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
-          if (cell) {
-              console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
-              cell.classList.add(css_id);
-          } else {
-              console.warn(`Cell at (${i}, ${j}) not found.`);
-          }
-      }
-      function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_jld5s6taplofcb0rctb1');
-        // Find the row with data-row attribute matching i
-        var targetRow = table.querySelector(`tr [data-row="${i}"]`).closest('tr');
-        var newRow = table.insertRow(targetRow.rowIndex);
-        var newCell = newRow.insertCell(0);
-        newCell.setAttribute("colspan", colspan);
-        newCell.setAttribute("data-col", "0");
-        newCell.setAttribute("data-row", i - 1);
-        // newCell.innerText = content;
-        // this may be unsafe, but innerText does not interpret <br>
-        newCell.innerHTML = content;
-      }
-      function spanCell_jld5s6taplofcb0rctb1(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_jld5s6taplofcb0rctb1");
-        const targetCell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
-        if (!targetCell) {
-          console.warn(`Cell at (${i}, ${j}) not found.`);
-        }
-
-        // Get all cells that need to be removed
-        const cellsToRemove = [];
-        for (let r = 0; r < rowspan; r++) {
-          for (let c = 0; c < colspan; c++) {
-            if (r === 0 && c === 0) continue; // Skip the target cell
-            const cell = table.querySelector(`[data-row="${i + r}"][data-col="${j + c}"]`);
-            if (cell) {
-              cellsToRemove.push(cell);
-            }
-          }
-        }
-
-        // Remove all cells
-        cellsToRemove.forEach(cell => cell.remove());
-
-        // Set rowspan and colspan of the target cell if it exists
-        if (targetCell) {
-          targetCell.rowSpan = rowspan;
-          targetCell.colSpan = colspan;
-        }
-      }
-      // tinytable span after
-      window.addEventListener('load', function () {
-          var cellsToStyle = [
-            // tinytable style arrays after
-          { positions: [ { i: '3', j: 0 }, { i: '3', j: 1 }, { i: '3', j: 2 }, { i: '3', j: 3 },  ], css_id: 'tinytable_css_0t1d2ccmflsfzt7lt4ma',}, 
-          { positions: [ { i: '0', j: 0 }, { i: '0', j: 1 }, { i: '0', j: 2 }, { i: '0', j: 3 },  ], css_id: 'tinytable_css_rwip0y5z44gqetcs2gpn',}, 
-          ];
-
-          // Loop over the arrays to style the cells
-          cellsToStyle.forEach(function (group) {
-              group.positions.forEach(function (cell) {
-                  styleCell_jld5s6taplofcb0rctb1(cell.i, cell.j, group.css_id);
-              });
-          });
-      });
-    </script><style>
-      /* tinytable css entries after */
-      .table td.tinytable_css_0t1d2ccmflsfzt7lt4ma, .table th.tinytable_css_0t1d2ccmflsfzt7lt4ma { border-bottom: solid #d3d8dc 0.1em; }
-      .table td.tinytable_css_rwip0y5z44gqetcs2gpn, .table th.tinytable_css_rwip0y5z44gqetcs2gpn { border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
-    </style>
-<div class="container">
-      <table class="table table-borderless" id="tinytable_jld5s6taplofcb0rctb1" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
-<thead><tr>
-<th scope="col" data-row="0" data-col="0">View</th>
-                <th scope="col" data-row="0" data-col="1">Low latitude (equator)</th>
-                <th scope="col" data-row="0" data-col="2">Mid latitude</th>
-                <th scope="col" data-row="0" data-col="3">High latitude (poles)</th>
-              </tr></thead>
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<thead><tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">View</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Low latitude (equator)</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Mid latitude</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">High latitude (poles)</th>
+</tr></thead>
 <tbody>
-<tr>
-<td data-row="1" data-col="0">World</td>
-                  <td data-row="1" data-col="1">Pseudo-cylindrical</td>
-                  <td data-row="1" data-col="2">Pseudo-cylindrical</td>
-                  <td data-row="1" data-col="3">Pseudo-cylindrical</td>
-                </tr>
-<tr>
-<td data-row="2" data-col="0">Hemisphere</td>
-                  <td data-row="2" data-col="1">Azimuthal</td>
-                  <td data-row="2" data-col="2">Azimuthal</td>
-                  <td data-row="2" data-col="3">Azimuthal</td>
-                </tr>
-<tr>
-<td data-row="3" data-col="0">Continent or smaller</td>
-                  <td data-row="3" data-col="1">Cylindrical or azimuthal</td>
-                  <td data-row="3" data-col="2">Conic or azimuthal</td>
-                  <td data-row="3" data-col="3">Azimuthal</td>
-                </tr>
+<tr class="odd">
+<td style="text-align: left; width: 10em;">World</td>
+<td style="text-align: left;">Pseudo-cylindrical</td>
+<td style="text-align: left;">Pseudo-cylindrical</td>
+<td style="text-align: left;">Pseudo-cylindrical</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 10em;">Hemisphere</td>
+<td style="text-align: left;">Azimuthal</td>
+<td style="text-align: left;">Azimuthal</td>
+<td style="text-align: left;">Azimuthal</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 10em;">Continent or smaller</td>
+<td style="text-align: left;">Cylindrical or azimuthal</td>
+<td style="text-align: left;">Conic or azimuthal</td>
+<td style="text-align: left;">Azimuthal</td>
+</tr>
 </tbody>
 </table>
-</div>
-<!-- hack to avoid NA insertion in last line -->
 </div>
 </div>
 </figure>
