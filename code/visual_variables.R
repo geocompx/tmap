@@ -1,6 +1,7 @@
 visual_variables = function() {
   library(tmap)
   library(grid)
+  tmap_options(component.autoscale = FALSE)
   
   data(World, World_rivers, metro, land)
   
@@ -15,7 +16,6 @@ visual_variables = function() {
   tmap_data_lwd = 4
   label_size = 0.9
   cat_palette = "Dark2"
-  
   
   World$x = runif(nrow(World), 0, num_max)
   World$y = rep(categories, length.out = nrow(World))
@@ -33,54 +33,63 @@ visual_variables = function() {
                                   fill.scale = tm_scale(values = cat_palette,
                                                         label.format = lf),
                                   fill.legend = tm_legend(orientation = "landscape",
-                                                          title = ""),
+                                                          title = "",
+                                                          width = 12),
                                   size = tmap_data_size) + tml
   x12 = tm_shape(metro) + tm_dots(fill = "x",
                                   fill.scale = tm_scale(label.format = lf),
                                   fill.legend = tm_legend(orientation = "landscape",
-                                                          title = ""),
+                                                          title = "",
+                                                          width = 12),
                                   size = tmap_data_size) + tml
   
   x13 = tm_shape(metro) + tm_symbols(size = "x", 
                                      size.scale = tm_scale(label.format = lf),
                                      size.legend = tm_legend(orientation = "landscape",
-                                                             title = "")) + tml
+                                                             title = "",
+                                                             width = 12)) + tml
   
   x14 = tm_shape(metro) + tm_symbols(shape = "y",
                                      shape.scale = tm_scale(label.format = lf),
                                      shape.legend = tm_legend(orientation = "landscape",
-                                                             title = ""),
+                                                             title = "",
+                                                             width = 12),
                                      size = tmap_data_size) + tml
   
   x21 = tm_shape(World_rivers) + tm_lines(col = "y",
                                           col.scale = tm_scale(values = cat_palette,
                                                                label.format = lf),
                                           col.legend = tm_legend(orientation = "landscape",
-                                                                title = ""),
+                                                                title = "",
+                                                                width = 12),
                                           lwd = tmap_data_lwd) + tml
 
   x22 = tm_shape(World_rivers) + tm_lines(col = "x",
                                           col.scale = tm_scale(label.format = lf),
                                           col.legend = tm_legend(orientation = "landscape",
-                                                                title = ""),
+                                                                title = "",
+                                                                width = 12),
                                           lwd = tmap_data_lwd) + tml
 
   x23 = tm_shape(World_rivers) + tm_lines(lwd = "x",
                                           lwd.scale = tm_scale(label.format = lf,
                                                                values.scale = tmap_data_lwd * 1.5),
                                           lwd.legend = tm_legend(orientation = "landscape",
-                                                                title = "")) + tml
+                                                                title = "",
+                                                                width = 12)) + tml
   
   x31 = tm_shape(World) + tm_polygons(fill = "y",
                                       fill.scale = tm_scale(values = cat_palette,
                                                            label.format = lf),
                                       fill.legend = tm_legend(orientation = "landscape",
-                                                              title = "")) + tml
+                                                              title = "",
+                                                              width = 12)) + tml
   
   x32 = tm_shape(World) + tm_polygons(fill = "x",
                                       fill.scale = tm_scale(label.format = lf),
                                       fill.legend = tm_legend(orientation = "landscape",
-                                                              title = "")) + tml
+                                                              title = "",
+                                                              width = 12)) + tml
   
   cellplot = function(row, col, e) {
     pushViewport(viewport(layout.pos.row = row, layout.pos.col = col))

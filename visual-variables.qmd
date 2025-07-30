@@ -20,6 +20,7 @@ The use of visual variables on maps depends on two main things: (a) type of the 
 #| warning: false
 #| message: false
 #| fig-cap: Basic visual variables and their representations on maps
+#| fig-asp: 0.4
 source("code/visual_variables.R")
 visual_variables()
 ```
