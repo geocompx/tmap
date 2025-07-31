@@ -59,7 +59,9 @@ The derived functions are built on top of the basic functions but with different
 #   tinytable::style_tt(j = 1, monospace = TRUE)
 layers_df |>
   kableExtra::kbl(escape = FALSE, booktabs = TRUE) |>
-  kableExtra::kable_styling(full_width = FALSE) |>
+  kableExtra::kable_styling("striped",
+                            latex_options = "striped",
+                            full_width = FALSE) |>
   kableExtra::pack_rows("Basic functions", 1, 7, color = "white", background = "gray", bold = TRUE) |>
   kableExtra::pack_rows("Derived functions", 8, nrow(layers_df), color = "white", background = "gray", bold = TRUE) |>
   kableExtra::column_spec(1, monospace = TRUE)
@@ -144,7 +146,7 @@ tm_shape(slo_borders) +
 #| label: fig-tmpolygonsder
 #| warning: false
 #| echo: false
-#| layout-nrow: 1
+#| layout-nrow: 3
 #| fig-cap: "Example of a map created using:"
 #| fig-subcap:
 #|   - "tm_polygons()"
@@ -313,7 +315,7 @@ tm +
 #|   - "tm_text()"
 #|   - "tm_labels()"
 #|   - "tm_labels_highlighted()"
-#| layout-ncol: 3
+#| layout-nrow: 3
 <<tmtext1>>
 <<tmtext2>>
 <<tmtext3>>
@@ -367,7 +369,7 @@ tm +
 #|   - "with shadow and left justification"
 #|   - "with point.label = TRUE"
 #| echo: false
-#| layout-ncol: 3
+#| layout-nrow: 3
 <<tmtext4>>
 <<tmtext5>>
 <<tmtext6>>
@@ -445,8 +447,11 @@ tm_shape(slo_gm) +
 #| fig-subcap:
 #|   - "Continuous raster map"
 #|   - "Categorical raster map"
+current_options = tmap_options()
+tmap_options(scale = 1.2)
 <<rastertype1>>
 <<rastertype2>>
+tmap_options(current_options)
 ```
 
 We can also adjust the legend title, used colors, and many more, in a similar fashion as in the previously mentioned layers.
@@ -470,6 +475,7 @@ We can modify their arrangement with `tm_facets()` (@fig-tmrasterml).
 #| label: fig-tmrasterml
 #| message: false
 #| fig-cap: A map created from a multilayered raster.
+#| fig-asp: 0.8
 tm_shape(raster2) +
   tm_raster() +
   tm_facets(ncol = 1) +
