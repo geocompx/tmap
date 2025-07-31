@@ -34,26 +34,30 @@ visual_variables = function() {
                                                         label.format = lf),
                                   fill.legend = tm_legend(orientation = "landscape",
                                                           title = "",
-                                                          width = 12),
+                                                          width = 12,
+                                                          frame = FALSE),
                                   size = tmap_data_size) + tml
   x12 = tm_shape(metro) + tm_dots(fill = "x",
                                   fill.scale = tm_scale(label.format = lf),
                                   fill.legend = tm_legend(orientation = "landscape",
                                                           title = "",
-                                                          width = 12),
+                                                          width = 12,
+                                                          frame = FALSE),
                                   size = tmap_data_size) + tml
   
   x13 = tm_shape(metro) + tm_symbols(size = "x", 
                                      size.scale = tm_scale(label.format = lf),
                                      size.legend = tm_legend(orientation = "landscape",
                                                              title = "",
-                                                             width = 12)) + tml
+                                                             width = 12,
+                                                             frame = FALSE)) + tml
   
   x14 = tm_shape(metro) + tm_symbols(shape = "y",
                                      shape.scale = tm_scale(label.format = lf),
                                      shape.legend = tm_legend(orientation = "landscape",
                                                              title = "",
-                                                             width = 12),
+                                                             width = 12,
+                                                             frame = FALSE),
                                      size = tmap_data_size) + tml
   
   x21 = tm_shape(World_rivers) + tm_lines(col = "y",
@@ -61,14 +65,16 @@ visual_variables = function() {
                                                                label.format = lf),
                                           col.legend = tm_legend(orientation = "landscape",
                                                                 title = "",
-                                                                width = 12),
+                                                                width = 12,
+                                                                frame = FALSE),
                                           lwd = tmap_data_lwd) + tml
 
   x22 = tm_shape(World_rivers) + tm_lines(col = "x",
                                           col.scale = tm_scale(label.format = lf),
                                           col.legend = tm_legend(orientation = "landscape",
                                                                 title = "",
-                                                                width = 12),
+                                                                width = 12,
+                                                                frame = FALSE),
                                           lwd = tmap_data_lwd) + tml
 
   x23 = tm_shape(World_rivers) + tm_lines(lwd = "x",
@@ -76,20 +82,29 @@ visual_variables = function() {
                                                                values.scale = tmap_data_lwd * 1.5),
                                           lwd.legend = tm_legend(orientation = "landscape",
                                                                 title = "",
-                                                                width = 12)) + tml
-  
+                                                                width = 12,
+                                                                frame = FALSE)) + tml
+  x24 = tm_shape(World_rivers) + tm_lines(lty = "y",
+                                          lty.scale = tm_scale(label.format = lf),
+                                          lty.legend = tm_legend(orientation = "landscape",
+                                                                 title = "",
+                                                                 width = 12,
+                                                                 frame = FALSE)) + tml
+    
   x31 = tm_shape(World) + tm_polygons(fill = "y",
                                       fill.scale = tm_scale(values = cat_palette,
                                                            label.format = lf),
                                       fill.legend = tm_legend(orientation = "landscape",
                                                               title = "",
-                                                              width = 12)) + tml
+                                                              width = 12,
+                                                              frame = FALSE)) + tml
   
   x32 = tm_shape(World) + tm_polygons(fill = "x",
                                       fill.scale = tm_scale(label.format = lf),
                                       fill.legend = tm_legend(orientation = "landscape",
                                                               title = "",
-                                                              width = 12)) + tml
+                                                              width = 12,
+                                                              frame = FALSE)) + tml
   
   cellplot = function(row, col, e) {
     pushViewport(viewport(layout.pos.row = row, layout.pos.col = col))
@@ -104,7 +119,6 @@ visual_variables = function() {
   pushViewport(viewport(width = unit(2, "snpc"), height = unit(1, "snpc"))) # to make sure aspect ratio is 1.5
   #grid.rect(gp = gpar(fill = "grey90")) # enable to see viewports
   
-  
   pushViewport(viewport(layout = grid.layout(nrow = 5, ncol = 4)))
   
   print(x11, vp = viewport(layout.pos.row = 2, layout.pos.col = 2))
@@ -114,6 +128,7 @@ visual_variables = function() {
   print(x21, vp = viewport(layout.pos.row = 2, layout.pos.col = 3))
   print(x22, vp = viewport(layout.pos.row = 3, layout.pos.col = 3))
   print(x23, vp = viewport(layout.pos.row = 4, layout.pos.col = 3))
+  print(x24, vp = viewport(layout.pos.row = 5, layout.pos.col = 3))
   print(x31, vp = viewport(layout.pos.row = 2, layout.pos.col = 4))
   print(x32, vp = viewport(layout.pos.row = 3, layout.pos.col = 4))
   
