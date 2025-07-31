@@ -61,7 +61,7 @@ qtm(slo_cities, shape = 24, size = "population", title = "Cities")
 ```{r}
 #| label: fig-qtm
 #| echo: false
-#| layout-ncol: 2
+#| layout-nrow: 2
 #| fig-cap: Example of a quick map created with the `qtm()` function.
 #| fig-subcap: 
 #|   - A map with geometries only.
