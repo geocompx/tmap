@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE,
   # cache = TRUE, #https://github.com/rstudio/bookdown/issues/15#issuecomment-591478143
-  # fig.pos = "h", #"t"
+  fig.pos = "t", #"h"
   fig.path = "figures/",
   fig.align = "center",
   fig.retina = 2,
@@ -32,12 +32,12 @@ knitr::opts_chunk$set(
   widgetframe_widgets_dir = "widgets",
   screenshot.opt = list(delay = 0.3)
 )
-
-if(!knitr:::is_html_output()){
-  options("width" = 56)
-  knitr::opts_chunk$set(tidy.opts = list(width.cutoff = 56, indent = 2),
-                        tidy = TRUE)
-}
+ 
+# if(!knitr:::is_html_output()){
+#   options("width" = 56)
+#   knitr::opts_chunk$set(tidy.opts = list(width.cutoff = 56, indent = 2),
+#                         tidy = TRUE)
+# }
 
 view_map = function(x, name){
   if (knitr::is_latex_output()){
