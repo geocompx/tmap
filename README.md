@@ -3,3 +3,4 @@
   [![R build status](https://github.com/geocompx/tmap/workflows/Render/badge.svg)](https://github.com/geocompx/tmap/actions)
   <!-- badges: end -->
 
+Visit the book website at <https://tmap.geocompx.org/>.
