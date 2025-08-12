@@ -1,31 +1,24 @@
 # Spatial data in R {#sec-geodata}
-<!-- # Geographic data in R {#geodata} -->
-<!-- to discuss -->
 
 \index{spatial data}
 
 ## Introduction {#sec-intro-geodata}
 
 Vector and raster data models are two basic models used to represent spatial data.
-These spatial data models are closely related to map making, with each model having its own pros and cons. 
-<!-- - few introduction sections -->
-<!-- - mention GDAL, PROJ, and GEOS -->
-<!-- - maybe also mention some data sources -->
+Vectors are used to store discrete spatial objects, such as points, lines, and polygons, while rasters are used to represent continuous surfaces, such as elevation or temperature.
+Each data model has its own mapping capabilities and limitations, and they are used in different contexts. 
 This chapter starts by describing these two popular spatial data models, and their extensions, spatial vector and raster data cubes (@sec-data-models).
 Each data model is introduced, explained how it is built, and how it is stored using different file formats.
 Next, this chapter presents how these different data models are implemented in R (@sec-spatial-data-representations-in-r).
 It includes showing how to read different spatial data formats, how to understand spatial R objects, and where to find more information about preprocessing spatial data.
-<!-- - maybe also references to some books (either here or in the next section or both) -->
-<!-- geocompr, spatial data science, some crs book? -->
-<!-- explain that often there is a need to prepare spatial data before mapping -->
+<!-- explain that often there is a need to prepare spatial data before mapping ?? -->
 
 ## Data models {#sec-data-models}
 
-Traditionally, spatial data is described by two basic data models: 
-vector data model aimed at (@sec-vector-data-model) representing the world using points, lines, and polygons, and raster data model focused on representing surfaces (@sec-raster-data-model).
-Additionally, now we have an abundance of available spatial data and a variety of ways to obtain it.
-It includes having many district variables and repeated measurements for the same area.
-Therefore, we also present the concept of spatial data cubes (@sec-spatial-data-cubes).
+Traditionally, spatial data has been described by two basic data models: vector data model aimed at (@sec-vector-data-model) representing the world using points, lines, and polygons, and raster data model focused on representing surfaces (@sec-raster-data-model).
+Now, with an abundance of available spatial data and a variety of ways to obtain it, we need to extend these two models to be able to store and operate on more complex data.
+It includes having many distinct variables and various repeated measurements for the same area that are often collected for different moments in time.
+Therefore, we also use the concept of spatial data cubes, which can be applied to both vector and raster data (@sec-spatial-data-cubes).
 
 ### Vector data model {#sec-vector-data-model}
 
@@ -33,38 +26,34 @@ Therefore, we also present the concept of spatial data cubes (@sec-spatial-data-
 \index{spatial geometries}
 \index{spatial attributes}
 The vector data model represent the world as a set of spatial geometries with non-spatial attributes (@fig-vector-data-model). 
-The role of geometry is to describe the location and shape of spatial objects.
-Attributes, on the other hand, are used to store the properties of the data.
+The role of geometry is to describe the location and shape of spatial objects, while attributes are used to store properties of these objects.
 
 \index{spatial geometries}
-There are three basic types of geometries: points, lines, and polygons, all of them are made up of coordinates (left part of @fig-vector-data-model).
+There are three basic types of spatial geometries: points, lines, and polygons, all of them are made up of coordinates (left part of @fig-vector-data-model).
 A point is represented by a pair of coordinates, usually described as X and Y, allowing for locating this point in some space.
-X and Y could be unitless, in degrees, or in some measure units, such as meters  (extended discussion on coordinates and related topics is in @sec-map-projections).
-Points can represent features on different spatial scales, from a GPS position, location of a bench in a park, to a city on a small scale map.
+X and Y could be unitless, in degrees, or in some measure units, such as meters (extended discussion on coordinates and related topics is in @sec-map-projections).
+Points can represent features on different spatial scales, from a GPS position, location of a building in a city, to a city itself on a small scale map.
 They are also used to express abstract features, such as locations of map labels.
-Properties of points<!--,such as ...--> can be expressed on maps by different point sizes, colors, or shapes<!--(markers/images) -->.
+Properties of points, such as the type of the building or the population of the city, can be expressed on maps by different point sizes, colors, or shapes.
+
 A line extends the idea of a point.
-It consists of several points with coordinates (called vertices) that are arranged in some order.
+Internally, it consists of several points with coordinates, called vertices, that are arranged in some order.
 Consecutive points are connected by straight lines.
-Therefore, a straight spatial line consists of two points (two pairs of coordinates), while complex spatial lines could be created based on a large number of points.<!--to rewrite-->
-It gives the illusion that the line is curved. 
+Therefore, a straight spatial line consists of two points (two pairs of coordinates), while complex spatial lines could be created based on a large number of points giving the illusion of a curved line.
 Lines are used to representing linear features, such as roads, rivers, boundaries, footpaths, etc. 
-In this case, we can express line features' attributes using either lines' color or their widths.
-<!-- ways to adjust lines aesthetics: colors, lwd (line width) -->
-<!-- in theory lty could be also used - but it is not implemented in tmap -->
-A polygon is again a set of ordered points (vertices) connected by straight lines. 
+In this case, we can express line features' attributes using either lines' color, their widths, or line patterns (e.g., dashed or dotted lines).
+
+A polygon is again a set of ordered points (*vertices*) connected by straight lines. 
 Its only difference from the line is that the first and the last point in a polygon has the same coordinates, and thus close the object.
-<!-- examples of polygons -->
 The polygon representation is used to represent shapes and locations of different objects, from a lake or a patch of vegetation, through a building or a city block, to some administrative units. 
-Polygons also have one unique feature - they could have holes. 
-A polygon hole represents an area inside of the polygon but does not belong to it.
+Polygons also have one unique feature -- they could have holes: a polygon hole represents an area inside of the polygon but does not belong to it.
 For example, a lake with an island can be depicted as a polygon with a hole.
-The values of polygons' attributes can be represented by the areas (fill) colors.
+The values of polygons' attributes can be represented, for example, by the areas colors (*fill*).
 
 \index{spatial attributes}
 The second part of the vector data model relates to non-spatial attributes (right part of @fig-vector-data-model). 
 Attributes are usually stored as a table, in which each column depicts some property, such as an identification number, a name of a feature, or a value of some characteristic.
-Each row, on the other hand, relates to a single spatial geometry. 
+Each row, on the other hand, relates to a single spatial geometry.
 
 ```{r}
 #| echo: false
@@ -144,13 +133,13 @@ polygon_data_p = st_cast(polygon_data, "MULTIPOINT")
 #| warning: false
 #| fig-width: 5
 #| fig-asp: 1
-#| fig-cap: 'Instances of spatial vector data model: POINTS, LINES, and POLYGONS.'
+#| fig-cap: "Instances of spatial vector data model: POINTS, LINES, and POLYGONS."
 source("code/data_model_figures.R")
 draw_vector_data(scale = 0.75)
 ```
 
 \index{simple feature}
-The above ideas could be implemented in many ways. <!--...-->
+The above ideas could be implemented in many ways.
 Currently, [the Simple Feature Access](http://portal.opengeospatial.org/files/?artifact_id=25355) seems to be the most widely used standard.
 In it, a feature is every object or concept that have spatial location or extent. 
 
@@ -158,7 +147,7 @@ Simple feature standard makes a clear distinction between single- and multi-elem
 We can have a POINT feature and a MULTIPOINT feature, and similarly LINESTRING and MULTILINESTRING, and POLYGON and MULTIPOLYGON.
 The main difference between single element features (such as POINT or POLYGON) and multi-element features (such as MULTIPOINT or MULTIPOLYGON) can be clearly seen by looking at attribute tables. 
 For example, six points stored as POINT features fill six separate rows, while six points stored as just one MULTIPOINT feature occupy just one row.
-<!-- redundancy -->
+
 Examples of single- and multi-element features can be seen in @fig-vector-data-model. 
 The top example shows point data represented as MULTIPOINT feature: although we have seven points (seven distinct pairs of coordinates), they are gathered into two groups, green and orange, which can be seen in the associated attribute table.
 The central example, on the other hand, uses single-element features, where each line geometry relates to one row in the attribute table.
@@ -166,11 +155,8 @@ Finally, the bottom example again uses multi-element features, where the second 
 The simple feature standard also describes a number of additional geometry types, including Curve, Surface, or Triangle.
 Finally, GeometryCollection exists that contains all of the possible geometry types.
 
-<!-- JN: maybe too much information-->
-<!-- simple features standard also defines possible topological rules -->
-
 \index{spatial file formats}
-A couple hundreds of file formats exist to store spatial vector data.
+Many dozens of file formats exist to store spatial vector data.
 One of the simplest ways to store spatial data is in the form of a text file (`.csv`) or as a spreadsheet (`.xls` or `.xlsx`). 
 While it makes storing point data simple, with two columns representing coordinates, it is not easy to store more complex objects in this way.
 Text files are also not suitable for storing information about the coordinate reference system used (@sec-map-projections).
@@ -179,19 +165,15 @@ Despite its popularity, this format has a number of shortcomings, including the 
 A fairly recent file format, OGC GeoPackage (`.gpkg`), was developed as an alternative. 
 It is a single file database free from the limitation of the shapefile format.
 Other popular spatial vector file formats include GeoJSON (`.geojson`), GPX (`.gpx`), and KML (`.kml`). 
-<!-- FlatGeobuf?? -->
-<!-- - advantages/disadvantages -->
+<!-- FlatGeobuf??, etc.? -->
 
 ### Raster data model {#sec-raster-data-model}
 
 \index{raster data model}
-The raster data model represents the world using a continuous grid of cells<!--pixels-->, where each cell has a single associated value (@fig-raster-intro).
+The raster data model represents the world using a continuous grid of cells (*pixels*), where each cell has a single associated value (@fig-raster-intro).
 Depending on the type of values, we can distinguish continuous and categorical rasters.
-In continuous rasters, such as elevation or precipitation, values vary progressively.
-Categorical rasters, on the other hand, uses integer values to represent classes.
-Their examples include land cover or soil types maps.
-Raster data can also contain cells for which we do not know the value (@fig-raster-intro).
-For example, data for this part of the area was not collected, or these locations are outside of our area of interest.
+In continuous rasters, such as elevation or precipitation, values vary progressively, while categorical rasters use integer values to represent classes (e.g., land cover or soil types maps).
+Raster data can also contain cells for which we do not know the value (@fig-raster-intro) -- for example, data for this part of the area was not collected, or these locations are outside of our area of interest.
 
 ```{r}
 #| label: fig-raster-intro
@@ -200,7 +182,7 @@ For example, data for this part of the area was not collected, or these location
 #| message: false
 #| #fig-asp: 0.4
 #| layout-ncol: 3
-#| fig-cap: 'Basic representations of the raster data model'
+#| fig-cap: "Basic representations of the raster data model."
 #| fig-subcap:
 #|   - Cell IDs
 #|   - Cell values
@@ -248,14 +230,13 @@ Sheared grids are created when the rotation coefficients are not equal.
 Rectilinear grids, on the other hand, have orthogonal axes, but consist of rectangular cells with different sizes and shapes (@fig-grid-types).
 In the last type of raster data grids, curvilinear grids, cells are cuboids of different sizes and shapes (@fig-grid-types).
 
-<!-- Q:should the counting in the below figure start from bottom left? -->
 ```{r}
 #| label: fig-grid-types
 #| echo: false
 #| warning: false
 #| #fig-asp: 0.4
 #| layout-ncol: 5
-#| fig-cap: 'Main types of raster data grids'
+#| fig-cap: "Main types of raster data grids."
 #| fig-subcap:
 #|   - Regular
 #|   - Rotated
@@ -336,13 +317,12 @@ tm_sta_curvilinear
 ```
 
 Contrary to spatial vector data, a basic raster data stores just one attribute.
-It is, however, possible to stack together many single rasters (also known as raster layers).
-This allows us to store and operate on many rasters having the same dimensions at the same time.
-Examples of multi-layer rasters include satellite imageries or temporal rasters.
+It is, however, possible to stack together many single rasters (also known as *raster layers*).
+This allows us to store and operate at the same time on many rasters having the same dimensions.
+Examples of multi-layer rasters include satellite imageries or time-series rasters.
 Satellite imageries usually consist of many bands (layers) for different wavelengths.
 The most basic bands, representing the colors red, green, and blue, can be connected together to create one composite image with true colors (@fig-rgb-raster).
-Temporal rasters store one attribute, but for many moments in time.
-<!-- + comparing different attributes for the same area -->
+Time-series rasters store one attribute, but for many moments in time.
 Additional information about multi-layer rasters can be also found in @sec-spatial-data-cubes.
 
 ```{r}
@@ -352,8 +332,8 @@ Additional information about multi-layer rasters can be also found in @sec-spati
 #| warning: false
 #| fig-asp: 0.4
 #| layout-ncol: 4
-#| fig-cap: 'Example of three satellite imagery bands: red, green, blue, and the composite
-#|   image with true colors created using these three bands.'
+#| fig-cap: "Example of three satellite imagery bands: red, green, blue, and the composite
+#|   image with true colors created using these three bands."
 #| fig-subcap:
 #|   - Red
 #|   - Green
@@ -381,8 +361,7 @@ tm_shape(landsat234) +
 
 \index{spatial file formats}
 Similarly to vector data, a large number of raster file formats exists.
-<!-- text files ?-->
-Currently, the GeoTIFF format (`.tif` or `.tiff`) is one of the most popular spatial raster formats.
+Currently, the GeoTIFF format (`.tif` or `.tiff`) is the most popular spatial raster formats.
 It is an extended image TIF format that stores spatial metadata (e.g., map projection) along the values.
 Another popular spatial raster formats include Arc ASCII (`.asc`) and ERDAS Imagine (`.img`).
 <!-- ncdf??? -->
@@ -399,9 +378,8 @@ It includes situations when we have many attributes, often for several moments i
 Storing multiple attributes is not a problem for the vector data model, when an attribute table can have many columns.
 The question is how to extend the spatial vector data model to include measurements for many times.
 For example, let's consider a polygon data with many attributes representing shares of land-use types for several years (@fig-vector-data-cubes).
-One approach would be to create a separate column for each variable in each year.<!--wide--><!--pros and cons-->
+One approach would be to create a separate column for each variable in each year.
 Alternatively, we can have one column representing the year and one column for each attribute, however, this approach would require multiplying each geometry as many times as we have time stamps.
-<!--long--><!--pros and cons-->
 The third approach involves separating geometries from attributes, and where attributes for each moment are stored independently.
 The last idea is used in spatial vector data cubes (@sec-the-stars-package).
 An example of the spatial vector data cubes idea can be seen in @fig-vector-data-cubes.
@@ -423,7 +401,6 @@ draw_vector_cubes()
 A single raster dataset can store just one variable for a given area.
 To store several attributes, we can connect rasters representing different attributes for the same extent, creating multi-layer rasters (@sec-raster-data-model).
 Additionally, each of the aforementioned rasters can be collected for many moments in time, adding other layers to the data.
-<!--pros and cons-->
 The question here is how to efficiently store multi-layer raster data to understand what layers relate to which attribute and time.
 Similarly to spatial vector data cubes, we can think of separating spatial dimensions from non-spatial attributes and create spatial raster data cubes (@sec-the-stars-package).
 @fig-raster-data-cubes gives an example of a raster data cube.
@@ -451,25 +428,14 @@ Second way is to read a spatial data cube from one of the file formats allowing 
 It includes formats such as NetCDF (`.nc`) and HDF (`.hdf`).
 <!-- spatial vector data cubes file formats? -->
 
-<!-- converting between spatial vector data cube and spatial raster data cube -->
-
 ## Spatial data representations in R {#sec-spatial-data-representations-in-r}
-
-\index{vector data model}
-R has several packages aimed to represent spatial vector data.
-<!-- Recently, the **terra** package has been released containing a new vector data representation. -->
-For more than a decade, the **sp** package <!--REF--> was a standard of vector data representation in R.
-However, now this package is in the maintenance mode only, and its successor, **sf** is recommended.
-The **tmap** package has been using **sf** since version 2.0.
 
 \index{raster data model}
 \index{spatial data cubes}
-Several R packages can be used to represent spatial raster data, including **raster** and its successor **terra**. 
-The **raster** package was used as a backbone of raster data visualization until **tmap** version 3.0.
-Currently, the **terra** package's raster objects can be used in **tmap**.
-Additionally, the **stars** package is used by **tmap** to operate on raster data and spatial data cubes.
-
+\index{vector data model}
 In the three next sections, we introduce the **sf** package (@sec-the-sf-package), the **terra** (@sec-the-terra-package), the **stars** package (@sec-the-stars-package).
+The **sf** package is used to represent spatial vector data, while the **terra** package represents spatial raster data.
+The **stars** package is used to store both spatial vector and raster data cubes.
 
 <!-- spatial data cubes -->
 <!-- https://github.com/appelmar/gdalcubes_R -->
@@ -479,16 +445,15 @@ In the three next sections, we introduce the **sf** package (@sec-the-sf-package
 
 \index{sf}
 \index{sf (package)|see {sf}}
-
 The **sf** package implements ideas behind the Simple Feature standard, which describe how to represent spatial vector data.
 Its main class, `sf`, has the form of an extended data frame, where each row is a spatial feature.
 In it, attributes of the vector data are stored as columns. 
 It also has one additional column, most often named `geom` or `geometry`^[However, any other names are also possible.].
 This column contains geometries in a form of well-known text (WKT), storing all of the coordinates.
 
-<!-- - how to read sf objects from files -->
 The **sf** package can read all of the spatial data formats mentioned in @sec-vector-data-model using the `read_sf()` function^[It is also possible to read spatial vector data using the `st_read()` function, which differs from `read_sf()` by having different default arguments.].
-<!--improve example-->
+We just need to provide the path to the file with spatial data, which will create a new object.
+
 ```{r}
 library(sf)
 worldvector = read_sf("data/worldvector.gpkg")
@@ -506,32 +471,25 @@ worldvector
 
 The `worldvector` object has MULTIPOLYGON geometry type, where each feature (row) can consist of one or more polygons.
 Each polygon's vertices are represented by a pair of values (`dimension: XY`).
-Bounding box allows to quickly understand the spatial extension of the input data. 
-<!--...--> 
-Finally, it has `r ifelse(sf::st_crs(worldvector)$IsGeographic, "geographic", "projected")` CRS named `r sf::st_crs(worldvector)$Name`.
-You can learn more about Coordinate Reference Systems in @sec-map-projections.
-<!-- ref to CRS section -->
+Bounding box allows to understand the spatial extension of the input data. 
+Finally, it has `r ifelse(sf::st_crs(worldvector)$IsGeographic, "geographic", "projected")` CRS named `r sf::st_crs(worldvector)$Name` (you can learn more about Coordinate Reference Systems in @sec-map-projections).
 
-Spatial vector data of class `sf` can be also obtained using some of other R data packages.
-<!-- add REFs--> 
-For example, **rnaturalearth** allows to download world map data, **osmdata** imports OpenStreetMap data as `sf` objects, and **tigris** loads TIGER/Line data.
-<!-- add reference to geocompr -->
-<!-- add reference to https://cran.r-project.org/web/views/Spatial.html (after my updates) -->
+Spatial vector data of class `sf` can be also obtained using other R data packages.
+For example, **rnaturalearth** allows to download world map data, **osmdata** imports OpenStreetMap data, and **tigris** loads TIGER/Line data of the US Census Bureau as `sf` objects.
+More data packages can be found in the CRAN Task View: Analysis of Spatial Data at <https://cran.r-project.org/view=Spatial>.
 
-The **tmap** package accepts spatial vector data objects from both **sf** and **sp** packages.
-In case of having vector objects in a different representation, they should be converted into `sf` objects first, before making maps.
-The **sf** package has the `st_as_sf()` function that translates objects of many classes, including `Spatial` (from the **sp** package), `ppp`, `psp`, and `lpp` (from the **spatstat** package), to the objects of class `sf`.
-The `st_as_sf()` function also allows to turn data frames into `sf` objects - the user needs to provide the input data frame, names of columns with coordinates, and additionally definition of the CRS of the data.
-For example `my_sf = st_as_sf(my_df, coords = c("Xcolumn", "Ycolumn"), crs = "EPSG:4326")`.
+<!-- The **tmap** package accepts spatial vector data objects from both **sf** and **sp** packages. -->
+<!-- In case of having vector objects in a different representation, they should be converted into `sf` objects first, before making maps. -->
+<!-- The **sf** package has the `st_as_sf()` function that translates objects of many classes, including `Spatial` (from the **sp** package), `ppp`, `psp`, and `lpp` (from the **spatstat** package), to the objects of class `sf`. -->
+<!-- The `st_as_sf()` function also allows to turn data frames into `sf` objects - the user needs to provide the input data frame, names of columns with coordinates, and additionally definition of the CRS of the data. -->
+<!-- For example `my_sf = st_as_sf(my_df, coords = c("Xcolumn", "Ycolumn"), crs = "EPSG:4326")`. -->
 
-If you want to learn more about operating on `sf` objects, we recommend visiting the package website and vignettes at <https://r-spatial.github.io/sf/> and reading [the Geocomputation with R book](https://geocompr.github.io/) [@lovelace_geocomputation_2025].
-<!-- - vector simplification? -->
+If you want to learn more about operating on `sf` objects, we recommend visiting the package website and vignettes at <https://r-spatial.github.io/sf/> and reading [the Geocomputation with R book](https://r.geocompx.org/) [@lovelace_geocomputation_2025].
 
 ### The terra package {#sec-the-terra-package}
 
 \index{terra}
 \index{terra (package)|see {terra}}
-
 The **terra** package represents and processes spatial raster data in R.
 It has many high-performance functions, allowing for efficient transformation and analysis of raster data.
 
@@ -563,17 +521,14 @@ Practical examples of using the **terra** package can be found on the Spatial Da
 
 \index{stars}
 \index{stars (package)|see {stars}}
-
-<!-- intro stars -->
 The **stars** package allows for reading and processing raster data in R. 
 This package also has support for both spatial vector and raster data cubes.
 Its main class, `stars`, is built as a list of matrices or arrays with metadata describing their dimensions.
 The **stars** package is also well integrated with **sf**, with many `st_` functions (such as `st_crs()`) working also on `stars` objects.
 
-<!-- - how to read stars objects from files -->
 The `read_stars()` function allow to read both simple and multidimensional spatial raster data from a file^[The **stars** package also has a function `read_ncdf()` aimed at improved reading of NetCDF files.].
 This function requires at least one argument with a filename to be read. 
-<!--improve example-->
+
 ```{r}
 library(stars)
 worldelevation2 = read_stars("data/worldelevation.tif")
@@ -594,9 +549,9 @@ For the `y` dimension, each further cell's coordinated decreases by `0.333333` (
 Both dimensions also have the same CRS -- `WGS 84`.
 
 `read_stars()` also has several additional arguments including `RasterIO`, which gives control over the input data extent and resolution.
-For example, the below code will read just the first and second bands -- in this case, the average montly temperatures for January and February in Slovenia (results not shown).
+For example, the below code will read just the first and second bands -- in this case, the average monthly temperatures for January and February in Slovenia (results not shown).
 <!-- - including reading chunks, changing resolution, and selecting bands -->
-<!--improve example-->
+
 ```{r}
 slo_tavg_fp = "data/slovenia/slo_tavg.tif"
 slo_tavg12 = read_stars(slo_tavg_fp, RasterIO = list(bands = c(1, 2)))
@@ -618,17 +573,14 @@ On the other hand, reading complex raster file formats, such as NetCDF could res
 
 <!-- - stars proxy -->
 <!-- more than 1e8 cells to read -->
-Before reading the file, the **stars** package checks if the input data is a curvilinear grid and what is the number of cells in the data.
-When the input data is small or curvilinear then the full data is read in computer memory.
-Otherwise, a `stars proxy` approach is used, where only metadata is read including pointers to where the complete data is.
-When we want to plot large raster data, then it is read at a lower resolution than the native one.
+<!-- Before reading the file, the **stars** package checks if the input data is a curvilinear grid and what is the number of cells in the data. -->
+<!-- When the input data is small or curvilinear then the full data is read in computer memory. -->
+<!-- Otherwise, a `stars proxy` approach is used, where only metadata is read including pointers to where the complete data is. -->
+<!-- When we want to plot large raster data, then it is read at a lower resolution than the native one. -->
 <!-- ref to the section where we are explaining max.plot options -->
 
 The **stars** package also has support for vector data cubes, where each geometry is just stored once (as a dimension), and each attribute is a `matrix` or an `array` with the number of rows equals to the number of geometries, the number of columns equals to another dimension (e.g., time), and possibly the number of `array` layers equals for additional dimensions.
 <!-- can we plot them in tmap? -->
 <!-- if so - there should be an example in the book + reference -->
 
-<!-- The **tmap** package accepts spatial raster data objects from both **stars** and **raster** packages. -->
-
-More information on how the `stars` objects are organized and how to operate on them can be found in the **stars** package vignettes at <https://r-spatial.github.io/stars>. 
-<!-- - advice: sometimes/often it is better to prepare spatial object before the mapping, than trying to over-customize the map -->
+More information on how the `stars` objects are organized and how to operate on them can be found in the **stars** package vignettes at <https://r-spatial.github.io/stars> and in the Spatial Data Science book at <https://r-spatial.org/book/> [@Pebesma2023-ya].
