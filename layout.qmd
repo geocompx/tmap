@@ -439,7 +439,7 @@ Many of these properties can be customized, however, it may be difficult to unde
 <!-- ... -->
 To make it easier, **tmap** has a design mode that can be turned on by setting the `tmap_design_mode()` function to `TRUE`.
 When the design mode is turned on, the map is displayed in a special way: it shows all of the created map content, but also adds various lines and colored areas to the map.
-We may see an example of a map in the design mode in @fig-design-mode.
+Additionally, it returns a small table in the R console with sizes and an aspect ratio of the device, plot, facets, and map areas.
 
 ```{r}
 #| label: fig-design-mode
@@ -448,6 +448,7 @@ tmap_design_mode(TRUE)
 tm
 ```
 
+We may see an example of a map in the design mode in @fig-design-mode.
 Its colors relate to the map and the margins around the map content.
 For example, the map area is colored yellow, the outside cells (used, for instance, for legends and titles) are in light green, and the outer margins are in light blue.
 A complete list of the color codings is shown in @tbl-color-codings.
@@ -479,8 +480,6 @@ tinytable::tt(color_codings_df[, 2:3]) |>
   tinytable::style_tt(i = 8, j = 1, background = "#FFFF99")
 ```
 <!-- cols4all::c4a("brewer.paired") -->
-
-Additionally, it returns a small table in the R console with sizes and an aspect ratio of the device, plot, facets, and map areas.
 
 The design mode is useful to understand how the map is constructed and how the various arguments of the `tm_layout()` function impact the map layout.
 
