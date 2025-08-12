@@ -468,7 +468,7 @@ window.Quarto = {
 <p>The world is depicted as an orange in <a href="#fig-orange" class="quarto-xref">Figure&nbsp;<span>13.1</span></a>, not just to stimulate your appetite for this subject, but also because an orange peel serves as a good analogy for a two-dimensional map. A world map can be seen as an orange peel laid out on the table. The question is how to peel the orange and how to put the peel flat on the table.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-orange" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center" data-fig-scap="How to peel an orange?">
+<div id="fig-orange" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-scap="How to peel an orange?" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-orange-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/orange_world.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-fig-scap="How to peel an orange?">
 </div>
@@ -481,7 +481,7 @@ Figure&nbsp;13.1: How to peel an orange?
 <p>When we peel the orange, ideally, we want to rip the peel near areas of the Earth that are less interesting. What is interesting depends on the application – for applications where land mass is more important than water mass, it is a good idea to make the rips in the oceans. The (interrupted) Goode homolosine projection (<a href="#fig-crs-goode" class="quarto-xref">Figure&nbsp;<span>13.2</span></a>) embodies this idea. All continents and countries are preserved except Antarctica and Greenland. There is also a version of the Goode homolosine projection that focuses on preserving the oceans.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-crs-goode" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
+<div id="fig-crs-goode" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-crs-goode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-crs-goode-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -507,7 +507,7 @@ Figure&nbsp;13.2: The (interrupted) Goode homolosine projection
 <!--https://geographx.co.nz/map-projections/-->
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-crs-04" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
+<div id="fig-crs-04" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-crs-04-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-crs-04-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -523,7 +523,7 @@ Figure&nbsp;13.3: Latitude longitude coordinates (EPSG:4326)
 <p> <!-- Martijn, is it true that Mercator tried to fix the area deformation by stretching the poles vertically?? --> In order to fix these deformed areas, Gerardus Mercator, a Flemish geographer in the 16th century, introduced a method to compensate for this by inflating the areas near the poles even more, but now only in a vertical direction. This projection is called the Mercator projection. For web applications, this projection has been slightly modified and renamed to the Web Mercator projection (<code>EPSG:3857</code>). The cylinder and plain map that uses this projection are shown in <a href="#fig-crs-05" class="quarto-xref">Figure&nbsp;<span>13.4</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-crs-05" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
+<div id="fig-crs-05" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-crs-05-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-crs-05-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -547,7 +547,7 @@ https://books.google.nl/books?id=E0JZDwAAQBAJ&pg=PA244&lpg=PA244&dq=Equidistant+
 <p> Let us return to the original question: how can we create a two-dimensional representation of our three-dimensional Earth? Although there are many ways, four basic map projection types can be distinguished. These are depicted in <a href="#fig-crs-types" class="quarto-xref">Figure&nbsp;<span>13.5</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-crs-types" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
+<div id="fig-crs-types" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-crs-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-crs-types-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -561,7 +561,7 @@ Figure&nbsp;13.5: Four types of map projections
 <p>There are many projections that are pseudo-cylinders in the sense that the radius around the poles is smaller than around the equator. An example is the Robinson projection shown in <a href="#fig-crs-robin" class="quarto-xref">Figure&nbsp;<span>13.6</span></a>. Almost all commonly used standard World map projections are (pseudo-)cylindrical. <!-- why? --></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-crs-robin" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
+<div id="fig-crs-robin" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-crs-robin-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-crs-robin-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -1004,7 +1004,7 @@ Figure&nbsp;13.10: Map projections examples.
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_crs.html">tm_crs</a></span><span class="op">(</span><span class="st">"auto"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-mproj-auto" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
+<div id="fig-mproj-auto" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-mproj-auto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-mproj-auto-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -1023,7 +1023,7 @@ Figure&nbsp;13.11: Map with data projected into the automatically selected proje
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text</a></span><span class="op">(</span><span class="st">"name"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_crs.html">tm_crs</a></span><span class="op">(</span><span class="st">"auto"</span>, property <span class="op">=</span> <span class="st">"distance"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-mproj-auto2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
+<div id="fig-mproj-auto2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-mproj-auto2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-mproj-auto2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -1098,7 +1098,7 @@ Figure&nbsp;13.13: Two elevation maps in the Equal Earth projection
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>earth_boundary <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>            bg.color <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-mproj3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
+<div id="fig-mproj3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-mproj3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-mproj3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -1111,7 +1111,7 @@ Figure&nbsp;13.14: Map with data projected into Equal Earth and with a customize
 <p>These features can be used to create more visually appealing maps. They are available to a large set of projections<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, some of which are shown in <a href="#fig-exprojs" class="quarto-xref">Figure&nbsp;<span>13.15</span></a>. You may notice that these projections have not only different visual styles but also different shapes of the Earth boundary and focus on preserving different map projection properties.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-exprojs" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
+<div id="fig-exprojs" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-exprojs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-exprojs-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
