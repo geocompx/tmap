@@ -111,7 +111,7 @@ tm_shape(slo_elev) +
 #| label: fig-positions-in
 #| warning: false
 #| echo: false
-#| layout-ncol: 3
+#| layout-nrow: 3
 #| fig-cap: "Positioning legends inside the map frame."
 #| fig-subcap:
 #|   - "With lowercase letters: \"right\", \"bottom\""
@@ -299,7 +299,7 @@ tm_shape(slo_elev) +
 #| label: fig-many-comp
 #| warning: false
 #| echo: false
-#| layout-ncol: 2
+#| layout-nrow: 2
 #| fig-cap: "Positioning many map components."
 #| fig-subcap:
 #|  - "Two components in different locations"
@@ -356,7 +356,7 @@ tm_shape(slo_elev) +
 #| label: fig-comp-group
 #| warning: false
 #| echo: false
-#| layout-ncol: 2
+#| layout-nrow: 2
 #| fig-cap: "Grouping map components together."
 #| fig-subcap:
 #| - "Two groups of map components in different locations"

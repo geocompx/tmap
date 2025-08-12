@@ -39,12 +39,12 @@ glossary = dplyr::arrange(glossary, Term)
 #| warning: false
 #| message: false
 #| tbl-cap: "Glossary of tmap terms" 
-if (knitr::is_latex_output()) {
-  knitr::kable(glossary, escape = FALSE, booktabs = TRUE) |>
-    kableExtra::kable_styling(latex_options = "hold_position") 
-} else {
-  knitr::kable(glossary, escape = FALSE, booktabs = TRUE)
-}
+knitr::kable(glossary, escape = FALSE, booktabs = TRUE) |>
+  kableExtra::kable_styling("striped",
+                          latex_options = "striped", 
+                          full_width = FALSE) |> 
+  kableExtra::column_spec(1, width = "4cm", monospace = TRUE) |>
+  kableExtra::column_spec(2, width = "8cm")
 # tinytable::tt(glossary, escape = TRUE)
 # options(DT.options = list(
 #   bPaginate = FALSE, 

@@ -47,7 +47,8 @@ knitr::kable(scales_df,
   kableExtra::kable_styling("striped",
                             latex_options = "striped", 
                             full_width = FALSE) |> 
-  kableExtra::column_spec(1, monospace = TRUE) 
+  kableExtra::column_spec(1, width = "4cm", monospace = TRUE) |>
+  kableExtra::column_spec(2, width = "8cm")
 # tinytable::tt(scales_df) |>
 #   tinytable::style_tt(j = 1, monospace = TRUE)
 ```
@@ -314,7 +315,7 @@ tm_shape(slo_regions) +
 #| message: false
 #| echo: false
 #| fig-height: 3.46
-#| layout-ncol: 3
+#| layout-nrow: 3
 #| fig-cap: "Examples of three methods of creating continuous maps"
 #| fig-subcap:
 #|   - The "continuous" method

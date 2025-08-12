@@ -67,7 +67,7 @@ book:
         - "good-maps.qmd"
     - "references.qmd"
   appendices:
-    - "data_processing.qmd"
+    - "data-processing.qmd"
     - "glossary.qmd"
 
 format:

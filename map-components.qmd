@@ -37,8 +37,11 @@ We cover and demonstrate these functions in the following sections.
 #   tinytable::style_tt(j = 1, monospace = TRUE)
 attr_layers_df |>
   kableExtra::kbl(booktabs = TRUE) |>
-  kableExtra::kable_styling(full_width = FALSE) |> 
-  kableExtra::column_spec(1, monospace = TRUE)
+  kableExtra::kable_styling("striped",
+                            latex_options = "striped", 
+                            full_width = FALSE) |> 
+  kableExtra::column_spec(1, width = "4cm", monospace = TRUE) |>
+  kableExtra::column_spec(2, width = "8cm")
 # library(magrittr)
 # library(kableExtra)
 # options(kableExtra.html.bsTable = TRUE)
@@ -108,7 +111,7 @@ It is also possible to customize their appearance, for example, by changing the 
 ```{r}
 #| label: fig-grids
 #| echo: false
-#| layout-ncol: 3
+#| layout-nrow: 3
 #| fig-cap: Examples of grid lines and graticules.
 #| fig-subcap:
 #|   - Grid lines

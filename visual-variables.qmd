@@ -9,7 +9,7 @@ Visual variables are methods to translate information given in variables into ma
 Basic visual variables are color, size, and shape^[Other visual variables include position, orientation, and texture.].
 All of them can influence our perception and understanding of the presented information; therefore, it is worth understanding when and how they can be used.
 
-The use of visual variables on maps depends on two main things: (a) type of the presented variable, and (b) type of the map layer (@sec-const-visual-variables;@sec-auto-scales).
+The use of visual variables on maps depends on two main things: (a) type of the presented variable, and (b) type of the map layer (@sec-const-visual-variables; @sec-auto-scales).
 
 <!-- raster data in the plot? -->
 <!-- improve/update/expand the plot -->
@@ -21,8 +21,10 @@ The use of visual variables on maps depends on two main things: (a) type of the 
 #| message: false
 #| fig-cap: Basic visual variables and their representations on maps
 #| fig-asp: 0.4
+tmap::tmap_options(scale = 0.8)
 source("code/visual_variables.R")
 visual_variables()
+tmap::tmap_options(scale = 1)
 ```
 
 @fig-visual-variables shows examples of different visual variables.
@@ -518,7 +520,7 @@ For example in the above code, we just show examples of how symbols with populat
 #| label: fig-tmsizes
 #| echo: false
 #| message: false
-#| layout-ncol: 3
+#| layout-nrow: 3
 #| fig-cap: 'Examples of three approaches for changing sizes of symbols'
 #| fig-subcap:
 #|   - all symbols have a consistent size of 0.5
@@ -724,7 +726,7 @@ tm_shape(slo_cities) +
 #| label: fig-mixsymb
 #| echo: false
 #| message: false
-#| layout-ncol: 2
+#| layout-nrow: 2
 #| fig-cap: 'Examples of maps using two visual variables at the same time'
 #| fig-subcap: 
 #|   - size and fill

@@ -39,7 +39,9 @@ charts_df = tibble::tribble(
 #   tinytable::style_tt(j = 1, monospace = TRUE)
 charts_df |>
   kableExtra::kbl(escape = FALSE) |>
-  kableExtra::kable_styling(full_width = FALSE) |>
+  kableExtra::kable_styling("striped",
+                            latex_options = "striped", 
+                            full_width = FALSE) |> 
   kableExtra::column_spec(1, monospace = TRUE)
 ```
 

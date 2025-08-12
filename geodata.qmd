@@ -557,7 +557,7 @@ The **terra** package has many functions for raster data processing, including `
 It also enables interactions between raster and vector data, including cropping rasters to vector geometries and masking rasters with vector geometries using the `crop()` and `mask()` functions, respectively.
 <!-- what else should we add here? -->
 
-Practical examples of using the **terra** package can be found on the [Spatial Data Science with R and “terra”](https://rspatial.org/) website and in the [Geocomputation with R book](https://geocompr.github.io/) [@lovelace_geocomputation_2025].
+Practical examples of using the **terra** package can be found on the Spatial Data Science with R and “terra” website at <https://rspatial.org/> and in the Geocomputation with R book at <https://r.geocompx.org/> [@lovelace_geocomputation_2025].
 
 ### The stars package {#sec-the-stars-package}
 

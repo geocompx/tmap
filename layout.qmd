@@ -58,7 +58,7 @@ The `color.saturation` parameter accepts a value between `0` and `1`, where `0` 
 ```{r}
 #| label: fig-layout-saturation
 #| warning: false
-#| layout-ncol: 3
+#| layout-nrow: 3
 #| fig-cap: "Impact of the `color.saturation` argument on the map layout."
 #| fig-subcap:
 #|  - "Value: `0`"
@@ -82,7 +82,7 @@ Its value can be set between `0` and `1`, where `0` means no sepia filter (i.e.,
 ```{r}
 #| label: fig-layout-sepia
 #| warning: false
-#| layout-ncol: 3
+#| layout-nrow: 3
 #| fig-cap: "Impact of the `color.sepia_intensity` argument on the map layout."
 #| fig-subcap:
 #|  - "Value: `0.4`"
@@ -107,7 +107,7 @@ Three main types of color vision deficiencies are: *protanopia* (red-green color
 #| label: fig-layout-color-vision
 #| warning: false
 #| echo: false
-#| layout-ncol: 3
+#| layout-nrow: 3
 #| fig-cap: "Impact of the `color_vision_deficiency_sim` argument on the map layout."
 #| fig-subcap:
 #|  - "Value: `\"protan\"`"
@@ -171,7 +171,7 @@ tm +
 #| label: fig-layout-frame
 #| echo: false
 #| message: false
-#| layout-ncol: 3
+#| layout-nrow: 3
 #| fig-cap: "Impact of the frame arguments on the map layout."
 #| fig-subcap:
 #|  - "No frame"
@@ -212,19 +212,19 @@ tm_bf = tm_shape(World) +
     tm_borders(col_alpha = 0) +
     tm_credits("plain",
         fontface = "plain", position = c("center", "center"),
-        size = 4
+        size = 3.5
     ) +
     tm_credits("italic",
         fontface = "italic", position = c("center", "center"),
-        size = 4
+        size = 3.5
     ) +
     tm_credits("bold",
         fontface = "bold", position = c("center", "center"),
-        size = 4
+        size = 3.5
     ) +
     tm_credits("bold.italic",
         fontface = "bold.italic", position = c("center", "center"),
-        size = 4
+        size = 3.5
     ) +
     tm_layout(frame = FALSE, outer.margins = FALSE)
 ```
@@ -239,15 +239,15 @@ tm_ff = tm_shape(World) +
     tm_borders(col_alpha = 0) +
     tm_credits("serif",
         fontfamily = "serif", position = c("center", "center"),
-        size = 4
+        size = 3.5
     ) +
     tm_credits("sans",
         fontfamily = "sans", position = c("center", "center"),
-        size = 4
+        size = 3.5
     ) +
     tm_credits("monospace",
         fontfamily = "monospace", position = c("center", "center"),
-        size = 4
+        size = 3.5
     ) +
     tm_layout(frame = FALSE)
 ```
@@ -416,7 +416,7 @@ At the same time, we can also change the size of all of the map elements at once
 #| label: fig-layout-scale
 #| warning: false
 #| echo: false
-#| layout-ncol: 2
+#| layout-nrow: 2
 #| fig-cap: "Impact of the scale argument on the map layout."
 #| fig-subcap:
 #|  - "`scale = 0.5`"

@@ -88,7 +88,7 @@ tm_shape(slo_elev) +
 #| label: fig-legend2
 #| echo: false
 #| message: false
-#| layout-ncol: 3
+#| layout-nrow: 3
 #| fig-cap: Legend customization examples.
 #| fig-subcap: 
 #|   - Legend with a custom title.
@@ -154,7 +154,7 @@ tm_shape(slo_elev) +
 #| label: fig-legend3
 #| echo: false
 #| message: false
-#| layout-ncol: 3
+#| layout-nrow: 3
 #| fig-cap: Additional legend customization examples.
 #| fig-subcap: 
 #|   - Legend with a custom background color and transparency.
@@ -202,7 +202,7 @@ tm_shape(slo_elev) +
 #| label: fig-titles1
 #| echo: false
 #| message: false
-#| layout-ncol: 2
+#| layout-nrow: 2
 #| fig-cap: "Map title examples."
 #| fig-subcap:
 #|  - Simple title
@@ -251,7 +251,7 @@ tm_shape(slo_elev) +
 #| label: fig-titles2
 #| echo: false
 #| message: false
-#| layout-ncol: 2
+#| layout-nrow: 2
 #| fig-cap: "Title customization examples."
 #| fig-subcap:
 #|   - Title with custom font size, color, and face.
