@@ -45,9 +45,6 @@ In this book, you will find the long answer.
 
 ## Prerequisites
 
-<!-- remember to create a github release with the data package before the book is published -->
-<!-- and then update use_course() to use the latest released version of the data package -->
-
 To follow all the examples in this book, you’ll need to install the **tmap** package along with a few additional dependencies.
 The easiest way to do this is by installing the **tmapbook** package:
 
