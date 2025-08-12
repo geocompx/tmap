@@ -368,7 +368,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_processing.html" class="sidebar-item-text sidebar-link">
+  <a href="./data-processing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Data preparation</span></span></a>
   </div>
 </li>
@@ -442,44 +442,44 @@ Table&nbsp;8.1: Map scales
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left; font-family: monospace;">tm_scale_categorical()</td>
-<td style="text-align: left;">Categorical scale</td>
+<td style="text-align: left; width: 4cm; font-family: monospace;">tm_scale_categorical()</td>
+<td style="text-align: left; width: 8cm;">Categorical scale</td>
 </tr>
 <tr class="even">
-<td style="text-align: left; font-family: monospace;">tm_scale_ordinal()</td>
-<td style="text-align: left;">Ordinal scale</td>
+<td style="text-align: left; width: 4cm; font-family: monospace;">tm_scale_ordinal()</td>
+<td style="text-align: left; width: 8cm;">Ordinal scale</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left; font-family: monospace;">tm_scale_discrete()</td>
-<td style="text-align: left;">Discrete scale</td>
+<td style="text-align: left; width: 4cm; font-family: monospace;">tm_scale_discrete()</td>
+<td style="text-align: left; width: 8cm;">Discrete scale</td>
 </tr>
 <tr class="even">
-<td style="text-align: left; font-family: monospace;">tm_scale_rank()</td>
-<td style="text-align: left;">Rank scale</td>
+<td style="text-align: left; width: 4cm; font-family: monospace;">tm_scale_rank()</td>
+<td style="text-align: left; width: 8cm;">Rank scale</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left; font-family: monospace;">tm_scale_intervals()</td>
-<td style="text-align: left;">Intervals scale</td>
+<td style="text-align: left; width: 4cm; font-family: monospace;">tm_scale_intervals()</td>
+<td style="text-align: left; width: 8cm;">Intervals scale</td>
 </tr>
 <tr class="even">
-<td style="text-align: left; font-family: monospace;">tm_scale_continuous()</td>
-<td style="text-align: left;">Continuous scale</td>
+<td style="text-align: left; width: 4cm; font-family: monospace;">tm_scale_continuous()</td>
+<td style="text-align: left; width: 8cm;">Continuous scale</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left; font-family: monospace;">tm_scale_continuous_log(), tm_scale_continuous_log2(), tm_scale_continuous_log10(), tm_scale_continuous_log1p(), tm_scale_continuous_sqrt(), tm_scale_continuous_pseudo_log()</td>
-<td style="text-align: left;">Logarithmic scales</td>
+<td style="text-align: left; width: 4cm; font-family: monospace;">tm_scale_continuous_log(), tm_scale_continuous_log2(), tm_scale_continuous_log10(), tm_scale_continuous_log1p(), tm_scale_continuous_sqrt(), tm_scale_continuous_pseudo_log()</td>
+<td style="text-align: left; width: 8cm;">Logarithmic scales</td>
 </tr>
 <tr class="even">
-<td style="text-align: left; font-family: monospace;">tm_scale_asis()</td>
-<td style="text-align: left;">As-is scale</td>
+<td style="text-align: left; width: 4cm; font-family: monospace;">tm_scale_asis()</td>
+<td style="text-align: left; width: 8cm;">As-is scale</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left; font-family: monospace;">tm_scale_rgb()</td>
-<td style="text-align: left;">RGB scale</td>
+<td style="text-align: left; width: 4cm; font-family: monospace;">tm_scale_rgb()</td>
+<td style="text-align: left; width: 8cm;">RGB scale</td>
 </tr>
 <tr class="even">
-<td style="text-align: left; font-family: monospace;">tm_scale_bivariate()</td>
-<td style="text-align: left;">Bivariate scale</td>
+<td style="text-align: left; width: 4cm; font-family: monospace;">tm_scale_bivariate()</td>
+<td style="text-align: left; width: 8cm;">Bivariate scale</td>
 </tr>
 </tbody>
 </table>
@@ -491,9 +491,9 @@ Table&nbsp;8.1: Map scales
 <p><a href="#fig-scales" class="quarto-xref">Figure&nbsp;<span>8.1</span></a> shows examples of how some of them look like when applied to the same variable.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-scales" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-scales" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-scales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-scales-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<img src="figures/fig-scales-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8.1: Examples of different scales applied to the same variable
@@ -512,9 +512,9 @@ Figure&nbsp;8.1: Examples of different scales applied to the same variable
 <span><span class="co"># tm_shape(slo_regions) +</span></span>
 <span><span class="co">#   tm_polygons(fill = "region_group", fill.scale = tm_scale_categorical())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-colorscales2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-colorscales2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-colorscales2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-colorscales2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<img src="figures/fig-colorscales2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-colorscales2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8.2: Example of a map in which polygons are colored based on the values of a categorical variable.
@@ -531,9 +531,9 @@ Figure&nbsp;8.2: Example of a map in which polygons are colored based on the val
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"region_group"</span>,</span>
 <span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_ordinal</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-ordinal-scales" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-ordinal-scales" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ordinal-scales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-ordinal-scales-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<img src="figures/fig-ordinal-scales-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ordinal-scales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8.3: Example of a map in which polygons are colored based on the values of an ordered categorical variable.
@@ -549,9 +549,9 @@ Figure&nbsp;8.3: Example of a map in which polygons are colored based on the val
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"urbn_type"</span>,</span>
 <span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_discrete</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-discrete-scales" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-discrete-scales" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-discrete-scales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-discrete-scales-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<img src="figures/fig-discrete-scales-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-discrete-scales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8.4: Example of a map in which polygons are colored based on the values of a discrete variable.
@@ -603,7 +603,7 @@ Figure&nbsp;8.4: Example of a map in which polygons are colored based on the val
 <div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-intervals-methods" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-intervals-methods-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-intervals-methods-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-intervals-methods-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-intervals-methods">
+<img src="figures/fig-intervals-methods-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-intervals-methods">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-intervals-methods-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) The “pretty” method
@@ -613,7 +613,7 @@ Figure&nbsp;8.4: Example of a map in which polygons are colored based on the val
 <div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-intervals-methods" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-intervals-methods-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-intervals-methods-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-intervals-methods-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-intervals-methods">
+<img src="figures/fig-intervals-methods-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-intervals-methods">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-intervals-methods-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) The “fixed” method
@@ -625,7 +625,7 @@ Figure&nbsp;8.4: Example of a map in which polygons are colored based on the val
 <div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-intervals-methods" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-intervals-methods-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-intervals-methods-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-intervals-methods-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-intervals-methods">
+<img src="figures/fig-intervals-methods-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-intervals-methods">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-intervals-methods-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (c) The “jenks” method
@@ -635,7 +635,7 @@ Figure&nbsp;8.4: Example of a map in which polygons are colored based on the val
 <div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-intervals-methods" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-intervals-methods-4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-intervals-methods-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-intervals-methods-4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-intervals-methods">
+<img src="figures/fig-intervals-methods-4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-intervals-methods">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-intervals-methods-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (d) The “log10_pretty” method
@@ -670,33 +670,38 @@ Figure&nbsp;8.5: Examples of four methods of creating intervals maps
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>,</span>
 <span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_continuous_log10</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell" data-layout-nrow="3" data-layout-align="center">
 <div id="fig-cont-methods" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-cont-methods-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-cont-methods" style="flex-basis: 33.3%;justify-content: center;">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-cont-methods" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-cont-methods-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-cont-methods-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-cont-methods-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-cont-methods">
+<img src="figures/fig-cont-methods-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-cont-methods">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cont-methods-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) The “continuous” method
 </figcaption></figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-cont-methods" style="flex-basis: 33.3%;justify-content: center;">
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-cont-methods" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-cont-methods-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-cont-methods-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-cont-methods-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-cont-methods">
+<img src="figures/fig-cont-methods-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-cont-methods">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cont-methods-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) The “rank” method
 </figcaption></figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-cont-methods" style="flex-basis: 33.3%;justify-content: center;">
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-cont-methods" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-cont-methods-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-cont-methods-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-cont-methods-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-cont-methods">
+<img src="figures/fig-cont-methods-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-cont-methods">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cont-methods-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (c) The “log10” method
@@ -708,6 +713,7 @@ Figure&nbsp;8.5: Examples of four methods of creating intervals maps
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cont-methods-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8.6: Examples of three methods of creating continuous maps
 </figcaption></figure>
+</div>
 </div>
 </section><section id="sec-asis-scales" class="level2" data-number="8.7"><h2 data-number="8.7" class="anchored" data-anchor-id="sec-asis-scales">
 <span class="header-section-number">8.7</span> As-is scales</h2>
@@ -724,9 +730,9 @@ Figure&nbsp;8.6: Examples of three methods of creating continuous maps
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"urbn_type_col"</span>,</span>
 <span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_asis</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-asis-scales" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-asis-scales" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-asis-scales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-asis-scales-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<img src="figures/fig-asis-scales-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-asis-scales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8.7: Example of a map in which polygons are directly colored based on the values of a variable (an as-is scale).
@@ -787,7 +793,7 @@ Note
 <div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmrgbs" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-tmrgbs-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmrgbs-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-tmrgbs-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmrgbs">
+<img src="figures/fig-tmrgbs-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-tmrgbs">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmrgbs-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) True color composite image
@@ -797,7 +803,7 @@ Note
 <div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmrgbs" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-tmrgbs-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmrgbs-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-tmrgbs-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmrgbs">
+<img src="figures/fig-tmrgbs-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-tmrgbs">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmrgbs-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) False color composite image
@@ -820,9 +826,9 @@ Figure&nbsp;8.8: Two color composite images
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="fu">tm_vars</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"pop_dens"</span>, <span class="st">"pop65perc"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>values <span class="op">=</span> <span class="st">"purples"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-bivariate-scales1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-bivariate-scales1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-bivariate-scales1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-bivariate-scales1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<img src="figures/fig-bivariate-scales1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bivariate-scales1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8.9: Example of two separate maps, one for each variable.
@@ -840,9 +846,9 @@ Figure&nbsp;8.9: Example of two separate maps, one for each variable.
 <span>              fill.legend <span class="op">=</span> <span class="fu">tm_legend_bivariate</span><span class="op">(</span>xlab <span class="op">=</span> <span class="st">"Pop. 65+ %"</span>, </span>
 <span>                                                ylab <span class="op">=</span> <span class="st">"Pop. density\n(per sq. km)"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-bivariate-scales2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-bivariate-scales2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-bivariate-scales2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-bivariate-scales2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<img src="figures/fig-bivariate-scales2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bivariate-scales2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8.10: Example of a bivariate map, where two variables are combined into a single map.
@@ -894,7 +900,7 @@ Figure&nbsp;8.10: Example of a bivariate map, where two variables are combined i
 <div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmrastbiv" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-tmrastbiv-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmrastbiv-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-tmrastbiv-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmrastbiv">
+<img src="figures/fig-tmrastbiv-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-tmrastbiv">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmrastbiv-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Simple map
@@ -906,7 +912,7 @@ Figure&nbsp;8.10: Example of a bivariate map, where two variables are combined i
 <div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-tmrastbiv" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-tmrastbiv-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-tmrastbiv-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-tmrastbiv-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-tmrastbiv">
+<img src="figures/fig-tmrastbiv-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-tmrastbiv">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmrastbiv-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) Customized map
@@ -975,9 +981,9 @@ Table&nbsp;8.2: Operators for flipping bivariate color scales
 <p>Additionally, <a href="#fig-tmo-bivariate" class="quarto-xref">Figure&nbsp;<span>8.12</span></a> shows how these flipping operators work in action on an example bivariate color scale.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-tmo-bivariate" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-tmo-bivariate" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmo-bivariate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-tmo-bivariate-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<img src="figures/fig-tmo-bivariate-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmo-bivariate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8.12: Bivariate color scales with different flipping operators

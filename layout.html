@@ -368,7 +368,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_processing.html" class="sidebar-item-text sidebar-link">
+  <a href="./data-processing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Data preparation</span></span></a>
   </div>
 </li>
@@ -478,6 +478,7 @@ Figure&nbsp;12.2: Customized map layout colors: background, outer space, and leg
 </div>
 </div>
 <p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function also has tools to modify the complete map color style with arguments such as <code>color.saturation</code>, <code>color.sepia_intensity</code>, and <code>color_vision_deficiency_sim.</code> The first one represents the saturation of all colors on the map, including the backgrounds, as well as visual variables such as the fill or color of polygons and lines. The <code>color.saturation</code> parameter accepts a value between <code>0</code> and <code>1</code>, where <code>0</code> means no color saturation (i.e., the map is black and white), and <code>1</code> means full-color saturation (i.e., the map is colorful, default) (<a href="#fig-layout-saturation" class="quarto-xref">Figure&nbsp;<span>12.3</span></a>). <!-- why it is needed --></p>
+<div class="cell" data-layout-nrow="3" data-layout-align="center">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>color.saturation <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
 <span><span class="va">tm</span> <span class="op">+</span> </span>
@@ -487,7 +488,7 @@ Figure&nbsp;12.2: Customized map layout colors: background, outer space, and leg
 <div id="fig-layout-saturation" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-layout-saturation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-saturation" style="flex-basis: 33.3%;justify-content: center;">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-saturation" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-layout-saturation-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-layout-saturation-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-layout-saturation-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-layout-saturation">
@@ -497,7 +498,9 @@ Figure&nbsp;12.2: Customized map layout colors: background, outer space, and leg
 </figcaption></figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-saturation" style="flex-basis: 33.3%;justify-content: center;">
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-saturation" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-layout-saturation-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-layout-saturation-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-layout-saturation-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-layout-saturation">
@@ -507,7 +510,9 @@ Figure&nbsp;12.2: Customized map layout colors: background, outer space, and leg
 </figcaption></figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-saturation" style="flex-basis: 33.3%;justify-content: center;">
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-saturation" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-layout-saturation-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-layout-saturation-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-layout-saturation-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-layout-saturation">
@@ -523,7 +528,9 @@ Figure&nbsp;12.2: Customized map layout colors: background, outer space, and leg
 Figure&nbsp;12.3: Impact of the <code>color.saturation</code> argument on the map layout.
 </figcaption></figure>
 </div>
+</div>
 <p>The <code>color.sepia_intensity</code> argument allows to apply a sepia filter to the map. <!-- explain --> Its value can be set between <code>0</code> and <code>1</code>, where <code>0</code> means no sepia filter (i.e., the map is colorful, default), and <code>1</code> means full sepia filter (i.e., the map is brownish) (<a href="#fig-layout-sepia" class="quarto-xref">Figure&nbsp;<span>12.4</span></a>). <!-- color.sepia_intensity, 0-1  --> <!-- default: 0 --> <!-- why it is needed --></p>
+<div class="cell" data-layout-nrow="3" data-layout-align="center">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>color.sepia_intensity <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span></span>
 <span><span class="va">tm</span> <span class="op">+</span> </span>
@@ -533,7 +540,7 @@ Figure&nbsp;12.3: Impact of the <code>color.saturation</code> argument on the ma
 <div id="fig-layout-sepia" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-layout-sepia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-sepia" style="flex-basis: 33.3%;justify-content: center;">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-sepia" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-layout-sepia-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-layout-sepia-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-layout-sepia-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-layout-sepia">
@@ -543,7 +550,9 @@ Figure&nbsp;12.3: Impact of the <code>color.saturation</code> argument on the ma
 </figcaption></figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-sepia" style="flex-basis: 33.3%;justify-content: center;">
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-sepia" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-layout-sepia-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-layout-sepia-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-layout-sepia-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-layout-sepia">
@@ -553,7 +562,9 @@ Figure&nbsp;12.3: Impact of the <code>color.saturation</code> argument on the ma
 </figcaption></figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-sepia" style="flex-basis: 33.3%;justify-content: center;">
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-sepia" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-layout-sepia-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-layout-sepia-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-layout-sepia-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-layout-sepia">
@@ -569,13 +580,15 @@ Figure&nbsp;12.3: Impact of the <code>color.saturation</code> argument on the ma
 Figure&nbsp;12.4: Impact of the <code>color.sepia_intensity</code> argument on the map layout.
 </figcaption></figure>
 </div>
+</div>
 <p>Both of the above options aim to change the overall map look and feel. The <code>color_vision_deficiency_sim</code> has a different purpose: it enables us to visualize how the map would appear to people with different color vision deficiencies. Three main types of color vision deficiencies are: <em>protanopia</em> (red-green color blindness, <code>"protan"</code>), <em>deuteranopia</em> (red-green color blindness, <code>"deutan"</code>), and <em>tritanopia</em> (blue-yellow color blindness, <code>"tritan"</code>).</p>
 <!-- color_vision_deficiency_sim, -- better docs? possible options? -->
 <!-- why it is needed -->
+<div class="cell" data-layout-nrow="3" data-layout-align="center">
 <div id="fig-layout-color-vision" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-layout-color-vision-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-color-vision" style="flex-basis: 33.3%;justify-content: center;">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-color-vision" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-layout-color-vision-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-layout-color-vision-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-layout-color-vision-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-layout-color-vision">
@@ -585,7 +598,9 @@ Figure&nbsp;12.4: Impact of the <code>color.sepia_intensity</code> argument on t
 </figcaption></figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-color-vision" style="flex-basis: 33.3%;justify-content: center;">
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-color-vision" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-layout-color-vision-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-layout-color-vision-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-layout-color-vision-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-layout-color-vision">
@@ -595,7 +610,9 @@ Figure&nbsp;12.4: Impact of the <code>color.sepia_intensity</code> argument on t
 </figcaption></figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-color-vision" style="flex-basis: 33.3%;justify-content: center;">
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-color-vision" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-layout-color-vision-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-layout-color-vision-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-layout-color-vision-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-layout-color-vision">
@@ -610,6 +627,7 @@ Figure&nbsp;12.4: Impact of the <code>color.sepia_intensity</code> argument on t
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-layout-color-vision-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;12.5: Impact of the <code>color_vision_deficiency_sim</code> argument on the map layout.
 </figcaption></figure>
+</div>
 </div>
 <!-- add a sentence or two explaining the above maps -->
 <!-- ?  earth_boundary.color, -->
@@ -634,10 +652,11 @@ Figure&nbsp;12.5: Impact of the <code>color_vision_deficiency_sim</code> argumen
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>frame <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell" data-layout-nrow="3" data-layout-align="center">
 <div id="fig-layout-frame" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-layout-frame-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-frame" style="flex-basis: 33.3%;justify-content: center;">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-frame" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-layout-frame-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-layout-frame-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-layout-frame-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-layout-frame">
@@ -647,7 +666,9 @@ Figure&nbsp;12.5: Impact of the <code>color_vision_deficiency_sim</code> argumen
 </figcaption></figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-frame" style="flex-basis: 33.3%;justify-content: center;">
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-frame" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-layout-frame-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-layout-frame-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-layout-frame-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-layout-frame">
@@ -657,7 +678,9 @@ Figure&nbsp;12.5: Impact of the <code>color_vision_deficiency_sim</code> argumen
 </figcaption></figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-frame" style="flex-basis: 33.3%;justify-content: center;">
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-frame" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-layout-frame-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-layout-frame-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-layout-frame-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-layout-frame">
@@ -672,6 +695,7 @@ Figure&nbsp;12.5: Impact of the <code>color_vision_deficiency_sim</code> argumen
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-layout-frame-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;12.6: Impact of the frame arguments on the map layout.
 </figcaption></figure>
+</div>
 </div>
 <!-- r? -->
 </section><section id="sec-ltypography" class="level2" data-number="12.3"><h2 data-number="12.3" class="anchored" data-anchor-id="sec-ltypography">
@@ -788,10 +812,11 @@ Figure&nbsp;12.8: Examples of one font (font family and font face) used for all 
 </section></section><section id="sec-scale" class="level2" data-number="12.4"><h2 data-number="12.4" class="anchored" data-anchor-id="sec-scale">
 <span class="header-section-number">12.4</span> Scale</h2>
 <p>The <strong>tmap</strong> package has a set of default sizes and widths for various map elements, such as the frame, text, borders, symbol sizes, and more. In the previous parts of this book, we modify some of these values for selected elements, such as the frame width or text size. At the same time, we can also change the size of all of the map elements at once – this is a role of the <code>scale</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> function. <!-- It accepts a numeric value, where `1` means the default sizes and widths, `0.5` means that all of the map elements are half as large as the default ones, and `1.5` means that all of the map elements are 1.5 times larger than the default ones. --> <!-- Martijn: is the above statement correct? --></p>
+<div class="cell" data-layout-nrow="2" data-layout-align="center">
 <div id="fig-layout-scale" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-layout-scale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-scale" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-scale" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-layout-scale-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-layout-scale-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-layout-scale-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-layout-scale">
@@ -801,7 +826,9 @@ Figure&nbsp;12.8: Examples of one font (font family and font face) used for all 
 </figcaption></figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-scale" style="flex-basis: 50.0%;justify-content: center;">
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-layout-scale" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-layout-scale-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-layout-scale-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-layout-scale-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-layout-scale">
@@ -816,6 +843,7 @@ Figure&nbsp;12.8: Examples of one font (font family and font face) used for all 
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-layout-scale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;12.9: Impact of the scale argument on the map layout.
 </figcaption></figure>
+</div>
 </div>
 <!-- explain when/why it is useful;  -->
 <!-- also maybe connect it to save -->

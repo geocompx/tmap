@@ -348,7 +348,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data_processing.html" class="sidebar-item-text sidebar-link">
+  <a href="./data-processing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Data preparation</span></span></a>
   </div>
 </li>
@@ -409,47 +409,47 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 Table&nbsp;10.1: Map components in <strong>tmap</strong>.
 </figcaption><div aria-describedby="tbl-attr-layers-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table table-striped do-not-create-environment cell caption-top table-sm small" data-quarto-postprocess="true">
 <thead><tr class="header">
 <th style="text-align: left;" data-quarto-table-cell-role="th">Function</th>
 <th style="text-align: left;" data-quarto-table-cell-role="th">Description</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left; font-family: monospace;">tm_grid()</td>
-<td style="text-align: left;">draws coordinate grid lines of the coordinate system of the main shape object</td>
+<td style="text-align: left; width: 4cm; font-family: monospace;">tm_grid()</td>
+<td style="text-align: left; width: 8cm;">draws coordinate grid lines of the coordinate system of the main shape object</td>
 </tr>
 <tr class="even">
-<td style="text-align: left; font-family: monospace;">tm_graticules()</td>
-<td style="text-align: left;">draws latitude and longitude graticules</td>
+<td style="text-align: left; width: 4cm; font-family: monospace;">tm_graticules()</td>
+<td style="text-align: left; width: 8cm;">draws latitude and longitude graticules</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left; font-family: monospace;">tm_scalebar()</td>
-<td style="text-align: left;">adds a scale bar</td>
+<td style="text-align: left; width: 4cm; font-family: monospace;">tm_scalebar()</td>
+<td style="text-align: left; width: 8cm;">adds a scale bar</td>
 </tr>
 <tr class="even">
-<td style="text-align: left; font-family: monospace;">tm_compass()</td>
-<td style="text-align: left;">adds a compass rose (north arrow)</td>
+<td style="text-align: left; width: 4cm; font-family: monospace;">tm_compass()</td>
+<td style="text-align: left; width: 8cm;">adds a compass rose (north arrow)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left; font-family: monospace;">tm_credits()</td>
-<td style="text-align: left;">adds a text annotation</td>
+<td style="text-align: left; width: 4cm; font-family: monospace;">tm_credits()</td>
+<td style="text-align: left; width: 8cm;">adds a text annotation</td>
 </tr>
 <tr class="even">
-<td style="text-align: left; font-family: monospace;">tm_xlab()</td>
-<td style="text-align: left;">adds an x axis labels</td>
+<td style="text-align: left; width: 4cm; font-family: monospace;">tm_xlab()</td>
+<td style="text-align: left; width: 8cm;">adds an x axis labels</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left; font-family: monospace;">tm_ylab()</td>
-<td style="text-align: left;">adds an y axis labels</td>
+<td style="text-align: left; width: 4cm; font-family: monospace;">tm_ylab()</td>
+<td style="text-align: left; width: 8cm;">adds an y axis labels</td>
 </tr>
 <tr class="even">
-<td style="text-align: left; font-family: monospace;">tm_logo()</td>
-<td style="text-align: left;">adds a logo</td>
+<td style="text-align: left; width: 4cm; font-family: monospace;">tm_logo()</td>
+<td style="text-align: left; width: 8cm;">adds a logo</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left; font-family: monospace;">tm_minimap()</td>
-<td style="text-align: left;">adds minimap</td>
+<td style="text-align: left; width: 4cm; font-family: monospace;">tm_minimap()</td>
+<td style="text-align: left; width: 8cm;">adds minimap</td>
 </tr>
 </tbody>
 </table>
@@ -488,33 +488,38 @@ Table&nbsp;10.1: Map components in <strong>tmap</strong>.
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Grids and graticules can also be easily customized using several arguments, such as, <code>x</code> and <code>y</code> (x and y coordinates of the lines), <code>n.x</code> and <code>n.y</code> (number of horizontal (x) and vertical (y) lines), <code>labels.inside.frame</code>, <code>ticks</code>, <code>lines</code> It is also possible to customize their appearance, for example, by changing the colors of the lines (<code>col</code>), width (<code>lwd</code>) or labels’ sizes (<code>labels.size</code>).</p>
+<div class="cell" data-layout-nrow="3" data-layout-align="center">
 <div id="fig-grids" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-grids-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-grids" style="flex-basis: 33.3%;justify-content: center;">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-grids" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-grids-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-grids-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-grids-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-grids">
+<img src="figures/fig-grids-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-grids">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-grids-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (a) Grid lines
 </figcaption></figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-grids" style="flex-basis: 33.3%;justify-content: center;">
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-grids" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-grids-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-grids-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-grids-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-grids">
+<img src="figures/fig-grids-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-grids">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-grids-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) Graticules
 </figcaption></figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-grids" style="flex-basis: 33.3%;justify-content: center;">
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-grids" style="flex-basis: 100.0%;justify-content: center;">
 <div id="fig-grids-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-subfloat-fig figure"><div aria-describedby="fig-grids-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-grids-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-ref-parent="fig-grids">
+<img src="figures/fig-grids-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-grids">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-grids-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (c) Graticules behind the map layer
@@ -527,6 +532,7 @@ Table&nbsp;10.1: Map components in <strong>tmap</strong>.
 Figure&nbsp;10.1: Examples of grid lines and graticules.
 </figcaption></figure>
 </div>
+</div>
 </section><section id="sec-scale-bar" class="level2" data-number="10.2"><h2 data-number="10.2" class="anchored" data-anchor-id="sec-scale-bar">
 <span class="header-section-number">10.2</span> Scale bar</h2>
 <p>Scale bar is a graphic indicator of the relation between a distance on a map and the corresponding distance in the real world. Nowadays, it is more often used than a traditional representative fraction (e.g., 1:10000). Compared to the representative fraction, scale bars work correctly on variable screen sizes or different print sizes, as their sizes change together with the rest of the map.</p>
@@ -535,9 +541,9 @@ Figure&nbsp;10.1: Examples of grid lines and graticules.
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scalebar.html">tm_scalebar</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">15</span>, <span class="fl">30</span><span class="op">)</span>, text.size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-scalebar" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-scalebar" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-scalebar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-scalebar-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<img src="figures/fig-scalebar-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scalebar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;10.2: A map with a customized scale bar.
@@ -555,9 +561,9 @@ Figure&nbsp;10.2: A map with a customized scale bar.
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_compass.html">tm_compass</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"4star"</span>, size <span class="op">=</span> <span class="fl">2</span>, position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"top"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-northarrow" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-northarrow" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-northarrow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-northarrow-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<img src="figures/fig-northarrow-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-northarrow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;10.3: A map with customized north arrow.
@@ -568,9 +574,9 @@ Figure&nbsp;10.3: A map with customized north arrow.
 <p><strong>tmap</strong> offers also a few other north arrow types, including <code>"arrow"</code>, <code>"4star"</code>, <code>"8star"</code>, <code>"radar"</code>, and <code>"rose"</code> (<a href="#fig-compasses" class="quarto-xref">Figure&nbsp;<span>10.4</span></a>). The north arrow can be also further customized with the <code>size</code>, <code>show.labels</code> and <code>cardinal.directions</code> arguments, and its colors may be modified (<code>text.color</code>, <code>color.dark</code>, <code>color.light</code>) (<a href="#fig-northarrow" class="quarto-xref">Figure&nbsp;<span>10.3</span></a>). The location of the north arrow, by default, is placed automatically, but can also be changed using the <code>position</code> argument. <!-- to update --> <!-- It expects a vector of two values, specifying the x and y coordinates. --> <!-- The x coordinate can be set with `"left"`, `"LEFT"`, `"center"`, `"right"`, or `"RIGHT"`, while the y coordinate uses `"top"`, `"TOP"`, `"center"`, `"bottom"`, or `"BOTTOM"`. --> <!-- The arguments with all letters uppercase result in a position closer to the map frame (without margins). --> <!-- Alternatively, `position` can be specified with numeric values between 0 and 1 representing the x and y value of the left bottom corner of the north arrow. --></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-compasses" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-compasses" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-compasses-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-compasses-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<img src="figures/fig-compasses-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-compasses-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;10.4: North arrow types
@@ -588,9 +594,9 @@ Figure&nbsp;10.4: North arrow types
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits</a></span><span class="op">(</span><span class="st">"Data source: "</span>, fontface <span class="op">=</span> <span class="st">"italic"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits</a></span><span class="op">(</span><span class="st">"Author: "</span>, fontface <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-credits" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-credits" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-credits-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-credits-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<img src="figures/fig-credits-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-credits-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;10.5: A map with placeholders for text annotations.
@@ -607,9 +613,9 @@ Figure&nbsp;10.5: A map with placeholders for text annotations.
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_xlab.html">tm_xlab</a></span><span class="op">(</span><span class="st">"X coordinates"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_xlab.html">tm_ylab</a></span><span class="op">(</span><span class="st">"Y coordinates"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-axis-labels" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-axis-labels" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-axis-labels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-axis-labels-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<img src="figures/fig-axis-labels-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-axis-labels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;10.6: A map with x and y axis labels.
@@ -629,9 +635,9 @@ Figure&nbsp;10.6: A map with x and y axis labels.
 <span>            <span class="st">"https://www.r-project.org/logo/Rlogo.png"</span><span class="op">)</span>,</span>
 <span>          height <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-logos" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-logos" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-logos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-logos-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<img src="figures/fig-logos-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-logos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;10.7: A map with an array of R logos.
@@ -647,9 +653,9 @@ Figure&nbsp;10.7: A map with an array of R logos.
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_minimap.html">tm_minimap</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-minimap" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-minimap" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-minimap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-minimap-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+<img src="figures/fig-minimap-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-minimap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;10.8: A map with a minimap.
