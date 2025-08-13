@@ -45,7 +45,7 @@ The former is more suitable for smaller datasets and cases where we want to allo
 #| label: fig-anims
 #| fig-cap: "Animations of GDP per capita in Slovenian regions over time using `tm_animate()`"
 tm +
-  tm_animate(by = "time")
+  tm_animate(frame = "time")
 ```
 
 Two main additional arguments for the *animate* functions are `fps` (frames per second) and `play` (playback mode).
@@ -56,7 +56,7 @@ either `"loop"` (default), which plays the animation in a loop, `"once"`, which 
 #| label: fig-anims2
 #| fig-cap: "Animations of GDP per capita in Slovenian regions over time with a pingpong playback mode"
 tm +
-  tm_animate(by = "time", fps = 5, play = "pingpong")
+  tm_animate(frame = "time", fps = 5, play = "pingpong")
 ```
 
 <!-- https://github.com/r-tmap/tmap/issues/1160 -->
@@ -67,7 +67,7 @@ tm +
 #| echo: false
 tm +
   tm_facets(by = "region_group", nrow = 2) +
-  tm_animate_fast(by = "time")
+  tm_animate_fast(frame = "time")
 ```
 
 Animations can also be created from raster data, such as satellite imagery or climate data.
@@ -85,7 +85,7 @@ slo_tavg = read_stars("data/slovenia/slo_tavg.tif")
 slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
 tm_shape(slo_tavg) +
   tm_raster(col.scale = tm_scale_continuous()) +
-  tm_animate(by = "band", fps = 6) +
+  tm_animate(frame = "band", fps = 6) +
   tm_shape(slo_regions) +
   tm_borders()
 ```
@@ -102,7 +102,7 @@ We may save the animation in either graphical format (GIF) or video format (incl
 ```{r animations-10}
 #| eval: false
 tma1 = tm +
-  tm_animate_fast(by = "time")
+  tm_animate_fast(frame = "time")
 tmap_animation(tma1, "tma1.gif")
 # or
 # tmap_animation(tma1, "tma1.mp4")
