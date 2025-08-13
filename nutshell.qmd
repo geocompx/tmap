@@ -229,7 +229,7 @@ This is a topic of the @sec-facets.
 Animations in **tmap** are created similarly to the facet maps, but instead of using the `tm_facets()` function, we use the `tm_animate()` function.
 It defines the variable that will be used to create the animation, in this case, the `time` column from the `slo_regions_ts` object.
 
-```{r .content-visible when-format="html"}
+```{.r .content-visible when-format="html"}
 #| label: fig-sec-ani1a
 #| fig-cap: An animated map with the GDP per capita visualized for each year.
 slo_regions_ts = read_sf("data/slovenia/slo_regions_ts.gpkg")
@@ -239,7 +239,7 @@ tm_shape(slo_regions_ts) +
 ```
 
 <!-- to update -->
-```{r .content-visible when-format="pdf"}
+```{.r .content-visible when-format="pdf"}
 #| echo: false
 #| label: fig-sec-ani1b
 #| fig-cap: An animated map with the GDP per capita visualized for each year.
