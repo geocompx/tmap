@@ -32,7 +32,7 @@ slo_cities = read_sf("data/slovenia/slo_cities.gpkg")
 
 <!-- Next paragraph: to include or remove? -->
 <!-- Spatial data, no matter the class, usually stores two interrelated sets of information - about the locations/geometries and their associated values/attributes. -->
-<!-- Visualization of the attributes only can be done with regular plotting functions (e.g., `plot()`, `hist()`, `barplot()`) or dedicated packages, such as **ggplot2** <!--cite-->. -->
+<!-- Visualization of the attributes only can be done with regular plotting functions (e.g., `plot()`, `hist()`, `barplot()`) or dedicated packages, such as **ggplot2** <!--cite-->. 
 <!-- On the other hand, **tmap** is suitable when our goal is to visualize spatial geometries only or spatial geometries together with their attributes. -->
 
 ## Quick maps {#sec-quick-maps}
