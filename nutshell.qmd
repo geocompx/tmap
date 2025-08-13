@@ -5,19 +5,17 @@ source("code/before_script.R")
 
 # **tmap** in a nutshell {#sec-nutshell}
 
-The **tmap** package allows the creation of thematic maps with great flexibility.
-It accepts spatial data in various formats -- shape objects (@sec-shape-objects)
-Next, the data can be used to create simple, quick maps (@sec-quick-maps) and more complex and expandable maps (@sec-regular-maps).
-These maps can be presented in two modes: as a static map and an interactive one.
-Additionally, **tmap** makes it possible to create facet maps (@sec-facets-section) and map animations (@sec-ani-section).
+The **tmap** package creates thematic maps with great flexibility.
+It accepts spatial data in various formats -- shape objects (@sec-shape-objects) and next, the data can be used to create simple, quick maps (@sec-quick-maps) and more complex and expandable maps (@sec-regular-maps).
+Additionally, with **tmap** it is possible to create facet maps (@sec-facets-section) and map animations (@sec-ani-section).
 Finally, **tmap** has an interactive mode (@sec-map-modes) that allows users to zoom in and out, pan the map, or click on map objects to get more information -- this can be done without any additional code.
 The goal of this chapter is to provide a brief overview of the main **tmap** features.
 
 ## Shape objects {#sec-shape-objects}
 
-As we established in @sec-geodata, spatial data comes in various file formats related to two main data models -- vector and raster.
-There are also several spatial object classes in R, for example, `sf` from the **sf** package for vector data and `stars` from **stars** for raster data and spatial data cubes.
-Additionally, packages such as **sp**, **raster**, or **terra** offer their own classes, and this abundance of spatial object classes can be generally overwhelming.
+As we established in @sec-geodata, spatial data comes from various file formats related to two main data models -- vector and raster.
+There are also several spatial object classes in R, for example, `sf` from the **sf** package for vector data, `SpatRaster` from the **terra** package, and `stars` from **stars** for raster data and spatial data cubes.
+Additionally, packages such as **sp** or **raster** offer their own classes, and this abundance of spatial object classes can be generally overwhelming.
 Gladly, **tmap** can work with all of the above objects -- it treats all supported spatial data classes as so-called *shape objects*.
 
 For example, we read the `slo_cities.gpkg` file containing several point locations representing cities and towns in Slovenia into a new object, `slo_cities`.
@@ -30,17 +28,18 @@ library(sf)
 slo_cities = read_sf("data/slovenia/slo_cities.gpkg")
 ```
 
-<!-- ref also to data appendix -->
+<!-- ref also to data appendix? -->
 
-Spatial data, no matter the class, usually stores two interrelated sets of information - about the locations/geometries and their associated values/attributes.
-Visualization of the attributes only can be done with regular plotting functions (e.g., `plot()`, `hist()`, `barplot()`) or dedicated packages, such as **ggplot2** <!--cite-->.
-On the other hand, **tmap** is suitable when our goal is to visualize spatial geometries only or spatial geometries together with their attributes.
+<!-- Next paragraph: to include or remove? -->
+<!-- Spatial data, no matter the class, usually stores two interrelated sets of information - about the locations/geometries and their associated values/attributes. -->
+<!-- Visualization of the attributes only can be done with regular plotting functions (e.g., `plot()`, `hist()`, `barplot()`) or dedicated packages, such as **ggplot2** <!--cite-->. -->
+<!-- On the other hand, **tmap** is suitable when our goal is to visualize spatial geometries only or spatial geometries together with their attributes. -->
 
 ## Quick maps {#sec-quick-maps}
 
-The **tmap** package offers a distinction between quick and regular maps.
+The **tmap** package offers two distinct ways to create maps: a quick and a regular one.
 The first approach, using the `qtm()` function, could be handy for data exploration.
-It works even if we just provide any *shape object* -- in that case, only the geometry is plotted.
+It works even if we provide any *shape object* -- in that case, only the geometry is plotted.
 @fig-qtm-1 shows a visualization of the geometries from the `slo_cities`.
 
 ```{r}
@@ -49,7 +48,7 @@ It works even if we just provide any *shape object* -- in that case, only the ge
 qtm(slo_cities)
 ```
 
-The `qtm()` function allows to customize many map elements for the provided *shape object*.
+The `qtm()` function customizes many map elements for the provided *shape object*.
 For example, we can change the shapes of the points in `slo_cities`, make their sizes related to the the `"population"` argument, and add a title (@fig-qtm-2).
 
 ```{r}
@@ -70,17 +69,16 @@ qtm(slo_cities, shape = 24, size = "population", title = "Cities")
 <<qtm2>>
 ```
 
-<!-- The `qtm()` function offers similar flexibility to the regular map approach.  -->
-<!-- It only supports one shape object at a time, but many `qtm()` calls can be combined in one code chunk. -->
+The `qtm()` function is a quick way to create maps, but it has some limitations.
+It supports only one *shape object* at a time and does not allow for much customization.
 
 ## Regular maps {#sec-regular-maps}
 
-Therefore, for most applications, we recommend using the regular mapping approach.
-This approach operates on many functions that start with `tm_`. 
+For most applications, we recommend using the regular mapping approach.
+This approach operates on many functions with the `tm_` prefix that we call one after another with the `+` operator.
+We call these functions *tmap elements*.
 The first element always^[Almost always...] is `tm_shape()`, which specifies the input shape object.
-Next, map layers, additional map elements, and overall layout options can be customized.
-<!-- update terminology later -->
-<!-- references -->
+Next, map layers (e.g., `tm_polygons()` or `tm_symbols()`), additional map components (e.g., `tm_compass()` or `tm_scalebar()`), and overall layout options can be customized.
 
 The last example in @sec-quick-maps can be reproduced with the regular map approach using the following code.
 
@@ -91,19 +89,18 @@ tm_shape(slo_cities) +
   tm_title("Cities")
 ```
 
-Here, we specify the input data (our shape object) with `tm_shape()`, aesthetics (also known as *visual variables*) of map layers with `tm_symbols()`, and the map title with `tm_title()`.
+Here, we specify the input data (our *shape object*) with `tm_shape()`, visual variables (also known as *aesthetics*) of map layers with `tm_symbols()`, and the map title with `tm_title()`.
 
 The **tmap** package has a number of possible map layers, but the most prominent ones are `tm_polygons()`, `tm_symbols()`, `tm_lines()`, `tm_raster()`, and `tm_text()` (@sec-layers).
 Overall, most visual variables of map layers can be assigned in two main ways.
 First, they accept a fixed, constant value, for instance, `shape = 24`, which sets the symbols' shapes to triangles.
-Second, it is also possible to provide a variable name, for example `size = "population"`.
+Second, it is also possible to provide a variable name, for example, `size = "population"`.
 This plots each point with a size based on the `population` attribute from the `slo_cities` object and automatically adds a related map legend.
 
-The `tm_shape()` function and one or more following map layers create a *group* together.
+The `tm_shape()` function and one or more of the following map layers create a *group* together.
 In other words, map layers are related only to the preceding `tm_shape()` call.
 One map can have several *groups*.
-Let's see how many *groups* can be used by reading some additional datasets -- the `slo_elev` raster with elevation data of Slovenia, the `slo_borders` polygon with the country borders, and the `slo_railroads` lines contains a railroad network for this country.
-<!-- ref data appendix -->
+Let's see how many *groups* can be used by reading some additional datasets -- the `slo_elev` raster with elevation data of Slovenia, the `slo_borders` polygon with the country borders, and the `slo_railroads` lines contain a railroad network for this country.
 
 ```{r}
 #| message: false
@@ -140,9 +137,8 @@ Each *group* is put on top of the previous one -- **tmap** uses a layered approa
 The first *group* represents elevation data with a continuous color scale style, a color palette called `"geyser"`, and a legend title.
 The second *group* shows the borders of Slovenia with the default aesthetics, while the third *group* presents the railroad network (the `slo_railroads` object), with each line's width based on the values from the `"track_width"` column, but with a legend hidden.
 The last *group* is similar to our previous example with fixed symbol shapes and sizes related to the `"elevation"` attribute, but also with the legend title instead of the map title.
-Additionally, we use the `tm_title()` function to add a map title and `tm_layout` to modify the general appearance of the map.
+Additionally, we use the `tm_title()` function to add a map title and `tm_layout()` to modify the general appearance of the map.
 You can also notice that we can control scales of various visual variables, such as color, size, or width, with the `tm_scale_*()` function and customize legends with the `tm_legend()` function.
-<!-- ref to other parts of the book -->
 
 Often, maps also have additional map elements, such as graticule lines, north arrow, scale bar, or map credits (@fig-rmap2). 
 They help map readers understand the location or extent of the input data and provide some ancillary information.
@@ -154,8 +150,7 @@ We can also use `tm_compass()` to create a north arrow, `tm_scalebar()` to add a
 The location of all these three elements on the map is, by default, automatically determined.
 It, however, can be adjusted with the `position` argument -- see an example of its use in the `tm_compass()` function below.
 Moreover, it is possible to add any type of manual legend with `tm_add_legend()`.
-It includes simple legends below, such as the `"Railroads"` legend element, that is only represented by a single black line and a related label, but more complex custom legends with several elements are also possible. 
-<!-- ref to other parts of the book -->
+It includes simple legends below, such as the `"Railroads"` legend element, that is only represented by a single black line and a related label, but more complex custom legends with several elements are also possible.
 
 ```{r}
 #| warning: false
@@ -179,23 +174,23 @@ my_map = tm_shape(slo_elev) +
   tm_layout(bg.color = "grey95")
 ```
 
-Maps created with **tmap** can be saved as an R object.
-This is a useful feature that allows to use one map in a few places in a code, modify existing **tmap** objects, or save these objects to files.
+Maps created with **tmap** can be saved as R objects.
+This is a useful feature that allows the use of the same map in a few places in a code, modify existing **tmap** objects by adding additional *tmap elements*, or save these objects to files.
 
 ```{r}
 #| label: fig-rmap2
 #| message: false
-#| fig-cap: Example of a map with four groups of map layers and additional map elements, such as graticule lines, north arrow, scale bar, and text annotation. It also has a manually added legend.
+#| fig-cap: "Example of a map with four groups of map layers and additional map elements, such as graticule lines, north arrow, scale bar, and text annotation. It also has a manually added legend."
 my_map
 ```
 
-<!-- refs  -->
+All of these building blocks of **tmap** maps are explained in more detail in chapters from @sec-tmshape to @sec-map-layout.
 
 ## Facets {#sec-facets-section}
 
 \index{facets}
 \index{small multiples}
-The **tmap** package allows the creation of facet maps, also known as small multiples.
+The **tmap** package makes the creation of facet maps, also known as small multiples, possible.
 In such maps, the same data is visualized in several panels, each showing a different subset of the data.
 The panels may represent different variables, time periods, or spatial extents.
 
@@ -204,7 +199,7 @@ One way to visualize this data as facets is to specify selected columns as visua
 
 ```{r}
 #| label: fig-sec-facets1
-#| fig-cap: A facet map with three variables visualized in separate panels.
+#| fig-cap: "A facet map with three variables visualized in separate panels."
 #| fig-asp: 0.5
 slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
 tm_shape(slo_regions) +
@@ -217,7 +212,7 @@ Let's illustrate it with the `slo_regions_ts` object containing the same variabl
 
 ```{r}
 #| label: fig-sec-facets2
-#| fig-cap: A facet map with the GDP per capita visualized in separate panels for each year.
+#| fig-cap: "A facet map with the GDP per capita visualized in separate panels for each year."
 slo_regions_ts = read_sf("data/slovenia/slo_regions_ts.gpkg")
 tm_shape(slo_regions_ts) +
   tm_polygons("gdppercap") +
@@ -234,14 +229,33 @@ This is a topic of the @sec-facets.
 Animations in **tmap** are created similarly to the facet maps, but instead of using the `tm_facets()` function, we use the `tm_animate()` function.
 It defines the variable that will be used to create the animation, in this case, the `time` column from the `slo_regions_ts` object.
 
+::: {.content-visible when-format="html"}
+
 ```{r}
 #| label: fig-sec-ani1
 #| fig-cap: An animated map with the GDP per capita visualized for each year.
 slo_regions_ts = read_sf("data/slovenia/slo_regions_ts.gpkg")
 tm_shape(slo_regions_ts) +
   tm_polygons("gdppercap") +
-  tm_animate(by = "time")
+  tm_animate(frames = "time")
 ```
+
+:::
+
+::: {.content-visible when-format="pdf"}
+
+<!-- to update -->
+```{r}
+#| echo: false
+#| label: fig-sec-ani1
+#| fig-cap: An animated map with the GDP per capita visualized for each year.
+slo_regions_ts = read_sf("data/slovenia/slo_regions_ts.gpkg")
+tm_shape(slo_regions_ts) +
+  tm_polygons("gdppercap") +
+  tm_animate(frames = "time")
+```
+
+:::
 
 This function stitches together the map layers for each value of the `time` variable, creating a smooth transition between them.
 We can customize its speed and if it should loop or not with the `fps` and `play` arguments, respectively.
@@ -250,18 +264,18 @@ Animations can be used for both vector and raster data and then saved as GIF or 
 
 ## Map modes {#sec-map-modes}
 
-Each map created with **tmap** can be viewed in one of two modes: `"plot"` and `"view"`.
+Each map created with **tmap** can be viewed in a few map modes, including the `"plot"` and `"view"` modes.
 <!-- maybe add note that more modes are possible + ref -->
 The `"plot"` mode is used by default and creates static maps similar to those shown before in this chapter.
 This mode supports almost all of **tmap**'s features, and it is recommended, for example, for scientific publications or printing.
 
-The second mode, `"view"`, allows the creation of interactive maps.
+The second mode, `"view"`, creates interactive maps.
 They can be zoomed in and out or panned, allow for changing background tiles (*basemaps*), or click on map objects to get some additional information.
-This mode has, however, some constraints and limitations comparing to `"plot"`, for example, the legend cannot be fully customized, and some additional map elements are not supported.
+This mode has, however, some constraints and limitations compared to `"plot"`, for example, the legend cannot be fully customized, and some additional map elements are not supported.
 
-Both modes can be used on the same **tmap** code.
-Therefore, there is no need to create two separate maps for static and interactive use.
-The `tmap_mode()` function can be used to switch from one mode to the other^[Map modes can be also changed globally using `tmap_options()` or switched using `ttm()`.].
+It is important to highlight that both modes can be used with the same **tmap** code.
+Therefore, there is no need to create two separate sets of code for static and interactive use.
+The `tmap_mode()` function can be used to switch from one mode to the other^[Map modes can also be changed globally using `tmap_options()` or switched using `ttm()`.].
 
 ```{r}
 tmap_mode("view")
@@ -275,10 +289,9 @@ Now, if we want to use this mode, we need to either write a new **tmap** code or
 my_map
 ```
 
-Our main result is the interactive map (@fig-imap1).
-<!-- improve -->
+Our result now is the interactive map (@fig-imap1).
 It shows our spatial data using aesthetics similar to @fig-rmap2 but allows us to zoom in and out or move the map.
-We also can select a basemap or click on any line and point to get some information.
+We also can select a basemap or click on any line and point to get some related information.
 
 ```{r}
 #| label: fig-imap1
@@ -290,7 +303,7 @@ We also can select a basemap or click on any line and point to get some informat
 view_map(my_map, "imap1")
 ```
 
-To go back to the `"plot"` mode, we need to use the `tmap_mode()` function again -- map not shown:
+To go back to the `"plot"` mode, we need to use the `tmap_mode()` function again -- map not shown.
 
 ```{r}
 #| fig-show: hide
