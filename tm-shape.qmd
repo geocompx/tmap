@@ -6,8 +6,7 @@ source("code/before_script.R")
 # Specifying spatial data {#sec-tmshape}
 
 At least two aspects need to be specified in order to plot spatial data: the spatial data object itself and the plotting method(s). 
-We will cover the former in this chapter. 
-The latter will be discussed in the next chapters.
+We cover the former in this chapter and the latter is discussed in the following chapters.
 
 ## Shapes and layers {#sec-shapes-and-layers}
 
