@@ -5,19 +5,17 @@ source("code/before_script.R")
 
 # Save maps {#sec-save}
 
-<!-- add description on scale -->
-
 Maps created programmatically can serve several purposes, from exploratory, through visualizations of the processing steps, to being the final outputs of a given project.
 Therefore, often we want just to see our map on the screen, but sometimes we also want to save our map results to an external file.
 **tmap** objects can be directly saved to output files with `tmap_save()`^[Standard R approach of saving graphic files by opening a graphic device, e.g., `png()`, plotting the data, and then closing the device with `dev.off()` also works.].
-The `tmap_save()` function allows to save our map in three groups of file formats, (a) raster graphics (@sec-raster-graphic-formats), (b) vector graphics (@sec-vector-graphic-formats), and (c) interactive ones (@sec-interactive-format).
-<!-- Additionally, @sec-animations shows how to save map animations with the use of the `tmap_animation()` function. -->
+The `tmap_save()` function allows to save our map in three groups of file formats: (a) raster graphics (@sec-raster-graphic-formats), (b) vector graphics (@sec-vector-graphic-formats), and (c) interactive ones (@sec-interactive-format).
+<!-- Additionally, @sec-animations shows how to save map animations with the use of the `tmap_animation()` function. -- update and add -->
 
-For the examples in this section, we will use a simple map of the Slovenia polygon with the country name superimposed (not shown), stored in the `tm` object.
+For the examples in this section, we will use a simple map of the Slovenia polygon with the country name superimposed <!--(not shown)-->, stored in the `tm` object.
 
 ```{r}
 #| message: false
-#| fig-show: hide
+#| fig-show: asis #hide
 library(tmap)
 library(sf)
 slo_borders = read_sf("data/slovenia/slo_border.gpkg")
@@ -31,8 +29,11 @@ tm
 
 Raster graphics are non-spatial relatives of spatial rasters.
 The digital images are composed of many pixels -- squares filled with specific colors.
-Main raster graphic file formats include PNG, JPEG, BMP, and TIFF.
-<!-- jn: should we describe each in one sentence? -->
+Main raster graphic file formats include PNG, JPEG, and TIFF.
+PNG and JPEG are the most common formats used for saving maps, with PNG being lossless and JPEG lossy^[Tit means that PNG preserves all the information about the image when saved, while JPEG compresses the image by removing some of the information, which may result in a loss of quality.].
+The TIFF format is lossless, storing images without quality degradation, but often resulting in large file sizes.
+PNG is generally preferred for screen and websites, while TIFF is suggested for high-resolution printing.
+
 One of the major parameters of the raster graphic images is DPI (*Dots Per Inch*, in this context, a more proper name probably should be PPI, *Pixels Per Inch*) -- is a number of pixels per inch of the output image.
 For example, if the width and height of our image are 10 inches, then DPI of 300 would mean that our final image would have 3000 by 3000 pixels, and DPI of 72 would result in an image of 720 by 720 pixels.
 Therefore, an image with the same width and height but a larger value of DPI would occupy more space on the hard drive but also have better quality.
@@ -54,19 +55,18 @@ tmap_save(tm, "my_map.png", width = 1000, height = 750, dpi = 300)
 The units of `width` or `height` depend on the value you set: they are pixels (`"px"`) when the value is greater than 50, and inches (`"in"`) otherwise.
 Units can also be changed with the `units` argument.
 
-This function also has several additional arguments, including `outer.margins`, `scale` and `asp`.
+The `tmap_save()` function also has several additional arguments, including `outer.margins`, `scale`, and `asp`.
 All of them override the arguments' values set in `tm_layout()` (@sec-map-layout).
-Additionally, when set to `0`, the `asp` argument has a side effect: it moves the map frame to the edges of the output image.
+Additionally, when set to `0`, the `asp` argument has a side effect: it shifts the map frame to the edges of the output image.
 
 By default, **tmap** uses graphic devices^[Short discussion about graphic devices can be found in section @sec-fonts-tmap.] incorporated in R.
 However, it is also possible to use other, external devices with the `device` argument.
+For example, the `ragg::agg_png` device is usually faster and has better support for non-standard fonts than the regular `grDevices::png`.
 
 ```{r}
 #| eval: false
 tmap_save(tm, "my_map.png", device = ragg::agg_png)
 ```
-
-For example, the `ragg::agg_png` device is usually faster and has better support for non-standard fonts than the regular `grDevices::png`.
 
 ```{r}
 #| echo: false
@@ -77,17 +77,25 @@ tmap_save(tm, "my_map_j2.jpg", quality = 100)
 
 ## Vector graphic formats {#sec-vector-graphic-formats}
 
-Vector graphics are quite distant relatives of spatial vectors, with vector graphics consisting of sets of coordinates.
+Vector graphics are quite distant counterparts of spatial vectors, with vector graphics consisting of sets of coordinates.
 Contrary to spatial vectors, however, their coordinates can be connected not only by straight lines (@sec-vector-data-model), but also using curves.
-This makes it possible to create polygons, circles, ellipses, and others.
-They also allow text and other objects to be stored.
-Common vector graphic file formats are SVG, EPS, and PDF.
+This makes it possible to create polygons, circles, ellipses, and other shapes.
+They also allow text and other objects to be stored as vector graphics.
+Common vector graphic file formats are EPS, PDF, and SVG.
+EPS is an older format used for printing and publishing, while PDF is a more modern, general format that can contain vector and raster graphics, and more.
+SVG is a web standard for vector graphics, which can be used in web browsers and other applications.
+It is lightweight and allows for editing and manipulation of vector graphics.
 
-To save a map to a vector graphic format, we still can use `tmap_save()` but either with a suitable file extension or by using the `device` argument, for example `device = svglite::svglite`.
+To save a map to a vector graphic format, we still can use `tmap_save()` but either with a suitable file extension oor by explicitly setting the device argument (for example, device = `svglite::svglite`).
 
 ```{r}
 tmap_save(tm, "my_map.svg")
 ```
+
+Zooming in and out of vector graphics does not affect their quality.
+At the same time, the `width,` `height,` and `scale` arguments can still impact the output file.
+For example, a vector graphic file saved with a narrower width value will have thicker lines and larger fonts than the one with a larger width value.
+You can check this effect by saving the `tm` object with `width = 1` and then with `width = 10`.
 
 ```{r}
 #| echo: false
@@ -96,15 +104,9 @@ tmap_save(tm, "my_map00.svg", width = 10)
 tmap_save(tm, "my_map01.svg", width = 1)
 ```
 
-Zooming in and out of vector graphics does not affect their quality.
-At the same time, the `width,` `height,` and `scale` arguments can still impact the output file.
-For example, a vector graphic file saved with a narrower width value will have thicker lines and larger fonts compared to the one with a larger width value.
-You can check this effect by saving the `tm` object with `width = 1` and then with `width = 10`.
-
-Compared to raster graphics, vector graphics are not suitable for storing complex images or maps, and they are less supported by web browsers comparing to rasters.
+Compared to raster graphics, vector graphics are not suitable for storing complex images or maps, and they are less supported by web browsers.
 They, however, also have many advantages.
-For example, they can be zoomed in and out without any decrease in quality.
-Vector graphics can also be easily edited in dedicated software (e.g., Inkscape or Adobe Illustrator), which allows to change the style of map elements and move them using a computer mouse outside of the R environment.
+For example, vector graphics can also be easily edited in dedicated software (e.g., Inkscape or Adobe Illustrator), which allows for changing the style of map elements and moving them using a computer mouse outside of the R environment.
 This approach can be useful, for example, when you want to quickly adjust the position of map elements (e.g., labels) or collaborate with a graphic designer.
 Note, however, that this process is not fully reproducible.
 
@@ -117,9 +119,9 @@ tmap_save(tm, "my_map.html")
 ```
 
 The `tmap_save()` function also has several additional arguments reserved for the interactive format, including `selfcontained` and `in.iframe`.
-The `selfcontained` argument with `TRUE` by default saves our map together with additional resources (e.g., JavaScript libraries) into one HTML file. 
+The `selfcontained` argument -- `TRUE` by default -- saves our map together with additional resources (e.g., JavaScript libraries) into one HTML file. 
 Otherwise, additional resources will be saved in an adjacent directory.
-The `in.iframe` argument (`FALSE` by default) allows saving an interactive map as an iframe -- when `TRUE` it creates two HTML files - a small HTML file with the iframe container and a large one with the actual map.
+The `in.iframe` argument (`FALSE` by default) allows saving an interactive map as an iframe -- when `TRUE` it creates two HTML files -- a small HTML file with the iframe container and a large one with the actual map.
 <!-- when `in.iframe = TRUE` is useful?? -->
 <!-- arguments passed on to device functions or to saveWidget or saveWidgetframe -->
 
@@ -129,3 +131,5 @@ The `in.iframe` argument (`FALSE` by default) allows saving an interactive map a
 #| warning: false
 file.remove(c("my_map.png", "my_map.svg", "my_map.html"))
 ```
+
+<!-- add description on scale? -->
