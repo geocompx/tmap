@@ -105,10 +105,10 @@ Let's see how many *groups* can be used by reading some additional datasets -- t
 ```{r}
 #| message: false
 library(sf)
-library(stars)
-slo_elev = read_stars("data/slovenia/slo_elev.tif")
+library(terra)
 slo_borders = read_sf("data/slovenia/slo_border.gpkg")
 slo_railroads = read_sf("data/slovenia/slo_railroads.gpkg")
+slo_elev = rast("data/slovenia/slo_elev.tif")
 ```
 
 Look at the following example and try to guess how many *groups* it has, and how many layers exist for each *group* (@fig-rmap1).

@@ -122,7 +122,7 @@ The `tmap_save()` function also has several additional arguments reserved for th
 The `selfcontained` argument -- `TRUE` by default -- saves our map together with additional resources (e.g., JavaScript libraries) into one HTML file. 
 Otherwise, additional resources will be saved in an adjacent directory.
 The `in.iframe` argument (`FALSE` by default) allows saving an interactive map as an iframe -- when `TRUE` it creates two HTML files -- a small HTML file with the iframe container and a large one with the actual map.
-<!-- when `in.iframe = TRUE` is useful?? -->
+<!-- when `in.iframe = TRUE` is useful? -->
 <!-- arguments passed on to device functions or to saveWidget or saveWidgetframe -->
 
 ```{r}
