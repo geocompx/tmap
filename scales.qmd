@@ -545,8 +545,7 @@ As you can see below, the syntax to create a bivariate map using `tm_vars()` is 
 #| label: tmrastbiv1
 #| eval: false
 tm_shape(slo_tavg) +
-  tm_raster(col = tm_vars(x = c("tavg_1", "tavg_7"), 
-                          multivariate = TRUE))
+  tm_raster(col = tm_vars(x = c("tavg_1", "tavg_7"), multivariate = TRUE))
 ```
 
 One important difference between a regular map and a bivariate map is that the latter is based on two scales -- and we are able to specify them separately.
@@ -566,10 +565,7 @@ This seems more intuitive, as the vertical axis represents January temperatures,
 #| label: tmrastbiv2
 #| eval: false
 tm_shape(slo_tavg) +
-  tm_raster(col = tm_vars(
-              dimvalues = c("tavg_1", "tavg_7"), 
-              multivariate = TRUE
-            ),
+  tm_raster(col = tm_vars(c("tavg_1", "tavg_7"), multivariate = TRUE),
             col.scale = tm_scale_bivariate(
               values = "//pinkblue",
               scale1 = tm_scale_intervals(
@@ -649,7 +645,7 @@ Additionally, @fig-tmo-bivariate shows how these flipping operators work in acti
 #| fig-asp: 0.5
 tmo_maker = function(op) {
   tm_shape(slo_tavg) +
-    tm_raster(col = tm_vars(dimvalues = c("tavg_1", "tavg_7"), multivariate = TRUE),
+    tm_raster(col = tm_vars(c("tavg_1", "tavg_7"), multivariate = TRUE),
               col.legend = tm_legend(title = op,
                                      title.size = 2,
                                      title.align = "center",
