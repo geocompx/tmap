@@ -6,15 +6,14 @@ source("code/before_script.R")
 # Scales {#sec-scales}
 
 Sections [-@sec-colors], [-@sec-sizes], and [-@sec-shapes] showed how to set colors, sizes, and shapes for different types of spatial objects.
-In them, we often used the `tm_scale()` function to modify the appearance of the map, such as changing the color palette (`col.scale` and `fill.scale`), sizes (`size.scale`), or shapes (`shape.scale`).
+In them, we often used the `tm_scale()` function to modify the appearance of the map, such as changing the color palettes (`col.scale` and `fill.scale`), sizes (`size.scale`), or shapes (`shape.scale`).
 The `tm_scale()` function automatically sets the scale for the given visual variable and the data type (factor, numeric, and integer).
 Thus, for example, when we provide a character variable's name to the `fill` argument, then the `tm_scale()` function automatically sets the color scale for a categorical variable, and when we provide a numeric variable's name to the `size` argument, then the `tm_scale()` function automatically sets the size scale for a continuous variable.
 
 However, we often want to have more control over how our spatial objects are presented on the map.
-For that purpose, the `tm_scale()` function has a set of related functions that can be used to modify and customize the used scale.
-@tbl-scale-table presents all available scale functions in **tmap**.
+For that purpose, the `tm_scale()` function comes with several derived functions that can be used to modify and customize the used scale.
+@tbl-scale-table presents all of them.
 
-<!-- table -->
 <!-- tmap_options()$scales.var -->
 <!-- add short description of each scale function in the table below? -->
 ```{r}
@@ -36,7 +35,7 @@ scales_df = tibble::tribble(
 
 ```{r}
 #| label: tbl-scale-table
-#| tbl-cap: "Map scales"
+#| tbl-cap: "Map scales."
 #| echo: false
 #| warning: false
 #| message: false
@@ -54,23 +53,19 @@ knitr::kable(scales_df,
 ```
 
 @fig-scales shows examples of how some of them look like when applied to the same variable.
-
-```{r}
-#| echo: false
-#| warning: false
-#| message: false
-library(tmap)
-library(sf)
-slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
-```
+In the rest of the chapter, we go through each of the scales in more detail.
+We mostly focus on using scales for the `fill.scale` argument, but the same principles apply to the `col.scale`, `size.scale`, and `shape.scale` arguments.
 
 ```{r}
 #| label: fig-scales
 #| echo: false
 #| warning: false
 #| message: false
-#| fig-cap: "Examples of different scales applied to the same variable"
+#| fig-cap: "Examples of different scales applied to the same variable."
 #| fig-asp: 0.5
+library(tmap)
+library(sf)
+slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
 slo_regions$pop65perc2 = as.integer(slo_regions$pop65perc)
 tm_shape(slo_regions) +
     tm_polygons(rep("pop65perc2", 6), 
@@ -88,7 +83,16 @@ tm_shape(slo_regions) +
               legend.text.size = 0.5)
 ```
 
-Let's see how to use scales in the following sections -- we will mostly focus on using scales for the `fill.scale` argument, but the same principles apply to the `col.scale`, `size.scale`, and `shape.scale` arguments.
+The examples in this chapter are based on the `slo_regions` dataset, which contains information about the regions of Slovenia.
+Let's read it first.
+
+```{r}
+#| warning: false
+#| message: false
+library(tmap)
+library(sf)
+slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
+```
 
 ## Categorical scales {#sec-categorical-scales}
 
@@ -112,7 +116,7 @@ tm_shape(slo_regions) +
 
 The `tm_polygons(fill = "region_group", fill.scale = tm_scale_categorical())` code is run automatically in the background in this case.
 It is possible to change the names of legend labels with the `labels` argument of the `tm_scale()` function.
-As mentioned in the @sec-colors we can also change the used color palette with the `values` argument.
+As mentioned in the @sec-colors, we can also change the color palette with the `values` argument.
 
 ```{r}
 #| eval: false
@@ -125,8 +129,8 @@ tm_shape(slo_regions) +
 ## Ordinal scales {#sec-ordinal-scales}
 
 The ordinal scale is similar to the categorical scale, but it is used for ordered categorical variables.
-By default, this scale uses a sequential color palette, which is suitable for ordered categorical variables [@fig-ordinal-scales].
-We may use `tm_scale_ordinal()` when the order of the values matters to highlight some hierarchy or ranking.
+By default, this scale uses a sequential color palette, which is suitable for ordered categorical variables (@fig-ordinal-scales).
+We may use `tm_scale_ordinal()` when the order of the values matters to highlight a hierarchy or ranking.
 
 ```{r}
 #| label: fig-ordinal-scales
@@ -140,7 +144,7 @@ tm_shape(slo_regions) +
 
 ## Discrete scales {#sec-discrete-scales}
 
-<!-- Martijn: a better example is probably needed here -- we could add some new variable to the data. Also -- should the value 1.5 be shown here? -->
+<!-- Martijn: a better example is probably needed here -- we could add some new variable to the data. -->
 
 ```{r}
 #| label: fig-discrete-scales
@@ -160,28 +164,68 @@ tm_shape(slo_regions) +
 
 <!-- optimal number of classes? 3-7 -->
 \index{Intervals maps}
-Intervals scales are used to represent continuous numerical variables using set of class intervals. 
+Interval scales are used to represent continuous numerical variables using a set of class intervals. 
 In other words, values are divided into several groups based on their properties.
-Several approaches can be used to convert continuous variables to intervals, and each of them could result in different groups of values. 
-<!-- **tmap** has several different methods that can be specified with by the one of the functions from the `tm_scale_` family. -->
-Most of them use the **classInt** package [@R-classInt] in the background, therefore some additional information can be found in the `?classIntervals` function's documentation.
+Several approaches can be used to convert continuous variables to intervals, and each of them could result in different groupings of values (@tbl-style-table).^[Most of these approaches in **tmap** use the **classInt** package [@R-classInt] internally, therefore, some additional information on their use can be found in the `?classIntervals` function's documentation.]
+
+```{r}
+#| echo: false
+#| label: tbl-style-table
+#| tbl-cap: "Styles available to create intervals maps."
+#| echo: false
+#| warning: false
+#| message: false
+# library(kableExtra)
+# options(kableExtra.html.bsTable = TRUE)
+styles_df = tibble::tribble(
+  ~Style, ~Description,
+  '"pretty"', "Pretty breaks",
+  '"fixed"', "Manual breaks",
+  '"equal"', "Equal intervals",
+  '"sd"', "Standard deviation intervals",
+  '"quantile"', "Quantile intervals",
+  '"jenks"', "Jenks optimization breaks",
+  '"fisher"', "Fisher's method",
+  '"dpih"', "Kernel density estimation breaks",
+  '"kmeans"', "K-means clustering breaks",
+  '"bclust"', "Bagged clustering breaks",
+  '"hclust"', "Hierarchical clustering breaks",
+  '"headtails"', "Head/tail breaks",
+  '"log10_pretty"', "Logarithmic base-10 breaks"
+)
+
+knitr::kable(styles_df, 
+             booktabs = TRUE) |>
+  kableExtra::kable_styling("striped",
+                            latex_options = "striped", 
+                            full_width = FALSE) |> 
+  kableExtra::column_spec(1, width = "4cm", monospace = TRUE) |>
+  kableExtra::column_spec(2, width = "8cm")
+```
+
+### Pretty breaks
 
 By default, the `tm_scale_intervals()` function is used in the background (@fig-intervals-methods-1).
-It uses a style called "pretty", which creates breaks that are whole numbers and spaces them evenly ^[For more information visit the `?pretty()` function documentation].
+It uses a style called "pretty", which creates breaks that are whole numbers and spaces them evenly ^[For more information, visit the `?pretty()` function documentation].
 
 ```{r}
 #| label: intervals-methods1
 #| eval: false
 tm_shape(slo_regions) +
   tm_polygons(fill = "pop_dens")
+# same as:
+# tm_shape(slo_regions) +
+#   tm_polygons(fill = "pop_dens", fill.scale = tm_scale_intervals())
 ```
 
 It is also possible to indicate the desired number of classes using the `n` argument of the `tm_scale()` function provided to the `fill.scale` argument.
-While not every `n` is possible depending on the input values, **tmap** will try to create a number of classes as close to possible to the preferred one.
+While not every `n` is possible depending on the input values, **tmap** will try to create a number of classes as close as possible to the preferred one.
+
+### Manual breaks
 
 The next approach is to manually select the limits of each break with the `breaks` argument of `tm_scale()` (@fig-intervals-methods-2).
-This can be useful when we have some pre-defined breaks, or when we want to compare values between several maps.
-It expects threshold values for each break, therefore, if we want to have three breaks, we need to provide four thresholds.
+This can be useful when we have some pre-defined breaks or when we want to compare values between several maps.
+It expects threshold values for each break, therefore, if we want to have three breaks, we need to provide four thresholds.^[You may also use `-Inf` and `Inf` to represent the lowest and highest possible values, respectively.]
 Additionally, we can add a label to each break with the `labels` argument.
 
 ```{r}
@@ -195,21 +239,23 @@ tm_shape(slo_regions) +
               )
 ```
 
+### Automatic breaks
+
 Another approach is to create breaks automatically using one of many existing classification methods with the `style` argument of the `tm_scale()` function.
 Three basic methods are `"equal"`, `"sd"`, and `"quantile"` styles.
-Let's consider a variable with 100 observations ranging from 0 to 10.
-The `"equal"` style divides the range of values into *n* equal-sized intervals.
+Let's consider a variable with 100 observations with values ranging from 0 to 10.
+The `"equal"` style divides them into *n* equal-sized intervals.
 This style works well when the values change fairly continuously and do not contain any outliers.
-In **tmap**, we can specify the number of classes with the `n` argument or the number of classes will be computed automatically <!--?nclass.Sturges-->.
+In **tmap**, the number of classes will be computed automatically<!--?nclass.Sturges--> or we can specify the number of classes with the `n` argument.
 For example, when we set `n` to 4, then our breaks will represent four classes ranging from 0 to 2.5, 2.5 to 5, 5 to 7.5, and 7.5 to 10.
-The `"sd"` style represents how much values of a given variable varies from its mean, with each interval having a constant width of the standard deviation.
+The `"sd"` style represents how much the values of a given variable vary from its mean, with each interval having a constant width of the standard deviation.
 This style is used when it is vital to show how values relate to the mean.
 The `"quantile"` style creates several classes with exactly the same number of objects (e.g., spatial features), but having intervals of various lengths.
-This method has an advantage or not having any empty classes or classes with too few or too many values.
+This method has an advantage in that it does not have any empty classes or classes with too few or too many values.
 However, the resulting intervals from the `"quantile"` style can often be misleading, with very different values located in the same class.
 
-To create classes that, on the one hand, contain similar values, and on the other hand, are different from the other classes, we can use some optimization method.
-The most common optimization method used in cartography is the Jenks optimization method implemented at the `"jenks"` style (@fig-intervals-methods-3).
+To create classes that, on the one hand, contain similar values, and on the other hand, are different from the other classes, we can use an optimization method.
+The most common one used in cartography is the Jenks optimization method implemented as the `"jenks"` style (@fig-intervals-methods-3).
 
 ```{r}
 #| label: intervals-methods3
@@ -225,7 +271,7 @@ You can visit `?KernSmooth::dpih` for more details.
 
 Another group of classification methods uses existing clustering methods.
 It includes k-means clustering (`"kmeans"`), bagged clustering (`"bclust"`), and hierarchical clustering (`"hclust"`). 
-<!-- ... -->
+They create classes based on the similarity of values, where the number of classes is specified with the `n` argument.
 
 Finally, there are a few methods created to work well for a variable with a heavy-tailed distribution, including `"headtails"` and `"log10_pretty"`.
 The `"headtails"` style is an implementation of the head/tail breaks method aimed at heavily right-skewed data.
@@ -244,19 +290,18 @@ tm_shape(slo_regions) +
               fill.scale = tm_scale_intervals(style = "log10_pretty"))
 ```
 
-<!-- intervals -->
 ```{r}
 #| label: fig-intervals-methods
 #| warning: false
 #| message: false
 #| echo: false
 #| layout-ncol: 2
-#| fig-cap: Examples of four methods of creating intervals maps
+#| fig-cap: "Examples of four methods of creating intervals maps."
 #| fig-subcap:
-#|   - The "pretty" method
-#|   - The "fixed" method
-#|   - The "jenks" method
-#|   - The "log10_pretty" method
+#|   - '"pretty" method'
+#|   - '"fixed" method'
+#|   - '"jenks" method'
+#|   - '"log10_pretty" method'
 <<intervals-methods1>>
 <<intervals-methods2>>
 <<intervals-methods3>>
