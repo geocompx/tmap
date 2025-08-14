@@ -5,21 +5,21 @@ source("code/before_script.R")
 
 # Legends and titles
 
-This chapter covers legends and titles in **tmap** -- how to create them, customize their appearance, and position them on the map.
+This chapter covers legends and titles in **tmap** -- how to create, customize their appearance, and position them on the map.
 The examples in this chapter use the elevation raster data of Slovenia in meters above sea level (*m asl*).
 
 ```{r}
 #| message: false
-library(stars)
+library(terra)
 library(tmap)
-slo_elev = read_stars("data/slovenia/slo_elev.tif")
+slo_elev = rast("data/slovenia/slo_elev.tif")
 ```
 
 ## Legends {#sec-legends}
 
 Legends are an essential part of most maps.
-They provide meaning to the symbols or colors used in the map, and often add information about the map content.
-They allow to interpret the map correctly, and are therefore crucial for the map readability.
+They provide meaning to the symbols or colors used in the map, and often add information about the map's content.
+They allow for interpreting the map correctly, and are therefore crucial for the map's readability.
 
 In **tmap**, legends are created automatically when we add a layer with a data-driven visual variable.
 By default, such a legend consists of a title based on the variable name and a color/shape/symbol scale (@fig-legend1). <!--REF to the color scale section?-->
@@ -33,13 +33,12 @@ tm_shape(slo_elev) +
     tm_raster()
 ```
 
-Such a legend is helpful for quick exploration of the data, but usually, they are not sufficient for sharing the map with others.
+Such a legend is helpful for quick exploration of the data, but often, they are not sufficient for sharing the map with others.
 This chapter covers how to customize the legend's title, position, and appearance in **tmap**.
-Legends are also closely related to the visual variables and scales used in the map that were covered in chapters @sec-visual-variables and @sec-scales -- we recommend to read those chapters first.
-<!-- also mention/ref to changing the color palette (        col.scale = tm_scale(values = "geyser"),) ?-->
+Legends are also closely related to the visual variables and scales used in the map that were covered in chapters @sec-visual-variables and @sec-scales -- we recommend reading those chapters first.
 Legends are customized using the `tm_legend()` function that is passed to `*.legend` arguments of the layer functions, e.g., `col.legend`, `shape.legend`, `size.legend`, etc.
 
-Often, the most important part of the legend is the title.
+Often, the most significant part of the legend is the title.
 It informs the reader about the meaning of the colors or symbols used in the map, providing also additional context such as the unit of measurement.
 The title is set using the `title` argument of the `tm_legend()` function (@fig-legend2-1).
 
@@ -47,15 +46,12 @@ The title is set using the `title` argument of the `tm_legend()` function (@fig-
 #| label: legend2
 #| eval: false
 tm_shape(slo_elev) +
-    tm_raster(
-        col.legend = tm_legend(title = "Elevation (m asl)")
-    )
+    tm_raster(col.legend = tm_legend(title = "Elevation (m asl)"))
 ```
 
-In some cases, the title is not needed, e.g., when the map is self-explanatory, and then this argument can be set to `""`.
-Another possibility, when only one legend is used is to remove the legend title, but specify the map variable and its unit in the map title.
-
 The legend title and its text can be customized in many ways, including changing its font size (`title.size` and `text.size`), font family (`title.family` and `text.family`), and font color (`title.color` and `text.color`).
+In some cases, the title is not needed, e.g., when the map is self-explanatory, and then this argument can be set to `""`.
+Another possibility, when only one legend is used, is to remove the legend title, but specify the map variable and its unit in the map title (@sec-titles).
 
 By default, values in the legend are ordered from low to high (i.e., from top to bottom), but this can be reversed using the `reverse` argument (@fig-legend2-2).
 
@@ -64,13 +60,14 @@ By default, values in the legend are ordered from low to high (i.e., from top to
 #| eval: false
 tm_shape(slo_elev) +
     tm_raster(
-        col.legend = tm_legend(title = "Elevation (m asl)", reverse = TRUE)
+      col.legend = tm_legend(title = "Elevation (m asl)", 
+                             reverse = TRUE)
     )
 ```
 
-In our example of Slovenia, we have enough white space inside the map frame to place the legend.
-This can be done with the `position` argument of the `tm_legend()` function (@fig-legend2-3).
-To put the legend inside the map frame, we can use the `tm_pos_in()` function and specify the location of the legend using its first two arguments (@sec-positions).
+In the Slovenia example, we have enough white space inside the map frame to fit the legend.
+You can do this by setting the `position` argument in `tm_legend()` (@fig-legend2-3) and using `tm_pos_in()` to define the legend’s location.
+The first two arguments of `tm_pos_in()` specify where inside the map frame the legend will appear (@sec-positions).
 
 ```{r}
 #| label: legend4
@@ -89,18 +86,18 @@ tm_shape(slo_elev) +
 #| echo: false
 #| message: false
 #| layout-nrow: 3
-#| fig-cap: Legend customization examples.
+#| fig-cap: "Legend customization examples."
 #| fig-subcap: 
-#|   - Legend with a custom title.
-#|   - Legend with a custom title and reversed order.
-#|   - Legend with a custom position inside the map frame.
+#|   - legend with a custom title
+#|   - legend with a custom title and reversed order
+#|   - legend with a custom position inside the map frame
 <<legend2>>
 <<legend3>>
 <<legend4>>
 ```
 
 Depending on the map content, used colors, and expected aesthetic, the legend background can be colored or made transparent.
-The default legend background is white, but it can be changed using the `bg.color` argument of the `tm_legend()` function.
+The default legend background is white, but we may change it using the `bg.color` argument of the `tm_legend()` function.
 In the following example, we set the background color to gray and also make it semi-transparent using the `bg.alpha` argument (@fig-legend3-1).
 
 ```{r}
@@ -117,12 +114,12 @@ tm_shape(slo_elev) +
     )
 ```
 
-All of the previous examples used the default legend orientation type, `"portrait".`
+All of the previous examples used the default legend orientation type called `"portrait".`
 Its alternative is `"landscape"`, which can be set using the `orientation` argument of the `tm_legend()` function.
-This changes the legend layout to a horizontal orientation, which can be useful either as a mean to better fit to the map content or to change the map aesthetic.
+This changes the legend layout to horizontal, which can be useful either to fit the map content better or to change the map aesthetic.
 
 Here, we not only change the legend orientation, but also customize its position with `tm_pos_out()` (@sec-positions) ^[By default, the `"landscape"` legend is located in the bottom right outside of the map frame].
-The three arguments used, `"center"`, `"top"`, and `"center"` specify the legend position in horizontal and vertical position outside the map frame and then its position relative to that placement (@fig-legend3-2).
+The three arguments used, `"center"`, `"top"`, and `"center"` specify the legend position in horizontal and vertical position outside the map frame, and then its position relative to that placement (@fig-legend3-2).
 
 ```{r}
 #| label: legend6
@@ -138,28 +135,25 @@ tm_shape(slo_elev) +
 ```
 
 To disable the legend, we can set the `show` argument of the `tm_legend()` function to `FALSE` (@fig-legend3-3).
-This is useful when we want to use the same legend for multiple layers, or just when we only are interested in the map content and not in the legend -- which may be the case when we are using the map for graphical purposes only.
+This is useful when we want to use the same legend for multiple layers, or just when we are only interested in the map content and not in the legend -- which may be the case when we are using the map for graphical purposes only.
 
 ```{r}
 #| label: legend7
 #| eval: false
 tm_shape(slo_elev) +
-    tm_raster(
-        col.legend = tm_legend(show = FALSE)
-    )
+    tm_raster(col.legend = tm_legend(show = FALSE))
 ```
-
 
 ```{r}
 #| label: fig-legend3
 #| echo: false
 #| message: false
 #| layout-nrow: 3
-#| fig-cap: Additional legend customization examples.
+#| fig-cap: "Additional legend customization examples."
 #| fig-subcap: 
-#|   - Legend with a custom background color and transparency.
-#|   - Legend with a custom orientation and position outside the map frame.
-#|   - No legend.
+#|   - legend with a custom background color and transparency
+#|   - legend with a custom orientation and position outside the map frame
+#|   - no legend
 <<legend5>>
 <<legend6>>
 <<legend7>>
@@ -178,13 +172,11 @@ In **tmap**, titles are added with the `tm_title()` function.
 #| label: title1
 #| eval: false
 tm_shape(slo_elev) +
-    tm_raster(
-        col.legend = tm_legend(title = "Elevation (m asl)")
-    ) +
+    tm_raster(col.legend = tm_legend(title = "Elevation (m asl)")) +
   tm_title("Slovenia")
 ```
 
-Titles could serve as a few roles. 
+Titles could serve a few roles. 
 They may provide a general description of the map content, such as the name of the area (@fig-titles1-1).
 Titles can also be used to replace the legend title (@fig-titles1-2) -- then the reader can interpret the map content based on the title, which is more prominent than the legend title.
 
@@ -192,9 +184,7 @@ Titles can also be used to replace the legend title (@fig-titles1-2) -- then the
 #| label: title2
 #| eval: false
 tm_shape(slo_elev) +
-    tm_raster(
-        col.legend = tm_legend(title = "")
-    ) +
+    tm_raster(col.legend = tm_legend(title = "")) +
   tm_title("Elevation Map of Slovenia")
 ```
 
@@ -205,21 +195,19 @@ tm_shape(slo_elev) +
 #| layout-nrow: 2
 #| fig-cap: "Map title examples."
 #| fig-subcap:
-#|  - Simple title
-#|  - Title replacing the legend title
+#|  - simple title
+#|  - map title replacing the legend title
 <<title1>>
 <<title2>>
 ```
 
-Titles are text elements and therefore can be customized in many ways, including changing the font size (`size`), font color (`color`), and font face (`fontface`) (@fig-titles2-1)
+Titles are text elements and therefore can be customized in many ways, including changing the font size (`size`), font color (`color`), and font face (`fontface`) (@fig-titles2-1).
 
 ```{r}
 #| label: title3
 #| eval: false
 tm_shape(slo_elev) +
-    tm_raster(
-        col.legend = tm_legend(title = "")
-    ) +
+    tm_raster(col.legend = tm_legend(title = "")) +
   tm_title("Elevation Map of Slovenia", 
            size = 1.5,
            color = "gray10",
@@ -234,9 +222,7 @@ A map title is treated as all of the rest of the map elements and, therefore, ca
 #| label: title4
 #| eval: false
 tm_shape(slo_elev) +
-    tm_raster(
-        col.legend = tm_legend(title = "")
-    ) +
+    tm_raster(col.legend = tm_legend(title = "")) +
   tm_title("Elevation Map of Slovenia", 
            size = 1.5,
            color = "white",
@@ -254,8 +240,8 @@ tm_shape(slo_elev) +
 #| layout-nrow: 2
 #| fig-cap: "Title customization examples."
 #| fig-subcap:
-#|   - Title with custom font size, color, and face.
-#|   - Title with custom font size, color, face, and background.
+#|   - with custom font size, color, and face
+#|   - with custom font size, color, face, and background
 <<title3>>
 <<title4>>
 ```
@@ -263,14 +249,16 @@ tm_shape(slo_elev) +
 Many titles can be used in the same map, e.g., a main title and a subtitle (@fig-titles3).
 This can be done by adding multiple `tm_title()` functions to the map, which is placed on the top left of the map by default, and `tm_title_in()` function to place the title inside the top left corner of the map frame.
 
+A map can have multiple titles, such as a main title and a subtitle (@fig-titles3).
+You can add them by including `tm_title()` functions, which by default place titles at the top left outside the map.
+To position a title inside the top-left corner of the map frame instead, use the `tm_title_in()` function.
+
 ```{r}
 #| label: fig-titles3
 #| message: false
 #| fig-cap: "A map with a title and a subtitle."
 tm_shape(slo_elev) +
-    tm_raster(
-        col.legend = tm_legend(title = "")
-    ) +
+    tm_raster(col.legend = tm_legend(title = "")) +
   tm_title("Slovenia") +
   tm_title_in("Elevation Map")
 ```
