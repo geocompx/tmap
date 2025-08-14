@@ -402,7 +402,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
   
 
 
-</header><p>Map components are visual elements that are not directly related to the data-driven map layers while providing additional information or context to the map. They are not tied to the map’s coordinates but rather to the map’s layout and design. <a href="#tbl-attr-layers-table" class="quarto-xref">Table&nbsp;<span>10.1</span></a> shows the list of available map components in <strong>tmap</strong>. It includes functions that draw coordinate grid lines, latitude and longitude graticules, scale bars, north arrows, text annotations, logos, axis labels, and minimaps. We cover and demonstrate these functions in the following sections.</p>
+</header><p>Map components are visual elements that are not directly related to the data-driven map layers, while providing additional information or context to the map. They are not tied to the map’s coordinates but rather to the map’s layout and design. <a href="#tbl-attr-layers-table" class="quarto-xref">Table&nbsp;<span>10.1</span></a> shows the list of available map components in <strong>tmap</strong>. It includes functions that draw coordinate grid lines, latitude and longitude graticules, scale bars, north arrows, text annotations, logos, axis labels, and minimaps. We cover and demonstrate these functions in the following sections.</p>
 <div class="cell" data-layout-align="center">
 <div id="tbl-attr-layers-table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-attr-layers-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -469,25 +469,25 @@ Table&nbsp;10.1: Map components in <strong>tmap</strong>.
 </div>
 <section id="sec-grid-lines" class="level2" data-number="10.1"><h2 data-number="10.1" class="anchored" data-anchor-id="sec-grid-lines">
 <span class="header-section-number">10.1</span> Grid lines</h2>
-<p>The <strong>tmap</strong> package offers two ways to draws coordinate lines - <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules()</a></code>. The role of <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid()</a></code> is to represent the input data’s coordinates. For example, the <code>slo_borders</code> object’s CRS is ETRS89-extended / LAEA Europe with the units in meters (<a href="#fig-grids-1" class="quarto-xref">Figure&nbsp;<span>10.1 (a)</span></a>), and thus the grid lines are in meters.</p>
+<p>The <strong>tmap</strong> package offers two ways to draw coordinate lines: <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules()</a></code>. The role of <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid()</a></code> is to represent the input data’s coordinates. For example, the <code>slo_borders</code> object’s CRS is ETRS89-extended / LAEA Europe with the units in meters (<a href="#fig-grids-1" class="quarto-xref">Figure&nbsp;<span>10.1 (a)</span></a>), and thus the grid lines are in meters.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules()</a></code> shows longitude lines (meridians) and latitude lines (parallels), with degrees as units. This can be seen with the degree signs in the labels (<a href="#fig-grids-2" class="quarto-xref">Figure&nbsp;<span>10.1 (b)</span></a>).</p>
+<p><code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules()</a></code>, on the other hand, always shows longitude lines (meridians) and latitude lines (parallels), with degrees as units. This can be seen with the degree signs in the labels (<a href="#fig-grids-2" class="quarto-xref">Figure&nbsp;<span>10.1 (b)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Both, <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules()</a></code> can be placed above or below the map layers as their position on the map depends on their place in the code. When <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid()</a></code> or <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules()</a></code> is placed after the map layer (e.g., <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code>), the grid lines are plotted on the top of the map. On the other hand, when <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid()</a></code> or <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules()</a></code> is placed before the map layer code, the grid lines are plotted behind the spatial data (<a href="#fig-grids-3" class="quarto-xref">Figure&nbsp;<span>10.1 (c)</span></a>).</p>
+<p>Both <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules()</a></code> can be placed above or below the map layers, as their position on the map depends on their place in the code. When they are placed after the map layer (e.g., <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code>), the grid lines are plotted on top of the map. On the other hand, when <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_grid()</a></code> or <code><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules()</a></code> is placed before the map layer code, the grid lines are plotted behind the spatial data (<a href="#fig-grids-3" class="quarto-xref">Figure&nbsp;<span>10.1 (c)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_grid.html">tm_graticules</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Grids and graticules can also be easily customized using several arguments, such as, <code>x</code> and <code>y</code> (x and y coordinates of the lines), <code>n.x</code> and <code>n.y</code> (number of horizontal (x) and vertical (y) lines), <code>labels.inside.frame</code>, <code>ticks</code>, <code>lines</code> It is also possible to customize their appearance, for example, by changing the colors of the lines (<code>col</code>), width (<code>lwd</code>) or labels’ sizes (<code>labels.size</code>).</p>
+<p>Grids and graticules can also be easily customized using several arguments, such as, <code>x</code> and <code>y</code> (x and y coordinates of the lines), <code>n.x</code> and <code>n.y</code> (number of horizontal (x) and vertical (y) lines), <code>labels.inside.frame</code>, <code>ticks</code>, <code>lines</code> It is also possible to customize their appearance, for example, by changing the colors of the lines (<code>col</code>), width (<code>lwd</code>), or labels’ sizes (<code>labels.size</code>).</p>
 <div class="cell" data-layout-nrow="3" data-layout-align="center">
 <div id="fig-grids" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-grids-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -498,7 +498,7 @@ Table&nbsp;10.1: Map components in <strong>tmap</strong>.
 <img src="figures/fig-grids-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-grids">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-grids-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Grid lines
+(a) grid lines
 </figcaption></figure>
 </div>
 </div>
@@ -510,7 +510,7 @@ Table&nbsp;10.1: Map components in <strong>tmap</strong>.
 <img src="figures/fig-grids-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-grids">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-grids-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b) Graticules
+(b) graticules
 </figcaption></figure>
 </div>
 </div>
@@ -522,7 +522,7 @@ Table&nbsp;10.1: Map components in <strong>tmap</strong>.
 <img src="figures/fig-grids-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-grids">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-grids-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(c) Graticules behind the map layer
+(c) graticules behind the map layer
 </figcaption></figure>
 </div>
 </div>
@@ -535,8 +535,8 @@ Figure&nbsp;10.1: Examples of grid lines and graticules.
 </div>
 </section><section id="sec-scale-bar" class="level2" data-number="10.2"><h2 data-number="10.2" class="anchored" data-anchor-id="sec-scale-bar">
 <span class="header-section-number">10.2</span> Scale bar</h2>
-<p>Scale bar is a graphic indicator of the relation between a distance on a map and the corresponding distance in the real world. Nowadays, it is more often used than a traditional representative fraction (e.g., 1:10000). Compared to the representative fraction, scale bars work correctly on variable screen sizes or different print sizes, as their sizes change together with the rest of the map.</p>
-<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_scalebar.html">tm_scalebar()</a></code> function adds a scale bar. <!-- update the below statement:  --> <!-- By default, it tries to create a scale bar with the width of 1/4 of the whole map, and fills it with several breaks.  --> It is possible, however, to manually update the values of scale bar’s breaks with the <code>breaks</code> argument and its size with the <code>text.size</code> argument (<a href="#fig-scalebar" class="quarto-xref">Figure&nbsp;<span>10.2</span></a>).</p>
+<p>A scale bar is a graphic indicator of the relation between a distance on a map and the corresponding distance in the real world. Nowadays, it is more often used than a traditional representative fraction (e.g., 1:10000). Compared to the representative fraction, scale bars work correctly on variable screen sizes or different print sizes, as their sizes change together with the rest of the map.</p>
+<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_scalebar.html">tm_scalebar()</a></code> function adds a scale bar. <!-- Martijn, please check and update the below statement:  --> By default, it tries to create a scale bar with the width of 1/4 of the whole map, and fills it with several breaks. It is possible, however, to manually update the values of scale bar’s breaks with the <code>breaks</code> argument and its size with the <code>text.size</code> argument (<a href="#fig-scalebar" class="quarto-xref">Figure&nbsp;<span>10.2</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scalebar.html">tm_scalebar</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">15</span>, <span class="fl">30</span><span class="op">)</span>, text.size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -551,8 +551,8 @@ Figure&nbsp;10.2: A map with a customized scale bar.
 </div>
 </div>
 </div>
-<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_scalebar.html">tm_scalebar()</a></code> also has several additional arguments, allowing to modify its colors and position.</p>
-<p>Importantly, the scale bar is accurate, depending on a map projection, at standard points or lines only (<a href="map-projections.html#sec-proj-types" class="quarto-xref"><span>Section 13.4</span></a>) – it is never completely correct across the whole map. <!--toDo we need to add an explanation what are standard points and lines in the second chapter!!--> The scale bar distortion increases with the true size of the area we are mapping – it is less visible on local maps, and very prominent on global maps. For example, try to add a scale bar to a world map seen in the <a href="tm-shape.html#sec-shapes-and-layers" class="quarto-xref"><span>Section 5.1</span></a>. The created scale bar will be accurate for the equator, but less and less correct going to the north and south poles.</p>
+<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_scalebar.html">tm_scalebar()</a></code> also has several additional arguments, allowing for modification of its colors and position.</p>
+<p>Importantly, the scale bar is accurate, depending on a map projection, at standard points or lines only (<a href="map-projections.html#sec-proj-types" class="quarto-xref"><span>Section 13.4</span></a>) – it is never completely correct across the whole map. The scale bar distortion increases with the true size of the area we are mapping – it is less visible on local maps, and very prominent on global maps. For example, try to add a scale bar to a world map seen in the <a href="tm-shape.html#sec-shapes-and-layers" class="quarto-xref"><span>Section 5.1</span></a>. The created scale bar will be accurate for the equator, but less and less correct going to the north and south poles.</p>
 </section><section id="sec-north-arrow" class="level2" data-number="10.3"><h2 data-number="10.3" class="anchored" data-anchor-id="sec-north-arrow">
 <span class="header-section-number">10.3</span> North arrow</h2>
 <p>North arrow, also known as a map compass or a compass rose, is a prominent orientation indicator pointing to which way is north<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. The decision on whether to use north arrows or not usually requires some critical thinking. While, it can be added to every map, north arrows are not always necessary – especially on maps of large areas (e.g., continents), where the cardinal directions are obvious for most people. The north arrow is, however, necessary when the north on the map is offset (rotated) and recommended when we want to help orient the map readers.</p>
@@ -571,7 +571,7 @@ Figure&nbsp;10.3: A map with customized north arrow.
 </div>
 </div>
 </div>
-<p><strong>tmap</strong> offers also a few other north arrow types, including <code>"arrow"</code>, <code>"4star"</code>, <code>"8star"</code>, <code>"radar"</code>, and <code>"rose"</code> (<a href="#fig-compasses" class="quarto-xref">Figure&nbsp;<span>10.4</span></a>). The north arrow can be also further customized with the <code>size</code>, <code>show.labels</code> and <code>cardinal.directions</code> arguments, and its colors may be modified (<code>text.color</code>, <code>color.dark</code>, <code>color.light</code>) (<a href="#fig-northarrow" class="quarto-xref">Figure&nbsp;<span>10.3</span></a>). The location of the north arrow, by default, is placed automatically, but can also be changed using the <code>position</code> argument. <!-- to update --> <!-- It expects a vector of two values, specifying the x and y coordinates. --> <!-- The x coordinate can be set with `"left"`, `"LEFT"`, `"center"`, `"right"`, or `"RIGHT"`, while the y coordinate uses `"top"`, `"TOP"`, `"center"`, `"bottom"`, or `"BOTTOM"`. --> <!-- The arguments with all letters uppercase result in a position closer to the map frame (without margins). --> <!-- Alternatively, `position` can be specified with numeric values between 0 and 1 representing the x and y value of the left bottom corner of the north arrow. --></p>
+<p><strong>tmap</strong> also offers a few other north arrow types, including <code>"arrow"</code>, <code>"4star"</code>, <code>"8star"</code>, <code>"radar"</code>, and <code>"rose"</code> (<a href="#fig-compasses" class="quarto-xref">Figure&nbsp;<span>10.4</span></a>). The north arrow can be further customized with the <code>size</code>, <code>show.labels</code>, and <code>cardinal.directions</code> arguments, and its colors may be modified (<code>text.color</code>, <code>color.dark</code>, <code>color.light</code>) (<a href="#fig-northarrow" class="quarto-xref">Figure&nbsp;<span>10.3</span></a>). The location of the north arrow, by default, is placed automatically, but can also be changed using the <code>position</code> argument (<a href="positions.html" class="quarto-xref"><span>Chapter 11</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-compasses" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
@@ -579,7 +579,7 @@ Figure&nbsp;10.3: A map with customized north arrow.
 <img src="figures/fig-compasses-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-compasses-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10.4: North arrow types
+Figure&nbsp;10.4: North arrow types.
 </figcaption></figure>
 </div>
 </div>
@@ -587,8 +587,7 @@ Figure&nbsp;10.4: North arrow types
 <p>The <code>position</code> argument also works in the same way in other functions, such as <code><a href="https://r-tmap.github.io/tmap/reference/tm_scalebar.html">tm_scalebar()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_logo.html">tm_logo()</a></code>, and in some of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> arguments: <code>legend.position</code>, <code>title.position</code>, or <code>chart.position</code>.</p>
 </section><section id="sec-text-annotation" class="level2" data-number="10.4"><h2 data-number="10.4" class="anchored" data-anchor-id="sec-text-annotation">
 <span class="header-section-number">10.4</span> Text annotation</h2>
-<!-- Text on maps serves many purposes - some are related to spatial objects (e.g., text labels, section \@ref(text)), while other are used to inform the map reader about the presented content (e.g., map title, section \@ref(layout-elements)). -->
-<p>Text annotations, also known as map credits, are used to store additional information about the created map. They can include the source of data, the name of the author, the date of map creation, or information about the map projection. Text annotations are created with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits()</a></code> function, which can be used more than one time (<a href="#fig-credits" class="quarto-xref">Figure&nbsp;<span>10.5</span></a>).</p>
+<p>Text annotations, also known as map credits, are used to store additional information about the created map. They can include the source of data, the name of the author, the date of map creation, or information about the map projection. Text annotations are created with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits()</a></code> function, which can be used one or more times in the same map (<a href="#fig-credits" class="quarto-xref">Figure&nbsp;<span>10.5</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits</a></span><span class="op">(</span><span class="st">"Data source: "</span>, fontface <span class="op">=</span> <span class="st">"italic"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -604,10 +603,10 @@ Figure&nbsp;10.5: A map with placeholders for text annotations.
 </div>
 </div>
 </div>
-<p>The first argument of <code><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits()</a></code> is the text, which can be spread over multiple lines with the line break symbol <code>\n</code>. When the created map has several facets (<a href="facets.html" class="quarto-xref"><span>Chapter 16</span></a>), it is also possible to provide each facet a different text. In that case, a vector of characters is expected, where you can use <code>""</code> to omit the credits for specific facets. Text annotations can also be further customized, by changing their sizes (<code>size</code>), colors (<code>color</code>), positions, and fonts (<a href="layout.html#sec-fonts-on-maps" class="quarto-xref"><span>Section 12.3.3</span></a>).</p>
+<p>The first argument of <code><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits()</a></code> is the text, which can be spread over multiple lines with the line break symbol <code>\n</code>. When the created map has several facets (<a href="facets.html" class="quarto-xref"><span>Chapter 16</span></a>), it is also possible to provide each facet with a different text. In that case, a vector of characters is expected, where you can use <code>""</code> to omit the credits for specific facets. Text annotations can also be further customized by changing their sizes (<code>size</code>), colors (<code>color</code>), positions, and fonts (<a href="layout.html#sec-fonts-on-maps" class="quarto-xref"><span>Section 12.3.3</span></a>).</p>
 </section><section id="sec-axis-labels" class="level2" data-number="10.5"><h2 data-number="10.5" class="anchored" data-anchor-id="sec-axis-labels">
 <span class="header-section-number">10.5</span> Axis labels</h2>
-<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_xlab.html">tm_xlab()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_xlab.html">tm_ylab()</a></code> functions add x and y axis labels to the map. These labels can be used to describe the coordinates of the map, such as longitude and latitude, or faceting variables (<a href="facets.html#sec-customizing-facets" class="quarto-xref"><span>Section 16.4</span></a>).</p>
+<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_xlab.html">tm_xlab()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_xlab.html">tm_ylab()</a></code> functions add x and y-axis labels to the map. These labels can be used to describe the coordinates of the map, such as longitude and latitude, or faceting variables (<a href="facets.html#sec-customizing-facets" class="quarto-xref"><span>Section 16.4</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_xlab.html">tm_xlab</a></span><span class="op">(</span><span class="st">"X coordinates"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -623,10 +622,10 @@ Figure&nbsp;10.6: A map with x and y axis labels.
 </div>
 </div>
 </div>
-<p>By default, the x and y-axis labels are placed at the bottom and left sides of the map, respectively, in a horizontal orientation. The additional arguments of these functions allow to change the labels’ size, color, rotation, space between the labels and the map, and their side.</p>
+<p>By default, the x and y-axis labels are placed at the bottom and left sides of the map, respectively, in a horizontal orientation. The additional arguments of these functions allow changing the labels’ size, color, rotation, space between the labels and the map, and their side.</p>
 </section><section id="sec-logo" class="level2" data-number="10.6"><h2 data-number="10.6" class="anchored" data-anchor-id="sec-logo">
 <span class="header-section-number">10.6</span> Logo</h2>
-<p>Logos on maps can serve a similar purpose as text annotation or accompany them. They can represent your affiliation, funding institution, data sources logos, etc. The <code><a href="https://r-tmap.github.io/tmap/reference/tm_logo.html">tm_logo()</a></code> function adds png images, either from a file or url, to the map (<a href="#fig-logos" class="quarto-xref">Figure&nbsp;<span>10.7</span></a>).</p>
+<p>Logos on maps can serve a similar purpose as text annotation or accompany them. They can represent your affiliation, funding institution, data sources, logos, etc. The <code><a href="https://r-tmap.github.io/tmap/reference/tm_logo.html">tm_logo()</a></code> function adds PNG images, either from a file or URL, to the map (<a href="#fig-logos" class="quarto-xref">Figure&nbsp;<span>10.7</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_logo.html">tm_logo</a></span><span class="op">(</span><span class="st">"https://www.r-project.org/logo/Rlogo.png"</span>,</span>
@@ -645,7 +644,7 @@ Figure&nbsp;10.7: A map with an array of R logos.
 </div>
 </div>
 </div>
-<p>There are two ways to use multiple logos. Many <code><a href="https://r-tmap.github.io/tmap/reference/tm_logo.html">tm_logo()</a></code> functions will places logos on top of each other, while providing a vector of png files will show them next to each other. Additional arguments include the height of the logo (<code>height</code>, the width is scaled automatically) and its position (<code>position</code>).</p>
+<p>There are two ways to use multiple logos. Many <code><a href="https://r-tmap.github.io/tmap/reference/tm_logo.html">tm_logo()</a></code> functions place logos on top of each other, while providing a vector of PNG files will show them next to each other. Additional arguments include the height of the logo (<code>height</code>, the width is scaled automatically) and its position (<code>position</code>).</p>
 </section><section id="sec-minimap" class="level2" data-number="10.7"><h2 data-number="10.7" class="anchored" data-anchor-id="sec-minimap">
 <span class="header-section-number">10.7</span> Minimap</h2>
 <p>The minimap is a small overview map that shows the extent of the main map within a larger context. The <code><a href="https://r-tmap.github.io/tmap/reference/tm_minimap.html">tm_minimap()</a></code> function adds a minimap of a globe to the main map, as illustrated in <a href="#fig-minimap" class="quarto-xref">Figure&nbsp;<span>10.8</span></a>.</p>
