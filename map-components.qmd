@@ -22,7 +22,7 @@ attr_layers_df = tibble::tribble(
 )
 ```
 
-Map components are visual elements that are not directly related to the data-driven map layers while providing additional information or context to the map.
+Map components are visual elements that are not directly related to the data-driven map layers, while providing additional information or context to the map.
 They are not tied to the map's coordinates but rather to the map's layout and design.
 @tbl-attr-layers-table shows the list of available map components in **tmap**.
 It includes functions that draw coordinate grid lines, latitude and longitude graticules, scale bars, north arrows, text annotations, logos, axis labels, and minimaps.
@@ -70,7 +70,7 @@ tm
 
 ## Grid lines {#sec-grid-lines}
 
-The **tmap** package offers two ways to draws coordinate lines - `tm_grid()` and `tm_graticules()`.
+The **tmap** package offers two ways to draw coordinate lines: `tm_grid()` and `tm_graticules()`.
 The role of `tm_grid()` is to represent the input data’s coordinates.
 For example, the `slo_borders` object's CRS is ETRS89-extended / LAEA Europe with the units in meters (@fig-grids-1), and thus the grid lines are in meters.
 
@@ -82,7 +82,7 @@ tm_shape(slo_borders) +
   tm_grid()
 ```
 
-`tm_graticules()` shows longitude lines (meridians) and latitude lines (parallels), with degrees as units.
+`tm_graticules()`, on the other hand, always shows longitude lines (meridians) and latitude lines (parallels), with degrees as units.
 This can be seen with the degree signs in the labels (@fig-grids-2).
 
 ```{r}
@@ -93,8 +93,8 @@ tm_shape(slo_borders) +
   tm_graticules()
 ```
 
-Both, `tm_grid()` and `tm_graticules()` can be placed above or below the map layers as their position on the map depends on their place in the code.
-When `tm_grid()` or `tm_graticules()` is placed after the map layer (e.g., `tm_polygons()`), the grid lines are plotted on the top of the map. 
+Both `tm_grid()` and `tm_graticules()` can be placed above or below the map layers, as their position on the map depends on their place in the code.
+When they are placed after the map layer (e.g., `tm_polygons()`), the grid lines are plotted on top of the map. 
 On the other hand, when `tm_grid()` or `tm_graticules()` is placed before the map layer code, the grid lines are plotted behind the spatial data (@fig-grids-3).
 
 ```{r}
@@ -106,17 +106,17 @@ tm_shape(slo_borders) +
 ```
 
 Grids and graticules can also be easily customized using several arguments, such as, `x` and `y` (x and y coordinates of the lines), `n.x` and `n.y` (number of horizontal (x) and vertical (y) lines),  `labels.inside.frame`, `ticks`, `lines`
-It is also possible to customize their appearance, for example, by changing the colors of the lines (`col`), width (`lwd`) or labels' sizes (`labels.size`).
+It is also possible to customize their appearance, for example, by changing the colors of the lines (`col`), width (`lwd`), or labels' sizes (`labels.size`).
 
 ```{r}
 #| label: fig-grids
 #| echo: false
 #| layout-nrow: 3
-#| fig-cap: Examples of grid lines and graticules.
+#| fig-cap: "Examples of grid lines and graticules."
 #| fig-subcap:
-#|   - Grid lines
-#|   - Graticules
-#|   - Graticules behind the map layer
+#|   - grid lines
+#|   - graticules
+#|   - graticules behind the map layer
 <<grid1>>
 <<grid2>>
 <<grid3>>
@@ -124,13 +124,13 @@ It is also possible to customize their appearance, for example, by changing the 
 
 ## Scale bar {#sec-scale-bar}
 
-Scale bar is a graphic indicator of the relation between a distance on a map and the corresponding distance in the real world.
+A scale bar is a graphic indicator of the relation between a distance on a map and the corresponding distance in the real world.
 Nowadays, it is more often used than a traditional representative fraction (e.g., 1:10000).
 Compared to the representative fraction, scale bars work correctly on variable screen sizes or different print sizes, as their sizes change together with the rest of the map. 
 
 The `tm_scalebar()` function adds a scale bar.
-<!-- update the below statement:  -->
-<!-- By default, it tries to create a scale bar with the width of 1/4 of the whole map, and fills it with several breaks.  -->
+<!-- Martijn, please check and update the below statement:  -->
+By default, it tries to create a scale bar with the width of 1/4 of the whole map, and fills it with several breaks.
 It is possible, however, to manually update the values of scale bar's breaks with the `breaks` argument and its size with the `text.size` argument (@fig-scalebar).
 
 ```{r}
@@ -140,9 +140,9 @@ tm +
   tm_scalebar(breaks = c(0, 15, 30), text.size = 1)
 ```
 
-The `tm_scalebar()` also has several additional arguments, allowing to modify its colors and position.
+The `tm_scalebar()` also has several additional arguments, allowing for modification of its colors and position.
 
-Importantly, the scale bar is accurate, depending on a map projection, at standard points or lines only (@sec-proj-types) -- it is never completely correct across the whole map. <!--toDo we need to add an explanation what are standard points and lines in the second chapter!!-->
+Importantly, the scale bar is accurate, depending on a map projection, at standard points or lines only (@sec-proj-types) -- it is never completely correct across the whole map.
 The scale bar distortion increases with the true size of the area we are mapping -- it is less visible on local maps, and very prominent on global maps.
 For example, try to add a scale bar to a world map seen in the @sec-shapes-and-layers.
 The created scale bar will be accurate for the equator, but less and less correct going to the north and south poles.
@@ -171,23 +171,18 @@ By default, its *north* is oriented toward the top of the map (the `north` argum
 
 ```{r}
 #| label: fig-northarrow
-#| fig-cap: A map with customized north arrow.
+#| fig-cap: "A map with customized north arrow."
 tm +
   tm_compass(type = "4star", size = 2, position = c("left", "top"))
 ```
 
-**tmap** offers also a few other north arrow types, including `"arrow"`, `"4star"`, `"8star"`, `"radar"`, and `"rose"` (@fig-compasses).
-The north arrow can be also further customized with the `size`, `show.labels` and `cardinal.directions` arguments, and its colors may be modified (`text.color`, `color.dark`, `color.light`) (@fig-northarrow).
-The location of the north arrow, by default, is placed automatically, but can also be changed using the `position` argument.
-<!-- to update -->
-<!-- It expects a vector of two values, specifying the x and y coordinates. -->
-<!-- The x coordinate can be set with `"left"`, `"LEFT"`, `"center"`, `"right"`, or `"RIGHT"`, while the y coordinate uses `"top"`, `"TOP"`, `"center"`, `"bottom"`, or `"BOTTOM"`. -->
-<!-- The arguments with all letters uppercase result in a position closer to the map frame (without margins). -->
-<!-- Alternatively, `position` can be specified with numeric values between 0 and 1 representing the x and y value of the left bottom corner of the north arrow. -->
+**tmap** also offers a few other north arrow types, including `"arrow"`, `"4star"`, `"8star"`, `"radar"`, and `"rose"` (@fig-compasses).
+The north arrow can be further customized with the `size`, `show.labels`, and `cardinal.directions` arguments, and its colors may be modified (`text.color`, `color.dark`, `color.light`) (@fig-northarrow).
+The location of the north arrow, by default, is placed automatically, but can also be changed using the `position` argument (@sec-positions).
 
 ```{r}
 #| label: fig-compasses
-#| fig-cap: "North arrow types"
+#| fig-cap: "North arrow types."
 #| echo: false
 #| message: false
 #| fig-width: 9
@@ -219,27 +214,26 @@ The `position` argument also works in the same way in other functions, such as `
 
 ## Text annotation {#sec-text-annotation}
 
-<!-- Text on maps serves many purposes - some are related to spatial objects (e.g., text labels, section \@ref(text)), while other are used to inform the map reader about the presented content (e.g., map title, section \@ref(layout-elements)). -->
 Text annotations, also known as map credits, are used to store additional information about the created map.
 They can include the source of data, the name of the author, the date of map creation, or information about the map projection.
-Text annotations are created with the `tm_credits()` function, which can be used more than one time (@fig-credits).
+Text annotations are created with the `tm_credits()` function, which can be used one or more times in the same map (@fig-credits).
 
 ```{r}
 #| label: fig-credits
-#| fig-cap: A map with placeholders for text annotations.
+#| fig-cap: "A map with placeholders for text annotations."
 tm +
   tm_credits("Data source: ", fontface = "italic") +
   tm_credits("Author: ", fontface = "bold")
 ```
 
 The first argument of `tm_credits()` is the text, which can be spread over multiple lines with the line break symbol `\n`.
-When the created map has several facets (@sec-facets), it is also possible to provide each facet a different text.
+When the created map has several facets (@sec-facets), it is also possible to provide each facet with a different text.
 In that case, a vector of characters is expected, where you can use `""` to omit the credits for specific facets.
-Text annotations can also be further customized, by changing their sizes (`size`), colors (`color`), positions, and fonts (@sec-fonts-on-maps).
+Text annotations can also be further customized by changing their sizes (`size`), colors (`color`), positions, and fonts (@sec-fonts-on-maps).
 
 ## Axis labels {#sec-axis-labels}
 
-The `tm_xlab()` and `tm_ylab()` functions add x and y axis labels to the map.
+The `tm_xlab()` and `tm_ylab()` functions add x and y-axis labels to the map.
 These labels can be used to describe the coordinates of the map, such as longitude and latitude, or faceting variables (@sec-customizing-facets).
 
 ```{r}
@@ -251,17 +245,17 @@ tm +
 ```
 
 By default, the x and y-axis labels are placed at the bottom and left sides of the map, respectively, in a horizontal orientation.
-The additional arguments of these functions allow to change the labels' size, color, rotation, space between the labels and the map, and their side.
+The additional arguments of these functions allow changing the labels' size, color, rotation, space between the labels and the map, and their side.
 
 ## Logo {#sec-logo}
 
 Logos on maps can serve a similar purpose as text annotation or accompany them.
-They can represent your affiliation, funding institution, data sources logos, etc.
-The `tm_logo()` function adds png images, either from a file or url, to the map (@fig-logos).
+They can represent your affiliation, funding institution, data sources, logos, etc.
+The `tm_logo()` function adds PNG images, either from a file or URL, to the map (@fig-logos).
 
 ```{r}
 #| label: fig-logos
-#| fig-cap: A map with an array of R logos.
+#| fig-cap: "A map with an array of R logos."
 tm +
   tm_logo("https://www.r-project.org/logo/Rlogo.png",
           height = 2) +
@@ -271,7 +265,7 @@ tm +
 ```
 
 There are two ways to use multiple logos.
-Many `tm_logo()` functions will places logos on top of each other, while providing a vector of png files will show them next to each other.
+Many `tm_logo()` functions place logos on top of each other, while providing a vector of PNG files will show them next to each other.
 Additional arguments include the height of the logo (`height`, the width is scaled automatically) and its position (`position`).
 
 ## Minimap {#sec-minimap}
@@ -281,7 +275,7 @@ The `tm_minimap()` function adds a minimap of a globe to the main map, as illust
 
 ```{r}
 #| label: fig-minimap
-#| fig-cap: A map with a minimap.
+#| fig-cap: "A map with a minimap."
 tm + 
   tm_minimap()
 ```
