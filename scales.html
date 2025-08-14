@@ -399,7 +399,14 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
   <li><a href="#sec-ordinal-scales" id="toc-sec-ordinal-scales" class="nav-link" data-scroll-target="#sec-ordinal-scales"><span class="header-section-number">8.2</span> Ordinal scales</a></li>
   <li><a href="#sec-discrete-scales" id="toc-sec-discrete-scales" class="nav-link" data-scroll-target="#sec-discrete-scales"><span class="header-section-number">8.3</span> Discrete scales</a></li>
   <li><a href="#sec-rank-scales" id="toc-sec-rank-scales" class="nav-link" data-scroll-target="#sec-rank-scales"><span class="header-section-number">8.4</span> Rank scales</a></li>
-  <li><a href="#sec-intervals-scales" id="toc-sec-intervals-scales" class="nav-link" data-scroll-target="#sec-intervals-scales"><span class="header-section-number">8.5</span> Intervals scales</a></li>
+  <li>
+<a href="#sec-intervals-scales" id="toc-sec-intervals-scales" class="nav-link" data-scroll-target="#sec-intervals-scales"><span class="header-section-number">8.5</span> Intervals scales</a>
+  <ul>
+<li><a href="#pretty-breaks" id="toc-pretty-breaks" class="nav-link" data-scroll-target="#pretty-breaks"><span class="header-section-number">8.5.1</span> Pretty breaks</a></li>
+  <li><a href="#manual-breaks" id="toc-manual-breaks" class="nav-link" data-scroll-target="#manual-breaks"><span class="header-section-number">8.5.2</span> Manual breaks</a></li>
+  <li><a href="#automatic-breaks" id="toc-automatic-breaks" class="nav-link" data-scroll-target="#automatic-breaks"><span class="header-section-number">8.5.3</span> Automatic breaks</a></li>
+  </ul>
+</li>
   <li><a href="#sec-continuous-scales" id="toc-sec-continuous-scales" class="nav-link" data-scroll-target="#sec-continuous-scales"><span class="header-section-number">8.6</span> Continuous scales</a></li>
   <li><a href="#sec-asis-scales" id="toc-sec-asis-scales" class="nav-link" data-scroll-target="#sec-asis-scales"><span class="header-section-number">8.7</span> As-is scales</a></li>
   <li><a href="#sec-rgb-scales" id="toc-sec-rgb-scales" class="nav-link" data-scroll-target="#sec-rgb-scales"><span class="header-section-number">8.8</span> RGB scales</a></li>
@@ -424,15 +431,14 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
   
 
 
-</header><p>Sections <a href="visual-variables.html#sec-colors" class="quarto-xref"><span>7.3</span></a>, <a href="visual-variables.html#sec-sizes" class="quarto-xref"><span>7.4</span></a>, and <a href="visual-variables.html#sec-shapes" class="quarto-xref"><span>7.5</span></a> showed how to set colors, sizes, and shapes for different types of spatial objects. In them, we often used the <code>tm_scale()</code> function to modify the appearance of the map, such as changing the color palette (<code>col.scale</code> and <code>fill.scale</code>), sizes (<code>size.scale</code>), or shapes (<code>shape.scale</code>). The <code>tm_scale()</code> function automatically sets the scale for the given visual variable and the data type (factor, numeric, and integer). Thus, for example, when we provide a character variable’s name to the <code>fill</code> argument, then the <code>tm_scale()</code> function automatically sets the color scale for a categorical variable, and when we provide a numeric variable’s name to the <code>size</code> argument, then the <code>tm_scale()</code> function automatically sets the size scale for a continuous variable.</p>
-<p>However, we often want to have more control over how our spatial objects are presented on the map. For that purpose, the <code>tm_scale()</code> function has a set of related functions that can be used to modify and customize the used scale. <a href="#tbl-scale-table" class="quarto-xref">Table&nbsp;<span>8.1</span></a> presents all available scale functions in <strong>tmap</strong>.</p>
-<!-- table -->
+</header><p>Sections <a href="visual-variables.html#sec-colors" class="quarto-xref"><span>7.3</span></a>, <a href="visual-variables.html#sec-sizes" class="quarto-xref"><span>7.4</span></a>, and <a href="visual-variables.html#sec-shapes" class="quarto-xref"><span>7.5</span></a> showed how to set colors, sizes, and shapes for different types of spatial objects. In them, we often used the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function to modify the appearance of the map, such as changing the color palettes (<code>col.scale</code> and <code>fill.scale</code>), sizes (<code>size.scale</code>), or shapes (<code>shape.scale</code>). The <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function automatically sets the scale for the given visual variable and the data type (factor, numeric, and integer). Thus, for example, when we provide a character variable’s name to the <code>fill</code> argument, then the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function automatically sets the color scale for a categorical variable, and when we provide a numeric variable’s name to the <code>size</code> argument, then the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function automatically sets the size scale for a continuous variable.</p>
+<p>However, we often want to have more control over how our spatial objects are presented on the map. For that purpose, the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function comes with several derived functions that can be used to modify and customize the used scale. <a href="#tbl-scale-table" class="quarto-xref">Table&nbsp;<span>8.1</span></a> presents all of them.</p>
 <!-- tmap_options()$scales.var -->
 <!-- add short description of each scale function in the table below? -->
 <div class="cell" data-layout-align="center">
 <div id="tbl-scale-table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-scale-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;8.1: Map scales
+Table&nbsp;8.1: Map scales.
 </figcaption><div aria-describedby="tbl-scale-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="table table-striped do-not-create-environment cell caption-top table-sm small" data-quarto-postprocess="true">
@@ -488,7 +494,7 @@ Table&nbsp;8.1: Map scales
 </figure>
 </div>
 </div>
-<p><a href="#fig-scales" class="quarto-xref">Figure&nbsp;<span>8.1</span></a> shows examples of how some of them look like when applied to the same variable.</p>
+<p><a href="#fig-scales" class="quarto-xref">Figure&nbsp;<span>8.1</span></a> shows examples of how some of them look like when applied to the same variable. In the rest of the chapter, we go through each of the scales in more detail. We mostly focus on using scales for the <code>fill.scale</code> argument, but the same principles apply to the <code>col.scale</code>, <code>size.scale</code>, and <code>shape.scale</code> arguments.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-scales" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
@@ -496,18 +502,23 @@ Table&nbsp;8.1: Map scales
 <img src="figures/fig-scales-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.1: Examples of different scales applied to the same variable
+Figure&nbsp;8.1: Examples of different scales applied to the same variable.
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>Let’s see how to use scales in the following sections – we will mostly focus on using scales for the <code>fill.scale</code> argument, but the same principles apply to the <code>col.scale</code>, <code>size.scale</code>, and <code>shape.scale</code> arguments.</p>
+<p>The examples in this chapter are based on the <code>slo_regions</code> dataset, which contains information about the regions of Slovenia. Let’s read it first.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
+<span><span class="va">slo_regions</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_regions.gpkg"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <section id="sec-categorical-scales" class="level2" data-number="8.1"><h2 data-number="8.1" class="anchored" data-anchor-id="sec-categorical-scales">
 <span class="header-section-number">8.1</span> Categorical scales</h2>
 <p> An example of a categorical map can be seen in <a href="#fig-colorscales2" class="quarto-xref">Figure&nbsp;<span>8.2</span></a>. We created it by providing a character variable’s name, <code>"region_group"</code>, in the <code>fill</code> argument.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"region_group"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"region_group"</span><span class="op">)</span></span>
 <span><span class="co"># same as:</span></span>
 <span><span class="co"># tm_shape(slo_regions) +</span></span>
 <span><span class="co">#   tm_polygons(fill = "region_group", fill.scale = tm_scale_categorical())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -522,14 +533,14 @@ Figure&nbsp;8.2: Example of a map in which polygons are colored based on the val
 </div>
 </div>
 </div>
-<p>The <code>tm_polygons(fill = "region_group", fill.scale = tm_scale_categorical())</code> code is run automatically in the background in this case. It is possible to change the names of legend labels with the <code>labels</code> argument of the <code>tm_scale()</code> function. As mentioned in the <a href="visual-variables.html#sec-colors" class="quarto-xref"><span>Section 7.3</span></a> we can also change the used color palette with the <code>values</code> argument.</p>
+<p>The <code>tm_polygons(fill = "region_group", fill.scale = tm_scale_categorical())</code> code is run automatically in the background in this case. It is possible to change the names of legend labels with the <code>labels</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function. As mentioned in the <a href="visual-variables.html#sec-colors" class="quarto-xref"><span>Section 7.3</span></a>, we can also change the color palette with the <code>values</code> argument.</p>
 </section><section id="sec-ordinal-scales" class="level2" data-number="8.2"><h2 data-number="8.2" class="anchored" data-anchor-id="sec-ordinal-scales">
 <span class="header-section-number">8.2</span> Ordinal scales</h2>
-<p>The ordinal scale is similar to the categorical scale, but it is used for ordered categorical variables. By default, this scale uses a sequential color palette, which is suitable for ordered categorical variables <a href="#fig-ordinal-scales" class="quarto-xref">Figure&nbsp;<span>8.3</span></a>. We may use <code>tm_scale_ordinal()</code> when the order of the values matters to highlight some hierarchy or ranking.</p>
+<p>The ordinal scale is similar to the categorical scale, but it is used for ordered categorical variables. By default, this scale uses a sequential color palette, which is suitable for ordered categorical variables (<a href="#fig-ordinal-scales" class="quarto-xref">Figure&nbsp;<span>8.3</span></a>). We may use <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale_categorical.html">tm_scale_ordinal()</a></code> when the order of the values matters to highlight a hierarchy or ranking.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"region_group"</span>,</span>
-<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_ordinal</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"region_group"</span>,</span>
+<span>              fill.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_categorical.html">tm_scale_ordinal</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-ordinal-scales" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ordinal-scales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -543,11 +554,11 @@ Figure&nbsp;8.3: Example of a map in which polygons are colored based on the val
 </div>
 </section><section id="sec-discrete-scales" class="level2" data-number="8.3"><h2 data-number="8.3" class="anchored" data-anchor-id="sec-discrete-scales">
 <span class="header-section-number">8.3</span> Discrete scales</h2>
-<!-- Martijn: a better example is probably needed here -- we could add some new variable to the data. Also -- should the value 1.5 be shown here? -->
+<!-- Martijn: a better example is probably needed here -- we could add some new variable to the data. -->
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"urbn_type"</span>,</span>
-<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_discrete</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"urbn_type"</span>,</span>
+<span>              fill.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_discrete.html">tm_scale_discrete</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-discrete-scales" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-discrete-scales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -565,38 +576,117 @@ Figure&nbsp;8.4: Example of a map in which polygons are colored based on the val
 </section><section id="sec-intervals-scales" class="level2" data-number="8.5"><h2 data-number="8.5" class="anchored" data-anchor-id="sec-intervals-scales">
 <span class="header-section-number">8.5</span> Intervals scales</h2>
 <!-- optimal number of classes? 3-7 -->
-<p> Intervals scales are used to represent continuous numerical variables using set of class intervals. In other words, values are divided into several groups based on their properties. Several approaches can be used to convert continuous variables to intervals, and each of them could result in different groups of values. <!-- **tmap** has several different methods that can be specified with by the one of the functions from the `tm_scale_` family. --> Most of them use the <strong>classInt</strong> package <span class="citation" data-cites="R-classInt">(<a href="references.html#ref-R-classInt" role="doc-biblioref">Bivand 2020</a>)</span> in the background, therefore some additional information can be found in the <code>?classIntervals</code> function’s documentation.</p>
-<p>By default, the <code>tm_scale_intervals()</code> function is used in the background (<a href="#fig-intervals-methods-1" class="quarto-xref">Figure&nbsp;<span>8.5 (a)</span></a>). It uses a style called “pretty”, which creates breaks that are whole numbers and spaces them evenly <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p> Interval scales are used to represent continuous numerical variables using a set of class intervals. In other words, values are divided into several groups based on their properties. Several approaches can be used to convert continuous variables to intervals, and each of them could result in different groupings of values (<a href="#tbl-style-table" class="quarto-xref">Table&nbsp;<span>8.2</span></a>).<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-style-table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-style-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;8.2: Styles available to create intervals maps.
+</figcaption><div aria-describedby="tbl-style-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="table table-striped do-not-create-environment cell caption-top table-sm small" data-quarto-postprocess="true">
+<thead><tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Style</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Description</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left; width: 4cm; font-family: monospace;">"pretty"</td>
+<td style="text-align: left; width: 8cm;">Pretty breaks</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 4cm; font-family: monospace;">"fixed"</td>
+<td style="text-align: left; width: 8cm;">Manual breaks</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 4cm; font-family: monospace;">"equal"</td>
+<td style="text-align: left; width: 8cm;">Equal intervals</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 4cm; font-family: monospace;">"sd"</td>
+<td style="text-align: left; width: 8cm;">Standard deviation intervals</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 4cm; font-family: monospace;">"quantile"</td>
+<td style="text-align: left; width: 8cm;">Quantile intervals</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 4cm; font-family: monospace;">"jenks"</td>
+<td style="text-align: left; width: 8cm;">Jenks optimization breaks</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 4cm; font-family: monospace;">"fisher"</td>
+<td style="text-align: left; width: 8cm;">Fisher's method</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 4cm; font-family: monospace;">"dpih"</td>
+<td style="text-align: left; width: 8cm;">Kernel density estimation breaks</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 4cm; font-family: monospace;">"kmeans"</td>
+<td style="text-align: left; width: 8cm;">K-means clustering breaks</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 4cm; font-family: monospace;">"bclust"</td>
+<td style="text-align: left; width: 8cm;">Bagged clustering breaks</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 4cm; font-family: monospace;">"hclust"</td>
+<td style="text-align: left; width: 8cm;">Hierarchical clustering breaks</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; width: 4cm; font-family: monospace;">"headtails"</td>
+<td style="text-align: left; width: 8cm;">Head/tail breaks</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 4cm; font-family: monospace;">"log10_pretty"</td>
+<td style="text-align: left; width: 8cm;">Logarithmic base-10 breaks</td>
+</tr>
+</tbody>
+</table>
 </div>
-<p>It is also possible to indicate the desired number of classes using the <code>n</code> argument of the <code>tm_scale()</code> function provided to the <code>fill.scale</code> argument. While not every <code>n</code> is possible depending on the input values, <strong>tmap</strong> will try to create a number of classes as close to possible to the preferred one.</p>
-<p>The next approach is to manually select the limits of each break with the <code>breaks</code> argument of <code>tm_scale()</code> (<a href="#fig-intervals-methods-2" class="quarto-xref">Figure&nbsp;<span>8.5 (b)</span></a>). This can be useful when we have some pre-defined breaks, or when we want to compare values between several maps. It expects threshold values for each break, therefore, if we want to have three breaks, we need to provide four thresholds. Additionally, we can add a label to each break with the <code>labels</code> argument.</p>
+</div>
+</figure>
+</div>
+</div>
+<section id="pretty-breaks" class="level3" data-number="8.5.1"><h3 data-number="8.5.1" class="anchored" data-anchor-id="pretty-breaks">
+<span class="header-section-number">8.5.1</span> Pretty breaks</h3>
+<p>By default, the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale_intervals.html">tm_scale_intervals()</a></code> function is used in the background (<a href="#fig-intervals-methods-1" class="quarto-xref">Figure&nbsp;<span>8.5 (a)</span></a>). It uses a style called “pretty”, which creates breaks that are whole numbers and spaces them evenly <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>, </span>
-<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_intervals</span><span class="op">(</span></span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span><span class="op">)</span></span>
+<span><span class="co"># same as:</span></span>
+<span><span class="co"># tm_shape(slo_regions) +</span></span>
+<span><span class="co">#   tm_polygons(fill = "pop_dens", fill.scale = tm_scale_intervals())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>It is also possible to indicate the desired number of classes using the <code>n</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function provided to the <code>fill.scale</code> argument. While not every <code>n</code> is possible depending on the input values, <strong>tmap</strong> will try to create a number of classes as close as possible to the preferred one.</p>
+</section><section id="manual-breaks" class="level3" data-number="8.5.2"><h3 data-number="8.5.2" class="anchored" data-anchor-id="manual-breaks">
+<span class="header-section-number">8.5.2</span> Manual breaks</h3>
+<p>The next approach is to manually select the limits of each break with the <code>breaks</code> argument of <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> (<a href="#fig-intervals-methods-2" class="quarto-xref">Figure&nbsp;<span>8.5 (b)</span></a>). This can be useful when we have some pre-defined breaks or when we want to compare values between several maps. It expects threshold values for each break, therefore, if we want to have three breaks, we need to provide four thresholds.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> Additionally, we can add a label to each break with the <code>labels</code> argument.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>, </span>
+<span>              fill.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_intervals.html">tm_scale_intervals</a></span><span class="op">(</span></span>
 <span>                breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span>, <span class="fl">150</span>, <span class="fl">250</span><span class="op">)</span>,</span>
 <span>                labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span><span class="op">)</span><span class="op">)</span></span>
 <span>              <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Another approach is to create breaks automatically using one of many existing classification methods with the <code>style</code> argument of the <code>tm_scale()</code> function. Three basic methods are <code>"equal"</code>, <code>"sd"</code>, and <code>"quantile"</code> styles. Let’s consider a variable with 100 observations ranging from 0 to 10. The <code>"equal"</code> style divides the range of values into <em>n</em> equal-sized intervals. This style works well when the values change fairly continuously and do not contain any outliers. In <strong>tmap</strong>, we can specify the number of classes with the <code>n</code> argument or the number of classes will be computed automatically <!--?nclass.Sturges-->. For example, when we set <code>n</code> to 4, then our breaks will represent four classes ranging from 0 to 2.5, 2.5 to 5, 5 to 7.5, and 7.5 to 10. The <code>"sd"</code> style represents how much values of a given variable varies from its mean, with each interval having a constant width of the standard deviation. This style is used when it is vital to show how values relate to the mean. The <code>"quantile"</code> style creates several classes with exactly the same number of objects (e.g., spatial features), but having intervals of various lengths. This method has an advantage or not having any empty classes or classes with too few or too many values. However, the resulting intervals from the <code>"quantile"</code> style can often be misleading, with very different values located in the same class.</p>
-<p>To create classes that, on the one hand, contain similar values, and on the other hand, are different from the other classes, we can use some optimization method. The most common optimization method used in cartography is the Jenks optimization method implemented at the <code>"jenks"</code> style (<a href="#fig-intervals-methods-3" class="quarto-xref">Figure&nbsp;<span>8.5 (c)</span></a>).</p>
+</section><section id="automatic-breaks" class="level3" data-number="8.5.3"><h3 data-number="8.5.3" class="anchored" data-anchor-id="automatic-breaks">
+<span class="header-section-number">8.5.3</span> Automatic breaks</h3>
+<p>Another approach is to create breaks automatically using one of many existing classification methods with the <code>style</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function. Three basic methods are <code>"equal"</code>, <code>"sd"</code>, and <code>"quantile"</code> styles. Let’s consider a variable with 100 observations with values ranging from 0 to 10. The <code>"equal"</code> style divides them into <em>n</em> equal-sized intervals. This style works well when the values change fairly continuously and do not contain any outliers. In <strong>tmap</strong>, the number of classes will be computed automatically<!--?nclass.Sturges--> or we can specify the number of classes with the <code>n</code> argument. For example, when we set <code>n</code> to 4, then our breaks will represent four classes ranging from 0 to 2.5, 2.5 to 5, 5 to 7.5, and 7.5 to 10. The <code>"sd"</code> style represents how much the values of a given variable vary from its mean, with each interval having a constant width of the standard deviation. This style is used when it is vital to show how values relate to the mean. The <code>"quantile"</code> style creates several classes with exactly the same number of objects (e.g., spatial features), but having intervals of various lengths. This method has an advantage in that it does not have any empty classes or classes with too few or too many values. However, the resulting intervals from the <code>"quantile"</code> style can often be misleading, with very different values located in the same class.</p>
+<p>To create classes that, on the one hand, contain similar values, and on the other hand, are different from the other classes, we can use an optimization method. The most common one used in cartography is the Jenks optimization method implemented as the <code>"jenks"</code> style (<a href="#fig-intervals-methods-3" class="quarto-xref">Figure&nbsp;<span>8.5 (c)</span></a>).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>, </span>
-<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_intervals</span><span class="op">(</span>style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>, </span>
+<span>              fill.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_intervals.html">tm_scale_intervals</a></span><span class="op">(</span>style <span class="op">=</span> <span class="st">"jenks"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The Fisher method (<code>style = "fisher"</code>) has a similar role, which creates groups with maximized homogeneity <span class="citation" data-cites="fisher_grouping_1958">(<a href="references.html#ref-fisher_grouping_1958" role="doc-biblioref">Fisher 1958</a>)</span>. A different approach is used by the <code>dpih</code> style, which uses kernel density estimations to select the width of the intervals <span class="citation" data-cites="wand_databased_1997">(<a href="references.html#ref-wand_databased_1997" role="doc-biblioref">Wand 1997</a>)</span>. You can visit <code><a href="https://rdrr.io/pkg/KernSmooth/man/dpih.html">?KernSmooth::dpih</a></code> for more details.</p>
-<p>Another group of classification methods uses existing clustering methods. It includes k-means clustering (<code>"kmeans"</code>), bagged clustering (<code>"bclust"</code>), and hierarchical clustering (<code>"hclust"</code>). <!-- ... --></p>
+<p>Another group of classification methods uses existing clustering methods. It includes k-means clustering (<code>"kmeans"</code>), bagged clustering (<code>"bclust"</code>), and hierarchical clustering (<code>"hclust"</code>). They create classes based on the similarity of values, where the number of classes is specified with the <code>n</code> argument.</p>
 <p>Finally, there are a few methods created to work well for a variable with a heavy-tailed distribution, including <code>"headtails"</code> and <code>"log10_pretty"</code>. The <code>"headtails"</code> style is an implementation of the head/tail breaks method aimed at heavily right-skewed data. In it, values of the given variable are being divided around the mean into two parts, and the process continues iteratively for the values above the mean (the head) until the head part values are no longer heavy-tailed distributed <span class="citation" data-cites="jiang_head_2013">(<a href="references.html#ref-jiang_head_2013" role="doc-biblioref">Jiang 2013</a>)</span>. The <code>"log10_pretty"</code> style uses a logarithmic base-10 transformation (<a href="#fig-intervals-methods-4" class="quarto-xref">Figure&nbsp;<span>8.5 (d)</span></a>). In this style, each class starts with a value ten times larger than the beginning of the previous class. In other words, each following class shows us the next order of magnitude. This style allows for a better distinction between low, medium, and high values. However, maps with logarithmically transformed variables are usually less intuitive for the readers and require more attention from them.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>, </span>
-<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_intervals</span><span class="op">(</span>style <span class="op">=</span> <span class="st">"log10_pretty"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>, </span>
+<span>              fill.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_intervals.html">tm_scale_intervals</a></span><span class="op">(</span>style <span class="op">=</span> <span class="st">"log10_pretty"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<!-- intervals -->
 <div id="fig-intervals-methods" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-intervals-methods-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
@@ -606,7 +696,7 @@ Figure&nbsp;8.4: Example of a map in which polygons are colored based on the val
 <img src="figures/fig-intervals-methods-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-intervals-methods">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-intervals-methods-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) The “pretty” method
+(a) “pretty” method
 </figcaption></figure>
 </div>
 </div>
@@ -616,7 +706,7 @@ Figure&nbsp;8.4: Example of a map in which polygons are colored based on the val
 <img src="figures/fig-intervals-methods-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-intervals-methods">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-intervals-methods-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b) The “fixed” method
+(b) “fixed” method
 </figcaption></figure>
 </div>
 </div>
@@ -628,7 +718,7 @@ Figure&nbsp;8.4: Example of a map in which polygons are colored based on the val
 <img src="figures/fig-intervals-methods-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-intervals-methods">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-intervals-methods-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(c) The “jenks” method
+(c) “jenks” method
 </figcaption></figure>
 </div>
 </div>
@@ -638,37 +728,37 @@ Figure&nbsp;8.4: Example of a map in which polygons are colored based on the val
 <img src="figures/fig-intervals-methods-4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-intervals-methods">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-intervals-methods-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(d) The “log10_pretty” method
+(d) “log10_pretty” method
 </figcaption></figure>
 </div>
 </div>
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-intervals-methods-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.5: Examples of four methods of creating intervals maps
+Figure&nbsp;8.5: Examples of four methods of creating intervals maps.
 </figcaption></figure>
 </div>
 <!-- The numeric variable can be either regarded as a continuous variable or a count (integer) variable. See as.count. Only applicable if style is "pretty", "fixed", or "log10_pretty". -->
-</section><section id="sec-continuous-scales" class="level2" data-number="8.6"><h2 data-number="8.6" class="anchored" data-anchor-id="sec-continuous-scales">
+</section></section><section id="sec-continuous-scales" class="level2" data-number="8.6"><h2 data-number="8.6" class="anchored" data-anchor-id="sec-continuous-scales">
 <span class="header-section-number">8.6</span> Continuous scales</h2>
-<p> Continuous maps also represent continuous numerical variables, but without any discrete class intervals (<a href="#fig-cont-methods" class="quarto-xref">Figure&nbsp;<span>8.6</span></a>). A few continuous methods exist in <strong>tmap</strong>, including <code>tm_scale_continuous()</code>, <code>tm_scale_rank()</code>, and <code>tm_scale_continuous_log10()</code>.</p>
-<p>The <code>tm_scale_continuous()</code> function creates a smooth, linear gradient. In other words, the change in values is proportionally related to the change in colors. We can see that in <a href="#fig-cont-methods-1" class="quarto-xref">Figure&nbsp;<span>8.6 (a)</span></a>, where the value change from 50 to 100 has a similar impact on the color scale as the value change from 100 to 150. The continuous scale is similar to the pretty style, where the values also change linearly. The main difference between them is that we can see differences between, for example, values of 110 and 140 in the former, while both values have exactly the same color in the later one. The continuous scale works well in situations where there is a large number of objects in vectors or a large number of cells in rasters, and where the values change continuously (do not have many outliers).</p>
+<p> Continuous maps also represent continuous numerical variables, but without any discrete class intervals (<a href="#fig-cont-methods" class="quarto-xref">Figure&nbsp;<span>8.6</span></a>). A few continuous methods exist in <strong>tmap</strong>, including <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale_continuous.html">tm_scale_continuous()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale_rank.html">tm_scale_rank()</a></code>, and <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale_continuous.html">tm_scale_continuous_log10()</a></code>.</p>
+<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale_continuous.html">tm_scale_continuous()</a></code> function creates a smooth, linear gradient. In other words, the change in values is proportionally related to the change in colors. We can see that in <a href="#fig-cont-methods-1" class="quarto-xref">Figure&nbsp;<span>8.6 (a)</span></a>, where the value change from 50 to 100 has a similar impact on the color scale as the value change from 100 to 150. The continuous scale is similar to the pretty style, where the values also change linearly. The main difference between them is that we can distinguish between, for example, values of 110 and 140 in the former, while both values have exactly the same color in the latter. The continuous scale works well in situations where there is a large number of spatial vector objects or a large number of raster cells, and where the values change continuously (do not have many outliers).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>,</span>
-<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_continuous</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>,</span>
+<span>              fill.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_continuous.html">tm_scale_continuous</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>However, when the presented variable is skewed or have some outliers, we can use either <code>tm_scale_rank()</code> or <code>tm_scale_continuous_log10()</code>. The <code>tm_scale_rank()</code> scale also uses a smooth gradient with a large number of colors, but the values on the legend do not change linearly (<a href="#fig-cont-methods-2" class="quarto-xref">Figure&nbsp;<span>8.6 (b)</span></a>). <!--JN: Martijn please check the next sentence --> It is fairly analogous to the <code>"quantile"</code> style, with the values on a color scale that divides a dataset into several equal-sized groups.</p>
+<p>However, when the presented variable is skewed or has some outliers, we can use either <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale_rank.html">tm_scale_rank()</a></code> or <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale_continuous.html">tm_scale_continuous_log10()</a></code>. The <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale_rank.html">tm_scale_rank()</a></code> scale also uses a smooth gradient with a large number of colors, but the values on the legend do not change linearly (<a href="#fig-cont-methods-2" class="quarto-xref">Figure&nbsp;<span>8.6 (b)</span></a>). <!--JN: Martijn, please check the next sentence for correctness--> It is fairly analogous to the <code>"quantile"</code> style, with the values on a color scale that divides a dataset into several equal-sized groups.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>,</span>
-<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_rank</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>,</span>
+<span>              fill.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_rank.html">tm_scale_rank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Finally, the <code>tm_scale_continuous_log10()</code> scale is the continuous equivalent of the <code>"log10_pretty"</code> style of <code>tm_scale_intervals()</code> (<a href="#fig-cont-methods-3" class="quarto-xref">Figure&nbsp;<span>8.6 (c)</span></a>).</p>
+<p>Finally, the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale_continuous.html">tm_scale_continuous_log10()</a></code> scale is the continuous equivalent of the <code>"log10_pretty"</code> style of <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale_intervals.html">tm_scale_intervals()</a></code> (<a href="#fig-cont-methods-3" class="quarto-xref">Figure&nbsp;<span>8.6 (c)</span></a>).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>,</span>
-<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_continuous_log10</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>,</span>
+<span>              fill.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_continuous.html">tm_scale_continuous_log10</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-nrow="3" data-layout-align="center">
 <div id="fig-cont-methods" class="quarto-layout-panel">
@@ -680,7 +770,7 @@ Figure&nbsp;8.5: Examples of four methods of creating intervals maps
 <img src="figures/fig-cont-methods-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-cont-methods">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cont-methods-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) The “continuous” method
+(a) “continuous” method
 </figcaption></figure>
 </div>
 </div>
@@ -692,7 +782,7 @@ Figure&nbsp;8.5: Examples of four methods of creating intervals maps
 <img src="figures/fig-cont-methods-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-cont-methods">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cont-methods-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b) The “rank” method
+(b) “rank” method
 </figcaption></figure>
 </div>
 </div>
@@ -704,31 +794,31 @@ Figure&nbsp;8.5: Examples of four methods of creating intervals maps
 <img src="figures/fig-cont-methods-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-cont-methods">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cont-methods-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(c) The “log10” method
+(c) “log10” method
 </figcaption></figure>
 </div>
 </div>
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cont-methods-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.6: Examples of three methods of creating continuous maps
+Figure&nbsp;8.6: Examples of three methods of creating continuous maps.
 </figcaption></figure>
 </div>
 </div>
 </section><section id="sec-asis-scales" class="level2" data-number="8.7"><h2 data-number="8.7" class="anchored" data-anchor-id="sec-asis-scales">
 <span class="header-section-number">8.7</span> As-is scales</h2>
-<p>In most cases, we want to use a color scale based on the variable’s values. Then, <strong>tmap</strong> takes these values, groups them into classes, and assigns a color to each class. However, it is also possible to use the values of the variables directly to specify the fill color or other visual properties of the spatial objects. For example, your spatial vector data may contain a column with colors, such as <code>"blue"</code>, <code>"red"</code>, and <code>"green"</code>, and then we want to use these colors directly to color the polygons. This is known as an as-is scale, and it can be used with the <code>tm_scale_asis()</code> function.</p>
-<p>For example, let’s take a look at the <code>urbn_type_col</code> variable in the <code>slo_regions</code> dataset. It contains the names of the colors (in a hexadecimal format) that we want to use to color the polygons.</p>
+<p>In most cases, we want to use a color scale based on the variable’s values. Then, <strong>tmap</strong> takes these values, groups them into classes, and assigns a color to each class. However, it is also possible to use the values of the variables directly to specify the fill color or other visual properties of the spatial objects. For example, your spatial vector data may contain a column with colors, such as <code>"blue"</code>, <code>"red"</code>, and <code>"green"</code>, and then we want to use these colors directly to color the polygons. This is known as an as-is scale, and it can be used with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale_asis.html">tm_scale_asis()</a></code> function.</p>
+<p>Let’s take a look at the <code>urbn_type_col</code> variable in the <code>slo_regions</code> dataset. It contains the names of the colors (in a hexadecimal format) that we want to use to color the polygons.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">slo_regions</span><span class="op">$</span><span class="va">urbn_type_col</span></span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">slo_regions</span><span class="op">$</span><span class="va">urbn_type_col</span></span>
 <span><span class="co">#&gt;  [1] "#994F88" "#994F88" "#994F88" "#994F88" "#994F88" "#994F88" "#994F88"</span></span>
 <span><span class="co">#&gt;  [8] "#994F88" "#2CA02C" "#2CA02C" "#994F88" "#2CA02C"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To fill each polygon with the color specified in the <code>urbn_type_col</code> variable, we should specify that column with the <code>fill</code> argument of the <code>tm_polygons()</code> function and then set the <code>fill.scale</code> argument to <code>tm_scale_asis()</code> (<a href="#fig-asis-scales" class="quarto-xref">Figure&nbsp;<span>8.7</span></a>).</p>
+<p>To fill each polygon with the color specified in the <code>urbn_type_col</code> variable, we should specify that column with the <code>fill</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code> function and then set the <code>fill.scale</code> argument to <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale_asis.html">tm_scale_asis()</a></code> (<a href="#fig-asis-scales" class="quarto-xref">Figure&nbsp;<span>8.7</span></a>).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"urbn_type_col"</span>,</span>
-<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_asis</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"urbn_type_col"</span>,</span>
+<span>              fill.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_asis.html">tm_scale_asis</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-asis-scales" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-asis-scales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -741,19 +831,19 @@ Figure&nbsp;8.7: Example of a map in which polygons are directly colored based o
 </div>
 </div>
 <p>This scale does not return any legend – it is not needed, as the colors are already specified in the data.</p>
-<p>The <code>tm_scale_asis()</code> function can be used not only for the <code>fill</code> argument, but also for the <code>col</code>, <code>size</code>, <code>shape</code>, and other similar arguments. In such cases, the values of the variable should be appropriate for the visual property, e.g., a set of colors for <code>col</code> or a set of numeric values, representing sizes, for <code>size</code> and, representing shapes for <code>shape</code>.</p>
+<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale_asis.html">tm_scale_asis()</a></code> function can be used not only for the <code>fill</code> argument, but also for the <code>col</code>, <code>size</code>, <code>shape</code>, and other related arguments. In such cases, the values of the variable should be appropriate for the visual property, e.g., a set of colors for <code>col</code> or a set of numeric values representing sizes, for <code>size</code>, and representing shapes for <code>shape</code>.</p>
 </section><section id="sec-rgb-scales" class="level2" data-number="8.8"><h2 data-number="8.8" class="anchored" data-anchor-id="sec-rgb-scales">
 <span class="header-section-number">8.8</span> RGB scales</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/stars/">stars</a></span><span class="op">)</span></span>
-<span><span class="va">sat</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_mosaic.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/">terra</a></span><span class="op">)</span></span>
+<span><span class="va">sat</span> <span class="op">=</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html">rast</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_mosaic.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The <code>sat</code> object contains four bands of the Sentinel-2 image for Slovenia. The bands (blue, green, red, and near-infrared) are stored in the <code>band</code> dimension as <code>B02</code>, <code>B03</code>, <code>B04</code>, and <code>B08</code>. We can plot all of the bands independently or as a combination of three bands. This combination is known as a color composite image, and we can create such images with the <code>tm_rgb()</code> function (<a href="#fig-tmrgbs" class="quarto-xref">Figure&nbsp;<span>8.8</span></a>).</p>
-<p>Standard composite image (true color composite) uses the visible red, green, and blue bands to represent the data in natural colors. We can specify which band in <code>sat</code> relates to red (third band), green (second band), and blue (first band) color in <code>tm_rgb()</code> with the <code>tm_vars()</code> function. <!-- to update --> <!-- Also, by default, this function expects values from 0 to 255; however, our values are in a different scale, with the maximum value of 31961.  --> <!-- Therefore, to create a map, we can set `max.value` to our dataset's maximum value. --> <!-- The result is a true color composite, with green colors representing forests and other types of vegetation, and yellow color showing bare areas (@fig-tmrgbs-1). --></p>
+<p>The <code>sat</code> <strong>terra</strong> object contains four bands of the Sentinel-2 image for Slovenia. The bands (blue, green, red, and near-infrared) are stored as layer as <code>B02</code>, <code>B03</code>, <code>B04</code>, and <code>B08</code>. We can plot all of the bands independently or as a combination of three bands. This combination is known as a color composite image, and we can create such images with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_rgb.html">tm_rgb()</a></code> function (<a href="#fig-tmrgbs" class="quarto-xref">Figure&nbsp;<span>8.8</span></a>).</p>
+<p>Standard composite image (<em>true color composite</em>) uses the visible red, green, and blue bands to represent the data in natural colors. We can specify which layer in <code>sat</code> relates to red (third band), green (second band), and blue (first band) color in <code><a href="https://r-tmap.github.io/tmap/reference/tm_rgb.html">tm_rgb()</a></code> with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_vars.html">tm_vars()</a></code> function. The result is a true color composite, with green colors representing forests and other types of vegetation, and yellow-ish colors showing bare areas (<a href="#fig-tmrgbs-1" class="quarto-xref">Figure&nbsp;<span>8.8 (a)</span></a>).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">sat</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_rgb</span><span class="op">(</span><span class="fu">tm_vars</span><span class="op">(</span>dimvalues <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"B04"</span>, <span class="st">"B03"</span>, <span class="st">"B02"</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">3</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>         col.scale <span class="op">=</span> <span class="fu">tm_scale_rgb</span><span class="op">(</span>stretch <span class="op">=</span> <span class="cn">TRUE</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.02</span>, <span class="fl">0.98</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">sat</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_rgb.html">tm_rgb</a></span><span class="op">(</span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_vars.html">tm_vars</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"B04"</span>, <span class="st">"B03"</span>, <span class="st">"B02"</span><span class="op">)</span>,  multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>         col.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_rgb.html">tm_scale_rgb</a></span><span class="op">(</span>stretch <span class="op">=</span> <span class="cn">TRUE</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.02</span>, <span class="fl">0.98</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -765,7 +855,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The <code>tm_vars()</code> function allows to specify more than one variable to be visualized at the same time. This is useful when we want to present a few variables as facets or combine multiple variables or layers to create a color composite image (<code>tm_rgb()</code>), a bivariate map, or an animation. It has five arguments:</p>
+<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_vars.html">tm_vars()</a></code> function allows to specify more than one variable to be visualized at the same time. This is useful when we want to present a few variables as facets or combine multiple variables or layers to create a color composite image (<code><a href="https://r-tmap.github.io/tmap/reference/tm_rgb.html">tm_rgb()</a></code>), a bivariate map, or an animation. Its main arguments:</p>
 <ul>
 <li>
 <code>x</code>: variable names, variable indices, or a dimension name (for <code>sf</code>, <code>stars</code>, and <code>SpatRaster</code> objects)</li>
@@ -774,17 +864,16 @@ Note
 <li>
 <code>n</code>: (if specified) the first <em>n</em> variables that are used</li>
 <li>
-<code>multivariate</code>: in case multiple variables are specified, should they serve as facets (FALSE; default) or as a multivariate visual variable?</li>
-<li>
-<code>animate</code>: should the variable(s) be animated?</li>
+<code>multivariate</code>: in case multiple variables are specified, should they serve as facets (FALSE; default) or as a multivariate visual variable? <!-- - `animate`: should the variable(s) be animated? -->
+</li>
 </ul>
 </div>
 </div>
-<p>True color images are straightforward to interpret and understand, but they make subtle differences in features challenging to recognize. However, nothing stops us from using the above tools to integrate different bands to create so called false color composites. Various band combinations emphasize some spatial characteristics, such as water, agriculture, etc., and allow us to visualize wavelengths that our eyes can not see. <!-- add some reference?? --> <a href="#fig-tmrgbs-2" class="quarto-xref">Figure&nbsp;<span>8.8 (b)</span></a> shows a composite of near-infrared, red, and green bands, highlighting vegetation with a bright red color.</p>
+<p>True color images are straightforward to interpret and understand, but they make subtle differences in features challenging to recognize. However, nothing stops us from using the above tools to integrate different bands to create so called <em>false color composites</em>. Various band combinations emphasize some spatial characteristics, such as water, agriculture, etc., and allow us to visualize wavelengths that our eyes can not see. <!-- add some reference?? --> <a href="#fig-tmrgbs-2" class="quarto-xref">Figure&nbsp;<span>8.8 (b)</span></a> shows a composite of near-infrared, red, and green bands, highlighting vegetation with a bright red color.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">sat</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_rgb</span><span class="op">(</span><span class="fu">tm_vars</span><span class="op">(</span>dimvalues <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"B08"</span>, <span class="st">"B04"</span>, <span class="st">"B03"</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">3</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>         col.scale <span class="op">=</span> <span class="fu">tm_scale_rgb</span><span class="op">(</span>stretch <span class="op">=</span> <span class="cn">TRUE</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.02</span>, <span class="fl">0.98</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">sat</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_rgb.html">tm_rgb</a></span><span class="op">(</span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_vars.html">tm_vars</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"B08"</span>, <span class="st">"B04"</span>, <span class="st">"B03"</span><span class="op">)</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>         col.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_rgb.html">tm_scale_rgb</a></span><span class="op">(</span>stretch <span class="op">=</span> <span class="cn">TRUE</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.02</span>, <span class="fl">0.98</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-nrow="1" data-layout-align="center">
 <div id="fig-tmrgbs" class="quarto-layout-panel">
@@ -817,14 +906,22 @@ Figure&nbsp;8.8: Two color composite images
 </figcaption></figure>
 </div>
 </div>
-<!-- explain tm_vars above! -->
+<p>The above examples use <strong>terra</strong>’s <code>SpatRaster</code> objects as input, but the <code><a href="https://r-tmap.github.io/tmap/reference/tm_rgb.html">tm_rgb()</a></code> function can also work with <code>stars</code> objects. For example, we can read the same GeoTIFF file with the <code><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars()</a></code> function and then use the <code><a href="https://r-tmap.github.io/tmap/reference/tm_rgb.html">tm_rgb()</a></code> function to create a color composite image. However, in this case we need to specify the <code>dimvalues</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_vars.html">tm_vars()</a></code> function as the <code>sat_stars</code> object consists of one attribute (<code>x = "slo_mosaic.tif"</code>) with four dimensions (bands; <code>dimvalues = c("B04", "B03", "B02")</code>).</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/stars/">stars</a></span><span class="op">)</span></span>
+<span><span class="va">sat_stars</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_mosaic.tif"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">sat_stars</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_rgb.html">tm_rgb</a></span><span class="op">(</span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_vars.html">tm_vars</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"slo_mosaic.tif"</span>, dimvalues <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"B04"</span>, <span class="st">"B03"</span>, <span class="st">"B02"</span><span class="op">)</span>, </span>
+<span>                 multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>         col.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_rgb.html">tm_scale_rgb</a></span><span class="op">(</span>stretch <span class="op">=</span> <span class="cn">TRUE</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.02</span>, <span class="fl">0.98</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section><section id="sec-bivariate-scales" class="level2" data-number="8.9"><h2 data-number="8.9" class="anchored" data-anchor-id="sec-bivariate-scales">
 <span class="header-section-number">8.9</span> Bivariate scales</h2>
-<p> In cases when we have two variables that we want to visualize, the most common approach is to create two separate maps, one for each variable (<a href="#fig-bivariate-scales1" class="quarto-xref">Figure&nbsp;<span>8.9</span></a>). We can do that using the <code>tm_vars()</code> function, which allows us to specify multiple variables (see the code below) or with the facet functions (see <a href="facets.html" class="quarto-xref"><span>Chapter 16</span></a>).</p>
+<p> In cases when we have two variables that we want to visualize, the most common approach is to create two separate maps, one for each variable (<a href="#fig-bivariate-scales1" class="quarto-xref">Figure&nbsp;<span>8.9</span></a>). We can also do that using the <code><a href="https://r-tmap.github.io/tmap/reference/tm_vars.html">tm_vars()</a></code> function, which allows us to specify multiple variables (see the code below) or with the facet functions (see <a href="facets.html" class="quarto-xref"><span>Chapter 16</span></a>).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="fu">tm_vars</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"pop_dens"</span>, <span class="st">"pop65perc"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>values <span class="op">=</span> <span class="st">"purples"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_vars.html">tm_vars</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"pop_dens"</span>, <span class="st">"pop65perc"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>              fill.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale</a></span><span class="op">(</span>values <span class="op">=</span> <span class="st">"purples"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-bivariate-scales1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-bivariate-scales1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -836,14 +933,13 @@ Figure&nbsp;8.9: Example of two separate maps, one for each variable.
 </div>
 </div>
 </div>
-<!-- Bivariate maps are useful when we want to show the relationship between two variables. -->
 <p>Another approach is to create a bivariate map, where the two variables are combined into a single map. This is done by representing not only the values of each variable independently but also their interaction using a bivariate color scale. <a href="#fig-bivariate-scales2" class="quarto-xref">Figure&nbsp;<span>8.10</span></a> shows an example of a bivariate map, where the population density and the percentage of the population aged 65 and older are combined into a single map. Areas with a small population density and a small percentage of the population aged 65 and older are colored in gray, while areas with a high population density and a high percentage of the population aged 65 and older are colored in dark brown. Additionally, the areas with a high population density and a low percentage of the population aged 65 and older are colored in purple, while areas with a low population density and a high percentage of the population aged 65 and older are colored in gold.</p>
-<p>The creation of bivariate maps is done with the <code>tm_vars()</code> function, where we specify the two variables we want to combine and set the <code>multivariate</code> argument to <code>TRUE</code>. Bivariate maps also require a special color palette, which can be specified with <code>tm_scale_bivariate()</code> provided to the <code>*.scale</code> argument. <!-- advice regarding color palettes? --> Additionally, we can modify the <code>*.legend</code> argument with <code>tm_legend_bivariate()</code>. In the case of bivariate maps, the <code>xlab</code> and <code>ylab</code> arguments are used to add labels to the x and y axes of the legend, respectively.</p>
+<p>The creation of bivariate maps is done with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_vars.html">tm_vars()</a></code> function, where we specify the two variables we want to combine and set the <code>multivariate</code> argument to <code>TRUE</code>. Bivariate maps also require a special color palette, which can be specified with <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale_bivariate.html">tm_scale_bivariate()</a></code> provided to the <code>*.scale</code> argument. <!-- advice regarding color palettes? --> Additionally, we can modify the <code>*.legend</code> argument with <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend_bivariate()</a></code>. In the case of bivariate maps, the <code>xlab</code> and <code>ylab</code> arguments are used to add labels to the x and y axes of the legend, respectively.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="fu">tm_vars</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"pop_dens"</span>, <span class="st">"pop65perc"</span><span class="op">)</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_bivariate</span><span class="op">(</span>values <span class="op">=</span> <span class="st">"purplegold"</span><span class="op">)</span>,</span>
-<span>              fill.legend <span class="op">=</span> <span class="fu">tm_legend_bivariate</span><span class="op">(</span>xlab <span class="op">=</span> <span class="st">"Pop. 65+ %"</span>, </span>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_vars.html">tm_vars</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"pop_dens"</span>, <span class="st">"pop65perc"</span><span class="op">)</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>              fill.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_bivariate.html">tm_scale_bivariate</a></span><span class="op">(</span>values <span class="op">=</span> <span class="st">"purplegold"</span><span class="op">)</span>,</span>
+<span>              fill.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend_bivariate</a></span><span class="op">(</span>xlab <span class="op">=</span> <span class="st">"Pop. 65+ %"</span>, </span>
 <span>                                                ylab <span class="op">=</span> <span class="st">"Pop. density\n(per sq. km)"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-bivariate-scales2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
@@ -856,39 +952,34 @@ Figure&nbsp;8.10: Example of a bivariate map, where two variables are combined i
 </div>
 </div>
 </div>
-<p>The map of a relationship between two variables can also be done for raster data, such as <code>stars</code> objects. Below, we read the monthly average temperature for Slovenia from a GeoTIFF file and then select only the two months of interest – January and July. Our aim is to visualize how winter and summer temperatures differ in Slovenia.</p>
+<p>The map of a relationship between two variables can also be done for raster data, such as <code>SpatRaster</code> and <code>stars</code> objects. Below, we read the monthly average temperature for Slovenia from a GeoTIFF file and then select only the two months of interest – January and July. Our aim is to visualize how winter and summer temperatures differ in Slovenia.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/stars/">stars</a></span><span class="op">)</span></span>
-<span><span class="va">slo_tavg</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_tavg.tif"</span><span class="op">)</span> </span>
-<span><span class="va">slo_tavg</span> <span class="op">=</span> <span class="va">slo_tavg</span><span class="op">[</span>,,,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">7</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/">terra</a></span><span class="op">)</span></span>
+<span><span class="va">slo_tavg</span> <span class="op">=</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html">rast</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_tavg.tif"</span><span class="op">)</span> </span>
+<span><span class="va">slo_tavg</span> <span class="op">=</span> <span class="va">slo_tavg</span><span class="op">[[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">7</span><span class="op">)</span><span class="op">]</span><span class="op">]</span> <span class="co"># select only January and July</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<!-- the color palette below needs to be improved (flipped?) -->
-<p>As you can see below, the syntax to create a bivariate map using <code>tm_vars()</code> is the same as for vector data, except in this case, we use <code>tm_raster()</code> instead of <code>tm_polygons()</code> and provide our variables as a <code>dimvalues</code> argument of <code>tm_vars()</code> (<a href="#fig-tmrastbiv-1" class="quarto-xref">Figure&nbsp;<span>8.11 (a)</span></a>).</p>
+<p>As you can see below, the syntax to create a bivariate map using <code><a href="https://r-tmap.github.io/tmap/reference/tm_vars.html">tm_vars()</a></code> is the same as for vector data, except in this case, we use <code><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster()</a></code> instead of <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code> (<a href="#fig-tmrastbiv-1" class="quarto-xref">Figure&nbsp;<span>8.11 (a)</span></a>).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_tavg</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_raster</span><span class="op">(</span>col <span class="op">=</span> <span class="fu">tm_vars</span><span class="op">(</span>dimvalues <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tavg_1"</span>, <span class="st">"tavg_7"</span><span class="op">)</span>, </span>
-<span>                          multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_tavg</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_vars.html">tm_vars</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tavg_1"</span>, <span class="st">"tavg_7"</span><span class="op">)</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>One important difference between a regular map and a bivariate map is that the latter is based on two scales – and we are able to specify them separately. Thus, all of the scales from sections <a href="#sec-categorical-scales" class="quarto-xref"><span>8.1</span></a> to <a href="#sec-continuous-scales" class="quarto-xref"><span>8.6</span></a> can be used for bivariate maps, and we can use one of them for each variable. <!-- as-is-scales? --> In the example below, we use two scales for the temperature – one for the January temperatures and one for the July temperatures. In both cases, our scales are intervals, but we customize their breaks and add text labels.</p>
+<p>One important difference between a regular map and a bivariate map is that the latter is based on two scales – and we are able to specify them separately. Thus, all of the scales from sections <a href="#sec-categorical-scales" class="quarto-xref"><span>8.1</span></a> to <a href="#sec-continuous-scales" class="quarto-xref"><span>8.6</span></a> can be used for bivariate maps, and we may use one of them for each variable. In the example below, we use two scales for the temperature – one for the January temperatures and one for the July temperatures. In both cases, our scales are intervals, but we customize their breaks and add text labels.</p>
 <p>Another difference is that a regular color scale is one-dimensional – it has only one axis, and thus we can either use its original form (e.g., from light to dark blue) or flip it (e.g., from dark to light blue). A bivariate color scale, on the other hand, is two-dimensional. It has two axes, and this opens up many more possibilities for modifying the scale. In the example below, we are using the <code>"pinkblue"</code> color scale, which, by default, features a gray color at the bottom left, with the vertical axis transitioning to purple and the horizontal axis transitioning to green. The colors mix in the top right corner to form a dark blue. However, in our case, we may consider flipping this color scale along the main diagonal, so that the vertical axis transitions to green, while the horizontal one transitions to purple. This seems more intuitive, as the vertical axis represents January temperatures, which are typically colder than July temperatures in Slovenia.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">tm_shape</span><span class="op">(</span><span class="va">slo_tavg</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">tm_raster</span><span class="op">(</span>col <span class="op">=</span> <span class="fu">tm_vars</span><span class="op">(</span></span>
-<span>              dimvalues <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tavg_1"</span>, <span class="st">"tavg_7"</span><span class="op">)</span>, </span>
-<span>              multivariate <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>            <span class="op">)</span>,</span>
-<span>            col.scale <span class="op">=</span> <span class="fu">tm_scale_bivariate</span><span class="op">(</span></span>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_tavg</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_vars.html">tm_vars</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tavg_1"</span>, <span class="st">"tavg_7"</span><span class="op">)</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>            col.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_bivariate.html">tm_scale_bivariate</a></span><span class="op">(</span></span>
 <span>              values <span class="op">=</span> <span class="st">"//pinkblue"</span>,</span>
-<span>              scale1 <span class="op">=</span> <span class="fu">tm_scale_intervals</span><span class="op">(</span></span>
+<span>              scale1 <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_intervals.html">tm_scale_intervals</a></span><span class="op">(</span></span>
 <span>                breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">8</span>, <span class="op">-</span><span class="fl">4</span>, <span class="fl">0</span>, <span class="fl">4</span>, <span class="fl">8</span><span class="op">)</span>, </span>
 <span>                labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Very cold"</span>, <span class="st">"Cold"</span>, <span class="st">"Mild"</span>, <span class="st">"Warm"</span><span class="op">)</span></span>
 <span>              <span class="op">)</span>,</span>
-<span>              scale2 <span class="op">=</span> <span class="fu">tm_scale_intervals</span><span class="op">(</span></span>
+<span>              scale2 <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale_intervals.html">tm_scale_intervals</a></span><span class="op">(</span></span>
 <span>                breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span>, <span class="fl">25</span><span class="op">)</span>,</span>
 <span>                labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Very cold"</span>, <span class="st">"Cold"</span>, <span class="st">"Mild"</span>, <span class="st">"Warm"</span><span class="op">)</span></span>
 <span>              <span class="op">)</span></span>
 <span>            <span class="op">)</span>,</span>
-<span>            col.legend <span class="op">=</span> <span class="fu">tm_legend_bivariate</span><span class="op">(</span></span>
+<span>            col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend_bivariate</a></span><span class="op">(</span></span>
 <span>              xlab <span class="op">=</span> <span class="st">"July"</span>, ylab <span class="op">=</span> <span class="st">"January"</span>, reverse <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span>            <span class="op">)</span></span>
 <span>          <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -903,7 +994,7 @@ Figure&nbsp;8.10: Example of a bivariate map, where two variables are combined i
 <img src="figures/fig-tmrastbiv-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-tmrastbiv">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmrastbiv-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Simple map
+(a) simple map
 </figcaption></figure>
 </div>
 </div>
@@ -915,22 +1006,22 @@ Figure&nbsp;8.10: Example of a bivariate map, where two variables are combined i
 <img src="figures/fig-tmrastbiv-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-tmrastbiv">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-tmrastbiv-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b) Customized map
+(b) customized map
 </figcaption></figure>
 </div>
 </div>
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmrastbiv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.11: Bivariate maps for raster data
+Figure&nbsp;8.11: Bivariate maps for raster data.
 </figcaption></figure>
 </div>
 <!-- https://github.com/cols4all/cols4all-R/issues/45 -->
-<p>All possible flipping operators for bivariate color scales are shown in <a href="#tbl-flipops-table" class="quarto-xref">Table&nbsp;<span>8.2</span></a>.</p>
+<p>All possible flipping operators for bivariate color scales are shown in <a href="#tbl-flipops-table" class="quarto-xref">Table&nbsp;<span>8.3</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div id="tbl-flipops-table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-flipops-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;8.2: Operators for flipping bivariate color scales
+Table&nbsp;8.3: Operators for flipping bivariate color scales
 </figcaption><div aria-describedby="tbl-flipops-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="table table-striped do-not-create-environment cell caption-top table-sm small" data-quarto-postprocess="true">
@@ -991,9 +1082,6 @@ Figure&nbsp;8.12: Bivariate color scales with different flipping operators
 </div>
 </div>
 </div>
-<!-- OLDER STUFF: -->
-<!-- All of the scales and styles mentioned above work not only for `tm_polygons()` -- they can be also applied for `tm_symbols()` (and its derivatives - `tm_dots()`, `tm_bubbles()`, `tm_squares()`), `tm_lines()`, `tm_fill()`, and `tm_raster()`. -->
-<!-- add  -->
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -1012,7 +1100,9 @@ Wand, M. P. 1997. <span>“Data-<span>Based Choice</span> of <span>Histogram Bin
 </div>
 </section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
-<li id="fn1"><p>For more information visit the <code>?pretty()</code> function documentation<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Most of these approaches in <strong>tmap</strong> use the <strong>classInt</strong> package <span class="citation" data-cites="R-classInt">(<a href="references.html#ref-R-classInt" role="doc-biblioref">Bivand 2020</a>)</span> internally, therefore, some additional information on their use can be found in the <code>?classIntervals</code> function’s documentation.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>For more information, visit the <code>?pretty()</code> function documentation<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>You may also use <code>-Inf</code> and <code>Inf</code> to represent the lowest and highest possible values, respectively.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
