@@ -362,9 +362,9 @@ tm_shape(slo_regions) +
 #| layout-nrow: 3
 #| fig-cap: "Examples of three methods of creating continuous maps."
 #| fig-subcap:
-#|   - '"continuous"' method
-#|   - '"rank"' method
-#|   - '"log10"' method
+#|   - '"continuous" method'
+#|   - '"rank" method'
+#|   - '"log10" method'
 <<cont-methods1>>
 <<cont-methods2>>
 <<cont-methods3>>
