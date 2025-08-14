@@ -44,6 +44,8 @@ y = x^2 # square of x
 
 Captions should not contain any markdown characters, e.g. `*` or `_`. 
 References in captions also should be avoided.
+The main caption (`fig-cap`) should start with a capital letter and end with a period.
+The subcaptions (`fig-subcap`) should start with a lowercase letter and do not end with a period.
 
 # Figures
 
