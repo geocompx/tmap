@@ -491,7 +491,7 @@ Table&nbsp;8.1: Map scales
 <p><a href="#fig-scales" class="quarto-xref">Figure&nbsp;<span>8.1</span></a> shows examples of how some of them look like when applied to the same variable.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-scales" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
+<div id="fig-scales" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-scales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-scales-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -512,7 +512,7 @@ Figure&nbsp;8.1: Examples of different scales applied to the same variable
 <span><span class="co"># tm_shape(slo_regions) +</span></span>
 <span><span class="co">#   tm_polygons(fill = "region_group", fill.scale = tm_scale_categorical())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-colorscales2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
+<div id="fig-colorscales2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-colorscales2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-colorscales2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -531,7 +531,7 @@ Figure&nbsp;8.2: Example of a map in which polygons are colored based on the val
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"region_group"</span>,</span>
 <span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_ordinal</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-ordinal-scales" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
+<div id="fig-ordinal-scales" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ordinal-scales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-ordinal-scales-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -549,7 +549,7 @@ Figure&nbsp;8.3: Example of a map in which polygons are colored based on the val
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"urbn_type"</span>,</span>
 <span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_discrete</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-discrete-scales" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
+<div id="fig-discrete-scales" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-discrete-scales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-discrete-scales-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -730,7 +730,7 @@ Figure&nbsp;8.6: Examples of three methods of creating continuous maps
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"urbn_type_col"</span>,</span>
 <span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale_asis</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-asis-scales" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
+<div id="fig-asis-scales" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-asis-scales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-asis-scales-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -826,7 +826,7 @@ Figure&nbsp;8.8: Two color composite images
 <span>  <span class="fu">tm_polygons</span><span class="op">(</span>fill <span class="op">=</span> <span class="fu">tm_vars</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"pop_dens"</span>, <span class="st">"pop65perc"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>              fill.scale <span class="op">=</span> <span class="fu">tm_scale</span><span class="op">(</span>values <span class="op">=</span> <span class="st">"purples"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-bivariate-scales1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
+<div id="fig-bivariate-scales1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-bivariate-scales1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-bivariate-scales1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -846,7 +846,7 @@ Figure&nbsp;8.9: Example of two separate maps, one for each variable.
 <span>              fill.legend <span class="op">=</span> <span class="fu">tm_legend_bivariate</span><span class="op">(</span>xlab <span class="op">=</span> <span class="st">"Pop. 65+ %"</span>, </span>
 <span>                                                ylab <span class="op">=</span> <span class="st">"Pop. density\n(per sq. km)"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-bivariate-scales2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
+<div id="fig-bivariate-scales2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-bivariate-scales2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-bivariate-scales2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -981,7 +981,7 @@ Table&nbsp;8.2: Operators for flipping bivariate color scales
 <p>Additionally, <a href="#fig-tmo-bivariate" class="quarto-xref">Figure&nbsp;<span>8.12</span></a> shows how these flipping operators work in action on an example bivariate color scale.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-tmo-bivariate" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
+<div id="fig-tmo-bivariate" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmo-bivariate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-tmo-bivariate-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
