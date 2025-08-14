@@ -536,7 +536,7 @@ Our aim is to visualize how winter and summer temperatures differ in Slovenia.
 ```{r}
 library(terra)
 slo_tavg = rast("data/slovenia/slo_tavg.tif") 
-slo_tavg = slo_tavg[[c(1, 7)] # select only January and July
+slo_tavg = slo_tavg[[c(1, 7)]] # select only January and July
 ```
 
 As you can see below, the syntax to create a bivariate map using `tm_vars()` is the same as for vector data, except in this case, we use `tm_raster()` instead of `tm_polygons()` (@fig-tmrastbiv-1).
