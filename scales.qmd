@@ -172,7 +172,6 @@ Several approaches can be used to convert continuous variables to intervals, and
 #| echo: false
 #| label: tbl-style-table
 #| tbl-cap: "Styles available to create intervals maps."
-#| echo: false
 #| warning: false
 #| message: false
 # library(kableExtra)
@@ -320,8 +319,8 @@ The `tm_scale_continuous()` function creates a smooth, linear gradient.
 In other words, the change in values is proportionally related to the change in colors.
 We can see that in @fig-cont-methods-1, where the value change from 50 to 100 has a similar impact on the color scale as the value change from 100 to 150.
 The continuous scale is similar to the pretty style, where the values also change linearly.
-The main difference between them is that we can see differences between, for example, values of 110 and 140 in the former, while both values have exactly the same color in the later one.
-The continuous scale works well in situations where there is a large number of objects in vectors or a large number of cells in rasters, and where the values change continuously (do not have many outliers). 
+The main difference between them is that we can distinguish between, for example, values of 110 and 140 in the former, while both values have exactly the same color in the latter.
+The continuous scale works well in situations where there is a large number of spatial vector objects or a large number of raster cells, and where the values change continuously (do not have many outliers). 
 
 ```{r}
 #| label: cont-methods1
@@ -331,9 +330,9 @@ tm_shape(slo_regions) +
               fill.scale = tm_scale_continuous())
 ```
 
-However, when the presented variable is skewed or have some outliers, we can use either `tm_scale_rank()` or `tm_scale_continuous_log10()`.
+However, when the presented variable is skewed or has some outliers, we can use either `tm_scale_rank()` or `tm_scale_continuous_log10()`.
 The `tm_scale_rank()` scale also uses a smooth gradient with a large number of colors, but the values on the legend do not change linearly (@fig-cont-methods-2).
-<!--JN: Martijn please check the next sentence -->
+<!--JN: Martijn, please check the next sentence for correctness-->
 It is fairly analogous to the `"quantile"` style, with the values on a color scale that divides a dataset into several equal-sized groups.
 
 ```{r}
@@ -361,11 +360,11 @@ tm_shape(slo_regions) +
 #| echo: false
 #| fig-height: 3.46
 #| layout-nrow: 3
-#| fig-cap: "Examples of three methods of creating continuous maps"
+#| fig-cap: "Examples of three methods of creating continuous maps."
 #| fig-subcap:
-#|   - The "continuous" method
-#|   - The "rank" method
-#|   - The "log10" method
+#|   - '"continuous"' method
+#|   - '"rank"' method
+#|   - '"log10"' method
 <<cont-methods1>>
 <<cont-methods2>>
 <<cont-methods3>>
@@ -379,7 +378,7 @@ However, it is also possible to use the values of the variables directly to spec
 For example, your spatial vector data may contain a column with colors, such as `"blue"`, `"red"`, and `"green"`, and then we want to use these colors directly to color the polygons.
 This is known as an as-is scale, and it can be used with the `tm_scale_asis()` function.
 
-For example, let's take a look at the `urbn_type_col` variable in the `slo_regions` dataset.
+Let's take a look at the `urbn_type_col` variable in the `slo_regions` dataset.
 It contains the names of the colors (in a hexadecimal format) that we want to use to color the polygons.
 
 ```{r}
@@ -400,8 +399,8 @@ tm_shape(slo_regions) +
 
 This scale does not return any legend -- it is not needed, as the colors are already specified in the data.
 
-The `tm_scale_asis()` function can be used not only for the `fill` argument, but also for the `col`, `size`, `shape`, and other similar arguments.
-In such cases, the values of the variable should be appropriate for the visual property, e.g., a set of colors for `col` or a set of numeric values, representing sizes, for `size` and, representing shapes for `shape`.
+The `tm_scale_asis()` function can be used not only for the `fill` argument, but also for the `col`, `size`, `shape`, and other related arguments.
+In such cases, the values of the variable should be appropriate for the visual property, e.g., a set of colors for `col` or a set of numeric values representing sizes, for `size`, and representing shapes for `shape`.
 
 ```{r}
 #| echo: false
@@ -416,44 +415,41 @@ tm_shape(slo_regions) +
 
 ```{r}
 #| message: false
-library(stars)
-sat = read_stars("data/slovenia/slo_mosaic.tif")
+library(terra)
+sat = rast("data/slovenia/slo_mosaic.tif")
 ```
 
-The `sat` object contains four bands of the Sentinel-2 image for Slovenia.
-The bands (blue, green, red, and near-infrared) are stored in the `band` dimension as `B02`, `B03`, `B04`, and `B08`.
+The `sat` **terra** object contains four bands of the Sentinel-2 image for Slovenia.
+The bands (blue, green, red, and near-infrared) are stored as layer as `B02`, `B03`, `B04`, and `B08`.
 We can plot all of the bands independently or as a combination of three bands.
 This combination is known as a color composite image, and we can create such images with the `tm_rgb()` function (@fig-tmrgbs).
 
-Standard composite image (true color composite) uses the visible red, green, and blue bands to represent the data in natural colors.
-We can specify which band in `sat` relates to red (third band), green (second band), and blue (first band) color in `tm_rgb()` with the `tm_vars()` function.
-<!-- to update -->
-<!-- Also, by default, this function expects values from 0 to 255; however, our values are in a different scale, with the maximum value of 31961.  -->
-<!-- Therefore, to create a map, we can set `max.value` to our dataset's maximum value. -->
-<!-- The result is a true color composite, with green colors representing forests and other types of vegetation, and yellow color showing bare areas (@fig-tmrgbs-1). -->
+Standard composite image (*true color composite*) uses the visible red, green, and blue bands to represent the data in natural colors.
+We can specify which layer in `sat` relates to red (third band), green (second band), and blue (first band) color in `tm_rgb()` with the `tm_vars()` function.
+The result is a true color composite, with green colors representing forests and other types of vegetation, and yellow-ish colors showing bare areas (@fig-tmrgbs-1).
 
 ```{r}
 #| label: tmrgbs1
 #| eval: false
 tm_shape(sat) +
-  tm_rgb(tm_vars(dimvalues = c("B04", "B03", "B02"), n = 3, multivariate = TRUE),
+  tm_rgb(tm_vars(x = c("B04", "B03", "B02"),  multivariate = TRUE),
          col.scale = tm_scale_rgb(stretch = TRUE, probs = c(0.02, 0.98)))
 ```
 
 ::: {.callout-note}
 The `tm_vars()` function allows to specify more than one variable to be visualized at the same time. 
 This is useful when we want to present a few variables as facets or combine multiple variables or layers to create a color composite image (`tm_rgb()`), a bivariate map, or an animation.
-It has five arguments: 
+Its main arguments: 
 
 - `x`: variable names, variable indices, or a dimension name (for `sf`, `stars`, and `SpatRaster` objects)
 - `dimvalues`: dimension values (for `stars` objects)
 - `n`: (if specified) the first *n* variables that are used
 - `multivariate`: in case multiple variables are specified, should they serve as facets (FALSE; default) or as a multivariate visual variable?
-- `animate`: should the variable(s) be animated?
+<!-- - `animate`: should the variable(s) be animated? -->
 :::
 
 True color images are straightforward to interpret and understand, but they make subtle differences in features challenging to recognize.
-However, nothing stops us from using the above tools to integrate different bands to create so called false color composites.
+However, nothing stops us from using the above tools to integrate different bands to create so called *false color composites*.
 Various band combinations emphasize some spatial characteristics, such as water, agriculture, etc., and allow us to visualize wavelengths that our eyes can not see.
 <!-- add some reference?? -->
 @fig-tmrgbs-2 shows a composite of near-infrared, red, and green bands, highlighting vegetation with a bright red color.
@@ -462,7 +458,7 @@ Various band combinations emphasize some spatial characteristics, such as water,
 #| label: tmrgbs2
 #| eval: false
 tm_shape(sat) +
-  tm_rgb(tm_vars(dimvalues = c("B08", "B04", "B03"), n = 3, multivariate = TRUE),
+  tm_rgb(tm_vars(x = c("B08", "B04", "B03"), multivariate = TRUE),
          col.scale = tm_scale_rgb(stretch = TRUE, probs = c(0.02, 0.98)))
 ```
 
@@ -479,13 +475,27 @@ tm_shape(sat) +
 <<tmrgbs2>>
 ```
 
-<!-- explain tm_vars above! -->
+The above examples use **terra**'s `SpatRaster` objects as input, but the `tm_rgb()` function can also work with `stars` objects.
+For example, we can read the same GeoTIFF file with the `read_stars()` function and then use the `tm_rgb()` function to create a color composite image.
+However, in this case we need to specify the `dimvalues` argument of the `tm_vars()` function as the `sat_stars` object consists of one attribute (`x = "slo_mosaic.tif"`) with four dimensions (bands; `dimvalues = c("B04", "B03", "B02")`).
+
+```{r}
+#| label: tmrgbs1s
+#| eval: false
+#| message: false
+library(stars)
+sat_stars = read_stars("data/slovenia/slo_mosaic.tif")
+tm_shape(sat_stars) +
+  tm_rgb(tm_vars(x = "slo_mosaic.tif", dimvalues = c("B04", "B03", "B02"), 
+                 multivariate = TRUE),
+         col.scale = tm_scale_rgb(stretch = TRUE, probs = c(0.02, 0.98)))
+```
 
 ## Bivariate scales {#sec-bivariate-scales}
 
 \index{Bivariate maps}
 In cases when we have two variables that we want to visualize, the most common approach is to create two separate maps, one for each variable (@fig-bivariate-scales1).
-We can do that using the `tm_vars()` function, which allows us to specify multiple variables (see the code below) or with the facet functions (see @sec-facets).
+We can also do that using the `tm_vars()` function, which allows us to specify multiple variables (see the code below) or with the facet functions (see @sec-facets).
 
 ```{r}
 #| label: fig-bivariate-scales1
@@ -496,7 +506,6 @@ tm_shape(slo_regions) +
               fill.scale = tm_scale(values = "purples"))
 ```
 
-<!-- Bivariate maps are useful when we want to show the relationship between two variables. -->
 Another approach is to create a bivariate map, where the two variables are combined into a single map.
 This is done by representing not only the values of each variable independently but also their interaction using a bivariate color scale.
 @fig-bivariate-scales2 shows an example of a bivariate map, where the population density and the percentage of the population aged 65 and older are combined into a single map.
@@ -520,30 +529,28 @@ tm_shape(slo_regions) +
                                                 ylab = "Pop. density\n(per sq. km)"))
 ```
 
-The map of a relationship between two variables can also be done for raster data, such as `stars` objects.
+The map of a relationship between two variables can also be done for raster data, such as `SpatRaster` and `stars` objects.
 Below, we read the monthly average temperature for Slovenia from a GeoTIFF file and then select only the two months of interest -- January and July.
 Our aim is to visualize how winter and summer temperatures differ in Slovenia.
 
 ```{r}
-library(stars)
-slo_tavg = read_stars("data/slovenia/slo_tavg.tif") 
-slo_tavg = slo_tavg[,,,c(1, 7)]
+library(terra)
+slo_tavg = rast("data/slovenia/slo_tavg.tif") 
+slo_tavg = slo_tavg[[c(1, 7)] # select only January and July
 ```
 
-<!-- the color palette below needs to be improved (flipped?) -->
-As you can see below, the syntax to create a bivariate map using `tm_vars()` is the same as for vector data, except in this case, we use `tm_raster()` instead of `tm_polygons()` and provide our variables as a `dimvalues` argument of `tm_vars()` (@fig-tmrastbiv-1).
+As you can see below, the syntax to create a bivariate map using `tm_vars()` is the same as for vector data, except in this case, we use `tm_raster()` instead of `tm_polygons()` (@fig-tmrastbiv-1).
 
 ```{r}
 #| label: tmrastbiv1
 #| eval: false
 tm_shape(slo_tavg) +
-  tm_raster(col = tm_vars(dimvalues = c("tavg_1", "tavg_7"), 
+  tm_raster(col = tm_vars(x = c("tavg_1", "tavg_7"), 
                           multivariate = TRUE))
 ```
 
 One important difference between a regular map and a bivariate map is that the latter is based on two scales -- and we are able to specify them separately.
-Thus, all of the scales from sections [-@sec-categorical-scales] to [-@sec-continuous-scales] can be used for bivariate maps, and we can use one of them for each variable.
-<!-- as-is-scales? -->
+Thus, all of the scales from sections [-@sec-categorical-scales] to [-@sec-continuous-scales] can be used for bivariate maps, and we may use one of them for each variable.
 In the example below, we use two scales for the temperature -- one for the January temperatures and one for the July temperatures.
 In both cases, our scales are intervals, but we customize their breaks and add text labels.
 
@@ -589,10 +596,10 @@ There are also a few areas where the temperature category is very different betw
 #| message: false
 #| echo: false
 #| layout-ncol: 1
-#| fig-cap: 'Bivariate maps for raster data'
+#| fig-cap: 'Bivariate maps for raster data.'
 #| fig-subcap:
-#|   - 'Simple map'
-#|   - 'Customized map'
+#|   - 'simple map'
+#|   - 'customized map'
 <<tmrastbiv1>>
 <<tmrastbiv2>>
 ```
@@ -668,24 +675,3 @@ to8 = tmo_maker("-\\\\")
 tmap_arrange(to1, to2, to3, to4, to5, to6, to7, to8,
               ncol = 4, nrow = 2, outer.margins = 0)
 ```
-
-
-<!-- OLDER STUFF: -->
-
-<!-- All of the scales and styles mentioned above work not only for `tm_polygons()` -- they can be also applied for `tm_symbols()` (and its derivatives - `tm_dots()`, `tm_bubbles()`, `tm_squares()`), `tm_lines()`, `tm_fill()`, and `tm_raster()`. -->
-<!-- add  -->
-
-```{r}
-#| echo: false
-#| eval: false
-data("metro", package = "tmap")
-data("World_rivers", package = "tmap")
-data("land", package = "tmap")
-tm_shape(metro) +
- tm_symbols(fill = "pop2030", fill.scale = tm_scale_continuous()) 
-tm_shape(World_rivers) +
- tm_lines(col = "strokelwd", col.scale = tm_scale_continuous()) 
-tm_shape(land) +
- tm_raster(col = "elevation", col.scale = tm_scale_continuous()) 
-```
-
