@@ -22,21 +22,19 @@ charts_df = tibble::tribble(
   "tm_chart_violin()", "Violin plot",
   "tm_chart_bar()", "Bar chart",
   "tm_chart_donut()", "Donut chart",
-  "tm_chart_heatmap()", "Heatmap",
-  "tm_chart_none()", "No chart"
+  "tm_chart_heatmap()", "Heatmap"#,
+  # "tm_chart_none()", "No chart"
 )
 ```
 
-<!-- Martijn, why do we need `tm_chart_none()`? -->
+<!-- Martijn, why do we need to show and explain `tm_chart_none()`? -->
 
 ```{r}
 #| label: tbl-layers-table
-#| tbl-cap: "Available chart types"
+#| tbl-cap: "Available chart types."
 #| echo: false
 #| warning: false
 #| message: false
-# tinytable::tt(charts_df) |>
-#   tinytable::style_tt(j = 1, monospace = TRUE)
 charts_df |>
   kableExtra::kbl(escape = FALSE) |>
   kableExtra::kable_styling("striped",
@@ -45,7 +43,7 @@ charts_df |>
   kableExtra::column_spec(1, monospace = TRUE)
 ```
 
-For the examples in this chapter, we will use the Slovenian regions dataset that contains information about the population density, region group, and the percentage of the population aged 65 or more in each region.
+For the examples in this chapter, we use the Slovenian regions dataset that contains information about the population density, region group, and the percentage of the population aged 65 or more in each region.
 
 ```{r}
 #| message: false
@@ -61,7 +59,7 @@ It includes histograms, box plots, violin plots, and donut charts.
 
 Histograms are the most common chart type used to represent the distribution of a numerical variable.
 They show how often each range of values occurs in the data -- helping to understand which values are more common and if there are any outliers.
-To add a histogram to the map, we use the `tm_chart_histogram()` function in the `fill.chart` argument of the `tm_polygons()` function (@fig-chart-hist-1).
+To add a histogram to the map, we use the `tm_chart_histogram()` function in the `fill.chart` argument of a map layer function, such as `tm_polygons()` (@fig-chart-hist-1).
 
 ```{r}
 #| label: hist1
@@ -72,7 +70,7 @@ tm_shape(slo_regions) +
 ```
 
 Such a histogram, like other charts, is automatically placed along the map legend.
-However, we can position them independently of the map legend using the `position` argument of the `tm_chart_*()` and `tm_legend()` functions (@fig-chart-hist-2).
+However, we can position them independently of the map legend using the `position` arguments of the `tm_chart_*()` and `tm_legend()` functions (@fig-chart-hist-2).
 
 ```{r}
 #| label: hist2
@@ -92,8 +90,8 @@ tm_shape(slo_regions) +
 #| label: fig-chart-hist
 #| fig-cap: "Histogram added to a map to represent the distribution of a variable."
 #| fig-subcap: 
-#|   - "Default histogram"
-#|   - "Repositioned histogram"
+#|   - "default histogram"
+#|   - "repositioned histogram"
 #| message: false
 #| echo: false
 #| layout-nrow: 2
@@ -102,10 +100,10 @@ tm_shape(slo_regions) +
 <<hist2>>
 ```
 
-@fig-chart-num shows additional three chart types that can be used for numerical data: box plots, violin plots, and donut charts.
+@fig-chart-num shows three additional chart types that can be used for numerical data: box plots, violin plots, and donut charts.
 They can be added to the map using the `tm_chart_box()`, `tm_chart_violin()`, and `tm_chart_donut()` functions, respectively.
-As you may notice, these charts show similar messages, e.g., than the middle value range is the most common.
-On the other hand, box plots directly show the median and quartiles of the data, violin plots also show the density of the data distribution, and donut charts show the proportions of the data.
+As you may notice, these charts show similar messages, e.g., that the middle value range is the most common.
+Moreover, box plots directly show the median and quartiles of the data, violin plots also show the density of the data distribution, and donut charts show the proportions of the data.
 They also have different aesthetics.
 Thus, the choice of the chart type depends on the message we want to convey and the aesthetics we prefer.
 
@@ -184,12 +182,11 @@ tm_shape(slo_regions) +
 ## Bivariate data
 
 The third group of charts is used for bivariate data, i.e., data that contains two variables.
-It includes a heatmap chart (`tm_chart_heatmap()`) that shows how often each combination of values occurs in the data (@fig-chart-bivariate).
-<!-- one more sentence? -->
+It includes heatmap (`tm_chart_heatmap()`) that shows how often each combination of values from two variables occurs in the data (@fig-chart-bivariate).
 
 ```{r}
 #| label: fig-chart-bivariate
-#| fig-cap: "Bivariate charts used in case of representing a relationship between two numerical variables."
+#| fig-cap: "Bivariate charts used in case to represent relationships between two numerical variables."
 #| message: false
 #| fig-width: 9
 tm_shape(slo_regions) +
@@ -211,15 +208,14 @@ tm_shape(slo_tavg) +
 
 ## Additional chart customization {#sec-charts-customization}
 
-All of the charts are directly based on the visual variables from the map layer and then created using the **ggplot2** package.
+All of the charts are directly based on the visual variables from the map layer and then created internally using the **ggplot2** package (@R-ggplot2).
 By default, however, the charts are much simplified, not showing all the details that **ggplot2** can provide, such as axis labels, titles, and various theme elements.
-<!-- with ggplot2 package and/or book reference -->
 <!-- https://github.com/geocompx/tmap/issues/10#issuecomment-3007409988 -->
 
-At the same time, we may want to customize the charts to fit our map design better or to add more information.
+At the same time, we still may want to customize the charts to fit our map design better or to add more information.
 This can be done with additional arguments of the `tm_chart_*()` functions, such as `plot.axis.x`, `plot.axis.y`, and `extra.ggplot2`.
 The first two are logical arguments that control whether the x and y axes are shown in the chart, respectively.
-The last one, `extra.ggplot2`, is a list of additional **ggplot2** functions that are applied to the chart -- for example, we may want to change the aesthetics of the chart, such as the background color as shown in @fig-chart-ggplot1.
+The last one, `extra.ggplot2`, is a list of additional **ggplot2** functions that are applied to the chart -- for example, we may want to change the aesthetics of the chart, such as the background color, as shown in @fig-chart-ggplot1.
 
 ```{r}
 #| label: fig-chart-ggplot1
@@ -239,7 +235,7 @@ tm_shape(slo_regions) +
 @fig-chart-ggplot2 shows a more advanced modification of the chart.
 It adds x and y axes, next, it adds a title to the chart, flips the chart coordinates, and changes the chart background color and title size.
 Next, it moves the chart to the top left corner of the map and sets its width.
-Having such a customized chart provides all of the important map context information: variable name, unit, ranges of the values and their related colors.
+Having such a customized chart provides all of the essential map context information: variable name, unit, ranges of the values, and their related colors.
 Thus, we can treat it as a map legend and remove the default legend using `fill.legend = tm_legend(show = FALSE)`.
 
 ```{r}
@@ -258,7 +254,7 @@ tm_shape(slo_regions) +
                   theme(plot.background = element_rect(fill = "#FFC067"),
                         plot.title = ggplot2::element_text(size = 10))),
                 position = tm_pos_in("LEFT", "TOP"),
-                width = 20,
+                width = 24,
               ),
               fill.legend = tm_legend(show = FALSE))
 ```
