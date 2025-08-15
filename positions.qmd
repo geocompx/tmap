@@ -27,9 +27,9 @@ To demonstrate the positioning of map components, we will use a simple map with 
 
 ```{r}
 #| message: false
-library(stars)
+library(terra)
 library(tmap)
-slo_elev = read_stars("data/slovenia/slo_elev.tif")
+slo_elev = rast("data/slovenia/slo_elev.tif")
 tm = tm_shape(slo_elev) +
     tm_raster()
 ```
@@ -373,6 +373,7 @@ tm_shape(slo_elev) +
 Each additional map component is placed on the bottom of the previous one if they are in the same location.
 This can be controlled with the `z` argument of the map component functions -- smaller numbers place the component above others.
 
+<!-- any other things worth mentioning? -->
 <!-- , frame_combine = FALSE -->
 <!-- equalize = FALSE -->
 <!-- , offset = 0, stack_margin = 1 -->
