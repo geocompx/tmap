@@ -288,21 +288,20 @@ We just need to remember about the readability of the fonts -- they should not b
 Before we discuss how to set a font family and its face, it is important to highlight that a different set of fonts could exist for each operating system (and even each computer).
 Additionally, which fonts are available and how they are supported depends on the used *graphic device*.
 A graphic device is a place where a plot or map is rendered.
-The most commonly it is a some kind of a screen device, where we can see our plot or map directly after running the R code.
+Most commonly, it is some kind of screen device, where we can see our plot or map directly after running the R code.
 Other graphic devices allow for saving plots or maps as files in various formats (e.g., `.png`, `.jpg`, `.pdf`).
 Therefore, it is possible to get different fonts on your map on the screen, and a (slightly) different one when saved to a file.
 Visit `?Devices` or read the Graphic Devices chapter of @peng2016exploratory to learn more about graphic devices.
 
-The **tmap** package has two mechanism to select a font family.
-The first one is by specifying on of three general font families: `"serif"`, `"sans"`, or `"monospace"`.
-It tries to match selected general font family with a font family existing on the operating system. 
-<!-- https://github.com/r-lib/systemfonts#system-defaults -->
-For example, `"serif"` could the `"Times"` font family, `"sans"` -- `"Helvetica"` or `"Arial"`, and `"monospace"` -- `"Courier"` (@fig-fonts-1).
+The **tmap** package has two mechanisms to select a font family.
+The first one is by specifying one of three general font families: `"serif"`, `"sans"`, or `"monospace"`.
+It tries to match the selected general font family with a font family existing on the operating system^[See <https://github.com/r-lib/systemfonts#system-defaults> for more details.].
+For example, `"serif"` could be the `"Times"` font family, `"sans"` -- `"Helvetica"` or `"Arial"`, and `"monospace"` -- `"Courier"` (@fig-fonts-1).
 The second mechanism allows to select a font family based on its name (e.g., `"Times"` or `"Palatino"`).
 Next, a member of the selected font families can be selected with one of the font faces: `"plain"`, `"italic"`, `"bold"`, and `"bold.italic"` (@fig-fonts-2).
 
 <!-- build-in fonts only -->
-As mentioned before, available fonts depend on the computer setup (including operating system) and used graphic device. 
+As mentioned before, available fonts depend on the computer setup (including operating system) and the used graphics device. 
 Fonts available on the operating system can be checked with the `system_fonts()` function of the **systemfonts** package [@R-systemfonts] (result not shown).
 
 ```{r}
@@ -316,23 +315,20 @@ Information on installing and debugging custom fonts can be found in [a blog pos
 The next step is to either view or save the map.
 This also means that we need to carry over our fonts to the output window/file, which largely depends on the selected graphic device.
 In general, screen device or graphical raster output formats, such as PNG, JPEG, or TIFF, works well with custom fonts as they rasterize them during saving.
-In case of any problems with graphical raster outputs, it is possible to try alternative graphics devices implemented in the **ragg** package [@R-ragg].
+In case of any problems with graphical raster outputs, it is possible to try alternative graphics devices, for example, implemented in the **ragg** package [@R-ragg].^[See @sec-raster-graphic-formats for an example on how to save a map using a different graphics device.]
 On the other hand, graphical vector formats, such as PDF or SVG, could have some problems with saving maps containing custom fonts^[You can get the `invalid font type` error when saving the file.].
 The PDF device in R, by default, adds metadata about the used fonts, but does not store them.
-When the PDF reader shows the document, it tries to locate the font on your computer, and use other fonts when the expected one does not exist.
+When the PDF reader shows the document, it tries to locate the font on your computer, and to use other fonts when the expected one does not exist.
 An alternative approach is called embedding, which adds a copy of each necessary font to the PDF file itself.
 Gladly, the creation of a PDF with proper fonts can be achieved in a few ways.
 Firstly, it could be worth trying some alternative graphic devices such as `cairo_pdf` or `svglite::svglite`.
 The second option is to use the **showtext** package [@R-showtext], which converts text into color-filled polygonal outlines for graphical vector formats.
-<!-- footnote: if/when the device argument is added to tmap_save, then mention saving to ragg/cairo_pdf -->
 Thirdly, the **extrafont** [@R-extrafont] package allows embedding the fonts in the PDF file, which makes PDFs properly displayed on computers that do not have the given font.
-<!-- ref to map_save!! -->
 
 ### Fonts on maps {#sec-fonts-on-maps}
 
-<!-- explain defaults -->
 By default, **tmap** uses the `"sans"` font family with the `"plain"` font face (@fig-fonts). 
-There are, however, three ways to customize the used fonts.
+There are, however, three ways to customize the fonts used.
 The first one is to change all of the fonts and font faces for the whole map at once (@fig-mfonts-1).
 This can be done with the `text.fontfamily` and `text.fontface` arguments of `tm_layout()`.
 
@@ -364,10 +360,10 @@ tm +
 #| label: fig-mfonts
 #| echo: false
 #| layout-nrow: 2
-#| fig-cap: Examples of one font (font family and font face) used for all of the map elements (title, text labels, legend, and text annotation), and different fonts used for different map elements.
+#| fig-cap: "Examples of one font (font family and font face) used for all of the map elements (title, text labels, legend, and text annotation), and different fonts used for different map elements."
 #| fig-subcap:
-#|   - One font for all elements
-#|   - Different fonts for different elements
+#|   - one font for all elements
+#|   - different fonts for different elements
 <<font1>>
 <<font2>>
 ```
@@ -382,17 +378,13 @@ tmap_save(tmt2, "tmt2.png")
 tmap_save(tmt2, "tmt2.pdf")
 ```
 
-<!-- font sizes customization? -->
-
-<!-- ## Legend {#sec-llegend} -->
-
 ## Scale {#sec-scale}
 
 The **tmap** package has a set of default sizes and widths for various map elements, such as the frame, text, borders, symbol sizes, and more.
-In the previous parts of this book, we modify some of these values for selected elements, such as the frame width or text size.
+In the previous parts of this book, we modified some of these values for selected elements, such as the frame width or text size.
 At the same time, we can also change the size of all of the map elements at once -- this is a role of the `scale` argument of the `tm_layout()` function.
-<!-- It accepts a numeric value, where `1` means the default sizes and widths, `0.5` means that all of the map elements are half as large as the default ones, and `1.5` means that all of the map elements are 1.5 times larger than the default ones. -->
-<!-- Martijn: is the above statement correct? -->
+It accepts a numeric value, where `1` means the default sizes and widths, `0.5` means that all of the map elements are half as large as the default ones, and `1.5` means that all of the map elements are 1.5 times larger than the default ones.
+<!-- Martijn, is the above statement correct? -->
 
 ```{r}
 #| label: fig-layout-scale
@@ -409,18 +401,17 @@ tm +
   tm_layout(scale = 1.5)
 ```
 
-<!-- explain when/why it is useful;  -->
-<!-- also maybe connect it to save -->
+Scaling the map elements can be useful when we want to create a more compact map or when we want to make the map more readable by increasing the size of the map elements.
+The `scale` argument also exists in the `tmap_save()` function, which allows us to change the size of the map elements when saving the map to a file (@sec-save).
 
 ## Design mode {#sec-design-mode}
 
-Maps consist of various components, including the map content (with its frame), additional map elements (e.g., credits or a title), and the legend, which are often located in different places.
+Maps consist of various components, including the map content (with its frame), additional map components (e.g., credits or a title), and the legend, which are often located in different places.
 They also have numerous margins -- spaces between data and the frame, spaces between the frame and the plotting, spaces between the icons and the labels, etc.
 
-Many of these properties can be customized, however, it may be difficult to understand the effect of the changes.
-<!-- ... -->
+Many of these properties can be customized, however, it may be challenging to understand the effect of the changes.
 To make it easier, **tmap** has a design mode that can be turned on by setting the `tmap_design_mode()` function to `TRUE`.
-When the design mode is turned on, the map is displayed in a special way: it shows all of the created map content, but also adds various lines and colored areas to the map.
+When the design mode is on, the map is displayed in a special way: it shows all of the created map content, but also adds various lines and colored areas to the map.
 Additionally, it returns a small table in the R console with sizes and an aspect ratio of the device, plot, facets, and map areas.
 
 ```{r}
@@ -435,7 +426,6 @@ Its colors relate to the map and the margins around the map content.
 For example, the map area is colored yellow, the outside cells (used, for instance, for legends and titles) are in light green, and the outer margins are in light blue.
 A complete list of the color codings is shown in @tbl-color-codings.
 
-<!-- update to the actual colors used in the desing mode: -->
 ```{r}
 #| label: tbl-color-codings
 #| tbl-cap: "Color codings of the design mode."
@@ -465,20 +455,23 @@ tinytable::tt(color_codings_df[, 2:3]) |>
 
 The design mode is useful to understand how the map is constructed and how the various arguments of the `tm_layout()` function impact the map layout.
 
-<!-- info that this is limited to the plot mode? -->
 This mode is in place until the `tmap_design_mode()` function is set to `FALSE`.
 In the next few sections, we will show how the design mode can help us to understand the impact of various arguments of the `tm_layout()` function on the aspect ratio and margins of the map.
 
 ## Aspect ratio {#sec-aspect}
 
-<!-- Aspect ratio of each map. When asp is set to NA (default) the aspect ratio will be adjusted to the used shapes. When set to 0 the aspect ratio is adjusted to the size of the device divided by the number of columns and rows. -->
-
 The aspect ratio specifies the relation between the width and height of the map area of the plot.
-For statistical plots, aspect ratios usually adjust to the plotting space -- thus, customization of an aspect ratio is usually not needed.
+In statistical plots, the aspect ratio typically adapts to the available plotting space. 
+For example, a histogram will expand to fill the entire area, whether the plotting space is wider than it is tall, or taller than it is wide.
+Thus, customization of an aspect ratio in statistical plots is usually not needed.
 For maps, this is not the case -- we should not change the relation between the width and height of the data in a map as it has a specific projection that determines the spatial relation between the map features.
 
 By default, the aspect ratio of the *tmap* is set to `NA`, which means that it is adjusted to the used shapes (@fig-layout-example).
-<!--Martijn, please explain the rest of the aspect values in the code/map below -- I do not know what they exactly mean. -->
+<!--Martijn, please check the following statements. Also, I still do not fully understand the difference between 0 and NA-->
+@fig-layout-asp shows how the aspect ratio can be customized with the `asp` argument of the `tm_layout()` function.
+When set to `0`, the aspect ratio is adjusted to the size of the device divided by the number of columns and rows.
+The value of `0.5` means that the map area is half as wide as it is tall, while `2` means that the map area is twice as wide as it is tall.
+The value of `1` means that the map area is square, i.e., the width and height are equal.
 
 ```{r}
 #| label: fig-layout-asp
@@ -505,22 +498,20 @@ tm +
 ## Margins {#sec-lmargins}
 
 Margins are spaces around the map content, which can be used to separate the map from other elements, such as the legend or the title or separate the map from the extent of the plotting area.
-They may serve various purposes, such as to make the map more readable, to avoid overlapping the map content with other elements, to create space for additional elements.
+They may serve various purposes, such as to make the map more readable, to avoid overlapping the map content with other elements, and to create space for additional elements.
 On the other hand, making margins smaller can help to increase the map area or make the map more condensed.
 
 There are several arguments in `tm_layout()` related to margins.
 All of the margin arguments can be customized either with a single value (which is then applied to all sides) or with a vector of four values, which represent the bottom, left, top, and right margins.
 <!-- units? -->
 <!-- The unit is the device height (for bottom and top) or width (for left and right). -->
-The most important margins arguments are `inner.margins` and `outer.margins`.
+The most important margin arguments are `inner.margins` and `outer.margins`.
 <!-- scheme figure showing the order of values? -->
 
-<!-- inner.margins, -->
 The inner margins are spaces between the map content (e.g., symbols, lines, polygons, raster) and the frame of the map (@fig-inner-margins).
 By default, the inner margins are set to `c(0.02, 0.02, 0.02, 0.02)`, which means that there is a 2% margin on each side of the map content (@fig-layout-example).
 An exception to this rule is raster maps, where the inner margins are set to `c(0, 0, 0, 0)` -- meaning that there are no margins around the raster map content -- by default.
 Increasing the inner margins can help to avoid overlapping of the map content with other elements, such as the legend or the title -- for example, we could add some margin on the right side of the map and then place the legend there.
-<!-- mention defaults! -->
 <!-- inner.margins.extra -- ???? -->
 
 ```{r}
@@ -530,7 +521,7 @@ Increasing the inner margins can help to avoid overlapping of the map content wi
 #| layout-ncol: 2
 #| fig-cap: "Impact of the `inner.margins` argument on the map layout."
 #| fig-subcap:
-#|  - "No margins"
+#|  - "no margins"
 #|  - "`c(0.8, 0.4, 0.2, 0)`"
 tm + 
   tm_layout(inner.margins = 0)
@@ -538,11 +529,9 @@ tm +
   tm_layout(inner.margins = c(0.8, 0.4, 0.2, 0))
 ```
 
-<!-- outer.margins, -->
 Outer margins are spaces between the map frame and the plotting area (@fig-outer-margins).
 By default, they are always set to `c(0.02, 0.02, 0.02, 0.02)`, which means that there is a 2% margin outside of the map frame -- giving a small "breathing space" around the map (@fig-layout-example).
 We can increase it on a specific side, for example, to create more space for the legend or other map elements or we can remove it completely to, for example, arrange the map in a grid with other maps (@sec-arranging-maps) (@fig-outer-margins).
-<!-- interplay between margins and plotting device dimensions -->
 
 ```{r}
 #| label: fig-outer-margins
@@ -551,13 +540,16 @@ We can increase it on a specific side, for example, to create more space for the
 #| layout-ncol: 2
 #| fig-cap: "Impact of the `outer.margins` argument on the map layout."
 #| fig-subcap:
-#|  - "No margins"
+#|  - "no margins"
 #|  - "`c(0.08, 0.04, 0.02, 0)`"
 tm + 
   tm_layout(outer.margins = 0)
 tm + 
   tm_layout(outer.margins = c(0.08, 0.04, 0.02, 0))
 ```
+
+
+<!-- interplay between margins and plotting device dimensions/asp -->
 
 <!-- meta.margins  -- ???? -->
 <!-- they are mentioned in the arrangements chapter -- maybe mention + ref -->
