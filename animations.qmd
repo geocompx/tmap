@@ -12,7 +12,7 @@ In **tmap**, animations are created by stitching together a series of static map
 This is done with two types of functions: 
 
 - `tm_animate()` and `tm_animate_fast()`, which create the animation from a **tmap** object
-- `tmap_animation()`, which saves the animation to files in formats, such as GIF and MP4
+- `tmap_animation()`, which saves the animation to files in formats such as GIF and MP4
 
 ## Creating animations
 
@@ -39,22 +39,20 @@ To make it animated, we can use the `tm_animate()` or `tm_animate_fast()` functi
 The difference between the two functions is that `tm_animate()` renders the animation at 2 frames per second (specified by the `fps` argument), while `tm_animate_fast()` renders it at 24 frames per second.
 The former is more suitable for smaller datasets and cases where we want to allow the viewer to read the values on the map, while the latter is more suitable for larger datasets and cases where we want to create a smooth, cinematic animation.
 
-<!-- fix: -->
-<!-- https://github.com/r-tmap/tmap/issues/1150#issuecomment-3044249460 -->
 ```{r}
 #| label: fig-anims
-#| fig-cap: "Animations of GDP per capita in Slovenian regions over time using `tm_animate()`"
+#| fig-cap: "Animations of GDP per capita in Slovenian regions over time using `tm_animate()`."
 tm +
   tm_animate(frame = "time")
 ```
 
 Two main additional arguments for the *animate* functions are `fps` (frames per second) and `play` (playback mode).
 The first one controls the speed of the animation, while the second one controls how the animation is played back: 
-either `"loop"` (default), which plays the animation in a loop, `"once"`, which plays the animation only once and then stops, or `"pingpong"` which plays the animation back and forth (@fig-anims2).
+either `"loop"` (default), which plays the animation in a loop, `"once"`, which plays the animation only once and then stops, or `"pingpong"`, which plays the animation back and forth (@fig-anims2).
 
 ```{r}
 #| label: fig-anims2
-#| fig-cap: "Animations of GDP per capita in Slovenian regions over time with a pingpong playback mode"
+#| fig-cap: "Animations of GDP per capita in Slovenian regions over time with a pingpong playback mode."
 tm +
   tm_animate(frame = "time", fps = 5, play = "pingpong")
 ```
@@ -73,19 +71,20 @@ tm +
 Animations can also be created from raster data, such as satellite imagery or climate data.
 @fig-anims3 shows an example of an animation of the average temperature in Slovenia over monthly time steps.
 First, the raster data is defined, and its scale is set to the continuous one.
-Next, we define the animation using `tm_animate()` and specify the `by` argument to animate by the `band` variable, which represents the time steps in the raster data.
+Next, we define the animation using `tm_animate()`<!--and specify the `by` argument to animate by the `band` variable, which represents the time steps in the raster data-->.
 Finally, we add the borders of Slovenian regions to the map to provide context for the animation.
 
 ```{r}
 #| label: fig-anims3
-#| fig-cap: "Animation of average temperature in Slovenia over time"
+#| fig-cap: "Animation of average temperature in Slovenia over time."
 #| message: false
-library(stars)
-slo_tavg = read_stars("data/slovenia/slo_tavg.tif")
+library(terra)
+slo_tavg = rast("data/slovenia/slo_tavg.tif")
 slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
 tm_shape(slo_tavg) +
-  tm_raster(col.scale = tm_scale_continuous()) +
-  tm_animate(frame = "band", fps = 6) +
+  tm_raster(col.scale = tm_scale_continuous(),
+            col.free = FALSE) +
+  tm_animate(fps = 6) +
   tm_shape(slo_regions) +
   tm_borders()
 ```
