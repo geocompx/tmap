@@ -3,7 +3,7 @@
 source("code/before_script.R")
 ```
 
-# Legends and titles
+# Legends and titles {#sec-legends-and-titles}
 
 This chapter covers legends and titles in **tmap** -- how to create, customize their appearance, and position them on the map.
 The examples in this chapter use the elevation raster data of Slovenia in meters above sea level (*m asl*).
