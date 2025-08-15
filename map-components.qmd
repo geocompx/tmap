@@ -233,7 +233,7 @@ Text annotations can also be further customized by changing their sizes (`size`)
 
 ## Axis labels {#sec-axis-labels}
 
-The `tm_xlab()` and `tm_ylab()` functions add x and y-axis labels to the map.
+The `tm_xlab()` and `tm_ylab()` functions add x and y-axis labels to the map (@fig-axis-labels).
 These labels can be used to describe the coordinates of the map, such as longitude and latitude, or faceting variables (@sec-customizing-facets).
 
 ```{r}
