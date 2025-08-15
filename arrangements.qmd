@@ -7,12 +7,12 @@ source("code/before_script.R")
 
 The **tmap** package offers several tools for arranging multiple maps within a single layout.
 When we want to display one main map and one or more additional maps, we can use `tm_minimap()` or `tm_inset()`.
-The first function adds a small overview map to the main map using a fixed, non-customizable style (@sec-minimap).
-More advanced arrangements can be made with the `tm_inset()` function, which adds a graphical object (including a `tmap` object) to the main map (@sec-inset-maps).
+The first function adds a small overview map to the main map using a fixed, non-customizable style (as we already showed in @sec-minimap).
+More advanced arrangements can be made with the `tm_inset()` function, which adds a graphical object (including a `tmap` object) to the main map (see @sec-inset-maps below).
 
 To create a layout with multiple maps, we have two main options.
-The first one, which is the focus of this chapter, is to use the `tmap_arrange()` function.
-It takes two or more `tmap` objects and arranges them in a grid layout as you can learn in @sec-arrangements and @sec-customizing-arrangements.
+The first one is to use the `tmap_arrange()` function.
+It takes two or more `tmap` objects and arranges them in a grid layout, as you can learn in @sec-arrangements and @sec-customizing-arrangements.
 The second option is to create facets with the `tm_facet()` function, which is described in @sec-facets.
 The main difference is that `tmap_arrange()` combines multiple maps, often based on different data, while `tm_facet()` creates a single map with numerous panels based on the same data.
 
@@ -65,7 +65,7 @@ tm_shape(slo_elev) +
 
 The `tm_inset()` function can also be used to add a `tmap` object as an inset map.
 In the following example, we create a `tmap` object for Slovenia's elevation.
-Importantly, we set the limits of the color scale to match the limits of the elevation data of the main map and remove the legend using the `tm_legend(show = FALSE)` argument.
+Importantly, we set the limits of the color scale to match the limits of the elevation data of the main map and remove the legend using the `tm_legend(show = FALSE)` argument to avoid duplication of the legend in the inset map.
 We also add a scale bar to the inset map using the `tm_scalebar()` function to facilitate a better understanding of the area's size shown in the inset.
 
 ```{r}
@@ -80,8 +80,7 @@ tm_slo_elev = tm_shape(slo_elev) +
 ```
 
 Now, we can create our main map and add the inset map based on the `tm_slo_elev` object (@fig-inset-maps3).
-The main map in our case would be the elevation of Europe, using the same color scale as the inset map -- however, this time, we will include the legend.
-<!-- the other order: main map of Slovenia, large of Europe? I know minimap, but maybe also we can find a way here... -->
+The main map in our case would be the elevation of Europe, using the same color scale as the inset map -- however, this time, we include the legend.
 
 ```{r}
 #| label: fig-inset-maps3
@@ -101,12 +100,13 @@ tm_shape(worldelevation, bbox = "Europe") +
 ```
 
 The **ggplot2** package can also be used to create insets.
-Such insets could be based on some external data or be derived from the map data itself, and then provide additional non-spatial information.
+Such insets could be based on some external data or be derived from the map data itself to provide additional non-spatial information.
 In the following example, we create a bar plot illustrating the number of people living in Slovenia's cities and towns.
 The default **ggplot2** theme includes many elements, such as grid lines, axis ticks, and background, which are often unnecessary in inset maps and can distract from the main map.
 Thus, we also remove the labeling of the axes and apply the `theme_minimal()` function to simplify the plot.
 
 ```{r}
+#| message: false
 library(ggplot2)
 library(sf)
 slo_cities = read_sf("data/slovenia/slo_cities.gpkg")
@@ -162,8 +162,8 @@ The second map is based on the elevation of Slovenia, represented as a raster la
 ```{r arrangements-4}
 #| message: false
 library(tmap)
-library(stars)
-slo_elev = read_stars("data/slovenia/slo_elev.tif")
+library(terra)
+slo_elev = rast("data/slovenia/slo_elev.tif")
 tm2 = tm_shape(slo_elev) +
   tm_raster() +
   tm_title("Elevation in Slovenia")
@@ -215,7 +215,7 @@ The outcomes of the `tmap_arrange()` function also work in the **tmap** view mod
 <!-- widths, heights -->
 <!-- any better example idea? -->
 <!-- tmap_arrange(tm1a, tm2a, nrow = 2, heights = c(0.8, 0.2)) -->
-<!-- possibly add a tm_add_legend example plus a ref -->
+<!-- possibly add a tm_add_legend example plus a ref? -->
 
 ::: {.callout-note}
 The `tmap_arrange()` function call can be saved to an object, which can then be used in other functions, such as `tmap_save()`, to save the arranged maps to a file.
@@ -223,4 +223,3 @@ For more information on saving maps, see @sec-save.
 :::
 
 <!-- tmap_grob? -->
-<!-- should the tm_inset be moved here? -->
