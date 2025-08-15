@@ -45,7 +45,7 @@ tm_shape(slo_regions) +
 
 The second approach uses a single variable to create facets, where each facet represents a unique value of that variable.
 Here, we need to use `tm_facets()` to specify the faceting variable.
-This function creates a grid of panels, each showing the data for a specific value of the variable (here `"time"`), and also allows to specify the layout of the facets (e.g., number of columns) (@fig-facets2).
+This function creates a grid of panels, each showing the data for a specific value of the variable (here `"time"`), and also allows specifying the layout of the facets (e.g., number of columns) (@fig-facets2).
 In such cases, all of the facets share the same scale and legend, which is useful, for example, for comparing the same variable across different times.
 
 ```{r}
@@ -59,7 +59,7 @@ tm_shape(slo_regions_ts) +
 ```
 
 Both approaches can be combined, allowing to create facets for multiple variables over time (@fig-facets3).
-Here, variables specified as a visual variable (`c("pop_dens", "gdppercap", "tourism")`) and show in columns, while the faceting variable is set with `tm_facets(by = "time")` and presents the data for each year in a separate row.
+Here, variables specified as a visual variable (`c("pop_dens", "gdppercap", "tourism")`) are shown in columns, while the faceting variable is set with `tm_facets(by = "time")` and presents the data for each year in a separate row.
 
 ```{r}
 #| label: fig-facets3
@@ -70,7 +70,7 @@ tm_shape(slo_regions_ts) +
   tm_facets(by = "time")
 ```
 
-## Imporance of layers order for faceting
+## Importance of layers order for faceting
 
 The placement of the `tm_facets()` function in the code is crucial for how facets are applied to the map.
 When presenting multiple layers in a map, the `tm_facets()` function must be defined after the layer to be faceted.
@@ -95,7 +95,7 @@ tm_shape(slo_borders) +
   tm_facets(by = "region_group", nrow = 2)
 ```
 
-On the other hand, @fig-facets5 has the `slo_regions_ts` layer first, which means that the GDP per capita is drawn first and then the borders of Slovenia are added.
+On the other hand, @fig-facets5 has the `slo_regions_ts` layer first, which means that the GDP per capita is drawn first, and then the borders of Slovenia are added.
 This results in a map where each facet zooms into a specific region group, showing the GDP per capita for that group.
 
 ```{r}
@@ -163,7 +163,7 @@ tm_shape(slo_borders) +
 <!-- any other crucial arguments? -->
 
 <!-- mention the rest -->
-<!-- Martijn, should I add some content of any other of the facets type? -->
+<!-- Martijn, should we add some content of any other of the facets type? -->
 <!-- tm_facets_stack(by = "VARS__", orientation = NA, ...) -->
 <!-- tm_facets_hstack(by = "VARS__", ...) -->
 <!-- tm_facets_vstack(by = "VARS__", ...) -->
@@ -195,7 +195,7 @@ tm_shape(slo_borders) +
   tm_ylab("Region", rotation = 90, size = 2, space = 1)
 ```
 
-<!-- should it not be a part of the tm_facets function? -->
+<!-- Martijn, should it not be a part of the tm_facets function? -->
 Panel labels can be adjusted using the `tm_layout(panel.labels = c(...))` function.
 To see it in action, we read the `slo_tavg` raster data, which contains average monthly temperatures in Slovenia.
 <!-- Raster data -- where to add it in this section: either mix with the other content or after it -->
@@ -203,13 +203,12 @@ To see it in action, we read the `slo_tavg` raster data, which contains average 
 
 ```{r}
 #| message: false
-library(stars)
-slo_tavg = read_stars("data/slovenia/slo_tavg.tif")
+library(terra)
+slo_tavg = rast("data/slovenia/slo_tavg.tif")
 ```
 
-Next, we create facets for the raster data using `tm_facets()`, specify the `band` variable that stores the month information and set the number of columns to three.
-This results in a grid of panels, each showing the average temperature for a specific month, with the panel labels based on the `band` variable name.
-Such a name is usually not very informative, so we can replace it with more descriptive labels with a vector of labels provided to the `panel.labels` argument of the `tm_layout()` function, e.g., `panel.labels = c(1:12)` (@fig-facets10).
+Next, we create facets for the raster data using `tm_facets()` and set the number of columns to three -- this results in a grid of panels, each showing the average temperature for a specific month.
+Default layer names are usually not very informative, so we can replace them with more descriptive labels using a vector of labels provided to the `panel.labels` argument of the `tm_layout()` function, e.g., `panel.labels = c(1:12)` (@fig-facets10).
 
 ```{r}
 #| label: fig-facets10
@@ -217,8 +216,9 @@ Such a name is usually not very informative, so we can replace it with more desc
 #| message: false
 #| fig.asp: 0.9
 tm_shape(slo_tavg) +
-  tm_raster(col.scale = tm_scale_continuous()) +
-  tm_facets(by = "band", ncol = 3) +
+  tm_raster(col.scale = tm_scale_continuous(),
+            col.free = TRUE) +
+  tm_facets(ncol = 3) +
   tm_layout(panel.labels = c(1:12))
 ```
 
@@ -228,7 +228,7 @@ This allows for easy comparison of the values across different months, e.g., we 
 <!-- .free should be mentioned, initially explained in the scale chapter, and then references here -->
 On the other hand, we may be interested in comparing the spatial patterns of average temperatures across different months rather than their values.
 To do that, we need to create independent legends for each panel --  we should set the `col.free` argument of `tm_raster()` to `TRUE` (@fig-facets11).
-In the example below, we also customize the map further by updating the color scale to use the "viridis" palette, removing the title from the legend and adding a title to the map, improving the panel labels, adjusting the inner margins of the facets to make them more readable.
+In the example below, we also customize the map further by updating the color scale to use the "viridis" palette, removing the title from the legend and adding a title to the map, improving the panel labels, and adjusting the inner margins of the facets to make them more readable.
 
 ```{r}
 #| label: fig-facets11
@@ -240,7 +240,7 @@ tm_shape(slo_tavg) +
     col.scale = tm_scale_continuous(values = "viridis"),
     col.legend = tm_legend(title = "", position = c("LEFT", "BOTTOM")),
     col.free = TRUE) +
-  tm_facets(by = "band", ncol = 3) +
+  tm_facets(ncol = 3) +
   tm_layout(panel.labels = c(1:12),
             inner.margins = c(0.02, 0.2, 0.02, 0.02)) +
   tm_title("Average monthly temperature in Slovenia") 
@@ -257,7 +257,7 @@ Next, we can use `tm_facets()` to create facets for the `region_group` variable.
 #| label: fig-facets12
 #| fig-cap: "Facets with raster data and vector data."
 #| message: false
-slo_elev = read_stars("data/slovenia/slo_elev.tif")
+slo_elev = rast("data/slovenia/slo_elev.tif")
 tm_shape(slo_elev) +
   tm_raster(col.scale = tm_scale_continuous()) +
   tm_shape(slo_regions, is.main = TRUE) + 
