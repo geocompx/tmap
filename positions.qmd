@@ -19,11 +19,11 @@ m = \(text) boxy(text, fill = "#AE7327")
 
 # Positions {#sec-positions}
 
-This chapter focuses on how to move map components, such as legends, scale bars, and insets, freely in the map.
+This chapter focuses on how to move map components, such as legends, titles, scale bars, and insets, freely in the map.
 They can be placed both inside and outside the map frame -- with some being in and some being out (@sec-positioning).
 Moreover, map components can be grouped together, which allows them to be moved and arranged as a single unit (@sec-position-many-components).
 
-To demonstrate the positioning of map components, we will use a simple map with the elevation raster data of Slovenia in meters above sea level (*m asl*). 
+To demonstrate the positioning of map components, we will use a simple map with the elevation raster data of Slovenia in meters above sea level (*m asl*) (not shown).
 
 ```{r}
 #| message: false
@@ -37,18 +37,19 @@ tm = tm_shape(slo_elev) +
 ## Positioning {#sec-positioning}
 
 All of the map components can be positioned in any location in the map frame or outside of it. 
-The positioning is done via the `position` argument, which can take a variety of values. The most common are:
+The positioning is done via the `position` argument, which can take a variety of values.
+The most common are:
 
-- `tm_pos_in()`: a function that allows to control the position inside the map frame (@fig-positions-in-scheme).
+- A character vector with two elements, where the first is the horizontal position and the second is the vertical position, e.g., `c("left", "top")`  (@fig-positions-in-scheme).
+- `tm_pos_in()`: a function that allows to control the position inside the map frame.
 The first argument is the horizontal position and the second is the vertical position. 
 E.g., `tm_pos_in("left", "top")` locates a component in the top left corner of the map frame.
-This function can be used directly or through a shortcut -- a character vector with two elements, where the first is the horizontal position and the second is the vertical position inside the map frame, e.g., `c("left", "top")`.
+This function can also take additional arguments to control the position more precisely, including their justification and alignment.
 - `tm_pos_out()`: a function that allows the control of the position outside the map frame.
 For example, `tm_pos_out("center", "top")` places a component in the center of the top side of the map frame.
+We are also able to specify the position inside the cell defined by the horizontal and vertical position, e.g., `tm_pos_out("left", "center", pos.v = "center")`.
 
-Both functions can take additional arguments to control the position more precisely, including their justification and alignment.
-
-<!-- a short intro to the rest of the section with refs -->
+The following two subsections describe how to position map components inside and outside the map frame.
 
 ### Inside the map frame
 
@@ -69,7 +70,7 @@ tm_shape(slo_elev) +
 ```
 
 Map legends, by default, are placed outside of the map frame -- that is often expected as it does not overlap with the rest of the map content.
-However, we can find ourselves in a situation when our spatial data is so sparse that the legend can be placed inside the map, filling a white space.
+However, we can find ourselves in a situation where our spatial data is so sparse that the legend can be placed inside the map, filling a white space.
 Then, we need to use the `position` argument of `tm_legend()`.
 
 We may use it either with a vector with two elements, or with the `tm_pos_in()` function (@fig-positions-in-scheme).
@@ -89,7 +90,7 @@ tm_shape(slo_elev) +
 #     tm_raster(col.legend = tm_legend(position = tm_pos_in("right", "bottom")))
 ```
 
-Uppercase letters, e.g., `"RIGHT," "BOTTOM",` also places the map component in the bottom right corner but directly touch the map frame (@fig-positions-in-2).
+Uppercase letters, e.g., `"RIGHT," "BOTTOM",` also places the map component in the bottom right corner but directly touching the map frame (@fig-positions-in-2).
 
 ```{r}
 #| label: position-in2
@@ -98,7 +99,7 @@ tm_shape(slo_elev) +
     tm_raster(col.legend = tm_legend(position = c("RIGHT", "BOTTOM")))
 ```
 
-Numbers between 0 and 1, e.g., `c(0.8, 0.4)` places the map component in the right bottom corner but with a margin of 20% of the map frame size (@fig-positions-in-3).
+Numbers between 0 and 1, e.g., `c(0.8, 0.4)` places the map component in the right bottom corner -- 0.8 is the horizontal position and 0.4 is the vertical position of the top left corner of the map component in relation to the map frame (@fig-positions-in-3).
 
 ```{r}
 #| label: position-in3
@@ -114,9 +115,9 @@ tm_shape(slo_elev) +
 #| layout-nrow: 3
 #| fig-cap: "Positioning legends inside the map frame."
 #| fig-subcap:
-#|   - "With lowercase letters: \"right\", \"bottom\""
-#|   - "With uppercase letters: \"RIGHT\", \"BOTTOM'\""
-#|   - "With numbers: 0.8, 0.4" 
+#|   - "with lowercase letters: \"right\", \"bottom\""
+#|   - "with uppercase letters: \"RIGHT\", \"BOTTOM'\""
+#|   - "with numbers: 0.8, 0.4" 
 #| #fig-asp: 0.69
 <<position-in1>>
 <<position-in2>>
@@ -126,19 +127,23 @@ tm_shape(slo_elev) +
 There is one important difference between specifying the position with a vector and with the `tm_pos_in()` function.
 The latter allows to control the position more precisely with additional arguments -- `just.h`, `just.v`, `align.h`, and `align.v`.
 The `just.h` and `just.v` only work when the position is specified with numbers between 0 and 1, and they arguments control the justification of the map component to that position.
+Take a look at @fig-justification.
+The central map component is based on the default justification, which is `just.h = "left"` and `just.v = "top"` -- it means that the positioning starts from the top left corner of the map component.
+However, depending on our needs, we can change the justification to `just.h = "right"` and `just.v = "top"` (top right corner) or `just.h = "left"` and `just.v = "center"` (left central side of the map component).
 
 ```{r}
-#| eval: false
+#| label: fig-justification
+#| fig-cap: "Examples of justification of map components inside the map frame."
 #| echo: false
 #| message: false
 tm_shape(slo_elev) +
     tm_raster(col.legend = tm_legend(show = FALSE)) +
-    tm_inset(b("pos.h = 0.5\npos.v = 0.5\nin center cell"),
+    tm_inset(b("pos.h = 0.5\npos.v = 0.5\n"),
                position = tm_pos_in(pos.h = 0.5, pos.v = 0.5)) +
-    tm_inset(b("pos.h = 1\npos.v = 1\nin center cell"),
+    tm_inset(b("pos.h = 1\npos.v = 1\njust.h = \"right\"\njust.v = \"top\""),
                position = tm_pos_in(pos.h = 1, pos.v = 1,
                                     just.h = "right", just.v = "top")) +
-    tm_inset(b("pos.h = 0\npos.v = 0.5\nin center cell"),
+    tm_inset(b("pos.h = 0\npos.v = 0.5\njust.h = \"left\"\njust.v = \"center\""),
                position = tm_pos_in(pos.h = 0, pos.v = 0.5,
                                     just.h = "left", just.v = "center"))
 ```
@@ -146,6 +151,9 @@ tm_shape(slo_elev) +
 The `align.h` and `align.v` arguments are used when many map components are grouped together, which is explained in [@sec-position-many-components].
 
 ### Outside the map frame
+
+In general, there are eight locations for map components outside the map frame -- each of them can be specified with `tm_pos_out()` (@fig-positions-out-scheme).
+We may place a map component either on one of the sides of the map frame (e.g., `tm_pos_out("center", "top")`), or in its corner (e.g., `tm_pos_out("left", "top")`).
 
 ```{r}
 #| echo: false
@@ -167,12 +175,9 @@ tm_shape(slo_elev) +
     tm_layout(asp = 1, frame.lwd = 2)
 ```
 
-In general, there are eight locations for map components outside the map frame -- each of them can be specified with `tm_pos_out()` (@fig-positions-out-scheme).
-We may place a map component either on one of the sides of the map frame (e.g., `tm_pos_out("center", "top")`), or in its corner (e.g., `tm_pos_out("left", "top")`).
-
-At the same time, placing a map component outside a map frame brings some additional complexity.
+At the same time, placing a map component outside a map frame brings some additional complexity and possibilities.
 Now, we can not only put a component in a specified place, but also arrange it in that place.
-For example, `tm_pos_out("center," "top")` puts the specified component to the top of the map frame but is positioned to the left. 
+For example, `tm_pos_out("center," "top")` puts the specified component to the top of the map frame, but it is positioned to the left. 
 What should we do if we want to center it?
 
 The `tm_pos_out()` has four sets of arguments that control the position of a map component outside the map frame:
@@ -225,10 +230,10 @@ tm_shape(slo_elev) +
 #| layout-ncol: 2
 #| fig-cap: "Positioning legends outside the map frame."
 #| fig-subcap:
-#|  - "With `cell.h = \"center\"` and `cell.v = \"bottom\"`"
-#|  - "With `cell.h = \"left\"` and `cell.v = \"center\"`"
-#|  - "With `pos.h = \"center\"` in cell (`cell.h = \"center\"`, `cell.v = \"bottom\"`)"
-#|  - "With `pos.v = \"center\"` in cell (`cell.h = \"left\"`, `cell.v = \"center\"`)"
+#|  - "with `cell.h = \"center\"` and `cell.v = \"bottom\"`"
+#|  - "with `cell.h = \"left\"` and `cell.v = \"center\"`"
+#|  - "with `pos.h = \"center\"` in cell (`cell.h = \"center\"`, `cell.v = \"bottom\"`)"
+#|  - "with `pos.v = \"center\"` in cell (`cell.h = \"left\"`, `cell.v = \"center\"`)"
 <<position-out1>>
 <<position-out2>>
 <<position-out3>>
@@ -300,10 +305,10 @@ tm_shape(slo_elev) +
 #| warning: false
 #| echo: false
 #| layout-nrow: 2
-#| fig-cap: "Positioning many map components."
+#| fig-cap: "Positioning two map components."
 #| fig-subcap:
-#|  - "Two components in different locations"
-#|  - "Two components in the same location"
+#|  - "in different locations"
+#|  - "in the same location"
 <<many-comp1>>
 <<many-comp2>>
 ```
@@ -320,7 +325,7 @@ tm_shape(slo_elev) +
 The **tmap** package also has a mechanism to group map components together and then position and organize them as a single unit.
 This requires two steps:
 
-1. Specifying the `group_id` argument in the map component that we want to group together -- this should be a unique integer number.
+1. Specifying the `group_id` argument in the map component that we want to group together -- this should be a unique number or text identifier.
 2. Using the `tm_components()` function to select which group of map components we want to position together and where.
 
 In the following example, we have three map components -- a legend, a scale bar, and credits -- and we want to group the scale bar and credits (@fig-comp-group-1).
@@ -359,14 +364,14 @@ tm_shape(slo_elev) +
 #| layout-nrow: 2
 #| fig-cap: "Grouping map components together."
 #| fig-subcap:
-#| - "Two groups of map components in different locations"
-#| - "Two groups of map components in the same location, one stacked horizontally"
+#| - "two groups of map components in different locations"
+#| - "two groups of map components in the same location, one stacked horizontally"
 <<comp-group1>>
 <<comp-group2>>
 ```
 
 Each additional map component is placed on the bottom of the previous one if they are in the same location.
-This can be controlled with the `z` argument of the map component functions -- lower the number the component is placed on the top.
+This can be controlled with the `z` argument of the map component functions -- smaller numbers place the component above others.
 
 <!-- , frame_combine = FALSE -->
 <!-- equalize = FALSE -->
