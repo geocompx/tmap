@@ -13,6 +13,7 @@ author: "Martijn Tennekes, Jakub Nowosad"
     - `function_name()`
 - Spelling: use `en-us`
 - Use of `\index{}` is recommended
+- Active voice and present tense are preferred (avoid future tense, if possible)
 
 # Code
 
