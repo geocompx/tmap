@@ -5,6 +5,7 @@ source("code/before_script.R")
 
 # Map layout {#sec-map-layout}
 
+\index{map layout}
 Map layout relates to all of the visual aspects of the created plot except the visual variables (@sec-visual-variables and @sec-scales), legends (@sec-legends-and-titles), map components (@sec-map-components), and their positions (@sec-positions).
 It includes the map background, frame, typography, scale, aspect ratio, margins, and more.
 
@@ -35,6 +36,7 @@ tm
 
 ## Colors {#sec-lcolors}
 
+\index{map layout!colors}
 The most basic map layout customization is the color of the map background.
 Actually, there are a few separate zones on the map that can be colored -- it includes, among others, the map background, the outer space background, and the map legend background (@fig-layout-colors).
 They can be customized with the `bg.color`, `outer.bg.color`, and `legend.bg.color` arguments of the `tm_layout()` function.
@@ -92,6 +94,7 @@ tm +
   tm_layout(color.sepia_intensity = 1)
 ```
 
+\index{color vision deficiency simulation}
 Both of the above options aim to change the overall map's look and feel.
 The `color_vision_deficiency_sim` has a different purpose: it enables us to visualize how the map would appear to people with different color vision deficiencies.
 This could help us to understand how our map is perceived by people with color vision deficiencies, and to make it more accessible.
@@ -119,6 +122,7 @@ tm +
 
 ## Frame {#sec-lframe}
 
+\index{map layout!frame}
 Another possibility to change the map look is to customize the frame around the map content.
 Its style depends on several arguments of the `tm_layout()` function.
 For example, `frame.color`, `frame.alpha`, and `frame.lwd` change the frame color, transparency (0-1), and line width, respectively (@fig-layout-frame-1).
@@ -172,6 +176,9 @@ tm +
 
 ## Typography {#sec-ltypography}
 
+\index{map layout!typography}
+\index{text}
+\index{fonts}
 <!-- Font faces and font families -->
 The decision about the fonts used is often neglected when creating programmable plots and maps.
 Most often, the default fonts are used in these kinds of graphs.
@@ -380,6 +387,7 @@ tmap_save(tmt2, "tmt2.pdf")
 
 ## Scale {#sec-scale}
 
+\index{map layout!scale}
 The **tmap** package has a set of default sizes and widths for various map elements, such as the frame, text, borders, symbol sizes, and more.
 In the previous parts of this book, we modified some of these values for selected elements, such as the frame width or text size.
 At the same time, we can also change the size of all of the map elements at once -- this is a role of the `scale` argument of the `tm_layout()` function.
@@ -406,6 +414,7 @@ The `scale` argument also exists in the `tmap_save()` function, which allows us 
 
 ## Design mode {#sec-design-mode}
 
+\index{design mode}
 Maps consist of various components, including the map content (with its frame), additional map components (e.g., credits or a title), and the legend, which are often located in different places.
 They also have numerous margins -- spaces between data and the frame, spaces between the frame and the plotting, spaces between the icons and the labels, etc.
 
@@ -460,6 +469,7 @@ In the next few sections, we show how the design mode can help us to understand 
 
 ## Aspect ratio {#sec-aspect}
 
+\index{map layout!aspect ratio}
 The aspect ratio specifies the relation between the width and height of the map area of the plot.
 In statistical plots, the aspect ratio typically adapts to the available plotting space. 
 For example, a histogram expands to fill the entire area, whether the plotting space is wider than it is tall, or taller than it is wide.
@@ -497,6 +507,8 @@ tm +
 
 ## Margins {#sec-lmargins}
 
+\index{map layout!margins}
+\index{margins}
 Margins are spaces around the map content, which can be used to separate the map from other elements, such as the legend or the title or separate the map from the extent of the plotting area.
 They may serve various purposes, such as to make the map more readable, to avoid overlapping the map content with other elements, and to create space for additional elements.
 On the other hand, making margins smaller can help to increase the map area or make the map more condensed.
@@ -547,7 +559,6 @@ tm +
 tm + 
   tm_layout(outer.margins = c(0.08, 0.04, 0.02, 0))
 ```
-
 
 <!-- interplay between margins and plotting device dimensions/asp -->
 

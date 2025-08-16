@@ -5,10 +5,12 @@ source("code/before_script.R")
 
 # Charts {#sec-charts}
 
+\index{charts}
 Thematic maps usually represent one or more variables using colors, shapes, or sizes.
 Then, the map legend is used to explain the meaning of these visual variables (@sec-legends).
 Such a legend can be expanded (or even replaced, @sec-charts-customization) with a chart that provides more information about the distribution of the variable values.
 
+\index{histogram}
 The **tmap** package provides several chart types that can be used in the map legend (@tbl-layers-table).
 They are specified in one of the `*.chart` arguments of a layer function, e.g., `fill.chart` of `tm_polygons()`, `size.chart` of `tm_dots()`, etc.
 The use of a chart type depends on the type of data we want to represent, i.e., whether it is numerical or categorical, and whether it is univariate or bivariate.
@@ -57,6 +59,7 @@ slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
 The first group of charts is used for numerical data, i.e., data that can take any value within a range.
 It includes histograms, box plots, violin plots, and donut charts.
 
+\index{histogram}
 Histograms are the most common chart type used to represent the distribution of a numerical variable.
 They show how often each range of values occurs in the data -- helping to understand which values are more common and if there are any outliers.
 To add a histogram to the map, we use the `tm_chart_histogram()` function in the `fill.chart` argument of a map layer function, such as `tm_polygons()` (@fig-chart-hist-1).
@@ -147,8 +150,10 @@ tm_shape(slo_regions) +
 
 ## Categorical data
 
+\index{bar charts}
+\index{donut charts}
 The second group of charts is used for categorical data -- which can take only a limited number of values.
-It includes bar charts (`tm_chart_donut()`) and donut charts (`tm_chart_bar()`): bar charts show the frequency of each category, while donut charts show the proportions of each category (@fig-chart-cat).
+It includes donut charts (`tm_chart_donut()`) and bar charts (`tm_chart_bar()`): bar charts show the frequency of each category, while donut charts show the proportions of each category (@fig-chart-cat).
 In the examples below, we represent the region groups of each region in Slovenia and observe that there are more regions in the "Central" and "West" groups than in the others.
 
 ```{r}
@@ -181,6 +186,8 @@ tm_shape(slo_regions) +
 
 ## Bivariate data
 
+\index{bivariate data}
+\index{heatmap}
 The third group of charts is used for bivariate data, i.e., data that contains two variables.
 It includes heatmap (`tm_chart_heatmap()`) that shows how often each combination of values from two variables occurs in the data (@fig-chart-bivariate).
 
@@ -208,6 +215,7 @@ tm_shape(slo_tavg) +
 
 ## Additional chart customization {#sec-charts-customization}
 
+\index{ggplot2}
 All of the charts are directly based on the visual variables from the map layer and then created internally using the **ggplot2** package (@R-ggplot2).
 By default, however, the charts are much simplified, not showing all the details that **ggplot2** can provide, such as axis labels, titles, and various theme elements.
 <!-- https://github.com/geocompx/tmap/issues/10#issuecomment-3007409988 -->

@@ -17,6 +17,7 @@ slo_elev = rast("data/slovenia/slo_elev.tif")
 
 ## Legends {#sec-legends}
 
+\index{legends}
 Legends are an essential part of most maps.
 They provide meaning to the symbols or colors used in the map, and often add information about the map's content.
 They allow for interpreting the map correctly, and are therefore crucial for the map's readability.
@@ -33,6 +34,7 @@ tm_shape(slo_elev) +
     tm_raster()
 ```
 
+\index{tm_legend}
 Such a legend is helpful for quick exploration of the data, but often, they are not sufficient for sharing the map with others.
 This chapter covers how to customize the legend's title, position, and appearance in **tmap**.
 Legends are also closely related to the visual variables and scales used in the map that were covered in chapters @sec-visual-variables and @sec-scales -- we recommend reading those chapters first.
@@ -65,6 +67,7 @@ tm_shape(slo_elev) +
     )
 ```
 
+\index{positions}
 In the Slovenia example, we have enough white space inside the map frame to fit the legend.
 You can do this by setting the `position` argument in `tm_legend()` (@fig-legend2-3) and using `tm_pos_in()` to define the legend’s location.
 The first two arguments of `tm_pos_in()` specify where inside the map frame the legend will appear (@sec-positions).
@@ -114,6 +117,7 @@ tm_shape(slo_elev) +
     )
 ```
 
+\index{legend orientation}
 All of the previous examples used the default legend orientation type called `"portrait".`
 Its alternative is `"landscape"`, which can be set using the `orientation` argument of the `tm_legend()` function.
 This changes the legend layout to horizontal, which can be useful either to fit the map content better or to change the map aesthetic.
@@ -165,6 +169,8 @@ tm_shape(slo_elev) +
 
 ## Titles {#sec-titles}
 
+\index{titles}
+\index{tm\_title}
 Titles are another essential part of the map, as they can provide context and information about the map content.
 In **tmap**, titles are added with the `tm_title()` function. 
 
