@@ -11,7 +11,7 @@ Therefore, often we want just to see our map on the screen, but sometimes we als
 The `tmap_save()` function allows to save our map in three groups of file formats: (a) raster graphics (@sec-raster-graphic-formats), (b) vector graphics (@sec-vector-graphic-formats), and (c) interactive ones (@sec-interactive-format).
 <!-- Additionally, @sec-animations shows how to save map animations with the use of the `tmap_animation()` function. -- update and add -->
 
-For the examples in this section, we will use a simple map of the Slovenia polygon with the country name superimposed <!--(not shown)-->, stored in the `tm` object.
+For the examples in this section, we use a simple map of the Slovenia polygon with the country name superimposed <!--(not shown)-->, stored in the `tm` object.
 
 ```{r}
 #| message: false
@@ -39,7 +39,7 @@ For example, if the width and height of our image are 10 inches, then DPI of 300
 Therefore, an image with the same width and height but a larger value of DPI would occupy more space on the hard drive but also have better quality.
 
 Saving **tmap** objects to a file can be done with the `tmap_save()`.
-It usually accepts two arguments^[In fact, one argument is enough -- if you just provide a **tmap** object, then it will be saved to a `tmap01` file with some default format.] -- the first one, `tm`, is our map object, and the second one, `filename`, is the path to the created file.
+It usually accepts two arguments^[In fact, one argument is enough -- if you just provide a **tmap** object, then it is saved to a `tmap01` file with some default format.] -- the first one, `tm`, is our map object, and the second one, `filename`, is the path to the created file.
 
 ```{r}
 tmap_save(tm, "my_map.png")
@@ -94,7 +94,7 @@ tmap_save(tm, "my_map.svg")
 
 Zooming in and out of vector graphics does not affect their quality.
 At the same time, the `width,` `height,` and `scale` arguments can still impact the output file.
-For example, a vector graphic file saved with a narrower width value will have thicker lines and larger fonts than the one with a larger width value.
+For example, a vector graphic file saved with a narrower width value has thicker lines and larger fonts than the one with a larger width value.
 You can check this effect by saving the `tm` object with `width = 1` and then with `width = 10`.
 
 ```{r}
@@ -120,7 +120,7 @@ tmap_save(tm, "my_map.html")
 
 The `tmap_save()` function also has several additional arguments reserved for the interactive format, including `selfcontained` and `in.iframe`.
 The `selfcontained` argument -- `TRUE` by default -- saves our map together with additional resources (e.g., JavaScript libraries) into one HTML file. 
-Otherwise, additional resources will be saved in an adjacent directory.
+Otherwise, additional resources are saved in an adjacent directory.
 The `in.iframe` argument (`FALSE` by default) allows saving an interactive map as an iframe -- when `TRUE` it creates two HTML files -- a small HTML file with the iframe container and a large one with the actual map.
 <!-- when `in.iframe = TRUE` is useful? -->
 <!-- arguments passed on to device functions or to saveWidget or saveWidgetframe -->

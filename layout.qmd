@@ -264,7 +264,7 @@ The fonts in this family are often viewed as more formal.
 On the other hand, the sans serif family does not have serifs and is considered more informal and modern.
 The last font family, monospaced fonts, is often used in computer programming (IDEs, software text editors), but less often on maps. 
 A distinguishing feature of the monospaced fonts is that each letter or character in this family has the same width. 
-Therefore, letters, such as *i* and *a* will occupy the same space in the monospaced fonts.
+Therefore, letters, such as *i* and *a* occupy the same space in the monospaced fonts.
 
 Mixing the use of serif and sans serif fonts often works well for maps.
 However, a rule of thumb is not to mix more than two font families on one map.
@@ -456,13 +456,13 @@ tinytable::tt(color_codings_df[, 2:3]) |>
 The design mode is useful to understand how the map is constructed and how the various arguments of the `tm_layout()` function impact the map layout.
 
 This mode is in place until the `tmap_design_mode()` function is set to `FALSE`.
-In the next few sections, we will show how the design mode can help us to understand the impact of various arguments of the `tm_layout()` function on the aspect ratio and margins of the map.
+In the next few sections, we show how the design mode can help us to understand the impact of various arguments of the `tm_layout()` function on the aspect ratio and margins of the map.
 
 ## Aspect ratio {#sec-aspect}
 
 The aspect ratio specifies the relation between the width and height of the map area of the plot.
 In statistical plots, the aspect ratio typically adapts to the available plotting space. 
-For example, a histogram will expand to fill the entire area, whether the plotting space is wider than it is tall, or taller than it is wide.
+For example, a histogram expands to fill the entire area, whether the plotting space is wider than it is tall, or taller than it is wide.
 Thus, customization of an aspect ratio in statistical plots is usually not needed.
 For maps, this is not the case -- we should not change the relation between the width and height of the data in a map as it has a specific projection that determines the spatial relation between the map features.
 

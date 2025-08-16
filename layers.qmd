@@ -317,7 +317,7 @@ tm +
 <<tmtext3>>
 ```
 
-In the above examples, the `text` argument specifies the name of a variable that will be used for text labels.
+In the above examples, the `text` argument specifies the name of a variable that is used for text labels.
 We can further adjust colors (`col`; @sec-colors), sizes (`size`; @sec-sizes), font faces (`fontface`; @sec-ltypography), and background colors (`bgcol`) of labels by providing either a single value or the name of a data variable.
 
 The `tm_text()`, `tm_labels()`, and `tm_labels_highlighted()` functions have many arguments that allow us to adjust the appearance of text labels.
@@ -346,7 +346,7 @@ tm +
 ```
 
 To automatically adjust the position of text labels to avoid overlapping with other features, we can use the `point.label` argument in the `opt_tm_text()` function.
-When set to `TRUE`, it will use an algorithm to find the best position for each label, which can be useful when there are many overlapping features or when the labels are too close to each other.
+When set to `TRUE`, it use an algorithm to find the best position for each label, which can be useful when there are many overlapping features or when the labels are too close to each other.
 
 ```{r}
 #| label: tmtext6
@@ -374,7 +374,7 @@ tm +
 <!-- clustering -->
 
 Text labels can be added to spatial (multi-)points, (multi-)lines, and (multi-)polygons, and each case is quite different.
-The simplest case is for POINT data, for which each text label will be located precisely in the coordinates of the given points (@fig-tmtext).
+The simplest case is for POINT data, for which each text label is located precisely in the coordinates of the given points (@fig-tmtext).
 However, how to add text labels to multipoints, lines, multilines, polygons, or multipolygons?
 Should each label correspond to one spatial feature, or should every sub-feature have its own label? 
 Where should the labels be placed for lines or polygons -- in the center of a line and the centroid of a polygon, or somewhere else?

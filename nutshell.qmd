@@ -144,7 +144,7 @@ Often, maps also have additional map elements, such as graticule lines, north ar
 They help map readers understand the location or extent of the input data and provide some ancillary information.
 The **tmap** package offers a set of functions for additional map elements.
 The `tm_graticules()` function draws latitude and longitude graticules and adds their labels.
-It also uses the layered approach, and thus, the lines will be drawn either below or above the shape objects, depending on the position of this function in the code.
+It also uses the layered approach, and thus, the lines are drawn either below or above the shape objects, depending on the position of this function in the code.
 In our example below, `tm_graticules()` is used after all of the map groups, and that is why the graticule lines are put on the top of the spatial data.
 We can also use `tm_compass()` to create a north arrow, `tm_scalebar()` to add a scale bar, and `tm_credits()` to add a text annotation representing credits or acknowledgments.
 The location of all these three elements on the map is, by default, automatically determined.
@@ -227,7 +227,7 @@ This is a topic of the @sec-facets.
 \index{animations}
 @fig-sec-ani1 shows an animated map with the GDP per capita visualized for each year.
 Animations in **tmap** are created similarly to the facet maps, but instead of using the `tm_facets()` function, we use the `tm_animate()` function.
-It defines the variable that will be used to create the animation, in this case, the `time` column from the `slo_regions_ts` object.
+It defines the variable that is used to create the animation, in this case, the `time` column from the `slo_regions_ts` object.
 
 <!-- to update/fix for pdf -->
 ```{r}

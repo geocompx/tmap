@@ -48,7 +48,7 @@ In this example, we use three shapes: `worldelevation` which is a `SpatRaster` o
 
 Each `tm_shape()` function call is succeeded by one or more layer functions.
 In the above example, these are `tm_raster()`, `tm_borders()`, `tm_dots()` and `tm_text()`.
-We will describe layer functions in detail in the next chapter.
+We describe layer functions in detail in the next chapter.
 For this chapter, it is sufficient to know that each layer function call defines how the spatial data specified with `tm_shape()` is plotted.
 
 Shape objects can be used to plot multiple layers.
@@ -168,7 +168,7 @@ The first way requires understanding various R packages, as different spatial ob
 The second way is the most straightforward, but it is important to remember that the `crs` argument can only be set in the main layer (@sec-shapes-hierarchy).
 The third way is the most flexible, as it allows changing the projection for the whole map.
 Additionally, the `tm_crs()` function can automatically determine the projection based on the expected property of the map, e.g., equal area (`"area"`), equidistant (`"distance"`), or conformal (`"shape"`).
-For example, `tm_crs("auto")` will choose the projection that best preserves the area of the map (*Lambert Azimuthal Equal Area*), while `tm_crs("auto", property = "shape")` will choose the projection that best preserves the shape of the map (*Stereographic*).
+For example, `tm_crs("auto")` chooses the projection that best preserves the area of the map (*Lambert Azimuthal Equal Area*), while `tm_crs("auto", property = "shape")` chooses the projection that best preserves the shape of the map (*Stereographic*).
 
 @sec-map-projections expands on the topic of map projections.
 It starts by explaining the basic concepts and then shows how to apply them in **tmap**.

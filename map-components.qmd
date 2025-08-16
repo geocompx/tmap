@@ -55,7 +55,7 @@ attr_layers_df |>
 #   kableExtra::column_spec(1, bold = TRUE, monospace = TRUE)
 ```
 
-For the examples in this section, we will use a simple map of the Slovenia polygon (not shown).
+For the examples in this section, we use a simple map of the Slovenia polygon (not shown).
 
 ```{r}
 #| message: false
@@ -145,7 +145,7 @@ The `tm_scalebar()` also has several additional arguments, allowing for modifica
 Importantly, the scale bar is accurate, depending on a map projection, at standard points or lines only (@sec-proj-types) -- it is never completely correct across the whole map.
 The scale bar distortion increases with the true size of the area we are mapping -- it is less visible on local maps, and very prominent on global maps.
 For example, try to add a scale bar to a world map seen in the @sec-shapes-and-layers.
-The created scale bar will be accurate for the equator, but less and less correct going to the north and south poles.
+The created scale bar are accurate for the equator, but less and less correct going to the north and south poles.
 
 ```{r}
 #| echo: false

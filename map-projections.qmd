@@ -244,8 +244,8 @@ tmap_arrange({
 Although the areas near the poles have been inflated quite a lot, especially Antarctica and Greenland, the shape of the areas is more or less correct, in particular regarding small regions (which can be seen by comparing with @fig-orange).
 The Mercator projection is very useful for navigational purposes and has therefore been embraced by sailors ever since.
 Also, today, the Web Mercator is the de facto standard for interactive maps and navigation services.
-However, for maps that show data, the (Web) Mercator projection should be used with great caution because the hugely inflated areas will influence how we perceive spatial data.
-We will discuss this in the next section.
+However, for maps that show data, the (Web) Mercator projection should be used with great caution because the hugely inflated areas influence how we perceive spatial data.
+We discuss this in the next section.
 
 ## Types of map projections {#sec-proj-types}
 
@@ -424,7 +424,7 @@ A *conformal* projection means that local angles are preserved.
 In practice, that means, for instance, that a map of a crossroad preserves the angles between the roads.
 Therefore, this property is required for navigational purposes.
 As a consequence, local angles are preserved, and local shapes are also preserved. 
-That means that a small island will be drawn on a map in its true shape, as seen from the sky perpendicular above it.
+That means that a small island are drawn on a map in its true shape, as seen from the sky perpendicular above it.
 The Web Mercator, as shown in @fig-crs-05, satisfies this property.
 The closer an area is to one of the poles, the more it is enlarged, but since this is done in both dimensions (latitude and longitude), local shapes are preserved.
 
@@ -624,8 +624,8 @@ Here, we expand on the short introduction from @sec-map-projection-intro and sho
 ### Vector data
 
 First, see how to specify a map projection for vector data.
-We will use the `worldvector.gpkg` and `worldcities.gpkg` datasets -- the first one uses the Equal Earth projection (`EPSG:8857`), and the second one uses the WGS 84 coordinate system (`EPSG:4326`).
-Additionally, to show the effect of map projections, we will transform the `worldvector` data into the WGS 84 coordinate system, namely `worldvector_wgs84`.
+We use the `worldvector.gpkg` and `worldcities.gpkg` datasets -- the first one uses the Equal Earth projection (`EPSG:8857`), and the second one uses the WGS 84 coordinate system (`EPSG:4326`).
+Additionally, to show the effect of map projections, we transform the `worldvector` data into the WGS 84 coordinate system, namely `worldvector_wgs84`.
 
 ```{r}
 #| message: false
@@ -678,8 +678,8 @@ tm +
 The `tm_crs()` function is actually a small toolbox for managing map projections.
 As you have seen above, if we know the projection's name (`"+proj=eqearth"`) or code (`"EPSG:8857"`) we can specify it directly.
 You can also use the `tm_crs()` function if you do not know the projection's name or code -- it accepts the `"auto"` argument.
-It will automatically select a suitable projection based on the data's extent and the map's properties.
-For example, if the map is global, it will select the pseudocylindrical projection Equal Earth (@fig-mproj-auto).
+It  automatically select a suitable projection based on the data's extent and the map's properties.
+For example, if the map is global, it selects the pseudocylindrical projection Equal Earth (@fig-mproj-auto).
 
 ```{r}
 #| label: fig-mproj-auto
@@ -787,7 +787,7 @@ bench::mark(print(tmp1), print(tmp2), check = FALSE)
 
 The **tmap** package also offers several additional features that can be used to customize maps with global projections.
 For instance, the `tm_layout()` function has an argument `earth_boundary` that can be set to `TRUE` to add a boundary around the Earth.
-Then, we can also set the `bg.color` argument to specify the background color of the map, which will only apply to the area inside the Earth's boundary for a given projection (@ @fig-mproj3).
+Then, we can also set the `bg.color` argument to specify the background color of the map, which only applies to the area inside the Earth's boundary for a given projection (@ @ @fig-mproj3).
 
 ```{r}
 #| label: fig-mproj3

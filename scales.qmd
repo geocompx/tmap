@@ -218,7 +218,7 @@ tm_shape(slo_regions) +
 ```
 
 It is also possible to indicate the desired number of classes using the `n` argument of the `tm_scale()` function provided to the `fill.scale` argument.
-While not every `n` is possible depending on the input values, **tmap** will try to create a number of classes as close as possible to the preferred one.
+While not every `n` is possible depending on the input values, **tmap** tries to create a number of classes as close as possible to the preferred one.
 
 ### Manual breaks
 
@@ -245,8 +245,8 @@ Three basic methods are `"equal"`, `"sd"`, and `"quantile"` styles.
 Let's consider a variable with 100 observations with values ranging from 0 to 10.
 The `"equal"` style divides them into *n* equal-sized intervals.
 This style works well when the values change fairly continuously and do not contain any outliers.
-In **tmap**, the number of classes will be computed automatically<!--?nclass.Sturges--> or we can specify the number of classes with the `n` argument.
-For example, when we set `n` to 4, then our breaks will represent four classes ranging from 0 to 2.5, 2.5 to 5, 5 to 7.5, and 7.5 to 10.
+In **tmap**, the number of classes are computed automatically<!--?nclass.Sturges--> or we can specify the number of classes with the `n` argument.
+For example, when we set `n` to 4, then our breaks are represented by four classes ranging from 0 to 2.5, 2.5 to 5, 5 to 7.5, and 7.5 to 10.
 The `"sd"` style represents how much the values of a given variable vary from its mean, with each interval having a constant width of the standard deviation.
 This style is used when it is vital to show how values relate to the mean.
 The `"quantile"` style creates several classes with exactly the same number of objects (e.g., spatial features), but having intervals of various lengths.

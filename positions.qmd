@@ -23,7 +23,7 @@ This chapter focuses on how to move map components, such as legends, titles, sca
 They can be placed both inside and outside the map frame -- with some being in and some being out (@sec-positioning).
 Moreover, map components can be grouped together, which allows them to be moved and arranged as a single unit (@sec-position-many-components).
 
-To demonstrate the positioning of map components, we will use a simple map with the elevation raster data of Slovenia in meters above sea level (*m asl*) (not shown).
+To demonstrate the positioning of map components, we use a simple map with the elevation raster data of Slovenia in meters above sea level (*m asl*) (not shown).
 
 ```{r}
 #| message: false
@@ -188,7 +188,7 @@ The `tm_pos_out()` has four sets of arguments that control the position of a map
 - `align.h` and `align.v`: the alignment of the components is only used when many components are grouped together (@sec-position-many-components).
 
 Let's see how these arguments work in practice.
-The `cell.h` and `cell.v` arguments are the first two arguments of the `tm_pos_out()` function and they define the cell in which the map component will be placed (@fig-positions-out-1; @fig-positions-out-2).
+The `cell.h` and `cell.v` arguments are the first two arguments of the `tm_pos_out()` function and they define the cell in which the map component are placed (@fig-positions-out-1; @fig-positions-out-2).
 
 ```{r}
 #| label: position-out1
@@ -282,7 +282,7 @@ tm_shape(slo_elev) +
 ```
 
 Now, you may be wondering what happens if we want to place two (or more) components in the same location.
-As you can see in @fig-many-comp-2, they will be stacked on top of each other inside one frame.
+As you can see in @fig-many-comp-2, they are stacked on top of each other inside one frame.
 
 ```{r}
 #| label: many-comp2

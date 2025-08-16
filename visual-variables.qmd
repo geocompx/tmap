@@ -37,7 +37,7 @@ Values of polygons usually cannot be represented by either shapes or sizes, as t
 <!-- exception - cartograms - ref to other chapter \@ref(other-types) -->
 Finally, there are some cases in which we can use several visual variables at the same time (@sec-mixing-visual-variables).
 
-Let's start by attaching the packages and reading the data we will use in this chapter.
+Let's start by attaching the packages and reading the data we use in this chapter.
 
 ```{r}
 #| warning: false
@@ -80,12 +80,12 @@ tm_shape(slo_regions) +
 
 ## Automatic scales {#sec-auto-scales}
 
-On the other hand, if we provide the name of the column (variable) we want to visualize, **tmap** will automatically set the visual variables.
+On the other hand, if we provide the name of the column (variable) we want to visualize, **tmap** automatically sets the visual variables.
 The **tmap** package has many defaults that automatically specify colors, sizes, and shapes used on the maps. 
 Thus, for example, when we provide a character variable's name to the `fill` argument, then the color scale for a categorical variable is set, and when we give a numeric variable's name to the `size` argument, then the size scale for a continuous variable is used.
 However, **tmap** also allows us to change them with a few additional functions, including `tm_scale()` and `tm_legend()`.
-In this and the following sections, we will show how to use the `tm_scale()` function to modify the appearance of the visual variables.
-In the next two chapters, we will further discuss various types of scales and ways to modify them and the legend appearance.
+In this and the following sections, we show how to use the `tm_scale()` function to modify the appearance of the visual variables.
+In the next two chapters, we further discuss various types of scales and ways to modify them and the legend appearance.
 
 The most basic use of the `tm_scale()` function is to modify the appearance of the map, such as changing the color palette (`col.scale` and `fill.scale`), sizes (`size.scale`), or shapes (`shape.scale`).
 This is done with the `values` argument of each of these functions, which can be one of many things, depending on the visual variable.
@@ -475,7 +475,7 @@ tm_shape(slo_cities) +
 ```
 
 On the other hand, if we provide the name of the numerical variable in the `size` argument (e.g., `"population"`), then symbol sizes are scaled proportionally to the provided values.
-Objects with small values will be represented by smaller circles, while larger values will be represented by larger circles (@fig-tmsizes-2).
+Objects with small values are represented by smaller circles, while larger values are represented by larger circles (@fig-tmsizes-2).
 
 ```{r}
 #| label: tmsizes2

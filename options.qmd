@@ -18,7 +18,7 @@ worldelevation <- rast("data/worldelevation.tif")
 
 <!-- 2/resolution -->
 Raster data is represented by a grid of cells (@sec-raster-data-model), and the number of cells impacts the time to render a map.
-Rasters with hundreds of cells will be plotted quickly, while rasters with hundreds of millions or billions of cells will take a lot of time (and RAM) to be shown.
+Rasters with hundreds of cells are plotted quickly, while rasters with hundreds of millions or billions of cells will take a lot of time (and RAM) to be shown.
 <!-- ... some info about screen resolution -->
 Therefore, the **tmap** package downsamples large rasters by default to be below 10,000,000 cells in the plot mode and 1,000,000 cells in the view mode.
 <!-- c(plot = 1e7, view = 1e6) -->
