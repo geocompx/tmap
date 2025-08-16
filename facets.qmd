@@ -23,7 +23,8 @@ library(tmap)
 slo_borders = read_sf("data/slovenia/slo_border.gpkg")
 slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
 slo_regions_ts = read_sf("data/slovenia/slo_regions_ts.gpkg")
-slo_regions_ts = subset(slo_regions_ts, time %in% c("2006", "2010", "2014", "2018", "2022"))
+slo_regions_ts = subset(slo_regions_ts, 
+                        time %in% c("2006", "2010", "2014", "2018", "2022"))
 ```
 
 ## Specifying facets
