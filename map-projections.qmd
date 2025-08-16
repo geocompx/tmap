@@ -5,8 +5,7 @@ source("code/before_script.R")
 
 # Map projections (CRS) {#sec-map-projections}
 
-This chapter focuses on the map projections.
-It gives a background on why do we need map projections and how to translate spatial data from an ellipsoid into a flat surface or computer screen.
+This chapter gives a background on why do we need map projections and how to translate spatial data from an ellipsoid into a flat surface or computer screen.
 Then, it explains basic terms, gives an overview of map projections, and provides guidelines for choosing a suitable map projection for a specific application.
 Finally, it shows how to use R and the **tmap** package to specify and customize map projections.
 
@@ -23,7 +22,6 @@ library(sf)
 library(tmap)
 library(grid)
 library(dplyr)
-#library(kableExtra)
 data(World)
 clr_peel = "#FD8A04"
 clr_orange_land = "#FB6801"
@@ -79,7 +77,7 @@ There is also a version of the Goode homolosine projection that focuses on prese
 #| results: hide
 #| warning: false
 #| fig-asp: 0.45
-#| fig-cap: The (interrupted) Goode homolosine projection
+#| fig-cap: "The (interrupted) Goode homolosine projection."
 source("code/crs_examples.R")
 goode = map_goode()
 tm_shape(goode$bg) +
@@ -92,7 +90,7 @@ tm_shape(goode$bg) +
 ```
 
 To make the analogy between the orange peel and the surface of the Earth complete, we have to assign two fictitious properties to the orange peel, namely that it is stretchable and deformable.
-These properties are needed in order to make a non-interrupted map, as we will see in the next sections.
+These properties are needed in order to make a non-interrupted map, as we will see in the following sections.
 
 \index{map projections}
 \index{coordinate reference system (CRS)}
@@ -104,7 +102,6 @@ Technically, it is also known as a *coordinate reference system* (*CRS*), which 
 \index{ellipsoid}
 The orange and the Earth have another thing in common: both are spheres, but not perfect ones.
 The Earth is metaphorically speaking a little fat: the circumference around the equator is 40,075 km, whereas around the circumference that crosses both poles is 40,009 km.
-<!--source: https://en.wikipedia.org/wiki/Earth_physical_characteristics_tables-->
 Therefore, the Earth can better be described as an ellipsoid.
 The same applies to an orange: every orange is a little different, but probably very few oranges are perfect spheres.
 
@@ -114,17 +111,18 @@ However, since this has many mathematical complications, the ellipsoid is often 
 
 \index{datum}
 This ellipsoid model and its translation to the Earth's surface is called a *(geodetic) datum*.
-The most popular datum is WGS84, which was introduced in 1984 as an international standard and was last revised in 2004.
-There are many (slightly) different datums, which are often tailored for local applications.
+Many datums exist, for global and local applications.
+The most popular global datum is WGS84, which was introduced in 1984 as an international standard and was last revised in 2004.
+Then, there are many local datums, which are often tailored for specific regions or countries.
 For instance, NAD83, ETRS89, and GDA94 are slightly better models for North America, Europe, and Australia, respectively.
 However, since WGS84 is a very good approximation of the Earth as a whole, it has been widely adopted worldwide and is also used by the Global Positioning System (GPS).
 
 \index{latitude and longitude}
-When we have specified a datum, we are able to specify geographic locations with two familiar variables, namely *latitude* and *longitude*.
-The latitude specifies the north-south position in degrees, where latitude = 0$^\circ$ is the equator.
+When we have specified a datum, we are able to describe geographic locations with two familiar variables, namely *latitude* and *longitude*.
+The latitude defines the north-south position in degrees, where latitude = 0$^\circ$ is the equator.
 The latitudes for the north and south poles are 90$^\circ$ and $-90^\circ$, respectively.
 The longitude specifies the east-west position in degrees, where by convention, the longitude = 0$^\circ$ meridian crosses the Royal Observatory in Greenwich, UK.
-The Longitude range is -180$^\circ$ to 180$^\circ$, and since this is a full circle, -180$^\circ$ and $^\circ$ specify the exact longitude.
+The longitude range is -180$^\circ$ to 180$^\circ$, and since this is a full circle, -180$^\circ$ and $^\circ$ specify the exact longitude.
 
 \index{graticule}
 When we see the Earth in its three-dimensional form, as in @fig-orange, the latitude parallels are the horizontal lines around the Earth, and the longitude meridians are the vertical lines around the Earth.
@@ -133,9 +131,8 @@ In all the figures in this section, latitude parallels are shown as gray lines f
 
 Please keep in mind that only a latitude and longitude are not sufficient to specify a geographic location.
 A datum is required.
-When people exchange latitude-longitude data, it is safe to assume that they implicitly have used the WGS84 datum.
+When people exchange latitude-longitude data, it is often safe to assume that they implicitly have used the WGS84 datum.
 However, it is good practice to specify the datum explicitly.
-<!-- how? -->
 
 ## Platte Carrée and Web Mercator {#sec-crs-projections}
 
@@ -153,7 +150,7 @@ These projections are indexed as `EPSG:4326` and `EPSG:3857` respectively.
 #| results: hide
 #| warning: false
 #| message: false
-#| fig-cap: "Latitude longitude coordinates (EPSG:4326)"
+#| fig-cap: "Latitude longitude coordinates (EPSG:4326)."
 sf::sf_use_s2(FALSE)
 source("code/crs_examples.R")
 m4326 = map_4326()
@@ -199,10 +196,10 @@ The projected variant of this CRS is called the *Platte Carrée* (`EPSG:4087`), 
 Observe since we stretched the poles open, the area near the poles has been stretched out as well.
 More specifically, the closer the land is to one of the poles, the more it has been stretched out.
 Since the stretching direction is only horizontal, the shapes of the areas have become wider.
-A good example is Greenland, which is normally a 'tall' area (as can be seen in @fig-orange).
+A good example is Greenland, which is naturally elongated from north to south (as can be seen in @fig-orange).
 
 \index{web mercator}
-<!-- Martijn, is it true that Mercator tried to fix the area deformation by stretching the poles vertically?? -->
+<!-- Martijn, is the below statement true (that Mercator tried to fix the area deformation by stretching the poles vertically)?? -->
 In order to fix these deformed areas, Gerardus Mercator, a Flemish geographer in the 16th century, introduced a method to compensate for this by inflating the areas near the poles even more, but now only in a vertical direction.
 This projection is called the Mercator projection.
 For web applications, this projection has been slightly modified and renamed to the Web Mercator projection (`EPSG:3857`).
@@ -214,7 +211,7 @@ The cylinder and plain map that uses this projection are shown in @fig-crs-05.
 #| results: hide
 #| warning: false
 #| message: false
-#| fig-cap: "Web Mercator projection (EPSG:3857)"
+#| fig-cap: "Web Mercator projection (EPSG:3857)."
 sf::sf_use_s2(FALSE)
 source("code/crs_examples.R")
 m3857 = map_3857()
@@ -244,9 +241,9 @@ tmap_arrange({
 
 ```
 
-Although the areas near the poles have been inflated quite a lot, especially Antarctica and Greenland, the shape of the areas is more or less correct, in particular regarding small areas (which can be seen by comparing with @fig-orange).
-The Mercator projection is very useful for navigational purposes, and has therefore been embraced by sailors ever since.
-Also today, the Web Mercator is the de facto standard for interactive maps and navigation services.
+Although the areas near the poles have been inflated quite a lot, especially Antarctica and Greenland, the shape of the areas is more or less correct, in particular regarding small regions (which can be seen by comparing with @fig-orange).
+The Mercator projection is very useful for navigational purposes and has therefore been embraced by sailors ever since.
+Also, today, the Web Mercator is the de facto standard for interactive maps and navigation services.
 However, for maps that show data, the (Web) Mercator projection should be used with great caution because the hugely inflated areas will influence how we perceive spatial data.
 We will discuss this in the next section.
 
@@ -271,7 +268,7 @@ These are depicted in @fig-crs-types.
 #| echo: false
 #| message: false
 #| fig-asp: 0.35
-#| fig-cap: Four types of map projections
+#| fig-cap: "Four types of map projections."
 source("code/crs_examples.R")
 crs_types()
 ```
@@ -293,7 +290,7 @@ Almost all commonly used standard World map projections are (pseudo-)cylindrical
 #| echo: false
 #| message: false
 #| fig-asp: 0.45
-#| fig-cap: The Robinson projection, which is pseudo-cylindrical.
+#| fig-cap: "The Robinson projection, which is pseudo-cylindrical."
 data(World)
 tm_shape(World, crs = "+proj=robin") +
     tm_polygons(clr_land, col = clr_border) +
@@ -335,7 +332,7 @@ This is an orthogonal projection.
 #| message: false
 #| layout-ncol: 2
 #| fig-asp: 1
-#| fig-cap: Examples of a conic and a planar projection.
+#| fig-cap: "Examples of a conic and a planar projection."
 #| fig-subcap:
 #|   - "World Equidistant Conic projection"
 #|   - "Lambert Azimuthal Equal-Area projection"
@@ -361,9 +358,9 @@ tm_shape(m3035$bg) +
 
 \index{interrupted map projections}
 The (interrupted) Goode homolosine projection shown in @fig-crs-goode is an example of an interrupted projection.
-A special class of these projections are polyhedral projections, which consists of planar faces. 
+A special class of these projections are polyhedral projections, which consist of planar faces. 
 In @fig-crs-types a polyhedral of six faces is illustrated. 
-There is no limit of the number of faces, as the myriahedral projections <!--(TODO reference Van Wijck paper)--> illustrate.
+There is no limit to the number of faces, as the myriahedral projections <!--(TODO reference Van Wijck paper)--> illustrate.
 
 ## Which projection to choose? {#sec-crs-choose}
 
@@ -392,7 +389,7 @@ The four properties are listed in @tbl-crs-properties.
 
 ```{r}
 #| label: tbl-crs-properties
-#| tbl-cap: "Map projection properties"
+#| tbl-cap: "Map projection properties."
 #| echo: false
 crs_prop_name = c("Conformal", "Equal area", "Equidistant", "Azimuthal")
 crs_prop_attr = c("Local angle (shape)", "Area", "Distance", "Direction")
@@ -403,16 +400,13 @@ crs_prop_planar = c("Stereographic", "Lambert azimuthal equal-area", "Azimuthal 
 crs_prop_interrupted = c("Myriahedral", "Goode homolosine, Myriahedral", "none", "none")
 
 tb = tibble::tibble(Property = crs_prop_name, Preserves = crs_prop_attr, 
-            Applications = crs_prop_appl, `Examples (cyclindrical)` = crs_prop_cyl,
-            `Examples (conic)` = crs_prop_conic, `Examples (planar)` = crs_prop_planar,
-            `Examples (interrupted)` = crs_prop_interrupted)
+                    Applications = crs_prop_appl, `Examples (cyclindrical)` = crs_prop_cyl,
+                    `Examples (conic)` = crs_prop_conic, `Examples (planar)` = crs_prop_planar,
+                    `Examples (interrupted)` = crs_prop_interrupted)
 
 tb2 = as.data.frame(t(rbind(names(tb), as.matrix(tb, dimnames = NULL))))
 tb2 = tb2[, -1]
 colnames(tb2) = NULL
-# tinytable::tt(tb2, rownames = TRUE) |>
-#   tinytable::style_tt(j = 1, bold = TRUE)
-
 knitr::kable(tb2,
              row.names = TRUE,
              col.names = NULL,
@@ -438,14 +432,14 @@ The closer an area is to one of the poles, the more it is enlarged, but since th
 A map projection is called *equal-area* if the areas are proportional to the true areas.
 This is strongly recommended for maps that display statistics to prevent perceptual bias.
 @fig-crs-bias shows two World maps of population density per country, one in the Web Mercator projection and the other in Eckert IV projection.
-The perception of World population is different in these maps; in (a) the vast lands in low-populated areas seem to be Canada, Greenland, and Russia, whereas in (b) also North Africa and Australia emerge as vast low-populated areas.
+The perception of the World population is different in these maps -- in (a) the vast lands in low-populated areas seem to be Canada, Greenland, and Russia, whereas in (b) also North Africa and Australia emerge as vast low-populated areas.
 
 ```{r}
 #| label: fig-crs-bias
 #| echo: false
 #| message: false
 #| layout-nrow: 2
-#| fig-cap: Comparison of Web Mercator and Eckert IV projections.
+#| fig-cap: "Comparison of Web Mercator and Eckert IV projections."
 #| fig-subcap:
 #|   - "Web Mercator is not equal-area"
 #|   - "Eckert IV is equal-area"
@@ -475,7 +469,7 @@ One example is a seismic map around the epicenter of a recent earthquake, where 
 
 \index{compromise map projections}
 A map projection can satisfy at most two of these properties. 
-Many map projections do not satisfy any property but are intended as a compromise.
+Many map projections do not fulfill any property but are intended as a compromise.
 An example is the Robinson projection, shown in @fig-crs-robin.
 <!-- maybe add one more sentence explaining what the Robinson projection compromises? -->
 
@@ -483,7 +477,7 @@ An example is the Robinson projection, shown in @fig-crs-robin.
 
 \index{map projection: area of interest}
 The next aspect that is important for the choice of a map projection is the area of interest.
-In general, the larger the area, the more concessions have to be made, since the larger the area, the more difficult it is to make a two-dimensional projection.
+In general, the larger the area, the more concessions have to be made, since the larger the area, the more difficult it is to create a two-dimensional projection.
 
 The following @tbl-crs-recommendations provides recommendations for map projection types based on the area size and latitude of the area.
 
@@ -495,7 +489,6 @@ tabcrsrec = tibble::tibble(`View` = c("World", "Hemisphere", "Continent or small
                     `Low latitude (equator)` = c("Pseudo-cylindrical", "Azimuthal", "Cylindrical or azimuthal"),
                     `Mid latitude`= c("Pseudo-cylindrical", "Azimuthal", "Conic or azimuthal"),
                     `High latitude (poles)` = c("Pseudo-cylindrical", "Azimuthal", "Azimuthal"))
-# tinytable::tt(tabcrsrec)
 knitr::kable(tabcrsrec, booktabs = TRUE) |> 
   kableExtra::kable_styling("striped",
                             latex_options = "striped", 
@@ -510,7 +503,7 @@ Four hemispheres are often used: the Northern and Southern Hemispheres, with the
 However, other hemispheres are often used implicitly, such as a hemisphere centered on Europe used in the Lambert Azimuthal Equal-Area projection shown in @fig-crs-conic-planar-2.
 
 For areas with the size of a continent or country, the azimuthal map projection type can be used when centered on the area of interest.
-In particular, the Lambert Azimuthal Equal-Area projection when the equal area is required and the Azimuthal Equidistant projection when preserving distances is essential.
+In particular, the Lambert Azimuthal Equal-Area projection is used when equal area is required, and the Azimuthal Equidistant projection is used when preserving distances is essential.
 Alternatively, cylindrical and conic map projection types can be used for areas at low and mid-latitudes, respectively.
 Another alternative is to use a UTM projection.
 However, this is only recommended when the target area spans less than 6 degrees longitude and does not cross the UTM zone lines.
@@ -536,7 +529,7 @@ st_crs("EPSG:3035")
 
 \index{crs objects}
 A `crs` object contains Well Known Text (WKT).
-It includes a specification of the used datum as well as information how to transform it into other CRSs.
+It includes a specification of the used datum as well as information on how to transform it into other CRSs.
 Understanding the exact content of the WTK is not important for most users, since it is not needed to write a WKT yourself.
 
 \index{crs objects}
@@ -545,13 +538,13 @@ Understanding the exact content of the WTK is not important for most users, sinc
 A `crs` object can be created in several ways:
 <!--to improve in the future-->
 
-1. The first is with an EPSG number as user input specification as shown above. <!--it can be also some other "provider", e.g. "ESRI:37001"-->
+1. The first is with an EPSG number as a user input specification, as shown above. <!--it can be also some other "provider", e.g. "ESRI:37001"-->
 2. The second is also with a user input specification, but with a so-called *proj4* character string. 
 The *proj4* character string for the LAEA projection is `"+proj=laea +lat_0=52 +lon_0=10 +x_0=4321000 +y_0=3210000 +ellps=GRS80 +units=m +no_defs"`.
 However, *proj4* character strings should be used with caution since they often lack important CRS information regarding datums and CRS transformations.
 Also note that the name *proj4* stands for the **PROJ** library version 4, while the current major version of **PROJ** at the time of writing is already 9.
 <!--update-->
-3. The third way is to provide some WKT definition of the projection. <!--...-->
+3. The third way is to provide a WKT definition of the projection. <!--...-->
 4. The last way to create a `crs` object is to extract it from an existing spatial data object (e.g., an **sf**, **terra**, or **stars** object) using the `st_crs()` function.
 
 A `crs` object can define a new spatial object's projection or transform an existing spatial object into another projection.
@@ -561,7 +554,7 @@ We can see that our object's coordinate reference system is not defined with the
 
 ```{r}
 #| label: crs-use
-# create a data.frame of three famous waterfalls
+# create a data frame of three famous waterfalls
 waterfalls = data.frame(name = c("Iguazu Falls", "Niagara Falls", "Victoria Falls"), 
                         lat = c(-25.686785, 43.092461, -17.931805), 
                         lon = c(-54.444981, -79.047150, 25.825558))
@@ -599,7 +592,7 @@ waterfalls_sf_trans
 ```
 
 @fig-crs-trans-plot shows the example data in the WGS84 coordinate system on the top and in the Equal Earth projection on the bottom.
-You can see here that the decision of the projection used has an impact not only on the coordinates (notice the grid values), but also the continents' shapes.
+You can see here that the decision of the projection used has an impact not only on the coordinates (notice the grid values), but also on the continents' shapes.
 
 ```{r}
 #| label: fig-crs-trans-plot
@@ -607,10 +600,10 @@ You can see here that the decision of the projection used has an impact not only
 #| warning: false
 #| fig-asp: 0.5
 #| layout-nrow: 2
-#| fig-cap: 'Comparison between the same dataset of three waterfalls'
+#| fig-cap: "Comparison between the same dataset of three waterfalls."
 #| fig-subcap:
-#|   - 'WGS84 coordinate system'
-#|   - 'Equal Earth projection'
+#|   - WGS84 coordinate system
+#|   - Equal Earth projection
 tm_shape(World, crs = "EPSG:4326") +
     tm_polygons() +
   tm_shape(waterfalls_sf) +
@@ -625,9 +618,8 @@ tm_shape(World, crs = "EPSG:8857") +
 
 ## Specifying map projections within **tmap**
 
-<!-- https://r-tmap.github.io/tmap/articles/foundations_crs -->
 Now that the concepts of map projections are established, we can examine how to specify map projections in **tmap**.
-We will expand on the short introduction from @sec-map-projection-intro and show how to use various tools available in the `tm_crs()` function.
+Here, we expand on the short introduction from @sec-map-projection-intro and show how to use various tools available in the `tm_crs()` function.
 
 ### Vector data
 
@@ -673,8 +665,8 @@ tm +
 #| label: fig-mproj12
 #| fig-cap: "Map projections examples."
 #| fig-subcap:
-#|   - "WGS 84 (EPSG:4326)"
-#|   - "Equal Earth projection (EPSG:8857)"
+#|   - WGS 84 (EPSG:4326)
+#|   - Equal Earth projection (EPSG:8857)
 #| echo: false
 #| message: false
 #| fig-asp: 0.5
@@ -683,7 +675,7 @@ tm +
 <<mproj2>>
 ```
 
-The `tm_crs()` function is actually a small toolbox helping to manage map projections.
+The `tm_crs()` function is actually a small toolbox for managing map projections.
 As you have seen above, if we know the projection's name (`"+proj=eqearth"`) or code (`"EPSG:8857"`) we can specify it directly.
 You can also use the `tm_crs()` function if you do not know the projection's name or code -- it accepts the `"auto"` argument.
 It will automatically select a suitable projection based on the data's extent and the map's properties.
@@ -722,7 +714,7 @@ Reprojections of vector data are usually straightforward because each spatial co
 <!-- mention invalid geometries? -->
 Reprojecting of raster data, on the other hand, is more complex and requires using one of two approaches.
 The first approach applies raster warping, which is a name for two separate spatial operations: the creation of a new regular raster object and the computation of new pixel values through resampling (for more details, read Chapter 7 of @lovelace_geocomputation_2025).
-This is the default option in **tmap**, however, it has some limitations and it is not always possible to use it.
+This is the default option in **tmap**; however, it has some limitations, and it is not always possible to use it.
 The second approach involves transforming the coordinates of the raster cells, resulting in a curvilinear grid.
 Let's see how to use these two approaches in **tmap** based on the `worldelevation.tif` raster data.
 
@@ -745,7 +737,7 @@ tm_shape(worldelevation) +
   tm_crs("+proj=eqearth") # or "EPSG:8857"
 ```
 
-The second approach (`tm_options(raster.warp = FALSE)`) computes new coordinates for each raster cell, keeping all of the original values and results in a curvilinear grid.
+The second approach (`tm_options(raster.warp = FALSE)`) computes new coordinates for each raster cell, keeping all of the original values, and results in a curvilinear grid.
 This calculation could deform the shapes of original grid cells, and usually curvilinear grids take a longer time to plot^[For more details of the first approach, see `?stars::st_warp()` and of the second approach, see `?stars::st_transform()`.].
 
 @fig-tm-map-proj-2 illustrates an example of the second approach, which yielded a better result in this case without any spurious land.
@@ -767,7 +759,7 @@ tm_shape(worldelevation) +
 #| warning: false
 #| layout-nrow: 2
 #| fig-asp: 0.5
-#| fig-cap: Two elevation maps in the Equal Earth projection
+#| fig-cap: "Two elevation maps in the Equal Earth projection."
 #| fig-subcap: 
 #|   - created using raster.warp = TRUE
 #|   - created using raster.warp = FALSE
@@ -795,8 +787,7 @@ bench::mark(print(tmp1), print(tmp2), check = FALSE)
 
 The **tmap** package also offers several additional features that can be used to customize maps with global projections.
 For instance, the `tm_layout()` function has an argument `earth_boundary` that can be set to `TRUE` to add a boundary around the Earth.
-Then, we can also set the `bg.color` argument to specify the background color of the map, which will only apply to the area inside the Earth boundary for a given projection (@fig-mproj3).
-<!-- should we mention tm + tm_style("natural") ?-->
+Then, we can also set the `bg.color` argument to specify the background color of the map, which will only apply to the area inside the Earth's boundary for a given projection (@ @fig-mproj3).
 
 ```{r}
 #| label: fig-mproj3
@@ -809,7 +800,7 @@ tm +
 
 These features can be used to create more visually appealing maps.
 They are available to a large set of projections^[Find more projections in the PROJ documentation at  <https://proj.org/en/stable/operations/projections>], some of which are shown in @fig-exprojs.
-You may notice that these projections have not only different visual styles but also different shapes of the Earth boundary and focus on preserving different map projection properties.
+You may notice that these projections have not only different visual styles but also different shapes of the Earth's boundary and focus on preserving different map projection properties.
 
 ```{r}
 #| label: fig-exprojs
@@ -852,8 +843,8 @@ We can use the `tm_crs()` function to apply the orthographic projection with the
 #| label: fig-mproj-ortho
 #| fig-cap: "Orthographic projection examples."
 #| fig-subcap:
-#|   - "Centered on 30°N, 0°E"
-#|   - "Centered on 0°N/S, 100°E"
+#|   - centered on 30°N, 0°E
+#|   - centered on 0°N/S, 100°E
 #| layout-ncol: 2
 #| fig-asp: 1
 tm +
@@ -871,7 +862,7 @@ tm +
 ```
 
 ::: {.callout-note}
-Note, that in these examples, the `bbox` argument is set to `"FULL"`, which means that the whole Earth is displayed -- it is useful when the extent of the data is smaller than the whole Earth.
+Note that in these examples, the `bbox` argument is set to `"FULL"`, which means that the whole Earth is displayed -- it is useful when the extent of the data is smaller than the whole Earth.
 :::
 
 <!-- ## Local map projections in **tmap** -->
@@ -893,5 +884,4 @@ Note, that in these examples, the `bbox` argument is set to `"FULL"`, which mean
 ```
 
 <!-- properies -->
-
 <!-- specific: south pole? -->
