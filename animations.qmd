@@ -5,6 +5,7 @@ source("code/before_script.R")
 
 # Animations {#sec-animations}
 
+\index{animation}
 Animations are a powerful way to visualize changes in data over time -- to illustrate trends, patterns, and dynamics that might not be immediately apparent in static maps.
 They can also be used to create engaging visualizations that capture the viewer's attention or just to break the monotony of static maps, for example, by comparing different locations.
 
@@ -35,6 +36,8 @@ tm = tm_shape(slo_regions_ts) +
 <!-- idea: animating charts along the data: -->
 <!-- tm_polygons("gdppercap", fill.chart = tm_chart_donut()) -->
 
+\index{tm_animate}
+\index{tm_animate_fast}
 To make it animated, we can use the `tm_animate()` or `tm_animate_fast()` functions and specify the variable that we want to animate by, in this case, `time` (@fig-anims).
 The difference between the two functions is that `tm_animate()` renders the animation at 2 frames per second (specified by the `fps` argument), while `tm_animate_fast()` renders it at 24 frames per second.
 The former is more suitable for smaller datasets and cases where we want to allow the viewer to read the values on the map, while the latter is more suitable for larger datasets and cases where we want to create a smooth, cinematic animation.
@@ -93,6 +96,7 @@ tm_shape(slo_tavg) +
 
 ## Saving animations
 
+\index{tmap_animation}
 The `tm_animate()` and `tm_animate_fast()` functions create a **tmap** object that contains the animation and shows it.
 Now, to save the animation, we can use the `tmap_animation()` function.
 It takes the animation object as the first argument and the file name as the second argument -- the extension of the file name determines the format of the saved animation.
