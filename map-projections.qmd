@@ -720,8 +720,8 @@ Let's see how to use these two approaches in **tmap** based on the `worldelevati
 
 ```{r}
 #| message: false
-library(stars)
-worldelevation = read_stars("data/worldelevation.tif")
+library(terra)
+worldelevation = rast("data/worldelevation.tif")
 ```
 
 @fig-tm-map-proj-1 shows the World elevation raster reprojected to Equal Earth.

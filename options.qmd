@@ -10,8 +10,8 @@ source("code/before_script.R")
 ```{r}
 #| message: false
 library(tmap)
-library(stars)
-worldelevation = read_stars("data/worldelevation.tif")
+library(terra)
+worldelevation <- rast("data/worldelevation.tif")
 ```
 
 ## Raster resolution
@@ -32,7 +32,7 @@ This values can be adjusted with the `raster.max_cells` argument of `tmap_option
 #| fig-cap: A raster map with the decreased resolution
 tmap_options(raster.max_cells = c(plot = 5000, view = 2000))
 tm_shape(worldelevation) +
-  tm_raster("worldelevation.tif")
+    tm_raster("worldelevation")
 ```
 
 ## Resetting the options
