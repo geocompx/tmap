@@ -247,6 +247,15 @@ tm_shape(slo_tavg) +
   tm_title("Average monthly temperature in Slovenia") 
 ```
 
+::: {.callout-note}
+Each visual variable (e.g., `col`, `size`, `shape`) has a related argument with the `.free` suffix, e.g., `col.free`, `size.free`, `shape.free`.
+These arguments are used to control whether the scales for the visual variable are applied freely across facets or are shared.
+For example, `col.free = TRUE` means that each facet has its own color scale, while `col.free = FALSE` means that all facets share the same color scale.
+
+The `.free` arguments can also be used to control the scales for each facet dimension with a vector of logical values.
+For example, `col.free = c(TRUE, FALSE)` means that the color scale is applied freely across rows of facets, but shared across columns.
+:::
+
 ## Facets with raster and vector data
 
 @fig-facets12 shows how to combine raster and vector data in facets.
