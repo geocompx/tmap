@@ -128,7 +128,7 @@ tm_shape(slo_regions) +
 
 \index{tm_facets}
 \index{tm_facets_wrap}
-\index{tm_facets_grid}}
+\index{tm_facets_grid}
 All of the above examples use the `tm_facets()` function.
 This is a general function that can be used to create facets for various types of data.
 At the same time, **tmap** provides several specialized functions for creating facets that can be used to create more complex faceting layouts.
