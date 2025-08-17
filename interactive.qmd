@@ -3,7 +3,7 @@
 source("code/before_script.R")
 ```
 
-# Interactive settings {#sec-interactive}
+# Interactive maps {#sec-interactive}
 
 <!-- tm_minimap move here?? -->
 <!-- tm_mouse_coordinates() -->

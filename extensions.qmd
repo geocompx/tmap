@@ -3,4 +3,4 @@
 source("code/before_script.R")
 ```
 
-# Creating new map extensions {#sec-creating-extensions}
+# Map extensions {#sec-extensions}
