@@ -64,7 +64,7 @@ book:
         # - "options.qmd"
     - part: "Mastering the craft"
       chapters:
-        - "good-maps.qmd"
+        - "good-maps.qmd" #map examples, good practives, workflows, etc?
     - "references.qmd"
   appendices:
     - "data-processing.qmd"
