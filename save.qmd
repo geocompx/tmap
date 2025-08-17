@@ -80,6 +80,8 @@ tmap_save(tm, "my_map_j1.jpg", quality = 100)
 tmap_save(tm, "my_map_j2.jpg", quality = 100)
 ```
 
+<!-- maybe a paragraph about figure sizing (interplay between width, height, dpi, and scale) and how it affects the output file size and quality? -- with a comparison of a few outputs and explanations? -->
+
 ## Vector graphic formats {#sec-vector-graphic-formats}
 
 \index{vector graphics}

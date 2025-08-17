@@ -334,6 +334,8 @@ Firstly, it could be worth trying some alternative graphic devices such as `cair
 The second option is to use the **showtext** package [@R-showtext], which converts text into color-filled polygonal outlines for graphical vector formats.
 Thirdly, the **extrafont** [@R-extrafont] package allows embedding the fonts in the PDF file, which makes PDFs properly displayed on computers that do not have the given font.
 
+For a longer discussion on typography and R, we recommend to read the **systemfonts** package documentation at <https://systemfonts.r-lib.org/articles/fonts_basics.html>.
+
 ### Fonts on maps {#sec-fonts-on-maps}
 
 By default, **tmap** uses the `"sans"` font family with the `"plain"` font face (@fig-fonts). 
