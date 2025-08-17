@@ -689,3 +689,12 @@ to8 = tmo_maker("-\\\\")
 tmap_arrange(to1, to2, to3, to4, to5, to6, to7, to8,
               ncol = 4, nrow = 2, outer.margins = 0)
 ```
+
+
+<!-- Other ideas: -->
+
+<!-- A section with some common usecases and their comparison: -->
+<!-- 1. Simple variable (e.g., population density) using two or so scales -->
+<!-- 2. Relative change/ratio/logarith of ratio -->
+
+- how to show relative change?
