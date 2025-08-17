@@ -10,6 +10,8 @@ We cover the former in this chapter and the latter is discussed in the following
 
 ## Shapes and layers {#sec-shapes-and-layers}
 
+\index{shape object}
+\index{map layer}
 As described in @sec-geodata, shape objects can be vector or raster data.
 We recommend `sf` objects for vector data and `terra` objects for raster data^[However, **tmap** also accepts other spatial objects, e.g., of `sp`, `raster`, and `stars` classes.].
 
@@ -25,6 +27,7 @@ worldcities = read_sf("data/worldcities.gpkg")
 worldelevation = rast("data/worldelevation.tif")
 ```
 
+\index{tm\_shape}
 In **tmap**, a shape object needs to be defined with the function `tm_shape()`.
 When multiple shape objects are used, each has to be defined in a separate `tm_shape()` call.
 This is illustrated in the following example (@fig-tmshape1).
@@ -56,6 +59,7 @@ In the above example, shape object `worldcities` is used for two layers: `tm_dot
 
 ## Shapes hierarchy {#sec-shapes-hierarchy}
 
+\index{shapes hierarchy}
 The order of the `tm_shape()` functions' calls is meaningful.
 The first `tm_shape()`, known as *the main shape*, is not only shown below the following *shapes*, but also sets the projection and extent of the whole map.
 In @fig-tmshape1, the `worldelevation` object was used as the first *shape*, and thus the whole map has the projection and extent of this object.
@@ -80,6 +84,7 @@ tm_shape(worldelevation) +
 
 ## Map extent {#sec-map-extent}
 
+\index{map extent}
 Another important aspect of mapping, besides projection, is its extent^[Also known as a *bounding box*.] -- a portion of the area shown in a map.
 This is not an issue when the extent of our spatial data is the same as we want to show on a map.
 However, what should we do when the spatial data contains a larger region than we want to present?
@@ -135,8 +140,8 @@ tm_shape(worldelevation, bbox = worldcities) +
 <!-- explain some additional arguments of bb? -->
 
 ## Map projection {#sec-map-projection-intro}
-\index{map projection}
 
+\index{map projection}
 As we mentioned in the previous section, *t*maps use the projection from the main *shape*.
 However, we often want to create a map with a different projection, for example, to preserve a specific map property.
 We can do this in three ways:

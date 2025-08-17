@@ -13,6 +13,9 @@ The goal of this chapter is to provide a brief overview of the main **tmap** fea
 
 ## Shape objects {#sec-shape-objects}
 
+\index{shape objects}
+\index{spatial data}
+\index{tm\shape}
 As we established in @sec-geodata, spatial data comes from various file formats related to two main data models -- vector and raster.
 There are also several spatial object classes in R, for example, `sf` from the **sf** package for vector data, `SpatRaster` from the **terra** package, and `stars` from **stars** for raster data and spatial data cubes.
 Additionally, packages such as **sp** or **raster** offer their own classes, and this abundance of spatial object classes can be generally overwhelming.
@@ -37,6 +40,8 @@ slo_cities = read_sf("data/slovenia/slo_cities.gpkg")
 
 ## Quick maps {#sec-quick-maps}
 
+\index{quick maps}
+\index{qtm}
 The **tmap** package offers two distinct ways to create maps: a quick and a regular one.
 The first approach, using the `qtm()` function, could be handy for data exploration.
 It works even if we provide any *shape object* -- in that case, only the geometry is plotted.
@@ -74,6 +79,12 @@ It supports only one *shape object* at a time and does not allow for much custom
 
 ## Regular maps {#sec-regular-maps}
 
+\index{map elements}
+\index{tm\_shape}
+\index{map layers}
+\index{tm\_polygons}
+\index{tm\_compass}
+\index{tm\_scalebar}
 For most applications, we recommend using the regular mapping approach.
 This approach operates on many functions with the `tm_` prefix that we call one after another with the `+` operator.
 We call these functions *tmap elements*.
@@ -91,12 +102,15 @@ tm_shape(slo_cities) +
 
 Here, we specify the input data (our *shape object*) with `tm_shape()`, visual variables (also known as *aesthetics*) of map layers with `tm_symbols()`, and the map title with `tm_title()`.
 
+\index{map layers}
+\index{visual variables}
 The **tmap** package has a number of possible map layers, but the most prominent ones are `tm_polygons()`, `tm_symbols()`, `tm_lines()`, `tm_raster()`, and `tm_text()` (@sec-layers).
 Overall, most visual variables of map layers can be assigned in two main ways.
 First, they accept a fixed, constant value, for instance, `shape = 24`, which sets the symbols' shapes to triangles.
 Second, it is also possible to provide a variable name, for example, `size = "population"`.
 This plots each point with a size based on the `population` attribute from the `slo_cities` object and automatically adds a related map legend.
 
+\index{tm\_shape}
 The `tm_shape()` function and one or more of the following map layers create a *group* together.
 In other words, map layers are related only to the preceding `tm_shape()` call.
 One map can have several *groups*.
@@ -132,6 +146,9 @@ tm_shape(slo_elev) +
   tm_layout(bg.color = "grey95")
 ```
 
+\index{tm\_title}
+\index{tm\_layout}
+\index{tm\_legend}
 The correct answer is four groups, all with just one layer.
 Each *group* is put on top of the previous one -- **tmap** uses a layered approach.
 The first *group* represents elevation data with a continuous color scale style, a color palette called `"geyser"`, and a legend title.
@@ -140,7 +157,14 @@ The last *group* is similar to our previous example with fixed symbol shapes and
 Additionally, we use the `tm_title()` function to add a map title and `tm_layout()` to modify the general appearance of the map.
 You can also notice that we can control scales of various visual variables, such as color, size, or width, with the `tm_scale_*()` function and customize legends with the `tm_legend()` function.
 
-Often, maps also have additional map elements, such as graticule lines, north arrow, scale bar, or map credits (@fig-rmap2). 
+\index{graticules}
+\index{north arrow}
+\index{scale bar}
+\index{map credits}
+\index{tm\_graticules}
+\index{tm\_compass}
+\index{map components}
+Often, maps also have map components, such as graticule lines, north arrow, scale bar, or map credits (@fig-rmap2). 
 They help map readers understand the location or extent of the input data and provide some ancillary information.
 The **tmap** package offers a set of functions for additional map elements.
 The `tm_graticules()` function draws latitude and longitude graticules and adds their labels.
@@ -206,6 +230,7 @@ tm_shape(slo_regions) +
   tm_polygons(fill = c("pop_dens", "gdppercap", "region_group"))
 ```
 
+\index{tm\_facets}
 Another possible approach is to use the `tm_facets()` function.
 Let's illustrate it with the `slo_regions_ts` object containing the same variables as `slo_regions` but for many years (`time` column).
 @fig-sec-facets2 shows a facet map with the GDP per capita, specified with `tm_polygons()`, and visualized in separate panels for each year as defined by the `tm_facets()` function.
@@ -225,6 +250,7 @@ This is a topic of the @sec-facets.
 ## Animations {#sec-ani-section}
 
 \index{animations}
+\index{tm\_animate}
 @fig-sec-ani1 shows an animated map with the GDP per capita visualized for each year.
 Animations in **tmap** are created similarly to the facet maps, but instead of using the `tm_facets()` function, we use the `tm_animate()` function.
 It defines the variable that is used to create the animation, in this case, the `time` column from the `slo_regions_ts` object.
@@ -246,6 +272,9 @@ Animations can be used for both vector and raster data and then saved as GIF or 
 
 ## Map modes {#sec-map-modes}
 
+\index{map modes}
+\index{interactive maps}
+\index{tmap\_mode}
 Each map created with **tmap** can be viewed in a few map modes, including the `"plot"` and `"view"` modes.
 <!-- maybe add note that more modes are possible + ref -->
 The `"plot"` mode is used by default and creates static maps similar to those shown before in this chapter.

@@ -20,7 +20,7 @@ The main difference is that `tmap_arrange()` combines multiple maps, often based
 ## Inset maps {#sec-inset-maps}
 
 \index{inset maps}
-\index{tm\_inset}}
+\index{tm\_inset}
 Inset maps are a powerful way to add additional context or details to a main map.
 They are typically smaller maps that show a specific area of interest, such as a zoomed-in view of a region, or a different data layer that complements the main map.
 In **tmap**, insets may be based on a bounding box, another `tmap` object, **ggplot2** objects, or image files.

@@ -3,8 +3,14 @@
 source("code/before_script.R")
 ```
 
-# Scales {#sec-scales}
+# Scales of visual variables {#sec-scales}
 
+\index{visual variables}
+\index{scales}
+\index{color scales}
+\index{size scales}
+\index{shape scales}
+\index{tm\_scale}
 Sections [-@sec-colors], [-@sec-sizes], and [-@sec-shapes] showed how to set colors, sizes, and shapes for different types of spatial objects.
 In them, we often used the `tm_scale()` function to modify the appearance of the map, such as changing the color palettes (`col.scale` and `fill.scale`), sizes (`size.scale`), or shapes (`shape.scale`).
 The `tm_scale()` function automatically sets the scale for the given visual variable and the data type (factor, numeric, and integer).
@@ -39,8 +45,6 @@ scales_df = tibble::tribble(
 #| echo: false
 #| warning: false
 #| message: false
-# library(kableExtra)
-# options(kableExtra.html.bsTable = TRUE)
 knitr::kable(scales_df, 
              booktabs = TRUE) |>
   kableExtra::kable_styling("striped",
@@ -48,10 +52,9 @@ knitr::kable(scales_df,
                             full_width = FALSE) |> 
   kableExtra::column_spec(1, width = "4cm", monospace = TRUE) |>
   kableExtra::column_spec(2, width = "8cm")
-# tinytable::tt(scales_df) |>
-#   tinytable::style_tt(j = 1, monospace = TRUE)
 ```
 
+\index{scales!examples}
 @fig-scales shows examples of how some of them look like when applied to the same variable.
 In the rest of the chapter, we go through each of the scales in more detail.
 We mostly focus on using scales for the `fill.scale` argument, but the same principles apply to the `col.scale`, `size.scale`, and `shape.scale` arguments.
@@ -96,7 +99,9 @@ slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
 
 ## Categorical scales {#sec-categorical-scales}
 
-\index{Categorical maps}
+\index{categorical maps}
+\index{categorical scales}
+\index{tm\_scale\_categorical}
 An example of a categorical map can be seen in @fig-colorscales2.
 We created it by providing a character variable's name, `"region_group"`, in the `fill` argument. 
 
@@ -128,6 +133,8 @@ tm_shape(slo_regions) +
 
 ## Ordinal scales {#sec-ordinal-scales}
 
+\index{ordinal maps}
+\index{tm\_scale\_ordinal}
 The ordinal scale is similar to the categorical scale, but it is used for ordered categorical variables.
 By default, this scale uses a sequential color palette, which is suitable for ordered categorical variables (@fig-ordinal-scales).
 We may use `tm_scale_ordinal()` when the order of the values matters to highlight a hierarchy or ranking.
@@ -144,6 +151,7 @@ tm_shape(slo_regions) +
 
 ## Discrete scales {#sec-discrete-scales}
 
+\index{discrete maps}
 <!-- Martijn: a better example is probably needed here -- we could add some new variable to the data. -->
 
 ```{r}
@@ -158,12 +166,14 @@ tm_shape(slo_regions) +
 
 ## Rank scales {#sec-rank-scales}
 
+\index{rank maps}
 <!-- Martijn: any ideas for a good example? -->
 
 ## Intervals scales {#sec-intervals-scales}
 
 <!-- optimal number of classes? 3-7 -->
-\index{Intervals maps}
+\index{intervals maps}
+\index{tm\_scale\_intervals}
 Interval scales are used to represent continuous numerical variables using a set of class intervals. 
 In other words, values are divided into several groups based on their properties.
 Several approaches can be used to convert continuous variables to intervals, and each of them could result in different groupings of values (@tbl-style-table).^[Most of these approaches in **tmap** use the **classInt** package [@R-classInt] internally, therefore, some additional information on their use can be found in the `?classIntervals` function's documentation.]
@@ -174,8 +184,6 @@ Several approaches can be used to convert continuous variables to intervals, and
 #| tbl-cap: "Styles available to create intervals maps."
 #| warning: false
 #| message: false
-# library(kableExtra)
-# options(kableExtra.html.bsTable = TRUE)
 styles_df = tibble::tribble(
   ~Style, ~Description,
   '"pretty"', "Pretty breaks",
@@ -204,6 +212,7 @@ knitr::kable(styles_df,
 
 ### Pretty breaks
 
+\index{pretty breaks}
 By default, the `tm_scale_intervals()` function is used in the background (@fig-intervals-methods-1).
 It uses a style called "pretty", which creates breaks that are whole numbers and spaces them evenly ^[For more information, visit the `?pretty()` function documentation].
 
@@ -222,6 +231,7 @@ While not every `n` is possible depending on the input values, **tmap** tries to
 
 ### Manual breaks
 
+\index{manual breaks}
 The next approach is to manually select the limits of each break with the `breaks` argument of `tm_scale()` (@fig-intervals-methods-2).
 This can be useful when we have some pre-defined breaks or when we want to compare values between several maps.
 It expects threshold values for each break, therefore, if we want to have three breaks, we need to provide four thresholds.^[You may also use `-Inf` and `Inf` to represent the lowest and highest possible values, respectively.]
@@ -240,6 +250,7 @@ tm_shape(slo_regions) +
 
 ### Automatic breaks
 
+\index{automatic breaks}
 Another approach is to create breaks automatically using one of many existing classification methods with the `style` argument of the `tm_scale()` function.
 Three basic methods are `"equal"`, `"sd"`, and `"quantile"` styles.
 Let's consider a variable with 100 observations with values ranging from 0 to 10.
@@ -311,7 +322,10 @@ tm_shape(slo_regions) +
 
 ## Continuous scales {#sec-continuous-scales}
 
-\index{Continuous maps}
+\index{continuous maps}
+\index{tm\_scale\_continuous}
+\index{tm\_scale\_rank}
+\index{tm\_scale\_continuous\_log10}
 Continuous maps also represent continuous numerical variables, but without any discrete class intervals (@fig-cont-methods).
 A few continuous methods exist in **tmap**, including `tm_scale_continuous()`, `tm_scale_rank()`, and `tm_scale_continuous_log10()`.
 
@@ -372,6 +386,7 @@ tm_shape(slo_regions) +
 
 ## As-is scales {#sec-asis-scales}
 
+\index{as-is scales}
 In most cases, we want to use a color scale based on the variable's values.
 Then, **tmap** takes these values, groups them into classes, and assigns a color to each class.
 However, it is also possible to use the values of the variables directly to specify the fill color or other visual properties of the spatial objects.
@@ -419,6 +434,8 @@ library(terra)
 sat = rast("data/slovenia/slo_mosaic.tif")
 ```
 
+\index{RGB scales}
+\index{tm\_scale\_rgb}
 The `sat` **terra** object contains four bands of the Sentinel-2 image for Slovenia.
 The bands (blue, green, red, and near-infrared) are stored as layer as `B02`, `B03`, `B04`, and `B08`.
 We can plot all of the bands independently or as a combination of three bands.
@@ -493,7 +510,7 @@ tm_shape(sat_stars) +
 
 ## Bivariate scales {#sec-bivariate-scales}
 
-\index{Bivariate maps}
+\index{bivariate maps}
 In cases when we have two variables that we want to visualize, the most common approach is to create two separate maps, one for each variable (@fig-bivariate-scales1).
 We can also do that using the `tm_vars()` function, which allows us to specify multiple variables (see the code below) or with the facet functions (see @sec-facets).
 
@@ -512,6 +529,8 @@ This is done by representing not only the values of each variable independently 
 Areas with a small population density and a small percentage of the population aged 65 and older are colored in gray, while areas with a high population density and a high percentage of the population aged 65 and older are colored in dark brown.
 Additionally, the areas with a high population density and a low percentage of the population aged 65 and older are colored in purple, while areas with a low population density and a high percentage of the population aged 65 and older are colored in gold.
 
+\index{tm\_scale\_bivariate}
+\index{tm\_legend\_bivariate}
 The creation of bivariate maps is done with the `tm_vars()` function, where we specify the two variables we want to combine and set the `multivariate` argument to `TRUE`.
 Bivariate maps also require a special color palette, which can be specified with `tm_scale_bivariate()` provided to the `*.scale` argument.
 <!-- advice regarding color palettes? -->
@@ -553,6 +572,7 @@ Thus, all of the scales from sections [-@sec-categorical-scales] to [-@sec-conti
 In the example below, we use two scales for the temperature -- one for the January temperatures and one for the July temperatures.
 In both cases, our scales are intervals, but we customize their breaks and add text labels.
 
+\index{bivariate color scales}
 Another difference is that a regular color scale is one-dimensional -- it has only one axis, and thus we can either use its original form (e.g., from light to dark blue) or flip it (e.g., from dark to light blue).
 A bivariate color scale, on the other hand, is two-dimensional.
 It has two axes, and this opens up many more possibilities for modifying the scale.
@@ -592,10 +612,10 @@ There are also a few areas where the temperature category is very different betw
 #| message: false
 #| echo: false
 #| layout-ncol: 1
-#| fig-cap: 'Bivariate maps for raster data.'
+#| fig-cap: "Bivariate maps for raster data."
 #| fig-subcap:
-#|   - 'simple map'
-#|   - 'customized map'
+#|   - simple map
+#|   - customized map
 <<tmrastbiv1>>
 <<tmrastbiv2>>
 ```
@@ -621,12 +641,10 @@ flipops = tibble::tribble(
 
 ```{r}
 #| label: tbl-flipops-table
-#| tbl-cap: "Operators for flipping bivariate color scales"
+#| tbl-cap: "Operators for flipping bivariate color scales."
 #| echo: false
 #| warning: false
 #| message: false
-# tinytable::tt(flipops) |>
-#   tinytable::style_tt(j = 1, monospace = TRUE)
 kableExtra::kbl(flipops, booktabs = TRUE) |>
   kableExtra::kable_styling("striped",
                             latex_options = "striped", 
@@ -638,7 +656,7 @@ Additionally, @fig-tmo-bivariate shows how these flipping operators work in acti
 
 ```{r}
 #| label: fig-tmo-bivariate
-#| fig-cap: "Bivariate color scales with different flipping operators"
+#| fig-cap: "Bivariate color scales with different flipping operators."
 #| message: false
 #| warning: false
 #| echo: false

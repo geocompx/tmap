@@ -5,6 +5,8 @@ source("code/before_script.R")
 
 # Save maps {#sec-save}
 
+\index{saving maps}
+\index{tmap\_save}
 Maps created programmatically can serve several purposes, from exploratory, through visualizations of the processing steps, to being the final outputs of a given project.
 Therefore, often we want just to see our map on the screen, but sometimes we also want to save our map results to an external file.
 **tmap** objects can be directly saved to output files with `tmap_save()`^[Standard R approach of saving graphic files by opening a graphic device, e.g., `png()`, plotting the data, and then closing the device with `dev.off()` also works.].
@@ -27,6 +29,7 @@ tm
 
 ## Raster graphic formats {#sec-raster-graphic-formats}
 
+\index{raster graphics}
 Raster graphics are non-spatial relatives of spatial rasters.
 The digital images are composed of many pixels -- squares filled with specific colors.
 Main raster graphic file formats include PNG, JPEG, and TIFF.
@@ -45,6 +48,7 @@ It usually accepts two arguments^[In fact, one argument is enough -- if you just
 tmap_save(tm, "my_map.png")
 ```
 
+\index{DPI}
 By default, DPI is set to 300, and the image width and height is automatically adjusted based on the map aspect ratio.
 These parameters can be, however, changed with the `dpi`, `width`, and `height` arguments^[You can even specify just one of `width` or `height`, and the value of the second one will be calculated using the formula `asp = width / height`.].
 
@@ -59,6 +63,7 @@ The `tmap_save()` function also has several additional arguments, including `out
 All of them override the arguments' values set in `tm_layout()` (@sec-map-layout).
 Additionally, when set to `0`, the `asp` argument has a side effect: it shifts the map frame to the edges of the output image.
 
+\index{graphic device}
 By default, **tmap** uses graphic devices^[Short discussion about graphic devices can be found in section @sec-fonts-tmap.] incorporated in R.
 However, it is also possible to use other, external devices with the `device` argument.
 For example, the `ragg::agg_png` device is usually faster and has better support for non-standard fonts than the regular `grDevices::png`.
@@ -77,6 +82,7 @@ tmap_save(tm, "my_map_j2.jpg", quality = 100)
 
 ## Vector graphic formats {#sec-vector-graphic-formats}
 
+\index{vector graphics}
 Vector graphics are quite distant counterparts of spatial vectors, with vector graphics consisting of sets of coordinates.
 Contrary to spatial vectors, however, their coordinates can be connected not only by straight lines (@sec-vector-data-model), but also using curves.
 This makes it possible to create polygons, circles, ellipses, and other shapes.
@@ -112,6 +118,7 @@ Note, however, that this process is not fully reproducible.
 
 ## Interactive format {#sec-interactive-format}
 
+\index{interactive maps}
 `tmap` map objects can not only be viewed in the interactive mode (as shown in @sec-map-modes) but also saved as HTML files by adding the `.html` extension to the output file name.
 
 ```{r}

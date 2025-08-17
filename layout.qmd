@@ -94,6 +94,8 @@ tm +
   tm_layout(color.sepia_intensity = 1)
 ```
 
+\index{color perception}
+\index{color blindness}
 \index{color vision deficiency simulation}
 Both of the above options aim to change the overall map's look and feel.
 The `color_vision_deficiency_sim` has a different purpose: it enables us to visualize how the map would appear to people with different color vision deficiencies.

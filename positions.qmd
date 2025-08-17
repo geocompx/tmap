@@ -19,6 +19,8 @@ m = \(text) boxy(text, fill = "#AE7327")
 
 # Positions {#sec-positions}
 
+\index{map components!positioning}
+\index{positions}
 This chapter focuses on how to move map components, such as legends, titles, scale bars, and insets, freely in the map.
 They can be placed both inside and outside the map frame -- with some being in and some being out (@sec-positioning).
 Moreover, map components can be grouped together, which allows them to be moved and arranged as a single unit (@sec-position-many-components).
@@ -36,6 +38,9 @@ tm = tm_shape(slo_elev) +
 
 ## Positioning {#sec-positioning}
 
+\index{positions}
+\index{tm\_pos\_in}
+\index{tm\_pos\_out}
 All of the map components can be positioned in any location in the map frame or outside of it. 
 The positioning is done via the `position` argument, which can take a variety of values.
 The most common are:
@@ -124,6 +129,7 @@ tm_shape(slo_elev) +
 <<position-in3>>
 ```
 
+\index{positions!justification}
 There is one important difference between specifying the position with a vector and with the `tm_pos_in()` function.
 The latter allows to control the position more precisely with additional arguments -- `just.h`, `just.v`, `align.h`, and `align.v`.
 The `just.h` and `just.v` only work when the position is specified with numbers between 0 and 1, and they arguments control the justification of the map component to that position.
@@ -152,6 +158,7 @@ The `align.h` and `align.v` arguments are used when many map components are grou
 
 ### Outside the map frame
 
+\index{tm\_pos\_out}
 In general, there are eight locations for map components outside the map frame -- each of them can be specified with `tm_pos_out()` (@fig-positions-out-scheme).
 We may place a map component either on one of the sides of the map frame (e.g., `tm_pos_out("center", "top")`), or in its corner (e.g., `tm_pos_out("left", "top")`).
 
@@ -322,6 +329,8 @@ tm_shape(slo_elev) +
   tm_layout(component.position = tm_pos_out("left", "center"))
 ```
 
+\index{tm\_components}
+\index{grouping map components}
 The **tmap** package also has a mechanism to group map components together and then position and organize them as a single unit.
 This requires two steps:
 

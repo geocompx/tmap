@@ -22,6 +22,7 @@ attr_layers_df = tibble::tribble(
 )
 ```
 
+\index{map components}
 Map components are visual elements that are not directly related to the data-driven map layers, while providing additional information or context to the map.
 They are not tied to the map's coordinates but rather to the map's layout and design.
 @tbl-attr-layers-table shows the list of available map components in **tmap**.
@@ -33,8 +34,6 @@ We cover and demonstrate these functions in the following sections.
 #| tbl-cap: "Map components in **tmap**."
 #| echo: false
 #| warning: false
-# tinytable::tt(attr_layers_df) |>
-#   tinytable::style_tt(j = 1, monospace = TRUE)
 attr_layers_df |>
   kableExtra::kbl(booktabs = TRUE) |>
   kableExtra::kable_styling("striped",
@@ -42,17 +41,6 @@ attr_layers_df |>
                             full_width = FALSE) |> 
   kableExtra::column_spec(1, width = "4cm", monospace = TRUE) |>
   kableExtra::column_spec(2, width = "8cm")
-# library(magrittr)
-# library(kableExtra)
-# options(kableExtra.html.bsTable = TRUE)
-# knitr::kable(attr_layers_df, 
-#              caption = "map components.",
-#              caption.short = "map components.",
-#              booktabs = TRUE) |>
-#   kableExtra::kable_styling("striped",
-#                             latex_options = "striped", 
-#                             full_width = FALSE) |> 
-#   kableExtra::column_spec(1, bold = TRUE, monospace = TRUE)
 ```
 
 For the examples in this section, we use a simple map of the Slovenia polygon (not shown).
@@ -70,6 +58,10 @@ tm
 
 ## Grid lines {#sec-grid-lines}
 
+\index{grid lines}
+\index{graticules}
+\index{tm\_grid}
+\index{tm\_graticules}
 The **tmap** package offers two ways to draw coordinate lines: `tm_grid()` and `tm_graticules()`.
 The role of `tm_grid()` is to represent the input data’s coordinates.
 For example, the `slo_borders` object's CRS is ETRS89-extended / LAEA Europe with the units in meters (@fig-grids-1), and thus the grid lines are in meters.
@@ -124,6 +116,8 @@ It is also possible to customize their appearance, for example, by changing the 
 
 ## Scale bar {#sec-scale-bar}
 
+\index{scale bar}
+\index{tm\_scalebar}
 A scale bar is a graphic indicator of the relation between a distance on a map and the corresponding distance in the real world.
 Nowadays, it is more often used than a traditional representative fraction (e.g., 1:10000).
 Compared to the representative fraction, scale bars work correctly on variable screen sizes or different print sizes, as their sizes change together with the rest of the map. 
@@ -161,6 +155,9 @@ tm_shape(worldelevation) +
 
 ## North arrow {#sec-north-arrow}
 
+\index{north arrow}
+\index{compass rose}
+\index{tm\_compass}
 North arrow, also known as a map compass or a compass rose, is a prominent orientation indicator pointing to which way is north^[Orientation may also be shown by graticule or grid lines (@sec-grid-lines).].
 The decision on whether to use north arrows or not usually requires some critical thinking.
 While, it can be added to every map, north arrows are not always necessary -- especially on maps of large areas (e.g., continents), where the cardinal directions are obvious for most people.
@@ -214,6 +211,9 @@ The `position` argument also works in the same way in other functions, such as `
 
 ## Text annotation {#sec-text-annotation}
 
+\index{text annotation}
+\index{map credits}
+\index{tm\_credits}
 Text annotations, also known as map credits, are used to store additional information about the created map.
 They can include the source of data, the name of the author, the date of map creation, or information about the map projection.
 Text annotations are created with the `tm_credits()` function, which can be used one or more times in the same map (@fig-credits).
@@ -233,6 +233,9 @@ Text annotations can also be further customized by changing their sizes (`size`)
 
 ## Axis labels {#sec-axis-labels}
 
+\index{axis labels}
+\index{tm\_xlab}
+\index{tm\_ylab}
 The `tm_xlab()` and `tm_ylab()` functions add x and y-axis labels to the map (@fig-axis-labels).
 These labels can be used to describe the coordinates of the map, such as longitude and latitude, or faceting variables (@sec-customizing-facets).
 
@@ -249,6 +252,8 @@ The additional arguments of these functions allow changing the labels' size, col
 
 ## Logo {#sec-logo}
 
+\index{logo}
+\index{tm\_logo}
 Logos on maps can serve a similar purpose as text annotation or accompany them.
 They can represent your affiliation, funding institution, data sources, logos, etc.
 The `tm_logo()` function adds PNG images, either from a file or URL, to the map (@fig-logos).
@@ -270,6 +275,8 @@ Additional arguments include the height of the logo (`height`, the width is scal
 
 ## Minimap {#sec-minimap}
 
+\index{minimap}
+\index{tm\_minimap}
 The minimap is a small overview map that shows the extent of the main map within a larger context.
 The `tm_minimap()` function adds a minimap of a globe to the main map, as illustrated in @fig-minimap. 
 
