@@ -222,8 +222,7 @@ to$values.var$fill
 ```{r}
 #| label: fig-palette-types
 #| echo: false
-#| fig-cap: 'Examples of three main types of color palettes: categorical, sequential,
-#|   and diverging.'
+#| fig-cap: "Examples of three main types of color palettes: categorical, sequential, and diverging."
 #| fig-asp: 0.5
 # y - a named list of palettes
 source("code/palette_figures.R")
@@ -348,8 +347,8 @@ tm_shape(slo_regions) +
               fill.scale = tm_scale(values = "brewer.yl_gn"))
 ```
 
-It is also possible to reverse the order of any named color palette by using the `-` prefix.
-Therefore, `"-yl_gn"` return a palette going from green to yellow.
+It is also possible to reverse the order of any named color palette by using the `-` prefix^[In general, the darker the color, the larger the value it represents. This rule applies to sequential and diverging color palettes, when the background color is light. However, when the background color is dark, the rule is reversed, and the darker colors should represent lower values.].
+Therefore, `"-yl_gn"` returns a palette going from green to yellow.
 
 ```{r}
 #| label: fig-tmpals
