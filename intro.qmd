@@ -42,6 +42,7 @@ The slightly longer answer is that **tmap** allows users to explore, analyze, an
 In this book, you will find the long answer.
 
 <!-- ## Thematic maps -->
+<!-- ## How to read the book? -->
 
 ## Prerequisites
 
