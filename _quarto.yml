@@ -62,7 +62,7 @@ book:
         - "creating-extensions.qmd"
         - "shiny.qmd"
         # - "options.qmd"
-    - part: "Good practices"
+    - part: "Mastering the craft"
       chapters:
         - "good-maps.qmd"
     - "references.qmd"
