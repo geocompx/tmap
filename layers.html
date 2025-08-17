@@ -255,7 +255,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./map-projections.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Map projections (CRS)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Map projections</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -605,7 +605,7 @@ Figure&nbsp;6.1: Example of a map created using tm_polygons() and its derived fu
 <p> The <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols()</a></code> is the main function in <strong>tmap</strong>, allowing to use and modify symbol elements (<a href="#fig-tmsymbols1" class="quarto-xref">Figure&nbsp;<span>6.2</span></a>). By default, this function draws a gray circle symbol with a black border for each element of an input feature.</p>
 <div class="cell" data-layout-align="center" data-asp="0.25">
 <div class="cell-output-display">
-<div id="fig-tmsymbols1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
+<div id="fig-tmsymbols1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmsymbols1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-tmsymbols1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -703,7 +703,7 @@ Figure&nbsp;6.3: Maps showing default visualizations using various types of symb
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_railroads</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_lines.html">tm_lines</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-tmlines" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
+<div id="fig-tmlines" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmlines-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-tmlines-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -858,7 +858,7 @@ Figure&nbsp;6.6: Example of a map created with tm_text() with customized options
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_contours</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_iso.html">tm_iso</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-tmiso" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
+<div id="fig-tmiso" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmiso-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-tmiso-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -931,7 +931,7 @@ Figure&nbsp;6.8: Examples of raster maps.
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets</a></span><span class="op">(</span>ncol <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>panel.labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Elevation"</span>, <span class="st">"Geomorphons"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-tmrasterml" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
+<div id="fig-tmrasterml" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmrasterml-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-tmrasterml-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -998,7 +998,7 @@ Figure&nbsp;6.11: OpenStreetMap tile layer used as a base map with CartoDB tiles
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_credits.html">tm_credits</a></span><span class="op">(</span><span class="fu">maptiles</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/maptiles/man/get_credit.html">get_credit</a></span><span class="op">(</span><span class="st">"CartoDB.VoyagerNoLabels"</span><span class="op">)</span>,</span>
 <span>             bg.color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-stiles" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
+<div id="fig-stiles" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-stiles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-stiles-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>

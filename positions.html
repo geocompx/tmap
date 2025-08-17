@@ -250,7 +250,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./map-projections.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Map projections (CRS)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Map projections</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -427,7 +427,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <span class="header-section-number">11.1.1</span> Inside the map frame</h3>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-positions-in-scheme" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
+<div id="fig-positions-in-scheme" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-positions-in-scheme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-positions-in-scheme-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -505,7 +505,7 @@ Figure&nbsp;11.2: Positioning legends inside the map frame.
 <p> There is one important difference between specifying the position with a vector and with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_in()</a></code> function. The latter allows to control the position more precisely with additional arguments – <code>just.h</code>, <code>just.v</code>, <code>align.h</code>, and <code>align.v</code>. The <code>just.h</code> and <code>just.v</code> only work when the position is specified with numbers between 0 and 1, and they arguments control the justification of the map component to that position. Take a look at <a href="#fig-justification" class="quarto-xref">Figure&nbsp;<span>11.3</span></a>. The central map component is based on the default justification, which is <code>just.h = "left"</code> and <code>just.v = "top"</code> – it means that the positioning starts from the top left corner of the map component. However, depending on our needs, we can change the justification to <code>just.h = "right"</code> and <code>just.v = "top"</code> (top right corner) or <code>just.h = "left"</code> and <code>just.v = "center"</code> (left central side of the map component).</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-justification" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
+<div id="fig-justification" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-justification-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-justification-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -521,7 +521,7 @@ Figure&nbsp;11.3: Examples of justification of map components inside the map fra
 <p> In general, there are eight locations for map components outside the map frame – each of them can be specified with <code><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out()</a></code> (<a href="#fig-positions-out-scheme" class="quarto-xref">Figure&nbsp;<span>11.4</span></a>). We may place a map component either on one of the sides of the map frame (e.g., <code>tm_pos_out("center", "top")</code>), or in its corner (e.g., <code>tm_pos_out("left", "top")</code>).</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-positions-out-scheme" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
+<div id="fig-positions-out-scheme" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-positions-out-scheme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-positions-out-scheme-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
