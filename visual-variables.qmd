@@ -347,7 +347,7 @@ tm_shape(slo_regions) +
               fill.scale = tm_scale(values = "brewer.yl_gn"))
 ```
 
-It is also possible to reverse the order of any named color palette by using the `-` prefix^[In general, the darker the color, the larger the value it represents. This rule applies to sequential and diverging color palettes, when the background color is light. However, when the background color is dark, the rule is reversed, and the darker colors should represent lower values.].
+It is also possible to reverse the order of any named color palette by using the `-` prefix^[In general, the darker the color, the larger the value it represents. This rule applies to sequential color palettes, when the background color is light. However, when the background color is dark, the rule is reversed, and the darker colors should represent lower values.].
 Therefore, `"-yl_gn"` returns a palette going from green to yellow.
 
 ```{r}
