@@ -209,7 +209,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./scales.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of visual variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -241,7 +241,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Expanding the toolbox</span></a>
+ <span class="menu-text">Adding new tools</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -277,18 +277,12 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Animations</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./interactive.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Interactive settings</span></span></a>
-  </div>
-</li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Advanced topics</span></a>
+ <span class="menu-text">Expanding the toolbox</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -296,20 +290,26 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./options.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">tmap options</span></span></a>
+  <a href="./interactive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Interactive maps</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./shiny.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
+  <a href="./extensions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Map extensions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./creating-extensions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Creating extensions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Creating new map extensions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./shiny.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
   </div>
 </li>
       </ul>
@@ -405,13 +405,13 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 </div>
 <section id="sec-legends" class="level2" data-number="9.1"><h2 data-number="9.1" class="anchored" data-anchor-id="sec-legends">
 <span class="header-section-number">9.1</span> Legends</h2>
-<p>Legends are an essential part of most maps. They provide meaning to the symbols or colors used in the map, and often add information about the map’s content. They allow for interpreting the map correctly, and are therefore crucial for the map’s readability.</p>
+<p> Legends are an essential part of most maps. They provide meaning to the symbols or colors used in the map, and often add information about the map’s content. They allow for interpreting the map correctly, and are therefore crucial for the map’s readability.</p>
 <p>In <strong>tmap</strong>, legends are created automatically when we add a layer with a data-driven visual variable. By default, such a legend consists of a title based on the variable name and a color/shape/symbol scale (<a href="#fig-legend1" class="quarto-xref">Figure&nbsp;<span>9.1</span></a>). <!--REF to the color scale section?--> It is placed outside of the map frame, either on the right or on the bottom of the map, depending on the automatically determined map aspect ratio.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-legend1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
+<div id="fig-legend1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-legend1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-legend1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -421,7 +421,7 @@ Figure&nbsp;9.1: A map with an automatically generated legend.
 </div>
 </div>
 </div>
-<p>Such a legend is helpful for quick exploration of the data, but often, they are not sufficient for sharing the map with others. This chapter covers how to customize the legend’s title, position, and appearance in <strong>tmap</strong>. Legends are also closely related to the visual variables and scales used in the map that were covered in chapters <a href="visual-variables.html" class="quarto-xref"><span>Chapter 7</span></a> and <a href="scales.html" class="quarto-xref"><span>Chapter 8</span></a> – we recommend reading those chapters first. Legends are customized using the <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code> function that is passed to <code>*.legend</code> arguments of the layer functions, e.g., <code>col.legend</code>, <code>shape.legend</code>, <code>size.legend</code>, etc.</p>
+<p> Such a legend is helpful for quick exploration of the data, but often, they are not sufficient for sharing the map with others. This chapter covers how to customize the legend’s title, position, and appearance in <strong>tmap</strong>. Legends are also closely related to the visual variables and scales used in the map that were covered in chapters <a href="visual-variables.html" class="quarto-xref"><span>Chapter 7</span></a> and <a href="scales.html" class="quarto-xref"><span>Chapter 8</span></a> – we recommend reading those chapters first. Legends are customized using the <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code> function that is passed to <code>*.legend</code> arguments of the layer functions, e.g., <code>col.legend</code>, <code>shape.legend</code>, <code>size.legend</code>, etc.</p>
 <p>Often, the most significant part of the legend is the title. It informs the reader about the meaning of the colors or symbols used in the map, providing also additional context such as the unit of measurement. The title is set using the <code>title</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code> function (<a href="#fig-legend2-1" class="quarto-xref">Figure&nbsp;<span>9.2 (a)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
@@ -436,7 +436,7 @@ Figure&nbsp;9.1: A map with an automatically generated legend.
 <span>                             reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In the Slovenia example, we have enough white space inside the map frame to fit the legend. You can do this by setting the <code>position</code> argument in <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code> (<a href="#fig-legend2-3" class="quarto-xref">Figure&nbsp;<span>9.2 (c)</span></a>) and using <code><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_in()</a></code> to define the legend’s location. The first two arguments of <code><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_in()</a></code> specify where inside the map frame the legend will appear (<a href="positions.html" class="quarto-xref"><span>Chapter 11</span></a>).</p>
+<p> In the Slovenia example, we have enough white space inside the map frame to fit the legend. You can do this by setting the <code>position</code> argument in <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code> (<a href="#fig-legend2-3" class="quarto-xref">Figure&nbsp;<span>9.2 (c)</span></a>) and using <code><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_in()</a></code> to define the legend’s location. The first two arguments of <code><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_in()</a></code> specify where inside the map frame the legend will appear (<a href="positions.html" class="quarto-xref"><span>Chapter 11</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span></span>
@@ -503,7 +503,7 @@ Figure&nbsp;9.2: Legend customization examples.
 <span>        <span class="op">)</span></span>
 <span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>All of the previous examples used the default legend orientation type called <code>"portrait".</code> Its alternative is <code>"landscape"</code>, which can be set using the <code>orientation</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code> function. This changes the legend layout to horizontal, which can be useful either to fit the map content better or to change the map aesthetic.</p>
+<p> All of the previous examples used the default legend orientation type called <code>"portrait".</code> Its alternative is <code>"landscape"</code>, which can be set using the <code>orientation</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code> function. This changes the legend layout to horizontal, which can be useful either to fit the map content better or to change the map aesthetic.</p>
 <p>Here, we not only change the legend orientation, but also customize its position with <code><a href="https://r-tmap.github.io/tmap/reference/tm_pos.html">tm_pos_out()</a></code> (<a href="positions.html" class="quarto-xref"><span>Chapter 11</span></a>) <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. The three arguments used, <code>"center"</code>, <code>"top"</code>, and <code>"center"</code> specify the legend position in horizontal and vertical position outside the map frame, and then its position relative to that placement (<a href="#fig-legend3-2" class="quarto-xref">Figure&nbsp;<span>9.3 (b)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
@@ -570,7 +570,7 @@ Figure&nbsp;9.3: Additional legend customization examples.
 <!-- tm_add_legend -->
 </section><section id="sec-titles" class="level2" data-number="9.2"><h2 data-number="9.2" class="anchored" data-anchor-id="sec-titles">
 <span class="header-section-number">9.2</span> Titles</h2>
-<p>Titles are another essential part of the map, as they can provide context and information about the map content. In <strong>tmap</strong>, titles are added with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_title.html">tm_title()</a></code> function.</p>
+<p> Titles are another essential part of the map, as they can provide context and information about the map content. In <strong>tmap</strong>, titles are added with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_title.html">tm_title()</a></code> function.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col.legend <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Elevation (m asl)"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -679,7 +679,7 @@ Figure&nbsp;9.5: Title customization examples.
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_title.html">tm_title</a></span><span class="op">(</span><span class="st">"Slovenia"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_title.html">tm_title_in</a></span><span class="op">(</span><span class="st">"Elevation Map"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-titles3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
+<div id="fig-titles3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-titles3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-titles3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -1094,8 +1094,8 @@ Figure&nbsp;9.6: A map with a title and a subtitle.
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./scales.html" class="pagination-link" aria-label="Scales">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales</span></span>
+      <a href="./scales.html" class="pagination-link" aria-label="Scales of visual variables">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of visual variables</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

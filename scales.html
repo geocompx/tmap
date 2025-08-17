@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.7.31">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="“Spatial Data Visualization with tmap: A Practical Guide to Thematic Mapping in R” is a free, open-source book that teaches you how to create static and interactive maps using the tmap package in R. Covering core concepts in thematic cartography, map design, and spatial visualization, this guide provides step-by-step approaches to help you produce high-quality maps for reports, presentations, and web applications.">
-<title>8&nbsp; Scales – Spatial Data Visualization with tmap</title>
+<title>8&nbsp; Scales of visual variables – Spatial Data Visualization with tmap</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -134,7 +134,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tm-shape.html">Building blocks</a></li><li class="breadcrumb-item"><a href="./scales.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tm-shape.html">Building blocks</a></li><li class="breadcrumb-item"><a href="./scales.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of visual variables</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -229,7 +229,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./scales.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of visual variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -261,7 +261,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Expanding the toolbox</span></a>
+ <span class="menu-text">Adding new tools</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -297,18 +297,12 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Animations</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./interactive.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Interactive settings</span></span></a>
-  </div>
-</li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Advanced topics</span></a>
+ <span class="menu-text">Expanding the toolbox</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -316,20 +310,26 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./options.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">tmap options</span></span></a>
+  <a href="./interactive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Interactive maps</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./shiny.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
+  <a href="./extensions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Map extensions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./creating-extensions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Creating extensions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Creating new map extensions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./shiny.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
   </div>
 </li>
       </ul>
@@ -414,8 +414,8 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/scales.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tm-shape.html">Building blocks</a></li><li class="breadcrumb-item"><a href="./scales.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales</span></a></li></ol></nav><div class="quarto-title">
-<h1 class="title"><span id="sec-scales" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tm-shape.html">Building blocks</a></li><li class="breadcrumb-item"><a href="./scales.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of visual variables</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title"><span id="sec-scales" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of visual variables</span></span></h1>
 </div>
 
 <!--
@@ -431,7 +431,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
   
 
 
-</header><p>Sections <a href="visual-variables.html#sec-colors" class="quarto-xref"><span>7.3</span></a>, <a href="visual-variables.html#sec-sizes" class="quarto-xref"><span>7.4</span></a>, and <a href="visual-variables.html#sec-shapes" class="quarto-xref"><span>7.5</span></a> showed how to set colors, sizes, and shapes for different types of spatial objects. In them, we often used the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function to modify the appearance of the map, such as changing the color palettes (<code>col.scale</code> and <code>fill.scale</code>), sizes (<code>size.scale</code>), or shapes (<code>shape.scale</code>). The <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function automatically sets the scale for the given visual variable and the data type (factor, numeric, and integer). Thus, for example, when we provide a character variable’s name to the <code>fill</code> argument, then the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function automatically sets the color scale for a categorical variable, and when we provide a numeric variable’s name to the <code>size</code> argument, then the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function automatically sets the size scale for a continuous variable.</p>
+</header><p> Sections <a href="visual-variables.html#sec-colors" class="quarto-xref"><span>7.3</span></a>, <a href="visual-variables.html#sec-sizes" class="quarto-xref"><span>7.4</span></a>, and <a href="visual-variables.html#sec-shapes" class="quarto-xref"><span>7.5</span></a> showed how to set colors, sizes, and shapes for different types of spatial objects. In them, we often used the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function to modify the appearance of the map, such as changing the color palettes (<code>col.scale</code> and <code>fill.scale</code>), sizes (<code>size.scale</code>), or shapes (<code>shape.scale</code>). The <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function automatically sets the scale for the given visual variable and the data type (factor, numeric, and integer). Thus, for example, when we provide a character variable’s name to the <code>fill</code> argument, then the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function automatically sets the color scale for a categorical variable, and when we provide a numeric variable’s name to the <code>size</code> argument, then the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function automatically sets the size scale for a continuous variable.</p>
 <p>However, we often want to have more control over how our spatial objects are presented on the map. For that purpose, the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function comes with several derived functions that can be used to modify and customize the used scale. <a href="#tbl-scale-table" class="quarto-xref">Table&nbsp;<span>8.1</span></a> presents all of them.</p>
 <!-- tmap_options()$scales.var -->
 <!-- add short description of each scale function in the table below? -->
@@ -494,7 +494,7 @@ Table&nbsp;8.1: Map scales.
 </figure>
 </div>
 </div>
-<p><a href="#fig-scales" class="quarto-xref">Figure&nbsp;<span>8.1</span></a> shows examples of how some of them look like when applied to the same variable. In the rest of the chapter, we go through each of the scales in more detail. We mostly focus on using scales for the <code>fill.scale</code> argument, but the same principles apply to the <code>col.scale</code>, <code>size.scale</code>, and <code>shape.scale</code> arguments.</p>
+<p> <a href="#fig-scales" class="quarto-xref">Figure&nbsp;<span>8.1</span></a> shows examples of how some of them look like when applied to the same variable. In the rest of the chapter, we go through each of the scales in more detail. We mostly focus on using scales for the <code>fill.scale</code> argument, but the same principles apply to the <code>col.scale</code>, <code>size.scale</code>, and <code>shape.scale</code> arguments.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div id="fig-scales" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
@@ -536,7 +536,7 @@ Figure&nbsp;8.2: Example of a map in which polygons are colored based on the val
 <p>The <code>tm_polygons(fill = "region_group", fill.scale = tm_scale_categorical())</code> code is run automatically in the background in this case. It is possible to change the names of legend labels with the <code>labels</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function. As mentioned in the <a href="visual-variables.html#sec-colors" class="quarto-xref"><span>Section 7.3</span></a>, we can also change the color palette with the <code>values</code> argument.</p>
 </section><section id="sec-ordinal-scales" class="level2" data-number="8.2"><h2 data-number="8.2" class="anchored" data-anchor-id="sec-ordinal-scales">
 <span class="header-section-number">8.2</span> Ordinal scales</h2>
-<p>The ordinal scale is similar to the categorical scale, but it is used for ordered categorical variables. By default, this scale uses a sequential color palette, which is suitable for ordered categorical variables (<a href="#fig-ordinal-scales" class="quarto-xref">Figure&nbsp;<span>8.3</span></a>). We may use <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale_categorical.html">tm_scale_ordinal()</a></code> when the order of the values matters to highlight a hierarchy or ranking.</p>
+<p> The ordinal scale is similar to the categorical scale, but it is used for ordered categorical variables. By default, this scale uses a sequential color palette, which is suitable for ordered categorical variables (<a href="#fig-ordinal-scales" class="quarto-xref">Figure&nbsp;<span>8.3</span></a>). We may use <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale_categorical.html">tm_scale_ordinal()</a></code> when the order of the values matters to highlight a hierarchy or ranking.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"region_group"</span>,</span>
@@ -554,7 +554,7 @@ Figure&nbsp;8.3: Example of a map in which polygons are colored based on the val
 </div>
 </section><section id="sec-discrete-scales" class="level2" data-number="8.3"><h2 data-number="8.3" class="anchored" data-anchor-id="sec-discrete-scales">
 <span class="header-section-number">8.3</span> Discrete scales</h2>
-<!-- Martijn: a better example is probably needed here -- we could add some new variable to the data. -->
+<p> <!-- Martijn: a better example is probably needed here -- we could add some new variable to the data. --></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"urbn_type"</span>,</span>
@@ -572,7 +572,7 @@ Figure&nbsp;8.4: Example of a map in which polygons are colored based on the val
 </div>
 </section><section id="sec-rank-scales" class="level2" data-number="8.4"><h2 data-number="8.4" class="anchored" data-anchor-id="sec-rank-scales">
 <span class="header-section-number">8.4</span> Rank scales</h2>
-<!-- Martijn: any ideas for a good example? -->
+<p> <!-- Martijn: any ideas for a good example? --></p>
 </section><section id="sec-intervals-scales" class="level2" data-number="8.5"><h2 data-number="8.5" class="anchored" data-anchor-id="sec-intervals-scales">
 <span class="header-section-number">8.5</span> Intervals scales</h2>
 <!-- optimal number of classes? 3-7 -->
@@ -650,7 +650,7 @@ Table&nbsp;8.2: Styles available to create intervals maps.
 </div>
 <section id="pretty-breaks" class="level3" data-number="8.5.1"><h3 data-number="8.5.1" class="anchored" data-anchor-id="pretty-breaks">
 <span class="header-section-number">8.5.1</span> Pretty breaks</h3>
-<p>By default, the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale_intervals.html">tm_scale_intervals()</a></code> function is used in the background (<a href="#fig-intervals-methods-1" class="quarto-xref">Figure&nbsp;<span>8.5 (a)</span></a>). It uses a style called “pretty”, which creates breaks that are whole numbers and spaces them evenly <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<p> By default, the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale_intervals.html">tm_scale_intervals()</a></code> function is used in the background (<a href="#fig-intervals-methods-1" class="quarto-xref">Figure&nbsp;<span>8.5 (a)</span></a>). It uses a style called “pretty”, which creates breaks that are whole numbers and spaces them evenly <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span><span class="op">)</span></span>
@@ -658,10 +658,10 @@ Table&nbsp;8.2: Styles available to create intervals maps.
 <span><span class="co"># tm_shape(slo_regions) +</span></span>
 <span><span class="co">#   tm_polygons(fill = "pop_dens", fill.scale = tm_scale_intervals())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>It is also possible to indicate the desired number of classes using the <code>n</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function provided to the <code>fill.scale</code> argument. While not every <code>n</code> is possible depending on the input values, <strong>tmap</strong> will try to create a number of classes as close as possible to the preferred one.</p>
+<p>It is also possible to indicate the desired number of classes using the <code>n</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function provided to the <code>fill.scale</code> argument. While not every <code>n</code> is possible depending on the input values, <strong>tmap</strong> tries to create a number of classes as close as possible to the preferred one.</p>
 </section><section id="manual-breaks" class="level3" data-number="8.5.2"><h3 data-number="8.5.2" class="anchored" data-anchor-id="manual-breaks">
 <span class="header-section-number">8.5.2</span> Manual breaks</h3>
-<p>The next approach is to manually select the limits of each break with the <code>breaks</code> argument of <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> (<a href="#fig-intervals-methods-2" class="quarto-xref">Figure&nbsp;<span>8.5 (b)</span></a>). This can be useful when we have some pre-defined breaks or when we want to compare values between several maps. It expects threshold values for each break, therefore, if we want to have three breaks, we need to provide four thresholds.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> Additionally, we can add a label to each break with the <code>labels</code> argument.</p>
+<p> The next approach is to manually select the limits of each break with the <code>breaks</code> argument of <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> (<a href="#fig-intervals-methods-2" class="quarto-xref">Figure&nbsp;<span>8.5 (b)</span></a>). This can be useful when we have some pre-defined breaks or when we want to compare values between several maps. It expects threshold values for each break, therefore, if we want to have three breaks, we need to provide four thresholds.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> Additionally, we can add a label to each break with the <code>labels</code> argument.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"pop_dens"</span>, </span>
@@ -672,7 +672,7 @@ Table&nbsp;8.2: Styles available to create intervals maps.
 </div>
 </section><section id="automatic-breaks" class="level3" data-number="8.5.3"><h3 data-number="8.5.3" class="anchored" data-anchor-id="automatic-breaks">
 <span class="header-section-number">8.5.3</span> Automatic breaks</h3>
-<p>Another approach is to create breaks automatically using one of many existing classification methods with the <code>style</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function. Three basic methods are <code>"equal"</code>, <code>"sd"</code>, and <code>"quantile"</code> styles. Let’s consider a variable with 100 observations with values ranging from 0 to 10. The <code>"equal"</code> style divides them into <em>n</em> equal-sized intervals. This style works well when the values change fairly continuously and do not contain any outliers. In <strong>tmap</strong>, the number of classes will be computed automatically<!--?nclass.Sturges--> or we can specify the number of classes with the <code>n</code> argument. For example, when we set <code>n</code> to 4, then our breaks will represent four classes ranging from 0 to 2.5, 2.5 to 5, 5 to 7.5, and 7.5 to 10. The <code>"sd"</code> style represents how much the values of a given variable vary from its mean, with each interval having a constant width of the standard deviation. This style is used when it is vital to show how values relate to the mean. The <code>"quantile"</code> style creates several classes with exactly the same number of objects (e.g., spatial features), but having intervals of various lengths. This method has an advantage in that it does not have any empty classes or classes with too few or too many values. However, the resulting intervals from the <code>"quantile"</code> style can often be misleading, with very different values located in the same class.</p>
+<p> Another approach is to create breaks automatically using one of many existing classification methods with the <code>style</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function. Three basic methods are <code>"equal"</code>, <code>"sd"</code>, and <code>"quantile"</code> styles. Let’s consider a variable with 100 observations with values ranging from 0 to 10. The <code>"equal"</code> style divides them into <em>n</em> equal-sized intervals. This style works well when the values change fairly continuously and do not contain any outliers. In <strong>tmap</strong>, the number of classes are computed automatically<!--?nclass.Sturges--> or we can specify the number of classes with the <code>n</code> argument. For example, when we set <code>n</code> to 4, then our breaks are represented by four classes ranging from 0 to 2.5, 2.5 to 5, 5 to 7.5, and 7.5 to 10. The <code>"sd"</code> style represents how much the values of a given variable vary from its mean, with each interval having a constant width of the standard deviation. This style is used when it is vital to show how values relate to the mean. The <code>"quantile"</code> style creates several classes with exactly the same number of objects (e.g., spatial features), but having intervals of various lengths. This method has an advantage in that it does not have any empty classes or classes with too few or too many values. However, the resulting intervals from the <code>"quantile"</code> style can often be misleading, with very different values located in the same class.</p>
 <p>To create classes that, on the one hand, contain similar values, and on the other hand, are different from the other classes, we can use an optimization method. The most common one used in cartography is the Jenks optimization method implemented as the <code>"jenks"</code> style (<a href="#fig-intervals-methods-3" class="quarto-xref">Figure&nbsp;<span>8.5 (c)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
@@ -807,7 +807,7 @@ Figure&nbsp;8.6: Examples of three methods of creating continuous maps.
 </div>
 </section><section id="sec-asis-scales" class="level2" data-number="8.7"><h2 data-number="8.7" class="anchored" data-anchor-id="sec-asis-scales">
 <span class="header-section-number">8.7</span> As-is scales</h2>
-<p>In most cases, we want to use a color scale based on the variable’s values. Then, <strong>tmap</strong> takes these values, groups them into classes, and assigns a color to each class. However, it is also possible to use the values of the variables directly to specify the fill color or other visual properties of the spatial objects. For example, your spatial vector data may contain a column with colors, such as <code>"blue"</code>, <code>"red"</code>, and <code>"green"</code>, and then we want to use these colors directly to color the polygons. This is known as an as-is scale, and it can be used with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale_asis.html">tm_scale_asis()</a></code> function.</p>
+<p> In most cases, we want to use a color scale based on the variable’s values. Then, <strong>tmap</strong> takes these values, groups them into classes, and assigns a color to each class. However, it is also possible to use the values of the variables directly to specify the fill color or other visual properties of the spatial objects. For example, your spatial vector data may contain a column with colors, such as <code>"blue"</code>, <code>"red"</code>, and <code>"green"</code>, and then we want to use these colors directly to color the polygons. This is known as an as-is scale, and it can be used with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale_asis.html">tm_scale_asis()</a></code> function.</p>
 <p>Let’s take a look at the <code>urbn_type_col</code> variable in the <code>slo_regions</code> dataset. It contains the names of the colors (in a hexadecimal format) that we want to use to color the polygons.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">slo_regions</span><span class="op">$</span><span class="va">urbn_type_col</span></span>
@@ -838,7 +838,7 @@ Figure&nbsp;8.7: Example of a map in which polygons are directly colored based o
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/">terra</a></span><span class="op">)</span></span>
 <span><span class="va">sat</span> <span class="op">=</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html">rast</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_mosaic.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The <code>sat</code> <strong>terra</strong> object contains four bands of the Sentinel-2 image for Slovenia. The bands (blue, green, red, and near-infrared) are stored as layer as <code>B02</code>, <code>B03</code>, <code>B04</code>, and <code>B08</code>. We can plot all of the bands independently or as a combination of three bands. This combination is known as a color composite image, and we can create such images with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_rgb.html">tm_rgb()</a></code> function (<a href="#fig-tmrgbs" class="quarto-xref">Figure&nbsp;<span>8.8</span></a>).</p>
+<p> The <code>sat</code> <strong>terra</strong> object contains four bands of the Sentinel-2 image for Slovenia. The bands (blue, green, red, and near-infrared) are stored as layer as <code>B02</code>, <code>B03</code>, <code>B04</code>, and <code>B08</code>. We can plot all of the bands independently or as a combination of three bands. This combination is known as a color composite image, and we can create such images with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_rgb.html">tm_rgb()</a></code> function (<a href="#fig-tmrgbs" class="quarto-xref">Figure&nbsp;<span>8.8</span></a>).</p>
 <p>Standard composite image (<em>true color composite</em>) uses the visible red, green, and blue bands to represent the data in natural colors. We can specify which layer in <code>sat</code> relates to red (third band), green (second band), and blue (first band) color in <code><a href="https://r-tmap.github.io/tmap/reference/tm_rgb.html">tm_rgb()</a></code> with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_vars.html">tm_vars()</a></code> function. The result is a true color composite, with green colors representing forests and other types of vegetation, and yellow-ish colors showing bare areas (<a href="#fig-tmrgbs-1" class="quarto-xref">Figure&nbsp;<span>8.8 (a)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">sat</span><span class="op">)</span> <span class="op">+</span></span>
@@ -934,7 +934,7 @@ Figure&nbsp;8.9: Example of two separate maps, one for each variable.
 </div>
 </div>
 <p>Another approach is to create a bivariate map, where the two variables are combined into a single map. This is done by representing not only the values of each variable independently but also their interaction using a bivariate color scale. <a href="#fig-bivariate-scales2" class="quarto-xref">Figure&nbsp;<span>8.10</span></a> shows an example of a bivariate map, where the population density and the percentage of the population aged 65 and older are combined into a single map. Areas with a small population density and a small percentage of the population aged 65 and older are colored in gray, while areas with a high population density and a high percentage of the population aged 65 and older are colored in dark brown. Additionally, the areas with a high population density and a low percentage of the population aged 65 and older are colored in purple, while areas with a low population density and a high percentage of the population aged 65 and older are colored in gold.</p>
-<p>The creation of bivariate maps is done with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_vars.html">tm_vars()</a></code> function, where we specify the two variables we want to combine and set the <code>multivariate</code> argument to <code>TRUE</code>. Bivariate maps also require a special color palette, which can be specified with <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale_bivariate.html">tm_scale_bivariate()</a></code> provided to the <code>*.scale</code> argument. <!-- advice regarding color palettes? --> Additionally, we can modify the <code>*.legend</code> argument with <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend_bivariate()</a></code>. In the case of bivariate maps, the <code>xlab</code> and <code>ylab</code> arguments are used to add labels to the x and y axes of the legend, respectively.</p>
+<p> The creation of bivariate maps is done with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_vars.html">tm_vars()</a></code> function, where we specify the two variables we want to combine and set the <code>multivariate</code> argument to <code>TRUE</code>. Bivariate maps also require a special color palette, which can be specified with <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale_bivariate.html">tm_scale_bivariate()</a></code> provided to the <code>*.scale</code> argument. <!-- advice regarding color palettes? --> Additionally, we can modify the <code>*.legend</code> argument with <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend_bivariate()</a></code>. In the case of bivariate maps, the <code>xlab</code> and <code>ylab</code> arguments are used to add labels to the x and y axes of the legend, respectively.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_vars.html">tm_vars</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"pop_dens"</span>, <span class="st">"pop65perc"</span><span class="op">)</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
@@ -964,7 +964,7 @@ Figure&nbsp;8.10: Example of a bivariate map, where two variables are combined i
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_vars.html">tm_vars</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tavg_1"</span>, <span class="st">"tavg_7"</span><span class="op">)</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>One important difference between a regular map and a bivariate map is that the latter is based on two scales – and we are able to specify them separately. Thus, all of the scales from sections <a href="#sec-categorical-scales" class="quarto-xref"><span>8.1</span></a> to <a href="#sec-continuous-scales" class="quarto-xref"><span>8.6</span></a> can be used for bivariate maps, and we may use one of them for each variable. In the example below, we use two scales for the temperature – one for the January temperatures and one for the July temperatures. In both cases, our scales are intervals, but we customize their breaks and add text labels.</p>
-<p>Another difference is that a regular color scale is one-dimensional – it has only one axis, and thus we can either use its original form (e.g., from light to dark blue) or flip it (e.g., from dark to light blue). A bivariate color scale, on the other hand, is two-dimensional. It has two axes, and this opens up many more possibilities for modifying the scale. In the example below, we are using the <code>"pinkblue"</code> color scale, which, by default, features a gray color at the bottom left, with the vertical axis transitioning to purple and the horizontal axis transitioning to green. The colors mix in the top right corner to form a dark blue. However, in our case, we may consider flipping this color scale along the main diagonal, so that the vertical axis transitions to green, while the horizontal one transitions to purple. This seems more intuitive, as the vertical axis represents January temperatures, which are typically colder than July temperatures in Slovenia.</p>
+<p> Another difference is that a regular color scale is one-dimensional – it has only one axis, and thus we can either use its original form (e.g., from light to dark blue) or flip it (e.g., from dark to light blue). A bivariate color scale, on the other hand, is two-dimensional. It has two axes, and this opens up many more possibilities for modifying the scale. In the example below, we are using the <code>"pinkblue"</code> color scale, which, by default, features a gray color at the bottom left, with the vertical axis transitioning to purple and the horizontal axis transitioning to green. The colors mix in the top right corner to form a dark blue. However, in our case, we may consider flipping this color scale along the main diagonal, so that the vertical axis transitions to green, while the horizontal one transitions to purple. This seems more intuitive, as the vertical axis represents January temperatures, which are typically colder than July temperatures in Slovenia.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_tavg</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span>col <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_vars.html">tm_vars</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tavg_1"</span>, <span class="st">"tavg_7"</span><span class="op">)</span>, multivariate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
@@ -1021,7 +1021,7 @@ Figure&nbsp;8.11: Bivariate maps for raster data.
 <div class="cell" data-layout-align="center">
 <div id="tbl-flipops-table" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-flipops-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;8.3: Operators for flipping bivariate color scales
+Table&nbsp;8.3: Operators for flipping bivariate color scales.
 </figcaption><div aria-describedby="tbl-flipops-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="table table-striped do-not-create-environment cell caption-top table-sm small" data-quarto-postprocess="true">
@@ -1077,11 +1077,15 @@ Table&nbsp;8.3: Operators for flipping bivariate color scales
 <img src="figures/fig-tmo-bivariate-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmo-bivariate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.12: Bivariate color scales with different flipping operators
+Figure&nbsp;8.12: Bivariate color scales with different flipping operators.
 </figcaption></figure>
 </div>
 </div>
 </div>
+<!-- Other ideas: -->
+<!-- A section with some common usecases and their comparison: -->
+<!-- 1. Simple variable (e.g., population density) using two or so scales -->
+<!-- 2. Relative change/ratio/logarith of ratio -->
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">

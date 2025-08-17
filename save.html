@@ -209,7 +209,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./scales.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of visual variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -241,7 +241,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Expanding the toolbox</span></a>
+ <span class="menu-text">Adding new tools</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -277,18 +277,12 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Animations</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./interactive.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Interactive settings</span></span></a>
-  </div>
-</li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Advanced topics</span></a>
+ <span class="menu-text">Expanding the toolbox</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -296,20 +290,26 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./options.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">tmap options</span></span></a>
+  <a href="./interactive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Interactive maps</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./shiny.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
+  <a href="./extensions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Map extensions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./creating-extensions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Creating extensions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Creating new map extensions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./shiny.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
   </div>
 </li>
       </ul>
@@ -398,8 +398,8 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
   
 
 
-</header><p>Maps created programmatically can serve several purposes, from exploratory, through visualizations of the processing steps, to being the final outputs of a given project. Therefore, often we want just to see our map on the screen, but sometimes we also want to save our map results to an external file. <strong>tmap</strong> objects can be directly saved to output files with <code><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save()</a></code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. The <code><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save()</a></code> function allows to save our map in three groups of file formats: (a) raster graphics (<a href="#sec-raster-graphic-formats" class="quarto-xref"><span>Section 4.1</span></a>), (b) vector graphics (<a href="#sec-vector-graphic-formats" class="quarto-xref"><span>Section 4.2</span></a>), and (c) interactive ones (<a href="#sec-interactive-format" class="quarto-xref"><span>Section 4.3</span></a>). <!-- Additionally, @sec-animations shows how to save map animations with the use of the `tmap_animation()` function. -- update and add --></p>
-<p>For the examples in this section, we will use a simple map of the Slovenia polygon with the country name superimposed <!--(not shown)-->, stored in the <code>tm</code> object.</p>
+</header><p> Maps created programmatically can serve several purposes, from exploratory, through visualizations of the processing steps, to being the final outputs of a given project. Therefore, often we want just to see our map on the screen, but sometimes we also want to save our map results to an external file. <strong>tmap</strong> objects can be directly saved to output files with <code><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save()</a></code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. The <code><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save()</a></code> function allows to save our map in three groups of file formats: (a) raster graphics (<a href="#sec-raster-graphic-formats" class="quarto-xref"><span>Section 4.1</span></a>), (b) vector graphics (<a href="#sec-vector-graphic-formats" class="quarto-xref"><span>Section 4.2</span></a>), and (c) interactive ones (<a href="#sec-interactive-format" class="quarto-xref"><span>Section 4.3</span></a>). <!-- Additionally, @sec-animations shows how to save map animations with the use of the `tmap_animation()` function. -- update and add --></p>
+<p>For the examples in this section, we use a simple map of the Slovenia polygon with the country name superimposed <!--(not shown)-->, stored in the <code>tm</code> object.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
@@ -417,7 +417,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 </div>
 <section id="sec-raster-graphic-formats" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="sec-raster-graphic-formats">
 <span class="header-section-number">4.1</span> Raster graphic formats</h2>
-<p>Raster graphics are non-spatial relatives of spatial rasters. The digital images are composed of many pixels – squares filled with specific colors. Main raster graphic file formats include PNG, JPEG, and TIFF. PNG and JPEG are the most common formats used for saving maps, with PNG being lossless and JPEG lossy<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. The TIFF format is lossless, storing images without quality degradation, but often resulting in large file sizes. PNG is generally preferred for screen and websites, while TIFF is suggested for high-resolution printing.</p>
+<p> Raster graphics are non-spatial relatives of spatial rasters. The digital images are composed of many pixels – squares filled with specific colors. Main raster graphic file formats include PNG, JPEG, and TIFF. PNG and JPEG are the most common formats used for saving maps, with PNG being lossless and JPEG lossy<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. The TIFF format is lossless, storing images without quality degradation, but often resulting in large file sizes. PNG is generally preferred for screen and websites, while TIFF is suggested for high-resolution printing.</p>
 <p>One of the major parameters of the raster graphic images is DPI (<em>Dots Per Inch</em>, in this context, a more proper name probably should be PPI, <em>Pixels Per Inch</em>) – is a number of pixels per inch of the output image. For example, if the width and height of our image are 10 inches, then DPI of 300 would mean that our final image would have 3000 by 3000 pixels, and DPI of 72 would result in an image of 720 by 720 pixels. Therefore, an image with the same width and height but a larger value of DPI would occupy more space on the hard drive but also have better quality.</p>
 <p>Saving <strong>tmap</strong> objects to a file can be done with the <code><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save()</a></code>. It usually accepts two arguments<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> – the first one, <code>tm</code>, is our map object, and the second one, <code>filename</code>, is the path to the created file.</p>
 <div class="cell" data-layout-align="center">
@@ -426,7 +426,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <span><span class="co">#&gt; Resolution: 2503 by 1762 pixels</span></span>
 <span><span class="co">#&gt; Size: 8.34 by 5.87 inches (300 dpi)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>By default, DPI is set to 300, and the image width and height is automatically adjusted based on the map aspect ratio. These parameters can be, however, changed with the <code>dpi</code>, <code>width</code>, and <code>height</code> arguments<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
+<p> By default, DPI is set to 300, and the image width and height is automatically adjusted based on the map aspect ratio. These parameters can be, however, changed with the <code>dpi</code>, <code>width</code>, and <code>height</code> arguments<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save</a></span><span class="op">(</span><span class="va">tm</span>, <span class="st">"my_map.png"</span>, width <span class="op">=</span> <span class="fl">1000</span>, height <span class="op">=</span> <span class="fl">750</span>, dpi <span class="op">=</span> <span class="fl">300</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Map saved to /home/jn/Science/geocompx/tmap/my_map.png</span></span>
@@ -435,29 +435,30 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 </div>
 <p>The units of <code>width</code> or <code>height</code> depend on the value you set: they are pixels (<code>"px"</code>) when the value is greater than 50, and inches (<code>"in"</code>) otherwise. Units can also be changed with the <code>units</code> argument.</p>
 <p>The <code><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save()</a></code> function also has several additional arguments, including <code>outer.margins</code>, <code>scale</code>, and <code>asp</code>. All of them override the arguments’ values set in <code><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout()</a></code> (<a href="layout.html" class="quarto-xref"><span>Chapter 12</span></a>). Additionally, when set to <code>0</code>, the <code>asp</code> argument has a side effect: it shifts the map frame to the edges of the output image.</p>
-<p>By default, <strong>tmap</strong> uses graphic devices<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> incorporated in R. However, it is also possible to use other, external devices with the <code>device</code> argument. For example, the <code><a href="https://ragg.r-lib.org/reference/agg_png.html">ragg::agg_png</a></code> device is usually faster and has better support for non-standard fonts than the regular <code><a href="https://rdrr.io/r/grDevices/png.html">grDevices::png</a></code>.</p>
+<p> By default, <strong>tmap</strong> uses graphic devices<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> incorporated in R. However, it is also possible to use other, external devices with the <code>device</code> argument. For example, the <code><a href="https://ragg.r-lib.org/reference/agg_png.html">ragg::agg_png</a></code> device is usually faster and has better support for non-standard fonts than the regular <code><a href="https://rdrr.io/r/grDevices/png.html">grDevices::png</a></code>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save</a></span><span class="op">(</span><span class="va">tm</span>, <span class="st">"my_map.png"</span>, device <span class="op">=</span> <span class="fu">ragg</span><span class="fu">::</span><span class="va"><a href="https://ragg.r-lib.org/reference/agg_png.html">agg_png</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<!-- maybe a paragraph about figure sizing (interplay between width, height, dpi, and scale) and how it affects the output file size and quality? -- with a comparison of a few outputs and explanations? -->
 </section><section id="sec-vector-graphic-formats" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="sec-vector-graphic-formats">
 <span class="header-section-number">4.2</span> Vector graphic formats</h2>
-<p>Vector graphics are quite distant counterparts of spatial vectors, with vector graphics consisting of sets of coordinates. Contrary to spatial vectors, however, their coordinates can be connected not only by straight lines (<a href="geodata.html#sec-vector-data-model" class="quarto-xref"><span>Section 2.2.1</span></a>), but also using curves. This makes it possible to create polygons, circles, ellipses, and other shapes. They also allow text and other objects to be stored as vector graphics. Common vector graphic file formats are EPS, PDF, and SVG. EPS is an older format used for printing and publishing, while PDF is a more modern, general format that can contain vector and raster graphics, and more. SVG is a web standard for vector graphics, which can be used in web browsers and other applications. It is lightweight and allows for editing and manipulation of vector graphics.</p>
+<p> Vector graphics are quite distant counterparts of spatial vectors, with vector graphics consisting of sets of coordinates. Contrary to spatial vectors, however, their coordinates can be connected not only by straight lines (<a href="geodata.html#sec-vector-data-model" class="quarto-xref"><span>Section 2.2.1</span></a>), but also using curves. This makes it possible to create polygons, circles, ellipses, and other shapes. They also allow text and other objects to be stored as vector graphics. Common vector graphic file formats are EPS, PDF, and SVG. EPS is an older format used for printing and publishing, while PDF is a more modern, general format that can contain vector and raster graphics, and more. SVG is a web standard for vector graphics, which can be used in web browsers and other applications. It is lightweight and allows for editing and manipulation of vector graphics.</p>
 <p>To save a map to a vector graphic format, we still can use <code><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save()</a></code> but either with a suitable file extension oor by explicitly setting the device argument (for example, device = <code><a href="https://svglite.r-lib.org/reference/svglite.html">svglite::svglite</a></code>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save</a></span><span class="op">(</span><span class="va">tm</span>, <span class="st">"my_map.svg"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Map saved to /home/jn/Science/geocompx/tmap/my_map.svg</span></span>
 <span><span class="co">#&gt; Size: 8.34 by 5.87 inches</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Zooming in and out of vector graphics does not affect their quality. At the same time, the <code>width,</code> <code>height,</code> and <code>scale</code> arguments can still impact the output file. For example, a vector graphic file saved with a narrower width value will have thicker lines and larger fonts than the one with a larger width value. You can check this effect by saving the <code>tm</code> object with <code>width = 1</code> and then with <code>width = 10</code>.</p>
+<p>Zooming in and out of vector graphics does not affect their quality. At the same time, the <code>width,</code> <code>height,</code> and <code>scale</code> arguments can still impact the output file. For example, a vector graphic file saved with a narrower width value has thicker lines and larger fonts than the one with a larger width value. You can check this effect by saving the <code>tm</code> object with <code>width = 1</code> and then with <code>width = 10</code>.</p>
 <p>Compared to raster graphics, vector graphics are not suitable for storing complex images or maps, and they are less supported by web browsers. They, however, also have many advantages. For example, vector graphics can also be easily edited in dedicated software (e.g., Inkscape or Adobe Illustrator), which allows for changing the style of map elements and moving them using a computer mouse outside of the R environment. This approach can be useful, for example, when you want to quickly adjust the position of map elements (e.g., labels) or collaborate with a graphic designer. Note, however, that this process is not fully reproducible.</p>
 </section><section id="sec-interactive-format" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="sec-interactive-format">
 <span class="header-section-number">4.3</span> Interactive format</h2>
-<p><code>tmap</code> map objects can not only be viewed in the interactive mode (as shown in <a href="nutshell.html#sec-map-modes" class="quarto-xref"><span>Section 3.6</span></a>) but also saved as HTML files by adding the <code>.html</code> extension to the output file name.</p>
+<p> <code>tmap</code> map objects can not only be viewed in the interactive mode (as shown in <a href="nutshell.html#sec-map-modes" class="quarto-xref"><span>Section 3.6</span></a>) but also saved as HTML files by adding the <code>.html</code> extension to the output file name.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save</a></span><span class="op">(</span><span class="va">tm</span>, <span class="st">"my_map.html"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Interactive map saved to /home/jn/Science/geocompx/tmap/my_map.html</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save()</a></code> function also has several additional arguments reserved for the interactive format, including <code>selfcontained</code> and <code>in.iframe</code>. The <code>selfcontained</code> argument – <code>TRUE</code> by default – saves our map together with additional resources (e.g., JavaScript libraries) into one HTML file. Otherwise, additional resources will be saved in an adjacent directory. The <code>in.iframe</code> argument (<code>FALSE</code> by default) allows saving an interactive map as an iframe – when <code>TRUE</code> it creates two HTML files – a small HTML file with the iframe container and a large one with the actual map. <!-- when `in.iframe = TRUE` is useful? --> <!-- arguments passed on to device functions or to saveWidget or saveWidgetframe --></p>
+<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tmap_save.html">tmap_save()</a></code> function also has several additional arguments reserved for the interactive format, including <code>selfcontained</code> and <code>in.iframe</code>. The <code>selfcontained</code> argument – <code>TRUE</code> by default – saves our map together with additional resources (e.g., JavaScript libraries) into one HTML file. Otherwise, additional resources are saved in an adjacent directory. The <code>in.iframe</code> argument (<code>FALSE</code> by default) allows saving an interactive map as an iframe – when <code>TRUE</code> it creates two HTML files – a small HTML file with the iframe container and a large one with the actual map. <!-- when `in.iframe = TRUE` is useful? --> <!-- arguments passed on to device functions or to saveWidget or saveWidgetframe --></p>
 <!-- add description on scale? -->
 
 
@@ -465,7 +466,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <ol>
 <li id="fn1"><p>Standard R approach of saving graphic files by opening a graphic device, e.g., <code><a href="https://rdrr.io/r/grDevices/png.html">png()</a></code>, plotting the data, and then closing the device with <code><a href="https://rdrr.io/r/grDevices/dev.html">dev.off()</a></code> also works.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Tit means that PNG preserves all the information about the image when saved, while JPEG compresses the image by removing some of the information, which may result in a loss of quality.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>In fact, one argument is enough – if you just provide a <strong>tmap</strong> object, then it will be saved to a <code>tmap01</code> file with some default format.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>In fact, one argument is enough – if you just provide a <strong>tmap</strong> object, then it is saved to a <code>tmap01</code> file with some default format.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>You can even specify just one of <code>width</code> or <code>height</code>, and the value of the second one will be calculated using the formula <code>asp = width / height</code>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>Short discussion about graphic devices can be found in section <a href="layout.html#sec-fonts-tmap" class="quarto-xref"><span>Section 12.3.2</span></a>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

@@ -229,7 +229,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./scales.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of visual variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -261,7 +261,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Expanding the toolbox</span></a>
+ <span class="menu-text">Adding new tools</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -297,18 +297,12 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Animations</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./interactive.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Interactive settings</span></span></a>
-  </div>
-</li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Advanced topics</span></a>
+ <span class="menu-text">Expanding the toolbox</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -316,20 +310,26 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./options.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">tmap options</span></span></a>
+  <a href="./interactive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Interactive maps</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./shiny.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
+  <a href="./extensions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Map extensions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./creating-extensions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Creating extensions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Creating new map extensions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./shiny.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
   </div>
 </li>
       </ul>
@@ -421,7 +421,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
   
 
 
-</header><p>Visual variables are methods to translate information given in variables into many types of visualizations, including maps. Basic visual variables are color, size, and shape<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. All of them can influence our perception and understanding of the presented information; therefore, it is worth understanding when and how they can be used.</p>
+</header><p> Visual variables are methods to translate information given in variables into many types of visualizations, including maps. Basic visual variables are color, size, and shape<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. All of them can influence our perception and understanding of the presented information; therefore, it is worth understanding when and how they can be used.</p>
 <p>The use of visual variables on maps depends on two main things: (a) the type of the presented variable, and (b) the type of the map layer (<a href="#sec-const-visual-variables" class="quarto-xref"><span>Section 7.1</span></a>; <a href="#sec-auto-scales" class="quarto-xref"><span>Section 7.2</span></a>).</p>
 <!-- alpha? -->
 <div class="cell" data-layout-align="center">
@@ -436,8 +436,8 @@ Figure&nbsp;7.1: Basic visual variables and their representations on maps
 </div>
 </div>
 </div>
-<p><a href="#fig-visual-variables" class="quarto-xref">Figure&nbsp;<span>7.1</span></a> shows examples of different visual variables. Color is the most universal visual variable (<a href="#sec-colors" class="quarto-xref"><span>Section 7.3</span></a>). It can represent both qualitative (categorical) and quantitative (numerical) variables, and we can also color symbols, lines, or polygon fillings. Sizes, on the other hand, focus on quantitative variables. Small symbols could represent low values of a given variable, and the higher the value, the larger the symbol. Quantitative values of line data can be shown with the widths of the lines (<a href="#sec-sizes" class="quarto-xref"><span>Section 7.4</span></a>). The use of shapes usually should be limited to qualitative variables, and different shapes can represent different categories of points (<a href="#sec-shapes" class="quarto-xref"><span>Section 7.5</span></a>). Similarly, qualitative variables in lines can be presented by different line types. Values of polygons usually cannot be represented by either shapes or sizes, as these two features are connected to the geometries of the objects. <!-- exception - cartograms - ref to other chapter \@ref(other-types) --> Finally, there are some cases in which we can use several visual variables at the same time (<a href="#sec-mixing-visual-variables" class="quarto-xref"><span>Section 7.6</span></a>).</p>
-<p>Let’s start by attaching the packages and reading the data we will use in this chapter.</p>
+<p> <a href="#fig-visual-variables" class="quarto-xref">Figure&nbsp;<span>7.1</span></a> shows examples of different visual variables. Color is the most universal visual variable (<a href="#sec-colors" class="quarto-xref"><span>Section 7.3</span></a>). It can represent both qualitative (categorical) and quantitative (numerical) variables, and we can also color symbols, lines, or polygon fillings. Sizes, on the other hand, focus on quantitative variables. Small symbols could represent low values of a given variable, and the higher the value, the larger the symbol. Quantitative values of line data can be shown with the widths of the lines (<a href="#sec-sizes" class="quarto-xref"><span>Section 7.4</span></a>). The use of shapes usually should be limited to qualitative variables, and different shapes can represent different categories of points (<a href="#sec-shapes" class="quarto-xref"><span>Section 7.5</span></a>). Similarly, qualitative variables in lines can be presented by different line types. Values of polygons usually cannot be represented by either shapes or sizes, as these two features are connected to the geometries of the objects. <!-- exception - cartograms - ref to other chapter \@ref(other-types) --> Finally, there are some cases in which we can use several visual variables at the same time (<a href="#sec-mixing-visual-variables" class="quarto-xref"><span>Section 7.6</span></a>).</p>
+<p>Let’s start by attaching the packages and reading the data we use in this chapter.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
@@ -481,7 +481,7 @@ Figure&nbsp;7.3: Example of a map with adjacent polygons having different colors
 <!-- In this case, it is also possible to change the default colors with the `palette` argument, but also to activate the internal algorithm to search for a minimal number of colors for visualization by setting `minimize = TRUE`. -->
 </section><section id="sec-auto-scales" class="level2" data-number="7.2"><h2 data-number="7.2" class="anchored" data-anchor-id="sec-auto-scales">
 <span class="header-section-number">7.2</span> Automatic scales</h2>
-<p>On the other hand, if we provide the name of the column (variable) we want to visualize, <strong>tmap</strong> will automatically set the visual variables. The <strong>tmap</strong> package has many defaults that automatically specify colors, sizes, and shapes used on the maps. Thus, for example, when we provide a character variable’s name to the <code>fill</code> argument, then the color scale for a categorical variable is set, and when we give a numeric variable’s name to the <code>size</code> argument, then the size scale for a continuous variable is used. However, <strong>tmap</strong> also allows us to change them with a few additional functions, including <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code>. In this and the following sections, we will show how to use the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function to modify the appearance of the visual variables. In the next two chapters, we will further discuss various types of scales and ways to modify them and the legend appearance.</p>
+<p> On the other hand, if we provide the name of the column (variable) we want to visualize, <strong>tmap</strong> automatically sets the visual variables. The <strong>tmap</strong> package has many defaults that automatically specify colors, sizes, and shapes used on the maps. Thus, for example, when we provide a character variable’s name to the <code>fill</code> argument, then the color scale for a categorical variable is set, and when we give a numeric variable’s name to the <code>size</code> argument, then the size scale for a continuous variable is used. However, <strong>tmap</strong> also allows us to change them with a few additional functions, including <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code>. In this and the following sections, we show how to use the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function to modify the appearance of the visual variables. In the next two chapters, we further discuss various types of scales and ways to modify them and the legend appearance.</p>
 <p>The most basic use of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function is to modify the appearance of the map, such as changing the color palette (<code>col.scale</code> and <code>fill.scale</code>), sizes (<code>size.scale</code>), or shapes (<code>shape.scale</code>). This is done with the <code>values</code> argument of each of these functions, which can be one of many things, depending on the visual variable. For example, for colors, it can be a vector of colors, a palette function, or a name of a built-in palette; for sizes, it can be a numerical variable; and for shapes, it can be a custom icon or a numerical variable (<a href="#fig-tmscalevals" class="quarto-xref">Figure&nbsp;<span>7.4</span></a>).</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_cities</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"population"</span>,</span>
@@ -623,7 +623,7 @@ Figure&nbsp;7.5: Examples of three main types of color palettes: categorical, se
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="st">"pop_dens"</span>,</span>
 <span>              fill.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale</a></span><span class="op">(</span>values <span class="op">=</span> <span class="st">"brewer.yl_gn"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>It is also possible to reverse the order of any named color palette by using the <code>-</code> prefix. Therefore, <code>"-yl_gn"</code> return a palette going from green to yellow.</p>
+<p>It is also possible to reverse the order of any named color palette by using the <code>-</code> prefix<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. Therefore, <code>"-yl_gn"</code> returns a palette going from green to yellow.</p>
 <div id="fig-tmpals" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmpals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
@@ -749,13 +749,13 @@ Figure&nbsp;7.8: An example of a categorical map with manually selected colors.
 <!-- https://earthobservatory.nasa.gov/blogs/elegantfigures/2013/09/10/subtleties-of-color-part-6-of-6/ -->
 </section><section id="sec-sizes" class="level2" data-number="7.4"><h2 data-number="7.4" class="anchored" data-anchor-id="sec-sizes">
 <span class="header-section-number">7.4</span> Sizes</h2>
-<p>Differences in size between objects are relatively easy to recognize on maps. Sizes can be used for points, lines (line widths), or text to represent quantitative (numerical) variables, where small values are related to small objects and large values are represented by large objects. Large sizes can also be used to attract viewers’ attention.</p>
-<p>By default, <strong>t</strong>maps present points, lines, or text objects of the same size. For example, <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols()</a></code> returns a map where each object is a circle with a consistent size<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. We can change the sizes of all objects using the <code>size</code> argument (<a href="#fig-tmsizes-1" class="quarto-xref">Figure&nbsp;<span>7.9 (a)</span></a>).</p>
+<p> Differences in size between objects are relatively easy to recognize on maps. Sizes can be used for points, lines (line widths), or text to represent quantitative (numerical) variables, where small values are related to small objects and large values are represented by large objects. Large sizes can also be used to attract viewers’ attention.</p>
+<p>By default, <strong>t</strong>maps present points, lines, or text objects of the same size. For example, <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols()</a></code> returns a map where each object is a circle with a consistent size<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. We can change the sizes of all objects using the <code>size</code> argument (<a href="#fig-tmsizes-1" class="quarto-xref">Figure&nbsp;<span>7.9 (a)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_cities</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>On the other hand, if we provide the name of the numerical variable in the <code>size</code> argument (e.g., <code>"population"</code>), then symbol sizes are scaled proportionally to the provided values. Objects with small values will be represented by smaller circles, while larger values will be represented by larger circles (<a href="#fig-tmsizes-2" class="quarto-xref">Figure&nbsp;<span>7.9 (b)</span></a>).</p>
+<p>On the other hand, if we provide the name of the numerical variable in the <code>size</code> argument (e.g., <code>"population"</code>), then symbol sizes are scaled proportionally to the provided values. Objects with small values are represented by smaller circles, while larger values are represented by larger circles (<a href="#fig-tmsizes-2" class="quarto-xref">Figure&nbsp;<span>7.9 (b)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_cities</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols</a></span><span class="op">(</span>size <span class="op">=</span> <span class="st">"population"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -818,7 +818,7 @@ Figure&nbsp;7.9: Examples of three approaches for changing sizes of symbols.
 </figcaption></figure>
 </div>
 </div>
-<p>Widths of the lines can represent values of numerical variables for line data similar to sizes of the symbols for point data. The <code>lwd</code> argument in <code><a href="https://r-tmap.github.io/tmap/reference/tm_lines.html">tm_lines()</a></code> creates thin lines for small values and thick lines for large values of the given variable (<a href="#fig-tmlwd" class="quarto-xref">Figure&nbsp;<span>7.10</span></a>).</p>
+<p> Widths of the lines can represent values of numerical variables for line data similar to sizes of the symbols for point data. The <code>lwd</code> argument in <code><a href="https://r-tmap.github.io/tmap/reference/tm_lines.html">tm_lines()</a></code> creates thin lines for small values and thick lines for large values of the given variable (<a href="#fig-tmlwd" class="quarto-xref">Figure&nbsp;<span>7.10</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">slo_railroads</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_railroads.gpkg"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_railroads</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -836,7 +836,7 @@ Figure&nbsp;7.10: Example of a map where lines’ widths represent values of the
 </div>
 <p>In the above example, values of the <code>"track_width"</code> are divided into five groups and represented by five line widths. Lines’ thickness can be change using the <code>values.scale</code> argument of <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code>, where the value of 1 is the default, and increasing this values increases lines’ thickness.</p>
 <!-- how about trying some transportation examples here (and expanding them)? -->
-<p>Text labels have a role in naming features on a map or just highlighting some of them. Usually, the size of text labels is consistent for the same spatial objects. However, text labels can also be used to represent the values of some numerical variables. <a href="#fig-tmtextsize" class="quarto-xref">Figure&nbsp;<span>7.11</span></a> shows an example, in which text labels show names of different <code>slo_cities</code>, while their sizes are related to their populations. This allows us to not only locate different cities on the map but also differentiate between less populous areas and more populous ones.</p>
+<p> Text labels have a role in naming features on a map or just highlighting some of them. Usually, the size of text labels is consistent for the same spatial objects. However, text labels can also be used to represent the values of some numerical variables. <a href="#fig-tmtextsize" class="quarto-xref">Figure&nbsp;<span>7.11</span></a> shows an example, in which text labels show names of different <code>slo_cities</code>, while their sizes are related to their populations. This allows us to not only locate different cities on the map but also differentiate between less populous areas and more populous ones.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_cities</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"name"</span>, size <span class="op">=</span> <span class="st">"population"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -858,21 +858,21 @@ Figure&nbsp;7.11: Example of a map where text sizes represent elevations of the 
 <!-- again - mention other map types - cartograms, hexmaps, etc., which even impact of polygon sizes -->
 </section><section id="sec-shapes" class="level2" data-number="7.5"><h2 data-number="7.5" class="anchored" data-anchor-id="sec-shapes">
 <span class="header-section-number">7.5</span> Shapes</h2>
-<p>Shapes allow for representing different categories of point data. They can be very generic, e.g., a circle or square, just to differentiate between categories, but often we use symbols that we associate with different types of features. For example, we use the letter <em>P</em> for parking lots, <em>I</em> for information centers, an airplane symbol for airports, or a bus symbol for bus stops.</p>
+<p> Shapes allow for representing different categories of point data. They can be very generic, e.g., a circle or square, just to differentiate between categories, but often we use symbols that we associate with different types of features. For example, we use the letter <em>P</em> for parking lots, <em>I</em> for information centers, an airplane symbol for airports, or a bus symbol for bus stops.</p>
 <p>To use different shapes, we should use the <code>shape</code> argument in the <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols()</a></code> function. It expects the name of the categorical variable, such as <code>"place"</code> in the example below (<a href="#fig-tmsymshape-1" class="quarto-xref">Figure&nbsp;<span>7.12 (a)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_cities</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="st">"place"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <!-- tmap::tmap_options()$values.var$shape -->
-<p>By default, <strong>tmap</strong> uses symbols of filled circle, square, diamond, point-up triangle, and point-down triangle<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. However, it is also possible to customize the used symbols, their title, and labels. Legend titles related to shapes and their labels are modified with the <code>shape.legend</code> argument.</p>
+<p>By default, <strong>tmap</strong> uses symbols of filled circle, square, diamond, point-up triangle, and point-down triangle<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. However, it is also possible to customize the used symbols, their title, and labels. Legend titles related to shapes and their labels are modified with the <code>shape.legend</code> argument.</p>
 <p>Shapes are specified with the <code>shape.scale</code> argument – there we can set the <code>values</code> argument with three different approaches: a vector of numbers, R graphic objects, or icons. The first one is a numeric value that specifies the plotting character of the symbol (<a href="#fig-tmsymshape-2" class="quarto-xref">Figure&nbsp;<span>7.12 (b)</span></a>). A complete list of available symbols and their corresponding numbers is in the <code><a href="https://rdrr.io/r/graphics/points.html">?pch</a></code> function’s documentation. <!--JN: or should we add a figure with them here??--></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_cities</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="st">"place"</span>,</span>
 <span>             shape.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The second option is to use a <em>gr</em>aphic <em>ob</em>ject (<em>grob</em>). It is a low-level graphical object in R that can be used to create custom shapes. <!-- add intro what are grobs --> <!-- add reference to some section explaining tmap_grob (chapter 10??) --> In the code below, we create two grob objects: a circle and a rectangle with custom sizes and colors. Then, we specify them in the <code>shape.scale</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols()</a></code> function – see <a href="#fig-tmsymshape-3" class="quarto-xref">Figure&nbsp;<span>7.12 (c)</span></a>.</p>
+<p> The second option is to use a <em>gr</em>aphic <em>ob</em>ject (<em>grob</em>). It is a low-level graphical object in R that can be used to create custom shapes. <!-- add intro what are grobs --> <!-- add reference to some section explaining tmap_grob (chapter 10??) --> In the code below, we create two grob objects: a circle and a rectangle with custom sizes and colors. Then, we specify them in the <code>shape.scale</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols()</a></code> function – see <a href="#fig-tmsymshape-3" class="quarto-xref">Figure&nbsp;<span>7.12 (c)</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># a circle</span></span>
 <span><span class="va">p1</span> <span class="op">=</span> <span class="fu">grid</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/grid/grid.circle.html">circleGrob</a></span><span class="op">(</span>r <span class="op">=</span> <span class="fl">0.25</span>, </span>
@@ -885,7 +885,7 @@ Figure&nbsp;7.11: Example of a map where text sizes represent elevations of the 
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="st">"place"</span>,</span>
 <span>             shape.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">p1</span>, <span class="va">p2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The last possibility is to use an icon specification created with the <code><a href="https://r-tmap.github.io/tmap/reference/tmap_icons.html">tmap_icons()</a></code> function, which uses any PNG images. The <code><a href="https://r-tmap.github.io/tmap/reference/tmap_icons.html">tmap_icons()</a></code> function accepts a vector of file paths or URLs, and also allows setting the width and height of the icon. In our example, we have two groups, therefore we need to create new icons based on two images – <code>icon1.png</code> and <code>icon2.png</code> in this case.</p>
+<p> The last possibility is to use an icon specification created with the <code><a href="https://r-tmap.github.io/tmap/reference/tmap_icons.html">tmap_icons()</a></code> function, which uses any PNG images. The <code><a href="https://r-tmap.github.io/tmap/reference/tmap_icons.html">tmap_icons()</a></code> function accepts a vector of file paths or URLs, and also allows setting the width and height of the icon. In our example, we have two groups, therefore we need to create new icons based on two images – <code>icon1.png</code> and <code>icon2.png</code> in this case.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_icons</span> <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_icons.html">tmap_icons</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"data/icon1.png"</span>, <span class="st">"data/icon2.png"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1065,8 +1065,9 @@ Zeileis, Achim, Jason C. Fisher, Kurt Hornik, Ross Ihaka, Claire D. McWhite, Pau
 <li id="fn1"><p>Other visual variables include position, orientation, and texture.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Learn more about them at <a href="https://developer.r-project.org/Blog/public/2019/04/01/hcl-based-color-palettes-in-grdevices/" class="uri">https://developer.r-project.org/Blog/public/2019/04/01/hcl-based-color-palettes-in-grdevices/</a> and <a href="https://developer.r-project.org/Blog/public/2019/11/21/a-new-palette-for-r/index.html" class="uri">https://developer.r-project.org/Blog/public/2019/11/21/a-new-palette-for-r/index.html</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>You can also derive them using <code><a href="https://rdrr.io/pkg/cols4all/man/c4a.html">cols4all::c4a()</a></code> function.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>The default value of size is 1, which corresponds to the area of symbols that have the same height as one line of text.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>They are represented in R by numbers from 21 to 25.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>In general, the darker the color, the larger the value it represents. This rule applies to sequential color palettes, when the background color is light. However, when the background color is dark, the rule is reversed, and the darker colors should represent lower values.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>The default value of size is 1, which corresponds to the area of symbols that have the same height as one line of text.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>They are represented in R by numbers from 21 to 25.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1471,8 +1472,8 @@ Zeileis, Achim, Jason C. Fisher, Kurt Hornik, Ross Ihaka, Claire D. McWhite, Pau
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./scales.html" class="pagination-link" aria-label="Scales">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./scales.html" class="pagination-link" aria-label="Scales of visual variables">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of visual variables</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

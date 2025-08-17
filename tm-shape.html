@@ -229,7 +229,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./scales.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of visual variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -261,7 +261,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Expanding the toolbox</span></a>
+ <span class="menu-text">Adding new tools</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -297,18 +297,12 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Animations</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./interactive.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Interactive settings</span></span></a>
-  </div>
-</li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Advanced topics</span></a>
+ <span class="menu-text">Expanding the toolbox</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -316,20 +310,26 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./options.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">tmap options</span></span></a>
+  <a href="./interactive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Interactive maps</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./shiny.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
+  <a href="./extensions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Map extensions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./creating-extensions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Creating extensions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Creating new map extensions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./shiny.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
   </div>
 </li>
       </ul>
@@ -422,7 +422,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 </header><p>At least two aspects need to be specified in order to plot spatial data: the spatial data object itself and the plotting method(s). We cover the former in this chapter and the latter is discussed in the following chapters.</p>
 <section id="sec-shapes-and-layers" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="sec-shapes-and-layers">
 <span class="header-section-number">5.1</span> Shapes and layers</h2>
-<p>As described in <a href="geodata.html" class="quarto-xref"><span>Chapter 2</span></a>, shape objects can be vector or raster data. We recommend <code>sf</code> objects for vector data and <code>terra</code> objects for raster data<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p> As described in <a href="geodata.html" class="quarto-xref"><span>Chapter 2</span></a>, shape objects can be vector or raster data. We recommend <code>sf</code> objects for vector data and <code>terra</code> objects for raster data<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
@@ -431,7 +431,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <span><span class="va">worldcities</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/worldcities.gpkg"</span><span class="op">)</span></span>
 <span><span class="va">worldelevation</span> <span class="op">=</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html">rast</a></span><span class="op">(</span><span class="st">"data/worldelevation.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In <strong>tmap</strong>, a shape object needs to be defined with the function <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code>. When multiple shape objects are used, each has to be defined in a separate <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code> call. This is illustrated in the following example (<a href="#fig-tmshape1" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>).</p>
+<p> In <strong>tmap</strong>, a shape object needs to be defined with the function <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code>. When multiple shape objects are used, each has to be defined in a separate <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code> call. This is illustrated in the following example (<a href="#fig-tmshape1" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldelevation</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="st">"worldelevation"</span>, </span>
@@ -453,11 +453,11 @@ Figure&nbsp;5.1: A map representing three shapes (worldelevation, worldvector, a
 </div>
 </div>
 <p>In this example, we use three shapes: <code>worldelevation</code> which is a <code>SpatRaster</code> object containing a layer called <code>"worldelevation"</code>, <code>worldvector</code> which is an <code>sf</code> object with country borders, and <code>worldcities</code> – an <code>sf</code> object that contains metropolitan areas of at least 20 million inhabitants.</p>
-<p>Each <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code> function call is succeeded by one or more layer functions. In the above example, these are <code><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text()</a></code>. We will describe layer functions in detail in the next chapter. For this chapter, it is sufficient to know that each layer function call defines how the spatial data specified with <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code> is plotted.</p>
+<p>Each <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code> function call is succeeded by one or more layer functions. In the above example, these are <code><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text()</a></code>. We describe layer functions in detail in the next chapter. For this chapter, it is sufficient to know that each layer function call defines how the spatial data specified with <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code> is plotted.</p>
 <p>Shape objects can be used to plot multiple layers. In the above example, shape object <code>worldcities</code> is used for two layers: <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text()</a></code>.</p>
 </section><section id="sec-shapes-hierarchy" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="sec-shapes-hierarchy">
 <span class="header-section-number">5.2</span> Shapes hierarchy</h2>
-<p>The order of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code> functions’ calls is meaningful. The first <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code>, known as <em>the main shape</em>, is not only shown below the following <em>shapes</em>, but also sets the projection and extent of the whole map. In <a href="#fig-tmshape1" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>, the <code>worldelevation</code> object was used as the first <em>shape</em>, and thus the whole map has the projection and extent of this object.</p>
+<p> The order of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code> functions’ calls is meaningful. The first <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code>, known as <em>the main shape</em>, is not only shown below the following <em>shapes</em>, but also sets the projection and extent of the whole map. In <a href="#fig-tmshape1" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>, the <code>worldelevation</code> object was used as the first <em>shape</em>, and thus the whole map has the projection and extent of this object.</p>
 <p>However, we can quickly change the main <em>shape</em> with the <code>is.main</code> argument. In the following example, we set the <code>worldcities</code> object as the main <em>shape</em>, which limits the output map to the point locations in <code>worldcities</code> (<a href="#fig-tmshape2" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>)<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">worldelevation</span><span class="op">)</span> <span class="op">+</span></span>
@@ -481,7 +481,7 @@ Figure&nbsp;5.2: A map representing three shapes (worldelevation, worldvector, a
 </div>
 </section><section id="sec-map-extent" class="level2" data-number="5.3"><h2 data-number="5.3" class="anchored" data-anchor-id="sec-map-extent">
 <span class="header-section-number">5.3</span> Map extent</h2>
-<p>Another important aspect of mapping, besides projection, is its extent<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> – a portion of the area shown in a map. This is not an issue when the extent of our spatial data is the same as we want to show on a map. However, what should we do when the spatial data contains a larger region than we want to present?</p>
+<p> Another important aspect of mapping, besides projection, is its extent<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> – a portion of the area shown in a map. This is not an issue when the extent of our spatial data is the same as we want to show on a map. However, what should we do when the spatial data contains a larger region than we want to present?</p>
 <p>Again, we could take two routes. The first one is to preprocess our data before mapping - this can be done with vector clipping (e.g., <code><a href="https://r-spatial.github.io/sf/reference/geos_binary_ops.html">st_intersection()</a></code>) and raster cropping (e.g., <code><a href="https://r-spatial.github.io/sf/reference/st_crop.html">st_crop()</a></code>). We would recommend this approach if you plan to work on the smaller data in the other parts of the project. The second route is to specify the map extent in <strong>tmap</strong>.</p>
 <p><strong>tmap</strong> allows specifying map extent using three approaches. The first one is to specify minimum and maximum coordinates in the x and y directions that we want to represent. This can be done with a numeric vector of four values in the order of minimum x, minimum y, maximum x, and maximum y, where all of the coordinates need to be specified in the input data units<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> In the following example, we limit our map extent to the rectangular area between x from -15 to 45 and y from 35 to 65 (<a href="#fig-tbbox1" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>).</p>
 <div class="cell" data-layout-align="center">
@@ -536,8 +536,7 @@ Figure&nbsp;5.5: Global elevation data limited to the extent of the other spatia
 <!-- explain some additional arguments of bb? -->
 </section><section id="sec-map-projection-intro" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="sec-map-projection-intro">
 <span class="header-section-number">5.4</span> Map projection</h2>
-<p></p>
-<p>As we mentioned in the previous section, <em>t</em>maps use the projection from the main <em>shape</em>. However, we often want to create a map with a different projection, for example, to preserve a specific map property. We can do this in three ways:</p>
+<p> As we mentioned in the previous section, <em>t</em>maps use the projection from the main <em>shape</em>. However, we often want to create a map with a different projection, for example, to preserve a specific map property. We can do this in three ways:</p>
 <ol type="1">
 <li>Use a different projection on a map is to reproject the main data before plotting.</li>
 <li>Specify the map projection using the <code>crs</code> argument of <code><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape()</a></code>. This argument expects either some <code>crs</code> object or a CRS code.</li>
@@ -557,7 +556,7 @@ Figure&nbsp;5.5: Global elevation data limited to the extent of the other spatia
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_crs.html">tm_crs</a></span><span class="op">(</span><span class="st">"EPSG:8857"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The first way requires understanding various R packages, as different spatial objects have different functions for changing the projection. The second way is the most straightforward, but it is important to remember that the <code>crs</code> argument can only be set in the main layer (<a href="#sec-shapes-hierarchy" class="quarto-xref"><span>Section 5.2</span></a>). The third way is the most flexible, as it allows changing the projection for the whole map. Additionally, the <code><a href="https://r-tmap.github.io/tmap/reference/tm_crs.html">tm_crs()</a></code> function can automatically determine the projection based on the expected property of the map, e.g., equal area (<code>"area"</code>), equidistant (<code>"distance"</code>), or conformal (<code>"shape"</code>). For example, <code>tm_crs("auto")</code> will choose the projection that best preserves the area of the map (<em>Lambert Azimuthal Equal Area</em>), while <code>tm_crs("auto", property = "shape")</code> will choose the projection that best preserves the shape of the map (<em>Stereographic</em>).</p>
+<p>The first way requires understanding various R packages, as different spatial objects have different functions for changing the projection. The second way is the most straightforward, but it is important to remember that the <code>crs</code> argument can only be set in the main layer (<a href="#sec-shapes-hierarchy" class="quarto-xref"><span>Section 5.2</span></a>). The third way is the most flexible, as it allows changing the projection for the whole map. Additionally, the <code><a href="https://r-tmap.github.io/tmap/reference/tm_crs.html">tm_crs()</a></code> function can automatically determine the projection based on the expected property of the map, e.g., equal area (<code>"area"</code>), equidistant (<code>"distance"</code>), or conformal (<code>"shape"</code>). For example, <code>tm_crs("auto")</code> chooses the projection that best preserves the area of the map (<em>Lambert Azimuthal Equal Area</em>), while <code>tm_crs("auto", property = "shape")</code> chooses the projection that best preserves the shape of the map (<em>Stereographic</em>).</p>
 <p><a href="map-projections.html" class="quarto-xref"><span>Chapter 13</span></a> expands on the topic of map projections. It starts by explaining the basic concepts and then shows how to apply them in <strong>tmap</strong>.</p>
 
 

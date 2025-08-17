@@ -214,7 +214,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./scales.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of visual variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -246,7 +246,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Expanding the toolbox</span></a>
+ <span class="menu-text">Adding new tools</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -282,18 +282,12 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Animations</span></span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./interactive.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Interactive settings</span></span></a>
-  </div>
-</li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Advanced topics</span></a>
+ <span class="menu-text">Expanding the toolbox</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -301,20 +295,26 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./options.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">tmap options</span></span></a>
+  <a href="./interactive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Interactive maps</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./shiny.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
+  <a href="./extensions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Map extensions</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./creating-extensions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Creating extensions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Creating new map extensions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./shiny.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title"><strong>tmap</strong> in <strong>shiny</strong></span></span></a>
   </div>
 </li>
       </ul>
@@ -406,7 +406,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
   
 
 
-</header><!-- make sure that the order of the table is consistent with the rest of the chapter! --><p>Map layers are the main building blocks of a map. They specify how the specific data should be visualized – for example, as polygons, symbols, lines, text labels, or raster. There is also an interplay between the data and the map layers: raster data can be plotted with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster()</a></code> or <code><a href="https://r-tmap.github.io/tmap/reference/tm_rgb.html">tm_rgb()</a></code> functions, while point data can be visualized with <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_bubbles()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_markers()</a></code>, or <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_squares()</a></code>. Moreover, some data types can be simplified and shown with a different geometry, such as polygons that are usually visualized with <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code> but can also be converted into centroids and plotted with <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols()</a></code>.</p>
+</header><!-- make sure that the order of the table is consistent with the rest of the chapter! --><p> Map layers are the main building blocks of a map. They specify how the specific data should be visualized – for example, as polygons, symbols, lines, text labels, or raster. There is also an interplay between the data and the map layers: raster data can be plotted with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster()</a></code> or <code><a href="https://r-tmap.github.io/tmap/reference/tm_rgb.html">tm_rgb()</a></code> functions, while point data can be visualized with <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_bubbles()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_markers()</a></code>, or <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_squares()</a></code>. Moreover, some data types can be simplified and shown with a different geometry, such as polygons that are usually visualized with <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code> but can also be converted into centroids and plotted with <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols()</a></code>.</p>
 <p>Each dataset may have one or more map layers, and each layer can be presented in different ways. For example, a dataset with polygons can be visualized using <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code> to display the polygon areas, and then the names of the polygons can be added with <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text()</a></code>.</p>
 <p><a href="charts.html#tbl-layers-table" class="quarto-xref">Table&nbsp;<span>14.1</span></a> shows the available map layers in <strong>tmap</strong>. They are divided into two groups: basic functions and derived functions. The basic functions are the main functions for visualizing data, are useful for most cases, and are highly customizable. The derived functions are built on top of the basic functions but with different default values aimed at specific use cases.</p>
 <div class="cell" data-layout-align="center">
@@ -530,7 +530,7 @@ Table&nbsp;6.1: Available map layers.
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
 <span><span class="va">slo_borders</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_border.gpkg"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The main function of visualizing polygons is <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code>. By default, it plots areas of polygons in light gray (<code>gray85</code>) and polygons borders in slightly dark gray (<code>gray25</code>). <!-- https://github.com/r-tmap/tmap/blob/master/R/tmap_options.R --></p>
+<p> The main function of visualizing polygons is <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code>. By default, it plots areas of polygons in light gray (<code>gray85</code>) and polygons borders in slightly dark gray (<code>gray25</code>). <!-- https://github.com/r-tmap/tmap/blob/master/R/tmap_options.R --></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -540,12 +540,12 @@ Table&nbsp;6.1: Available map layers.
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"lightblue"</span>, col <span class="op">=</span> <span class="st">"black"</span>, lwd <span class="op">=</span> <span class="fl">0.5</span>, lty <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In fact, <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code> is a combination of two separate functions: <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_fill()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders()</a></code>. The <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_fill()</a></code> function fills polygons with a fixed color or a color palette representing a selected variable (<a href="#fig-tmpolygonsder-2" class="quarto-xref">Figure&nbsp;<span>6.1 (b)</span></a>).</p>
+<p> In fact, <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code> is a combination of two separate functions: <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_fill()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders()</a></code>. The <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_fill()</a></code> function fills polygons with a fixed color or a color palette representing a selected variable (<a href="#fig-tmpolygonsder-2" class="quarto-xref">Figure&nbsp;<span>6.1 (b)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_fill</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders()</a></code> function draws the borders of the polygons only (<a href="#fig-tmpolygonsder-3" class="quarto-xref">Figure&nbsp;<span>6.1 (c)</span></a>). It allows you to change the colors of borders, their widths, or the lines type.</p>
+<p> The <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders()</a></code> function draws the borders of the polygons only (<a href="#fig-tmpolygonsder-3" class="quarto-xref">Figure&nbsp;<span>6.1 (c)</span></a>). It allows you to change the colors of borders, their widths, or the lines type.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders</a></span><span class="op">(</span>col <span class="op">=</span> <span class="st">"black"</span>, lwd <span class="op">=</span> <span class="fl">0.5</span>, lty <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -601,8 +601,8 @@ Figure&nbsp;6.1: Example of a map created using tm_polygons() and its derived fu
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">slo_cities</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_cities.gpkg"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Symbols are a versatile type of map layer. They are usually used to represent point data but can also be used for lines and polygons. In the latter cases, they are located in the centroid coordinates of each feature. Their flexibility is also related to the ways symbols can be visualized – it is possible to show values of a given variable by colors of symbols, their sizes, or shapes (more about that is explained in <a href="visual-variables.html" class="quarto-xref"><span>Chapter 7</span></a>).</p>
-<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols()</a></code> is the main function in <strong>tmap</strong>, allowing to use and modify symbol elements (<a href="#fig-tmsymbols1" class="quarto-xref">Figure&nbsp;<span>6.2</span></a>). By default, this function draws a gray circle symbol with a black border for each element of an input feature.</p>
+<p> Symbols are a versatile type of map layer. They are usually used to represent point data but can also be used for lines and polygons. In the latter cases, they are located in the centroid coordinates of each feature. Their flexibility is also related to the ways symbols can be visualized – it is possible to show values of a given variable by colors of symbols, their sizes, or shapes (more about that is explained in <a href="visual-variables.html" class="quarto-xref"><span>Chapter 7</span></a>).</p>
+<p> The <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols()</a></code> is the main function in <strong>tmap</strong>, allowing to use and modify symbol elements (<a href="#fig-tmsymbols1" class="quarto-xref">Figure&nbsp;<span>6.2</span></a>). By default, this function draws a gray circle symbol with a black border for each element of an input feature.</p>
 <div class="cell" data-layout-align="center" data-asp="0.25">
 <div class="cell-output-display">
 <div id="fig-tmsymbols1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
@@ -616,7 +616,7 @@ Figure&nbsp;6.2: A map showing the default tmap symbols.
 </div>
 </div>
 <p>In the above example, each symbol is related to one feature (row) in the <code>slo_cities</code> object. However, in a case when we provide multi-element features (such as MULTIPOINT; see <a href="geodata.html#sec-vector-data-model" class="quarto-xref"><span>Section 2.2.1</span></a>), each multi-element object is first split into a number of single-element features and then plotted.</p>
-<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols()</a></code> is a very flexible function with a large number of arguments. While this allows adjusting its results to almost any need, it also makes this function complicated. Therefore, four additional layers are implemented in <strong>tmap</strong>: <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_squares()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_bubbles()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_markers()</a></code>. All of them use <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols()</a></code>, but with different default values.</p>
+<p> The <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols()</a></code> is a very flexible function with a large number of arguments. While this allows adjusting its results to almost any need, it also makes this function complicated. Therefore, four additional layers are implemented in <strong>tmap</strong>: <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_squares()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_bubbles()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_markers()</a></code>. All of them use <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols()</a></code>, but with different default values.</p>
 <p><code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_squares()</a></code> uses square symbols (<code>shape = 22</code>) instead of circles (<code>shapes = 21</code>) (<a href="#fig-tmsymbols2-1" class="quarto-xref">Figure&nbsp;<span>6.3 (a)</span></a>). <!--scale is 4/3 instead of 1--> <!-- Martijn, please expand this part --></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_cities</span><span class="op">)</span> <span class="op">+</span></span>
@@ -698,7 +698,7 @@ Figure&nbsp;6.3: Maps showing default visualizations using various types of symb
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">slo_railroads</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_railroads.gpkg"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_lines.html">tm_lines()</a></code> function allows the visualization of different types of line data (<a href="#fig-tmlines" class="quarto-xref">Figure&nbsp;<span>6.4</span></a>).</p>
+<p> The <code><a href="https://r-tmap.github.io/tmap/reference/tm_lines.html">tm_lines()</a></code> function allows the visualization of different types of line data (<a href="#fig-tmlines" class="quarto-xref">Figure&nbsp;<span>6.4</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_railroads</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_lines.html">tm_lines</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -716,7 +716,7 @@ Figure&nbsp;6.4: Example of a map created with tm_lines().
 <p>Lines can be presented using different colors, widths, or types (<a href="visual-variables.html" class="quarto-xref"><span>Chapter 7</span></a>). This allows to show a hierarchy (for example, increased line widths for higher capacity roads) or distinguish between types of objects (for example, blue rivers comparing to gray roads).</p>
 </section><section id="sec-text" class="level2" data-number="6.4"><h2 data-number="6.4" class="anchored" data-anchor-id="sec-text">
 <span class="header-section-number">6.4</span> Text</h2>
-<p>Text labels are an integral part of many maps. They can serve several functions, from naming features, indicating relations between them, or representing a given variable’s values. The primary function for creating text labels is <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text()</a></code>, which adds a label to each spatial feature (<a href="#fig-tmtext-1" class="quarto-xref">Figure&nbsp;<span>6.5 (a)</span></a>).</p>
+<p> Text labels are an integral part of many maps. They can serve several functions, from naming features, indicating relations between them, or representing a given variable’s values. The primary function for creating text labels is <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text()</a></code>, which adds a label to each spatial feature (<a href="#fig-tmtext-1" class="quarto-xref">Figure&nbsp;<span>6.5 (a)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_borders</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -780,7 +780,7 @@ Figure&nbsp;6.5: Maps with text labels.
 </figcaption></figure>
 </div>
 </div>
-<p>In the above examples, the <code>text</code> argument specifies the name of a variable that will be used for text labels. We can further adjust colors (<code>col</code>; <a href="visual-variables.html#sec-colors" class="quarto-xref"><span>Section 7.3</span></a>), sizes (<code>size</code>; <a href="visual-variables.html#sec-sizes" class="quarto-xref"><span>Section 7.4</span></a>), font faces (<code>fontface</code>; <a href="layout.html#sec-ltypography" class="quarto-xref"><span>Section 12.3</span></a>), and background colors (<code>bgcol</code>) of labels by providing either a single value or the name of a data variable.</p>
+<p>In the above examples, the <code>text</code> argument specifies the name of a variable that is used for text labels. We can further adjust colors (<code>col</code>; <a href="visual-variables.html#sec-colors" class="quarto-xref"><span>Section 7.3</span></a>), sizes (<code>size</code>; <a href="visual-variables.html#sec-sizes" class="quarto-xref"><span>Section 7.4</span></a>), font faces (<code>fontface</code>; <a href="layout.html#sec-ltypography" class="quarto-xref"><span>Section 12.3</span></a>), and background colors (<code>bgcol</code>) of labels by providing either a single value or the name of a data variable.</p>
 <p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text()</a></code>, <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_labels()</a></code>, and <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_labels_highlighted()</a></code> functions have many arguments that allow us to adjust the appearance of text labels. It includes arguments related to the x and y offset of the text labels (<code>xmod</code> and <code>ymod</code>), and the rotation angle (<code>angle</code>). <!-- any other are worth mentioning? xmod.scale, xmod.legend, xmod.chart, xmod.free, ymod.scale, ymod.legend, ymod.chart, ymod.free , angle.scale, angle.legend, angle.chart, angle.free         --> <a href="#fig-tmtext2-1" class="quarto-xref">Figure&nbsp;<span>6.6 (a)</span></a> shows an example of a map with text labels moved a bit to the right and down, and rotated by 12 degrees.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
@@ -794,7 +794,7 @@ Figure&nbsp;6.5: Maps with text labels.
 <span>                                just <span class="op">=</span> <span class="st">"left"</span>,</span>
 <span>                                remove_overlap <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To automatically adjust the position of text labels to avoid overlapping with other features, we can use the <code>point.label</code> argument in the <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">opt_tm_text()</a></code> function. When set to <code>TRUE</code>, it will use an algorithm to find the best position for each label, which can be useful when there are many overlapping features or when the labels are too close to each other.</p>
+<p>To automatically adjust the position of text labels to avoid overlapping with other features, we can use the <code>point.label</code> argument in the <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">opt_tm_text()</a></code> function. When set to <code>TRUE</code>, it use an algorithm to find the best position for each label, which can be useful when there are many overlapping features or when the labels are too close to each other.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"name"</span>, </span>
@@ -847,7 +847,7 @@ Figure&nbsp;6.6: Example of a map created with tm_text() with customized options
 </div>
 <!-- on_surface -->
 <!-- clustering -->
-<p>Text labels can be added to spatial (multi-)points, (multi-)lines, and (multi-)polygons, and each case is quite different. The simplest case is for POINT data, for which each text label will be located precisely in the coordinates of the given points (<a href="#fig-tmtext" class="quarto-xref">Figure&nbsp;<span>6.5</span></a>). However, how to add text labels to multipoints, lines, multilines, polygons, or multipolygons? Should each label correspond to one spatial feature, or should every sub-feature have its own label? Where should the labels be placed for lines or polygons – in the center of a line and the centroid of a polygon, or somewhere else? The above decisions can be made with the <code>options</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text()</a></code> function. By default, text labels are placed in the centroid of each feature; however, we can change this behavior with the <code>point_per</code> argument. The possible options are <code>"feature"</code> (default), <code>"segment"</code>, and <code>"largest"</code>. The <code>"segment"</code> option labels each subfeature (e.g, each point in a multipoint, each segment in a multilines, and each polygon in a multipolygon) and the <code>"largest"</code> option labels only the largest subfeature (e.g., the largest segment in a multilines or the largest polygon in a multipolygon).</p>
+<p>Text labels can be added to spatial (multi-)points, (multi-)lines, and (multi-)polygons, and each case is quite different. The simplest case is for POINT data, for which each text label is located precisely in the coordinates of the given points (<a href="#fig-tmtext" class="quarto-xref">Figure&nbsp;<span>6.5</span></a>). However, how to add text labels to multipoints, lines, multilines, polygons, or multipolygons? Should each label correspond to one spatial feature, or should every sub-feature have its own label? Where should the labels be placed for lines or polygons – in the center of a line and the centroid of a polygon, or somewhere else? The above decisions can be made with the <code>options</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text()</a></code> function. By default, text labels are placed in the centroid of each feature; however, we can change this behavior with the <code>point_per</code> argument. The possible options are <code>"feature"</code> (default), <code>"segment"</code>, and <code>"largest"</code>. The <code>"segment"</code> option labels each subfeature (e.g, each point in a multipoint, each segment in a multilines, and each polygon in a multipolygon) and the <code>"largest"</code> option labels only the largest subfeature (e.g., the largest segment in a multilines or the largest polygon in a multipolygon).</p>
 <p>Text labels are also often presented together with lines (<a href="#sec-lines" class="quarto-xref"><span>Section 6.3</span></a>). One example is an isopleth – a line drawn on a map through all points with the same value of a given variable, such as atmospheric pressure or elevation. Isopleths can be created with the <code><a href="https://r-tmap.github.io/tmap/reference/tm_iso.html">tm_iso()</a></code> function. This function combines <code><a href="https://r-tmap.github.io/tmap/reference/tm_lines.html">tm_lines()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text()</a></code>, where text labels are placed on the isopleths along the lines. In the example below, we create contour lines (isopleths) from the elevation raster data of Slovenia, and then we plot them on the map with text labels (<a href="#fig-tmiso" class="quarto-xref">Figure&nbsp;<span>6.7</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/">terra</a></span><span class="op">)</span></span>
@@ -875,7 +875,7 @@ Figure&nbsp;6.7: Example of a map created with tm_iso() showing contour lines wi
 <span><span class="va">slo_elev</span> <span class="op">=</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html">rast</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_elev.tif"</span><span class="op">)</span></span>
 <span><span class="va">slo_gm</span> <span class="op">=</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html">rast</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_gm.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Visualization of raster data depends on the raster type (continuous or categorical), its resolution, and the number of layers. <a href="options.html#fig-rasterdown" class="quarto-xref">Figure&nbsp;<span>19.1</span></a> shows two simple examples of continuous and categorical raster visualizations created with <code>tm_raster().</code> <!-- This function attempts to recognize the type of a given raster -- when the input raster is continuous then the pretty style is used (@fig-rastertype-1). --></p>
+<p> Visualization of raster data depends on the raster type (continuous or categorical), its resolution, and the number of layers. <a href="#fig-rastertype" class="quarto-xref">Figure&nbsp;<span>6.8</span></a> shows two simple examples of continuous and categorical raster visualizations created with <code>tm_raster().</code> <!-- This function attempts to recognize the type of a given raster -- when the input raster is continuous then the pretty style is used (@fig-rastertype-1). --></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -896,7 +896,7 @@ Figure&nbsp;6.7: Example of a map created with tm_iso() showing contour lines wi
 <img src="figures/fig-rastertype-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-rastertype">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-rastertype-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Continuous raster map
+(a) continuous raster map
 </figcaption></figure>
 </div>
 </div>
@@ -906,7 +906,7 @@ Figure&nbsp;6.7: Example of a map created with tm_iso() showing contour lines wi
 <img src="figures/fig-rastertype-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t" data-ref-parent="fig-rastertype">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-rastertype-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b) Categorical raster map
+(b) categorical raster map
 </figcaption></figure>
 </div>
 </div>
@@ -947,8 +947,8 @@ Figure&nbsp;6.9: A map created from a multilayered raster.
 </section><section id="sec-tile-layer" class="level2" data-number="6.6"><h2 data-number="6.6" class="anchored" data-anchor-id="sec-tile-layer">
 <span class="header-section-number">6.6</span> Tile</h2>
 <!-- here or in the separate view mode chapter? -->
-<p>A tile layer is a type of map layer that consists of prerendered raster tiles or vector tiles, usually on online servers. These tiles are organized in a hierarchical grid structure, where each tile corresponds to a specific geographic area at a specific zoom level. Thus, depending on the spatial extent of the data, we use different zoom levels to show more or less details.</p>
-<p>Tile layers can be used for two purposes: either as a basemap or an overlay layer. By default, three basemaps are used in the interactive mode (<code>tmap_mode("view")</code>): <code>"Esri.WorldGrayCanvas"</code>, <code>"OpenStreetMap"</code>, and <code>"Esri.WorldTopoMap"</code>. However, we can change the basemaps with a vector with the names of the tile layers’ providers (<a href="#fig-tmbasemap1" class="quarto-xref">Figure&nbsp;<span>6.10</span></a>).</p>
+<p> A tile layer is a type of map layer that consists of prerendered raster tiles or vector tiles, usually on online servers. These tiles are organized in a hierarchical grid structure, where each tile corresponds to a specific geographic area at a specific zoom level. Thus, depending on the spatial extent of the data, we use different zoom levels to show more or less details.</p>
+<p> Tile layers can be used for two purposes: either as a basemap or an overlay layer. By default, three basemaps are used in the interactive mode (<code>tmap_mode("view")</code>): <code>"Esri.WorldGrayCanvas"</code>, <code>"OpenStreetMap"</code>, and <code>"Esri.WorldTopoMap"</code>. However, we can change the basemaps with a vector with the names of the tile layers’ providers to the <code><a href="https://r-tmap.github.io/tmap/reference/tm_basemap.html">tm_basemap()</a></code> function (<a href="#fig-tmbasemap1" class="quarto-xref">Figure&nbsp;<span>6.10</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tmap_mode.html">tmap_mode</a></span><span class="op">(</span><span class="st">"view"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_basemap.html">tm_basemap</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>StreetMap <span class="op">=</span> <span class="st">"OpenStreetMap"</span>, TopoMap <span class="op">=</span> <span class="st">"OpenTopoMap"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -967,7 +967,7 @@ Figure&nbsp;6.10: OpenStreetMap tile layer used as a base map with symbols repre
 </div>
 </div>
 <p>In the above code, we made two basemaps available: <code>"OpenStreetMap"</code> and <code>"OpenTopoMap"</code>, and for the map legend purpose, we renamed them as <code>StreetMap</code> and <code>TopoMap</code>. A complete list of available basemaps is in the <code><a href="https://rstudio.github.io/leaflet/reference/providers.html">leaflet::providers</a></code> object and on the https://leaflet-extras.github.io/leaflet-providers/preview/ website<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. The <code>tm_basemap(NULL)</code> function allows to disable basemaps entirely. <!-- some more advanced ideas: --> <!-- explain why some providers do not work --> <!-- ?do we need to register somewhere?: --> <!-- https://github.com/leaflet-extras/leaflet-providers --> <!-- how to add url tiles --> <!-- how to setup your own server or some references? --></p>
-<p>The <code><a href="https://r-tmap.github.io/tmap/reference/tm_basemap.html">tm_tiles()</a></code> function, on the other hand, draws the tile layer on the top (as an overlay layer) of the previous <code>tm_</code> layer. In the next example, we put the vector <code>"CartoDB.PositronOnlyLabels"</code> tiles on top of the previously set basemaps, but below the dots layer (<a href="#fig-tmtiles1" class="quarto-xref">Figure&nbsp;<span>6.11</span></a>).</p>
+<p> The <code><a href="https://r-tmap.github.io/tmap/reference/tm_basemap.html">tm_tiles()</a></code> function, on the other hand, draws the tile layer on the top (as an overlay layer) of the previous <code>tm_</code> layer. In the next example, we put the vector <code>"CartoDB.PositronOnlyLabels"</code> tiles on top of the previously set basemaps, but below the dots layer (<a href="#fig-tmtiles1" class="quarto-xref">Figure&nbsp;<span>6.11</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_basemap.html">tm_basemap</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>StreetMap <span class="op">=</span> <span class="st">"OpenStreetMap"</span>, TopoMap <span class="op">=</span> <span class="st">"OpenTopoMap"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_basemap.html">tm_tiles</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>CartoDB <span class="op">=</span> <span class="st">"CartoDB.PositronOnlyLabels"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
