@@ -1,0 +1,15 @@
+{
+  "hash": "fd9ec6a05bace5ee35fa20e53c2347e5",
+  "result": {
+    "engine": "knitr",
+    "markdown": "\n::: {.cell}\n\n:::\n\n\n# Map extensions {#sec-extensions}",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
