@@ -1,8 +1,8 @@
 {
-  "hash": "fd9ec6a05bace5ee35fa20e53c2347e5",
+  "hash": "c6da335aef2c9b9b9988230e7f5aec45",
   "result": {
     "engine": "knitr",
-    "markdown": "\n::: {.cell}\n\n:::\n\n\n# Map extensions {#sec-extensions}",
+    "markdown": "\n::: {.cell}\n\n:::\n\n\n# Map extensions {#sec-extensions}\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
