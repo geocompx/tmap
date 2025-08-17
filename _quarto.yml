@@ -4,8 +4,8 @@ project:
 
 execute:
   # cache: true
-  # freeze: auto # only changed files are re-executed
-  freeze: false # only changed files are re-executed
+  freeze: auto # only changed files are re-executed
+  # freeze: false # disabled
 
 book:
   title: "Spatial Data Visualization with tmap"
