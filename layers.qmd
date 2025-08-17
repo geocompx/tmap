@@ -414,7 +414,7 @@ slo_gm = rast("data/slovenia/slo_gm.tif")
 \index{raster}
 \index{tm\_raster}
 Visualization of raster data depends on the raster type (continuous or categorical), its resolution, and the number of layers.
-@fig-rasterdown shows two simple examples of continuous and categorical raster visualizations created with `tm_raster().`
+@fig-rastertype shows two simple examples of continuous and categorical raster visualizations created with `tm_raster().`
 <!-- This function attempts to recognize the type of a given raster -- when the input raster is continuous then the pretty style is used (@fig-rastertype-1). -->
 
 ```{r}
