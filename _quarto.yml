@@ -93,6 +93,7 @@ format:
   #       \AtBeginEnvironment{longtable}{\footnotesize}
   #       \usepackage{makeidx}
   #       \makeindex
+  #       \setlength{\defaultaddspace}{0pt} % to remove extra line in tables
   #   include-after-body:
   #     text: |
   #       \printindex
