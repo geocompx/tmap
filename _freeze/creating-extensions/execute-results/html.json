@@ -3,9 +3,7 @@
   "result": {
     "engine": "knitr",
     "markdown": "\n::: {.cell}\n\n:::\n\n\n# Creating new map extensions {#sec-creating-extensions}\n",
-    "supporting": [
-      "creating-extensions_files"
-    ],
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
