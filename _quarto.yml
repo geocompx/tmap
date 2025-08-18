@@ -12,9 +12,7 @@ book:
   subtitle: "A Practical Guide to Thematic Mapping in R"
   page-footer: "Spatial Data Visualization with tmap: A Practical Guide to Thematic Mapping in R by Martijn Tennekes and Jakub Nowosad."
   # number-sections: true
-  author: 
-    - "Martijn Tennekes"
-    - "Jakub Nowosad"
+  author: "Martijn Tennekes and Jakub Nowosad"
   description: | 
     "Spatial Data Visualization with tmap: A Practical Guide to Thematic Mapping in R" is a free, 
     open-source book that teaches you how to create static and interactive maps using the tmap package in R.
@@ -83,19 +81,19 @@ format:
   # pdf: #note--simplify authors list before rendering pdf
   #   documentclass: krantz
   #   monofont: 'Source Code Pro'
-  #   monofontoptions: 
+  #   monofontoptions:
   #     - Scale=0.7
   #   pdf-engine: xelatex
   #   keep-tex: true
   #   number-sections: true
   #   top-level-division: chapter
   #   include-before-body: helpers/before_body.tex
-  #   include-in-header: 
+  #   include-in-header:
   #     text: |
   #       \AtBeginEnvironment{longtable}{\footnotesize}
   #       \usepackage{makeidx}
   #       \makeindex
-  #   include-after-body: 
+  #   include-after-body:
   #     text: |
   #       \printindex
 
