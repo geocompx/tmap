@@ -255,14 +255,24 @@ This is a topic of the @sec-facets.
 Animations in **tmap** are created similarly to the facet maps, but instead of using the `tm_facets()` function, we use the `tm_animate()` function.
 It defines the variable that is used to create the animation, in this case, the `time` column from the `slo_regions_ts` object.
 
-<!-- to update/fix for pdf -->
 ```{r}
-#| label: fig-sec-ani1
-#| fig-cap: "An animated map with the GDP per capita visualized for each year."
+#| eval: false
 slo_regions_ts = read_sf("data/slovenia/slo_regions_ts.gpkg")
 tm_shape(slo_regions_ts) +
   tm_polygons("gdppercap") +
   tm_animate(frames = "time")
+```
+
+```{r}
+#| echo: false
+#| message: false
+#| label: fig-sec-ani1
+#| fig-cap: "An animated map with the GDP per capita visualized for each year."
+slo_regions_ts = read_sf("data/slovenia/slo_regions_ts.gpkg")
+tma = tm_shape(slo_regions_ts) +
+    tm_polygons("gdppercap") +
+    tm_animate(frames = "time")
+view_animation(tma, "ani1")
 ```
 
 This function stitches together the map layers for each value of the `time` variable, creating a smooth transition between them.

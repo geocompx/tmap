@@ -53,4 +53,16 @@ view_map = function(x, name){
   }
 }
 
+view_animation = function(x, name){
+  if (knitr::is_latex_output()){
+    tf = tempfile(fileext = ".gif")
+    tmap::tmap_animation(x, tf)
+    dir.create("widgets", showWarnings = FALSE)
+    webshot2::webshot(tf, file = paste0("widgets/", name, ".png"))
+    knitr::include_graphics(paste0("widgets/", name, ".png"))
+  } else {
+    x
+  }
+}
+
 # Sys.setenv(CHROMOTE_CHROME = "/usr/bin/vivaldi")
