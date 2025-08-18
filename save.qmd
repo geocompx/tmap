@@ -13,11 +13,13 @@ Therefore, often we want just to see our map on the screen, but sometimes we als
 The `tmap_save()` function allows to save our map in three groups of file formats: (a) raster graphics (@sec-raster-graphic-formats), (b) vector graphics (@sec-vector-graphic-formats), and (c) interactive ones (@sec-interactive-format).
 <!-- Additionally, @sec-animations shows how to save map animations with the use of the `tmap_animation()` function. -- update and add -->
 
-For the examples in this section, we use a simple map of the Slovenia polygon with the country name superimposed <!--(not shown)-->, stored in the `tm` object.
+For the examples in this section, we use a simple map of the Slovenia polygon with the country name superimposed <!--(not shown)-->, stored in the `tm` object (@fig-save-slo).
 
 ```{r}
 #| message: false
 #| fig-show: asis #hide
+#| label: fig-save-slo
+#| fig-cap: "A simple map of Slovenia with the country name superimposed."
 library(tmap)
 library(sf)
 slo_borders = read_sf("data/slovenia/slo_border.gpkg")

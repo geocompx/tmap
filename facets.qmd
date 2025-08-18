@@ -44,7 +44,7 @@ tm_shape(slo_regions) +
   tm_polygons(c("pop_dens", "gdppercap", "tourism"))
 ```
 
-\index{tm_facets}
+\index{tm\_facets}
 The second approach uses a single variable to create facets, where each facet represents a unique value of that variable.
 Here, we need to use `tm_facets()` to specify the faceting variable.
 This function creates a grid of panels, each showing the data for a specific value of the variable (here `"time"`), and also allows specifying the layout of the facets (e.g., number of columns) (@fig-facets2).
@@ -126,9 +126,9 @@ tm_shape(slo_regions) +
 
 ## Facets types
 
-\index{tm_facets}
-\index{tm_facets_wrap}
-\index{tm_facets_grid}
+\index{tm\_facets}
+\index{tm\_facets\_wrap}
+\index{tm\_facets\_grid}
 All of the above examples use the `tm_facets()` function.
 This is a general function that can be used to create facets for various types of data.
 At the same time, **tmap** provides several specialized functions for creating facets that can be used to create more complex faceting layouts.

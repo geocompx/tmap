@@ -15,7 +15,7 @@ The goal of this chapter is to provide a brief overview of the main **tmap** fea
 
 \index{shape objects}
 \index{spatial data}
-\index{tm\shape}
+\index{tm\_shape}
 As we established in @sec-geodata, spatial data comes from various file formats related to two main data models -- vector and raster.
 There are also several spatial object classes in R, for example, `sf` from the **sf** package for vector data, `SpatRaster` from the **terra** package, and `stars` from **stars** for raster data and spatial data cubes.
 Additionally, packages such as **sp** or **raster** offer their own classes, and this abundance of spatial object classes can be generally overwhelming.

@@ -38,7 +38,7 @@ charts_df = tibble::tribble(
 #| warning: false
 #| message: false
 charts_df |>
-  kableExtra::kbl(escape = FALSE) |>
+  kableExtra::kbl(booktabs = TRUE) |>
   kableExtra::kable_styling("striped",
                             latex_options = "striped", 
                             full_width = FALSE) |> 

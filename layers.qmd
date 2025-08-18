@@ -55,9 +55,9 @@ The derived functions are built on top of the basic functions but with different
 #| warning: false
 #| message: false
 layers_df |>
-  kableExtra::kbl(escape = FALSE, booktabs = TRUE) |>
+  kableExtra::kbl(booktabs = TRUE) |>
   kableExtra::kable_styling("striped",
-                            latex_options = "striped",
+                            # latex_options = "striped",
                             full_width = FALSE) |>
   kableExtra::pack_rows("Basic functions", 1, 7, color = "white", background = "gray", bold = TRUE) |>
   kableExtra::pack_rows("Derived functions", 8, nrow(layers_df), color = "white", background = "gray", bold = TRUE) |>
@@ -247,7 +247,7 @@ slo_railroads = read_sf("data/slovenia/slo_railroads.gpkg")
 ```
 
 \index{lines}
-\indeX{tm\_lines}
+\index{tm\_lines}
 The `tm_lines()` function allows the visualization of different types of line data (@fig-tmlines).
 
 ```{r}

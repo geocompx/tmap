@@ -114,7 +114,6 @@ tm_shape(slo_tavg) +
 #| message: false
 #| label: fig-anims3
 #| fig-cap: "Animation of average temperature in Slovenia over time."
-#| message: false
 library(terra)
 slo_tavg = rast("data/slovenia/slo_tavg.tif")
 slo_regions = read_sf("data/slovenia/slo_regions.gpkg")

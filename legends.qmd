@@ -34,7 +34,7 @@ tm_shape(slo_elev) +
     tm_raster()
 ```
 
-\index{tm_legend}
+\index{tm\_legend}
 Such a legend is helpful for quick exploration of the data, but often, they are not sufficient for sharing the map with others.
 This chapter covers how to customize the legend's title, position, and appearance in **tmap**.
 Legends are also closely related to the visual variables and scales used in the map that were covered in chapters @sec-visual-variables and @sec-scales -- we recommend reading those chapters first.

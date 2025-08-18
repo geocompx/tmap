@@ -407,14 +407,13 @@ tb = tibble::tibble(Property = crs_prop_name, Preserves = crs_prop_attr,
 tb2 = as.data.frame(t(rbind(names(tb), as.matrix(tb, dimnames = NULL))))
 tb2 = tb2[, -1]
 colnames(tb2) = NULL
-knitr::kable(tb2,
-             row.names = TRUE,
-             col.names = NULL,
-             booktabs = TRUE) |>
+kableExtra::kbl(tb2,
+                row.names = TRUE,
+                col.names = NULL,
+                booktabs = TRUE) |>
   kableExtra::kable_styling("striped",
                             latex_options = "striped", 
-                            full_width = FALSE, 
-                            font_size = 12) |>
+                            full_width = FALSE) |>
   kableExtra::column_spec(1, width = "2.5cm", bold = TRUE) |>
   kableExtra::column_spec(2:5, width = "2.5cm")
 ```
@@ -489,11 +488,10 @@ tabcrsrec = tibble::tibble(`View` = c("World", "Hemisphere", "Continent or small
                     `Low latitude (equator)` = c("Pseudo-cylindrical", "Azimuthal", "Cylindrical or azimuthal"),
                     `Mid latitude`= c("Pseudo-cylindrical", "Azimuthal", "Conic or azimuthal"),
                     `High latitude (poles)` = c("Pseudo-cylindrical", "Azimuthal", "Azimuthal"))
-knitr::kable(tabcrsrec, booktabs = TRUE) |> 
+kableExtra::kbl(tabcrsrec, booktabs = TRUE) |> 
   kableExtra::kable_styling("striped",
                             latex_options = "striped", 
-                            full_width = FALSE, 
-                            font_size = 12)|>
+                            full_width = FALSE)|>
   kableExtra::column_spec(1:4, width = "3cm")
 ```
 

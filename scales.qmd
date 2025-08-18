@@ -45,8 +45,8 @@ scales_df = tibble::tribble(
 #| echo: false
 #| warning: false
 #| message: false
-knitr::kable(scales_df, 
-             booktabs = TRUE) |>
+kableExtra::kbl(scales_df, 
+                booktabs = TRUE) |>
   kableExtra::kable_styling("striped",
                             latex_options = "striped", 
                             full_width = FALSE) |> 
@@ -200,9 +200,8 @@ styles_df = tibble::tribble(
   '"headtails"', "Head/tail breaks",
   '"log10_pretty"', "Logarithmic base-10 breaks"
 )
-
-knitr::kable(styles_df, 
-             booktabs = TRUE) |>
+kableExtra::kbl(styles_df, 
+                booktabs = TRUE) |>
   kableExtra::kable_styling("striped",
                             latex_options = "striped", 
                             full_width = FALSE) |> 

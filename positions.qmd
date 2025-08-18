@@ -219,14 +219,16 @@ The former is mostly useful when our legend is on the top of the map frame and t
 #| label: position-out3
 #| eval: false
 tm_shape(slo_elev) +
-    tm_raster(col.legend = tm_legend(position = tm_pos_out("center", "bottom", pos.h = "center")))
+    tm_raster(col.legend = tm_legend(position = tm_pos_out("center", "bottom", 
+                                                           pos.h = "center")))
 ```
 
 ```{r}
 #| label: position-out4
 #| eval: false
 tm_shape(slo_elev) +
-    tm_raster(col.legend = tm_legend(position = tm_pos_out("left", "center", pos.v = "center")))
+    tm_raster(col.legend = tm_legend(position = tm_pos_out("left", "center", 
+                                                           pos.v = "center")))
 ```
 
 ```{r}
@@ -272,7 +274,8 @@ tm_shape(slo_elev) +
 #| eval: false
 tm_shape(slo_elev) +
     tm_raster(col.legend = tm_legend(position = tm_pos_out("center", "center",
-                                                           pos.h = "left", pos.v = "bottom")))
+                                                           pos.h = "left", 
+                                                           pos.v = "bottom")))
 ```
 
 ## Many components {#sec-position-many-components}
