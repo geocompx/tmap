@@ -5,6 +5,8 @@ source("code/before_script.R")
 
 # Map layout {#sec-map-layout}
 
+<!-- https://github.com/geocompx/tmap/issues/20#issuecomment-3209507327 -->
+
 \index{map layout}
 Map layout relates to all of the visual aspects of the created plot except the visual variables (@sec-visual-variables and @sec-scales), legends (@sec-legends-and-titles), map components (@sec-map-components), and their positions (@sec-positions).
 It includes the map background, frame, typography, scale, aspect ratio, margins, and more.
