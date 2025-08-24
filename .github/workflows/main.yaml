@@ -35,7 +35,7 @@ jobs:
       - name: Install R deps (for book building)
         run: |
           Rscript -e "install.packages('pak', repos = 'https://cloud.r-project.org')"
-          Rscript -e "pak::pkg_install(c('curl', 'dplyr','formatR', 'spData', 'tidyr', 'kableExtra', 'webshot'))"
+          Rscript -e "pak::pkg_install(c('curl', 'dplyr','formatR', 'spData', 'tidyr', 'kableExtra', 'tinytable', 'webshot'))"
 
       - name: Get Quarto
         uses: quarto-dev/quarto-actions/setup@v2
