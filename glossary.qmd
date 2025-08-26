@@ -52,7 +52,7 @@ glossary = dplyr::arrange(glossary, Term) |>
 #| warning: false
 #| message: false
 #| tbl-cap: "Glossary of tmap terms." 
-kableExtra::kbl(glossary, booktabs = TRUE) |>
+kableExtra::kbl(glossary, booktabs = TRUE, escape = FALSE) |>
   kableExtra::kable_styling("striped",
                           latex_options = "striped", 
                           full_width = FALSE) |> 
