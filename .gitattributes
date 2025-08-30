@@ -1,3 +1,4 @@
 *.html linguist-vendored
-*.bib linguist-vendored
+*.json linguist-vendored
 latex/ linguist-vendored
+*.bib linguist-vendored
