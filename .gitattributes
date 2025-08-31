@@ -3,6 +3,6 @@
 *.js linguist-vendored
 *.css linguist-vendored
 latex/ linguist-vendored
-.tex linguist-vendored
-.cls linguist-vendored
+*.tex linguist-vendored
+*.cls linguist-vendored
 *.bib linguist-vendored
