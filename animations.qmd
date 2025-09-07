@@ -78,17 +78,6 @@ anims2 = tm +
 view_animation(anims2, "anims2")
 ```
 
-<!-- https://github.com/r-tmap/tmap/issues/1160 -->
-<!-- If you read the previous chapters, you may see the similarity between the `tm_animate()` and `tm_facets()` functions, which create a series of static maps based on the values of a variable. -->
-<!-- The main difference is that `tm_animate()` creates an animation -- one frame after another -- while `tm_facets()` creates a grid of static maps, where each map corresponds to a value of the variable. -->
-```{r}
-#| eval: false
-#| echo: false
-tm +
-  tm_facets(by = "region_group", nrow = 2) +
-  tm_animate_fast(frame = "time")
-```
-
 Animations can also be created from raster data, such as satellite imagery or climate data.
 @fig-anims3 shows an example of an animation of the average temperature in Slovenia over monthly time steps.
 First, the raster data is defined, and its scale is set to the continuous one.
@@ -126,7 +115,25 @@ anims3 = tm_shape(slo_tavg) +
 view_animation(anims3, "anims3")
 ```
 
-<!-- passing other arguments to tm_facets (+ ref) -->
+## Combining animations with facets
+
+<!-- https://github.com/r-tmap/tmap/issues/1160 -->
+If you read the previous chapters, you may see the similarity between the `tm_animate()` and `tm_facets()` functions, which create a series of static maps based on the values of a variable.
+The main difference is that `tm_animate()` creates an animation -- one frame after another, while `tm_facets()` creates a grid of static maps, where each map corresponds to a value of the variable.
+However, we can also combine the two functions to create animations of facets.
+
+@fig-anims4 shows an example of an animation of GDP per capita in Slovenian regions over time, faceted by region group.
+To create it, we first facet the **tmap** object by the `region_group` variable using `tm_facets()`, and then we animate it by the `time` variable using `tm_animate()`.
+
+```{r}
+#| label: fig-anims4
+#| fig-cap: "Animation of GDP per capita in Slovenian regions over time, faceted by region group."
+tm +
+  tm_facets(by = "region_group", nrow = 2) +
+  tm_animate(frame = "time")
+```
+
+It is important to note that each layer group can have at most one `tm_facets()` and at most one `tm_animate()`.
 
 ## Saving animations
 
