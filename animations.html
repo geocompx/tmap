@@ -421,17 +421,41 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 </div>
 <!-- idea: animating charts along the data: -->
 <!-- tm_polygons("gdppercap", fill.chart = tm_chart_donut()) -->
-<p> To make it animated, we can use the <code><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate()</a></code> or <code>tm_animate_fast()</code> functions and specify the variable that we want to animate by, in this case, <code>time</code> (<span class="quarto-unresolved-ref">?fig-anims</span>). The difference between the two functions is that <code><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate()</a></code> renders the animation at 2 frames per second (specified by the <code>fps</code> argument), while <code>tm_animate_fast()</code> renders it at 24 frames per second. The former is more suitable for smaller datasets and cases where we want to allow the viewer to read the values on the map, while the latter is more suitable for larger datasets and cases where we want to create a smooth, cinematic animation.</p>
+<p> To make it animated, we can use the <code><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate()</a></code> or <code>tm_animate_fast()</code> functions and specify the variable that we want to animate by, in this case, <code>time</code> (<a href="#fig-anims" class="quarto-xref">Figure&nbsp;<span>17.1</span></a>). The difference between the two functions is that <code><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate()</a></code> renders the animation at 2 frames per second (specified by the <code>fps</code> argument), while <code>tm_animate_fast()</code> renders it at 24 frames per second. The former is more suitable for smaller datasets and cases where we want to allow the viewer to read the values on the map, while the latter is more suitable for larger datasets and cases where we want to create a smooth, cinematic animation.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate</a></span><span class="op">(</span>frame <span class="op">=</span> <span class="st">"time"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Two main additional arguments for the <em>animate</em> functions are <code>fps</code> (frames per second) and <code>play</code> (playback mode). The first one controls the speed of the animation, while the second one controls how the animation is played back: either <code>"loop"</code> (default), which plays the animation in a loop, <code>"once"</code>, which plays the animation only once and then stops, or <code>"pingpong"</code>, which plays the animation back and forth (<span class="quarto-unresolved-ref">?fig-anims2</span>).</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-anims" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-anims-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-anims-1.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anims-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17.1: Animations of GDP per capita in Slovenian regions over time using <code><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate()</a></code>.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>Two main additional arguments for the <em>animate</em> functions are <code>fps</code> (frames per second) and <code>play</code> (playback mode). The first one controls the speed of the animation, while the second one controls how the animation is played back: either <code>"loop"</code> (default), which plays the animation in a loop, <code>"once"</code>, which plays the animation only once and then stops, or <code>"pingpong"</code>, which plays the animation back and forth (<a href="#fig-anims2" class="quarto-xref">Figure&nbsp;<span>17.2</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu">tm_animate_fast</span><span class="op">(</span>frame <span class="op">=</span> <span class="st">"time"</span>, fps <span class="op">=</span> <span class="fl">5</span>, play <span class="op">=</span> <span class="st">"pingpong"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Animations can also be created from raster data, such as satellite imagery or climate data. <span class="quarto-unresolved-ref">?fig-anims3</span> shows an example of an animation of the average temperature in Slovenia over monthly time steps. First, the raster data is defined, and its scale is set to the continuous one. Next, we define the animation using <code><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate()</a></code><!--and specify the `by` argument to animate by the `band` variable, which represents the time steps in the raster data-->. Finally, we add the borders of Slovenian regions to the map to provide context for the animation.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-anims2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-anims2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-anims2-1.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anims2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17.2: Animations of GDP per capita in Slovenian regions over time with a pingpong playback mode.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>Animations can also be created from raster data, such as satellite imagery or climate data. <a href="#fig-anims3" class="quarto-xref">Figure&nbsp;<span>17.3</span></a> shows an example of an animation of the average temperature in Slovenia over monthly time steps. First, the raster data is defined, and its scale is set to the continuous one. Next, we define the animation using <code><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate()</a></code><!--and specify the `by` argument to animate by the `band` variable, which represents the time steps in the raster data-->. Finally, we add the borders of Slovenian regions to the map to provide context for the animation.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/">terra</a></span><span class="op">)</span></span>
 <span><span class="va">slo_tavg</span> <span class="op">=</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html">rast</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_tavg.tif"</span><span class="op">)</span></span>
@@ -443,15 +467,37 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_borders</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-anims3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-anims3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-anims3-1.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anims3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17.3: Animation of average temperature in Slovenia over time.
+</figcaption></figure>
+</div>
+</div>
+</div>
 </section><section id="combining-animations-with-facets" class="level2" data-number="17.2"><h2 data-number="17.2" class="anchored" data-anchor-id="combining-animations-with-facets">
 <span class="header-section-number">17.2</span> Combining animations with facets</h2>
 <!-- https://github.com/r-tmap/tmap/issues/1160 -->
 <p>If you read the previous chapters, you may see the similarity between the <code><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets()</a></code> functions, which create a series of static maps based on the values of a variable. The main difference is that <code><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate()</a></code> creates an animation – one frame after another, while <code><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets()</a></code> creates a grid of static maps, where each map corresponds to a value of the variable. However, we can also combine the two functions to create animations of facets.</p>
-<p><span class="quarto-unresolved-ref">?fig-anims4</span> shows an example of an animation of GDP per capita in Slovenian regions over time, faceted by region group. To create it, we first facet the <strong>tmap</strong> object by the <code>region_group</code> variable using <code><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets()</a></code>, and then we animate it by the <code>time</code> variable using <code><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate()</a></code>.</p>
+<p><a href="#fig-anims4" class="quarto-xref">Figure&nbsp;<span>17.4</span></a> shows an example of an animation of GDP per capita in Slovenian regions over time, faceted by region group. To create it, we first facet the <strong>tmap</strong> object by the <code>region_group</code> variable using <code><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets()</a></code>, and then we animate it by the <code>time</code> variable using <code><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate()</a></code>.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tm</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets</a></span><span class="op">(</span>by <span class="op">=</span> <span class="st">"region_group"</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate</a></span><span class="op">(</span>frame <span class="op">=</span> <span class="st">"time"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-anims4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-anims4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-anims4-1.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anims4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17.4: Animation of GDP per capita in Slovenian regions over time, faceted by region group.
+</figcaption></figure>
+</div>
+</div>
 </div>
 <p>It is important to note that each layer group can have at most one <code><a href="https://r-tmap.github.io/tmap/reference/tm_facets.html">tm_facets()</a></code> and at most one <code><a href="https://r-tmap.github.io/tmap/reference/tm_animate.html">tm_animate()</a></code>.</p>
 </section><section id="saving-animations" class="level2" data-number="17.3"><h2 data-number="17.3" class="anchored" data-anchor-id="saving-animations">
