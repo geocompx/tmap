@@ -35,7 +35,7 @@ jobs:
       - name: Install R deps (for book building)
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          install-quarto: false
+          install-quarto: true
           cache-version: 2
           packages: |
               any::curl
@@ -47,8 +47,8 @@ jobs:
               any::tinytable
               any::webshot
   
-      - name: Get Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
+      #- name: Get Quarto
+      #  uses: quarto-dev/quarto-actions/setup@v2
       #  with:
       #    version: 1.7.31
           
