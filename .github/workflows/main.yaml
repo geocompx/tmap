@@ -35,8 +35,8 @@ jobs:
       - name: Install R deps (for book building)
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          install-quarto: true
-          quarto-version: 1.7.31
+          install-quarto: false
+          # quarto-version: 1.7.31
           cache-version: 2
           packages: |
               any::curl
