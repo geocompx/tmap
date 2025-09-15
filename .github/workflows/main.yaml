@@ -36,6 +36,7 @@ jobs:
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           install-quarto: true
+          version: 1.7.31
           cache-version: 2
           packages: |
               any::curl
