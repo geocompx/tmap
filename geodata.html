@@ -2,11 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.34">
+<meta name="generator" content="quarto-1.9.37">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="“Spatial Data Visualization with tmap: A Practical Guide to Thematic Mapping in R” is a free, open-source book that teaches you how to create static and interactive maps using the tmap package in R. Covering core concepts in thematic cartography, map design, and spatial visualization, this guide provides step-by-step approaches to help you produce high-quality maps for reports, presentations, and web applications.">
 <title>2&nbsp; Spatial data in R – Spatial Data Visualization with tmap</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -57,7 +60,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -90,10 +92,14 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-b271ee07839b6cff3f361845a928b83f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-00b43cbe318ac2a35436bb70e418d9db.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-00b43cbe318ac2a35436bb70e418d9db.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-00b43cbe318ac2a35436bb70e418d9db.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -125,7 +131,7 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
-</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -136,7 +142,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -682,12 +688,12 @@ Figure&nbsp;2.6: Raster data cube.
 <p> The <strong>sf</strong> package implements ideas behind the Simple Feature standard, which describe how to represent spatial vector data. Its main class, <code>sf</code>, has the form of an extended data frame, where each row is a spatial feature. In it, attributes of the vector data are stored as columns. It also has one additional column, most often named <code>geom</code> or <code>geometry</code><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. This column contains geometries in a form of well-known text (WKT), storing all of the coordinates.</p>
 <p>The <strong>sf</strong> package can read all of the spatial data formats mentioned in <a href="#sec-vector-data-model" class="quarto-xref"><span>Section 2.2.1</span></a> using the <code><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf()</a></code> function<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. We just need to provide the path to the file with spatial data, which will create a new object.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
-<span><span class="va">worldvector</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/worldvector.gpkg"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
+<span><span class="va">worldvector</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/worldvector.gpkg"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The new object, <code>worldvector</code>, has a <code>sf</code> class. It has 185 features (rows or geometries) and 15 fields (columns with attributes). There is also an 16th column, <code>geom</code>, that stores geometries of each feature. Objects of class <code>sf</code> also display a header containing spatial metadata. It includes geometry type, dimension (<code>XY</code>, <code>XYZ</code>, <code>XYM</code>, <code>XYZM</code>), bounding box (<code>bbox</code>), and information about the used Coordinate Reference System (<code>CRS</code>).</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">worldvector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">worldvector</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Simple feature collection with 185 features and 15 fields
 Geometry type: MULTIPOLYGON
@@ -721,18 +727,18 @@ Projected CRS: WGS 84 / Equal Earth Greenwich
 <!-- The **sf** package has the `st_as_sf()` function that translates objects of many classes, including `Spatial` (from the **sp** package), `ppp`, `psp`, and `lpp` (from the **spatstat** package), to the objects of class `sf`. -->
 <!-- The `st_as_sf()` function also allows to turn data frames into `sf` objects - the user needs to provide the input data frame, names of columns with coordinates, and additionally definition of the CRS of the data. -->
 <!-- For example `my_sf = st_as_sf(my_df, coords = c("Xcolumn", "Ycolumn"), crs = "EPSG:4326")`. -->
-<p>If you want to learn more about operating on <code>sf</code> objects, we recommend visiting the package website and vignettes at <a href="https://r-spatial.github.io/sf/" class="uri">https://r-spatial.github.io/sf/</a> and reading <a href="https://r.geocompx.org/">the Geocomputation with R book</a> <span class="citation" data-cites="lovelace_geocomputation_2025">(<a href="references.html#ref-lovelace_geocomputation_2025" role="doc-biblioref">Lovelace, Nowosad, and Muenchow 2025</a>)</span>.</p>
+<p>If you want to learn more about operating on <code>sf</code> objects, we recommend visiting the package website and vignettes at <a href="https://r-spatial.github.io/sf/" class="uri">https://r-spatial.github.io/sf/</a> and reading <a href="https://r.geocompx.org/">the Geocomputation with R book</a> <span class="citation" data-cites="lovelace_geocomputation_2025">(<a href="references.html#ref-lovelace_geocomputation_2025" role="doc-biblioref">Lovelace et al. 2025</a>)</span>.</p>
 </section><section id="sec-the-terra-package" class="level3" data-number="2.3.2"><h3 data-number="2.3.2" class="anchored" data-anchor-id="sec-the-terra-package">
 <span class="header-section-number">2.3.2</span> The terra package</h3>
 <p> The <strong>terra</strong> package represents and processes spatial raster data in R. It has many high-performance functions, allowing for efficient transformation and analysis of raster data.</p>
 <p>To read raster data, the <strong>terra</strong> package has the <code><a href="https://rspatial.github.io/terra/reference/rast.html">rast()</a></code> function<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. This way, we create a new object of the class <code>SpatRaster,</code> which is the main class for raster data in the <strong>terra</strong> package.</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/">terra</a></span><span class="op">)</span></span>
-<span><span class="va">worldelevation1</span> <span class="op">=</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html">rast</a></span><span class="op">(</span><span class="st">"data/worldelevation.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/">terra</a></span><span class="op">)</span></span>
+<span><span class="va">worldelevation1</span> <span class="op">=</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/rast.html">rast</a></span><span class="op">(</span><span class="st">"data/worldelevation.tif"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>To see the properties of the <code>worldelevation1</code> object, we just need to type its name.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">worldelevation1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">worldelevation1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>class       : SpatRaster 
 size        : 540, 1080, 1  (nrow, ncol, nlyr)
@@ -745,18 +751,18 @@ name        : worldelevation </code></pre>
 </div>
 <p>Now, we can see the number of rows and columns, resolution, extent, coordinate reference system (CRS), and the source and name of the raster layer. In the case of raster data from a file, the <strong>terra</strong> package uses a proxy approach, where only metadata is read into computer memory, and the actual values are read only when needed and processed in fitting-in-memory chunks.</p>
 <p>The <strong>terra</strong> package has many functions for raster data processing, including <code><a href="https://rspatial.github.io/terra/reference/merge.html">merge()</a></code>, <code><a href="https://rspatial.github.io/terra/reference/aggregate.html">aggregate()</a></code>, <code><a href="https://rspatial.github.io/terra/reference/resample.html">resample()</a></code>, and many more. It also enables interactions between raster and vector data, including cropping rasters to vector geometries and masking rasters with vector geometries using the <code><a href="https://rspatial.github.io/terra/reference/crop.html">crop()</a></code> and <code><a href="https://rspatial.github.io/terra/reference/mask.html">mask()</a></code> functions, respectively. <!-- what else should we add here? --></p>
-<p>Practical examples of using the <strong>terra</strong> package can be found on the Spatial Data Science with R and “terra” website at <a href="https://rspatial.org/" class="uri">https://rspatial.org/</a> and in the Geocomputation with R book at <a href="https://r.geocompx.org/" class="uri">https://r.geocompx.org/</a> <span class="citation" data-cites="lovelace_geocomputation_2025">(<a href="references.html#ref-lovelace_geocomputation_2025" role="doc-biblioref">Lovelace, Nowosad, and Muenchow 2025</a>)</span>.</p>
+<p>Practical examples of using the <strong>terra</strong> package can be found on the Spatial Data Science with R and “terra” website at <a href="https://rspatial.org/" class="uri">https://rspatial.org/</a> and in the Geocomputation with R book at <a href="https://r.geocompx.org/" class="uri">https://r.geocompx.org/</a> <span class="citation" data-cites="lovelace_geocomputation_2025">(<a href="references.html#ref-lovelace_geocomputation_2025" role="doc-biblioref">Lovelace et al. 2025</a>)</span>.</p>
 </section><section id="sec-the-stars-package" class="level3" data-number="2.3.3"><h3 data-number="2.3.3" class="anchored" data-anchor-id="sec-the-stars-package">
 <span class="header-section-number">2.3.3</span> The stars package</h3>
 <p> The <strong>stars</strong> package allows for reading and processing raster data in R. This package also has support for both spatial vector and raster data cubes. Its main class, <code>stars</code>, is built as a list of matrices or arrays with metadata describing their dimensions. The <strong>stars</strong> package is also well integrated with <strong>sf</strong>, with many <code>st_</code> functions (such as <code><a href="https://r-spatial.github.io/sf/reference/st_crs.html">st_crs()</a></code>) working also on <code>stars</code> objects.</p>
 <p>The <code><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars()</a></code> function allow to read both simple and multidimensional spatial raster data from a file<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. This function requires at least one argument with a filename to be read.</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/stars/">stars</a></span><span class="op">)</span></span>
-<span><span class="va">worldelevation2</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="st">"data/worldelevation.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/stars/">stars</a></span><span class="op">)</span></span>
+<span><span class="va">worldelevation2</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="st">"data/worldelevation.tif"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The new object, <code>worldelevation2</code>, is of a <code>stars</code> class. It has two dimensions, <code>x</code> and <code>y</code>, and one attribute <code>worldelevation.tif</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">worldelevation2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">worldelevation2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>stars object with 2 dimensions and 1 attribute
 attribute(s):
@@ -771,8 +777,8 @@ y    1  540     90 -0.3333 WGS 84 FALSE [y]</code></pre>
 <p>The <code>worldelevation.tif</code> attribute is a matrix, where each cell represents an elevation value. The <code>x</code> dimension has 1080 elements (columns), starting from a coordinate (<code>offset</code>) of a cell boundary of <code>-180</code>. Next, the coordinates of further cells increase by <code>0.333333</code> (<code>delta</code>) – resolution in the <code>x</code> dimension. The <code>y</code> dimension has 540 elements (rows), starting from a coordinate (<code>offset</code>) of a cell boundary of <code>90</code>. For the <code>y</code> dimension, each further cell’s coordinated decreases by <code>0.333333</code> (notice the negative value of <code>delta</code>) – resolution in the <code>y</code> dimension. Both dimensions also have the same CRS – <code>WGS 84</code>.</p>
 <p><code><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars()</a></code> also has several additional arguments including <code>RasterIO</code>, which gives control over the input data extent and resolution. For example, the below code will read just the first and second bands – in this case, the average monthly temperatures for January and February in Slovenia (results not shown). <!-- - including reading chunks, changing resolution, and selecting bands --></p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">slo_tavg_fp</span> <span class="op">=</span> <span class="st">"data/slovenia/slo_tavg.tif"</span></span>
-<span><span class="va">slo_tavg12</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="va">slo_tavg_fp</span>, RasterIO <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>bands <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">slo_tavg_fp</span> <span class="op">=</span> <span class="st">"data/slovenia/slo_tavg.tif"</span></span>
+<span><span class="va">slo_tavg12</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/stars/reference/read_stars.html">read_stars</a></span><span class="op">(</span><span class="va">slo_tavg_fp</span>, RasterIO <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>bands <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Internally, a <code>stars</code> object is a list of <code>matrix</code> or <code>array</code> objects with additional attributes describing spatial metadata, such as a number of columns and rows, resolution, coordinate reference system, etc. All of this information is read from the input file.</p>
 <p>Stars objects are constructed by dimensions and attributes. Dimensions relate to what kind of objects are stored as list elements. For example, when it is a <code>matrix</code> then we just have two dimensions representing columns and rows. However, it is also possible to store multidimensional <code>array</code>s, which allow having many additional dimensions for bands, times, etc. Attributes, on the other hand, are stored as list elements. Each attribute can relate, for example to a different variable.</p>
@@ -788,12 +794,12 @@ y    1  540     90 -0.3333 WGS 84 FALSE [y]</code></pre>
 <p>More information on how the <code>stars</code> objects are organized and how to operate on them can be found in the <strong>stars</strong> package vignettes at <a href="https://r-spatial.github.io/stars" class="uri">https://r-spatial.github.io/stars</a> and in the Spatial Data Science book at <a href="https://r-spatial.org/book/" class="uri">https://r-spatial.org/book/</a> <span class="citation" data-cites="Pebesma2023-ya">(<a href="references.html#ref-Pebesma2023-ya" role="doc-biblioref">Pebesma and Bivand 2023</a>)</span>.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-lovelace_geocomputation_2025" class="csl-entry" role="listitem">
 Lovelace, Robin, Jakub Nowosad, and Jannes Muenchow. 2025. <em>Geocomputation with <span>R</span></em>. Second. <span>CRC Press</span>.
 </div>
 <div id="ref-Pebesma2023-ya" class="csl-entry" role="listitem">
-Pebesma, Edzer, and Roger Bivand. 2023. <em>Spatial Data Science</em>. Chapman &amp; Hall/CRC the r Series. Philadelphia, PA: Chapman &amp; Hall/CRC.
+Pebesma, Edzer, and Roger Bivand. 2023. <em>Spatial Data Science</em>. Chapman &amp; Hall/CRC the r Series. Chapman &amp; Hall/CRC.
 </div>
 </div>
 </section></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
@@ -854,13 +860,14 @@ Pebesma, Edzer, and Roger Bivand. 2023. <em>Spatial Data Science</em>. Chapman &
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
