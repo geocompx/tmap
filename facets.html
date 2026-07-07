@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="“Spatial Data Visualization with tmap: A Practical Guide to Thematic Mapping in R” is a free, open-source book that teaches you how to create static and interactive maps using the tmap package in R. Covering core concepts in thematic cartography, map design, and spatial visualization, this guide provides step-by-step approaches to help you produce high-quality maps for reports, presentations, and web applications.">
 <title>16&nbsp; Facets – Spatial Data Visualization with tmap</title>
@@ -73,9 +73,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-b3040bcd11fbc27613bbc6a39099bf18.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -209,14 +209,14 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./visual-variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visual variables</span></span></a>
+  <a href="./map-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Map variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./scales.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of visual variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of map variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -452,7 +452,7 @@ Figure&nbsp;16.2: Facets for one variable over time.
 </div>
 </div>
 </div>
-<p>Both approaches can be combined, allowing to create facets for multiple variables over time (<a href="#fig-facets3" class="quarto-xref">Figure&nbsp;<span>16.3</span></a>). Here, variables specified as a visual variable (<code>c("pop_dens", "gdppercap", "tourism")</code>) are shown in columns, while the faceting variable is set with <code>tm_facets(by = "time")</code> and presents the data for each year in a separate row.</p>
+<p>Both approaches can be combined, allowing to create facets for multiple variables over time (<a href="#fig-facets3" class="quarto-xref">Figure&nbsp;<span>16.3</span></a>). Here, variables specified as a map variable (<code>c("pop_dens", "gdppercap", "tourism")</code>) are shown in columns, while the faceting variable is set with <code>tm_facets(by = "time")</code> and presents the data for each year in a separate row.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions_ts</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"pop_dens"</span>, <span class="st">"gdppercap"</span>, <span class="st">"tourism"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -655,7 +655,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Each visual variable (e.g., <code>col</code>, <code>size</code>, <code>shape</code>) has a related argument with the <code>.free</code> suffix, e.g., <code>col.free</code>, <code>size.free</code>, <code>shape.free</code>. These arguments are used to control whether the scales for the visual variable are applied freely across facets or are shared. For example, <code>col.free = TRUE</code> means that each facet has its own color scale, while <code>col.free = FALSE</code> means that all facets share the same color scale.</p>
+<p>Each map variable (e.g., <code>col</code>, <code>size</code>, <code>shape</code>) has a related argument with the <code>.free</code> suffix, e.g., <code>col.free</code>, <code>size.free</code>, <code>shape.free</code>. These arguments are used to control whether the scales for the map variable are applied freely across facets or are shared. For example, <code>col.free = TRUE</code> means that each facet has its own color scale, while <code>col.free = FALSE</code> means that all facets share the same color scale.</p>
 <p>The <code>.free</code> arguments can also be used to control the scales for each facet dimension with a vector of logical values. For example, <code>col.free = c(TRUE, FALSE)</code> means that the color scale is applied freely across rows of facets, but shared across columns.</p>
 </div>
 </div>

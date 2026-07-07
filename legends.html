@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="“Spatial Data Visualization with tmap: A Practical Guide to Thematic Mapping in R” is a free, open-source book that teaches you how to create static and interactive maps using the tmap package in R. Covering core concepts in thematic cartography, map design, and spatial visualization, this guide provides step-by-step approaches to help you produce high-quality maps for reports, presentations, and web applications.">
 <title>9&nbsp; Legends and titles – Spatial Data Visualization with tmap</title>
@@ -73,9 +73,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-b3040bcd11fbc27613bbc6a39099bf18.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -209,14 +209,14 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./visual-variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visual variables</span></span></a>
+  <a href="./map-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Map variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./scales.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of visual variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of map variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -413,12 +413,12 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <section id="sec-legends" class="level2" data-number="9.1"><h2 data-number="9.1" class="anchored" data-anchor-id="sec-legends">
 <span class="header-section-number">9.1</span> Legends</h2>
 <p> Legends are an essential part of most maps. They provide meaning to the symbols or colors used in the map, and often add information about the map’s content. They allow for interpreting the map correctly, and are therefore crucial for the map’s readability.</p>
-<p>In <strong>tmap</strong>, legends are created automatically when we add a layer with a data-driven visual variable. By default, such a legend consists of a title based on the variable name and a color/shape/symbol scale (<a href="#fig-legend1" class="quarto-xref">Figure&nbsp;<span>9.1</span></a>). <!--REF to the color scale section?--> It is placed outside of the map frame, either on the right or on the bottom of the map, depending on the automatically determined map aspect ratio.</p>
+<p>In <strong>tmap</strong>, legends are created automatically when we add a layer with a data-driven map variable. By default, such a legend consists of a title based on the variable name and a color/shape/symbol scale (<a href="#fig-legend1" class="quarto-xref">Figure&nbsp;<span>9.1</span></a>). <!--REF to the color scale section?--> It is placed outside of the map frame, either on the right or on the bottom of the map, depending on the automatically determined map aspect ratio.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_raster.html">tm_raster</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="fig-legend1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
+<div id="fig-legend1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-legend1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-legend1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -428,7 +428,7 @@ Figure&nbsp;9.1: A map with an automatically generated legend.
 </div>
 </div>
 </div>
-<p> Such a legend is helpful for quick exploration of the data, but often, they are not sufficient for sharing the map with others. This chapter covers how to customize the legend’s title, position, and appearance in <strong>tmap</strong>. Legends are also closely related to the visual variables and scales used in the map that were covered in chapters <a href="visual-variables.html" class="quarto-xref"><span>Chapter 7</span></a> and <a href="scales.html" class="quarto-xref"><span>Chapter 8</span></a> – we recommend reading those chapters first. Legends are customized using the <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code> function that is passed to <code>*.legend</code> arguments of the layer functions, e.g., <code>col.legend</code>, <code>shape.legend</code>, <code>size.legend</code>, etc.</p>
+<p> Such a legend is helpful for quick exploration of the data, but often, they are not sufficient for sharing the map with others. This chapter covers how to customize the legend’s title, position, and appearance in <strong>tmap</strong>. Legends are also closely related to the map variables and scales used in the map that were covered in chapters <a href="map-variables.html" class="quarto-xref"><span>Chapter 7</span></a> and <a href="scales.html" class="quarto-xref"><span>Chapter 8</span></a> – we recommend reading those chapters first. Legends are customized using the <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code> function that is passed to <code>*.legend</code> arguments of the layer functions, e.g., <code>col.legend</code>, <code>shape.legend</code>, <code>size.legend</code>, etc.</p>
 <p>Often, the most significant part of the legend is the title. It informs the reader about the meaning of the colors or symbols used in the map, providing also additional context such as the unit of measurement. The title is set using the <code>title</code> argument of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code> function (<a href="#fig-legend2-1" class="quarto-xref">Figure&nbsp;<span>9.2 (a)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_elev</span><span class="op">)</span> <span class="op">+</span></span>
@@ -686,7 +686,7 @@ Figure&nbsp;9.5: Title customization examples.
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_title.html">tm_title</a></span><span class="op">(</span><span class="st">"Slovenia"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_title.html">tm_title_in</a></span><span class="op">(</span><span class="st">"Elevation Map"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="fig-titles3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
+<div id="fig-titles3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-titles3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-titles3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -1102,8 +1102,8 @@ Figure&nbsp;9.6: A map with a title and a subtitle.
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./scales.html" class="pagination-link" aria-label="Scales of visual variables">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of visual variables</span></span>
+      <a href="./scales.html" class="pagination-link" aria-label="Scales of map variables">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of map variables</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

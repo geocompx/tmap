@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="“Spatial Data Visualization with tmap: A Practical Guide to Thematic Mapping in R” is a free, open-source book that teaches you how to create static and interactive maps using the tmap package in R. Covering core concepts in thematic cartography, map design, and spatial visualization, this guide provides step-by-step approaches to help you produce high-quality maps for reports, presentations, and web applications.">
 <title>14&nbsp; Charts – Spatial Data Visualization with tmap</title>
@@ -92,9 +92,9 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-b3040bcd11fbc27613bbc6a39099bf18.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -228,14 +228,14 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./visual-variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visual variables</span></span></a>
+  <a href="./map-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Map variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./scales.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of visual variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of map variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -425,7 +425,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
   
 
 
-</header><p> Thematic maps usually represent one or more variables using colors, shapes, or sizes. Then, the map legend is used to explain the meaning of these visual variables (<a href="legends.html#sec-legends" class="quarto-xref"><span>Section 9.1</span></a>). Such a legend can be expanded (or even replaced, <a href="#sec-charts-customization" class="quarto-xref"><span>Section 14.4</span></a>) with a chart that provides more information about the distribution of the variable values.</p>
+</header><p> Thematic maps usually represent one or more variables using colors, shapes, or sizes. Then, the map legend is used to explain the meaning of these map variables (<a href="legends.html#sec-legends" class="quarto-xref"><span>Section 9.1</span></a>). Such a legend can be expanded (or even replaced, <a href="#sec-charts-customization" class="quarto-xref"><span>Section 14.4</span></a>) with a chart that provides more information about the distribution of the variable values.</p>
 <p> The <strong>tmap</strong> package provides several chart types that can be used in the map legend (<a href="#tbl-layers-table" class="quarto-xref">Table&nbsp;<span>14.1</span></a>). They are specified in one of the <code>*.chart</code> arguments of a layer function, e.g., <code>fill.chart</code> of <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code>, <code>size.chart</code> of <code><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_dots()</a></code>, etc. The use of a chart type depends on the type of data we want to represent, i.e., whether it is numerical or categorical, and whether it is univariate or bivariate.</p>
 <!-- Martijn, why do we need to show and explain `tm_chart_none()`? -->
 <div class="cell" data-layout-align="center">
@@ -602,7 +602,7 @@ Figure&nbsp;14.4: Bivariate charts used in case to represent relationships betwe
 </div>
 </section><section id="sec-charts-customization" class="level2" data-number="14.4"><h2 data-number="14.4" class="anchored" data-anchor-id="sec-charts-customization">
 <span class="header-section-number">14.4</span> Additional chart customization</h2>
-<p> All of the charts are directly based on the visual variables from the map layer and then created internally using the <strong>ggplot2</strong> package (<span class="citation" data-cites="R-ggplot2">Wickham (<a href="references.html#ref-R-ggplot2" role="doc-biblioref">2016</a>)</span>). By default, however, the charts are much simplified, not showing all the details that <strong>ggplot2</strong> can provide, such as axis labels, titles, and various theme elements. <!-- https://github.com/geocompx/tmap/issues/10#issuecomment-3007409988 --></p>
+<p> All of the charts are directly based on the map variables from the map layer and then created internally using the <strong>ggplot2</strong> package (<span class="citation" data-cites="R-ggplot2">Wickham (<a href="references.html#ref-R-ggplot2" role="doc-biblioref">2016</a>)</span>). By default, however, the charts are much simplified, not showing all the details that <strong>ggplot2</strong> can provide, such as axis labels, titles, and various theme elements. <!-- https://github.com/geocompx/tmap/issues/10#issuecomment-3007409988 --></p>
 <p>At the same time, we still may want to customize the charts to fit our map design better or to add more information. This can be done with additional arguments of the <code>tm_chart_*()</code> functions, such as <code>plot.axis.x</code>, <code>plot.axis.y</code>, and <code>extra.ggplot2</code>. The first two are logical arguments that control whether the x and y axes are shown in the chart, respectively. The last one, <code>extra.ggplot2</code>, is a list of additional <strong>ggplot2</strong> functions that are applied to the chart – for example, we may want to change the aesthetics of the chart, such as the background color, as shown in <a href="#fig-chart-ggplot1" class="quarto-xref">Figure&nbsp;<span>14.5</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>

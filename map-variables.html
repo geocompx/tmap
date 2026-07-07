@@ -2,10 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="“Spatial Data Visualization with tmap: A Practical Guide to Thematic Mapping in R” is a free, open-source book that teaches you how to create static and interactive maps using the tmap package in R. Covering core concepts in thematic cartography, map design, and spatial visualization, this guide provides step-by-step approaches to help you produce high-quality maps for reports, presentations, and web applications.">
-<title>7&nbsp; Visual variables – Spatial Data Visualization with tmap</title>
+<title>7&nbsp; Map variables – Spatial Data Visualization with tmap</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -92,9 +92,9 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-b3040bcd11fbc27613bbc6a39099bf18.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -140,7 +140,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tm-shape.html">Building blocks</a></li><li class="breadcrumb-item"><a href="./visual-variables.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visual variables</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tm-shape.html">Building blocks</a></li><li class="breadcrumb-item"><a href="./map-variables.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Map variables</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -228,14 +228,14 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./visual-variables.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visual variables</span></span></a>
+  <a href="./map-variables.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Map variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./scales.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of visual variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of map variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -401,17 +401,17 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#sec-const-visual-variables" id="toc-sec-const-visual-variables" class="nav-link" data-scroll-target="#sec-const-visual-variables"><span class="header-section-number">7.1</span> Constant visual values</a></li>
+<li><a href="#sec-const-map-variables" id="toc-sec-const-map-variables" class="nav-link" data-scroll-target="#sec-const-map-variables"><span class="header-section-number">7.1</span> Constant map variables</a></li>
   <li><a href="#sec-auto-scales" id="toc-sec-auto-scales" class="nav-link" data-scroll-target="#sec-auto-scales"><span class="header-section-number">7.2</span> Automatic scales</a></li>
   <li><a href="#sec-colors" id="toc-sec-colors" class="nav-link" data-scroll-target="#sec-colors"><span class="header-section-number">7.3</span> Colors</a></li>
   <li><a href="#sec-sizes" id="toc-sec-sizes" class="nav-link" data-scroll-target="#sec-sizes"><span class="header-section-number">7.4</span> Sizes</a></li>
   <li><a href="#sec-shapes" id="toc-sec-shapes" class="nav-link" data-scroll-target="#sec-shapes"><span class="header-section-number">7.5</span> Shapes</a></li>
-  <li><a href="#sec-mixing-visual-variables" id="toc-sec-mixing-visual-variables" class="nav-link" data-scroll-target="#sec-mixing-visual-variables"><span class="header-section-number">7.6</span> Mixing visual variables</a></li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/visual-variables.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+  <li><a href="#sec-mixing-map-variables" id="toc-sec-mixing-map-variables" class="nav-link" data-scroll-target="#sec-mixing-map-variables"><span class="header-section-number">7.6</span> Mixing map variables</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/map-variables.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tm-shape.html">Building blocks</a></li><li class="breadcrumb-item"><a href="./visual-variables.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visual variables</span></a></li></ol></nav><div class="quarto-title">
-<h1 class="title"><span id="sec-visual-variables" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visual variables</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tm-shape.html">Building blocks</a></li><li class="breadcrumb-item"><a href="./map-variables.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Map variables</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title"><span id="sec-map-variables" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Map variables</span></span></h1>
 </div>
 
 <!--
@@ -427,22 +427,22 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
   
 
 
-</header><p> Visual variables are methods to translate information given in variables into many types of visualizations, including maps. Basic visual variables are color, size, and shape<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. All of them can influence our perception and understanding of the presented information; therefore, it is worth understanding when and how they can be used.</p>
-<p>The use of visual variables on maps depends on two main things: (a) the type of the presented variable, and (b) the type of the map layer (<a href="#sec-const-visual-variables" class="quarto-xref"><span>Section 7.1</span></a>; <a href="#sec-auto-scales" class="quarto-xref"><span>Section 7.2</span></a>).</p>
+</header><p> Map variables are methods to translate information given in variables into many types of visualizations, including maps. Basic map variables are color, size, and shape<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. All of them can influence our perception and understanding of the presented information; therefore, it is worth understanding when and how they can be used.</p>
+<p>The use of map variables on maps depends on two main things: (a) the type of the presented variable, and (b) the type of the map layer (<a href="#sec-const-map-variables" class="quarto-xref"><span>Section 7.1</span></a>; <a href="#sec-auto-scales" class="quarto-xref"><span>Section 7.2</span></a>).</p>
 <!-- alpha? -->
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-visual-variables" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-visual-variables-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/fig-visual-variables-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
+<div id="fig-map-variables" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-map-variables-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/fig-map-variables-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-visual-variables-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.1: Basic visual variables and their representations on maps
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-map-variables-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.1: Basic map variables and their representations on maps
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p> <a href="#fig-visual-variables" class="quarto-xref">Figure&nbsp;<span>7.1</span></a> shows examples of different visual variables. Color is the most universal visual variable (<a href="#sec-colors" class="quarto-xref"><span>Section 7.3</span></a>). It can represent both qualitative (categorical) and quantitative (numerical) variables, and we can also color symbols, lines, or polygon fillings. Sizes, on the other hand, focus on quantitative variables. Small symbols could represent low values of a given variable, and the higher the value, the larger the symbol. Quantitative values of line data can be shown with the widths of the lines (<a href="#sec-sizes" class="quarto-xref"><span>Section 7.4</span></a>). The use of shapes usually should be limited to qualitative variables, and different shapes can represent different categories of points (<a href="#sec-shapes" class="quarto-xref"><span>Section 7.5</span></a>). Similarly, qualitative variables in lines can be presented by different line types. Values of polygons usually cannot be represented by either shapes or sizes, as these two features are connected to the geometries of the objects. <!-- exception - cartograms - ref to other chapter \@ref(other-types) --> Finally, there are some cases in which we can use several visual variables at the same time (<a href="#sec-mixing-visual-variables" class="quarto-xref"><span>Section 7.6</span></a>).</p>
+<p> <a href="#fig-map-variables" class="quarto-xref">Figure&nbsp;<span>7.1</span></a> shows examples of different map variables. Color is the most universal map variable (<a href="#sec-colors" class="quarto-xref"><span>Section 7.3</span></a>). It can represent both qualitative (categorical) and quantitative (numerical) variables, and we can also color symbols, lines, or polygon fillings. Sizes, on the other hand, focus on quantitative variables. Small symbols could represent low values of a given variable, and the higher the value, the larger the symbol. Quantitative values of line data can be shown with the widths of the lines (<a href="#sec-sizes" class="quarto-xref"><span>Section 7.4</span></a>). The use of shapes usually should be limited to qualitative variables, and different shapes can represent different categories of points (<a href="#sec-shapes" class="quarto-xref"><span>Section 7.5</span></a>). Similarly, qualitative variables in lines can be presented by different line types. Values of polygons usually cannot be represented by either shapes or sizes, as these two features are connected to the geometries of the objects. <!-- exception - cartograms - ref to other chapter \@ref(other-types) --> Finally, there are some cases in which we can use several map variables at the same time (<a href="#sec-mixing-map-variables" class="quarto-xref"><span>Section 7.6</span></a>).</p>
 <p>Let’s start by attaching the packages and reading the data we use in this chapter.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-tmap/tmap">tmap</a></span><span class="op">)</span></span>
@@ -450,9 +450,9 @@ Figure&nbsp;7.1: Basic visual variables and their representations on maps
 <span><span class="va">slo_regions</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_regions.gpkg"</span><span class="op">)</span></span>
 <span><span class="va">slo_cities</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">read_sf</a></span><span class="op">(</span><span class="st">"data/slovenia/slo_cities.gpkg"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="sec-const-visual-variables" class="level2" data-number="7.1"><h2 data-number="7.1" class="anchored" data-anchor-id="sec-const-visual-variables">
-<span class="header-section-number">7.1</span> Constant visual values</h2>
-<p>Before we use visual variables, it is worth reminding that we can set constant values for visual variables: fill, color, size, and shape for all objects on the map. For example, with <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code> we can fill all polygons with the same color, and set borders to the specified color, width, and type (<a href="#fig-colorscales1" class="quarto-xref">Figure&nbsp;<span>7.2</span></a>).</p>
+<section id="sec-const-map-variables" class="level2" data-number="7.1"><h2 data-number="7.1" class="anchored" data-anchor-id="sec-const-map-variables">
+<span class="header-section-number">7.1</span> Constant map variables</h2>
+<p>Before we use map variables, it is worth reminding that we can set constant values for map variables: fill, color, size, and shape for all objects on the map. For example, with <code><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons()</a></code> we can fill all polygons with the same color, and set borders to the specified color, width, and type (<a href="#fig-colorscales1" class="quarto-xref">Figure&nbsp;<span>7.2</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_regions</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_polygons.html">tm_polygons</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"lightblue"</span>, </span>
@@ -460,7 +460,7 @@ Figure&nbsp;7.1: Basic visual variables and their representations on maps
 <span>              lwd <span class="op">=</span> <span class="fl">0.5</span>,</span>
 <span>              lty <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="fig-colorscales1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
+<div id="fig-colorscales1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-colorscales1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-colorscales1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -473,7 +473,7 @@ Figure&nbsp;7.2: Example of a map with all polygons filled with the same color.
 <p>Additionally, for polygons, we can set the fill color in such a way that adjacent polygons do not get the same color (<a href="#fig-colorscalesmc" class="quarto-xref">Figure&nbsp;<span>7.3</span></a>). This is done by setting the <code>fill</code> argument to <code>"MAP_COLORS"</code>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-colorscalesmc" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
+<div id="fig-colorscalesmc" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-colorscalesmc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-colorscalesmc-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -487,8 +487,8 @@ Figure&nbsp;7.3: Example of a map with adjacent polygons having different colors
 <!-- In this case, it is also possible to change the default colors with the `palette` argument, but also to activate the internal algorithm to search for a minimal number of colors for visualization by setting `minimize = TRUE`. -->
 </section><section id="sec-auto-scales" class="level2" data-number="7.2"><h2 data-number="7.2" class="anchored" data-anchor-id="sec-auto-scales">
 <span class="header-section-number">7.2</span> Automatic scales</h2>
-<p> On the other hand, if we provide the name of the column (variable) we want to visualize, <strong>tmap</strong> automatically sets the visual variables. The <strong>tmap</strong> package has many defaults that automatically specify colors, sizes, and shapes used on the maps. Thus, for example, when we provide a character variable’s name to the <code>fill</code> argument, then the color scale for a categorical variable is set, and when we give a numeric variable’s name to the <code>size</code> argument, then the size scale for a continuous variable is used. However, <strong>tmap</strong> also allows us to change them with a few additional functions, including <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code>. In this and the following sections, we show how to use the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function to modify the appearance of the visual variables. In the next two chapters, we further discuss various types of scales and ways to modify them and the legend appearance.</p>
-<p>The most basic use of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function is to modify the appearance of the map, such as changing the color palette (<code>col.scale</code> and <code>fill.scale</code>), sizes (<code>size.scale</code>), or shapes (<code>shape.scale</code>). This is done with the <code>values</code> argument of each of these functions, which can be one of many things, depending on the visual variable. For example, for colors, it can be a vector of colors, a palette function, or a name of a built-in palette; for sizes, it can be a numerical variable; and for shapes, it can be a custom icon or a numerical variable (<a href="#fig-tmscalevals" class="quarto-xref">Figure&nbsp;<span>7.4</span></a>).</p>
+<p> On the other hand, if we provide the name of the column (variable) we want to visualize, <strong>tmap</strong> automatically sets the map variables. The <strong>tmap</strong> package has many defaults that automatically specify colors, sizes, and shapes used on the maps. Thus, for example, when we provide a character variable’s name to the <code>fill</code> argument, then the color scale for a categorical variable is set, and when we give a numeric variable’s name to the <code>size</code> argument, then the size scale for a continuous variable is used. However, <strong>tmap</strong> also allows us to change them with a few additional functions, including <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> and <code><a href="https://r-tmap.github.io/tmap/reference/tm_legend.html">tm_legend()</a></code>. In this and the following sections, we show how to use the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function to modify the appearance of the map variables. In the next two chapters, we further discuss various types of scales and ways to modify them and the legend appearance.</p>
+<p>The most basic use of the <code><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale()</a></code> function is to modify the appearance of the map, such as changing the color palette (<code>col.scale</code> and <code>fill.scale</code>), sizes (<code>size.scale</code>), or shapes (<code>shape.scale</code>). This is done with the <code>values</code> argument of each of these functions, which can be one of many things, depending on the map variable. For example, for colors, it can be a vector of colors, a palette function, or a name of a built-in palette; for sizes, it can be a numerical variable; and for shapes, it can be a custom icon or a numerical variable (<a href="#fig-tmscalevals" class="quarto-xref">Figure&nbsp;<span>7.4</span></a>).</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_cities</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"population"</span>,</span>
 <span>             fill.scale <span class="op">=</span> <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_scale.html">tm_scale</a></span><span class="op">(</span>values <span class="op">=</span> <span class="st">"greens"</span><span class="op">)</span><span class="op">)</span></span>
@@ -549,10 +549,10 @@ Figure&nbsp;7.3: Example of a map with adjacent polygons having different colors
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tmscalevals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.4: Examples of various ways of specifying values for visual variables.
+Figure&nbsp;7.4: Examples of various ways of specifying values for map variables.
 </figcaption></figure>
 </div>
-<p>The following sections <a href="#sec-colors" class="quarto-xref"><span>Section 7.3</span></a>, <a href="#sec-sizes" class="quarto-xref"><span>Section 7.4</span></a>, and <a href="#sec-shapes" class="quarto-xref"><span>Section 7.5</span></a> explain the basic visual variables. Next, they show how to set colors, sizes, and shapes for different types of spatial objects.</p>
+<p>The following sections <a href="#sec-colors" class="quarto-xref"><span>Section 7.3</span></a>, <a href="#sec-sizes" class="quarto-xref"><span>Section 7.4</span></a>, and <a href="#sec-shapes" class="quarto-xref"><span>Section 7.5</span></a> explain the basic map variables. Next, they show how to set colors, sizes, and shapes for different types of spatial objects.</p>
 </section><section id="sec-colors" class="level2" data-number="7.3"><h2 data-number="7.3" class="anchored" data-anchor-id="sec-colors">
 <span class="header-section-number">7.3</span> Colors</h2>
 <p> Colors, along with sizes and shapes, are the most often used to express values of attributes or their properties. Proper use of colors draws the attention of viewers and has a positive impact on the clarity of the presented information. On the other hand, poor decisions about colors can lead to misinterpretation of the map.</p>
@@ -578,7 +578,7 @@ Figure&nbsp;7.4: Examples of various ways of specifying values for visual variab
 </ul>
 <!-- idea: replace one diverging palette with the dark in the middle ?? --><div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-palette-types" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
+<div id="fig-palette-types" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-palette-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-palette-types-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -733,7 +733,7 @@ Figure&nbsp;7.7: Examples of maps with different midpoints used.
 <span>      <span class="st">"West"</span> <span class="op">=</span> <span class="st">"#7b1072"</span><span class="op">)</span></span>
 <span>    <span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="fig-tmcatpals" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
+<div id="fig-tmcatpals" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmcatpals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-tmcatpals-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -830,7 +830,7 @@ Figure&nbsp;7.9: Examples of three approaches for changing sizes of symbols.
 <span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_railroads</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_lines.html">tm_lines</a></span><span class="op">(</span>lwd <span class="op">=</span> <span class="st">"track_width"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="fig-tmlwd" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
+<div id="fig-tmlwd" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmlwd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-tmlwd-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -848,7 +848,7 @@ Figure&nbsp;7.10: Example of a map where lines’ widths represent values of the
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_text.html">tm_text</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"name"</span>, size <span class="op">=</span> <span class="st">"population"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_layout.html">tm_layout</a></span><span class="op">(</span>legend.outside <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="fig-tmtextsize" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
+<div id="fig-tmtextsize" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-tmtextsize-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-tmtextsize-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -954,16 +954,16 @@ Figure&nbsp;7.12: Examples of maps with different symbols.
 </figcaption></figure>
 </div>
 </div>
-</section><section id="sec-mixing-visual-variables" class="level2" data-number="7.6"><h2 data-number="7.6" class="anchored" data-anchor-id="sec-mixing-visual-variables">
-<span class="header-section-number">7.6</span> Mixing visual variables</h2>
-<p>The values of a given variable can be expressed by different categorical or sequential colors in polygons. Lines can also be colored by one variable, but also the widths of the lines can represent values of another quantitative variable. When we use symbols, we are able to use colors for one qualitative or quantitative variable, sizes for a quantitative variable, and shapes for another qualitative variable. Therefore, it is possible to mix some visual variables for symbols and lines. This section shows only some possible examples of mixing visual variables.</p>
+</section><section id="sec-mixing-map-variables" class="level2" data-number="7.6"><h2 data-number="7.6" class="anchored" data-anchor-id="sec-mixing-map-variables">
+<span class="header-section-number">7.6</span> Mixing map variables</h2>
+<p>The values of a given variable can be expressed by different categorical or sequential colors in polygons. Lines can also be colored by one variable, but also the widths of the lines can represent values of another quantitative variable. When we use symbols, we are able to use colors for one qualitative or quantitative variable, sizes for a quantitative variable, and shapes for another qualitative variable. Therefore, it is possible to mix some map variables for symbols and lines. This section shows only some possible examples of mixing map variables.</p>
 <p><a href="#fig-mixsymb-1" class="quarto-xref">Figure&nbsp;<span>7.13 (a)</span></a> shows symbols, whose sizes are scaled based on the <code>population</code> variable, and they are colored using the values from <code>place</code>. This can be set with the <code>size</code> and <code>fill</code> arguments.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_cities</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols</a></span><span class="op">(</span>size <span class="op">=</span> <span class="st">"population"</span>,</span>
 <span>             fill <span class="op">=</span> <span class="st">"place"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>We can also modify all of the visual variables using the additional arguments explained in the next chapters. For example, we can set the color style, color palette, or specify shapes (<a href="#fig-mixsymb-2" class="quarto-xref">Figure&nbsp;<span>7.13 (b)</span></a>).</p>
+<p>We can also modify all of the map variables using the additional arguments explained in the next chapters. For example, we can set the color style, color palette, or specify shapes (<a href="#fig-mixsymb-2" class="quarto-xref">Figure&nbsp;<span>7.13 (b)</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">slo_cities</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_symbols.html">tm_symbols</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"population"</span>,</span>
@@ -1000,19 +1000,19 @@ Figure&nbsp;7.12: Examples of maps with different symbols.
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mixsymb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.13: Examples of maps using two visual variables at the same time.
+Figure&nbsp;7.13: Examples of maps using two map variables at the same time.
 </figcaption></figure>
 </div>
 </div>
 <p>For line data, we can present its qualitative and quantitative variables using colors and quantitative variables using sizes (line widths) (<a href="#fig-mixline" class="quarto-xref">Figure&nbsp;<span>7.14</span></a>).</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-mixline" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
+<div id="fig-mixline" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-mixline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-mixline-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mixline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7.14: A map using two visual variables, color, and size (line width), at the same time.
+Figure&nbsp;7.14: A map using two map variables, color, and size (line width), at the same time.
 </figcaption></figure>
 </div>
 </div>
@@ -1068,7 +1068,7 @@ Zeileis, Achim, Jason C. Fisher, Kurt Hornik, et al. 2019. <em><span class="noca
 </div>
 </section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
-<li id="fn1"><p>Other visual variables include position, orientation, and texture.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Other map variables include position, orientation, and texture.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Learn more about them at <a href="https://developer.r-project.org/Blog/public/2019/04/01/hcl-based-color-palettes-in-grdevices/" class="uri">https://developer.r-project.org/Blog/public/2019/04/01/hcl-based-color-palettes-in-grdevices/</a> and <a href="https://developer.r-project.org/Blog/public/2019/11/21/a-new-palette-for-r/index.html" class="uri">https://developer.r-project.org/Blog/public/2019/11/21/a-new-palette-for-r/index.html</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>You can also derive them using <code><a href="https://cols4all.github.io/reference/c4a.html">cols4all::c4a()</a></code> function.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>In general, the darker the color, the larger the value it represents. This rule applies to sequential color palettes, when the background color is light. However, when the background color is dark, the rule is reversed, and the darker colors should represent lower values.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -1479,8 +1479,8 @@ Zeileis, Achim, Jason C. Fisher, Kurt Hornik, et al. 2019. <em><span class="noca
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./scales.html" class="pagination-link" aria-label="Scales of visual variables">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of visual variables</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./scales.html" class="pagination-link" aria-label="Scales of map variables">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of map variables</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1491,7 +1491,7 @@ Zeileis, Achim, Jason C. Fisher, Kurt Hornik, et al. 2019. <em><span class="noca
     </div>   
     <div class="nav-footer-center">
 <p>Spatial Data Visualization with tmap: A Practical Guide to Thematic Mapping in R by Martijn Tennekes and Jakub Nowosad.</p>
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/visual-variables.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/geocompx/tmap/edit/main/map-variables.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

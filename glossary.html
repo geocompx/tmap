@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="“Spatial Data Visualization with tmap: A Practical Guide to Thematic Mapping in R” is a free, open-source book that teaches you how to create static and interactive maps using the tmap package in R. Covering core concepts in thematic cartography, map design, and spatial visualization, this guide provides step-by-step approaches to help you produce high-quality maps for reports, presentations, and web applications.">
 <title>Appendix B — Glossary – Spatial Data Visualization with tmap</title>
@@ -37,9 +37,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-b3040bcd11fbc27613bbc6a39099bf18.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -173,14 +173,14 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./visual-variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visual variables</span></span></a>
+  <a href="./map-variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Map variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./scales.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of visual variables</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Scales of map variables</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -409,42 +409,38 @@ Table&nbsp;B.1: Glossary of tmap terms.
 <td style="text-align: left; width: 8cm;">A map layer is a visual representation of geographical information. We distinguish two types: <em>data-driven</em> and <em>auxiliary</em> map layers. The former requires spatial objects, whereas the latter only requires the geographic information (bounding box and coordinate reference system).</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left; width: 4cm; font-family: monospace;">Map variable</td>
+<td style="text-align: left; width: 8cm;">A variable of a data-driven map layer that controls a <em>visual</em> property (e.g., color, size, shape) or a <em>transformation</em> (e.g., a cartogram) of the spatial object. This can be data-driven, e.g., <code>tm_polygons(fill = "var")</code> or <code>tm_cartogram(size = "var")</code>, where <code>var</code> is the name of an <code>sf</code> column, or a constant value, such as <code>tm_polygons(fill = "blue")</code>.</td>
+</tr>
+<tr class="even">
 <td style="text-align: left; width: 4cm; font-family: monospace;">Options</td>
 <td style="text-align: left; width: 8cm;">In the context of tmap, we refer to the options as settings, which can be configured using <code>tm_options</code>. These can be <em>layout</em> options (see <strong>layout</strong>) or otherwise (e.g., <code>'show.messages'</code>).</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left; width: 4cm; font-family: monospace;">Proportional symbols</td>
 <td style="text-align: left; width: 8cm;">Proportional symbols are symbols that are drawn at geographic locations and that are sized proportionally with a data variable. The result is known as a 'proportional symbol map'. These symbols are usually bubbles (filled circles), but can also be small charts, called <strong>glyphs</strong>.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left; width: 4cm; font-family: monospace;">Scale function</td>
-<td style="text-align: left; width: 8cm;">A scale function determines how to scale a data variable to either a visual variable or a transformation variable. Examples: <code>tm_scale_continuous()</code>, <code>tm_scale_categorical()</code>.</td>
+<td style="text-align: left; width: 8cm;">A scale function determines how to scale a data variable to a map variable, whether it controls a visual property or a transformation. Examples: <code>tm_scale_continuous()</code>, <code>tm_scale_categorical()</code>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; width: 4cm; font-family: monospace;">Shape (map variable)</td>
+<td style="text-align: left; width: 8cm;">The shape is a map variable for some map layer functions, most prominently <code>tm_symbols()</code>. It determines the shape/design of the symbols.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left; width: 4cm; font-family: monospace;">Shape (object)</td>
 <td style="text-align: left; width: 8cm;">'Shape' is a nickname for a spatial data object. It is used in <code>tm_shape()</code>.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left; width: 4cm; font-family: monospace;">Shape (visual variable)</td>
-<td style="text-align: left; width: 8cm;">The shape is a visual variable for some map layer functions, most prominently <code>tm_symbols()</code>. It determines the shape/design of the symbols.</td>
-</tr>
-<tr class="even">
 <td style="text-align: left; width: 4cm; font-family: monospace;">Style</td>
 <td style="text-align: left; width: 8cm;">The overall layout of the map. Similar to ggplot2's 'theme' (see <strong>theme</strong>).</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left; width: 4cm; font-family: monospace;">Theme</td>
 <td style="text-align: left; width: 8cm;">tmap stands for 'thematic maps', where <em>theme</em> refers to the topic of the data plotted on a map. Note that in ggplot2, a 'theme' refers to the overall layout, e.g., <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">ggplot2::theme_minimal()</a></code>. In tmap, we use <strong>style</strong> for this.</td>
 </tr>
-<tr class="even">
-<td style="text-align: left; width: 4cm; font-family: monospace;">Transformation variable</td>
-<td style="text-align: left; width: 8cm;">A variable of a data-driven map layer that determines a <em>transformation</em> of the spatial object. For instance, <code>tm_cartogram(size = "var")</code>.</td>
-</tr>
 <tr class="odd">
-<td style="text-align: left; width: 4cm; font-family: monospace;">Visual variable</td>
-<td style="text-align: left; width: 8cm;">A variable of a data-driven map layer that determines a <em>visual</em> aspect. This can be data-driven, e.g., <code>tm_polygons(fill = "var")</code>, where <code>var</code> is the name of an <code>sf</code> column, or a constant value, such as <code>tm_polygons(fill = "blue")</code>.</td>
-</tr>
-<tr class="even">
 <td style="text-align: left; width: 4cm; font-family: monospace;">tmap element</td>
 <td style="text-align: left; width: 8cm;">A <code>tm_</code> object that can be stacked with the <code>+</code> operator. These are: <code>tm_shape()</code>, map layer functions (such as <code>tm_polygons()</code>), facet specification function <code>tm_facets()</code>, map components (such as <code>tm_compass()</code>), and layout/option specification functions, such as <code>tm_layout()</code>.</td>
 </tr>
