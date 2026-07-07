@@ -3,9 +3,9 @@
 source("code/before_script.R")
 ```
 
-# Scales of visual variables {#sec-scales}
+# Scales of map variables {#sec-scales}
 
-\index{visual variables}
+\index{map variables}
 \index{scales}
 \index{color scales}
 \index{size scales}
@@ -13,7 +13,7 @@ source("code/before_script.R")
 \index{tm\_scale}
 Sections [-@sec-colors], [-@sec-sizes], and [-@sec-shapes] showed how to set colors, sizes, and shapes for different types of spatial objects.
 In them, we often used the `tm_scale()` function to modify the appearance of the map, such as changing the color palettes (`col.scale` and `fill.scale`), sizes (`size.scale`), or shapes (`shape.scale`).
-The `tm_scale()` function automatically sets the scale for the given visual variable and the data type (factor, numeric, and integer).
+The `tm_scale()` function automatically sets the scale for the given map variable and the data type (factor, numeric, and integer).
 Thus, for example, when we provide a character variable's name to the `fill` argument, then the `tm_scale()` function automatically sets the color scale for a categorical variable, and when we provide a numeric variable's name to the `size` argument, then the `tm_scale()` function automatically sets the size scale for a continuous variable.
 
 However, we often want to have more control over how our spatial objects are presented on the map.
@@ -460,7 +460,7 @@ Its main arguments:
 - `x`: variable names, variable indices, or a dimension name (for `sf`, `stars`, and `SpatRaster` objects)
 - `dimvalues`: dimension values (for `stars` objects)
 - `n`: (if specified) the first *n* variables that are used
-- `multivariate`: in case multiple variables are specified, should they serve as facets (FALSE; default) or as a multivariate visual variable?
+- `multivariate`: in case multiple variables are specified, should they serve as facets (FALSE; default) or as a multivariate map variable?
 <!-- - `animate`: should the variable(s) be animated? -->
 :::
 

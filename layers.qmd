@@ -68,7 +68,7 @@ layers_df |>
 <!--JN: Idea - also add a simple viz showing different kind of layers here (visual summary)-->
 
 In this chapter, we focus on what map layers are available in **tmap** and how they differ from each other.
-@sec-visual-variables, on the other hand, is all about how to present information given in variables using colors, sizes, and shapes.
+@sec-map-variables, on the other hand, is all about how to present information given in variables using colors, sizes, and shapes.
 
 ## Polygons {#sec-polygons}
 
@@ -151,7 +151,7 @@ slo_cities = read_sf("data/slovenia/slo_cities.gpkg")
 Symbols are a versatile type of map layer.
 They are usually used to represent point data but can also be used for lines and polygons.
 In the latter cases, they are located in the centroid coordinates of each feature.
-Their flexibility is also related to the ways symbols can be visualized -- it is possible to show values of a given variable by colors of symbols, their sizes, or shapes (more about that is explained in @sec-visual-variables).
+Their flexibility is also related to the ways symbols can be visualized -- it is possible to show values of a given variable by colors of symbols, their sizes, or shapes (more about that is explained in @sec-map-variables).
 
 \index{tm\_symbols}
 The `tm_symbols()` is the main function in **tmap**, allowing to use and modify symbol elements (@fig-tmsymbols1).
@@ -257,7 +257,7 @@ tm_shape(slo_railroads) +
   tm_lines()
 ```
 
-Lines can be presented using different colors, widths, or types (@sec-visual-variables).
+Lines can be presented using different colors, widths, or types (@sec-map-variables).
 This allows to show a hierarchy (for example, increased line widths for higher capacity roads) or distinguish between types of objects (for example, blue rivers comparing to gray roads).
 
 ## Text {#sec-text}

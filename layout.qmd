@@ -8,7 +8,7 @@ source("code/before_script.R")
 <!-- https://github.com/geocompx/tmap/issues/20#issuecomment-3209507327 -->
 
 \index{map layout}
-Map layout relates to all of the visual aspects of the created plot except the visual variables (@sec-visual-variables and @sec-scales), legends (@sec-legends-and-titles), map components (@sec-map-components), and their positions (@sec-positions).
+Map layout relates to all of the visual aspects of the created plot except the map variables (@sec-map-variables and @sec-scales), legends (@sec-legends-and-titles), map components (@sec-map-components), and their positions (@sec-positions).
 It includes the map background, frame, typography, scale, aspect ratio, margins, and more.
 
 We can customize the map layout using the `tm_layout()` function.
@@ -53,7 +53,7 @@ tm +
 ```
 
 The `tm_layout()` function also has tools to modify the complete map color style with arguments such as `color.saturation`, `color.sepia_intensity`, and `color_vision_deficiency_sim.`
-The first one represents the saturation of all colors on the map, including the backgrounds, as well as visual variables such as the fill or color of polygons and lines.
+The first one represents the saturation of all colors on the map, including the backgrounds, as well as map variables such as the fill or color of polygons and lines.
 The `color.saturation` parameter accepts a value between `0` and `1`, where `0` means no color saturation (i.e., the map is black and white), and `1` means full-color saturation (i.e., the map is colorful, default) (@fig-layout-saturation).
 The value of `0` may be useful when we want to create a black-and-white map, for example, to print it on a black-and-white printer, while the values in between `0` and `1` can be used to create a more muted, stylized map.
 

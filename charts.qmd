@@ -7,7 +7,7 @@ source("code/before_script.R")
 
 \index{charts}
 Thematic maps usually represent one or more variables using colors, shapes, or sizes.
-Then, the map legend is used to explain the meaning of these visual variables (@sec-legends).
+Then, the map legend is used to explain the meaning of these map variables (@sec-legends).
 Such a legend can be expanded (or even replaced, @sec-charts-customization) with a chart that provides more information about the distribution of the variable values.
 
 \index{histogram}
@@ -216,7 +216,7 @@ tm_shape(slo_tavg) +
 ## Additional chart customization {#sec-charts-customization}
 
 \index{ggplot2}
-All of the charts are directly based on the visual variables from the map layer and then created internally using the **ggplot2** package (@R-ggplot2).
+All of the charts are directly based on the map variables from the map layer and then created internally using the **ggplot2** package (@R-ggplot2).
 By default, however, the charts are much simplified, not showing all the details that **ggplot2** can provide, such as axis labels, titles, and various theme elements.
 <!-- https://github.com/geocompx/tmap/issues/10#issuecomment-3007409988 -->
 

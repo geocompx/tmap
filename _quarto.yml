@@ -42,7 +42,7 @@ book:
       chapters: 
         - "tm-shape.qmd" 
         - "layers.qmd" 
-        - "visual-variables.qmd" 
+        - "map-variables.qmd" 
         - "scales.qmd"
         - "legends.qmd"
         - "map-components.qmd"

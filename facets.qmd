@@ -61,7 +61,7 @@ tm_shape(slo_regions_ts) +
 ```
 
 Both approaches can be combined, allowing to create facets for multiple variables over time (@fig-facets3).
-Here, variables specified as a visual variable (`c("pop_dens", "gdppercap", "tourism")`) are shown in columns, while the faceting variable is set with `tm_facets(by = "time")` and presents the data for each year in a separate row.
+Here, variables specified as a map variable (`c("pop_dens", "gdppercap", "tourism")`) are shown in columns, while the faceting variable is set with `tm_facets(by = "time")` and presents the data for each year in a separate row.
 
 ```{r}
 #| label: fig-facets3
@@ -252,8 +252,8 @@ tm_shape(slo_tavg) +
 ```
 
 ::: {.callout-note}
-Each visual variable (e.g., `col`, `size`, `shape`) has a related argument with the `.free` suffix, e.g., `col.free`, `size.free`, `shape.free`.
-These arguments are used to control whether the scales for the visual variable are applied freely across facets or are shared.
+Each map variable (e.g., `col`, `size`, `shape`) has a related argument with the `.free` suffix, e.g., `col.free`, `size.free`, `shape.free`.
+These arguments are used to control whether the scales for the map variable are applied freely across facets or are shared.
 For example, `col.free = TRUE` means that each facet has its own color scale, while `col.free = FALSE` means that all facets share the same color scale.
 
 The `.free` arguments can also be used to control the scales for each facet dimension with a vector of logical values.

@@ -100,12 +100,12 @@ tm_shape(slo_cities) +
   tm_title("Cities")
 ```
 
-Here, we specify the input data (our *shape object*) with `tm_shape()`, visual variables (also known as *aesthetics*) of map layers with `tm_symbols()`, and the map title with `tm_title()`.
+Here, we specify the input data (our *shape object*) with `tm_shape()`, map variables (also known as *aesthetics*) of map layers with `tm_symbols()`, and the map title with `tm_title()`.
 
 \index{map layers}
-\index{visual variables}
+\index{map variables}
 The **tmap** package has a number of possible map layers, but the most prominent ones are `tm_polygons()`, `tm_symbols()`, `tm_lines()`, `tm_raster()`, and `tm_text()` (@sec-layers).
-Overall, most visual variables of map layers can be assigned in two main ways.
+Overall, most map variables of map layers can be assigned in two main ways.
 First, they accept a fixed, constant value, for instance, `shape = 24`, which sets the symbols' shapes to triangles.
 Second, it is also possible to provide a variable name, for example, `size = "population"`.
 This plots each point with a size based on the `population` attribute from the `slo_cities` object and automatically adds a related map legend.
@@ -155,7 +155,7 @@ The first *group* represents elevation data with a continuous color scale style,
 The second *group* shows the borders of Slovenia with the default aesthetics, while the third *group* presents the railroad network (the `slo_railroads` object), with each line's width based on the values from the `"track_width"` column, but with a legend hidden.
 The last *group* is similar to our previous example with fixed symbol shapes and sizes related to the `"elevation"` attribute, but also with the legend title instead of the map title.
 Additionally, we use the `tm_title()` function to add a map title and `tm_layout()` to modify the general appearance of the map.
-You can also notice that we can control scales of various visual variables, such as color, size, or width, with the `tm_scale_*()` function and customize legends with the `tm_legend()` function.
+You can also notice that we can control scales of various map variables, such as color, size, or width, with the `tm_scale_*()` function and customize legends with the `tm_legend()` function.
 
 \index{graticules}
 \index{north arrow}
@@ -219,7 +219,7 @@ In such maps, the same data is visualized in several panels, each showing a diff
 The panels may represent different variables, time periods, or spatial extents.
 
 The `slo_regions` object contains the administrative regions of Slovenia with their names, population density (`gdppercap`), GDP per capita (`gdppercap`), region group name (`region_group`), and other attributes.
-One way to visualize this data as facets is to specify selected columns as visual variables in the map layer function (e.g., `tm_polygons()`) (@fig-sec-facets1).
+One way to visualize this data as facets is to specify selected columns as map variables in the map layer function (e.g., `tm_polygons()`) (@fig-sec-facets1).
 
 ```{r}
 #| label: fig-sec-facets1

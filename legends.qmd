@@ -22,7 +22,7 @@ Legends are an essential part of most maps.
 They provide meaning to the symbols or colors used in the map, and often add information about the map's content.
 They allow for interpreting the map correctly, and are therefore crucial for the map's readability.
 
-In **tmap**, legends are created automatically when we add a layer with a data-driven visual variable.
+In **tmap**, legends are created automatically when we add a layer with a data-driven map variable.
 By default, such a legend consists of a title based on the variable name and a color/shape/symbol scale (@fig-legend1). <!--REF to the color scale section?-->
 It is placed outside of the map frame, either on the right or on the bottom of the map, depending on the automatically determined map aspect ratio.
 
@@ -37,7 +37,7 @@ tm_shape(slo_elev) +
 \index{tm\_legend}
 Such a legend is helpful for quick exploration of the data, but often, they are not sufficient for sharing the map with others.
 This chapter covers how to customize the legend's title, position, and appearance in **tmap**.
-Legends are also closely related to the visual variables and scales used in the map that were covered in chapters @sec-visual-variables and @sec-scales -- we recommend reading those chapters first.
+Legends are also closely related to the map variables and scales used in the map that were covered in chapters @sec-map-variables and @sec-scales -- we recommend reading those chapters first.
 Legends are customized using the `tm_legend()` function that is passed to `*.legend` arguments of the layer functions, e.g., `col.legend`, `shape.legend`, `size.legend`, etc.
 
 Often, the most significant part of the legend is the title.

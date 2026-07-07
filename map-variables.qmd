@@ -3,22 +3,22 @@
 source("code/before_script.R")
 ```
 
-# Visual variables {#sec-visual-variables}
+# Map variables {#sec-map-variables}
 
-\index{visual variables}
-Visual variables are methods to translate information given in variables into many types of visualizations, including maps.
-Basic visual variables are color, size, and shape^[Other visual variables include position, orientation, and texture.].
+\index{map variables}
+Map variables are methods to translate information given in variables into many types of visualizations, including maps.
+Basic map variables are color, size, and shape^[Other map variables include position, orientation, and texture.].
 All of them can influence our perception and understanding of the presented information; therefore, it is worth understanding when and how they can be used.
 
-The use of visual variables on maps depends on two main things: (a) the type of the presented variable, and (b) the type of the map layer (@sec-const-visual-variables; @sec-auto-scales).
+The use of map variables on maps depends on two main things: (a) the type of the presented variable, and (b) the type of the map layer (@sec-const-map-variables; @sec-auto-scales).
 
 <!-- alpha? -->
 ```{r}
-#| label: fig-visual-variables
+#| label: fig-map-variables
 #| echo: false
 #| warning: false
 #| message: false
-#| fig-cap: Basic visual variables and their representations on maps
+#| fig-cap: Basic map variables and their representations on maps
 #| fig-asp: 0.4
 tmap::tmap_options(scale = 0.75)
 source("code/visual_variables.R")
@@ -29,8 +29,8 @@ tmap::tmap_options(scale = 1)
 \index{color}
 \index{size}
 \index{shape}
-@fig-visual-variables shows examples of different visual variables.
-Color is the most universal visual variable (@sec-colors).
+@fig-map-variables shows examples of different map variables.
+Color is the most universal map variable (@sec-colors).
 It can represent both qualitative (categorical) and quantitative (numerical) variables, and we can also color symbols, lines, or polygon fillings.
 Sizes, on the other hand, focus on quantitative variables.
 Small symbols could represent low values of a given variable, and the higher the value, the larger the symbol.
@@ -39,7 +39,7 @@ The use of shapes usually should be limited to qualitative variables, and differ
 Similarly, qualitative variables in lines can be presented by different line types.
 Values of polygons usually cannot be represented by either shapes or sizes, as these two features are connected to the geometries of the objects.
 <!-- exception - cartograms - ref to other chapter \@ref(other-types) -->
-Finally, there are some cases in which we can use several visual variables at the same time (@sec-mixing-visual-variables).
+Finally, there are some cases in which we can use several map variables at the same time (@sec-mixing-map-variables).
 
 Let's start by attaching the packages and reading the data we use in this chapter.
 
@@ -52,9 +52,9 @@ slo_regions = read_sf("data/slovenia/slo_regions.gpkg")
 slo_cities = read_sf("data/slovenia/slo_cities.gpkg")
 ```
 
-## Constant visual values {#sec-const-visual-variables}
+## Constant map variables {#sec-const-map-variables}
 
-Before we use visual variables, it is worth reminding that we can set constant values for visual variables: fill, color, size, and shape for all objects on the map.
+Before we use map variables, it is worth reminding that we can set constant values for map variables: fill, color, size, and shape for all objects on the map.
 For example, with `tm_polygons()` we can fill all polygons with the same color, and set borders to the specified color, width, and type (@fig-colorscales1).
 
 ```{r}
@@ -86,20 +86,20 @@ tm_shape(slo_regions) +
 
 \index{automatic scales}
 \index{tm\_scale}
-On the other hand, if we provide the name of the column (variable) we want to visualize, **tmap** automatically sets the visual variables.
+On the other hand, if we provide the name of the column (variable) we want to visualize, **tmap** automatically sets the map variables.
 The **tmap** package has many defaults that automatically specify colors, sizes, and shapes used on the maps. 
 Thus, for example, when we provide a character variable's name to the `fill` argument, then the color scale for a categorical variable is set, and when we give a numeric variable's name to the `size` argument, then the size scale for a continuous variable is used.
 However, **tmap** also allows us to change them with a few additional functions, including `tm_scale()` and `tm_legend()`.
-In this and the following sections, we show how to use the `tm_scale()` function to modify the appearance of the visual variables.
+In this and the following sections, we show how to use the `tm_scale()` function to modify the appearance of the map variables.
 In the next two chapters, we further discuss various types of scales and ways to modify them and the legend appearance.
 
 The most basic use of the `tm_scale()` function is to modify the appearance of the map, such as changing the color palette (`col.scale` and `fill.scale`), sizes (`size.scale`), or shapes (`shape.scale`).
-This is done with the `values` argument of each of these functions, which can be one of many things, depending on the visual variable.
+This is done with the `values` argument of each of these functions, which can be one of many things, depending on the map variable.
 For example, for colors, it can be a vector of colors, a palette function, or a name of a built-in palette; for sizes, it can be a numerical variable; and for shapes, it can be a custom icon or a numerical variable (@fig-tmscalevals).
 
 ```{r}
 #| label: fig-tmscalevals
-#| fig-cap: "Examples of various ways of specifying values for visual variables."
+#| fig-cap: "Examples of various ways of specifying values for map variables."
 #| fig-subcap: 
 #|    - name of a build-in color palette
 #|    - vector of colors
@@ -121,7 +121,7 @@ tm_shape(slo_cities) +
              shape.scale = tm_scale(values = 1:6))
 ```
 
-The following sections @sec-colors, @sec-sizes, and @sec-shapes explain the basic visual variables.
+The following sections @sec-colors, @sec-sizes, and @sec-shapes explain the basic map variables.
 Next, they show how to set colors, sizes, and shapes for different types of spatial objects.
 
 ## Colors {#sec-colors}
@@ -689,13 +689,13 @@ tm_shape(World_rivers) +
   tm_lines(lty = 2)
 ```
 
-## Mixing visual variables {#sec-mixing-visual-variables}
+## Mixing map variables {#sec-mixing-map-variables}
 
 The values of a given variable can be expressed by different categorical or sequential colors in polygons.
 Lines can also be colored by one variable, but also the widths of the lines can represent values of another quantitative variable.
 When we use symbols, we are able to use colors for one qualitative or quantitative variable, sizes for a quantitative variable, and shapes for another qualitative variable.
-Therefore, it is possible to mix some visual variables for symbols and lines.
-This section shows only some possible examples of mixing visual variables.
+Therefore, it is possible to mix some map variables for symbols and lines.
+This section shows only some possible examples of mixing map variables.
 
 @fig-mixsymb-1 shows symbols, whose sizes are scaled based on the `population` variable, and they are colored using the values from `place`.
 This can be set with the `size` and `fill` arguments.
@@ -708,7 +708,7 @@ tm_shape(slo_cities) +
              fill = "place")
 ```
 
-We can also modify all of the visual variables using the additional arguments explained in the next chapters.
+We can also modify all of the map variables using the additional arguments explained in the next chapters.
 For example, we can set the color style, color palette, or specify shapes (@fig-mixsymb-2).
 
 ```{r}
@@ -726,7 +726,7 @@ tm_shape(slo_cities) +
 #| echo: false
 #| message: false
 #| layout-nrow: 2
-#| fig-cap: 'Examples of maps using two visual variables at the same time.'
+#| fig-cap: 'Examples of maps using two map variables at the same time.'
 #| fig-subcap: 
 #|   - size and fill
 #|   - fill and shape
@@ -741,7 +741,7 @@ For line data, we can present its qualitative and quantitative variables using c
 #| echo: false
 #| message: false
 #| fig-asp: 0.66
-#| fig-cap: A map using two visual variables, color, and size (line width), at the same time.
+#| fig-cap: A map using two map variables, color, and size (line width), at the same time.
 tm_shape(slo_railroads) +
   tm_lines(col = "rail_status", 
            lwd = "track_width")

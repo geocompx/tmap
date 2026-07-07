@@ -14,7 +14,7 @@ Whether you're a beginner in geospatial analysis or an experienced GIS user tran
 This book walks you through the full process of thematic mapping with **tmap**, including:
 
 - Load, explore, and prepare spatial data in R
-- Build maps using **tmap**’s core components like shapes, layers, and visual variables
+- Build maps using **tmap**’s core components like shapes, layers, and map variables
 - Customize map appearance with legends, scales, layouts, and annotations
 - Create faceted, animated, and interactive maps for various audiences
 - Integrate **tmap** maps into reports, web apps, and Shiny dashboards
