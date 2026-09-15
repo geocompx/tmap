@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="“Spatial Data Visualization with tmap: A Practical Guide to Thematic Mapping in R” is a free, open-source book that teaches you how to create static and interactive maps using the tmap package in R. Covering core concepts in thematic cartography, map design, and spatial visualization, this guide provides step-by-step approaches to help you produce high-quality maps for reports, presentations, and web applications.">
 <title>12&nbsp; Map layout – Spatial Data Visualization with tmap</title>
@@ -10,10 +10,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -92,14 +95,14 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1b951091e5cb604dfb04100a714af587.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-1b951091e5cb604dfb04100a714af587.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-1b951091e5cb604dfb04100a714af587.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-d2ec9cb201f710df4a7024d667261f59.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-d2ec9cb201f710df4a7024d667261f59.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d2ec9cb201f710df4a7024d667261f59.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -454,7 +457,7 @@ gtag('config', 'G-ER2GMPEJNF', { 'anonymize_ip': true});
 <span>    <span class="fu"><a href="https://r-tmap.github.io/tmap/reference/tm_title.html">tm_title</a></span><span class="op">(</span><span class="st">"Slovenia"</span><span class="op">)</span></span>
 <span><span class="va">tm</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="fig-layout-example" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
+<div id="fig-layout-example" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-layout-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-layout-example-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -473,7 +476,7 @@ Figure&nbsp;12.1: A map of Slovenia with a default layout.
 <span>            outer.bg.color <span class="op">=</span> <span class="st">"forestgreen"</span>,</span>
 <span>            legend.bg.color <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="fig-layout-colors" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
+<div id="fig-layout-colors" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-layout-colors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-layout-colors-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -879,7 +882,7 @@ Figure&nbsp;12.9: Impact of the scale argument on the map layout.
 <span><span class="co">#&gt; - thick       component position (legend, scalebar, etc.)</span></span>
 <span><span class="co">#&gt; - thin        component-element position (e.g. legend items)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="fig-design-mode" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" data-fig-pos="t">
+<div id="fig-design-mode" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="t" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-design-mode-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/fig-design-mode-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="t">
 </div>
@@ -898,46 +901,46 @@ Table&nbsp;12.1: Color codings of the design mode.
 <div class="cell-output-display">
 <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script><script>
       // Create table-specific functions using external factory
-      const tableFns_hqisrfy45jrxcelefyub = TinyTable.createTableFunctions("tinytable_hqisrfy45jrxcelefyub");
+      const tableFns_dqppfok90d4396aneq88 = TinyTable.createTableFunctions("tinytable_dqppfok90d4396aneq88");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '8', j: 2 } ], css_id: 'tinytable_css_xq5tadagpigbvphhq743',}, 
-          { positions: [ { i: '8', j: 1 } ], css_id: 'tinytable_css_2syaaq9fy9cl9ol10qpx',}, 
-          { positions: [ { i: '7', j: 1 } ], css_id: 'tinytable_css_n0rz2o4lpgx90bwfd721',}, 
-          { positions: [ { i: '6', j: 1 } ], css_id: 'tinytable_css_yydmqzxdtr4roaunhnb8',}, 
-          { positions: [ { i: '5', j: 1 } ], css_id: 'tinytable_css_z7x4h2wutfcqolzmecfx',}, 
-          { positions: [ { i: '4', j: 1 } ], css_id: 'tinytable_css_toorcrhv9r5uxpzfve34',}, 
-          { positions: [ { i: '3', j: 1 } ], css_id: 'tinytable_css_mr600o46nbnhw1li8d3j',}, 
-          { positions: [ { i: '2', j: 1 } ], css_id: 'tinytable_css_7ku4vyh1ueyk7o35k0b7',}, 
-          { positions: [ { i: '1', j: 1 } ], css_id: 'tinytable_css_8bkvq90fbew31nh2vkz1',}, 
-          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 } ], css_id: 'tinytable_css_qqt33zc5qz54r8sx1qja',}, 
+          { positions: [ { i: '8', j: 2 } ], css_id: 'tinytable_css_p8o54b1ol6g8kx2zxk15',}, 
+          { positions: [ { i: '8', j: 1 } ], css_id: 'tinytable_css_uegl1sfkyjfeb3uromfp',}, 
+          { positions: [ { i: '7', j: 1 } ], css_id: 'tinytable_css_vetn7fvha2za9inuknp4',}, 
+          { positions: [ { i: '6', j: 1 } ], css_id: 'tinytable_css_nx8bce6vrxzbamz1rgxa',}, 
+          { positions: [ { i: '5', j: 1 } ], css_id: 'tinytable_css_6dqw9jtpbf67li4je2k2',}, 
+          { positions: [ { i: '4', j: 1 } ], css_id: 'tinytable_css_ydhjn59udu9i19sw8pt8',}, 
+          { positions: [ { i: '3', j: 1 } ], css_id: 'tinytable_css_6kqou1mmw6b0lx0awope',}, 
+          { positions: [ { i: '2', j: 1 } ], css_id: 'tinytable_css_c4ftx2ls0l97cqaqm60g',}, 
+          { positions: [ { i: '1', j: 1 } ], css_id: 'tinytable_css_2gzl7wx466nuorlyg20f',}, 
+          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 } ], css_id: 'tinytable_css_hjko19xs3pktp5m7oe88',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_hqisrfy45jrxcelefyub.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_dqppfok90d4396aneq88.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
     </script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
 <style>
     /* tinytable css entries after */
-    #tinytable_hqisrfy45jrxcelefyub td.tinytable_css_xq5tadagpigbvphhq743, #tinytable_hqisrfy45jrxcelefyub th.tinytable_css_xq5tadagpigbvphhq743 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --line-type-bottom: solid; --line-type-left: solid; --line-type-right: solid; --line-type-top: solid; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
-    #tinytable_hqisrfy45jrxcelefyub td.tinytable_css_2syaaq9fy9cl9ol10qpx, #tinytable_hqisrfy45jrxcelefyub th.tinytable_css_2syaaq9fy9cl9ol10qpx {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --line-type-bottom: solid; --line-type-left: solid; --line-type-right: solid; --line-type-top: solid; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; background-color: #FFFF99 }
-    #tinytable_hqisrfy45jrxcelefyub td.tinytable_css_n0rz2o4lpgx90bwfd721, #tinytable_hqisrfy45jrxcelefyub th.tinytable_css_n0rz2o4lpgx90bwfd721 { background-color: #FDBF6F }
-    #tinytable_hqisrfy45jrxcelefyub td.tinytable_css_yydmqzxdtr4roaunhnb8, #tinytable_hqisrfy45jrxcelefyub th.tinytable_css_yydmqzxdtr4roaunhnb8 { background-color: #E31A1C }
-    #tinytable_hqisrfy45jrxcelefyub td.tinytable_css_z7x4h2wutfcqolzmecfx, #tinytable_hqisrfy45jrxcelefyub th.tinytable_css_z7x4h2wutfcqolzmecfx { background-color: #FB9A99 }
-    #tinytable_hqisrfy45jrxcelefyub td.tinytable_css_toorcrhv9r5uxpzfve34, #tinytable_hqisrfy45jrxcelefyub th.tinytable_css_toorcrhv9r5uxpzfve34 { background-color: #33A02C }
-    #tinytable_hqisrfy45jrxcelefyub td.tinytable_css_mr600o46nbnhw1li8d3j, #tinytable_hqisrfy45jrxcelefyub th.tinytable_css_mr600o46nbnhw1li8d3j { background-color: #B2DF8A }
-    #tinytable_hqisrfy45jrxcelefyub td.tinytable_css_7ku4vyh1ueyk7o35k0b7, #tinytable_hqisrfy45jrxcelefyub th.tinytable_css_7ku4vyh1ueyk7o35k0b7 { background-color: #1F78B4 }
-    #tinytable_hqisrfy45jrxcelefyub td.tinytable_css_8bkvq90fbew31nh2vkz1, #tinytable_hqisrfy45jrxcelefyub th.tinytable_css_8bkvq90fbew31nh2vkz1 { background-color: #A6CEE3 }
-    #tinytable_hqisrfy45jrxcelefyub td.tinytable_css_qqt33zc5qz54r8sx1qja, #tinytable_hqisrfy45jrxcelefyub th.tinytable_css_qqt33zc5qz54r8sx1qja {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --line-type-bottom: solid; --line-type-left: solid; --line-type-right: solid; --line-type-top: solid; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_dqppfok90d4396aneq88 td.tinytable_css_p8o54b1ol6g8kx2zxk15, #tinytable_dqppfok90d4396aneq88 th.tinytable_css_p8o54b1ol6g8kx2zxk15 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --line-type-bottom: solid; --line-type-left: solid; --line-type-right: solid; --line-type-top: solid; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_dqppfok90d4396aneq88 td.tinytable_css_uegl1sfkyjfeb3uromfp, #tinytable_dqppfok90d4396aneq88 th.tinytable_css_uegl1sfkyjfeb3uromfp {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --line-type-bottom: solid; --line-type-left: solid; --line-type-right: solid; --line-type-top: solid; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; background-color: #FFFF99 }
+    #tinytable_dqppfok90d4396aneq88 td.tinytable_css_vetn7fvha2za9inuknp4, #tinytable_dqppfok90d4396aneq88 th.tinytable_css_vetn7fvha2za9inuknp4 { background-color: #FDBF6F }
+    #tinytable_dqppfok90d4396aneq88 td.tinytable_css_nx8bce6vrxzbamz1rgxa, #tinytable_dqppfok90d4396aneq88 th.tinytable_css_nx8bce6vrxzbamz1rgxa { background-color: #E31A1C }
+    #tinytable_dqppfok90d4396aneq88 td.tinytable_css_6dqw9jtpbf67li4je2k2, #tinytable_dqppfok90d4396aneq88 th.tinytable_css_6dqw9jtpbf67li4je2k2 { background-color: #FB9A99 }
+    #tinytable_dqppfok90d4396aneq88 td.tinytable_css_ydhjn59udu9i19sw8pt8, #tinytable_dqppfok90d4396aneq88 th.tinytable_css_ydhjn59udu9i19sw8pt8 { background-color: #33A02C }
+    #tinytable_dqppfok90d4396aneq88 td.tinytable_css_6kqou1mmw6b0lx0awope, #tinytable_dqppfok90d4396aneq88 th.tinytable_css_6kqou1mmw6b0lx0awope { background-color: #B2DF8A }
+    #tinytable_dqppfok90d4396aneq88 td.tinytable_css_c4ftx2ls0l97cqaqm60g, #tinytable_dqppfok90d4396aneq88 th.tinytable_css_c4ftx2ls0l97cqaqm60g { background-color: #1F78B4 }
+    #tinytable_dqppfok90d4396aneq88 td.tinytable_css_2gzl7wx466nuorlyg20f, #tinytable_dqppfok90d4396aneq88 th.tinytable_css_2gzl7wx466nuorlyg20f { background-color: #A6CEE3 }
+    #tinytable_dqppfok90d4396aneq88 td.tinytable_css_hjko19xs3pktp5m7oe88, #tinytable_dqppfok90d4396aneq88 th.tinytable_css_hjko19xs3pktp5m7oe88 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --line-type-bottom: solid; --line-type-left: solid; --line-type-right: solid; --line-type-top: solid; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
     </style>
 <div class="container">
-      <table class="tinytable" id="tinytable_hqisrfy45jrxcelefyub" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="tinytable" id="tinytable_dqppfok90d4396aneq88" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
 <thead><tr>
 <th scope="col" data-row="0" data-col="1">Color</th>
                 <th scope="col" data-row="0" data-col="2">Element</th>
